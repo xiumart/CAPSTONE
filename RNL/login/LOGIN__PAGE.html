@@ -1183,6 +1183,29 @@
 		font-size: 31px;
 		color: rgba(0,194,203,1);
 	}
+
+	input[type=text] {
+  width: 400PX;
+  font-family: Segoe UI;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 31px;
+text-align:center;
+}
+
+input[type=submit] {
+  width: 100PX;
+  font-family: Segoe UI;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 31px;
+text-align:center;
+	
+}
+
+
+
+
 </style>
 <script id="applicationScript">
 ///////////////////////////////////////
@@ -4209,11 +4232,13 @@ window.application = new Application();
 		</rect>
 	</svg>
 	<div id="EMAIL">
-		<span>EMAIL</span>
+		<span id ="LOGINFORMTEXT"><input type="text" placeholder="EMAIL" ></span> 
 	</div>
 	<div id="LOGIN_bz">
-		<span>LOGIN</span>
+	<a href="#"><input type="submit" value ="LOGIN"></a>
+
 	</div>
+	
 	<svg class="Rectangle_57">
 		<rect id="Rectangle_57" rx="21" ry="21" x="0" y="0" width="444" height="77">
 		</rect>
@@ -4231,7 +4256,7 @@ window.application = new Application();
 		<span>By using this services you understood and agree<br/>to RNL Vision Care Online Services </span><span style="color:rgba(71,127,226,1);text-decoration:underline;">Term of Use</span><span> and Privacy </span><span style="color:rgba(71,127,226,1);text-decoration:underline;">Statements</span>
 	</div>
 	<div id="PASSWORD">
-		<span>PASSWORD</span>
+		<span id ="LOGINFORMTEXT"><input type="text" placeholder="PASSWORD" ></span>
 	</div>
 	<svg class="Line_15" viewBox="0 0 305 1">
 		<path id="Line_15" d="M 0 0 L 305 0">
