@@ -1,0 +1,185 @@
+.mediaViewInfo {
+	--web-view-name: login;
+	--web-view-id: login;
+	--web-scale-to-fit: true;
+	--web-scale-to-fit-type: width;
+	--web-enable-scale-up: true;
+	--web-scale-on-resize: true;
+	--web-show-by-media-query: true;
+	--web-enable-deep-linking: true;
+}
+:root {
+	--web-view-ids: login;
+}
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	border: none;
+}
+#login {
+	position: absolute;
+	width: 1920px;
+	height: 1085px;
+	background-color: rgba(25,25,25,1);
+	overflow: hidden;
+	--web-view-name: login;
+	--web-view-id: login;
+	--web-scale-to-fit: true;
+	--web-scale-to-fit-type: width;
+	--web-enable-scale-up: true;
+	--web-scale-on-resize: true;
+	--web-show-by-media-query: true;
+	--web-enable-deep-linking: true;
+}
+#Rectangle_61 {
+	fill: rgba(25,25,25,1);
+	stroke: rgba(112,112,112,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Rectangle_61 {
+	position: absolute;
+	overflow: visible;
+	width: 806px;
+	height: 646px;
+	left: 557px;
+	top: 220px;
+}
+#Rectangle_62 {
+	fill: rgba(33,33,33,1);
+	stroke: rgba(25,25,25,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Rectangle_62 {
+	position: absolute;
+	overflow: visible;
+	width: 648px;
+	height: 77px;
+	left: 636px;
+	top: 462px;
+}
+#Rectangle_63 {
+	fill: rgba(0,194,203,1);
+	stroke: rgba(25,25,25,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Rectangle_63 {
+	position: absolute;
+	overflow: visible;
+	width: 349px;
+	height: 77px;
+	left: 786px;
+	top: 718px;
+}
+#Rectangle_64 {
+	fill: rgba(33,33,33,1);
+	stroke: rgba(25,25,25,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Rectangle_64 {
+	position: absolute;
+	overflow: visible;
+	width: 648px;
+	height: 77px;
+	left: 636px;
+	top: 579px;
+}
+#USER_NAME {
+	opacity: 0.5;
+	left: 668.5px;
+	top: 489px;
+	position: absolute;
+	overflow: visible;
+	width: 126px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Arial;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 21px;
+	color: rgba(255,255,255,1);
+}
+#PASSWORD {
+	opacity: 0.5;
+	left: 668.5px;
+	top: 606px;
+	position: absolute;
+	overflow: visible;
+	width: 122px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Arial;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 21px;
+	color: rgba(255,255,255,1);
+}
+#LOGIN_ {
+	left: 916px;
+	top: 740px;
+	position: absolute;
+	overflow: visible;
+	width: 94px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Arial;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 30px;
+	color: rgba(255,255,255,1);
+}
+#Rectangle_65 {
+	fill: rgba(18,18,18,1);
+	stroke: rgba(112,112,112,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Rectangle_65 {
+	position: absolute;
+	overflow: visible;
+	width: 806px;
+	height: 197px;
+	left: 557px;
+	top: 220px;
+}
+#Untitled_design_12 {
+	position: absolute;
+	width: 203px;
+	height: 149px;
+	left: 727px;
+	top: 235px;
+	overflow: visible;
+}
+#RNL_Vision_Care {
+	left: 885px;
+	top: 286px;
+	position: absolute;
+	overflow: visible;
+	width: 273px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Arial;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 35px;
+	color: rgba(255,255,255,1);
+}
