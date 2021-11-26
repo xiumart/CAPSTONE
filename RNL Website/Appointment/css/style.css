@@ -1,3 +1,51 @@
+
+				input[type=text], select {
+				  width: 270%;
+				  padding: 19px 10px;
+				  margin: 8px 0;
+				  display: inline-block;
+				  border: 1px solid #ccc;
+				  border-radius: 8px;
+				  box-sizing: border-box;
+				  background-color: transparent;
+				  font-size: medium;
+				}
+				input[type=email], select {
+					width: 450%;
+					padding: 19px 10px;
+					margin: 8px 0;
+					display: inline-block;
+					border: 1px solid #ccc;
+					border-radius: 8px;
+					box-sizing: border-box;
+					background-color: transparent;
+					font-size: medium;
+				  }
+				input[type=submit] {
+					width: 130%;
+					background-color: #1566a8;
+					color: white;
+					padding: 30px 50px;
+					margin: 8px 0;
+					border: none;
+					border-radius: 10px;
+					cursor: pointer;
+					position: relative;
+					margin-top: -100%;
+					margin-left: -15%;
+					font-size: x-large;
+				  }
+				  input[type=datetime-local], select {
+					width: 200%;
+					padding: 19px 10px;
+					margin: 8px 0;
+					display: inline-block;
+					border: 1px solid #ccc;
+					border-radius: 8px;
+					box-sizing: border-box;
+					background-color: transparent;
+					font-size: 14px;
+				  }
 .mediaViewInfo {
 	--web-view-name: appointment;
 	--web-view-id: appointment;
