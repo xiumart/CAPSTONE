@@ -8,7 +8,8 @@
 				  border-radius: 8px;
 				  box-sizing: border-box;
 				  background-color: transparent;
-				  font-size: medium;
+				  font-size: large;
+				  color: white;
 				}
 				input[type=email], select {
 					width: 450%;
@@ -19,7 +20,8 @@
 					border-radius: 8px;
 					box-sizing: border-box;
 					background-color: transparent;
-					font-size: medium;
+					font-size: large;
+					color: white;
 				  }
 				input[type=submit] {
 					width: 130%;
@@ -45,6 +47,7 @@
 					box-sizing: border-box;
 					background-color: transparent;
 					font-size: 14px;
+					color: white;
 				  }
 .mediaViewInfo {
 	--web-view-name: appointment;
@@ -268,23 +271,6 @@
 	font-size: 25px;
 	color: rgba(255,255,255,1);
 }
-#Rectangle_101 {
-	fill: rgba(25,25,25,1);
-	stroke: rgba(25,25,25,1);
-	stroke-width: 1px;
-	stroke-linejoin: miter;
-	stroke-linecap: butt;
-	stroke-miterlimit: 4;
-	shape-rendering: auto;
-}
-.Rectangle_101 {
-	position: absolute;
-	overflow: visible;
-	width: 485px;
-	height: 55px;
-	left: 1362.5px;
-	top: 1228px;
-}
 #Describe_your_issue_or_idea_c {
 	opacity: 0.5;
 	left: 1399.5px;
@@ -300,23 +286,7 @@
 	font-size: 22px;
 	color: rgba(255,255,255,1);
 }
-#Rectangle_102 {
-	fill: rgba(0,194,203,1);
-	stroke: rgba(25,25,25,1);
-	stroke-width: 1px;
-	stroke-linejoin: miter;
-	stroke-linecap: butt;
-	stroke-miterlimit: 4;
-	shape-rendering: auto;
-}
-.Rectangle_102 {
-	position: absolute;
-	overflow: visible;
-	width: 97px;
-	height: 55px;
-	left: 1750.5px;
-	top: 1228px;
-}
+
 #Send_c {
 	left: 1773.5px;
 	top: 1243px;
@@ -331,142 +301,7 @@
 	font-size: 22px;
 	color: rgba(255,255,255,1);
 }
-#Rectangle_5 {
-	fill: rgba(25,25,25,1);
-	stroke: rgba(112,112,112,1);
-	stroke-width: 1px;
-	stroke-linejoin: miter;
-	stroke-linecap: butt;
-	stroke-miterlimit: 4;
-	shape-rendering: auto;
-}
-.Rectangle_5 {
-	position: absolute;
-	overflow: visible;
-	width: 806px;
-	height: 646px;
-	left: 1015px;
-	top: 404px;
-}
-#Rectangle_6 {
-	fill: rgba(33,33,33,1);
-	stroke: rgba(25,25,25,1);
-	stroke-width: 1px;
-	stroke-linejoin: miter;
-	stroke-linecap: butt;
-	stroke-miterlimit: 4;
-	shape-rendering: auto;
-}
-.Rectangle_6 {
-	position: absolute;
-	overflow: visible;
-	width: 349px;
-	height: 77px;
-	left: 1049px;
-	top: 489px;
-}
-#Rectangle_12 {
-	fill: rgba(0,194,203,1);
-	stroke: rgba(25,25,25,1);
-	stroke-width: 1px;
-	stroke-linejoin: miter;
-	stroke-linecap: butt;
-	stroke-miterlimit: 4;
-	shape-rendering: auto;
-}
-.Rectangle_12 {
-	position: absolute;
-	overflow: visible;
-	width: 349px;
-	height: 77px;
-	left: 1438px;
-	top: 922px;
-}
-#Rectangle_13 {
-	fill: rgba(33,33,33,1);
-	stroke: rgba(25,25,25,1);
-	stroke-width: 1px;
-	stroke-linejoin: miter;
-	stroke-linecap: butt;
-	stroke-miterlimit: 4;
-	shape-rendering: auto;
-}
-.Rectangle_13 {
-	position: absolute;
-	overflow: visible;
-	width: 349px;
-	height: 77px;
-	left: 1442px;
-	top: 489px;
-}
-#Rectangle_14 {
-	fill: rgba(33,33,33,1);
-	stroke: rgba(25,25,25,1);
-	stroke-width: 1px;
-	stroke-linejoin: miter;
-	stroke-linecap: butt;
-	stroke-miterlimit: 4;
-	shape-rendering: auto;
-}
-.Rectangle_14 {
-	position: absolute;
-	overflow: visible;
-	width: 349px;
-	height: 77px;
-	left: 1049px;
-	top: 620px;
-}
-#Rectangle_15 {
-	fill: rgba(33,33,33,1);
-	stroke: rgba(25,25,25,1);
-	stroke-width: 1px;
-	stroke-linejoin: miter;
-	stroke-linecap: butt;
-	stroke-miterlimit: 4;
-	shape-rendering: auto;
-}
-.Rectangle_15 {
-	position: absolute;
-	overflow: visible;
-	width: 349px;
-	height: 77px;
-	left: 1442px;
-	top: 620px;
-}
-#Rectangle_16 {
-	fill: rgba(33,33,33,1);
-	stroke: rgba(25,25,25,1);
-	stroke-width: 1px;
-	stroke-linejoin: miter;
-	stroke-linecap: butt;
-	stroke-miterlimit: 4;
-	shape-rendering: auto;
-}
-.Rectangle_16 {
-	position: absolute;
-	overflow: visible;
-	width: 349px;
-	height: 77px;
-	left: 1049px;
-	top: 751px;
-}
-#Rectangle_17 {
-	fill: rgba(33,33,33,1);
-	stroke: rgba(25,25,25,1);
-	stroke-width: 1px;
-	stroke-linejoin: miter;
-	stroke-linecap: butt;
-	stroke-miterlimit: 4;
-	shape-rendering: auto;
-}
-.Rectangle_17 {
-	position: absolute;
-	overflow: visible;
-	width: 349px;
-	height: 77px;
-	left: 1442px;
-	top: 751px;
-}
+
 #FULL_NAME_db {
 	opacity: 0.5;
 	left: 1081.5px;
@@ -480,7 +315,7 @@
 	font-style: normal;
 	font-weight: normal;
 	font-size: 21px;
-	color: rgba(255,255,255,1);
+	color: rgba(255, 255, 255, 0.849);
 }
 #EMAIL_dc {
 	opacity: 0.5;
@@ -495,7 +330,7 @@
 	font-style: normal;
 	font-weight: normal;
 	font-size: 21px;
-	color: rgba(255,255,255,1);
+	color: rgb(255, 255, 255);
 }
 #CONTACT__dd {
 	opacity: 0.5;
@@ -809,42 +644,7 @@
 	font-size: 24px;
 	color: rgba(255,255,255,1);
 }
-#Line_10 {
-	fill: transparent;
-	stroke: rgba(112,112,112,1);
-	stroke-width: 1px;
-	stroke-linejoin: miter;
-	stroke-linecap: butt;
-	stroke-miterlimit: 4;
-	shape-rendering: auto;
-}
-.Line_10 {
-	overflow: visible;
-	position: absolute;
-	width: 705px;
-	height: 1px;
-	left: 118px;
-	top: 529px;
-	transform: matrix(1,0,0,1,0,0);
-}
-#Line_11 {
-	fill: transparent;
-	stroke: rgba(112,112,112,1);
-	stroke-width: 1px;
-	stroke-linejoin: miter;
-	stroke-linecap: butt;
-	stroke-miterlimit: 4;
-	shape-rendering: auto;
-}
-.Line_11 {
-	overflow: visible;
-	position: absolute;
-	width: 705px;
-	height: 1px;
-	left: 118px;
-	top: 952px;
-	transform: matrix(1,0,0,1,0,0);
-}
+
 #n_1__02__21_d {
 	left: 650px;
 	top: 467px;
@@ -890,44 +690,7 @@
 	color: rgba(255,255,255,1);
 	text-decoration: underline;
 }
-#Icon_feather-chevron-left_d {
-	fill: transparent;
-	stroke: rgba(18,18,18,1);
-	stroke-width: 3px;
-	stroke-linejoin: round;
-	stroke-linecap: round;
-	stroke-miterlimit: 4;
-	shape-rendering: auto;
-}
-.Icon_feather-chevron-left_d {
-	overflow: visible;
-	position: absolute;
-	width: 9px;
-	height: 18px;
-	transform: matrix(1,0,0,1,1354,785) rotate(270deg);
-	transform-origin: center;
-	left: 0px;
-	top: 0px;
-}
-#Icon_feather-chevron-left_ea {
-	fill: transparent;
-	stroke: rgba(18,18,18,1);
-	stroke-width: 3px;
-	stroke-linejoin: round;
-	stroke-linecap: round;
-	stroke-miterlimit: 4;
-	shape-rendering: auto;
-}
-.Icon_feather-chevron-left_ea {
-	overflow: visible;
-	position: absolute;
-	width: 9px;
-	height: 18px;
-	transform: matrix(1,0,0,1,1744,785) rotate(270deg);
-	transform-origin: center;
-	left: 0px;
-	top: 0px;
-}
+
 #APPOINMENT_ck {
 	left: 844px;
 	top: 289px;
@@ -1196,229 +959,7 @@
 	left: 1015px;
 	top: 404px;
 }
-#Rectangle_108 {
-	fill: rgba(33,33,33,1);
-	stroke: rgba(25,25,25,1);
-	stroke-width: 1px;
-	stroke-linejoin: miter;
-	stroke-linecap: butt;
-	stroke-miterlimit: 4;
-	shape-rendering: auto;
-}
-.Rectangle_108 {
-	position: absolute;
-	overflow: visible;
-	width: 349px;
-	height: 77px;
-	left: 1049px;
-	top: 489px;
-}
-#Rectangle_109 {
-	fill: rgba(0,194,203,1);
-	stroke: rgba(25,25,25,1);
-	stroke-width: 1px;
-	stroke-linejoin: miter;
-	stroke-linecap: butt;
-	stroke-miterlimit: 4;
-	shape-rendering: auto;
-}
-.Rectangle_109 {
-	position: absolute;
-	overflow: visible;
-	width: 349px;
-	height: 77px;
-	left: 1438px;
-	top: 922px;
-}
-#Rectangle_110 {
-	fill: rgba(33,33,33,1);
-	stroke: rgba(25,25,25,1);
-	stroke-width: 1px;
-	stroke-linejoin: miter;
-	stroke-linecap: butt;
-	stroke-miterlimit: 4;
-	shape-rendering: auto;
-}
-.Rectangle_110 {
-	position: absolute;
-	overflow: visible;
-	width: 349px;
-	height: 77px;
-	left: 1442px;
-	top: 489px;
-}
-#Rectangle_111 {
-	fill: rgba(33,33,33,1);
-	stroke: rgba(25,25,25,1);
-	stroke-width: 1px;
-	stroke-linejoin: miter;
-	stroke-linecap: butt;
-	stroke-miterlimit: 4;
-	shape-rendering: auto;
-}
-.Rectangle_111 {
-	position: absolute;
-	overflow: visible;
-	width: 349px;
-	height: 77px;
-	left: 1049px;
-	top: 620px;
-}
-#Rectangle_112 {
-	fill: rgba(33,33,33,1);
-	stroke: rgba(25,25,25,1);
-	stroke-width: 1px;
-	stroke-linejoin: miter;
-	stroke-linecap: butt;
-	stroke-miterlimit: 4;
-	shape-rendering: auto;
-}
-.Rectangle_112 {
-	position: absolute;
-	overflow: visible;
-	width: 349px;
-	height: 77px;
-	left: 1442px;
-	top: 620px;
-}
-#Rectangle_113 {
-	fill: rgba(33,33,33,1);
-	stroke: rgba(25,25,25,1);
-	stroke-width: 1px;
-	stroke-linejoin: miter;
-	stroke-linecap: butt;
-	stroke-miterlimit: 4;
-	shape-rendering: auto;
-}
-.Rectangle_113 {
-	position: absolute;
-	overflow: visible;
-	width: 349px;
-	height: 77px;
-	left: 1049px;
-	top: 751px;
-}
-#Rectangle_114 {
-	fill: rgba(33,33,33,1);
-	stroke: rgba(25,25,25,1);
-	stroke-width: 1px;
-	stroke-linejoin: miter;
-	stroke-linecap: butt;
-	stroke-miterlimit: 4;
-	shape-rendering: auto;
-}
-.Rectangle_114 {
-	position: absolute;
-	overflow: visible;
-	width: 349px;
-	height: 77px;
-	left: 1442px;
-	top: 751px;
-}
-#FULL_NAME_db {
-	opacity: 0.5;
-	left: 1081.5px;
-	top: 516px;
-	position: absolute;
-	overflow: visible;
-	width: 118px;
-	white-space: nowrap;
-	text-align: left;
-	font-family: Arial;
-	font-style: normal;
-	font-weight: normal;
-	font-size: 21px;
-	color: rgba(255,255,255,1);
-}
-#EMAIL_dc {
-	opacity: 0.5;
-	left: 1474.5px;
-	top: 516px;
-	position: absolute;
-	overflow: visible;
-	width: 64px;
-	white-space: nowrap;
-	text-align: left;
-	font-family: Arial;
-	font-style: normal;
-	font-weight: normal;
-	font-size: 21px;
-	color: rgba(255,255,255,1);
-}
-#CONTACT__dd {
-	opacity: 0.5;
-	left: 1081.5px;
-	top: 647px;
-	position: absolute;
-	overflow: visible;
-	width: 118px;
-	white-space: nowrap;
-	text-align: left;
-	font-family: Arial;
-	font-style: normal;
-	font-weight: normal;
-	font-size: 21px;
-	color: rgba(255,255,255,1);
-}
-#ddmmyyyy_de {
-	opacity: 0.5;
-	left: 1474.5px;
-	top: 647px;
-	position: absolute;
-	overflow: visible;
-	width: 113px;
-	white-space: nowrap;
-	text-align: left;
-	font-family: Arial;
-	font-style: normal;
-	font-weight: normal;
-	font-size: 21px;
-	color: rgba(255,255,255,1);
-}
-#PURPOSE_df {
-	opacity: 0.5;
-	left: 1081.5px;
-	top: 778px;
-	position: absolute;
-	overflow: visible;
-	width: 104px;
-	white-space: nowrap;
-	text-align: left;
-	font-family: Arial;
-	font-style: normal;
-	font-weight: normal;
-	font-size: 21px;
-	color: rgba(255,255,255,1);
-}
-#TIME_dg {
-	opacity: 0.5;
-	left: 1474.5px;
-	top: 778px;
-	position: absolute;
-	overflow: visible;
-	width: 51px;
-	white-space: nowrap;
-	text-align: left;
-	font-family: Arial;
-	font-style: normal;
-	font-weight: normal;
-	font-size: 21px;
-	color: rgba(255,255,255,1);
-}
-#Set_Appointment_dh {
-	left: 1503px;
-	top: 944px;
-	position: absolute;
-	overflow: visible;
-	width: 221px;
-	white-space: nowrap;
-	text-align: left;
-	font-family: Arial;
-	font-style: normal;
-	font-weight: normal;
-	font-size: 30px;
-	color: rgba(255,255,255,1);
-}
+
 #AVAILABLE_TIME_FOR_TODAY___di {
 	left: 118px;
 	top: 467px;
