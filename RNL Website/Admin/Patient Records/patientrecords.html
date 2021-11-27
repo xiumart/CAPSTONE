@@ -86,28 +86,77 @@
 		<path id="Icon_awesome-angle-double-left" d="M 14.93550682067871 16.23446273803711 L 23.95588684082031 7.214083671569824 C 24.57935523986816 6.590617179870605 25.58751487731934 6.590617179870605 26.20434951782227 7.214083671569824 L 27.70332527160645 8.713059425354004 C 28.3267936706543 9.336525917053223 28.3267936706543 10.34468650817871 27.70332527160645 10.96152114868164 L 21.31609916687012 17.36201095581055 L 27.70995903015137 23.7558708190918 C 28.33342933654785 24.37933731079102 28.33342933654785 25.38749504089355 27.70995903015137 26.00433158874512 L 26.21098327636719 27.50993919372559 C 25.58751487731934 28.1334056854248 24.57935523986816 28.1334056854248 23.96252059936523 27.50993919372559 L 14.942138671875 18.48955726623535 C 14.31204032897949 17.8660888671875 14.31204032897949 16.85793113708496 14.93550682067871 16.23446273803711 Z M 2.200853824615479 18.48955726623535 L 11.22123527526855 27.50993919372559 C 11.84470176696777 28.1334056854248 12.85286140441895 28.1334056854248 13.46969604492188 27.50993919372559 L 14.96866989135742 26.01096534729004 C 15.59214019775391 25.38749504089355 15.59214019775391 24.37933731079102 14.96866989135742 23.76250267028809 L 8.581445693969727 17.36201095581055 L 14.97530364990234 10.96815395355225 C 15.5987720489502 10.34468650817871 15.5987720489502 9.336525917053223 14.97530364990234 8.719691276550293 L 13.4763298034668 7.214083671569824 C 12.85286140441895 6.590617179870605 11.84470176696777 6.590617179870605 11.22786712646484 7.214083671569824 L 2.207486629486084 16.23446273803711 C 1.577386617660522 16.85793113708496 1.577386617660522 17.8660888671875 2.200853824615479 18.48955726623535 Z">
 		</path>
 	</svg>
+	<style type="text/css">
+		.button {
+  padding: 3px 10px;
+  margin-left: -50px;
+  background: white;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+
+}
+
+	input::placeholder{
+			font-size: 20px;
+			color: #000;
+			text-transform: capitalize;
+		}
+		table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+
+  background-color: #fff;
+  color: #000;
+}
+
+td, th {
+  border: 1px solid #000;
+  text-align: center;
+  padding: 8px;
+}
+	</style>
 	<div id="PATIENT_RECORDS_bg">
-		<span>PATIENT RECORDS</span>
+
+		<span>PATIENT RECORDS</span><br><br><br>
+	
+		<input type="text" name="EMAIL" style="background-color: white; font-size: 20px; border:solid white 1px; width: 600px;; height:40px;  text-transform:lowercase; padding-left: 10px; padding-top: 5px;" placeholder="Search"> <button type="submit" class="button"><img src="icon.png"></button><br><br><br>
+		<table>
+  <tr>
+    <th>Case no.</th>
+    <th>Lastname</th>
+    <th>Firstname</th>
+    <th>Middlename</th>
+    <th>Age</th>
+    <th>Contact No.</th>
+    <th>Action</th>
+  </tr>
+   <tr>
+    <td>P-01</td>
+    <td>Umbao</td>
+    <td>Marliardo</td>
+    <td>&nbsp</td>
+    <td>18</td>
+    <td>09123456789</td>
+    <td><button style="cursor: pointer; background-color: #abd7ab; padding: 10px; border-radius: 10px;">UPDATE</button>&nbsp&nbsp&nbsp&nbsp<button style="cursor: pointer; background-color: #8cd3ff; padding: 10px; border-radius: 10px;">VIEW</button></td>
+  </tr>
+</table>
+		
 	</div>
 	<svg class="Line_17" viewBox="0 0 1376 1">
 		<path id="Line_17" d="M 0 0 L 1376 0">
 		</path>
 	</svg>
-	<svg class="Rectangle_124">
-		<rect id="Rectangle_124" rx="21.5" ry="21.5" x="0" y="0" width="554" height="43">
-		</rect>
-	</svg>
+	
 	<a href="C:\Users\rheir\OneDrive\Documents\GitHub\CAPSTONE\RNL Website\Admin\New Patient\newpatients.html">
 	<svg class="Rectangle_125">
 		<rect id="Rectangle_125" rx="10" ry="10" x="0" y="0" width="159" height="43">
 		</rect>
 	</svg>
 </a>
-	<svg class="Icon_ionic-md-search" viewBox="4.5 4.5 27 27">
-		<path id="Icon_ionic-md-search" d="M 23.73110198974609 21.47146797180176 L 22.50056266784668 21.47146797180176 L 22.03853988647461 21.08573341369629 C 23.50040626525879 19.31160926818848 24.42368125915527 17.07412338256836 24.42368125915527 14.52860069274902 C 24.42360877990723 8.974124908447266 19.9614372253418 4.5 14.42355442047119 4.5 C 8.961468696594238 4.5 4.5 8.974124908447266 4.5 14.52860164642334 C 4.5 20.08307838439941 8.961468696594238 24.55713272094727 14.50019550323486 24.55713272094727 C 16.96190643310547 24.55713272094727 19.26956176757812 23.63132858276367 21.03862571716309 22.16594505310059 L 21.49994659423828 22.55175018310547 L 21.49994659423828 23.78580474853516 L 29.19234466552734 31.5 L 31.5 29.18573379516602 L 23.73110198974609 21.47146797180176 Z M 14.50019550323486 21.47146797180176 C 10.65396118164062 21.47146797180176 7.57701587677002 18.38566398620605 7.57701587677002 14.52860069274902 C 7.57701587677002 10.6713981628418 10.65396118164062 7.585803985595703 14.50019550323486 7.585803985595703 C 18.34628868103027 7.585803985595703 21.42330551147461 10.6713981628418 21.42330551147461 14.52860069274902 C 21.42330551147461 18.38566398620605 18.34628868103027 21.47146797180176 14.50019550323486 21.47146797180176 Z">
-		</path>
-	</svg>
+	
 	<a href="C:\Users\rheir\OneDrive\Documents\GitHub\CAPSTONE\RNL Website\Admin\New Patient\newpatients.html">
+
 	<div id="NEW_PATIENT">
 		<span>NEW PATIENT</span>
 	</div>
@@ -116,187 +165,13 @@
 		<path id="Icon_ionic-md-add" d="M 29.25 19.49997711181641 L 19.49997711181641 19.49997711181641 L 19.49997711181641 29.25 L 16.50002479553223 29.25 L 16.50002479553223 19.49997711181641 L 6.75 19.49997711181641 L 6.75 16.50002479553223 L 16.50002288818359 16.50002479553223 L 16.50002288818359 6.75 L 19.49997520446777 6.75 L 19.49997520446777 16.50002288818359 L 29.25 16.50002288818359 L 29.25 19.49997711181641 Z">
 		</path>
 	</svg>
-	<svg class="Rectangle_81">
-		<rect id="Rectangle_81" rx="0" ry="0" x="0" y="0" width="1449" height="749">
-		</rect>
-	</svg>
-	<svg class="Line_27" viewBox="0 0 1449 1">
-		<path id="Line_27" d="M 0 0 L 1449 0">
-		</path>
-	</svg>
-	<svg class="Line_28" viewBox="0 0 1 749">
-		<path id="Line_28" d="M 0 0 L 0 749">
-		</path>
-	</svg>
-	<svg class="Line_29" viewBox="0 0 1 749">
-		<path id="Line_29" d="M 0 0 L 0 749">
-		</path>
-	</svg>
-	<svg class="Line_30" viewBox="0 0 1 749">
-		<path id="Line_30" d="M 0 0 L 0 749">
-		</path>
-	</svg>
-	<svg class="Line_31" viewBox="0 0 1 749">
-		<path id="Line_31" d="M 0 0 L 0 749">
-		</path>
-	</svg>
-	<svg class="Line_32" viewBox="0 0 1 749">
-		<path id="Line_32" d="M 0 0 L 0 749">
-		</path>
-	</svg>
-	<svg class="Line_33" viewBox="0 0 1 749">
-		<path id="Line_33" d="M 0 0 L 0 749">
-		</path>
-	</svg>
-	<div id="Case_No_cx">
-		<span>Case No.</span>
-	</div>
-	<div id="Last_Name_cy">
-		<span>Last Name</span>
-	</div>
-	<div id="First_Name_cz">
-		<span>First Name</span>
-	</div>
-	<div id="Middle_Name_c">
-		<span>Middle Name</span>
-	</div>
-	<div id="Age_c">
-		<span>Age</span>
-	</div>
-	<div id="Contact_No_c">
-		<span>Contact No.</span>
-	</div>
-	<div id="Action_c">
-		<span>Action</span>
-	</div>
-	<svg class="Rectangle_83">
-		<rect id="Rectangle_83" rx="9" ry="9" x="0" y="0" width="123" height="44">
-		</rect>
-	</svg>
-	<div id="Update">
-		<span>Update</span>
-	</div>
-	<svg class="Rectangle_84">
-		<rect id="Rectangle_84" rx="9" ry="9" x="0" y="0" width="123" height="44">
-		</rect>
-	</svg>
-	<div id="View">
-		<span>View</span>
-	</div>
-	<div id="n_9123456789_cq">
-		<span>09123456789</span>
-	</div>
-	<div id="n_8_cr">
-		<span>18</span>
-	</div>
-	<div id="Marliardo_cs">
-		<span>Marliardo</span>
-	</div>
-	<div id="P-01_cu">
-		<span>P-01</span>
-	</div>
-	<div id="Umbao_cv">
-		<span>Umbao</span>
-	</div>
-	<svg class="Line_34" viewBox="0 0 1449 1">
-		<path id="Line_34" d="M 0 0 L 1449 0">
-		</path>
-	</svg>
-	<svg class="Rectangle_96">
-		<rect id="Rectangle_96" rx="0" ry="0" x="0" y="0" width="1449" height="749">
-		</rect>
-	</svg>
-	<svg class="Line_38" viewBox="0 0 1449 1">
-		<path id="Line_38" d="M 0 0 L 1449 0">
-		</path>
-	</svg>
-	<svg class="Line_39" viewBox="0 0 1 749">
-		<path id="Line_39" d="M 0 0 L 0 749">
-		</path>
-	</svg>
-	<svg class="Line_40" viewBox="0 0 1 749">
-		<path id="Line_40" d="M 0 0 L 0 749">
-		</path>
-	</svg>
-	<svg class="Line_41" viewBox="0 0 1 749">
-		<path id="Line_41" d="M 0 0 L 0 749">
-		</path>
-	</svg>
-	<svg class="Line_42" viewBox="0 0 1 749">
-		<path id="Line_42" d="M 0 0 L 0 749">
-		</path>
-	</svg>
-	<svg class="Line_43" viewBox="0 0 1 749">
-		<path id="Line_43" d="M 0 0 L 0 749">
-		</path>
-	</svg>
-	<svg class="Line_44" viewBox="0 0 1 749">
-		<path id="Line_44" d="M 0 0 L 0 749">
-		</path>
-	</svg>
+
 	<a href="C:\Users\rheir\OneDrive\Documents\GitHub\CAPSTONE\RNL Website\Admin\Update\update.html">
 	<div id="Group_34">
-		<svg class="Rectangle_97">
-			<rect id="Rectangle_97" rx="9" ry="9" x="0" y="0" width="123" height="44">
-			</rect>
-		</svg>
-		<div id="Update_cm">
-			<span>Update</span>
-		</div>
 	</div>
 	</a>
 	<div id="Group_35">
-		<svg class="Rectangle_98">
-			<rect id="Rectangle_98" rx="9" ry="9" x="0" y="0" width="123" height="44">
-			</rect>
-		</svg>
-		<div id="View_cp">
-			<span>View</span>
-		</div>
-	</div>
-	<div id="n_9123456789_cq">
-		<span>09123456789</span>
-	</div>
-	<div id="n_8_cr">
-		<span>18</span>
-	</div>
-	<div id="Marliardo_cs">
-		<span>Marliardo</span>
-	</div>
-	<svg class="Rectangle_175">
-		<rect id="Rectangle_175" rx="0" ry="0" x="0" y="0" width="1449" height="66">
-		</rect>
-	</svg>
-	<div id="P-01_cu">
-		<span>P-01</span>
-	</div>
-	<div id="Umbao_cv">
-		<span>Umbao</span>
-	</div>
-	<svg class="Line_45" viewBox="0 0 1449 1">
-		<path id="Line_45" d="M 0 0 L 1449 0">
-		</path>
-	</svg>
-	<div id="Case_No_cx">
-		<span>Case No.</span>
-	</div>
-	<div id="Last_Name_cy">
-		<span>Last Name</span>
-	</div>
-	<div id="First_Name_cz">
-		<span>First Name</span>
-	</div>
-	<div id="Middle_Name_c">
-		<span>Middle Name</span>
-	</div>
-	<div id="Age_c">
-		<span>Age</span>
-	</div>
-	<div id="Contact_No_c">
-		<span>Contact No.</span>
-	</div>
-	<div id="Action_c">
-		<span>Action</span>
+		
 	</div>
 	<a href="C:\Users\rheir\OneDrive\Documents\GitHub\CAPSTONE\RNL Website\Admin\POS\pos.html">
 	<svg class="Rectangle_177">
