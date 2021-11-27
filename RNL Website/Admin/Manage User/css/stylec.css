@@ -1,3 +1,18 @@
+input[type=submit] {
+	width: 130%;
+	background-color: #1566a8;
+	color: white;
+	padding: 15px 20px;
+	margin: 8px 0;
+	border: none;
+	border-radius: 10px;
+	cursor: pointer;
+	position: relative;
+	margin-top: -100%;
+	margin-left: -15%;
+	font-size: large;
+  }
+
 .mediaViewInfo {
 	--web-view-name: manageuser;
 	--web-view-id: manageuser;
@@ -420,7 +435,7 @@
 	top: 211px;
 }
 #n_New_User {
-	left: 461px;
+	left: 480px;
 	top: 222px;
 	position: absolute;
 	overflow: visible;
