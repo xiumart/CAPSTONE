@@ -24,7 +24,7 @@ input[type=text], select {
 	}
   input[type=submit] {
 	  width: 130%;
-	  background-color: #1566a8;
+	  background-color: rgba(0,194,203,1);
 	  color: white;
 	  padding: 30px 50px;
 	  margin: 8px 0;
@@ -35,6 +35,22 @@ input[type=text], select {
 	  margin-top: -100%;
 	  margin-left: -15%;
 	  font-size: x-large;
+	}
+	input[type=button]{
+	  width: 130%;
+	  background-color: rgba(0,194,203,1);
+	  color: white;
+	  padding: 20px 20px;
+	  margin: 8px 0;
+	  border: none;
+	  border-radius: 10px;
+	  cursor: pointer;
+	  position: relative;
+	  margin-top: -9%;
+	  margin-left: -15%;
+	  font-size: x-large;
+	  text-align: center;
+	  
 	}
 	input[type=datetime-local], select {
 	  width: 200%;
@@ -48,6 +64,35 @@ input[type=text], select {
 	  font-size: 14px;
 	  color: white;
 	}
+	input[id=contactus] {
+		width: 130%;
+		background-color: rgba(0,194,203,1);
+		color: white;
+		padding: 20px 20px;
+		margin: 8px 0;
+		border: none;
+		border-radius: 40px;
+		cursor: pointer;
+		position: relative;
+		margin-top: -100%;
+		margin-left: -15%;
+		font-size: x-large;
+		text-align: center;	
+	}
+	input[id=describeidea], select {
+		width: 120%;
+		padding: 20px 20px;
+		margin: 8px 0;
+		margin-top: -100px;
+		display: inline-block;
+		border: 1px solid #ccc;
+		border-radius: 8px;
+		box-sizing: border-box;
+		background-color: transparent;
+		font-size: large;
+		color: white;
+	  }
+	
 body{    
     font-family: 'Roboto Condensed', sans-serif;
     overflow-x: hidden;
@@ -1573,7 +1618,8 @@ body{
 	font-size: 22px;
 	color: rgba(255,255,255,1);
 }
-#Rectangle_37 {
+
+#Send {
 	fill: rgba(0,194,203,1);
 	stroke: rgba(25,25,25,1);
 	stroke-width: 1px;
@@ -1581,28 +1627,12 @@ body{
 	stroke-linecap: butt;
 	stroke-miterlimit: 4;
 	shape-rendering: auto;
-}
-.Rectangle_37 {
 	position: absolute;
 	overflow: visible;
 	width: 97px;
 	height: 55px;
 	left: 1750.5px;
 	top: 5760px;
-}
-#Send {
-	left: 1773.5px;
-	top: 5775px;
-	position: absolute;
-	overflow: visible;
-	width: 52px;
-	white-space: nowrap;
-	text-align: left;
-	font-family: Arial;
-	font-style: normal;
-	font-weight: normal;
-	font-size: 22px;
-	color: rgba(255,255,255,1);
 }
 #Rectangle_1 {
 	fill: rgba(18,18,18,1);
