@@ -392,24 +392,7 @@
 	font-size: 25px;
 	color: rgba(255,255,255,1);
 }
-#Line_9 {
-	fill: transparent;
-	stroke: rgba(112,112,112,1);
-	stroke-width: 1px;
-	stroke-linejoin: miter;
-	stroke-linecap: butt;
-	stroke-miterlimit: 4;
-	shape-rendering: auto;
-}
-.Line_9 {
-	overflow: visible;
-	position: absolute;
-	width: 1920px;
-	height: 1px;
-	left: 0px;
-	top: 5835.5px;
-	transform: matrix(1,0,0,1,0,0);
-}
+
 #n_2021_RNL_Vision_Care_All_Rig {
 	left: 760.5px;
 	top: 2853px;

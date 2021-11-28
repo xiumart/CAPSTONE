@@ -372,26 +372,10 @@
 	font-size: 25px;
 	color: rgba(255,255,255,1);
 }
-#Rectangle_36 {
-	fill: rgba(25,25,25,1);
-	stroke: rgba(25,25,25,1);
-	stroke-width: 1px;
-	stroke-linejoin: miter;
-	stroke-linecap: butt;
-	stroke-miterlimit: 4;
-	shape-rendering: auto;
-}
-.Rectangle_36 {
-	position: absolute;
-	overflow: visible;
-	width: 485px;
-	height: 55px;
-	left: 1362.5px;
-	top: 1223px;
-}
+
 #Describe_your_issue_or_idea {
 	opacity: 0.5;
-	left: 1399.5px;
+	left: 1419px;
 	top: 1238px;
 	position: absolute;
 	overflow: visible;
@@ -404,29 +388,41 @@
 	font-size: 22px;
 	color: rgba(255,255,255,1);
 }
-#Rectangle_37 {
-	fill: rgba(0,194,203,1);
-	stroke: rgba(25,25,25,1);
-	stroke-width: 1px;
-	stroke-linejoin: miter;
-	stroke-linecap: butt;
-	stroke-miterlimit: 4;
-	shape-rendering: auto;
-}
-.Rectangle_37 {
-	position: absolute;
-	overflow: visible;
-	width: 97px;
-	height: 55px;
-	left: 1750.5px;
-	top: 1223px;
-}
+input[id=describeidea], select {
+	width: 120%;
+	padding: 20px 20px;
+	margin: 8px 0;
+	margin-top: -100px;
+	display: inline-block;
+	border: 1px solid #ccc;
+	border-radius: 8px;
+	box-sizing: border-box;
+	background-color: transparent;
+	font-size: large;
+	color: white;
+  }
+	input[type=button]{
+	  width: 130%;
+	  background-color: rgba(0,194,203,1);
+	  color: white;
+	  padding: 20px 20px;
+	  margin: 8px 0;
+	  border: none;
+	  border-radius: 10px;
+	  cursor: pointer;
+	  position: relative;
+	  margin-top: -9%;
+	  margin-left: -15%;
+	  font-size: x-large;
+	  text-align: center; 
+	}
+
 #Send {
-	left: 1773.5px;
-	top: 1238px;
+	left: 1770px;
+	top: 1227px;
 	position: absolute;
 	overflow: visible;
-	width: 52px;
+	width: 100px;
 	white-space: nowrap;
 	text-align: left;
 	font-family: Arial;
@@ -435,23 +431,7 @@
 	font-size: 22px;
 	color: rgba(255,255,255,1);
 }
-#Rectangle_42 {
-	fill: rgba(0,194,203,1);
-	stroke: rgba(25,25,25,1);
-	stroke-width: 1px;
-	stroke-linejoin: miter;
-	stroke-linecap: butt;
-	stroke-miterlimit: 4;
-	shape-rendering: auto;
-}
-.Rectangle_42 {
-	position: absolute;
-	overflow: visible;
-	width: 392px;
-	height: 77px;
-	left: 278px;
-	top: 854px;
-}
+
 #Book_Appoinment_Here {
 	left: 320px;
 	top: 876px;
@@ -465,6 +445,22 @@
 	font-weight: normal;
 	font-size: 30px;
 	color: rgba(255,255,255,1);
+}
+input[id=bookappointment]{
+	top: -20px;
+	left: 90px;
+	background-color: rgba(0,194,203,1);
+	color: white;
+	padding: 20px 20px;
+	margin: 8px 0;
+	border: none;
+	border-radius: 40px;
+	cursor: pointer;
+	position: relative;
+	margin-top: -100%;
+	margin-left: -15%;
+	font-size: x-large;
+	text-align: center;
 }
 #Untitled_design_24 {
 	position: absolute;
