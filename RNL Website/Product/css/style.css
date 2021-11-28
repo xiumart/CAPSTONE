@@ -1156,28 +1156,7 @@
 	font-size: 25px;
 	color: rgba(255,255,255,1);
 }
-#price_r1{
-    fill: rgba(255,255,255,1);
-    stroke: rgba(112,112,112,1);
-    stroke-width: 1px;
-    stroke-linejoin: miter;
-    stroke-linecap: butt;
-    stroke-miterlimit: 4;
-    shape-rendering: auto;
-}
-input[id=pricer1], select {
-	width: 120%;
-	padding: 20px 20px;
-	margin: 8px 0;
-	margin-top: -100px;
-	display: inline-block;
-	border: 1px solid #ccc;
-	border-radius: 8px;
-	box-sizing: border-box;
-	background-color: transparent;
-	font-size: large;
-	color: white;
-  }
+
 #Rectangle_79 {
 	fill: rgba(255,255,255,1);
 	stroke: rgba(112,112,112,1);
