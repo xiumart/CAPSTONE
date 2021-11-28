@@ -49,57 +49,7 @@
 	left: 557px;
 	top: 220px;
 }
-#Rectangle_62 {
-	fill: rgba(33,33,33,1);
-	stroke: rgba(25,25,25,1);
-	stroke-width: 1px;
-	stroke-linejoin: miter;
-	stroke-linecap: butt;
-	stroke-miterlimit: 4;
-	shape-rendering: auto;
-}
-.Rectangle_62 {
-	position: absolute;
-	overflow: visible;
-	width: 648px;
-	height: 77px;
-	left: 636px;
-	top: 462px;
-}
-#Rectangle_63 {
-	fill: rgba(0,194,203,1);
-	stroke: rgba(25,25,25,1);
-	stroke-width: 1px;
-	stroke-linejoin: miter;
-	stroke-linecap: butt;
-	stroke-miterlimit: 4;
-	shape-rendering: auto;
-}
-.Rectangle_63 {
-	position: absolute;
-	overflow: visible;
-	width: 349px;
-	height: 77px;
-	left: 786px;
-	top: 718px;
-}
-#Rectangle_64 {
-	fill: rgba(33,33,33,1);
-	stroke: rgba(25,25,25,1);
-	stroke-width: 1px;
-	stroke-linejoin: miter;
-	stroke-linecap: butt;
-	stroke-miterlimit: 4;
-	shape-rendering: auto;
-}
-.Rectangle_64 {
-	position: absolute;
-	overflow: visible;
-	width: 648px;
-	height: 77px;
-	left: 636px;
-	top: 579px;
-}
+
 #EMAIL {
 	opacity: 0.5;
 	left: 668.5px;
@@ -115,6 +65,19 @@
 	font-size: 21px;
 	color: rgba(255,255,255,1);
 }
+input[id=email_], select {
+	width: 900%;
+	padding: 20px 20px;
+	margin: 8px 0;
+	margin-top: -10px;
+	display: inline-block;
+	border: 1px solid #ccc;
+	border-radius: 8px;
+	box-sizing: border-box;
+	background-color: transparent;
+	font-size: xx-large;
+	color: white;
+  }
 #PASSWORD {
 	opacity: 0.5;
 	left: 668.5px;
@@ -130,6 +93,19 @@
 	font-size: 21px;
 	color: rgba(255,255,255,1);
 }
+input[id=password_], select {
+	width: 475%;
+	padding: 20px 20px;
+	margin: 8px 0;
+	margin-top: -10px;
+	display: inline-block;
+	border: 1px solid #ccc;
+	border-radius: 8px;
+	box-sizing: border-box;
+	background-color: transparent;
+	font-size: xx-large;
+	color: white;
+  }
 #LOGIN_ {
 	left: 916px;
 	top: 740px;
@@ -144,6 +120,23 @@
 	font-size: 30px;
 	color: rgba(255,255,255,1);
 }
+input[type=submit]{
+	width: 400%;
+	left: -130px;
+	background-color: rgba(0,194,203,1);
+	color: white;
+	padding: 20px 20px;
+	margin: 8px 0;
+	border: none;
+	border-radius: 10px;
+	cursor: pointer;
+	position: relative;
+	margin-top: -9%;
+	margin-left: -15%;
+	font-size: xx-large;
+	text-align: center; 
+  }
+
 #Rectangle_65 {
 	fill: rgba(18,18,18,1);
 	stroke: rgba(112,112,112,1);
