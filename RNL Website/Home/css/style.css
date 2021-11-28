@@ -49,8 +49,7 @@ input[type=text], select {
 	  margin-top: -9%;
 	  margin-left: -15%;
 	  font-size: x-large;
-	  text-align: center;
-	  
+	  text-align: center; 
 	}
 	input[type=datetime-local], select {
 	  width: 200%;
@@ -297,7 +296,7 @@ body{
 
 
 #WE_OFFERS {
-	left: 841.5px;
+	left: 850px;
 	top: 2772px;
 	position: absolute;
 	overflow: visible;
@@ -699,7 +698,8 @@ body{
 	top: 2502px;
 }
 #MAKE_AN_APPOINTMENT {
-	left: 705px;
+	left: 750px;
+	right: 705px;
 	top: 3784px;
 	position: absolute;
 	overflow: visible;
@@ -1131,7 +1131,7 @@ body{
 	top: 4692px;
 }
 #TESTIMONIALS {
-	left: 804px;
+	left: 830px;
 	top: 4824px;
 	position: absolute;
 	overflow: visible;
@@ -1632,7 +1632,7 @@ body{
 	width: 97px;
 	height: 55px;
 	left: 1750.5px;
-	top: 5760px;
+	top: 5765px;
 }
 #Rectangle_1 {
 	fill: rgba(18,18,18,1);
