@@ -182,7 +182,7 @@ $conn->close();
 		<span>MANAGE USER</span>
 	</div>
 	</a>
-	<a href="../Supplier/supplier.html">
+	<a href="../Supplier/supplier.php">
 	<div id="SUPPLIER_b">
 		<span>SUPPLIER</span>
 
@@ -193,7 +193,7 @@ $conn->close();
 		</path>
 	</svg>
 	<div id="n_New_Supplier">
-		<a href="#"><input type="submit" value="New Supplier"</a>
+		<a href="supplierform.php"><input type="submit" value="New Supplier"</a>
 	</div>
 
 	<div id="Search_Supplier">
