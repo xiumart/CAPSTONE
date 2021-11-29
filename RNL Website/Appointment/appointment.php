@@ -171,8 +171,8 @@ if (isset($_POST['id']) && isset($_POST['name'])
 		<input type="text" id="contact" name="contact" placeholder="Contact No."><br>
 	</div>
 	<div id="ddmmyyyy_de">
-		<label for="datetime-local">Date & Time:</label><br>
-  		<input type="datetime-local" id="birthdaytime" name="birthdaytime">
+		<label for="date">Date:</label><br>
+  		<input type="date" id="birthdaytime" name="birthdaytime">
 	</div>
 	<div id="PURPOSE_df">
 		<label>Purpose:</label><br>

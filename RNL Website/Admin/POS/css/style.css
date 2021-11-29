@@ -1,13 +1,17 @@
-label {
-    display: block;
-    font: 1rem 'Fira Sans', sans-serif;
-}
-
-input,
-label {
-    margin: .4rem 0;
-}
-
+input[type=submit] {
+	width: 500%;
+	background-color: #1566a8;
+	color: white;
+	padding: 30px 20px;
+	margin: 8px 0;
+	border: none;
+	border-radius: 10px;
+	cursor: pointer;
+	position: relative;
+	top: -200px;
+	margin-left: -250%;
+	font-size: x-large;
+  }
 .mediaViewInfo {
 	--web-view-name: pos;
 	--web-view-id: pos;
