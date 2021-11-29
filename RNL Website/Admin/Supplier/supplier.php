@@ -193,7 +193,7 @@ $conn->close();
 		</path>
 	</svg>
 	<div id="n_New_Supplier">
-		<a href="supplierform.php"><input type="submit" value="New Supplier"</a>
+		<a href="supplierform.php"><input type="submit" value="+ New Supplier"</a>
 	</div>
 
 	<div id="Search_Supplier">

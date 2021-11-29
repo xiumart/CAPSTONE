@@ -12,7 +12,34 @@ input[type=submit] {
 	margin-left: -15%;
 	font-size: large;
   }
-
+  button[type=submit] {
+	width: 60%;
+	background-color: #1566a8;
+	color: white;
+	padding: 15px 20px;
+	margin: 8px 0;
+	border: none;
+	border-radius: 10px;
+	cursor: pointer;
+	position: relative;
+	top: -90%;
+	margin-left: 28%;
+	font-size: large;
+  }
+  #myBtn {
+	width: 130%;
+	background-color: #1566a8;
+	color: white;
+	padding: 15px 20px;
+	margin: 8px 0;
+	border: none;
+	border-radius: 10px;
+	cursor: pointer;
+	position: relative;
+	margin-top: -100%;
+	margin-left: -10%;
+	font-size: large;
+  }
 .mediaViewInfo {
 	--web-view-name: manageuser;
 	--web-view-id: manageuser;
