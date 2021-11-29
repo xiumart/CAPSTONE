@@ -1,3 +1,18 @@
+input[type=submit] {
+	width: 300%;
+	background-color: #1566a8;
+	color: white;
+	padding: 20px 20px;
+	margin: 8px 0;
+	border: none;
+	border-radius: 10px;
+	cursor: pointer;
+	position: relative;
+	margin-top: -100%;
+	margin-left: -120%;
+	font-size: x-large;
+  }
+
 .mediaViewInfo {
 	--web-view-name: update;
 	--web-view-id: update;
@@ -687,7 +702,7 @@
 	top: 962px;
 	position: absolute;
 	overflow: visible;
-	width: 100px;
+	width: 109px;
 	white-space: nowrap;
 	text-align: left;
 	font-family: Segoe UI;
