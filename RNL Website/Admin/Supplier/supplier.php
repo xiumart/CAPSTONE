@@ -133,13 +133,13 @@ $conn = mysqli_connect("localhost", "root", "", "capstone");
 if ($conn->connect_error) {
 die("Connection failed: " . $conn->connect_error);
 }
-$sql = "SELECT supplier, contactperson, contactno, address, note, action FROM user";
+$sql  = "SELECT supply, contactperson, contactno, address, note, action FROM supplier";
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
 // output data of each row
 while($row = $result->fetch_assoc()) {
-echo "<tr><td>" . $row["supplier"]. "</td><td>" . $row["contactperson"] . "</td><td>" . $row["contactno"] . "</td><td>" . $row["address"] . "</td><td>"
-. $row["note"]. "</td><td>" . $row["action"] "</td></tr>";
+echo "<tr><td>" . $row["supply"]. "</td><td>" . $row["contactperson"] . "</td><td>" . $row["contactno"] . "</td><td>" . $row["address"] . "</td><td>"
+. $row["note"]. "</td><td>" . $row["action"] .  "</td></tr>";
 }
 echo "</table>";
 } else { echo "0 results"; }

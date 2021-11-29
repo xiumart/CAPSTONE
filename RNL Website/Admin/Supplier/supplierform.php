@@ -111,48 +111,58 @@ td, th {
 }
 
 	</style>
-
+<form action = "supplierform.php" method = "post">
 	<div id="SUPPLIER_bv">
-		<span>SUPPLIER</span>
+		<span>SUPPLIER FORM</span>
 		<br><br><br>
-		<input type="text" name="EMAIL" style="background-color: white; font-size: 20px; border-radius: 8px; width: 550px;; height:40px;  text-transform:lowercase; padding-left: 10px; margin-left: 870%; margin-top: 5px;" placeholder="Search Supplier">
-		<br><br><br>
-		<table>
-  <tr>
-    <th>Supplier</th>
-    <th>Contact Person</th>
-    <th>Contact No.</th>
-    <th>Address</th>
-    <th>Note</th>
-    <th>Action</th>
-  </tr>
-   
-    <?php
-$conn = mysqli_connect("localhost", "root", "", "capstone");
-// Check connection
-if ($conn->connect_error) {
-die("Connection failed: " . $conn->connect_error);
+		
+			<br><br><br>
+		<strong>Supply:</strong><input  type="text" name="supply" ><br><br>
+        <strong>Contact Person:</strong> <input  type="text" name="contactperson" ><br><br>
+        <strong>Contact Number:</strong> <input  type="text" name="contactno"  ><br><br>
+        <strong>Address:</strong> <input  type="text" name="address"  ><br><br>
+        <strong>Note:</strong> <input  type="text" name="note"  ><br><br>
+        <strong>Action:</strong> <input  type="text" name="action" ><br><br>
+
+        <?php
+if (isset($_POST['insert']))
+{
+	$hostname = "localhost";
+	$username = "root";
+	$password = "";
+	$databaseName = "capstone";
+	
+ 
+    $supply = $_POST['supply'];
+    $contactperson = $_POST['contactperson'];
+    $contactno = $_POST['contactno'];
+    $address = $_POST['address'];
+    $note = $_POST['note'];
+    $action = $_POST['action'];
+    
+
+	$connect = mysqli_connect($hostname, $username, $password, $databaseName);
+
+	$query = "INSERT INTO supplier(supply,contactperson,contactno,address,note,action) VALUES ('$supply','$contactperson', '$contactno', '$address', '$note', '$action')" ;
+
+	$result = mysqli_query($connect, $query);
+	
+	if ($result)
+	{
+		echo '<script>alert("Data Inserted ")</script>';
+ 
+	}
+	else{
+		echo '<script>alert("Data not Inserted")</script>';
+	}
+	mysqli_close($connect);
+
 }
-$sql = "SELECT supplier, contactperson, contactno, address, note, action FROM user";
-$result = $conn->query($sql);
-if ($result->num_rows > 0) {
-// output data of each row
-while($row = $result->fetch_assoc()) {
-echo "<tr><td>" . $row["supplier"]. "</td><td>" . $row["contactperson"] . "</td><td>" . $row["contactno"] . "</td><td>" . $row["address"] . "</td><td>"
-. $row["note"]. "</td><td>" . $row["action"] "</td></tr>";
-}
-echo "</table>";
-} else { echo "0 results"; }
-$conn->close();
 ?>
+	<input class = "button" type = "submit" name = "insert" value = "Submit">
+	
 
-    <td><button style="cursor: pointer; background-color: #abd7ab; padding: 10px; border-radius: 10px;">UPDATE</button>&nbsp&nbsp&nbsp&nbsp<button style="cursor: pointer; background-color: #ff6666; padding: 10px; border-radius: 10px;">REMOVE</button></td>
-  </tr>
-
-
-
-</table>
-
+</form>
 	</div>
 	<svg class="Line_17" viewBox="0 0 1376 1">
 		<path id="Line_17" d="M 0 0 L 1376 0">
@@ -192,16 +202,7 @@ $conn->close();
 		<path id="Icon_metro-truck" d="M 42.42196655273438 25.70717620849609 L 37.44055938720703 14.32256126403809 L 29.96844673156738 14.32256126403809 L 29.96844673156738 8.630253791809082 C 29.96844673156738 7.064869403839111 28.84762954711914 5.784100532531738 27.47774314880371 5.784100532531738 L 5.061404228210449 5.784100532531738 C 3.691516876220703 5.784100532531738 2.570700168609619 7.06486988067627 2.570700168609619 8.630253791809082 L 2.570700168609619 31.39948654174805 L 5.061404228210449 34.24563980102539 L 8.220202445983887 34.24563980102539 C 7.796082496643066 35.08312225341797 7.552149295806885 36.05463790893555 7.552149295806885 37.091796875 C 7.552149295806885 40.23554992675781 9.782419204711914 42.78410339355469 12.5335578918457 42.78410339355469 C 15.28469848632812 42.78410339355469 17.51496696472168 40.23554992675781 17.51496696472168 37.091796875 C 17.51496696472168 36.05463790893555 17.27103233337402 35.08312225341797 16.8469123840332 34.24563980102539 L 30.63661956787109 34.24563980102539 C 30.21249961853027 35.08312225341797 29.9684886932373 36.05463790893555 29.9684886932373 37.091796875 C 29.9684886932373 40.23554992675781 32.19875717163086 42.78410339355469 34.94989776611328 42.78410339355469 C 37.70103454589844 42.78410339355469 39.93130493164062 40.23554992675781 39.93130493164062 37.091796875 C 39.93130493164062 36.05463790893555 39.68729782104492 35.08312225341797 39.26317596435547 34.24563980102539 L 42.42201232910156 34.24563980102539 L 42.42201232910156 25.70717620849609 Z M 29.96844673156738 25.70717620849609 L 29.96844673156738 17.16871643066406 L 35.13151931762695 17.16871643066406 L 38.86757278442383 25.70717620849609 L 29.96845054626465 25.70717620849609 Z">
 		</path>
 	</svg>
-	<div id="n_New_Supplier">
-		<a href="#"><input type="submit" value="New Supplier"</a>
-	</div>
-
-	<div id="Search_Supplier">
 	
-	</div>
-	<div id="GO">
-		<button style="cursor: pointer; background-color: rgba(34,121,220,1);font-size: 20px; padding:10px 10px; border-radius: 10px; margin:-20px; margin-left: 950%;color: #fff;">GO</button>
-	</div>
 </div>
 </body>
 </html>
