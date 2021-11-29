@@ -140,8 +140,112 @@ td, th {
 		<path id="Line_17" d="M 0 0 L 1376 0">
 		</path>
 	</svg>
+
+	<style>
+		body {font-family: Arial, Helvetica, sans-serif;}
+		
+		
+		.modal {
+		  display: none; 
+		  position: fixed; 
+		  z-index: 1; 
+		  padding-top: 100px; 
+		  left: 0;
+		  top: 0;
+		  width: 30%; 
+		  height: 100%; 
+		  overflow: auto; 
+		  margin-left: 35%;
+		  margin-top: 5%;
+	
+		}
+		
+	
+		.modal-content {
+		  background-color: #fefefe;
+		  margin: auto;
+		  padding: 20px;
+		  border: 1px solid #888;
+		  width: 80%;
+		}
+	
+		.close {
+		  color: #aaaaaa;
+		  float: right;
+		  font-size: 28px;
+		  font-weight: bold;
+		}
+		
+		.close:hover,
+		.close:focus {
+		  color: #000;
+		  text-decoration: none;
+		  cursor: pointer;
+		}
+	
+	
+		</style>
 	<div id="n_New_Product">
-		<a href="#"><input type="submit" value="New Product"></a>
+		<button id="myBtn">New Product</button>
+
+		<div id="myModal" class="modal">
+
+			<!-- Modal content -->
+			<div class="modal-content">
+			  <span class="close">&times;</span>
+			  <form action="/action_page.php">
+				<center><h2 style="color: #000;">New Product</h2><br><br></center>
+				<label style="color: #000;padding-right: 15%;">Brand name</label>
+				<input type="text" id="fname" name="fname" style="border: #000 2px; border-style:solid; font-size: 20px;"><br><br>
+				<label style="color: #000;padding-right: 28%;">Model</label>
+				<input type="text" id="fname" name="fname" style="border: #000 2px; border-style:solid; font-size: 20px;"><br><br>
+				<label style="color: #000;padding-right: 22%;">Category</label>
+				<select name="Category" id="Category"style="border: #000 2px; border-style:solid; font-size: 20px;">
+					<option value="Frame">Frame</option>
+					<option value="Lens">Lens</option>
+				  </select><br><br>
+				<label style="color: #000;padding-right: 11%;">Date of Arrival</label>
+				<input type="text" id="fname" name="fname" style="border: #000 2px; border-style:solid; font-size: 20px;"><br><br>
+				<label style="color: #000; padding-right: 8%;">Expiration Date</label>
+				<input type="text" id="fname" name="fname" style="border: #000 2px; border-style:solid; font-size: 20px;"><br><br>
+				<label style="color: #000;padding-right:  14%;">Selling Price</label>
+				<input type="text" id="fname" name="fname" style="border: #000 2px; border-style:solid; font-size: 20px;"><br><br>
+				<label style="color: #000;padding-right:  13%;">Orignal Price</label>
+				<input type="text" id="fname" name="fname" style="border: #000 2px; border-style:solid; font-size: 20px;"><br><br>
+				<label style="color: #000;padding-right:  29%;">Profit</label>
+				<input type="text" id="fname" name="fname" style="border: #000 2px; border-style:solid; font-size: 20px;"><br><br>
+				<label style="color: #000;padding-right: 23%;">Supplier</label>
+				<select name="Category" id="Category"style="border: #000 2px; border-style:solid; font-size: 20px;">
+					<option value="Supplier">Supplier 1</option>
+					<option value="Supplier">Supplier 2</option>
+				  </select><br><br>
+				<label style="color: #000;padding-right: 30%;">QTY</label>
+				<input type="text" id="fname" name="fname" style="border: #000 2px; border-style:solid; font-size: 20px;"><br><br>
+				<center><button type="submit">Submit</button></center>
+			
+			  </form> 
+			</div>
+		  
+		  </div>
+
+		  <script>
+			var modal = document.getElementById("myModal");
+			var btn = document.getElementById("myBtn");
+			var span = document.getElementsByClassName("close")[0]; 
+			btn.onclick = function() {
+			  modal.style.display = "block";
+			}
+			span.onclick = function() {
+			  modal.style.display = "none";
+			}
+			window.onclick = function(event) {
+			  if (event.target == modal) {
+				modal.style.display = "none";
+			  }
+			}
+			</script>
+
+
 	</div>
 
 	<div id="Search_Product_cf">
