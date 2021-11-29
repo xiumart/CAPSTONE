@@ -1,3 +1,8 @@
+<?php 
+session_start();
+
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -179,10 +184,15 @@ td, th {
 }
 
 	</style>
+    <?php include "../../db_conn.php";
+    $sql='SELECT * FROM appoinments';
+$result = mysqli_query($conn, $sql);
+?>
 	<div id="Group_56">
 		<div id="Group_55">
 				<div id="UPCOMING_APPOINTMENT">
 					<span>UPCOMING APPOINTMENT</span>
+                    
 					<table>
 						<tr>
 						  <th>NAME</th>
@@ -191,14 +201,24 @@ td, th {
 						  <th>DATE & TIME</th>
 						  <th>PURPOSE</th>
 						</tr>
-						 <tr>
-						  <th>&nbsp</th>
-						  <th>&nbsp</th>
-						  <th>&nbsp</th>
-						  <th>&nbsp</th>
-						  <th>&nbsp</th>
-					  </tr>
-					  
+					  <?php
+$conn = mysqli_connect("localhost", "root", "", "capstone");
+// Check connection
+if ($conn->connect_error) {
+die("Connection failed: " . $conn->connect_error);
+}
+$sql  = "SELECT * FROM appoinments";
+$result = $conn->query($sql);
+if ($result->num_rows > 0) {
+// output data of each row
+while($row = $result->fetch_assoc()) {
+echo "<tr><td>" . $row["name"]. "</td><td>" . $row["email"] . "</td><td>" . $row["contact"] . "</td><td>" . $row["date"] . "</td><td>"
+. $row["purpose"]. "</td><td>";
+}
+echo "</table>";
+} else { echo "0 results"; }
+$conn->close();
+?>
 					  </table>
 				</div>
 				

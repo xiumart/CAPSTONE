@@ -38,6 +38,20 @@
 					margin-left: -15%;
 					font-size: x-large;
 				  }
+				  button[type=submit] {
+					width: 130%;
+					background-color: #1566a8;
+					color: white;
+					padding: 30px 50px;
+					margin: 8px 0;
+					border: none;
+					border-radius: 10px;
+					cursor: pointer;
+					position: relative;
+					margin-top: -100%;
+					margin-left: -15%;
+					font-size: x-large;
+				  }
 				  input[type=date], select {
 					width: 200%;
 					padding: 19px 10px;

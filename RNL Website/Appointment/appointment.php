@@ -4,7 +4,7 @@ include "../db_conn.php";
 
 if (isset($_POST['id']) && isset($_POST['name'])
     && isset($_POST['email']) && isset($_POST['contact'])
-    && isset($_POST['date_time']) && isset($_POST['purpose'])) {
+    && isset($_POST['date']) && isset($_POST['purpose'])) {
 
 	function validate($data){
        $data = trim($data);
@@ -17,7 +17,7 @@ if (isset($_POST['id']) && isset($_POST['name'])
     $name = validate($_POST['name']);
 	$email = validate($_POST['email']);
     $contact = validate($_POST['contact']);
-    $date_time = validate($_POST['date_time']);
+    $date = validate($_POST['date']);
     $purpose = validate($_POST['purpose']);
 	$user_data = 'email='. $email. '&name='. $name;
 
@@ -40,7 +40,7 @@ if (isset($_POST['id']) && isset($_POST['name'])
     header("Location: ../Appointment/appointment.php?error=Contact Number is required&$user_data");
   exit();
 }
-  else if(empty($date_time)){
+  else if(empty($date)){
     header("Location: ../Appointment/appointment.php?error=Date & Time is required&$user_data");
   exit();
 	}else if(!between($purpose)) {
@@ -53,14 +53,14 @@ if (isset($_POST['id']) && isset($_POST['name'])
 		// hashing the password
         // $pass = md5($pass);
 
-	    $sql = "SELECT * FROM appointments WHERE email='$email' ";
+	    $sql = "SELECT * FROM appoinments WHERE email='$email' ";
 		$result = mysqli_query($conn, $sql);
 
 		if (mysqli_num_rows($result) > 0) {
 			header("Location: ../Appointment/appointment.php?error=The username is taken try another&$user_data");
 	        exit();
 		}else {
-           $sql2 = "INSERT INTO appointments(id, name, email, contact, date_time, purpose) VALUES('$id', '$name', '$email', '$contact', '$date_time', '$purpose')";
+           $sql2 = "INSERT INTO appoinments (name, email, contact, date, purpose) VALUES('$name', '$email', '$contact', '$date', '$purpose')";
            $result2 = mysqli_query($conn, $sql2);
            if ($result2) {
            	 header("Location: ../Appointment/appointment.php?success=      Your account has been created successfully");
@@ -179,7 +179,7 @@ if (isset($_POST['id']) && isset($_POST['name'])
 		<input type="text" id="purpose" name="purpose" placeholder="Purpose"><br>
 	</div>
 	<div id="Set_Appointment_dh">
-		<input type="submit" value="Set Appointment">
+		<button type="submit">Set Appointment</button>
 		</div>
         </form>
 	<!-- </div>
