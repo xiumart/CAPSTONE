@@ -185,7 +185,7 @@ td, th {
 
 	</style>
     <?php include "../../db_conn.php";
-    $sql='SELECT * FROM appoinments';
+    $sql='SELECT * FROM appointment';
 $result = mysqli_query($conn, $sql);
 ?>
 	<div id="Group_56">
@@ -195,6 +195,7 @@ $result = mysqli_query($conn, $sql);
                     
 					<table>
 						<tr>
+						  <th>Appointment ID</th>
 						  <th>NAME</th>
 						  <th>EMAIL</th>
 						  <th>CONTACT NO.</th>
@@ -207,13 +208,13 @@ $conn = mysqli_connect("localhost", "root", "", "capstone");
 if ($conn->connect_error) {
 die("Connection failed: " . $conn->connect_error);
 }
-$sql  = "SELECT * FROM appoinments";
+$sql  = "SELECT * FROM appointment";
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
 // output data of each row
 while($row = $result->fetch_assoc()) {
-echo "<tr><td>" . $row["name"]. "</td><td>" . $row["email"] . "</td><td>" . $row["contact"] . "</td><td>" . $row["date"] . "</td><td>"
-. $row["purpose"]. "</td><td>";
+echo "<tr><td>" . $row["app_id"]. "</td><td>" . $row["app_name"]. "</td><td>" . $row["app_email"] . "</td><td>" . $row["app_contact"] . "</td><td>" . $row["app_date"] . "</td><td>"
+. $row["app_purpose"]. "</td><td>";
 }
 echo "</table>";
 } else { echo "0 results"; }

@@ -2,77 +2,8 @@
 session_start();
 include "../db_conn.php";
 
-if (isset($_POST['id']) && isset($_POST['name'])
-    && isset($_POST['email']) && isset($_POST['contact'])
-    && isset($_POST['date']) && isset($_POST['purpose'])) {
-
-	function validate($data){
-       $data = trim($data);
-	   $data = stripslashes($data);
-	   $data = htmlspecialchars($data);
-	   return $data;
-	}
-
 	$id = validate($_POST['id']);
-    $name = validate($_POST['name']);
-	$email = validate($_POST['email']);
-    $contact = validate($_POST['contact']);
-    $date = validate($_POST['date']);
-    $purpose = validate($_POST['purpose']);
-	$user_data = 'email='. $email. '&name='. $name;
-
-
-  if(isset($_GET['error3'])){
-    if($_GET['error3'] == "emptyfields") {   //require all inputs
-        echo '<h3 class="bg-danger text-center">Fill all fields, Please try again!</h3>';
-    }
-    else if(!preg_match("/^[a-zA-Z ]*$/",$name)){
-        header("Location: ../Appointment/appointment.php?error=Name is required&$user_data");
-	    exit();
-	}
-	else if (empty($email)) {
-		header("Location: ../Appointment/appointment.php?error=Email is required&$user_data");
-	    exit();
-  }else if(!preg_match("/^[0-9]*$/", $contact)){
-      header("Location: ../Appointment/appointment.php?error=Invalid Contact Number&$user_data");
-    exit();
-  }else if(empty($contact)){
-    header("Location: ../Appointment/appointment.php?error=Contact Number is required&$user_data");
-  exit();
-}
-  else if(empty($date)){
-    header("Location: ../Appointment/appointment.php?error=Date & Time is required&$user_data");
-  exit();
-	}else if(!between($purpose)) {
-        header("Location: ../Appointment/appointment.php?error=Purpose is required&$user_data");
-	    exit();
-	}
-  }
-	else{
-
-		// hashing the password
-        // $pass = md5($pass);
-
-	    $sql = "SELECT * FROM appoinments WHERE email='$email' ";
-		$result = mysqli_query($conn, $sql);
-
-		if (mysqli_num_rows($result) > 0) {
-			header("Location: ../Appointment/appointment.php?error=The username is taken try another&$user_data");
-	        exit();
-		}else {
-           $sql2 = "INSERT INTO appoinments (name, email, contact, date, purpose) VALUES('$name', '$email', '$contact', '$date', '$purpose')";
-           $result2 = mysqli_query($conn, $sql2);
-           if ($result2) {
-           	 header("Location: ../Appointment/appointment.php?success=      Your account has been created successfully");
-	         exit();
-           }else {
-	           	header("Location: ../Appointment/appointment.php?error=unknown error occurred&$user_data");
-		        exit();
-           }
-		}
-	}
-}
-  ?>
+?>
 
 <!DOCTYPE html>
 <html>
@@ -151,7 +82,7 @@ if (isset($_POST['id']) && isset($_POST['name'])
 		<rect id="Rectangle_107" rx="20" ry="20" x="0" y="0" width="806" height="646">
 		</rect>
 	</svg>
-	<form action="../Appointment/appointment.php" method="post">
+<form name="form1" method="post" action="appformhandler.php" >
         <?php if (isset($_GET['error'])) { ?>
         <p class="error"><?php echo $_GET['error']; ?></p>
       <?php } ?>
@@ -172,14 +103,14 @@ if (isset($_POST['id']) && isset($_POST['name'])
 	</div>
 	<div id="ddmmyyyy_de">
 		<label for="date">Date:</label><br>
-  		<input type="date" id="birthdaytime" name="birthdaytime">
+  		<input type="date" id="date" name="date">
 	</div>
 	<div id="PURPOSE_df">
 		<label>Purpose:</label><br>
 		<input type="text" id="purpose" name="purpose" placeholder="Purpose"><br>
 	</div>
 	<div id="Set_Appointment_dh">
-		<button type="submit">Set Appointment</button>
+		<input type="submit" name="submit" value="Set Appointment">
 		</div>
         </form>
 	<!-- </div>
