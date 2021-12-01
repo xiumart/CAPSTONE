@@ -110,6 +110,7 @@ td, th {
   padding: 8px;
 }
 
+
 	</style>
 <form action = "supplierform.php" method = "post">
 	<div id="SUPPLIER_bv">
@@ -117,12 +118,12 @@ td, th {
 		<br><br><br>
 		
 			<br><br><br>
-		<strong>Supply:</strong><input  type="text" name="supply" ><br><br>
+		<strong>Supply:</strong><input  type="text" name="supply"><br><br>
         <strong>Contact Person:</strong> <input  type="text" name="contactperson" ><br><br>
         <strong>Contact Number:</strong> <input  type="text" name="contactno"  ><br><br>
         <strong>Address:</strong> <input  type="text" name="address"  ><br><br>
         <strong>Note:</strong> <input  type="text" name="note"  ><br><br>
-        <strong>Action:</strong> <input  type="text" name="action" ><br><br>
+        
 
         <?php
 if (isset($_POST['insert']))
@@ -132,18 +133,18 @@ if (isset($_POST['insert']))
 	$password = "";
 	$databaseName = "capstone";
 	
- 
+ 	
     $supply = $_POST['supply'];
     $contactperson = $_POST['contactperson'];
     $contactno = $_POST['contactno'];
     $address = $_POST['address'];
     $note = $_POST['note'];
-    $action = $_POST['action'];
+    
     
 
 	$connect = mysqli_connect($hostname, $username, $password, $databaseName);
 
-	$query = "INSERT INTO supplier(supply,contactperson,contactno,address,note,action) VALUES ('$supply','$contactperson', '$contactno', '$address', '$note', '$action')" ;
+	$query = "INSERT INTO supplier(supply,contactperson,contactno,address,note) VALUES ('$supply','$contactperson', '$contactno', '$address', '$note')" ;
 
 	$result = mysqli_query($connect, $query);
 	
@@ -160,6 +161,7 @@ if (isset($_POST['insert']))
 }
 ?>
 	<input class = "button" type = "submit" name = "insert" value = "Submit">
+	<a href="supplier.php" style="cursor: pointer; background-color: #abd7ab; padding: 10px; border-radius: 10px;">Back</a>
 	
 
 </form>

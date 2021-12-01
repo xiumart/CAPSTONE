@@ -111,54 +111,152 @@ td, th {
 }
 
 	</style>
-
+<form action = "supplierupdate.php" method = "post">
 	<div id="SUPPLIER_bv">
-		<span>SUPPLIER</span>
+		<span>UPDATE SUPPLIER</span>
 		<br><br><br>
-		<input type="text" name="EMAIL" style="background-color: white; font-size: 20px; border-radius: 8px; width: 550px;; height:40px;  text-transform:lowercase; padding-left: 10px; margin-left: 870%; margin-top: 5px;" placeholder="Search Supplier">
-		<br><br><br>
-		<table>
-  <tr>
-  	<th>ID</th>
-    <th>Supplier</th>
-    <th>Contact Person</th>
-    <th>Contact No.</th>
-    <th>Address</th>
-    <th>Note</th>
-    <th>Action</th>
-  </tr>
-   
-    <?php
-$conn = mysqli_connect("localhost", "root", "", "capstone");
-// Check connection
-if ($conn->connect_error) {
-die("Connection failed: " . $conn->connect_error);
-}
-$sql  = "SELECT supplier_ID, supply, contactperson, contactno, address, note FROM supplier";
-$result = $conn->query($sql);
-if ($result->num_rows > 0) {
-// output data of each row
-while($row = $result->fetch_assoc()) {
-echo "<tr><td>" . $row ["supplier_ID"] . "</td><td>" . $row["supply"]. "</td><td>" . $row["contactperson"] . "</td><td>" . $row["contactno"] . "</td><td>" . $row["address"] . "</td><td>"
-. $row["note"]. "</td> </tr>";
+		
+			<br><br><br>
+		
+        
+<?php
 
+$host = "localhost";
+$user = "root";
+$password ="";
+$database = "capstone";
+
+$supplier_ID = "";
+$supply = "";
+$contactperson = "";
+$contactno = "";
+$address = "";
+$note = "";
+mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+
+// connect to mysql database
+try{
+    $connect = mysqli_connect($host, $user, $password, $database);
+} catch (mysqli_sql_exception $ex) {
+    echo 'Error';
 }
 
-echo "</table>";
-} else { echo "0 results"; }
-$conn->close();
+// get values from the form
+function getPosts()
+{
+    $posts = array();
+    $posts[0] = $_POST['supplier_ID'];
+    $posts[1] = $_POST['supply'];
+    $posts[2] = $_POST['contactperson'];
+    $posts[3] = $_POST['contactno'];
+    $posts[4] = $_POST['address'];
+    $posts[5] = $_POST['note'];
+    
+    return $posts;
+}
+
+// Search
+
+if(isset($_POST['search']))
+{
+    $data = getPosts();
+    
+    $search_Query = "SELECT * FROM supplier WHERE supplier_ID= $data[0]";
+    
+    $search_Result = mysqli_query($connect, $search_Query);
+    
+    if($search_Result)
+    {
+        if(mysqli_num_rows($search_Result))
+        {
+            while($row = mysqli_fetch_array($search_Result))
+            {
+                $supplier_ID = $row['supplier_ID'];
+                $supply = $row['supply'];
+                $contactperson= $row['contactperson'];
+                $contactno= $row['contactno'];
+                $address = $row['address'];
+                $note = $row['note'];
+            }
+        }else{
+            echo '<script>alert("No data for this Id")</script>';
+        }
+    }else{
+        echo '<script>alert("Result error")</script>';
+    }
+}
+
+
+
+
+// Delete
+if(isset($_POST['delete']))
+{
+    $data = getPosts();
+    $delete_Query = "DELETE FROM `supplier` WHERE `supplier_ID` = $data[0]";
+    try{
+        $delete_Result = mysqli_query($connect, $delete_Query);
+        
+        if($delete_Result)
+        {
+            if(mysqli_affected_rows($connect) > 0)
+            {
+                echo '<script>alert("Data Deleted")</script>';
+            }else{
+                echo '<script>alert("Data not deleted")</script>';
+            }
+        }
+    } catch (Exception $ex) {
+        echo 'Error Delete '.$ex->getMessage();
+    }
+}
+
+// Edit
+if(isset($_POST['update']))
+{
+    $data = getPosts();
+    $update_Query = "UPDATE `supplier` SET `supply`='$data[1]',`contactperson`='$data[2]' ,`contactno` ='$data[3]', `address` = '$data[4]', `note` = '$data[5]' WHERE `supplier_ID` = $data[0]";
+    try{
+        $update_Result = mysqli_query($connect, $update_Query);
+        
+        if($update_Result)
+        {
+            if(mysqli_affected_rows($connect) > 0)
+            {
+                echo '<script>alert("Data Updated")</script>';
+            }else{
+                echo '<script>alert("Data not Updated")</script>';
+            }
+        }
+    } catch (Exception $ex) {
+        echo 'Error Update '.$ex->getMessage();
+    }
+}
+
+
+
 ?>
+		<strong> Supplier ID</strong> <input type = "number" name = "supplier_ID"  value="<?php echo $supplier_ID;?>"><br><br>
+			
+		<strong>Supply:</strong><input type="text " name="supply" value="<?php echo $supply;?>"><br><br>
+        
+        <strong>Contact Person:</strong> <input type="text" name="contactperson" value="<?php echo $contactperson;?>"><br><br>
+        
+        <strong>Contact Number:</strong> <input type="number" name="contactno" value="<?php echo $contactno;?>"><br><br>
+        
+        <strong>Address:</strong> <input type="text" name="address" value="<?php echo $address;?>"><br><br>
+        
+        <strong>Note:</strong> <input type="text" name="note" value="<?php echo $note;?>"><br><br>
+        
+	<input class = "button" type = "submit" name = "search" value = "search"> 
 
-    <td>
-    	
-    	<a href="supplierupdate.php" style="cursor: pointer; background-color: #abd7ab; padding: 10px; border-radius: 10px;">Update</a>
-    	<a href="supplierdelete.php" style="cursor: pointer; background-color: #ff6666; padding: 10px; border-radius: 10px;">Remove</a>
-  </tr>
+	<input class = "button" type = "submit" name = "update" value = "update"> 
+	<a href="supplier.php" style="cursor: pointer; background-color: #abd7ab; padding: 10px; border-radius: 10px;">Back</a>
+	
 
+	
 
-
-</table>
-
+</form>
 	</div>
 	<svg class="Line_17" viewBox="0 0 1376 1">
 		<path id="Line_17" d="M 0 0 L 1376 0">
@@ -188,7 +286,7 @@ $conn->close();
 		<span>MANAGE USER</span>
 	</div>
 	</a>
-	<a href="../Supplier/supplier.php">
+	<a href="../Supplier/supplier.html">
 	<div id="SUPPLIER_b">
 		<span>SUPPLIER</span>
 
@@ -198,16 +296,7 @@ $conn->close();
 		<path id="Icon_metro-truck" d="M 42.42196655273438 25.70717620849609 L 37.44055938720703 14.32256126403809 L 29.96844673156738 14.32256126403809 L 29.96844673156738 8.630253791809082 C 29.96844673156738 7.064869403839111 28.84762954711914 5.784100532531738 27.47774314880371 5.784100532531738 L 5.061404228210449 5.784100532531738 C 3.691516876220703 5.784100532531738 2.570700168609619 7.06486988067627 2.570700168609619 8.630253791809082 L 2.570700168609619 31.39948654174805 L 5.061404228210449 34.24563980102539 L 8.220202445983887 34.24563980102539 C 7.796082496643066 35.08312225341797 7.552149295806885 36.05463790893555 7.552149295806885 37.091796875 C 7.552149295806885 40.23554992675781 9.782419204711914 42.78410339355469 12.5335578918457 42.78410339355469 C 15.28469848632812 42.78410339355469 17.51496696472168 40.23554992675781 17.51496696472168 37.091796875 C 17.51496696472168 36.05463790893555 17.27103233337402 35.08312225341797 16.8469123840332 34.24563980102539 L 30.63661956787109 34.24563980102539 C 30.21249961853027 35.08312225341797 29.9684886932373 36.05463790893555 29.9684886932373 37.091796875 C 29.9684886932373 40.23554992675781 32.19875717163086 42.78410339355469 34.94989776611328 42.78410339355469 C 37.70103454589844 42.78410339355469 39.93130493164062 40.23554992675781 39.93130493164062 37.091796875 C 39.93130493164062 36.05463790893555 39.68729782104492 35.08312225341797 39.26317596435547 34.24563980102539 L 42.42201232910156 34.24563980102539 L 42.42201232910156 25.70717620849609 Z M 29.96844673156738 25.70717620849609 L 29.96844673156738 17.16871643066406 L 35.13151931762695 17.16871643066406 L 38.86757278442383 25.70717620849609 L 29.96845054626465 25.70717620849609 Z">
 		</path>
 	</svg>
-	<div id="n_New_Supplier">
-		<a href="supplierform.php"><input type="submit" value="+ New Supplier"</a>
-	</div>
-
-	<div id="Search_Supplier">
 	
-	</div>
-	<div id="GO">
-		<button style="cursor: pointer; background-color: rgba(34,121,220,1);font-size: 20px; padding:10px 10px; border-radius: 10px; margin:-20px; margin-left: 950%;color: #fff;">GO</button>
-	</div>
 </div>
 </body>
 </html>
