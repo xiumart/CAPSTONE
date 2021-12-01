@@ -1,78 +1,7 @@
 <?php 
 session_start();
 include "../db_conn.php";
-
-if (isset($_POST['id']) && isset($_POST['name'])
-    && isset($_POST['email']) && isset($_POST['contact'])
-    && isset($_POST['date']) && isset($_POST['purpose'])) {
-
-	function validate($data){
-       $data = trim($data);
-	   $data = stripslashes($data);
-	   $data = htmlspecialchars($data);
-	   return $data;
-	}
-
-	$id = validate($_POST['id']);
-    $name = validate($_POST['name']);
-	$email = validate($_POST['email']);
-    $contact = validate($_POST['contact']);
-    $date = validate($_POST['date']);
-    $purpose = validate($_POST['purpose']);
-	$user_data = 'email='. $email. '&name='. $name;
-
-
-  if(isset($_GET['error3'])){
-    if($_GET['error3'] == "emptyfields") {   //require all inputs
-        echo '<h3 class="bg-danger text-center">Fill all fields, Please try again!</h3>';
-    }
-    else if(!preg_match("/^[a-zA-Z ]*$/",$name)){
-        header("Location: ../Appointment/appointment.php?error=Name is required&$user_data");
-	    exit();
-	}
-	else if (empty($email)) {
-		header("Location: ../Appointment/appointment.php?error=Email is required&$user_data");
-	    exit();
-  }else if(!preg_match("/^[0-9]*$/", $contact)){
-      header("Location: ../Appointment/appointment.php?error=Invalid Contact Number&$user_data");
-    exit();
-  }else if(empty($contact)){
-    header("Location: ../Appointment/appointment.php?error=Contact Number is required&$user_data");
-  exit();
-}
-  else if(empty($date)){
-    header("Location: ../Appointment/appointment.php?error=Date & Time is required&$user_data");
-  exit();
-	}else if(!between($purpose)) {
-        header("Location: ../Appointment/appointment.php?error=Purpose is required&$user_data");
-	    exit();
-	}
-  }
-	else{
-
-		// hashing the password
-        // $pass = md5($pass);
-
-	    $sql = "SELECT * FROM appoinments WHERE email='$email' ";
-		$result = mysqli_query($conn, $sql);
-
-		if (mysqli_num_rows($result) > 0) {
-			header("Location: ../Appointment/appointment.php?error=The username is taken try another&$user_data");
-	        exit();
-		}else {
-           $sql2 = "INSERT INTO appoinments (name, email, contact, date, purpose) VALUES('$name', '$email', '$contact', '$date', '$purpose')";
-           $result2 = mysqli_query($conn, $sql2);
-           if ($result2) {
-           	 header("Location: ../Appointment/appointment.php?success=      Your account has been created successfully");
-	         exit();
-           }else {
-	           	header("Location: ../Appointment/appointment.php?error=unknown error occurred&$user_data");
-		        exit();
-           }
-		}
-	}
-}
-  ?>
+?>
 
 <!DOCTYPE html>
 <html>
@@ -151,7 +80,7 @@ if (isset($_POST['id']) && isset($_POST['name'])
 		<rect id="Rectangle_107" rx="20" ry="20" x="0" y="0" width="806" height="646">
 		</rect>
 	</svg>
-	<form action="../Appointment/appointment.php" method="post">
+<form name="form1" method="post" action="appformhandler.php" >
         <?php if (isset($_GET['error'])) { ?>
         <p class="error"><?php echo $_GET['error']; ?></p>
       <?php } ?>
@@ -172,14 +101,14 @@ if (isset($_POST['id']) && isset($_POST['name'])
 	</div>
 	<div id="ddmmyyyy_de">
 		<label for="date">Date:</label><br>
-  		<input type="date" id="birthdaytime" name="birthdaytime">
+  		<input type="date" id="date" name="date">
 	</div>
 	<div id="PURPOSE_df">
 		<label>Purpose:</label><br>
 		<input type="text" id="purpose" name="purpose" placeholder="Purpose"><br>
 	</div>
 	<div id="Set_Appointment_dh">
-		<button type="submit">Set Appointment</button>
+		<input type="submit" name="submit" value="Set Appointment">
 		</div>
         </form>
 	<!-- </div>
@@ -259,11 +188,11 @@ if (isset($_POST['id']) && isset($_POST['name'])
 		<rect id="Rectangle_1" rx="0" ry="0" x="0" y="0" width="1920" height="168">
 		</rect>
 	</svg>
-	<a href="../Home/home.html">
+	<a href="../Home/home.php">
 	<img id="Untitled_design_12_eh" src="Untitled_design_12_eh.png" srcset="Untitled_design_12_eh.png 1x, Untitled_design_12_eh@2x.png 2x">
 		
 	</a>
-	<a href="../Home/home.html">
+	<a href="../Home/home.php">
 	<div id="RNL_Vision_Care_ei">
 		<span>RNL Vision Care</span>
 	</div>
@@ -275,7 +204,7 @@ if (isset($_POST['id']) && isset($_POST['name'])
 	<div id="ABOUT">
 		<span>ABOUT</span>
 	</div>
-	<a href="../Home/home.html">
+	<a href="../Home/home.php">
 	<div id="HOME_el">
 		<span>HOME</span>
 	</div>
@@ -284,11 +213,11 @@ if (isset($_POST['id']) && isset($_POST['name'])
 		<rect id="Rectangle_106" rx="0" ry="0" x="0" y="0" width="1920" height="168">
 		</rect>
 	</svg>
-	<a href="../Home/home.html">
+	<a href="../Home/home.php">
 	<img id="Untitled_design_12_eh" src="Untitled_design_12_eh.png" srcset="Untitled_design_12_eh.png 1x, Untitled_design_12_eh@2x.png 2x">
 		
 	</a>
-	<a href="../Home/home.html">
+	<a href="../Home/home.php">
 	<div id="RNL_Vision_Care_ei">
 		<span>RNL Vision Care</span>
 	</div>
@@ -297,22 +226,22 @@ if (isset($_POST['id']) && isset($_POST['name'])
 		<path id="Icon_ionic-md-eye_ej" d="M 29.09608459472656 7.3828125 C 16.89549827575684 7.3828125 6.516610145568848 14.86136245727539 2.25 25.47994995117188 C 6.516610145568848 36.09852981567383 16.89549827575684 43.57708740234375 29.09608459472656 43.57708740234375 C 41.29667282104492 43.57708740234375 51.67556381225586 36.09852981567383 55.94216918945312 25.47994995117188 C 51.67556381225586 14.86136245727539 41.29667282104492 7.3828125 29.09608459472656 7.3828125 Z M 29.09608459472656 37.54870223999023 C 22.38456153869629 37.54870223999023 16.89549827575684 32.11956405639648 16.89549827575684 25.47994995117188 C 16.89549827575684 18.8403377532959 22.38456153869629 13.41119575500488 29.09608459472656 13.41119575500488 C 35.8076057434082 13.41119575500488 41.29667282104492 18.8403377532959 41.29667282104492 25.47994995117188 C 41.29667282104492 32.11956405639648 35.8076057434082 37.54870223999023 29.09608459472656 37.54870223999023 Z M 29.09608459472656 18.2410945892334 C 25.06916999816895 18.2410945892334 21.77333450317383 21.50097846984863 21.77333450317383 25.47994995117188 C 21.77333450317383 29.45891952514648 25.06916999816895 32.71880722045898 29.09608459472656 32.71880722045898 C 33.12299346923828 32.71880722045898 36.41883087158203 29.45892524719238 36.41883087158203 25.47994995117188 C 36.41883087158203 21.5009765625 33.12299346923828 18.2410945892334 29.09608459472656 18.2410945892334 Z">
 		</path>
 	</svg>
-	<a href="../About/about.html">
+	<a href="../About/about.php">
 	<div id="ABOUT_ek">
 		<span>ABOUT</span>
 	</div>
 	</a>
-	<a href="../Home/home.html">
+	<a href="../Home/home.php">
 	<div id="HOME_el">
 		<span>HOME</span>
 	</div>
 	</a>
-	<a href="../Services/services.html">
+	<a href="../Services/services.php">
 	<div id="SERVICES_em">
 		<span>SERVICES</span>
 	</div>
 	</a>
-	<a href="../Product/product.html">
+	<a href="../Product/product.php">
 	<div id="PRODUCT_en">
 		<span>PRODUCT</span>
 	</div>
@@ -322,7 +251,7 @@ if (isset($_POST['id']) && isset($_POST['name'])
 		<span>APPOINTMENT</span>
 	</div>
 	</a>
-	<a href="../Login/login.html">
+	<a href="../Login/login.php">
 	<div id="LOGIN_ep">
 		<span>LOGIN</span>
 	</div>
