@@ -568,11 +568,11 @@
 		<rect id="Rectangle_1" rx="0" ry="0" x="0" y="0" width="1920" height="168">
 		</rect>
 	</svg>
-	<a href="../Home/home.html">
+	<a href="../Home/home.php">
 	<img id="Untitled_design_12" src="Untitled_design_12.png" srcset="Untitled_design_12.png 1x, Untitled_design_12@2x.png 2x">
 		
 	</a>
-	<a href="../Home/home.html">
+	<a href="../Home/home.php">
 	<div id="RNL_Vision_Care_fh">
 		<span>RNL Vision Care</span>
 	</div>
