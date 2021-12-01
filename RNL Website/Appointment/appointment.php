@@ -1,8 +1,6 @@
 <?php 
 session_start();
 include "../db_conn.php";
-
-	$id = validate($_POST['id']);
 ?>
 
 <!DOCTYPE html>
