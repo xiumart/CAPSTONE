@@ -91,7 +91,7 @@
 		<path id="Line_17" d="M 0 0 L 1376 0">
 		</path>
 	</svg>
-	<a href="C:\Users\rheir\OneDrive\Documents\GitHub\CAPSTONE\RNL Website\Admin\POS\pos.html">
+	<a href="../POS/pos.php">
 	<svg class="Rectangle_176">
 		<rect id="Rectangle_176" rx="13" ry="13" x="0" y="0" width="179" height="30">
 		</rect>
