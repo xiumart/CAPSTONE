@@ -495,20 +495,23 @@
 	transform: matrix(1,0,0,1,0,0);
 }
 #Group_56 {
-	position: absolute;
+
 	width: 1344px;
 	height: 623px;
 	left: 476px;
 	top: 412px;
-	overflow: visible;
+
+	overflow-x:auto;
 }
 #Group_55 {
-	position: absolute;
+
 	width: 1344px;
 	height: 141px;
 	left: 0px;
 	top: 0px;
-	overflow: visible;
+
+	overflow-x:auto;
+
 }
 #Group_40 {
 	position: absolute;
@@ -1439,3 +1442,4 @@
 	top: 746px;
 	transform: matrix(1,0,0,1,0,0);
 }
+

@@ -7,9 +7,10 @@ include "../db_conn.php";
         $contact =  $_REQUEST['contact'];
         $date = $_REQUEST['date'];
         $purpose = $_REQUEST['purpose'];
+        $remarks = "ONGOING";
 
-           $sql = "INSERT INTO appointment (app_name,app_email,app_contact,app_date,app_purpose) VALUES ('$fname', 
-            '$email','$contact','$date','$purpose')";
+           $sql = "INSERT INTO appointment (app_name,app_email,app_contact,app_date,app_purpose,app_remarks) VALUES ('$fname', 
+            '$email','$contact','$date','$purpose', '$remarks')";
           
         if(mysqli_query($conn, $sql)){
             echo "<h3>data stored in a database successfully." 

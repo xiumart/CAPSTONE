@@ -111,41 +111,42 @@
 	</svg>
 	<style type="text/css">
 	</style>
+	<form action ="newpatientsformhandler.php" action="post">
 	<div id="LASTNAME__">
 		<span>LASTNAME : </span><br>
-		<input type="text" name="EMAIL" style="background-color: white; font-size: 20px; border:solid white 1px; width: 250px; border-radius: 10px; height:40px; padding: 10px; text-transform: lowercase;">
+		<input type="text" name="patlastname" style="background-color: white; font-size: 20px; border:solid white 1px; width: 250px; border-radius: 10px; height:40px; padding: 10px; text-transform: lowercase;">
 	</div>
 	
 	<div id="FIRST_NAME_">
 		<span>FIRST NAME :</span><br>
-		<input type="text" name="EMAIL" style="background-color: white; font-size: 20px; border:solid white 1px; width: 250px; border-radius: 10px; height:40px; padding: 10px; text-transform: lowercase;">
+		<input type="text" name="patfirstname" style="background-color: white; font-size: 20px; border:solid white 1px; width: 250px; border-radius: 10px; height:40px; padding: 10px; text-transform: lowercase;">
 	</div>
 
 	<div id="MIDDLE_NAME_">
 		<span>MIDDLE NAME :</span><br>
-		<input type="text" name="EMAIL" style="background-color: white; font-size: 20px; border:solid white 1px; width: 250px; border-radius: 10px; height:40px; padding: 10px; text-transform: lowercase;">
+		<input type="text" name="patmidname" style="background-color: white; font-size: 20px; border:solid white 1px; width: 250px; border-radius: 10px; height:40px; padding: 10px; text-transform: lowercase;">
 	</div>
 	<
 	<div id="AGE_">
 		<span>AGE :</span><br>
-		<input type="text" name="EMAIL" style="background-color: white; font-size: 20px; border:solid white 1px; width: 50px; border-radius: 10px; height:40px; padding: 10px; text-transform: lowercase;">
+		<input type="text" name="patage" style="background-color: white; font-size: 20px; border:solid white 1px; width: 50px; border-radius: 10px; height:40px; padding: 10px; text-transform: lowercase;">
 	
 	</div>
 	<div id="SEX_">
 		<span>SEX :</span><br>
-			<select style="background-color: white; font-size: 16px; border:solid white 1px; border-radius: 10px; padding: 10px;">
+			<select name ="patsex" style="background-color: white; font-size: 16px; border:solid white 1px; border-radius: 10px; padding: 10px;">
 			<option style="font-size: 12px;">Female</option>
 			<option style="font-size: 12px;">Male</option>
 		</select>
 	</div>
 	<div id="ADDRESS">
 		<span>ADDRESS</span><br>
-		<input type="text" name="EMAIL" style="background-color: white; font-size: 20px; border:solid white 1px; width: 450px; border-radius: 10px; height:40px; padding: 10px; text-transform: lowercase;">
+		<input type="text" name="pataddress" style="background-color: white; font-size: 20px; border:solid white 1px; width: 450px; border-radius: 10px; height:40px; padding: 10px; text-transform: lowercase;">
 	</div>
 	</svg>
 	<div id="CONTACT_NO">
 		<span>CONTACT NO.</span><br>
-		<input type="text" name="EMAIL" style="background-color: white; font-size: 20px; border:solid white 1px; width: 300px; border-radius: 10px; height:40px; padding: 10px; text-transform: lowercase;">
+		<input type="text" name="patcontact" style="background-color: white; font-size: 20px; border:solid white 1px; width: 300px; border-radius: 10px; height:40px; padding: 10px; text-transform: lowercase;">
 	</div>
 	
 	<svg class="Line_46" viewBox="0 0 1376 1">
@@ -169,7 +170,7 @@ td, th {
 </style>
 	<div id="MEDICAL_Hx">
 		<span>MEDICAL Hx</span><br>
-		<input type="text" name="EMAIL" style="background-color: white; font-size: 20px; border:solid white 1px; width: 450px; border-radius: 10px; height:40px; padding: 10px; text-transform: lowercase;">
+		<input type="text" name="patmedhx" style="background-color: white; font-size: 20px; border:solid white 1px; width: 450px; border-radius: 10px; height:40px; padding: 10px; text-transform: lowercase;">
 		<br><br><br><br>
 		<table >
 			 <tr>
@@ -268,16 +269,16 @@ td, th {
 	<div id="Group_36">
 		
 		<div id="ADD_PATIENT">
-			<a href="#"><input type="submit" value="ADD PATIENT"></a>
+			<input type="submit" value="ADD PATIENT">
 		</div>
 	</div>
 	</a>
 	<div id="DATE_">
 		<span>DATE :</span><br>
-		<input type="date" name="EMAIL" style="background-color: white; font-size: 20px; border:solid white 1px; width: 200px; border-radius: 10px; height:40px; padding: 10px; text-transform: lowercase;">
+		<input type="date" name="patdate" style="background-color: white; font-size: 20px; border:solid white 1px; width: 200px; border-radius: 10px; height:40px; padding: 10px; text-transform: lowercase;">
 	</div>
 
-
+</form>
 	<svg class="Icon_metro-users" viewBox="2.571 5.143 37.571 33.396">
 		<path id="Icon_metro-users" d="M 27.61856460571289 30.27517890930176 L 27.61856460571289 28.55384254455566 C 29.91774749755859 27.2581729888916 31.79308700561523 24.02800559997559 31.79308700561523 20.79731750488281 C 31.79308700561523 15.60988426208496 31.79308700561523 11.40464115142822 25.53130340576172 11.40464115142822 C 19.2695198059082 11.40464115142822 19.2695198059082 15.60988616943359 19.2695198059082 20.79731750488281 C 19.2695198059082 24.02800559997559 21.14485931396484 27.2581729888916 23.44404411315918 28.55384254455566 L 23.44404411315918 30.27517890930176 C 16.36359405517578 30.85400390625 10.9204740524292 34.33294677734375 10.9204740524292 38.53903961181641 L 40.14213562011719 38.53903961181641 C 40.14213562011719 34.33294677734375 34.69901275634766 30.85400390625 27.61856842041016 30.27518272399902 Z M 13.24242115020752 31.08125305175781 C 15.04627132415771 29.90227699279785 17.28909873962402 29.00586128234863 19.75819778442383 28.45867538452148 C 19.26723480224609 27.87867736816406 18.82192993164062 27.23169136047363 18.43761444091797 26.53382873535156 C 17.44570922851562 24.73245620727539 16.92135047912598 22.74877738952637 16.92135047912598 20.79731750488281 C 16.92135047912598 17.99118995666504 16.92135047912598 15.34075927734375 17.91932106018066 13.17352962493896 C 18.88813781738281 11.06983089447021 20.63041496276855 9.765554428100586 23.11210060119629 9.276613235473633 C 22.56047821044922 6.782335758209229 21.0920238494873 5.142857074737549 17.1822566986084 5.142857074737549 C 10.9204740524292 5.142857074737549 10.9204740524292 9.348101615905762 10.9204740524292 14.5355339050293 C 10.9204740524292 17.76622200012207 12.79581260681152 20.99638938903809 15.09499740600586 22.29205894470215 L 15.09499740600586 24.01339721679688 C 8.014549255371094 24.59221839904785 2.571428537368774 28.0711612701416 2.571428537368774 32.27725601196289 L 11.67077922821045 32.27725601196289 C 12.14426136016846 31.8562126159668 12.66862106323242 31.4563102722168 13.24242210388184 31.08125305175781 Z">
 		</path>
