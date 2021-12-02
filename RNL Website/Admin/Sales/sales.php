@@ -93,51 +93,18 @@
 		<path id="Line_17" d="M 0 0 L 1376 0">
 		</path>
 	</svg>
-	<svg class="Rectangle_138">
-		<rect id="Rectangle_138" rx="9" ry="9" x="0" y="0" width="285" height="44">
-		</rect>
-	</svg>
-	<div id="Search_by_Customer">
-		<span>Search by Customer</span>
-	</div>
-	<svg class="Rectangle_139">
-		<rect id="Rectangle_139" rx="9" ry="9" x="0" y="0" width="207" height="44">
-		</rect>
-	</svg>
-	<div id="n_0-Oct-2021">
-		<span>20-Oct-2021</span>
-	</div>
-	<svg class="Rectangle_140">
-		<rect id="Rectangle_140" rx="0" ry="0" x="0" y="0" width="43" height="44">
-		</rect>
-	</svg>
-	<svg class="Rectangle_141">
-		<rect id="Rectangle_141" rx="9" ry="9" x="0" y="0" width="207" height="44">
-		</rect>
-	</svg>
-	<div id="n_5-Oct-2021">
-		<span>25-Oct-2021</span>
-	</div>
-	<svg class="Rectangle_142">
-		<rect id="Rectangle_142" rx="0" ry="0" x="0" y="0" width="43" height="44">
-		</rect>
-	</svg>
-	<div id="Text">
-		<span>...</span>
-	</div>
-	<div id="Text_bu">
-		<span>...</span>
-	</div>
-	<svg class="Rectangle_143">
-		<rect id="Rectangle_143" rx="9" ry="9" x="0" y="0" width="48" height="44">
-		</rect>
-	</svg>
+
 	<div id="GO">
-		<span>GO</span>
+		<button style="cursor: pointer; background-color: rgba(34,121,220,1);font-size: 20px; padding:10px 10px; border-radius: 10px; margin: -20px;  color: #fff;">GO</button>
 	</div>
 	<div id="From_">
-		<span>From :</span>
+
+		<span>From :</span><br>
+		<input type="text" name="EMAIL" style="background-color: white; font-size: 20px; border-radius:8px; width: 300px;; height:40px;  text-transform:lowercase; padding-left: 10px;margin-left: -320px;margin-top: 10px;" placeholder="Search by Customer">
+		&nbsp&nbsp&nbsp<input type="date" id="txtDate" name="SelectedDate" style="background-color: white; font-size: 20px; border-radius:8px; width: 200px;; height:40px;  text-transform:lowercase; padding-left: 10px;">&nbsp&nbsp&nbsp&nbsp&nbsp<input type="date" id="txtDate" name="SelectedDate" style="background-color: white; font-size: 20px; border-radius:8px; width: 200px;; height:40px;  text-transform:lowercase; padding-left: 10px;">
+
 	</div>
+
 	<div id="To_">
 		<span>To :</span>
 	</div>
