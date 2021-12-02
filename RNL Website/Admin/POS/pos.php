@@ -87,6 +87,10 @@
 		</path>
 	</svg>
 		<style type="text/css">
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button {
+  opacity: 1;
+}
 		.button {
   padding: 3px 10px;
   margin-left: -50px;
@@ -99,7 +103,7 @@
 
 	input::placeholder{
 			font-size: 20px;
-			color: #000;
+			color: #AAAAAA;
 			text-transform: capitalize;
 		}
 		table {
@@ -118,9 +122,13 @@ td, th {
 	</style>
 	<div id="POINT_OF_SALES">
 		<span>POINT OF SALES</span><br><br><br><br>
-		<input type="text" name="EMAIL" style="background-color: white; font-size: 20px; border:solid white 1px; width: 550px;; height:40px;  text-transform:lowercase; padding-left: 10px; padding-top: 5px;" placeholder="Search Product"> <button class="button" type="submit" ><img src="icon.png"></button>
+		<select name ="prod" style="background-color: white; font-size: 20px; border:solid white 1px; padding: 5px;width: 400px;text-align: center;height: 43px;">
+			<option hidden="">PRODUCT</option>
+			<option>EYE GLASS</option>
+			<option>CONTACT LENSE</option>
+		</select>
 		
-		&nbsp&nbsp&nbsp<input type="number" id="tentacles" name="tentacles" min="1" max="10000" style="background-color: white; font-size: 20px; border:solid white 1px; width: 200px;; height:40px;  text-transform:lowercase; padding-left: 10px; padding-top: 5px;" >
+		&nbsp&nbsp&nbsp<input type="number" id="tentacles" name="tentacles" min="1" max="10000" placeholder="Quantity" style="background-color: white; font-size: 20px; border:solid white 1px; width: 200px;; height:43px;  text-transform:lowercase; padding-left: 10px; " >
 		
 		<br><br>
 		
