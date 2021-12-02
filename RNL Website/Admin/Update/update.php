@@ -168,7 +168,7 @@ td, th {
 	<div id="MEDICAL_Hx">
 		<span>MEDICAL Hx</span><br>
 		<input type="text" name="EMAIL" style="background-color: white; font-size: 20px; border:solid white 1px; width: 450px; border-radius: 10px; height:40px; padding: 10px; text-transform: capitalize;"><br><br><br><br>
-		<table>
+<table>
 			<tr>
 			  <th colspan="3">&nbsp</th>
 			  <th>SPH</th>
@@ -177,65 +177,65 @@ td, th {
 			  <th>VA</th>
 			  <th>ADD</th>
 			</tr>
-			<tr><td rowspan="6" style="width: 2px;">NEW<br> RX</td>
+			<tr><td rowspan="6" style="width: 5px;">NEW<br> RX</td>
 			  <td rowspan="2" style="width: 2px;">DISTANCE</td>
-			  <td>OD</td>
-			  <td>&nbsp</td>
-			  <td>&nbsp</td>
-			  <td>&nbsp</td>
-			  <td>&nbsp</td>
-			  <td>&nbsp</td>
+			  <td style="width: 2px;">OD</td>
+			  <td style="width: 100px;height:45px;padding: 0; margin: 0;"><input type="text" style="width: 120px; height: 45px;font-size: 20px; padding: 5px;"></td>
+			  <td style="width: 100px;height:45px;padding: 0; margin: 0;"><input type="text" style="width: 120px; height: 45px;font-size: 20px; padding: 5px;"></td>
+			  <td style="width: 100px;height:45px;padding: 0; margin: 0;"><input type="text" style="width: 120px; height: 45px;font-size: 20px; padding: 5px;"></td>
+			  <td style="width: 100px;height:45px;padding: 0; margin: 0;"><input type="text" style="width: 120px; height: 45px;font-size: 20px; padding: 5px;"></td>
+			  <td style="width: 100px;height:45px;padding: 0; margin: 0;"><input type="text" style="width: 120px; height: 45px;font-size: 20px; padding: 5px;"></td>
 			</tr>
 			<tr>
 			  <td>OS</td>
-			  <td>&nbsp</td>
-			  <td>&nbsp</td>
-			  <td>&nbsp</td>
-			  <td>&nbsp</td>
-			  <td>&nbsp</td>
+			  <td style="width: 100px;height:45px;padding: 0; margin: 0;"><input type="text" style="width: 120px; height: 45px;font-size: 20px; padding: 5px;"></td>
+			  <td style="width: 100px;height:45px;padding: 0; margin: 0;"><input type="text" style="width: 120px; height: 45px;font-size: 20px; padding: 5px;"></td>
+			  <td style="width: 100px;height:45px;padding: 0; margin: 0;"><input type="text" style="width: 120px; height: 45px;font-size: 20px; padding: 5px;"></td>
+			  <td style="width: 100px;height:45px;padding: 0; margin: 0;"><input type="text" style="width: 120px; height: 45px;font-size: 20px; padding: 5px;"></td>
+			  <td style="width: 100px;height:45px;padding: 0; margin: 0;"><input type="text" style="width: 120px; height: 45px;font-size: 20px; padding: 5px;"></td>
 			</tr>
 			<tr>
-			   <td rowspan="2">CONTACT LENS <br>RX</td>
+			   <td rowspan="2">CONTACT LENS<br> RX</td>
 			  <td>OD</td>
-			  <td>&nbsp</td>
-			  <td>&nbsp</td>
-			  <td>&nbsp</td>
+			  <td style="width: 100px;height:45px;padding: 0; margin: 0;"><input type="text" style="width: 120px; height: 45px;font-size: 20px; padding: 5px;"></td>
+			  <td style="width: 100px;height:45px;padding: 0; margin: 0;"><input type="text" style="width: 120px; height: 45px;font-size: 20px; padding: 5px;"></td>
+			  <td style="width: 100px;height:45px;padding: 0; margin: 0;"><input type="text" style="width: 120px; height: 45px;font-size: 20px; padding: 5px;"></td>
 			  <td>MONO</td>
-			  <td>OD</td>
+			  <td style="width: 100px;height:45px;padding: 0; margin: 0;">OD:<input type="text" style="font-size: 20px; padding: 5px; width: 85px;height: 43px;"></td>
 			</tr>
 			<tr>
-			  <td>OS</td>
-				  <td>&nbsp</td>
-			  <td>&nbsp</td>
-			  <td>&nbsp</td>
+			  <td >OS</td>
+			  <td style="width: 100px;height:45px;padding: 0; margin: 0;"><input type="text" style="width: 120px; height: 45px;font-size: 20px; padding: 5px;"></td>
+			  <td style="width: 100px;height:45px;padding: 0; margin: 0;"><input type="text" style="width: 120px; height: 45px;font-size: 20px; padding: 5px;"></td>
+			  <td style="width: 100px;height:45px;padding: 0; margin: 0;"><input type="text" style="width: 120px; height: 45px;font-size: 20px; padding: 5px;"></td>
 			  <td>PD</td>
-			  <td>OS</td>
+			  <td style="width: 100px;height:45px;padding: 0; margin: 0;">OS:<input type="text" style="font-size: 20px; padding: 5px; width: 86px;height: 43px;"></td>
 			</tr>
 			<tr>
-			   <td rowspan="2">READING <br>RX</td>
+			   <td rowspan="2">READING<br> RX</td>
 			  <td>OD</td>
-			  <td>&nbsp</td>
-			  <td>&nbsp</td>
-			  <td>&nbsp</td>
+			  <td style="width: 100px;height:45px;padding: 0; margin: 0;"><input type="text" style="width: 120px; height: 45px;font-size: 20px; padding: 5px;"></td>
+			  <td style="width: 100px;height:45px;padding: 0; margin: 0;"><input type="text" style="width: 120px; height: 45px;font-size: 20px; padding: 5px;"></td>
+			  <td style="width: 100px;height:45px;padding: 0; margin: 0;"><input type="text" style="width: 120px; height: 45px;font-size: 20px; padding: 5px;"></td>
 			  <td>SEG HT</td>
-			  <td>OD</td>
+			  <td style="width: 100px;height:45px;padding: 0; margin: 0;">OD:<input type="text" style="font-size: 20px; padding: 5px; width: 85px;height: 43px;"></td>
 			</tr>
 			<tr>
 			  <td>OS</td>
-			  <td>&nbsp</td>
-			  <td>&nbsp</td>
-			  <td>&nbsp</td>
+			  <td style="width: 100px;height:45px;padding: 0; margin: 0;"><input type="text" style="width: 120px; height: 45px;font-size: 20px; padding: 5px;"></td>
+			  <td style="width: 100px;height:45px;padding: 0; margin: 0;"><input type="text" style="width: 120px; height: 45px;font-size: 20px; padding: 5px;"></td>
+			  <td style="width: 100px;height:45px;padding: 0; margin: 0;"><input type="text" style="width: 120px; height: 45px;font-size: 20px; padding: 5px;"></td>
 			  <td>VER HT</td>
-			  <td>OS</td>
+			  <td style="width: 100px;height:45px;padding: 0; margin: 0;">OS:<input type="text" style="font-size: 20px; padding: 5px; width: 86px;height: 43px;"></td>
 			</tr>
 			<tr>
 			<td>B.P.</td>
-			<td>&nbsp</td>
+			<td style="width: 100px;height:45px;padding: 0; margin: 0;"><input type="text" style="width: 170px; height: 45px;font-size: 20px; padding: 5px;"></td>
 			<td colspan="2">Ishihara</td>
-			<td>&nbsp</td>
-			<td>&nbsp</td>
+			<td style="width: 100px;height:45px;padding: 0; margin: 0;"><input type="text" style="width: 120px; height: 45px;font-size: 20px; padding: 5px;"></td>
+			<td style="width: 100px;height:45px;padding: 0; margin: 0;"><input type="text" style="width: 120px; height: 45px;font-size: 20px; padding: 5px;"></td>
 			<td>PD</td>
-			<td>&nbsp</td>
+			<td style="width: 100px;height:45px;padding: 0; margin: 0;"><input type="text" style="width: 120px; height: 45px;font-size: 20px; padding: 5px;"></td>
 			</tr>
 			
 		  </table>
