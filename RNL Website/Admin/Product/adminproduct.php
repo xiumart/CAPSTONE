@@ -1,3 +1,43 @@
+<?php 
+session_start();
+
+	include("config.php");
+	//include("function.php");
+
+
+	if($_SERVER['REQUEST_METHOD'] == "POST")
+	{
+		//something was posted
+		$brandname = $_POST['bname'];
+		$model = $_POST['model'];
+		$category = $_POST['category'];
+		$dateofarrival = $_POST['dateofarrival'];
+		$expirationdate = $_POST['expirationdate'];
+		$sellingprice = $_POST['sellingprice'];
+		$originalprice = $_POST['originalprice'];
+		$profit = $_POST['profit'];
+		$supplier = $_POST['supplier'];
+		$qty = $_POST['qty'];
+
+		if(!empty($brandname) && !empty($model) && !empty($category) && !empty($dateofarrival) && !empty($expirationdate) && !empty($sellingprice) && !empty($originalprice) && !empty($profit) && !empty($supplier) && !empty($qty) && !is_numeric($brandname))
+		{
+
+			//save to database
+			//$user_id = random_num(20);
+			$query = "insert into product (brand,model,category,dateofarrival,expdate,sellingprice,origprice,profit,supplier,qty) values ('$brandname','$model','$category','$dateofarrival','$expirationdate','$sellingprice','$originalprice','$profit','$supplier','$qty')";
+
+			mysqli_query($con, $query);
+
+			header("Location: adminproduct.php");
+			die;
+		}else
+		{
+			echo "Please enter some valid information!";
+		}
+	}
+?>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -123,6 +163,26 @@ td, th {
     <th>Supplier</th>
     <th>Qty</th>
   </tr>
+
+  <?php
+
+
+  include("config.php");
+  $sql = "SELECT * from product";
+  $result = $con->query($sql);
+
+  if($result->num_rows > 0){
+  	while($row = $result -> fetch_assoc()){
+  		echo "<tr><td>" . $row["brand"] . "</td><td>" . $row["model"] . "</td><td>" . $row["category"] . "</td><td>" . $row["dateofarrival"] . "</td><td>" . $row["expdate"] . "</td><td>" . $row["sellingprice"] . "</td><td>" . $row["origprice"] . "</td><td>" . $row["profit"] . "</td><td>" . $row["supplier"] . "</td><td>" . $row["qty"] . "</td></tr>";
+  	}
+  } else {
+  	echo "NO RESULTS";
+  }
+
+  $con->close();
+
+
+  ?>
    <tr>
     <th>&nbsp</th>
     <th>&nbsp</th>
@@ -193,34 +253,34 @@ td, th {
 			<!-- Modal content -->
 			<div class="modal-content">
 			  <span class="close">&times;</span>
-			  <form action="/action_page.php">
+			  <form method="post">
 				<center><h2 style="color: #000;">New Product</h2><br><br></center>
 				<label style="color: #000;padding-right: 15%;">Brand Name:</label>
-				<input type="text" id="fname" name="fname" style="border: #000 2px; border-style:solid; font-size: 20px; border-radius: 8px; padding: 3px;" ><br><br>
+				<input type="text" id="fname" name="bname" style="border: #000 2px; border-style:solid; font-size: 20px; border-radius: 8px; padding: 3px;" ><br><br>
 				<label style="color: #000;padding-right: 27%;">Model:</label>
-				<input type="text" id="fname" name="fname" style="border: #000 2px; border-style:solid; font-size: 20px; border-radius: 8px; padding: 3px;"><br><br>
+				<input type="text" id="fname" name="model" style="border: #000 2px; border-style:solid; font-size: 20px; border-radius: 8px; padding: 3px;"><br><br>
 				<label style="color: #000;padding-right: 21.5%;">Category:</label>
-				<select name="Category" id="Category"style="border: #000 2px; border-style:solid; font-size: 20px; border-radius: 8px; padding: 3px;">
+				<select name="category" id="Category"style="border: #000 2px; border-style:solid; font-size: 20px; border-radius: 8px; padding: 3px;">
 					<option value="Frame">Frame</option>
 					<option value="Lens">Lens</option>
 				  </select><br><br>
 				<label style="color: #000;padding-right: 12%;">Date of Arrival:</label>
-				<input type="text" id="fname" name="fname" style="border: #000 2px; border-style:solid; font-size: 20px; border-radius: 8px; padding: 3px;"><br><br>
+				<input type="text" id="fname" name="dateofarrival" style="border: #000 2px; border-style:solid; font-size: 20px; border-radius: 8px; padding: 3px;"><br><br>
 				<label style="color: #000; padding-right: 10%;">Expiration Date:</label>
-				<input type="text" id="fname" name="fname" style="border: #000 2px; border-style:solid; font-size: 20px; border-radius: 8px; padding: 3px;"><br><br>
+				<input type="text" id="fname" name="expirationdate" style="border: #000 2px; border-style:solid; font-size: 20px; border-radius: 8px; padding: 3px;"><br><br>
 				<label style="color: #000;padding-right:  15%;">Selling Price:</label>
-				<input type="text" id="fname" name="fname" style="border: #000 2px; border-style:solid; font-size: 20px; border-radius: 8px; padding: 3px;"><br><br>
+				<input type="text" id="fname" name="sellingprice" style="border: #000 2px; border-style:solid; font-size: 20px; border-radius: 8px; padding: 3px;"><br><br>
 				<label style="color: #000;padding-right:  14%;">Orignal Price:</label>
-				<input type="text" id="fname" name="fname" style="border: #000 2px; border-style:solid; font-size: 20px; border-radius: 8px; padding: 3px;"><br><br>
+				<input type="text" id="fname" name="originalprice" style="border: #000 2px; border-style:solid; font-size: 20px; border-radius: 8px; padding: 3px;"><br><br>
 				<label style="color: #000;padding-right:  28.5%;">Profit:</label>
-				<input type="text" id="fname" name="fname" style="border: #000 2px; border-style:solid; font-size: 20px; border-radius: 8px; padding: 3px;"><br><br>
+				<input type="text" id="fname" name="profit" style="border: #000 2px; border-style:solid; font-size: 20px; border-radius: 8px; padding: 3px;"><br><br>
 				<label style="color: #000;padding-right: 23%;">Supplier:</label>
-				<select name="Category" id="Category"style="border: #000 2px; border-style:solid; font-size: 20px; border-radius: 8px; padding: 3px;">
+				<select name="supplier" id="Category"style="border: #000 2px; border-style:solid; font-size: 20px; border-radius: 8px; padding: 3px;">
 					<option value="Supplier">Supplier 1</option>
 					<option value="Supplier">Supplier 2</option>
 				  </select><br><br>
 				<label style="color: #000;padding-right: 30%;">QTY:</label>
-				<input type="text" id="fname" name="fname" style="border: #000 2px; border-style:solid; font-size: 20px; border-radius: 8px; padding: 3px;"><br><br>
+				<input type="text" id="fname" name="qty" style="border: #000 2px; border-style:solid; font-size: 20px; border-radius: 8px; padding: 3px;"><br><br>
 				<center><button type="submit">Submit</button></center>
 			
 			  </form> 
