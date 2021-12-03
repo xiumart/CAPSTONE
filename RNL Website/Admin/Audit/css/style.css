@@ -1,0 +1,401 @@
+.mediaViewInfo {
+	--web-view-name: audit;
+	--web-view-id: audit;
+	--web-scale-to-fit: true;
+	--web-scale-to-fit-type: width;
+	--web-enable-scale-up: true;
+	--web-scale-on-resize: true;
+	--web-show-by-media-query: true;
+	--web-enable-deep-linking: true;
+}
+:root {
+	--web-view-ids: audit;
+}
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	border: none;
+}
+#audit {
+	position: absolute;
+	width: 1920px;
+	height: 1080px;
+	background-color: rgba(25,25,25,1);
+	overflow: hidden;
+	--web-view-name: audit;
+	--web-view-id: audit;
+	--web-scale-to-fit: true;
+	--web-scale-to-fit-type: width;
+	--web-enable-scale-up: true;
+	--web-scale-on-resize: true;
+	--web-show-by-media-query: true;
+	--web-enable-deep-linking: true;
+}
+#Mask_Group_1 {
+	position: absolute;
+	width: 37.571px;
+	height: 70.642px;
+	left: 38px;
+	top: 816.679px;
+	overflow: visible;
+}
+#Rectangle_115 {
+	fill: rgba(18,18,18,1);
+}
+.Rectangle_115 {
+	position: absolute;
+	overflow: visible;
+	width: 1920px;
+	height: 101px;
+	left: 0px;
+	top: 0px;
+}
+#Untitled_design_12 {
+	position: absolute;
+	width: 135px;
+	height: 94px;
+	left: 0px;
+	top: 0px;
+	overflow: visible;
+}
+#RNL_Vision_Care {
+	left: 127px;
+	top: 31px;
+	position: absolute;
+	overflow: visible;
+	width: 273px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Arial;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 35px;
+	color: rgba(255,255,255,1);
+}
+#Untitled_design_25 {
+	position: absolute;
+	width: 59px;
+	height: 59px;
+	left: 1820px;
+	top: 21px;
+	overflow: visible;
+}
+#Icon_ionic-md-notifications {
+	fill: rgba(0,194,203,1);
+}
+.Icon_ionic-md-notifications {
+	overflow: visible;
+	position: absolute;
+	width: 27.378px;
+	height: 32.355px;
+	left: 1753px;
+	top: 34.322px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#Ellipse_8 {
+	fill: transparent;
+	stroke: rgba(112,112,112,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Ellipse_8 {
+	position: absolute;
+	overflow: visible;
+	width: 46px;
+	height: 46px;
+	left: 1744px;
+	top: 28px;
+}
+#DASHBOARD {
+	left: 118px;
+	top: 219px;
+	position: absolute;
+	overflow: visible;
+	width: 158px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Segoe UI;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 27px;
+	color: rgba(255,255,255,1);
+}
+#Icon_material-dashboard {
+	fill: rgba(255,255,255,1);
+}
+.Icon_material-dashboard {
+	overflow: visible;
+	position: absolute;
+	width: 36.903px;
+	height: 36.903px;
+	left: 38px;
+	top: 219px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#Icon_awesome-users {
+	fill: rgba(255,255,255,1);
+}
+.Icon_awesome-users {
+	overflow: visible;
+	position: absolute;
+	width: 36.903px;
+	height: 36.903px;
+	left: 38px;
+	top: 310px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#PATIENT_RECORDS {
+	left: 118px;
+	top: 307px;
+	position: absolute;
+	overflow: visible;
+	width: 222px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Segoe UI;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 27px;
+	color: rgba(255,255,255,1);
+}
+#SALES {
+	left: 118px;
+	top: 394px;
+	position: absolute;
+	overflow: visible;
+	width: 73px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Segoe UI;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 27px;
+	color: rgba(255,255,255,1);
+}
+#Icon_metro-money {
+	fill: rgba(255,255,255,1);
+}
+.Icon_metro-money {
+	overflow: visible;
+	position: absolute;
+	width: 36.903px;
+	height: 36.903px;
+	left: 38px;
+	top: 402px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#Icon_ionic-md-glasses {
+	fill: rgba(255,255,255,1);
+}
+.Icon_ionic-md-glasses {
+	overflow: visible;
+	position: absolute;
+	width: 44.284px;
+	height: 18.452px;
+	left: 38px;
+	top: 493px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#PRODUCT {
+	left: 118px;
+	top: 482px;
+	position: absolute;
+	overflow: visible;
+	width: 125px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Segoe UI;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 28px;
+	color: rgba(255,255,255,1);
+}
+#Icon_material-insert-chart {
+	fill: rgba(255,255,255,1);
+}
+.Icon_material-insert-chart {
+	overflow: visible;
+	position: absolute;
+	width: 36.903px;
+	height: 36.903px;
+	left: 38px;
+	top: 566px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#REPORTS {
+	left: 118px;
+	top: 571px;
+	position: absolute;
+	overflow: visible;
+	width: 109px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Segoe UI;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 27px;
+	color: rgba(255,255,255,1);
+}
+#Icon_awesome-angle-double-left {
+	fill: rgba(255,255,255,1);
+}
+.Icon_awesome-angle-double-left {
+	overflow: visible;
+	position: absolute;
+	width: 26.443px;
+	height: 21.231px;
+	left: 359px;
+	top: 116px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#AUDIT_TRAIL {
+	left: 473px;
+	top: 127px;
+	position: absolute;
+	overflow: visible;
+	width: 113px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Segoe UI;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 20px;
+	color: rgba(255,255,255,1);
+}
+#Line_17 {
+	fill: transparent;
+	stroke: rgba(112,112,112,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Line_17 {
+	overflow: visible;
+	position: absolute;
+	width: 1376px;
+	height: 1px;
+	left: 473.5px;
+	top: 169.5px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#Rectangle_176 {
+	fill: rgba(34,139,220,1);
+}
+.Rectangle_176 {
+	position: absolute;
+	overflow: visible;
+	width: 179px;
+	height: 30px;
+	left: 1525px;
+	top: 36px;
+}
+#Point_of_Sale {
+	left: 1566px;
+	top: 38px;
+	position: absolute;
+	overflow: visible;
+	width: 128px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Arial;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 21px;
+	color: rgba(255,255,255,1);
+}
+#Icon_map-accounting {
+	fill: rgba(255,255,255,1);
+}
+.Icon_map-accounting {
+	overflow: visible;
+	position: absolute;
+	width: 17.591px;
+	height: 21.108px;
+	left: 1540.199px;
+	top: 40.445px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#Icon_metro-users {
+	fill: rgba(255,255,255,1);
+}
+.Icon_metro-users {
+	overflow: visible;
+	position: absolute;
+	width: 37.571px;
+	height: 33.396px;
+	left: 38px;
+	top: 657px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#MANAGE_USER {
+	left: 118px;
+	top: 659px;
+	position: absolute;
+	overflow: visible;
+	width: 182px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Segoe UI;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 27px;
+	color: rgba(255,255,255,1);
+}
+#SUPPLIER {
+	left: 118px;
+	top: 746px;
+	position: absolute;
+	overflow: visible;
+	width: 114px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Segoe UI;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 27px;
+	color: rgba(255,255,255,1);
+}
+#Icon_metro-truck {
+	fill: rgba(255,255,255,1);
+}
+.Icon_metro-truck {
+	overflow: visible;
+	position: absolute;
+	width: 39.852px;
+	height: 37px;
+	left: 38px;
+	top: 745px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#AUDIT_TRAIL_bq {
+	left: 118px;
+	top: 834px;
+	position: absolute;
+	overflow: visible;
+	width: 152px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Segoe UI;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 27px;
+	color: rgba(0,194,203,1);
+}
+#Icon_ionic-md-eye {
+	fill: rgba(255,255,255,1);
+}
+.Icon_ionic-md-eye {
+	overflow: visible;
+	position: absolute;
+	width: 53.692px;
+	height: 36.194px;
+	left: 1450px;
+	top: 32.403px;
+	transform: matrix(1,0,0,1,0,0);
+}
