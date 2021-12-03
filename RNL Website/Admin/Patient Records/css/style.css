@@ -17,6 +17,58 @@
 	box-sizing: border-box;
 	border: none;
 }
+#Icon_awesome-clipboard-list {
+	fill: rgba(255,255,255,1);
+}
+.Icon_awesome-clipboard-list {
+	overflow: visible;
+	position: absolute;
+	width: 33.146px;
+	height: 39.779px;
+	left: 38px;
+	top: 832.11px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#AUDIT_TRAIL_bp {
+	left: 118px;
+	top: 834px;
+	position: absolute;
+	overflow: visible;
+	width: 152px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Segoe UI;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 27px;
+	color: white;
+}
+#AUDIT_TRAIL {
+	left: 473px;
+	top: 127px;
+	position: absolute;
+	overflow: visible;
+	width: 113px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Segoe UI;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 20px;
+	color: rgba(255,255,255,1);
+}
+#Icon_ionic-md-eye {
+	fill: rgba(255,255,255,1);
+}
+.Icon_ionic-md-eye {
+	overflow: visible;
+	position: absolute;
+	width: 53.692px;
+	height: 36.194px;
+	left: 1450px;
+	top: 32.403px;
+	transform: matrix(1,0,0,1,0,0);
+}
 #patientrecords {
 	position: absolute;
 	width: 1920px;

@@ -1,0 +1,129 @@
+<?php
+if (isset($_POST['insert']))
+{
+	$hostname = "localhost";
+	$username = "root";
+	$password = "";
+	$databaseName = "capstone";
+	
+ 	$id = $_POST['id'];
+    $supply = $_POST['supply'];
+    $contactperson = $_POST['contactperson'];
+    $contactno = $_POST['contactno'];
+    $address = $_POST['address'];
+    $note = $_POST['note'];
+    
+    
+
+	$connect = mysqli_connect($hostname, $username, $password, $databaseName);
+
+	$query = "INSERT INTO supplier(supply,contactperson,contactno,address,note) VALUES ('$supply','$contactperson', '$contactno', '$address', '$note')" ;
+
+	$result = mysqli_query($connect, $query);
+	
+	if ($result)
+	{
+		echo '<script>alert("Data Inserted ")</script>';
+ 
+	}
+	else{
+		echo '<script>alert("Data not Inserted")</script>';
+	}
+	mysqli_close($connect);
+
+}
+?>
+<style>
+		body {font-family: Arial, Helvetica, sans-serif;}
+		
+		
+		.modal {
+		  display: none; 
+		  position: fixed; 
+		  z-index: 1; 
+		  padding-top: 100px; 
+		  left: 0;
+		  top: 0;
+		  width: 30%; 
+		  height: 100%; 
+		  overflow: auto; 
+		  margin-left: 40%;
+		  margin-top: 5%;
+	
+		}
+		
+	
+		.modal-content {
+		  background-color: #fefefe;
+		  margin: auto;
+		  padding: 20px;
+		  border: 1px solid #888;
+		  width: 80%;
+		}
+	
+		.close {
+		  color: #aaaaaa;
+		  float: right;
+		  font-size: 28px;
+		  font-weight: bold;
+		}
+		
+		.close:hover,
+		.close:focus {
+		  color: #000;
+		  text-decoration: none;
+		  cursor: pointer;
+		}
+	
+	
+		</style>
+	<div id="n_New_Supplier">
+	<button id="myBtn" height="100" width=>+ New Supplier</button>
+
+<div id="myModal" class="modal"> -->
+
+	<!-- Modal content -->
+<div class="modal-content">
+	  <span class="close">&times;</span>
+	  <form action="../Supplier/supplier.php" method="post">
+		<center><h2 style="color: #000;">New Supplier</h2><br><br></center>
+		<label style="color: #000;padding-right: 10px;">Supplier Name:</label>
+		<input type="text" id="fname" name="fname" style="border: #000 2px; border-style:solid; font-size: 20px;"><br><br>
+		<label style="color: #000;padding-right: 4px;">Contact Person:</label>
+		<input type="text" id="fname" name="fname" style="border: #000 2px; border-style:solid; font-size: 20px;"><br><br>
+		<label style="color: #000;padding-right: 41px;">Contact No:</label>
+		<input type="text" id="fname" name="fname" style="border: #000 2px; border-style:solid; font-size: 20px;"><br><br>
+		<label style="color: #000;padding-right: 68px;">Address:</label>
+		<input type="text" id="fname" name="fname" style="border: #000 2px; border-style:solid; font-size: 20px;"><br><br>
+		<label style="color: #000; padding-right: 97px;">Note:</label>
+		<input type="text" id="fname" name="fname" style="border: #000 2px; border-style:solid; font-size: 20px;"><br><br>
+		<center><button type="submit" name="insert">Submit</button></center>
+	  </form> 
+	</div>
+  
+  </div>
+	</div>
+	<script>
+		var modal = document.getElementById("myModal");
+		var btn = document.getElementById("myBtn");
+		var span = document.getElementsByClassName("close")[0]; 
+		btn.onclick = function() {
+		  modal.style.display = "block";
+		}
+		span.onclick = function() {
+		  modal.style.display = "none";
+		}
+		window.onclick = function(event) {
+		  if (event.target == modal) {
+			modal.style.display = "none";
+		  }
+		}
+		</script>
+		<style type="text/css">
+		input::placeholder{
+			font-size: 20px;
+			color: #000;
+			text-transform: capitalize;
+			
+		}
+	</style>

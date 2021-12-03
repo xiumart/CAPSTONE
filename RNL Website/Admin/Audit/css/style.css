@@ -32,14 +32,6 @@
 	--web-show-by-media-query: true;
 	--web-enable-deep-linking: true;
 }
-#Mask_Group_1 {
-	position: absolute;
-	width: 37.571px;
-	height: 70.642px;
-	left: 38px;
-	top: 816.679px;
-	overflow: visible;
-}
 #Rectangle_115 {
 	fill: rgba(18,18,18,1);
 }
@@ -373,7 +365,7 @@
 	top: 745px;
 	transform: matrix(1,0,0,1,0,0);
 }
-#AUDIT_TRAIL_bq {
+#AUDIT_TRAIL_bp {
 	left: 118px;
 	top: 834px;
 	position: absolute;
@@ -397,5 +389,17 @@
 	height: 36.194px;
 	left: 1450px;
 	top: 32.403px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#Icon_awesome-clipboard-list {
+	fill: rgba(255,255,255,1);
+}
+.Icon_awesome-clipboard-list {
+	overflow: visible;
+	position: absolute;
+	width: 33.146px;
+	height: 39.779px;
+	left: 38px;
+	top: 832.11px;
 	transform: matrix(1,0,0,1,0,0);
 }
