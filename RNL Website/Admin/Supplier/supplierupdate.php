@@ -236,7 +236,7 @@ if(isset($_POST['update']))
 
 
 ?>
-		<strong> Supplier ID</strong> <input type = "number" name = "supplier_ID"  value="<?php echo $supplier_ID;?>"><br><br>
+		<strong> Supplier ID</strong> <input type = "number" name = "supplier_ID"  value="<?php echo $supplier_ID;?>"><input class = "button" type = "submit" name = "search" value = "search"> <br><br> 
 			
 		<strong>Supply:</strong><input type="text " name="supply" value="<?php echo $supply;?>"><br><br>
         
@@ -248,7 +248,7 @@ if(isset($_POST['update']))
         
         <strong>Note:</strong> <input type="text" name="note" value="<?php echo $note;?>"><br><br>
         
-	<input class = "button" type = "submit" name = "search" value = "search"> 
+	
 
 	<input class = "button" type = "submit" name = "update" value = "update"> 
 	<a href="supplier.php" style="cursor: pointer; background-color: #abd7ab; padding: 10px; border-radius: 10px;">Back</a>

@@ -125,7 +125,7 @@ td, th {
     <th>Contact No.</th>
     <th>Address</th>
     <th>Note</th>
-    <th>Action</th>
+    
   </tr>
    
     <?php
@@ -134,12 +134,12 @@ $conn = mysqli_connect("localhost", "root", "", "capstone");
 if ($conn->connect_error) {
 die("Connection failed: " . $conn->connect_error);
 }
-$sql  = "SELECT id, supply, contactperson, contactno, address, note FROM supplier";
+$sql  = "SELECT supplier_ID, supply, contactperson, contactno, address, note FROM supplier";
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
 // output data of each row
 while($row = $result->fetch_assoc()) {
-echo "<tr><td>" . $row ["id"] . "</td><td>" . $row["supply"]. "</td><td>" . $row["contactperson"] . "</td><td>" . $row["contactno"] . "</td><td>" . $row["address"] . "</td><td>"
+echo "<tr><td>" . $row ["supplier_ID"] . "</td><td>" . $row["supply"]. "</td><td>" . $row["contactperson"] . "</td><td>" . $row["contactno"] . "</td><td>" . $row["address"] . "</td><td>"
 . $row["note"]. "</td> </tr>";
 
 }
@@ -151,8 +151,8 @@ $conn->close();
 
     <td>
     	
-    	<a href="supplierupdate.php" style="cursor: pointer; background-color: #abd7ab; padding: 10px; border-radius: 10px;">Update</a>
-    	<a href="supplierdelete.php" style="cursor: pointer; background-color: #ff6666; padding: 10px; border-radius: 10px;">Remove</a>
+    	<a href="supplierupdate.php" style="cursor: pointer; background-color: #abd7ab; padding: 10px; border-radius: 10px;">Update Patience</a>
+    	<a href="supplierdelete.php" style="cursor: pointer; background-color: #ff6666; padding: 10px; border-radius: 10px;">Remove Patience</a>
   </tr>
 
 
@@ -220,7 +220,9 @@ $conn->close();
 	
 	</div>
 	<div id="GO">
+
 		<button style="cursor: pointer; background-color: rgba(34,121,220,1);font-size: 20px; padding:10px 10px; border-radius: 10px; margin:-20px; margin-left: 950%;color: #fff;">GO</button>
+
 	</div>
 </div>
 </body>
