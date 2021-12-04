@@ -15,7 +15,7 @@ session_start();
 		$expirationdate = $_POST['expirationdate'];
 		$sellingprice = $_POST['sellingprice'];
 		$originalprice = $_POST['originalprice'];
-		$profit = $_POST['profit'];
+		$profit = $originalprice - $sellingprice;
 		$supplier = $_POST['supplier'];
 		$qty = $_POST['qty'];
 
@@ -272,8 +272,7 @@ td, th {
 				<input type="text" id="fname" name="sellingprice" style="border: #000 2px; border-style:solid; font-size: 20px; border-radius: 8px; padding: 3px;"><br><br>
 				<label style="color: #000;padding-right:  14%;">Orignal Price:</label>
 				<input type="text" id="fname" name="originalprice" style="border: #000 2px; border-style:solid; font-size: 20px; border-radius: 8px; padding: 3px;"><br><br>
-				<label style="color: #000;padding-right:  28.5%;">Profit:</label>
-				<input type="text" id="fname" name="profit" style="border: #000 2px; border-style:solid; font-size: 20px; border-radius: 8px; padding: 3px;"><br><br>
+				
 				<label style="color: #000;padding-right: 23%;">Supplier:</label>
 				<select name="supplier" id="Category"style="border: #000 2px; border-style:solid; font-size: 20px; border-radius: 8px; padding: 3px;">
 					<option value="Supplier">Supplier 1</option>
