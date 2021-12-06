@@ -1,3 +1,81 @@
+<?php
+session_start();
+
+	include("config.php");
+	// include("function.php");
+
+	if($_SERVER['REQUEST_METHOD'] == "POST")
+	{
+		/// something was posted
+		$lastname = $_POST['lastname'];
+		$firstname = $_POST['firstname'];
+		$middlename = $_post['middlename'];
+		$age = $_POST['age'];
+		$sex = $_POST['sex'];
+		$address = $_POST['address'];
+		$contactno = $_POST['contactno'];
+		$medhx = $_POST['medhx'];
+		$date = $_POST['date'];
+		$oldOD = $_POST['oldOD'];
+		$oldOS = $_POST['oldOS'];
+		$oldODVA = $_POST['oldOD_VA'];
+		$oldOSVA = $_POST['oldOS_VA'];
+		//newrx of sph
+		$newDODSPH = $_POST['newD_OD_SPH'];
+		$newDOSSPH = $_POST['newD_OS_SPH'];
+		$newCLODSPH = $_POST['newCL_OD_SPH'];
+		$newCLOSSPH = $_POST['newCL_OS_SPH'];
+		$newRODSPH = $_POST['newR_OD_SPH'];
+		$newROSSPH = $_POST['newR_OS_SPH'];
+		//newrx of cyl
+		$newDODCYL = $_POST['new_D_OD_CYL'];
+		$newDOSCYL = $_POST['new_D_OS_CYL'];
+		$newCLODCYL = $_POST['new_CL_OD_CYL'];
+		$newCLOSCYL = $_POST['new_CL_OS_CYL'];
+		$newRODCYL = $_POST['new_R_OD_CYL'];
+		$newROSCYL = $_POST['new_R_OS_CYL'];
+		//newrx of axis
+		$newDODAXIS = $_POST['new_D_OD_AXIS'];
+		$newDOSAXIS = $_POST['new_D_OS_AXIS'];
+		$newCLODAXIS = $_POST['new_CL_OD_AXIS'];
+		$newCLOSAXIS = $_POST['new_CL_OS_AXIS'];
+		$newRODAXIS = $_POST['new_R_OD_AXIS'];
+		$newROSAXIS = $_POST['new_R_OS_AXIS'];
+		//newrx distance va
+		$newDODVA = $_POST['new_D_OD_VA'];
+		$newDOSVA = $_POST['new_D_OS_VA'];
+		//newrx distance add
+		$newDODADD = $_POST['new_D_OD_ADD'];
+		$newDOSADD = $_POST['new_D_OS_ADD'];
+		//newrx contact lense 
+		$newCLMONOOD = $_POST['new_CL_MONO_OD'];
+		$newCLPDOS = $_POST['new_CL_PD_OS'];
+		//newrx reading
+		$newRSEGHTOD = $_POST['new_R_SEGHT_OD'];
+		$newRVERHTOS = $_POST['new_R_VERHT_OS'];
+		//bp
+		$bp = $_POST['bp'];
+		//ishihara
+		$ishiharaCYL = $_POST['ishihara_CYL'];
+		$ishiharaAXIS = $_POST['ishihara_AXIS'];
+		$ishiharaPD = $_POST['ishihara_PD'];
+
+		if(!empty($lastname) && !empty($firstname) && !empty($middlename) && !empty($age) && !empty($sex) && !empty($address) && !empty($contactno) && !empty($medhx) && !empty($date) && !empty($oldOD) && !empty($oldOS) && !empty($oldODVA) && !empty($oldOSVA) && !empty($newDODSPH) && !empty($newDOSSPH) && !empty($newCLODSPH) && !empty($newCLOSSPH) && !empty($newRODSPH) && !empty($newROSSPH) && !empty($newDODCYL) && !empty($newDOSCYL) && !empty($newCLODCYL) && !empty($newCLOSCYL) && !empty($newRODCYL) && !empty($newROSCYL) && !empty($newDODAXIS) && !empty($newDOSAXIS) && !empty($newCLODAXIS) && !empty($newCLOSAXIS) && !empty($newRODAXIS) && !empty($newROSAXIS) && !empty($newDODVA) && !empty($newDOSVA) && !empty($newDODADD) && !empty($newDOSADD) && !empty($newCLMONOOD) && !empty($newCLPDOS) && !empty($newRSEGHTOD) && !empty($newRVERHTOS) && !empty($bp) && !empty($ishiharaCYL) && !empty($ishiharaAXIS) && !empty($ishiharaPD))
+		{
+			// save to database
+			// $user_id = random_num(20);
+			$query = "insert into patientrecord (lastname,firstname,middlename,age,sex,address,contactno,medhx,date,oldOD,oldOS,oldOD_VA,oldOS_VA,newD_OD_SPH,newD_OS_SPH,newCL_OD_SPH,newCL_OS_SPH,newR_OD_SPH,newR_OS_SPH,new_D_OD_CYL,new_D_OS_CYL,new_CL_OD_CYL,new_CL_OS_CYL,new_R_OD_CYL,new_R_OS_CYL,new_D_OD_AXIS,new_D_OS_AXIS,new_CL_OD_AXIS,new_CL_OS_AXIS,new_R_OD_AXIS,new_R_OS_AXIS,new_D_OD_VA,new_D_OS_VA,new_D_OD_ADD,new_D_OS_ADD,new_CL_MONO_OD,new_CL_PD_OS,new_R_SEGHT_OD,new_R_VERHT_OS,bp,ishihara_CYL,ishihara_AXIS,ishihara_PD) values ('$lastname','$firstname','$middlename','$age','$sex','$address','$contactno','$medhx','$date','$oldOD','$oldOS','$oldODVA','$oldOSVA','$newDODSPH','$newDOSSPH','$newCLODSPH','$newCLOSSPH','$newRODSPH','$newROSSPH','$newDODCYL','$newDOSCYL','$newCLODCYL','$newCLOSCYL','$newRODCYL','$newROSCYL','$newDODAXIS','$newDOSAXIS','$newCLODAXIS','$newCLOSAXIS','$newRODAXIS','$newROSAXIS','$newDODVA','$newDOSVA','$newDODADD','$newDOSADD','$newCLMONOOD','$newCLPDOS','$newRSEGHTOD','$newRVERHTOS','$bp','$ishiharaCYL','$ishiharaAXIS','$ishiharaPD')";
+
+			mysqli_query($con, $query);
+
+			header("Location: newpatients.php");
+			die;
+		}else
+		{
+			echo "Please enter some valid information!";
+		}
+	}
+?>
 <!DOCTYPE html>
 <html>
 <head>
