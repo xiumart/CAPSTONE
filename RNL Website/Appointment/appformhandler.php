@@ -25,4 +25,3 @@ include "../db_conn.php";
         // Close connection
         mysqli_close($conn);
         ?>
-?>

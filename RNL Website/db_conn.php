@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 $sname= "localhost";
 $uname= "root";
 $password = "";
@@ -8,7 +8,8 @@ $db_name = "capstone";
 
 $conn = mysqli_connect($sname, $uname, $password, $db_name);
 
-if (!$conn) {
-	echo "Connection failed!";
+if ($conn->connect_error) {
+	# Display an error mesage if the connection fails
+	die("Connection failed: " . $conn->connect_error);
 }
 ?>

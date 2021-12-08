@@ -162,15 +162,29 @@ include "../db_conn.php";
           <?php } ?>
 	<div id="FULL_NAME">
 		<label>Full Name:</label><br>
-			<input type="text" id="fname" name="fname" placeholder="Fullname"><br>
+			<input type="text" id="fname" name="fname" placeholder="Fullname" required="required"><br>
 	</div>
 	<div id="EMAIL">
 		<label>Email:</label><br>
-		<input type="email" id="email" name="email" placeholder="Email"><br>
+		<input type="email" id="email" name="email" placeholder="Email" required="required"><br>
 	</div>
+	<style>
+	input[type=tel], select {
+					width: 200%;
+					padding: 19px 10px;
+					margin: 8px 0;
+					display: inline-block;
+					border: 1px solid #ccc;
+					border-radius: 8px;
+					box-sizing: border-box;
+					background-color: transparent;
+					font-size: 20px;
+					color: white;
+				  }
+				  </style>
 	<div id="CONTACT_">
 		<label>Contact No.:</label><br>
-		<input type="text" id="contact" name="contact" placeholder="Contact No."><br>
+		<input type="tel" pattern="[0-9]{11}" id="contact" name="contact" placeholder="Contact No." required="required"><br>
 	</div>
 	<style>
 		input[type=date], select {
@@ -188,11 +202,11 @@ include "../db_conn.php";
 	  </style>
 	<div id="ddmmyyyy">
 		<label for="date">Date:</label><br>
-  		<input type="date" id="date" name="date">
+  		<input type="date" id="date" name="date" required="required">
 	</div>
 	<div id="PURPOSE">
 		<label>Purpose:</label><br>
-		<input type="text" id="purpose" name="purpose" placeholder="Purpose"><br>
+		<input type="text" id="purpose" name="purpose" placeholder="Purpose" required="required"><br>
 	</div>
 	<div id="Set_Appointment">
 		<input type="submit" value="Set Appointment">

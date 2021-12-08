@@ -256,25 +256,25 @@ td, th {
 			  <form method="post">
 				<center><h2 style="color: #000;">New Product</h2><br><br></center>
 				<label style="color: #000;padding-right: 15%;">Brand Name:</label>
-				<input type="text" id="fname" name="bname" style="border: #000 2px; border-style:solid; font-size: 20px; border-radius: 8px; padding: 3px;" ><br><br>
+				<input type="text" id="fname" name="bname" style="border: #000 2px; border-style:solid; font-size: 20px; border-radius: 8px; padding: 3px;" required="required" ><br><br>
 				<label style="color: #000;padding-right: 27%;">Model:</label>
-				<input type="text" id="fname" name="model" style="border: #000 2px; border-style:solid; font-size: 20px; border-radius: 8px; padding: 3px;"><br><br>
+				<input type="text" id="fname" name="model" style="border: #000 2px; border-style:solid; font-size: 20px; border-radius: 8px; padding: 3px;" required="required"><br><br>
 				<label style="color: #000;padding-right: 21.5%;">Category:</label>
-				<select name="category" id="Category"style="border: #000 2px; border-style:solid; font-size: 20px; border-radius: 8px; padding: 3px;">
+				<select name="category" id="Category"style="border: #000 2px; border-style:solid; font-size: 20px; border-radius: 8px; padding: 3px;" required="required">
 					<option value="Frame">Frame</option>
 					<option value="Lens">Lens</option>
 				  </select><br><br>
 				<label style="color: #000;padding-right: 12%;">Date of Arrival:</label>
-				<input type="date" id="fname" name="dateofarrival" style="border: #000 2px; border-style:solid; font-size: 20px; border-radius: 8px; padding: 3px;"><br><br>
+				<input type="date" id="fname" name="dateofarrival" style="border: #000 2px; border-style:solid; font-size: 20px; border-radius: 8px; padding: 3px;" required="required"><br><br>
 				<label style="color: #000; padding-right: 10%;">Expiration Date:</label>
-				<input type="date" id="fname" name="expirationdate" style="border: #000 2px; border-style:solid; font-size: 20px; border-radius: 8px; padding: 3px;"><br><br>
+				<input type="date" id="fname" name="expirationdate" style="border: #000 2px; border-style:solid; font-size: 20px; border-radius: 8px; padding: 3px;" required="required"><br><br>
 				<label style="color: #000;padding-right:  15%;">Selling Price:</label>
-				<input type="text" id="fname" name="sellingprice" style="border: #000 2px; border-style:solid; font-size: 20px; border-radius: 8px; padding: 3px;"><br><br>
+				<input type="text" id="fname" name="sellingprice" style="border: #000 2px; border-style:solid; font-size: 20px; border-radius: 8px; padding: 3px;" required="required"><br><br>
 				<label style="color: #000;padding-right:  14%;">Orignal Price:</label>
-				<input type="text" id="fname" name="originalprice" style="border: #000 2px; border-style:solid; font-size: 20px; border-radius: 8px; padding: 3px;"><br><br>
+				<input type="text" id="fname" name="originalprice" style="border: #000 2px; border-style:solid; font-size: 20px; border-radius: 8px; padding: 3px;" required="required"><br><br>
 				
 				<label style="color: #000;padding-right: 23%;">Supplier:</label>
-				<select name="supplier" id="Category"style="border: #000 2px; border-style:solid; font-size: 20px; border-radius: 8px; padding: 3px;">
+				<select name="supplier" id="Category"style="border: #000 2px; border-style:solid; font-size: 20px; border-radius: 8px; padding: 3px;"required="required">
 					<option value="Supplier">Supplier 1</option>
 					<option value="Supplier">Supplier 2</option>
 				  </select><br><br>

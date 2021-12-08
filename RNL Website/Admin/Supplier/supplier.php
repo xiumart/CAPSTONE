@@ -1,3 +1,8 @@
+
+<?php
+
+include "../../db_conn.php";
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -89,77 +94,7 @@
 		<path id="Icon_awesome-angle-double-left" d="M 14.93550682067871 16.23446273803711 L 23.95588684082031 7.214083671569824 C 24.57935523986816 6.590617179870605 25.58751487731934 6.590617179870605 26.20434951782227 7.214083671569824 L 27.70332527160645 8.713059425354004 C 28.3267936706543 9.336525917053223 28.3267936706543 10.34468650817871 27.70332527160645 10.96152114868164 L 21.31609916687012 17.36201095581055 L 27.70995903015137 23.7558708190918 C 28.33342933654785 24.37933731079102 28.33342933654785 25.38749504089355 27.70995903015137 26.00433158874512 L 26.21098327636719 27.50993919372559 C 25.58751487731934 28.1334056854248 24.57935523986816 28.1334056854248 23.96252059936523 27.50993919372559 L 14.942138671875 18.48955726623535 C 14.31204032897949 17.8660888671875 14.31204032897949 16.85793113708496 14.93550682067871 16.23446273803711 Z M 2.200853824615479 18.48955726623535 L 11.22123527526855 27.50993919372559 C 11.84470176696777 28.1334056854248 12.85286140441895 28.1334056854248 13.46969604492188 27.50993919372559 L 14.96866989135742 26.01096534729004 C 15.59214019775391 25.38749504089355 15.59214019775391 24.37933731079102 14.96866989135742 23.76250267028809 L 8.581445693969727 17.36201095581055 L 14.97530364990234 10.96815395355225 C 15.5987720489502 10.34468650817871 15.5987720489502 9.336525917053223 14.97530364990234 8.719691276550293 L 13.4763298034668 7.214083671569824 C 12.85286140441895 6.590617179870605 11.84470176696777 6.590617179870605 11.22786712646484 7.214083671569824 L 2.207486629486084 16.23446273803711 C 1.577386617660522 16.85793113708496 1.577386617660522 17.8660888671875 2.200853824615479 18.48955726623535 Z">
 		</path>
 	</svg>
-	<style type="text/css">
-		input::placeholder{
-			font-size: 20px;
-			color: #000;
-			text-transform: capitalize;
-		}
-			table {
-  font-family: arial, sans-serif;
-  border-collapse: collapse;
-  width: 1347px;
-  background-color: #fff;
-  color: #000;
-  margin-top: -40%;
-}
-
-td, th {
-  border: 1px solid #000;
-  text-align: center;
-  padding: 8px;
-}
-
-	</style>
-
-	<div id="SUPPLIER_bv">
-		<span>SUPPLIER</span>
-		<br><br><br>
-		<input type="text" name="EMAIL" style="background-color: white; font-size: 20px; border-radius: 8px; width: 550px;; height:40px;  text-transform:lowercase; padding-left: 10px; margin-left: 870%; margin-top: 5px;" placeholder="Search Supplier">
-		<br><br><br>
-		<table>
-  <tr>
-  	<th>ID</th>
-    <th>Supplier</th>
-    <th>Contact Person</th>
-    <th>Contact No.</th>
-    <th>Address</th>
-    <th>Note</th>
-    
-  </tr>
-   
-    <?php
-$conn = mysqli_connect("localhost", "root", "", "capstone");
-// Check connection
-if ($conn->connect_error) {
-die("Connection failed: " . $conn->connect_error);
-}
-$sql  = "SELECT id, supply, contactperson, contactno, address, note FROM supplier";
-$result = $conn->query($sql);
-if ($result->num_rows > 0) {
-// output data of each row
-while($row = $result->fetch_assoc()) {
-echo "<tr><td>" . $row ["id"] . "</td><td>" . $row["supply"]. "</td><td>" . $row["contactperson"] . "</td><td>" . $row["contactno"] . "</td><td>" . $row["address"] . "</td><td>"
-. $row["note"]. "</td> </tr>";
-
-}
-
-echo "</table>";
-} else { echo "0 results"; }
-$conn->close();
-?>
-
-    <td>
-    	
-    	<a href="supplierupdate.php" style="cursor: pointer; background-color: #abd7ab; padding: 10px; border-radius: 10px;">Update Patience</a>
-    	<a href="supplierdelete.php" style="cursor: pointer; background-color: #ff6666; padding: 10px; border-radius: 10px;">Remove Patience</a>
-  </tr>
-
-
-
-</table>
-
-	</div>
+	
 	<svg class="Line_17" viewBox="0 0 1376 1">
 		<path id="Line_17" d="M 0 0 L 1376 0">
 		</path>
@@ -212,17 +147,159 @@ $conn->close();
 		<path id="Icon_awesome-clipboard-list" d="M 29.0023193359375 4.972412109375 L 22.09700584411621 4.972412109375 C 22.09700584411621 2.22981595993042 19.61972427368164 0 16.57275390625 0 C 13.52578449249268 0 11.04850292205811 2.22981595993042 11.04850292205811 4.972412109375 L 4.1431884765625 4.972412109375 C 1.855803251266479 4.972412109375 0 6.642831802368164 0 8.70172119140625 L 0 36.04998779296875 C 0 38.10887908935547 1.855803251266479 39.779296875 4.1431884765625 39.779296875 L 29.0023193359375 39.779296875 C 31.28970527648926 39.779296875 33.1455078125 38.10887908935547 33.1455078125 36.04998779296875 L 33.1455078125 8.70172119140625 C 33.1455078125 6.642831802368164 31.28970527648926 4.972412109375 29.0023193359375 4.972412109375 Z M 8.286376953125 32.94223022460938 C 7.138368606567383 32.94223022460938 6.21478271484375 32.11090469360352 6.21478271484375 31.07757568359375 C 6.21478271484375 30.04424667358398 7.138368606567383 29.21292114257812 8.286376953125 29.21292114257812 C 9.434385299682617 29.21292114257812 10.35797119140625 30.04424667358398 10.35797119140625 31.07757568359375 C 10.35797119140625 32.11090469360352 9.434385299682617 32.94223022460938 8.286376953125 32.94223022460938 Z M 8.286376953125 25.48361206054688 C 7.138368606567383 25.48361206054688 6.21478271484375 24.65228652954102 6.21478271484375 23.61895751953125 C 6.21478271484375 22.58562850952148 7.138368606567383 21.75430297851562 8.286376953125 21.75430297851562 C 9.434385299682617 21.75430297851562 10.35797119140625 22.58562850952148 10.35797119140625 23.61895751953125 C 10.35797119140625 24.65228652954102 9.434385299682617 25.48361206054688 8.286376953125 25.48361206054688 Z M 8.286376953125 18.02499389648438 C 7.138368606567383 18.02499389648438 6.21478271484375 17.19366836547852 6.21478271484375 16.16033935546875 C 6.21478271484375 15.12701034545898 7.138368606567383 14.29568481445312 8.286376953125 14.29568481445312 C 9.434385299682617 14.29568481445312 10.35797119140625 15.12701034545898 10.35797119140625 16.16033935546875 C 10.35797119140625 17.19366836547852 9.434385299682617 18.02499389648438 8.286376953125 18.02499389648438 Z M 16.57275390625 3.107757568359375 C 17.72076225280762 3.107757568359375 18.64434814453125 3.939082622528076 18.64434814453125 4.972412109375 C 18.64434814453125 6.005741596221924 17.72076225280762 6.837066650390625 16.57275390625 6.837066650390625 C 15.4247465133667 6.837066650390625 14.50115966796875 6.005741596221924 14.50115966796875 4.972412109375 C 14.50115966796875 3.939082622528076 15.4247465133667 3.107757568359375 16.57275390625 3.107757568359375 Z M 27.62125778198242 31.69912719726562 C 27.62125778198242 32.04098129272461 27.31051826477051 32.3206787109375 26.93072509765625 32.3206787109375 L 14.50115966796875 32.3206787109375 C 14.12136840820312 32.3206787109375 13.81062889099121 32.04098129272461 13.81062889099121 31.69912719726562 L 13.81062889099121 30.45602416992188 C 13.81062889099121 30.11417007446289 14.12136840820312 29.83447265625 14.50115966796875 29.83447265625 L 26.93072509765625 29.83447265625 C 27.31051826477051 29.83447265625 27.62125778198242 30.11417007446289 27.62125778198242 30.45602416992188 L 27.62125778198242 31.69912719726562 Z M 27.62125778198242 24.24050903320312 C 27.62125778198242 24.58236312866211 27.31051826477051 24.862060546875 26.93072509765625 24.862060546875 L 14.50115966796875 24.862060546875 C 14.12136840820312 24.862060546875 13.81062889099121 24.58236312866211 13.81062889099121 24.24050903320312 L 13.81062889099121 22.99740600585938 C 13.81062889099121 22.65555191040039 14.12136840820312 22.3758544921875 14.50115966796875 22.3758544921875 L 26.93072509765625 22.3758544921875 C 27.31051826477051 22.3758544921875 27.62125778198242 22.65555191040039 27.62125778198242 22.99740600585938 L 27.62125778198242 24.24050903320312 Z M 27.62125778198242 16.78189086914062 C 27.62125778198242 17.12374305725098 27.31051826477051 17.4034423828125 26.93072509765625 17.4034423828125 L 14.50115966796875 17.4034423828125 C 14.12136840820312 17.4034423828125 13.81062889099121 17.12374305725098 13.81062889099121 16.78189086914062 L 13.81062889099121 15.53878784179688 C 13.81062889099121 15.19693470001221 14.12136840820312 14.917236328125 14.50115966796875 14.917236328125 L 26.93072509765625 14.917236328125 C 27.31051826477051 14.917236328125 27.62125778198242 15.19693470001221 27.62125778198242 15.53878784179688 L 27.62125778198242 16.78189086914062 Z">
 		</path>
 	</svg>
+	<style>
+		body {font-family: Arial, Helvetica, sans-serif;}
+		
+		
+		.modal {
+		  display: none; 
+		  position: fixed; 
+		  z-index: 1; 
+		  padding-top: 100px; 
+		  left: 0;
+		  top: 0;
+		  width: 30%; 
+		  height: 100%; 
+		  overflow: auto; 
+		  margin-left: 40%;
+		  margin-top: 5%;
+	
+		}
+		
+	
+		.modal-content {
+		  background-color: #fefefe;
+		  margin: auto;
+		  padding: 20px;
+		  border: 1px solid #888;
+		  width: 80%;
+		}
+	
+		.close {
+		  color: #aaaaaa;
+		  float: right;
+		  font-size: 28px;
+		  font-weight: bold;
+		}
+		
+		.close:hover,
+		.close:focus {
+		  color: #000;
+		  text-decoration: none;
+		  cursor: pointer;
+		}
+	
+	
+		</style>
 	<div id="n_New_Supplier">
-		<a href="supplierform.php"><input type="submit" value="+ New Supplier"</a>
-	</div>
+	<button id="myBtn" height="100" width=>+ New Supplier</button>
 
+<div id="myModal" class="modal">
+
+	<!-- Modal content -->
+<div class="modal-content">
+	  <span class="close">&times;</span>
+	  <form name="form1" method="post" action="supplierhandler.php" >
+		<center><h2 style="color: #000;">New Supplier</h2><br><br></center>
+		<label style="color: #000;padding-right: 10px;">Supplier Name:</label>
+		<input type="text" id="fname" name="fname" style="border: #000 2px; border-style:solid; font-size: 20px; border-radius: 8px; padding: 3px;" required="required"><br><br>
+		<label style="color: #000;padding-right: 4px;">Contact Person:</label>
+		<input type="text" id="fname" name="fname" style="border: #000 2px; border-style:solid; font-size: 20px; border-radius: 8px; padding: 3px;" required="required"><br><br>
+		<label style="color: #000;padding-right: 41px;">Contact No:</label>
+		<input type="tel" pattern="[0-9]{11}" id="fname" name="fname" style="border: #000 2px; border-style:solid; font-size: 20px; border-radius: 8px; padding: 3px;" required="required"><br><br>
+		<label style="color: #000;padding-right: 68px;">Address:</label>
+		<input type="text" id="fname" name="fname" style="border: #000 2px; border-style:solid; font-size: 20px; border-radius: 8px; padding: 3px;" required="required"><br><br>
+		<label style="color: #000; padding-right: 97px;">Note:</label>
+		<input type="text" id="fname" name="fname" style="border: #000 2px; border-style:solid; font-size: 20px; border-radius: 8px; padding: 3px;" required="required"><br><br>
+		<center><button type="submit" name="insert">Submit</button></center>
+	  </form> 
+	</div>
+  
+  </div>
+	</div>
+	<script>
+		var modal = document.getElementById("myModal");
+		var btn = document.getElementById("myBtn");
+		var span = document.getElementsByClassName("close")[0]; 
+		btn.onclick = function() {
+		  modal.style.display = "block";
+		}
+		span.onclick = function() {
+		  modal.style.display = "none";
+		}
+		window.onclick = function(event) {
+		  if (event.target == modal) {
+			modal.style.display = "none";
+		  }
+		}
+		</script>
+		<style type="text/css">
+		input::placeholder{
+			font-size: 20px;
+			color: #000;
+			text-transform: capitalize;
+			
+		}
+	</style>
+<style type="text/css">
+		input::placeholder{
+			font-size: 20px;
+			color: #000;
+			text-transform: capitalize;
+		}
+			table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 1347px;
+  background-color: #fff;
+  color: #000;
+  margin-top: -40%;
+}
+
+td, th {
+  border: 1px solid #000;
+  text-align: center;
+  padding: 8px;
+}
+
+	</style>
+
+	<div id="SUPPLIER_bv">
+		<span>SUPPLIER</span>
+		<br><br><br>
+		<input type="text" name="EMAIL" style="background-color: white; font-size: 20px; border-radius: 8px; width: 550px;; height:40px;  text-transform:lowercase; padding-left: 10px; margin-left: 870%; margin-top: 5px;" placeholder="Search Supplier">
+		<br><br><br>
+		<table>
+  <tr>
+  	<th>ID</th>
+    <th>Supplier</th>
+    <th>Contact Person</th>
+    <th>Contact No.</th>
+    <th>Address</th>
+    <th>Note</th>
+    
+  </tr>
+  <?php
+
+include "../../db_conn.php";
+$sql = "SELECT * from supplier";
+$result = $conn->query($sql);
+
+if($result->num_rows > 0){
+	while($row = $result -> fetch_assoc()){
+		echo "<tr><td>" . $row["supply"] . "</td><td>" . $row["contactperson"] . "</td><td>" . $row["contactno"] . "</td><td>" . $row["address"] . "</td><td>" . $row["note"] . "</td></tr>";
+	}
+} else {
+	echo "NO RESULTS";
+}
+
+$conn->close();
+
+
+?>
+</div>
 	<div id="Search_Supplier">
 	
-	</div>
-	<div id="GO">
-
-		<button style="cursor: pointer; background-color: rgba(34,121,220,1);font-size: 20px; padding:10px 10px; border-radius: 10px; margin:-20px; margin-left: 950%;color: #fff;">GO</button>
-
 	</div>
 </div>
 </body>
