@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 03, 2021 at 06:38 PM
--- Server version: 10.4.21-MariaDB
--- PHP Version: 8.0.10
+-- Generation Time: Dec 08, 2021 at 07:54 AM
+-- Server version: 10.1.38-MariaDB
+-- PHP Version: 7.1.27
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -43,7 +44,8 @@ CREATE TABLE `appointment` (
 
 INSERT INTO `appointment` (`app_id`, `app_name`, `app_email`, `app_contact`, `app_date`, `app_purpose`, `app_remarks`) VALUES
 (1, 'Danver Omlang', 'danverjhon@gmail.com', '09560492266', '2021-11-10', 'Appointment test', ''),
-(3, 'Danver Omlang', 'danverjhon@gmail.com', '09560492266', '2021-12-27', 'Appointment test 1', 'ONGOING');
+(3, 'Danver Omlang', 'danverjhon@gmail.com', '09560492266', '2021-12-27', 'Appointment test 1', 'ONGOING'),
+(6, 'Raymart Gahopo', 'raymart.gahopo@gmail.com', '09075647938', '2021-12-01', 'Check Up', 'ONGOING');
 
 -- --------------------------------------------------------
 
@@ -82,13 +84,13 @@ CREATE TABLE `product` (
   `brand` varchar(255) NOT NULL,
   `model` varchar(255) NOT NULL,
   `category` varchar(255) NOT NULL,
-  `dateofarrival` varchar(255) NOT NULL,
-  `expdate` varchar(255) NOT NULL,
+  `dateofarrival` date NOT NULL,
+  `expdate` date NOT NULL,
   `sellingprice` int(255) NOT NULL,
   `origprice` int(255) NOT NULL,
   `profit` int(255) NOT NULL,
   `supplier` varchar(255) NOT NULL,
-  `qty` int(255) NOT NULL
+  `qty` int(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -96,7 +98,8 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`ID`, `brand`, `model`, `category`, `dateofarrival`, `expdate`, `sellingprice`, `origprice`, `profit`, `supplier`, `qty`) VALUES
-(1, 'seesh', 'Seesh3000', 'Frame', '12/04/2021', '12/04/2025', 100, 20, 80, 'Supplier', 3000);
+(3, 'try', 'try', 'Lens', '2021-12-15', '2021-12-15', 1000, 1200, 200, 'Supplier', 2),
+(4, 'Sample', 'sample', 'Lens', '2021-12-15', '2021-12-22', 1000, 1200, 200, 'Supplier', 3);
 
 -- --------------------------------------------------------
 
@@ -154,13 +157,13 @@ ALTER TABLE `supplier`
 -- AUTO_INCREMENT for table `appointment`
 --
 ALTER TABLE `appointment`
-  MODIFY `app_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `app_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `ID` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ID` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `supplier`
