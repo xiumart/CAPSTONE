@@ -1,3 +1,8 @@
+<?php 
+session_start();
+include "../db_conn.php";
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -148,7 +153,13 @@
 		<rect id="Rectangle_5" rx="20" ry="20" x="0" y="0" width="806" height="678">
 		</rect>
 	</svg>
-	
+	<form name="form1" method="post" action="appformhandler.php" >
+        <?php if (isset($_GET['error'])) { ?>
+        <p class="error"><?php echo $_GET['error']; ?></p>
+      <?php } ?>
+          <?php if (isset($_GET['success'])) { ?>
+               <p class="success"><?php echo $_GET['success']; ?></p>
+          <?php } ?>
 	<div id="FULL_NAME">
 		<label>Full Name:</label><br>
 			<input type="text" id="fname" name="fname" placeholder="Fullname"><br>
@@ -161,9 +172,23 @@
 		<label>Contact No.:</label><br>
 		<input type="text" id="contact" name="contact" placeholder="Contact No."><br>
 	</div>
+	<style>
+		input[type=date], select {
+		width: 200%;
+		padding: 19px 10px;
+		margin: 8px 0;
+		display: inline-block;
+		border: 1px solid #ccc;
+		border-radius: 8px;
+		box-sizing: border-box;
+		background-color: transparent;
+		font-size: 20px;
+		color: white;
+	  }
+	  </style>
 	<div id="ddmmyyyy">
-		<label for="datetime-local">Date & Time:</label><br>
-  		<input type="datetime-local" id="birthdaytime" name="birthdaytime">
+		<label for="date">Date:</label><br>
+  		<input type="date" id="date" name="date">
 	</div>
 	<div id="PURPOSE">
 		<label>Purpose:</label><br>
