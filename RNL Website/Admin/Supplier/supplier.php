@@ -134,12 +134,12 @@ $conn = mysqli_connect("localhost", "root", "", "capstone");
 if ($conn->connect_error) {
 die("Connection failed: " . $conn->connect_error);
 }
-$sql  = "SELECT supplier_ID, supply, contactperson, contactno, address, note FROM supplier";
+$sql  = "SELECT id, supply, contactperson, contactno, address, note FROM supplier";
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
 // output data of each row
 while($row = $result->fetch_assoc()) {
-echo "<tr><td>" . $row ["supplier_ID"] . "</td><td>" . $row["supply"]. "</td><td>" . $row["contactperson"] . "</td><td>" . $row["contactno"] . "</td><td>" . $row["address"] . "</td><td>"
+echo "<tr><td>" . $row ["id"] . "</td><td>" . $row["supply"]. "</td><td>" . $row["contactperson"] . "</td><td>" . $row["contactno"] . "</td><td>" . $row["address"] . "</td><td>"
 . $row["note"]. "</td> </tr>";
 
 }

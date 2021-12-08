@@ -297,11 +297,11 @@ td, th {
 		
 	</div>
 	<div></div>
-	<div id="GO">
+	<!-- <div id="GO">
 
 		<button style="cursor: pointer; background-color: rgba(34,121,220,1);font-size: 20px; padding:10px 10px; border-radius: 10px; margin:-20px; margin-left: 950%;color: #fff;">GO</button>
 
-	</div>
+	</div> -->
 	</div>
 </div>
 </body>

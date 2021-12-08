@@ -51,18 +51,6 @@ input[type=text], select {
 	  font-size: x-large;
 	  text-align: center; 
 	}
-	input[type=datetime-local], select {
-	  width: 200%;
-	  padding: 19px 10px;
-	  margin: 8px 0;
-	  display: inline-block;
-	  border: 1px solid #ccc;
-	  border-radius: 8px;
-	  box-sizing: border-box;
-	  background-color: transparent;
-	  font-size: 14px;
-	  color: white;
-	}
 	input[id=contactus] {
 		width: 130%;
 		background-color: rgba(0,194,203,1);

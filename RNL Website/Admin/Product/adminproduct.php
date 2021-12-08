@@ -265,9 +265,9 @@ td, th {
 					<option value="Lens">Lens</option>
 				  </select><br><br>
 				<label style="color: #000;padding-right: 12%;">Date of Arrival:</label>
-				<input type="text" id="fname" name="dateofarrival" style="border: #000 2px; border-style:solid; font-size: 20px; border-radius: 8px; padding: 3px;"><br><br>
+				<input type="date" id="fname" name="dateofarrival" style="border: #000 2px; border-style:solid; font-size: 20px; border-radius: 8px; padding: 3px;"><br><br>
 				<label style="color: #000; padding-right: 10%;">Expiration Date:</label>
-				<input type="text" id="fname" name="expirationdate" style="border: #000 2px; border-style:solid; font-size: 20px; border-radius: 8px; padding: 3px;"><br><br>
+				<input type="date" id="fname" name="expirationdate" style="border: #000 2px; border-style:solid; font-size: 20px; border-radius: 8px; padding: 3px;"><br><br>
 				<label style="color: #000;padding-right:  15%;">Selling Price:</label>
 				<input type="text" id="fname" name="sellingprice" style="border: #000 2px; border-style:solid; font-size: 20px; border-radius: 8px; padding: 3px;"><br><br>
 				<label style="color: #000;padding-right:  14%;">Orignal Price:</label>
@@ -279,7 +279,7 @@ td, th {
 					<option value="Supplier">Supplier 2</option>
 				  </select><br><br>
 				<label style="color: #000;padding-right: 30%;">QTY:</label>
-				<input type="text" id="fname" name="qty" style="border: #000 2px; border-style:solid; font-size: 20px; border-radius: 8px; padding: 3px;"><br><br>
+				<input type="number" id="tentacles" name="qty" min="1" max="10000" placeholder="Quantity" style="background-color: white; font-size: 20px; border:solid black 2px; width: 200px;; height:43px;  text-transform:lowercase; padding-left: 10px; border-radius: 8px; padding: 3px;" ><br><br><br><br>
 				<center><button type="submit">Submit</button></center>
 			
 			  </form> 
@@ -309,9 +309,9 @@ td, th {
 
 	<div id="Search_Product_cf">
 	</div>
-	<div id="GO">
+	<!-- <div id="GO">
 		<button style="cursor: pointer; background-color: rgba(34,121,220,1);font-size: 20px; padding:10px 10px; border-radius: 10px; margin: -10px; margin-left: -156%; color: #fff;">GO</button>
-	</div>
+	</div> -->
 	<a href="../POS/pos.php">
 	<svg class="Rectangle_176">
 		<rect id="Rectangle_176" rx="13" ry="13" x="0" y="0" width="179" height="30">
