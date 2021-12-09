@@ -1,5 +1,4 @@
 <?php 
-session_start();
 include "../db_conn.php";
 ?>
 
@@ -18,11 +17,11 @@ include "../db_conn.php";
 	<img id="background" src="background.png" srcset="background.png 1x, background@2x.png 2x">
 		
 	<div id="WHEN_LIFE_GETS_BLURRY_SEE_YOUR">
-		<span>WHEN LIFE GETS</span><span style="color:rgba(0,194,203,1);"> BLURRY</span><br/><span>SEE YOUR</span><span style="color:rgba(0,194,203,1);"> EYE DOCTOR</span>
+		<b><span>WHEN LIFE GETS</span><span style="color:rgba(0,194,203,1);"> BLURRY</span><br/><span>SEE YOUR</span><span style="color:rgba(0,194,203,1);"> EYE DOCTOR</span><b>
 	</div>
 	<!--Featured-->
 	<div id="FEATURED_PRODUCT">
-		<span>FEATURED PRODUCT</span>
+		<b><span>FEATURED PRODUCT</span></b>
 		<div class="slide hi-slide">
 		  <div class="hi-prev "></div>
 			<div class="hi-next "></div>
@@ -50,7 +49,7 @@ include "../db_conn.php";
 	
 	<!--Latest-->
 	<div id="LATEST_PRODUCT">
-		<span>LATEST PRODUCT</span>
+		<b><span>LATEST PRODUCT</span></b>
 		<div class="slide hi-slide">
 			<div class="hi-prev "></div>
 			  <div class="hi-next "></div>
@@ -80,7 +79,7 @@ include "../db_conn.php";
 
 	
 	<div id="WE_OFFERS">
-		<span>WE OFFERS</span>
+		<b><span>WE OFFERS</span></b>
 	</div>
 	<svg class="Path_3" viewBox="0 0 300 10">
 		<path id="Path_3" d="M 0 0 L 300 0">
@@ -143,7 +142,7 @@ include "../db_conn.php";
 		
 	
 	<div id="MAKE_AN_APPOINTMENT">
-		<span>MAKE AN APPOINTMENT</span>
+		<b><span>MAKE AN APPOINTMENT</span></b>
 	</div>
 	<svg class="Path_4" viewBox="0 0 300 10">
 		<path id="Path_4" d="M 0 0 L 300 0">
@@ -162,11 +161,11 @@ include "../db_conn.php";
           <?php } ?>
 	<div id="FULL_NAME">
 		<label>Full Name:</label><br>
-			<input type="text" id="fname" name="fname" placeholder="Fullname" required="required"><br>
+			<input type="text" id="fname" name="fname" placeholder="Fullname"><br>
 	</div>
 	<div id="EMAIL">
 		<label>Email:</label><br>
-		<input type="email" id="email" name="email" placeholder="Email" required="required"><br>
+		<input type="email" id="email" name="email" placeholder="Email"><br>
 	</div>
 	<style>
 	input[type=tel], select {
@@ -184,7 +183,7 @@ include "../db_conn.php";
 				  </style>
 	<div id="CONTACT_">
 		<label>Contact No.:</label><br>
-		<input type="tel" pattern="[0-9]{11}" id="contact" name="contact" placeholder="Contact No." required="required"><br>
+		<input type="tel" pattern="[0-9]{11}" id="contact" name="contact" placeholder="Contact No."><br>
 	</div>
 	<style>
 		input[type=date], select {
@@ -202,11 +201,11 @@ include "../db_conn.php";
 	  </style>
 	<div id="ddmmyyyy">
 		<label for="date">Date:</label><br>
-  		<input type="date" id="date" name="date" required="required">
+  		<input type="date" id="date" name="date">
 	</div>
 	<div id="PURPOSE">
 		<label>Purpose:</label><br>
-		<input type="text" id="purpose" name="purpose" placeholder="Purpose" required="required"><br>
+		<input type="text" id="purpose" name="purpose" placeholder="Purpose"><br>
 	</div>
 	<div id="Set_Appointment">
 		<input type="submit" value="Set Appointment">
@@ -225,7 +224,7 @@ include "../db_conn.php";
 		</rect>
 	</svg>
 	<div id="TESTIMONIALS">
-		<span>TESTIMONIALS</span>
+		<b><span>TESTIMONIALS</span></b>
 	</div>
 	<svg class="Path_5" viewBox="0 0 300 10">
 		<path id="Path_5" d="M 0 0 L 300 0">
@@ -337,7 +336,7 @@ include "../db_conn.php";
 		<input type="button" value="Send" id="feedback_s">
 	</div>
 	<svg class="Rectangle_1">
-		<rect id="Rectangle_1" rx="0" ry="0" x="0" y="0" width="1920" height="168">
+		<rect id="Rectangle_1" rx="0" ry="0" x="0" y="0" width="1920" height="100">
 		</rect>
 	</svg>
 	<a href="../Home/home.php">
@@ -378,11 +377,48 @@ include "../db_conn.php";
 		<span>APPOINTMENT</span>
 	</div>
 	</a>
-	<a href="../Login/login.php">`
-	<div id="LOGIN">
-		<span>LOGIN</span>
-	</div>
-	</a>
 </div>
+
+<style>	
+#myBtn {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  z-index: 99;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  background-color: teal;
+  color: white;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 4px;
+}
+
+#myBtn:hover {
+  background-color: #555;
+}
+</style>
+<button onclick="topFunction()" id="myBtn" title="Go to top">Back to top</button>
+<script>
+var mybutton = document.getElementById("myBtn");
+
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+
+function topFunction() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
+</script>
+
 </body>
 </html>
