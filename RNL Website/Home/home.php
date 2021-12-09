@@ -13,6 +13,7 @@ include "../db_conn.php";
 <script id="applicationScript" type="text/javascript" src="script/script.js"></script>
 </head>
 <body>
+	
 <div id="home">
 	<img id="background" src="background.png" srcset="background.png 1x, background@2x.png 2x">
 		
@@ -340,7 +341,7 @@ include "../db_conn.php";
 		</rect>
 	</svg>
 	<a href="../Home/home.php">
-	<img id="Untitled_design_12" src="Untitled_design_12.png" srcset="Untitled_design_12.png 1x, Untitled_design_12@2x.png 2x">
+	<img id="Untitled_design_12" src="logo.png">
 		
 	</a>
 	<a href="../Home/home.php">
@@ -349,7 +350,8 @@ include "../db_conn.php";
 	</div>
 	</a>
 
-	
+
+
 	<a href="../About/about.php">
 	<div id="ABOUT">	
 		<span>ABOUT</span>
@@ -375,6 +377,26 @@ include "../db_conn.php";
 		<span>APPOINTMENT</span>
 	</div>
 	</a>
+
+<button class="btn btn-light" onclick="swapStyle('css/light.css')" id="wow"><img src="Untitled design(9).png" alt="" style="width:50px; background:rgba(18,18,18,1);"></button>
+		<button class="btn btn-dark" onclick="swapStyle('css/style.css')" id="wew"><img src="Untitled design(14).png" alt="" style="width:50px;"></button>
+		<script type="text/javascript">
+
+		var setTheme = localStorage.getItem('theme')
+		console.log('theme:', setTheme)
+
+		if (setTheme == null){
+			swapStyle('css/style.css')
+		}else{
+			swapStyle(setTheme)
+		}
+
+		function swapStyle(sheet){
+			document.getElementById('applicationStylesheet').href = sheet
+			localStorage.setItem('theme', sheet)
+		}
+		
+	</script>
 
 	  
 

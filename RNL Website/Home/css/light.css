@@ -172,7 +172,7 @@ body{
 	position: absolute;
 	width: 1920px;
 	height: 5904px;
-	background-color: rgba(33,33,33,1);
+	background-color: #d7d9db;
 	overflow: hidden;
 	--web-view-name: home;
 	--web-view-id: home;
@@ -194,7 +194,7 @@ body{
 
 }
 #background {
-	mix-blend-mode: soft-light;
+
 	position: absolute;
 	width: 100%;
 	height: 924px;
@@ -214,7 +214,7 @@ body{
 	font-style: normal;
 	font-weight: normal;
 	font-size: 53px;
-	color: rgba(255,255,255,1);
+	color: rgb(0, 0, 0);
 }
 #FEATURED_PRODUCT {
 	left: 759px;
@@ -228,7 +228,7 @@ body{
 	font-style: normal;
 	font-weight: normal;
 	font-size: 37px;
-	color: rgba(255,255,255,1);
+	color: rgb(0, 0, 0);
 }
 #Path_1 {
 	fill: rgba(0,0,0,0);
@@ -261,7 +261,7 @@ body{
 	font-style: normal;
 	font-weight: normal;
 	font-size: 37px;
-	color: rgba(255,255,255,1);
+	color: rgb(0, 0, 0)
 }
 #Path_2 {
 	fill: rgba(0,0,0,0);
@@ -295,7 +295,7 @@ body{
 	font-style: normal;
 	font-weight: normal;
 	font-size: 37px;
-	color: rgba(255,255,255,1);
+	color: rgb(0, 0, 0);
 }
 #Path_3 {
 	fill: rgba(0,0,0,0);
@@ -327,7 +327,7 @@ body{
 	font-style: normal;
 	font-weight: normal;
 	font-size: 35px;
-	color: rgba(255,255,255,1);
+	color: rgb(0, 0, 0);
 }
 #COMPLETE_EYEGLASS__FRAME__LENS {
 	left: 106px;
@@ -341,7 +341,7 @@ body{
 	font-style: normal;
 	font-weight: normal;
 	font-size: 44px;
-	color: rgba(255,255,255,1);
+	color: rgb(0, 0, 0);
 }
 #FOR_AS_LOW_AS {
 	left: 106px;
@@ -355,7 +355,7 @@ body{
 	font-style: normal;
 	font-weight: normal;
 	font-size: 32px;
-	color: rgba(255,255,255,1);
+	color: rgb(0, 0, 0);
 }
 #n_99 {
 	left: 798px;
@@ -369,7 +369,7 @@ body{
 	font-style: normal;
 	font-weight: normal;
 	font-size: 35px;
-	color: rgba(255,255,255,1);
+	color: rgb(0, 0, 0);
 }
 #Double_Vision_Lens {
 	left: 112px;
@@ -383,7 +383,7 @@ body{
 	font-style: normal;
 	font-weight: normal;
 	font-size: 35px;
-	color: rgba(255,255,255,1);
+	color: rgb(0, 0, 0);
 }
 #n_99_dv {
 	left: 798px;
@@ -397,7 +397,7 @@ body{
 	font-style: normal;
 	font-weight: normal;
 	font-size: 35px;
-	color: rgba(255,255,255,1);
+	color: rgb(0, 0, 0);
 }
 #Multicoated_Lens {
 	left: 112px;
@@ -411,7 +411,7 @@ body{
 	font-style: normal;
 	font-weight: normal;
 	font-size: 35px;
-	color: rgba(255,255,255,1);
+	color: rgb(0, 0, 0);
 }
 #n_99_dx {
 	left: 798px;
@@ -425,7 +425,7 @@ body{
 	font-style: normal;
 	font-weight: normal;
 	font-size: 35px;
-	color: rgba(255,255,255,1);
+	color: rgb(0, 0, 0);
 }
 #Blue_Blocker_Lens {
 	left: 112px;
@@ -439,7 +439,7 @@ body{
 	font-style: normal;
 	font-weight: normal;
 	font-size: 35px;
-	color: rgba(255,255,255,1);
+	color: rgb(0, 0, 0);
 }
 #n_799 {
 	left: 779px;
@@ -453,7 +453,7 @@ body{
 	font-style: normal;
 	font-weight: normal;
 	font-size: 35px;
-	color: rgba(255,255,255,1);
+	color: rgb(0, 0, 0);
 }
 #Photochromic__Transition_Lens {
 	left: 112px;
@@ -467,7 +467,7 @@ body{
 	font-style: normal;
 	font-weight: normal;
 	font-size: 35px;
-	color: rgba(255,255,255,1);
+	color: rgb(0, 0, 0);
 }
 #n_999 {
 	left: 779px;
@@ -481,7 +481,7 @@ body{
 	font-style: normal;
 	font-weight: normal;
 	font-size: 35px;
-	color: rgba(255,255,255,1);
+	color: rgb(0, 0, 0);
 }
 #Progressive_Lens {
 	left: 112px;
@@ -495,7 +495,7 @@ body{
 	font-style: normal;
 	font-weight: normal;
 	font-size: 35px;
-	color: rgba(255,255,255,1);
+	color: rgb(0, 0, 0);
 }
 #n_999_d {
 	left: 779px;
@@ -509,7 +509,7 @@ body{
 	font-style: normal;
 	font-weight: normal;
 	font-size: 35px;
-	color: rgba(255,255,255,1);
+	color: rgb(0, 0, 0);
 }
 #Line_4 {
 	fill: transparent;
@@ -531,7 +531,7 @@ body{
 }
 #Line_5 {
 	fill: transparent;
-	stroke: rgba(112,112,112,1);
+	stroke: rgb(0, 0, 0);
 	stroke-width: 1px;
 	stroke-linejoin: miter;
 	stroke-linecap: butt;
@@ -559,7 +559,7 @@ body{
 	font-style: normal;
 	font-weight: bold;
 	font-size: 29px;
-	color: rgba(255,255,255,1);
+	color: rgb(0, 0, 0);
 }
 #Untitled_design_7 {
 	position: absolute;
@@ -620,7 +620,7 @@ body{
 	top: 0px;
 }
 #Ellipse_1 {
-	fill: rgba(255,255,255,1);
+	fill: rgb(0, 0, 0);
 }
 .Ellipse_1 {
 	position: absolute;
@@ -631,7 +631,7 @@ body{
 	top: 1744px;
 }
 #Ellipse_2 {
-	fill: rgba(255,255,255,1);
+	fill: rgb(0, 0, 0);
 }
 .Ellipse_2 {
 	position: absolute;
@@ -653,7 +653,7 @@ body{
 	top: 1744px;
 }
 #Ellipse_4 {
-	fill: rgba(255,255,255,1);
+	fill: rgb(0, 0, 0);
 }
 .Ellipse_4 {
 	position: absolute;
@@ -664,7 +664,7 @@ body{
 	top: 2502px;
 }
 #Ellipse_5 {
-	fill: rgba(255,255,255,1);
+	fill: rgb(255, 255, 255);
 }
 .Ellipse_5 {
 	position: absolute;
@@ -698,7 +698,7 @@ body{
 	font-style: normal;
 	font-weight: normal;
 	font-size: 37px;
-	color: rgba(255,255,255,1);
+	color: rgb(0, 0, 0);
 }
 #Path_4 {
 	fill: rgba(0,0,0,0);
@@ -719,7 +719,7 @@ body{
 	transform: matrix(1,0,0,1,0,0);
 }
 #Rectangle_5 {
-	fill: rgba(25,25,25,1);
+	fill: rgb(255, 255, 255);
 	stroke: rgba(112,112,112,1);
 	stroke-width: 1px;
 	stroke-linejoin: miter;
@@ -1108,7 +1108,7 @@ body{
 	color: rgba(0,194,203,1);
 }
 #Rectangle_65 {
-	fill: rgba(25,25,25,1);
+	fill: rgb(255, 255, 255);
 }
 .Rectangle_65 {
 	position: absolute;
@@ -1130,7 +1130,7 @@ body{
 	font-style: normal;
 	font-weight: normal;
 	font-size: 37px;
-	color: rgba(255,255,255,1);
+	color: rgb(0, 0, 0);
 }
 #Path_5 {
 	fill: rgba(0,0,0,0);
@@ -1165,7 +1165,7 @@ body{
 	color: rgba(0,194,203,1);
 }
 #Rectangle_33 {
-	fill: rgba(33,33,33,1);
+	fill: #d7d9db;
 	stroke: rgba(112,112,112,1);
 	stroke-width: 1px;
 	stroke-linejoin: miter;
@@ -1207,7 +1207,7 @@ body{
 	font-style: normal;
 	font-weight: normal;
 	font-size: 28px;
-	color: rgba(255,255,255,1);
+	color: rgb(0, 0, 0);
 }
 #Super_Saya_ {
 	left: 308px;
@@ -1221,7 +1221,7 @@ body{
 	font-style: normal;
 	font-weight: bold;
 	font-size: 28px;
-	color: rgba(255,255,255,1);
+	color: rgb(0, 0, 0);
 }
 #n__Marliardo_Umbao {
 	left: 356px;
@@ -1235,10 +1235,10 @@ body{
 	font-style: normal;
 	font-weight: normal;
 	font-size: 28px;
-	color: rgba(255,255,255,1);
+	color: rgb(0, 0, 0);
 }
 #Rectangle_34 {
-	fill: rgba(33,33,33,1);
+	fill: #d7d9db;
 	stroke: rgba(112,112,112,1);
 	stroke-width: 1px;
 	stroke-linejoin: miter;
@@ -1280,7 +1280,7 @@ body{
 	font-style: normal;
 	font-weight: normal;
 	font-size: 28px;
-	color: rgba(255,255,255,1);
+	color: rgb(0, 0, 0);
 }
 #Super_Saya__fl {
 	left: 883px;
@@ -1294,7 +1294,7 @@ body{
 	font-style: normal;
 	font-weight: bold;
 	font-size: 28px;
-	color: rgba(255,255,255,1);
+	color: rgb(0, 0, 0);
 }
 #n__Marliardo_Umbao_fm {
 	left: 931px;
@@ -1308,10 +1308,10 @@ body{
 	font-style: normal;
 	font-weight: normal;
 	font-size: 28px;
-	color: rgba(255,255,255,1);
+	color: rgb(0, 0, 0);
 }
 #Rectangle_35 {
-	fill: rgba(33,33,33,1);
+	fill: #d7d9db;
 	stroke: rgba(112,112,112,1);
 	stroke-width: 1px;
 	stroke-linejoin: miter;
@@ -1353,7 +1353,7 @@ body{
 	font-style: normal;
 	font-weight: normal;
 	font-size: 28px;
-	color: rgba(255,255,255,1);
+	color: rgb(0, 0, 0);
 }
 #Super_Saya__fq {
 	left: 1458px;
@@ -1367,7 +1367,7 @@ body{
 	font-style: normal;
 	font-weight: bold;
 	font-size: 28px;
-	color: rgba(255,255,255,1);
+	color: rgb(0, 0, 0);
 }
 #n__Marliardo_Umbao_fr {
 	left: 1506px;
@@ -1381,7 +1381,7 @@ body{
 	font-style: normal;
 	font-weight: normal;
 	font-size: 28px;
-	color: rgba(255,255,255,1);
+	color: rgb(0, 0, 0);
 }
 #Ellipse_1_fs {
 	fill: rgba(255,255,255,1);
@@ -1446,7 +1446,7 @@ body{
 	font-style: normal;
 	font-weight: bold;
 	font-size: 25px;
-	color: rgba(255,255,255,1);
+	color: rgb(0, 0, 0);
 }
 #Line_9 {
 	fill: transparent;
@@ -1478,7 +1478,7 @@ body{
 	font-style: normal;
 	font-weight: normal;
 	font-size: 20px;
-	color: rgba(255,255,255,1);
+	color: rgb(0, 0, 0);
 }
 #n_09123456789 {
 	left: 166.5px;
@@ -1492,7 +1492,7 @@ body{
 	font-style: normal;
 	font-weight: normal;
 	font-size: 15px;
-	color: rgba(255,255,255,1);
+	color: rgb(0, 0, 0);
 }
 #n_RNLVisionCaregmailcom {
 	left: 117.5px;
@@ -1506,7 +1506,7 @@ body{
 	font-style: normal;
 	font-weight: normal;
 	font-size: 15px;
-	color: rgba(255,255,255,1);
+	color: rgb(0, 0, 0);
 }
 #Our_Social_Media___f {
 	left: 671.5px;
@@ -1558,7 +1558,7 @@ body{
 	font-style: normal;
 	font-weight: bold;
 	font-size: 25px;
-	color: rgba(255,255,255,1);
+	color: rgb(0, 0, 0);
 }
 #Feedback_Us__ {
 	left: 1516.5px;
@@ -1572,7 +1572,7 @@ body{
 	font-style: normal;
 	font-weight: bold;
 	font-size: 25px;
-	color: rgba(255,255,255,1);
+	color: rgb(0, 0, 0);
 }
 #Rectangle_36 {
 	fill: rgba(25,25,25,1);
@@ -1592,7 +1592,7 @@ body{
 	top: 5760px;
 }
 #Describe_your_issue_or_idea {
-	opacity: 0.5;
+
 	left: 1399.5px;
 	top: 5775px;
 	position: absolute;
@@ -1604,7 +1604,7 @@ body{
 	font-style: normal;
 	font-weight: normal;
 	font-size: 22px;
-	color: rgba(255,255,255,1);
+	color: rgb(0, 0, 0);
 }
 
 #Send {
@@ -1623,7 +1623,7 @@ body{
 	top: 5765px;
 }
 #Rectangle_1 {
-	fill: rgba(18,18,18,1);
+	fill: rgb(248, 248, 248);
 }
 .Rectangle_1 {
 	position: absolute;
@@ -1653,7 +1653,7 @@ body{
 	font-style: normal;
 	font-weight: bold;
 	font-size: 35px;
-	color: rgba(255,255,255,1);
+	color: rgb(53, 53, 53);
 }
 #Icon_ionic-md-eye {
 	fill: rgba(255,255,255,1);
@@ -1679,7 +1679,7 @@ body{
 	font-style: normal;
 	font-weight: normal;
 	font-size: 26px;
-	color: rgba(255,255,255,1);
+	color: rgba(25,25,25,1);
 }
 #HOME_gf {
 	left: 900px;
@@ -1707,7 +1707,7 @@ body{
 	font-style: normal;
 	font-weight: normal;
 	font-size: 26px;
-	color: rgba(255,255,255,1);
+	color: rgba(25,25,25,1);
 }
 #PRODUCT {
 	left: 1355px;
@@ -1721,7 +1721,7 @@ body{
 	font-style: normal;
 	font-weight: normal;
 	font-size: 26px;
-	color: rgba(255,255,255,1);
+	color: rgba(25,25,25,1);
 }
 #APPOINTMENT {
 	left: 1518px;
@@ -1735,19 +1735,19 @@ body{
 	font-style: normal;
 	font-weight: normal;
 	font-size: 26px;
-	color: rgba(255,255,255,1);
+	color: rgba(25,25,25,1);
 }
 
+
 #wow {
-	overflow: visible;
-	position: relative;
-	left: 1700px;
-	font-size: 27px;
+	border: 0px;
+	visibility: hidden;
 	
 }
 
 #wew {
-	border: 0px;
-	visibility: hidden;
+	overflow: visible;
+	position: relative;
+	left: 1700px;
+	font-size: 27px;
 }
-
