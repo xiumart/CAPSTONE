@@ -1,8 +1,8 @@
  <?php   
  include "config.php";  
- if (isset($_GET['id'])) {  
-      $id=$_GET['id'];  
-      $delete=mysqli_query($con,"delete from product where id='$id'");  
+ if (isset($_GET['pro_id'])) {  
+      $id=$_GET['pro_id'];  
+      $delete=mysqli_query($con,"delete from product where pro_id='$pro_id'");  
       if ($delete) {  
            header("location:adminproduct.php");  
            die();  
@@ -82,7 +82,7 @@
      while($row = $result -> fetch_assoc()){
           echo "
           <tr>
-          <td>" . $row["ID"] . "</td>   
+          <td>" . $row["pro_id"] . "</td>   
           <td>" . $row["brand"] . "</td>
           <td>" . $row["model"] . "</td>
           <td>" . $row["category"] . "</td>
@@ -92,9 +92,9 @@
           <td>" . $row["origprice"] . "</td>
           <td>" . $row["profit"] . "</td>
           <td>" . $row["supplier"] . "</td>
-          <td>" . $row["qty"] . "</td>
+          <td>" . $row["qty"] . "</td>  
           <td>
-               <a href='?id=".$row["ID"]."'class='opt'>Delete</a>
+               <a href='?pro_id=".$row["pro_id"]."'class='opt'>Delete</a>
                <a href='' class='opt1'>Edit/Update</a>
           </td>
           </tr>";

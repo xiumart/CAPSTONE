@@ -39,9 +39,9 @@ if (isset($_POST['btnsubmit'])) {
 
  <?php   
  include "config.php";  
- if (isset($_GET['id'])) {  
-      $id=$_GET['id'];  
-      $delete=mysqli_query($con,"delete from product where id='$id'");  
+ if (isset($_GET['pro_id'])) {  
+      $id=$_GET['pro_id'];  
+      $delete=mysqli_query($con,"delete from product where pro_id='$pro_id'");  
       if ($delete) {  
            header("location:adminproduct.php");  
            die();  
@@ -220,7 +220,7 @@ $search=$_POST['searchproduct'];
   		<td>" . $row["supplier"] . "</td>
   		<td>" . $row["qty"] ."</td>
   		<td>
-  		<a href='?id=".$row["ID"]."'class='opt'>Delete</a>
+  		<a href='?pro_id=".$row["pro_id"]."' class='opt'>Delete</a>
   		<a href='' class='opt1'>Edit/Update</a>
   		 </td>
   		 </tr>
@@ -234,10 +234,6 @@ $search=$_POST['searchproduct'];
 
 
   ?>
-<<<<<<< Updated upstream
-=======
-  <td> <button type="submit" style="cursor: pointer; background-color: #abd7ab; padding: 10px; border-radius: 10px; width: 120px;">UPDATE</button>&nbsp&nbsp&nbsp&nbsp<button type="submit" style="cursor: pointer; background-color: #8cd3ff; padding: 10px; border-radius: 10px; width: 120px;">VIEW</button></td>
->>>>>>> Stashed changes
 </table>
 	</div>
 	<svg class="Line_17" viewBox="0 0 1376 1">
