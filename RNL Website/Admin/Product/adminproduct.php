@@ -8,23 +8,23 @@ session_start();
 	if($_SERVER['REQUEST_METHOD'] == "POST")
 	{
 		//something was posted
-		$brandname = $_POST['bname'];
+		$brand = $_POST['bname'];
 		$model = $_POST['model'];
 		$category = $_POST['category'];
 		$dateofarrival = $_POST['dateofarrival'];
-		$expirationdate = $_POST['expirationdate'];
+		$expdate = $_POST['expirationdate'];
 		$sellingprice = $_POST['sellingprice'];
-		$originalprice = $_POST['originalprice'];
-		$profit = $originalprice - $sellingprice;
+		$origprice = $_POST['originalprice'];
+		$profit = $origprice - $sellingprice;
 		$supplier = $_POST['supplier'];
 		$qty = $_POST['qty'];
 
-		if(!empty($brandname) && !empty($model) && !empty($category) && !empty($dateofarrival) && !empty($expirationdate) && !empty($sellingprice) && !empty($originalprice) && !empty($profit) && !empty($supplier) && !empty($qty) && !is_numeric($brandname))
+		if(!empty($brand) && !empty($model) && !empty($category) && !empty($dateofarrival) && !empty($expdate) && !empty($sellingprice) && !empty($origprice) && !empty($profit) && !empty($supplier) && !empty($qty))
 		{
 
 			//save to database
 			//$user_id = random_num(20);
-			$query = "insert into product (brand,model,category,dateofarrival,expdate,sellingprice,origprice,profit,supplier,qty) values ('$brandname','$model','$category','$dateofarrival','$expirationdate','$sellingprice','$originalprice','$profit','$supplier','$qty')";
+			$query = "insert into product (brand,model,category,dateofarrival,expdate,sellingprice,origprice,profit,supplier,qty) values ('$brand','$model','$category','$dateofarrival','$expdate','$sellingprice','$origprice','$profit','$supplier','$qty')";
 
 			mysqli_query($con, $query);
 
@@ -162,6 +162,7 @@ td, th {
     <th>Profit</th>
     <th>Supplier</th>
     <th>Qty</th>
+	<th>Action</th>
   </tr>
 
   <?php
@@ -173,7 +174,9 @@ td, th {
 
   if($result->num_rows > 0){
   	while($row = $result -> fetch_assoc()){
-  		echo "<tr><td>" . $row["brand"] . "</td><td>" . $row["model"] . "</td><td>" . $row["category"] . "</td><td>" . $row["dateofarrival"] . "</td><td>" . $row["expdate"] . "</td><td>" . $row["sellingprice"] . "</td><td>" . $row["origprice"] . "</td><td>" . $row["profit"] . "</td><td>" . $row["supplier"] . "</td><td>" . $row["qty"] . "</td></tr>";
+  		echo "<tr><td>" . $row["brand"] . "</td><td>" . $row["model"] . "</td><td>" . $row["category"] . "</td><td>" . $row["dateofarrival"] . "</td><td>" 
+		. $row["expdate"] . "</td><td>" . $row["sellingprice"] . "</td><td>" . $row["origprice"] . "</td><td>" . $row["profit"] . "</td><td>" 
+		. $row["supplier"] . "</td><td>" . $row["qty"] . "</td><tr>";
   	}
   } else {
   	echo "NO RESULTS";
@@ -183,19 +186,9 @@ td, th {
 
 
   ?>
-   <tr>
-    <th>&nbsp</th>
-    <th>&nbsp</th>
-    <th>&nbsp</th>
-    <th>&nbsp</th>
-    <th>&nbsp</th>
-    <th>&nbsp</th>
-    <th>&nbsp</th>
-    <th>&nbsp</th>
-    <th>&nbsp</th>
-</tr>
 </table>
 	</div>
+	
 	<svg class="Line_17" viewBox="0 0 1376 1">
 		<path id="Line_17" d="M 0 0 L 1376 0">
 		</path>

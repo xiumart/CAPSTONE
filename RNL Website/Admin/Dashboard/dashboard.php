@@ -197,12 +197,13 @@ td, th {
                     
 					<table>
 						<tr>
-						  <th>Appointment ID</th>
+						  <th>#</th>
 						  <th>NAME</th>
 						  <th>EMAIL</th>
 						  <th>CONTACT NO.</th>
 						  <th>DATE & TIME</th>
 						  <th>PURPOSE</th>
+						  <th>REMARKS</th>
 						</tr>
 					  <?php
 $conn = mysqli_connect("localhost", "root", "", "capstone");
@@ -216,7 +217,7 @@ if ($result->num_rows > 0) {
 // output data of each row
 while($row = $result->fetch_assoc()) {
 echo "<tr><td>" . $row["app_id"]. "</td><td>" . $row["app_name"]. "</td><td>" . $row["app_email"] . "</td><td>" . $row["app_contact"] . "</td><td>" . $row["app_date"] . "</td><td>"
-. $row["app_purpose"]. "</td><td>";
+. $row["app_purpose"]. "</td><td>" . $row["app_remarks"]. "</td></tr>";
 }
 echo "</table>";
 } else { echo "0 results"; }

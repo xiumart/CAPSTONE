@@ -131,14 +131,28 @@ td, th {
     <th>Contact No.</th>
     <th>Action</th>
   </tr>
-   <tr>
-    <td>P-01</td>
-    <td>Umbao</td>
-    <td>Marliardo</td>
-    <td>&nbsp</td>
-    <td>18</td>
-    <td>09123456789</td>
-    <td><button style="cursor: pointer; background-color: #abd7ab; padding: 10px; border-radius: 10px;">UPDATE</button>&nbsp&nbsp&nbsp&nbsp<button style="cursor: pointer; background-color: #8cd3ff; padding: 10px; border-radius: 10px;">VIEW</button></td>
+   
+  <?php
+
+include "../../db_conn.php";
+$sql = "SELECT * from patients";
+$result = $conn->query($sql);
+
+if($result->num_rows > 0){
+	while($row = $result -> fetch_assoc()){
+		echo "<tr><td>" . $row["pat_id"] . "</td><td>" . $row["pat_last"] . "</td><td>" . $row["pat_first"] . "</td><td>" . $row["pat_middle"] . "</td><td>" . $row["pat_age"] . "</td><td>" . $row["pat_contact"] . "</td></tr>";
+	}
+} else {
+	echo "NO RESULTS";
+}
+
+$conn->close();
+
+
+?>
+<tr>
+
+    <td><a href="../Update/update.php"><button style="cursor: pointer; background-color: #abd7ab; padding: 10px; border-radius: 10px;">UPDATE</button></a>&nbsp&nbsp&nbsp&nbsp<button style="cursor: pointer; background-color: #8cd3ff; padding: 10px; border-radius: 10px;">VIEW</button></td>
   </tr>
 </table>
 		

@@ -134,7 +134,7 @@
 		<input type="button" value="Send" id="feedback_s">
 	</div>
 	<svg class="Rectangle_1">
-		<rect id="Rectangle_1" rx="0" ry="0" x="0" y="0" width="1920" height="168">
+		<rect id="Rectangle_1" rx="0" ry="0" x="0" y="0" width="1920" height="100">
 		</rect>
 	</svg>
 	<a href="../Home/home.php">

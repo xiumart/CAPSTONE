@@ -10,6 +10,30 @@ input[type=text], select {
 	font-size: large;
 	color: white;
   }
+  input[type=tel], select {
+	width: 200%;
+	padding: 19px 10px;
+	margin: 8px 0;
+	display: inline-block;
+	border: 1px solid white;
+	border-radius: 8px;
+	box-sizing: border-box;
+	background-color: transparent;
+	font-size: 20px;
+	color: white;
+  }
+  input[type=date], select {
+	width: 200%;
+	padding: 19px 10px;
+	margin: 8px 0;
+	display: inline-block;
+	border: 1px solid white;
+	border-radius: 8px;
+	box-sizing: border-box;
+	background-color: transparent;
+	font-size: 20px;
+	color: white;
+  }
   input[type=email], select {
 	  width: 450%;
 	  padding: 19px 10px;

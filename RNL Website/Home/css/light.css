@@ -3,24 +3,48 @@ input[type=text], select {
 	padding: 19px 10px;
 	margin: 8px 0;
 	display: inline-block;
-	border: 1px solid #ccc;
+	border: 1px solid black;
 	border-radius: 8px;
 	box-sizing: border-box;
 	background-color: transparent;
 	font-size: large;
-	color: white;
+	color: black;
+  }
+  input[type=tel], select {
+	width: 200%;
+	padding: 19px 10px;
+	margin: 8px 0;
+	display: inline-block;
+	border: 1px solid black;
+	border-radius: 8px;
+	box-sizing: border-box;
+	background-color: transparent;
+	font-size: 20px;
+	color: black;
+  }
+  input[type=date], select {
+	width: 200%;
+	padding: 19px 10px;
+	margin: 8px 0;
+	display: inline-block;
+	border: 1px solid black;
+	border-radius: 8px;
+	box-sizing: border-box;
+	background-color: transparent;
+	font-size: 20px;
+	color: black;
   }
   input[type=email], select {
 	  width: 450%;
 	  padding: 19px 10px;
 	  margin: 8px 0;
 	  display: inline-block;
-	  border: 1px solid #ccc;
+	  border: 1px solid black;
 	  border-radius: 8px;
 	  box-sizing: border-box;
 	  background-color: transparent;
 	  font-size: large;
-	  color: white;
+	  color: black;
 	}
   input[type=submit] {
 	  width: 130%;
@@ -72,12 +96,12 @@ input[type=text], select {
 		margin: 8px 0;
 		margin-top: -100px;
 		display: inline-block;
-		border: 1px solid #ccc;
+		border: 1px solid black;
 		border-radius: 8px;
 		box-sizing: border-box;
 		background-color: transparent;
 		font-size: large;
-		color: white;
+		color: black;
 	  }
 	
 body{    
@@ -855,7 +879,6 @@ body{
 	top: 4254px;
 }
 #FULL_NAME {
-	opacity: 0.5;
 	left: 1026.5px;
 	top: 4019px;
 	position: absolute;
@@ -867,10 +890,9 @@ body{
 	font-style: normal;
 	font-weight: normal;
 	font-size: 21px;
-	color: rgba(255,255,255,1);
+	color: black;
 }
 #EMAIL {
-	opacity: 0.5;
 	left: 1419.5px;
 	top: 4019px;
 	position: absolute;
@@ -882,10 +904,9 @@ body{
 	font-style: normal;
 	font-weight: normal;
 	font-size: 21px;
-	color: rgba(255,255,255,1);
+	color: black;
 }
 #CONTACT_ {
-	opacity: 0.5;
 	left: 1026.5px;
 	top: 4150px;
 	position: absolute;
@@ -897,10 +918,10 @@ body{
 	font-style: normal;
 	font-weight: normal;
 	font-size: 21px;
-	color: rgba(255,255,255,1);
+	color: black;
 }
 #ddmmyyyy {
-	opacity: 0.5;
+
 	left: 1419.5px;
 	top: 4150px;
 	position: absolute;
@@ -912,10 +933,9 @@ body{
 	font-style: normal;
 	font-weight: normal;
 	font-size: 21px;
-	color: rgba(255,255,255,1);
+	color: black;
 }
 #PURPOSE {
-	opacity: 0.5;
 	left: 1026.5px;
 	top: 4281px;
 	position: absolute;
@@ -927,7 +947,7 @@ body{
 	font-style: normal;
 	font-weight: normal;
 	font-size: 21px;
-	color: rgba(255,255,255,1);
+	color: black;
 }
 #TIME {
 	opacity: 0.5;
@@ -1091,7 +1111,7 @@ body{
 	font-style: normal;
 	font-weight: normal;
 	font-size: 35px;
-	color: rgba(255,255,255,1);
+	color: rgb(0, 0, 0);
 }
 #ENJOY_OUR_SERVICES {
 	left: 299px;

@@ -168,40 +168,40 @@ include "../db_conn.php";
 		<label>Email:</label><br>
 		<input type="email" id="email" name="email" placeholder="Email"><br>
 	</div>
-	<style>
+	<!-- <style>
 	input[type=tel], select {
 					width: 200%;
 					padding: 19px 10px;
 					margin: 8px 0;
 					display: inline-block;
-					border: 1px solid #ccc;
+					border: 1px solid black;
 					border-radius: 8px;
 					box-sizing: border-box;
 					background-color: transparent;
 					font-size: 20px;
 					color: white;
 				  }
-				  </style>
+				  </style> -->
 	<div id="CONTACT_">
 		<label>Contact No.:</label><br>
 		<input type="tel" pattern="[0-9]{11}" id="contact" name="contact" placeholder="Contact No."><br>
 	</div>
-	<style>
+	<!-- <style>
 		input[type=date], select {
 		width: 200%;
 		padding: 19px 10px;
 		margin: 8px 0;
 		display: inline-block;
-		border: 1px solid #ccc;
+		border: 1px solid black;
 		border-radius: 8px;
 		box-sizing: border-box;
 		background-color: transparent;
 		font-size: 20px;
 		color: white;
 	  }
-	  </style>
+	  </style> -->
 	<div id="ddmmyyyy">
-		<label for="date">Date:</label><br>
+		<label for="date">Appointment Date:</label><br>
   		<input type="date" id="date" name="date">
 	</div>
 	<div id="PURPOSE">
@@ -397,11 +397,6 @@ include "../db_conn.php";
 		}
 		
 	</script>
-
-	  
-
-
-
 
 </div>
 
