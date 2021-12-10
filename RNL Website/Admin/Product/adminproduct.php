@@ -5,26 +5,25 @@ session_start();
 	//include("function.php");
 
 
-	if($_SERVER['REQUEST_METHOD'] == "POST")
-	{
+if (isset($_POST['btnsubmit'])) {
 		//something was posted
-		$brand = $_POST['bname'];
+		
+		$brandname = $_POST['bname'];
 		$model = $_POST['model'];
 		$category = $_POST['category'];
 		$dateofarrival = $_POST['dateofarrival'];
-		$expdate = $_POST['expirationdate'];
+		$expirationdate = $_POST['expirationdate'];
 		$sellingprice = $_POST['sellingprice'];
-		$origprice = $_POST['originalprice'];
-		$profit = $origprice - $sellingprice;
+		$originalprice = $_POST['originalprice'];
+		$profit = $originalprice - $sellingprice;
 		$supplier = $_POST['supplier'];
 		$qty = $_POST['qty'];
-
-		if(!empty($brand) && !empty($model) && !empty($category) && !empty($dateofarrival) && !empty($expdate) && !empty($sellingprice) && !empty($origprice) && !empty($profit) && !empty($supplier) && !empty($qty))
+		if(!empty($brandname) && !empty($model) && !empty($category) && !empty($dateofarrival) && !empty($expirationdate) && !empty($sellingprice) && !empty($originalprice) && !empty($profit) && !empty($supplier) && !empty($qty) && !is_numeric($brandname))
 		{
 
 			//save to database
 			//$user_id = random_num(20);
-			$query = "insert into product (brand,model,category,dateofarrival,expdate,sellingprice,origprice,profit,supplier,qty) values ('$brand','$model','$category','$dateofarrival','$expdate','$sellingprice','$origprice','$profit','$supplier','$qty')";
+			$query = "insert into product (brand,model,category,dateofarrival,expdate,sellingprice,origprice,profit,supplier,qty) values ('$brandname','$model','$category','$dateofarrival','$expirationdate','$sellingprice','$originalprice','$profit','$supplier','$qty')";
 
 			mysqli_query($con, $query);
 
@@ -35,6 +34,7 @@ session_start();
 			echo "Please enter some valid information!";
 		}
 	}
+
 ?>
 
 
@@ -149,7 +149,8 @@ td, th {
 	</style>
 	<div id="PRODUCT_bg">
 		<span>PRODUCT</span><br><br><br>
-		<input type="text" name="EMAIL" style="background-color: white; font-size: 20px; border-radius:8px; width: 550px;; height:40px;  text-transform:lowercase; padding-left: 10px; margin-left: 815%;" placeholder="Search Product"><br><br>
+			<form method="post">
+		<input type="text" name="searchproduct" style="background-color: white; font-size: 20px; border-radius:8px; width: 550px;; height:40px;  text-transform:lowercase; padding-left: 10px; margin-left: 815%;" placeholder="Search Product"></form><br><br>
 		<table>
   <tr>
     <th>Brand Name</th>
@@ -162,21 +163,19 @@ td, th {
     <th>Profit</th>
     <th>Supplier</th>
     <th>Qty</th>
-	<th>Action</th>
+    <th>Action</th>
   </tr>
 
   <?php
+error_reporting(0);
+$search=$_POST['searchproduct'];
+  $sql1 = "SELECT * FROM `product` WHERE `brand`LIKE '%$search%'";
+ 
 
-
-  include("config.php");
-  $sql = "SELECT * from product";
-  $result = $con->query($sql);
-
-  if($result->num_rows > 0){
-  	while($row = $result -> fetch_assoc()){
-  		echo "<tr><td>" . $row["brand"] . "</td><td>" . $row["model"] . "</td><td>" . $row["category"] . "</td><td>" . $row["dateofarrival"] . "</td><td>" 
-		. $row["expdate"] . "</td><td>" . $row["sellingprice"] . "</td><td>" . $row["origprice"] . "</td><td>" . $row["profit"] . "</td><td>" 
-		. $row["supplier"] . "</td><td>" . $row["qty"] . "</td><tr>";
+  $result1 = $con->query($sql1);  
+  if($result1->num_rows > 0){
+  	while($row = $result1 -> fetch_assoc()){
+  		echo "<tr><td>" . $row["brand"] . "</td><td>" . $row["model"] . "</td><td>" . $row["category"] . "</td><td>" . $row["dateofarrival"] . "</td><td>" . $row["expdate"] . "</td><td>" . $row["sellingprice"] . "</td><td>" . $row["origprice"] . "</td><td>" . $row["profit"] . "</td><td>" . $row["supplier"] . "</td><td>" . $row["qty"] ."</td><td><button style='cursor: pointer; background-color: #abd7ab; padding: 10px; border-radius: 10px;'>UPDATE</button></a>&nbsp&nbsp&nbsp&nbsp<button style='cursor: pointer; background-color: #8cd3ff; padding: 10px; border-radius: 10px;'>VIEW</button></td></tr>";
   	}
   } else {
   	echo "NO RESULTS";
@@ -186,10 +185,8 @@ td, th {
 
 
   ?>
-  <td><a href="#"><button style="cursor: pointer; background-color: #abd7ab; padding: 10px; border-radius: 10px;">UPDATE</button></a>&nbsp&nbsp&nbsp&nbsp<button style="cursor: pointer; background-color: #8cd3ff; padding: 10px; border-radius: 10px;">VIEW</button></td>
 </table>
 	</div>
-	
 	<svg class="Line_17" viewBox="0 0 1376 1">
 		<path id="Line_17" d="M 0 0 L 1376 0">
 		</path>
@@ -274,7 +271,7 @@ td, th {
 				  </select><br><br>
 				<label style="color: #000;padding-right: 30%;">QTY:</label>
 				<input type="number" id="tentacles" name="qty" min="1" max="10000" placeholder="Quantity" style="background-color: white; font-size: 20px; border:solid black 2px; width: 200px;; height:43px;  text-transform:lowercase; padding-left: 10px; border-radius: 8px; padding: 3px;" ><br><br><br><br>
-				<center><button type="submit">Submit</button></center>
+				<center><button type="submit" name="btnsubmit">Submit</button></center>
 			
 			  </form> 
 			</div>
@@ -303,9 +300,11 @@ td, th {
 
 	<div id="Search_Product_cf">
 	</div>
-	<!-- <div id="GO">
-		<button style="cursor: pointer; background-color: rgba(34,121,220,1);font-size: 20px; padding:10px 10px; border-radius: 10px; margin: -10px; margin-left: -156%; color: #fff;">GO</button>
-	</div> -->
+	
+	<div id="GO">
+		
+	</div>
+
 	<a href="../POS/pos.php">
 	<svg class="Rectangle_176">
 		<rect id="Rectangle_176" rx="13" ry="13" x="0" y="0" width="179" height="30">
