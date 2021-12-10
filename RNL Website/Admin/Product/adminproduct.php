@@ -37,6 +37,20 @@ if (isset($_POST['btnsubmit'])) {
 
 ?>
 
+ <?php   
+ include "config.php";  
+ if (isset($_GET['id'])) {  
+      $id=$_GET['id'];  
+      $delete=mysqli_query($con,"delete from product where id='$id'");  
+      if ($delete) {  
+           header("location:adminproduct.php");  
+           die();  
+      }  
+ }
+
+
+ ?>  
+
 
 <!DOCTYPE html>
 <html>
@@ -145,6 +159,23 @@ td, th {
   text-align: center;
   padding: 8px;
 }
+ .opt{  
+                background-color:red;  
+                color: #fff; 
+                font-size: 1em;  
+                padding: 5px;  
+                text-decoration: none;  
+                border-style: cursor;
+           }  
+
+            .opt1{  
+                background-color: #abd7ab;  
+                color: black; 
+                font-size: 1em;  
+                padding: 5px;  
+                text-decoration: none;  
+                border-style: cursor;
+           }  
 
 	</style>
 	<div id="PRODUCT_bg">
@@ -176,7 +207,24 @@ $search=$_POST['searchproduct'];
   $result1 = $con->query($sql1);  
   if($result1->num_rows > 0){
   	while($row = $result1 -> fetch_assoc()){
-  		echo "<tr><td>" . $row["brand"] . "</td><td>" . $row["model"] . "</td><td>" . $row["category"] . "</td><td>" . $row["dateofarrival"] . "</td><td>" . $row["expdate"] . "</td><td>" . $row["sellingprice"] . "</td><td>" . $row["origprice"] . "</td><td>" . $row["profit"] . "</td><td>" . $row["supplier"] . "</td><td>" . $row["qty"] ."</td><td><button style='cursor: pointer; background-color: #abd7ab; padding: 10px; border-radius: 10px;'>UPDATE</button></a>&nbsp&nbsp&nbsp&nbsp<button style='cursor: pointer; background-color: #8cd3ff; padding: 10px; border-radius: 10px;'>VIEW</button></td></tr>";
+  		echo "
+  		<tr>
+  		<td>" . $row["brand"] . "</td>
+  		<td>" . $row["model"] . "</td>
+  		<td>" . $row["category"] . "</td>
+  		<td>" . $row["dateofarrival"] . "</td>
+  		<td>" . $row["expdate"] . "</td>
+  		<td>" . $row["sellingprice"] . "</td>
+  		<td>" . $row["origprice"] . "</td>
+  		<td>" . $row["profit"] . "</td>
+  		<td>" . $row["supplier"] . "</td>
+  		<td>" . $row["qty"] ."</td>
+  		<td>
+  		<a href='?id=".$row["ID"]."'class='opt'>Delete</a>
+  		<a href='' class='opt1'>Edit/Update</a>
+  		 </td>
+  		 </tr>
+  		 ";
   	}
   } else {
   	echo "NO RESULTS";
