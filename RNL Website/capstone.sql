@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 08, 2021 at 07:54 AM
+-- Generation Time: Dec 10, 2021 at 04:37 PM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.1.27
 
@@ -45,7 +45,9 @@ CREATE TABLE `appointment` (
 INSERT INTO `appointment` (`app_id`, `app_name`, `app_email`, `app_contact`, `app_date`, `app_purpose`, `app_remarks`) VALUES
 (1, 'Danver Omlang', 'danverjhon@gmail.com', '09560492266', '2021-11-10', 'Appointment test', ''),
 (3, 'Danver Omlang', 'danverjhon@gmail.com', '09560492266', '2021-12-27', 'Appointment test 1', 'ONGOING'),
-(6, 'Raymart Gahopo', 'raymart.gahopo@gmail.com', '09075647938', '2021-12-01', 'Check Up', 'ONGOING');
+(6, 'Raymart Gahopo', 'raymart.gahopo@gmail.com', '09075647938', '2021-12-01', 'Check Up', 'ONGOING'),
+(28, 'Marl Umbao', 'marl.umbao@gmail.com', '09123456789', '2021-12-16', 'Check Up', 'ONGOING'),
+(29, 'Robert Vitalica', 'robert@gmail.com', '09123456789', '2021-12-22', 'Check Up', 'ONGOING');
 
 -- --------------------------------------------------------
 
@@ -54,6 +56,7 @@ INSERT INTO `appointment` (`app_id`, `app_name`, `app_email`, `app_contact`, `ap
 --
 
 CREATE TABLE `patients` (
+  `pat_id` int(11) NOT NULL,
   `pat_last` varchar(255) NOT NULL,
   `pat_first` varchar(255) NOT NULL,
   `pat_middle` varchar(255) NOT NULL,
@@ -69,9 +72,9 @@ CREATE TABLE `patients` (
 -- Dumping data for table `patients`
 --
 
-INSERT INTO `patients` (`pat_last`, `pat_first`, `pat_middle`, `pat_age`, `pat_sex`, `pat_address`, `pat_contact`, `pat_medhx`, `pat_date`) VALUES
-('RAMOS', 'EDMAR', 'CUADRO', 2021, 'Female', '002 Lydia St.', '4242424', 'dadada', '2021-12-11'),
-('', '', '', 0, 'Female', '', '', '', '0000-00-00');
+INSERT INTO `patients` (`pat_id`, `pat_last`, `pat_first`, `pat_middle`, `pat_age`, `pat_sex`, `pat_address`, `pat_contact`, `pat_medhx`, `pat_date`) VALUES
+(1, 'RAMOS', 'EDMAR', 'CUADRO', 2021, 'Female', '002 Lydia St.', '4242424', 'dadada', '2021-12-11'),
+(3, 'vitalicia', 'john robert ', 'rosario', 2021, 'Male', '8 Humabon', '09123456789', 'sample', '2021-12-10');
 
 -- --------------------------------------------------------
 
@@ -80,7 +83,7 @@ INSERT INTO `patients` (`pat_last`, `pat_first`, `pat_middle`, `pat_age`, `pat_s
 --
 
 CREATE TABLE `product` (
-  `ID` int(255) NOT NULL,
+  `pro_id` int(255) NOT NULL,
   `brand` varchar(255) NOT NULL,
   `model` varchar(255) NOT NULL,
   `category` varchar(255) NOT NULL,
@@ -97,9 +100,10 @@ CREATE TABLE `product` (
 -- Dumping data for table `product`
 --
 
-INSERT INTO `product` (`ID`, `brand`, `model`, `category`, `dateofarrival`, `expdate`, `sellingprice`, `origprice`, `profit`, `supplier`, `qty`) VALUES
+INSERT INTO `product` (`pro_id`, `brand`, `model`, `category`, `dateofarrival`, `expdate`, `sellingprice`, `origprice`, `profit`, `supplier`, `qty`) VALUES
 (3, 'try', 'try', 'Lens', '2021-12-15', '2021-12-15', 1000, 1200, 200, 'Supplier', 2),
-(4, 'Sample', 'sample', 'Lens', '2021-12-15', '2021-12-22', 1000, 1200, 200, 'Supplier', 3);
+(5, 'robert', 'robert', 'Lens', '2021-12-15', '2021-12-22', 1000, 1200, 200, 'Supplier', 3),
+(7, 'EO', 'sample', 'Frame', '2021-12-17', '2021-12-24', 500, 800, 300, 'Supplier', 3);
 
 -- --------------------------------------------------------
 
@@ -109,11 +113,11 @@ INSERT INTO `product` (`ID`, `brand`, `model`, `category`, `dateofarrival`, `exp
 
 CREATE TABLE `supplier` (
   `id` int(11) NOT NULL,
-  `supply` varchar(255) NOT NULL,
-  `contactperson` text NOT NULL,
-  `contactno` varchar(100) NOT NULL,
-  `address` varchar(255) NOT NULL,
-  `note` text NOT NULL,
+  `supp_supply` varchar(255) NOT NULL,
+  `supp_contactperson` varchar(100) NOT NULL,
+  `supp_contactno` varchar(100) NOT NULL,
+  `supp_address` varchar(255) NOT NULL,
+  `supp_note` varchar(100) NOT NULL,
   `action` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -121,11 +125,22 @@ CREATE TABLE `supplier` (
 -- Dumping data for table `supplier`
 --
 
-INSERT INTO `supplier` (`id`, `supply`, `contactperson`, `contactno`, `address`, `note`, `action`) VALUES
-(1, 'Eye Glass', 'Trisha', '2147483647', 'bahay namin', 'masaya', 'nobela'),
-(2, 'kape', 'jepoy', '2147483647', 'malabon', 'malungkot', 'drama'),
-(3, 'tubig', 'popoy', '2147483647', 'bagumbong', 'seryoso', 'komedya'),
-(11, 'sample', 'sample', '2147483647', 'QC', 'sample', '');
+INSERT INTO `supplier` (`id`, `supp_supply`, `supp_contactperson`, `supp_contactno`, `supp_address`, `supp_note`, `action`) VALUES
+(12, 'Roberto Boy Paos', 'Carlito Dimagiba', '09560492266', '1cc', 'haYPBESTY', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `users_id` int(11) NOT NULL,
+  `users_username` varchar(250) NOT NULL,
+  `users_password` varchar(255) NOT NULL,
+  `users_name` varchar(255) NOT NULL,
+  `user_role` varchar(250) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Indexes for dumped tables
@@ -138,10 +153,16 @@ ALTER TABLE `appointment`
   ADD PRIMARY KEY (`app_id`);
 
 --
+-- Indexes for table `patients`
+--
+ALTER TABLE `patients`
+  ADD PRIMARY KEY (`pat_id`);
+
+--
 -- Indexes for table `product`
 --
 ALTER TABLE `product`
-  ADD PRIMARY KEY (`ID`);
+  ADD PRIMARY KEY (`pro_id`);
 
 --
 -- Indexes for table `supplier`
@@ -157,19 +178,25 @@ ALTER TABLE `supplier`
 -- AUTO_INCREMENT for table `appointment`
 --
 ALTER TABLE `appointment`
-  MODIFY `app_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `app_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=165;
+
+--
+-- AUTO_INCREMENT for table `patients`
+--
+ALTER TABLE `patients`
+  MODIFY `pat_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `ID` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `pro_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `supplier`
 --
 ALTER TABLE `supplier`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
