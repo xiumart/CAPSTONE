@@ -297,6 +297,8 @@ $conn->close();
 
 
 ?>
+<td><a href="#"><button style="cursor: pointer; background-color: #abd7ab; padding: 10px; border-radius: 10px;">UPDATE</button></a>&nbsp&nbsp&nbsp&nbsp<button style="cursor: pointer; background-color: #8cd3ff; padding: 10px; border-radius: 10px;">VIEW</button></td>
+</table>
 </div>
 	<div id="Search_Supplier">
 	
