@@ -19,7 +19,7 @@
 	<img id="Untitled_design_23" src="Untitled_design_23.png" srcset="Untitled_design_23.png 1x, Untitled_design_23@2x.png 2x">
 		
 	<svg class="Rectangle_1">
-		<rect id="Rectangle_1" rx="0" ry="0" x="0" y="0" width="1920" height="168">
+		<rect id="Rectangle_1" rx="0" ry="0" x="0" y="0" width="1920" height="100">
 		</rect>
 	</svg>
 	<a href="../Home/home.php">
@@ -60,11 +60,7 @@
 		<span>APPOINTMENT</span>
 	</div>
 	</a>
-	<a href="../Login/login.php">
-	<div id="LOGIN">
-		<span>LOGIN</span>
-	</div>
-	</a>
+
 	<img id="background" src="background.png" srcset="background.png 1x, background@2x.png 2x">
 		
 	<svg class="Rectangle_41">

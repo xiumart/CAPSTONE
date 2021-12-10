@@ -202,15 +202,15 @@ include "../../db_conn.php";
 	  <form name="form1" method="post" action="supplierhandler.php" >
 		<center><h2 style="color: #000;">New Supplier</h2><br><br></center>
 		<label style="color: #000;padding-right: 10px;">Supplier Name:</label>
-		<input type="text" id="fname" name="fname" style="border: #000 2px; border-style:solid; font-size: 20px; border-radius: 8px; padding: 3px;" required="required"><br><br>
+		<input type="text" id="fname" name="supply" style="border: #000 2px; border-style:solid; font-size: 20px; border-radius: 8px; padding: 3px;"><br><br>
 		<label style="color: #000;padding-right: 4px;">Contact Person:</label>
-		<input type="text" id="fname" name="fname" style="border: #000 2px; border-style:solid; font-size: 20px; border-radius: 8px; padding: 3px;" required="required"><br><br>
+		<input type="text" id="fname" name="contactperson" style="border: #000 2px; border-style:solid; font-size: 20px; border-radius: 8px; padding: 3px;"><br><br>
 		<label style="color: #000;padding-right: 41px;">Contact No:</label>
-		<input type="tel" pattern="[0-9]{11}" id="fname" name="fname" style="border: #000 2px; border-style:solid; font-size: 20px; border-radius: 8px; padding: 3px;" required="required"><br><br>
+		<input type="tel" pattern="[0-9]{11}" id="contactno" name="contactno" style="border: #000 2px; border-style:solid; font-size: 20px; border-radius: 8px; padding: 3px;"><br><br>
 		<label style="color: #000;padding-right: 68px;">Address:</label>
-		<input type="text" id="fname" name="fname" style="border: #000 2px; border-style:solid; font-size: 20px; border-radius: 8px; padding: 3px;" required="required"><br><br>
+		<input type="text" id="fname" name="adress" style="border: #000 2px; border-style:solid; font-size: 20px; border-radius: 8px; padding: 3px;"><br><br>
 		<label style="color: #000; padding-right: 97px;">Note:</label>
-		<input type="text" id="fname" name="fname" style="border: #000 2px; border-style:solid; font-size: 20px; border-radius: 8px; padding: 3px;" required="required"><br><br>
+		<input type="text" id="fname" name="note" style="border: #000 2px; border-style:solid; font-size: 20px; border-radius: 8px; padding: 3px;"><br><br>
 		<center><button type="submit" name="insert">Submit</button></center>
 	  </form> 
 	</div>
@@ -301,6 +301,11 @@ $conn->close();
 
 
 ?>
+<<<<<<< Updated upstream
+=======
+<td><a href="#"><button type="submit" style="cursor: pointer; background-color: #abd7ab; padding: 10px; border-radius: 10px; width: 120px;">UPDATE</button></a>&nbsp&nbsp&nbsp&nbsp<a href="#"><button type="submit" style="cursor: pointer; background-color: #8cd3ff; padding: 10px; border-radius: 10px; width: 120px;">VIEW</button></a></td>
+</table>
+>>>>>>> Stashed changes
 </div>
 	<div id="Search_Supplier">
 	

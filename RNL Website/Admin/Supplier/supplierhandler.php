@@ -29,7 +29,7 @@ include "../../db_conn.php";
 	}
   else{
 
-	    $sql = "SELECT * FROM supplier WHERE id='$id' ";
+	    $sql = "SELECT * FROM supplier WHERE supp_id='$supp_id' ";
 		$result = mysqli_query($conn, $sql);
 
 		if (mysqli_num_rows($result) > 0) {

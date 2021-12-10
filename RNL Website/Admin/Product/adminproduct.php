@@ -165,6 +165,7 @@ td, th {
     <th>Qty</th>
     <th>Action</th>
   </tr>
+  
 
   <?php
 error_reporting(0);
@@ -185,6 +186,10 @@ $search=$_POST['searchproduct'];
 
 
   ?>
+<<<<<<< Updated upstream
+=======
+  <td> <button type="submit" style="cursor: pointer; background-color: #abd7ab; padding: 10px; border-radius: 10px; width: 120px;">UPDATE</button>&nbsp&nbsp&nbsp&nbsp<button type="submit" style="cursor: pointer; background-color: #8cd3ff; padding: 10px; border-radius: 10px; width: 120px;">VIEW</button></td>
+>>>>>>> Stashed changes
 </table>
 	</div>
 	<svg class="Line_17" viewBox="0 0 1376 1">
