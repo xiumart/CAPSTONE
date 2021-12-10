@@ -202,15 +202,15 @@ include "../../db_conn.php";
 	  <form name="form1" method="post" action="supplierhandler.php" >
 		<center><h2 style="color: #000;">New Supplier</h2><br><br></center>
 		<label style="color: #000;padding-right: 10px;">Supplier Name:</label>
-		<input type="text" id="fname" name="supply" style="border: #000 2px; border-style:solid; font-size: 20px; border-radius: 8px; padding: 3px;" required="required"><br><br>
+		<input type="text" id="fname" name="fname" style="border: #000 2px; border-style:solid; font-size: 20px; border-radius: 8px; padding: 3px;" required="required"><br><br>
 		<label style="color: #000;padding-right: 4px;">Contact Person:</label>
-		<input type="text" id="fname" name="contactperson" style="border: #000 2px; border-style:solid; font-size: 20px; border-radius: 8px; padding: 3px;" required="required"><br><br>
+		<input type="text" id="fname" name="fname" style="border: #000 2px; border-style:solid; font-size: 20px; border-radius: 8px; padding: 3px;" required="required"><br><br>
 		<label style="color: #000;padding-right: 41px;">Contact No:</label>
-		<input type="tel" pattern="[0-9]{11}" id="contactno" name="contactno" style="border: #000 2px; border-style:solid; font-size: 20px; border-radius: 8px; padding: 3px;" required="required"><br><br>
+		<input type="tel" pattern="[0-9]{11}" id="fname" name="fname" style="border: #000 2px; border-style:solid; font-size: 20px; border-radius: 8px; padding: 3px;" required="required"><br><br>
 		<label style="color: #000;padding-right: 68px;">Address:</label>
-		<input type="text" id="fname" name="adress" style="border: #000 2px; border-style:solid; font-size: 20px; border-radius: 8px; padding: 3px;" required="required"><br><br>
+		<input type="text" id="fname" name="fname" style="border: #000 2px; border-style:solid; font-size: 20px; border-radius: 8px; padding: 3px;" required="required"><br><br>
 		<label style="color: #000; padding-right: 97px;">Note:</label>
-		<input type="text" id="fname" name="note" style="border: #000 2px; border-style:solid; font-size: 20px; border-radius: 8px; padding: 3px;" required="required"><br><br>
+		<input type="text" id="fname" name="fname" style="border: #000 2px; border-style:solid; font-size: 20px; border-radius: 8px; padding: 3px;" required="required"><br><br>
 		<center><button type="submit" name="insert">Submit</button></center>
 	  </form> 
 	</div>
@@ -267,27 +267,31 @@ td, th {
 	<div id="SUPPLIER_bv">
 		<span>SUPPLIER</span>
 		<br><br><br>
-		<input type="text" name="EMAIL" style="background-color: white; font-size: 20px; border-radius: 8px; width: 550px;; height:40px;  text-transform:lowercase; padding-left: 10px; margin-left: 870%; margin-top: 5px;" placeholder="Search Supplier">
+		<form method="post">
+		<input type="text" name="searchsupp" style="background-color: white; font-size: 20px; border-radius: 8px; width: 550px;; height:40px;  text-transform:lowercase; padding-left: 10px; margin-left: 870%; margin-top: 5px;" placeholder="Search Supplier"></form>
 		<br><br><br>
 		<table>
   <tr>
+  	<th>ID</th>
     <th>Supplier</th>
     <th>Contact Person</th>
     <th>Contact No.</th>
     <th>Address</th>
     <th>Note</th>
-	<th>Action</th>
+    <th>Action</th>
     
   </tr>
   <?php
 
-include "../../db_conn.php";
-$sql = "SELECT * from supplier";
-$result = $conn->query($sql);
+$search=$_POST['searchsupp'];
+$sql1 = "SELECT * FROM `supplier` WHERE `supply`LIKE '%$search%'";
 
-if($result->num_rows > 0){
-	while($row = $result -> fetch_assoc()){
-		echo "<tr><td>" . $row["supp_supply"] . "</td><td>" . $row["supp_contactperson"] . "</td><td>" . $row["supp_contactno"] . "</td><td>" . $row["supp_address"] . "</td><td>" . $row["supp_note"] . "</td></tr>";
+$result1 = $conn->query($sql1);
+
+if($result1->num_rows > 0){
+	while($row = $result1 -> fetch_assoc()){
+		echo 
+		"<tr><td>" . $row["id"] . "</td><td>" . $row["supply"] . "</td><td>" . $row["contactperson"] . "</td><td>" . $row["contactno"] . "</td><td>" . $row["address"] . "</td><td>". $row["note"] . "</td><td><button style='cursor: pointer; background-color: #abd7ab; padding: 10px; border-radius: 10px;'>UPDATE</button></a>&nbsp&nbsp&nbsp&nbsp<button style='cursor: pointer; background-color: #8cd3ff; padding: 10px; border-radius: 10px;'>VIEW</button></td></tr>";
 	}
 } else {
 	echo "NO RESULTS";
@@ -297,8 +301,6 @@ $conn->close();
 
 
 ?>
-<td><a href="#"><button style="cursor: pointer; background-color: #abd7ab; padding: 10px; border-radius: 10px;">UPDATE</button></a>&nbsp&nbsp&nbsp&nbsp<button style="cursor: pointer; background-color: #8cd3ff; padding: 10px; border-radius: 10px;">VIEW</button></td>
-</table>
 </div>
 	<div id="Search_Supplier">
 	
