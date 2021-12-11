@@ -1,5 +1,5 @@
 <?php 
-include "../db_conn.php";
+include "db_conn.php";
 ?>
 
 <!DOCTYPE html>
@@ -8,7 +8,8 @@ include "../db_conn.php";
 <meta charset="utf-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>home</title>
+<title>RNL VISION CARE</title>
+<link rel="shorcut icon" type="img/png" href="logo.png">
 <link rel="stylesheet" type="text/css" id="applicationStylesheet" href="css/style.css"/>
 <script id="applicationScript" type="text/javascript" src="script/script.js"></script>
 </head>
@@ -340,11 +341,11 @@ include "../db_conn.php";
 		<rect id="Rectangle_1" rx="0" ry="0" x="0" y="0" width="1920" height="100">
 		</rect>
 	</svg>
-	<a href="../Home/home.php">
+	<a href="home.php">
 	<img id="Untitled_design_12" src="logo.png">
 		
 	</a>
-	<a href="../Home/home.php">
+	<a href="home.php">
 	<div id="RNL_Vision_Care_gc">
 		<span>RNL Vision Care</span>
 	</div>
@@ -352,27 +353,27 @@ include "../db_conn.php";
 
 
 
-	<a href="../About/about.php">
+	<a href="About/about.php">
 	<div id="ABOUT">	
 		<span>ABOUT</span>
 	</div>
 	</a>
-	<a href="../Home/home.php">
+	<a href="home.php">
 	<div id="HOME_gf">
 		<span>HOME</span>
 	</div>
 	</a>
-	<a href="../Services/services.php">
+	<a href="Services/services.php">
 	<div id="SERVICES">
 		<span>SERVICES</span>
 	</div>
 	</a>
-	<a href="../Product/product.php">
+	<a href="Product/product.php">
 	<div id="PRODUCT">
 		<span>PRODUCT</span>
 	</div>
 	</a>
-	<a href="../Appointment/appointment.php">
+	<a href="Appointment/appointment.php">
 	<div id="APPOINTMENT">
 		<span>APPOINTMENT</span>
 	</div>

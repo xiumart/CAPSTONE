@@ -8,7 +8,8 @@ include "../db_conn.php";
 <meta charset="utf-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>appointment</title>
+<title>APPOINTMENT | RNL VISION CARE</title>
+<link rel="shorcut icon" type="img/png" href="../logo.png">
 <link rel="stylesheet" type="text/css" id="applicationStylesheet" href="css/style.css"/>
 <script id="applicationScript" type="text/javascript" src="script/script.js"></script>
 </head>
@@ -174,7 +175,7 @@ include "../db_conn.php";
 	</svg>
 		
 	</a>
-	<a href="../Home/home.php">
+	<a href="../home.php">
 	<div id="RNL_Vision_Care_ei" style="top: 30px;">
 		<span>RNL Vision Care</span>
 	</div>
@@ -183,7 +184,7 @@ include "../db_conn.php";
 	<div id="ABOUT">
 		<span>ABOUT</span>
 	</div>
-	<a href="../Home/home.php">
+	<a href="../home.php">
 	<div id="HOME_el">
 		<span>HOME</span>
 	</div>
@@ -192,7 +193,7 @@ include "../db_conn.php";
 		<rect id="Rectangle_106" rx="0" ry="0" x="0" y="0" width="1920" height="100">
 		</rect>
 	</svg>
-	<a href="../Home/home.php">
+	<a href="../home.php">
 	<img id="Untitled_design_12_eh" src="Untitled_design_12_eh.png" srcset="Untitled_design_12_eh.png 1x, Untitled_design_12_eh@2x.png 2x" style="width:150px;height:100px;">
 		
 	</a>
@@ -207,7 +208,7 @@ include "../db_conn.php";
 		<span>ABOUT</span>
 	</div>
 	</a>
-	<a href="../Home/home.php">
+	<a href="../home.php">
 	<div id="HOME_el" style="top:35px; font-size:26px; left:900px;">
 		<span>HOME</span>
 	</div>

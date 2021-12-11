@@ -4,7 +4,8 @@
 <meta charset="utf-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>services</title>
+<title>SERVICES | RNL VISION CARE</title>
+<link rel="shorcut icon" type="img/png" href="../logo.png">
 <link rel="stylesheet" type="text/css" id="applicationStylesheet" href="css/style.css"/>
 <script id="applicationScript" type="text/javascript" src="script/script.js"></script>
 </head>
@@ -22,11 +23,11 @@
 		<rect id="Rectangle_1" rx="0" ry="0" x="0" y="0" width="1920" height="100">
 		</rect>
 	</svg>
-	<a href="../Home/home.php">
+	<a href="../home.php">
 	<img id="Untitled_design_12" src="Untitled_design_12.png" srcset="Untitled_design_12.png 1x, Untitled_design_12@2x.png 2x" style="width:150px; height:100px;">
 		
 	</a>
-	<a href="../Home/home.php">
+	<a href="../home.php">
 	<div id="RNL_Vision_Care" style="top:35px;">
 		<span>RNL Vision Care</span>
 	</div>
@@ -37,7 +38,7 @@
 		<span>ABOUT</span>
 	</div>
 	</a>
-	<a href="../Home/home.php">
+	<a href="../home.php">
 	<div id="HOME" style="top:35px; font-size:26px; left:900px;">
 		<span>HOME</span>
 	</div>
