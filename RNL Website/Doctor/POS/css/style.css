@@ -1,7 +1,20 @@
-
+input[type=submit] {
+	width: 500%;
+	background-color: #1566a8;
+	color: white;
+	padding: 30px 20px;
+	margin: 8px 0;
+	border: none;
+	border-radius: 10px;
+	cursor: pointer;
+	position: relative;
+	top: -200px;
+	margin-left: -250%;
+	font-size: x-large;
+  }
 .mediaViewInfo {
-	--web-view-name: patientrecords;
-	--web-view-id: patientrecords;
+	--web-view-name: pos;
+	--web-view-id: pos;
 	--web-scale-to-fit: true;
 	--web-scale-to-fit-type: width;
 	--web-enable-scale-up: true;
@@ -10,7 +23,7 @@
 	--web-enable-deep-linking: true;
 }
 :root {
-	--web-view-ids: patientrecords;
+	--web-view-ids: pos;
 }
 * {
 	margin: 0;
@@ -70,14 +83,14 @@
 	top: 32.403px;
 	transform: matrix(1,0,0,1,0,0);
 }
-#patientrecords {
+#pos {
 	position: absolute;
 	width: 1920px;
 	height: 1080px;
 	background-color: rgba(25,25,25,1);
 	overflow: hidden;
-	--web-view-name: patientrecords;
-	--web-view-id: patientrecords;
+	--web-view-name: pos;
+	--web-view-id: pos;
 	--web-scale-to-fit: true;
 	--web-scale-to-fit-type: width;
 	--web-enable-scale-up: true;
@@ -168,7 +181,7 @@
 }
 #DASHBOARD {
 	left: 118px;
-	top: 220px;
+	top: 219px;
 	position: absolute;
 	overflow: visible;
 	width: 158px;
@@ -186,7 +199,7 @@
 .Icon_material-dashboard {
 	overflow: visible;
 	position: absolute;
-	width: 36.904px;
+	width: 36.903px;
 	height: 36.903px;
 	left: 38px;
 	top: 219px;
@@ -198,15 +211,15 @@
 .Icon_awesome-users {
 	overflow: visible;
 	position: absolute;
-	width: 36.904px;
+	width: 36.903px;
 	height: 36.903px;
 	left: 38px;
-	top: 311px;
+	top: 310px;
 	transform: matrix(1,0,0,1,0,0);
 }
 #PATIENT_RECORDS {
 	left: 118px;
-	top: 308px;
+	top: 307px;
 	position: absolute;
 	overflow: visible;
 	width: 222px;
@@ -216,7 +229,7 @@
 	font-style: normal;
 	font-weight: normal;
 	font-size: 27px;
-	color: rgba(0,194,203,1);
+	color: rgba(255,255,255,1);
 }
 #SALES {
 	left: 118px;
@@ -238,10 +251,10 @@
 .Icon_metro-money {
 	overflow: visible;
 	position: absolute;
-	width: 36.904px;
+	width: 36.903px;
 	height: 36.903px;
 	left: 38px;
-	top: 403px;
+	top: 402px;
 	transform: matrix(1,0,0,1,0,0);
 }
 #Icon_ionic-md-glasses {
@@ -253,7 +266,7 @@
 	width: 44.284px;
 	height: 18.452px;
 	left: 38px;
-	top: 495px;
+	top: 493px;
 	transform: matrix(1,0,0,1,0,0);
 }
 #PRODUCT {
@@ -276,15 +289,15 @@
 .Icon_material-insert-chart {
 	overflow: visible;
 	position: absolute;
-	width: 36.904px;
+	width: 36.903px;
 	height: 36.903px;
 	left: 38px;
-	top: 569px;
+	top: 567px;
 	transform: matrix(1,0,0,1,0,0);
 }
 #REPORTS {
 	left: 118px;
-	top: 572px;
+	top: 571px;
 	position: absolute;
 	overflow: visible;
 	width: 109px;
@@ -308,12 +321,12 @@
 	top: 116px;
 	transform: matrix(1,0,0,1,0,0);
 }
-#PATIENT_RECORDS_bg {
+#POINT_OF_SALES {
 	left: 473px;
 	top: 127px;
 	position: absolute;
 	overflow: visible;
-	width: 165px;
+	width: 148px;
 	white-space: nowrap;
 	text-align: left;
 	font-family: Segoe UI;
@@ -340,849 +353,10 @@
 	top: 169.5px;
 	transform: matrix(1,0,0,1,0,0);
 }
-#Rectangle_124 {
-	fill: rgba(255,255,255,1);
-	stroke: rgba(112,112,112,1);
-	stroke-width: 1px;
-	stroke-linejoin: miter;
-	stroke-linecap: butt;
-	stroke-miterlimit: 4;
-	shape-rendering: auto;
-}
-.Rectangle_124 {
-	position: absolute;
-	overflow: visible;
-	width: 554px;
-	height: 43px;
-	left: 437px;
-	top: 185px;
-}
-#Rectangle_125 {
+#Rectangle_176 {
 	fill: rgba(34,139,220,1);
 }
-.Rectangle_125 {
-	position: absolute;
-	overflow: visible;
-	width: 159px;
-	height: 43px;
-	left: 1691px;
-	top: 185px;
-}
-#Icon_ionic-md-search {
-	fill: rgba(0,0,0,1);
-}
-.Icon_ionic-md-search {
-	overflow: visible;
-	position: absolute;
-	width: 27px;
-	height: 27px;
-	left: 942px;
-	top: 193px;
-	transform: matrix(1,0,0,1,0,0);
-}
-#NEW_PATIENT {
-	left: 1738px;
-	top: 197px;
-	position: absolute;
-	overflow: visible;
-	width: 92px;
-	white-space: nowrap;
-	text-align: left;
-	font-family: Segoe UI;
-	font-style: normal;
-	font-weight: normal;
-	font-size: 15px;
-	color: rgba(255,255,255,1);
-}
-#Icon_ionic-md-add {
-	fill: rgba(255,255,255,1);
-}
-.Icon_ionic-md-add {
-	overflow: visible;
-	position: absolute;
-	width: 22.5px;
-	height: 22.5px;
-	left: 1703px;
-	top: 195.25px;
-	transform: matrix(1,0,0,1,0,0);
-}
-#Rectangle_81 {
-	fill: rgba(255,255,255,1);
-}
-.Rectangle_81 {
-	position: absolute;
-	overflow: visible;
-	width: 1449px;
-	height: 749px;
-	left: 436.75px;
-	top: 266px;
-}
-#Line_27 {
-	fill: transparent;
-	stroke: rgba(112,112,112,1);
-	stroke-width: 1px;
-	stroke-linejoin: miter;
-	stroke-linecap: butt;
-	stroke-miterlimit: 4;
-	shape-rendering: auto;
-}
-.Line_27 {
-	overflow: visible;
-	position: absolute;
-	width: 1449px;
-	height: 1px;
-	left: 436.75px;
-	top: 411.5px;
-	transform: matrix(1,0,0,1,0,0);
-}
-#Line_28 {
-	fill: transparent;
-	stroke: rgba(112,112,112,1);
-	stroke-width: 1px;
-	stroke-linejoin: miter;
-	stroke-linecap: butt;
-	stroke-miterlimit: 4;
-	shape-rendering: auto;
-}
-.Line_28 {
-	overflow: visible;
-	position: absolute;
-	width: 1px;
-	height: 749px;
-	left: 602.25px;
-	top: 266.5px;
-	transform: matrix(1,0,0,1,0,0);
-}
-#Line_29 {
-	fill: transparent;
-	stroke: rgba(112,112,112,1);
-	stroke-width: 1px;
-	stroke-linejoin: miter;
-	stroke-linecap: butt;
-	stroke-miterlimit: 4;
-	shape-rendering: auto;
-}
-.Line_29 {
-	overflow: visible;
-	position: absolute;
-	width: 1px;
-	height: 749px;
-	left: 812.25px;
-	top: 266.5px;
-	transform: matrix(1,0,0,1,0,0);
-}
-#Line_30 {
-	fill: transparent;
-	stroke: rgba(112,112,112,1);
-	stroke-width: 1px;
-	stroke-linejoin: miter;
-	stroke-linecap: butt;
-	stroke-miterlimit: 4;
-	shape-rendering: auto;
-}
-.Line_30 {
-	overflow: visible;
-	position: absolute;
-	width: 1px;
-	height: 749px;
-	left: 1038.25px;
-	top: 266.5px;
-	transform: matrix(1,0,0,1,0,0);
-}
-#Line_31 {
-	fill: transparent;
-	stroke: rgba(112,112,112,1);
-	stroke-width: 1px;
-	stroke-linejoin: miter;
-	stroke-linecap: butt;
-	stroke-miterlimit: 4;
-	shape-rendering: auto;
-}
-.Line_31 {
-	overflow: visible;
-	position: absolute;
-	width: 1px;
-	height: 749px;
-	left: 1254.25px;
-	top: 266.5px;
-	transform: matrix(1,0,0,1,0,0);
-}
-#Line_32 {
-	fill: transparent;
-	stroke: rgba(112,112,112,1);
-	stroke-width: 1px;
-	stroke-linejoin: miter;
-	stroke-linecap: butt;
-	stroke-miterlimit: 4;
-	shape-rendering: auto;
-}
-.Line_32 {
-	overflow: visible;
-	position: absolute;
-	width: 1px;
-	height: 749px;
-	left: 1406.25px;
-	top: 266.5px;
-	transform: matrix(1,0,0,1,0,0);
-}
-#Line_33 {
-	fill: transparent;
-	stroke: rgba(112,112,112,1);
-	stroke-width: 1px;
-	stroke-linejoin: miter;
-	stroke-linecap: butt;
-	stroke-miterlimit: 4;
-	shape-rendering: auto;
-}
-.Line_33 {
-	overflow: visible;
-	position: absolute;
-	width: 1px;
-	height: 749px;
-	left: 1590.25px;
-	top: 266.5px;
-	transform: matrix(1,0,0,1,0,0);
-}
-#Case_No_cx {
-	left: 484.75px;
-	top: 291px;
-	position: absolute;
-	overflow: visible;
-	width: 84px;
-	white-space: nowrap;
-	text-align: left;
-	font-family: Arial;
-	font-style: normal;
-	font-weight: normal;
-	font-size: 20px;
-	color: rgba(0,0,0,1);
-}
-#Last_Name_cy {
-	left: 657.75px;
-	top: 291px;
-	position: absolute;
-	overflow: visible;
-	width: 98px;
-	white-space: nowrap;
-	text-align: left;
-	font-family: Arial;
-	font-style: normal;
-	font-weight: normal;
-	font-size: 20px;
-	color: rgba(0,0,0,1);
-}
-#First_Name_cz {
-	left: 872.75px;
-	top: 291px;
-	position: absolute;
-	overflow: visible;
-	width: 99px;
-	white-space: nowrap;
-	text-align: left;
-	font-family: Arial;
-	font-style: normal;
-	font-weight: normal;
-	font-size: 20px;
-	color: rgba(0,0,0,1);
-}
-#Middle_Name_c {
-	left: 1089.75px;
-	top: 291px;
-	position: absolute;
-	overflow: visible;
-	width: 119px;
-	white-space: nowrap;
-	text-align: left;
-	font-family: Arial;
-	font-style: normal;
-	font-weight: normal;
-	font-size: 20px;
-	color: rgba(0,0,0,1);
-}
-#Age_c {
-	left: 1310.75px;
-	top: 291px;
-	position: absolute;
-	overflow: visible;
-	width: 37px;
-	white-space: nowrap;
-	text-align: left;
-	font-family: Arial;
-	font-style: normal;
-	font-weight: normal;
-	font-size: 20px;
-	color: rgba(0,0,0,1);
-}
-#Contact_No_c {
-	left: 1446.75px;
-	top: 291px;
-	position: absolute;
-	overflow: visible;
-	width: 107px;
-	white-space: nowrap;
-	text-align: left;
-	font-family: Arial;
-	font-style: normal;
-	font-weight: normal;
-	font-size: 20px;
-	color: rgba(0,0,0,1);
-}
-#Action_c {
-	left: 1708.75px;
-	top: 291px;
-	position: absolute;
-	overflow: visible;
-	width: 57px;
-	white-space: nowrap;
-	text-align: left;
-	font-family: Arial;
-	font-style: normal;
-	font-weight: normal;
-	font-size: 20px;
-	color: rgba(0,0,0,1);
-}
-#Rectangle_83 {
-	fill: rgba(34,220,146,1);
-}
-.Rectangle_83 {
-	position: absolute;
-	overflow: visible;
-	width: 123px;
-	height: 44px;
-	left: 1610.75px;
-	top: 345px;
-}
-#Update {
-	left: 1640.75px;
-	top: 356px;
-	position: absolute;
-	overflow: visible;
-	width: 65px;
-	white-space: nowrap;
-	text-align: left;
-	font-family: Arial;
-	font-style: normal;
-	font-weight: normal;
-	font-size: 20px;
-	color: rgba(255,255,255,1);
-}
-#Rectangle_84 {
-	fill: rgba(0,194,203,1);
-}
-.Rectangle_84 {
-	position: absolute;
-	overflow: visible;
-	width: 123px;
-	height: 44px;
-	left: 1742.75px;
-	top: 345px;
-}
-#View {
-	left: 1782.75px;
-	top: 356px;
-	position: absolute;
-	overflow: visible;
-	width: 44px;
-	white-space: nowrap;
-	text-align: left;
-	font-family: Arial;
-	font-style: normal;
-	font-weight: normal;
-	font-size: 20px;
-	color: rgba(255,255,255,1);
-}
-#n_9123456789_cq {
-	left: 1438.75px;
-	top: 356px;
-	position: absolute;
-	overflow: visible;
-	width: 123px;
-	white-space: nowrap;
-	text-align: left;
-	font-family: Arial;
-	font-style: normal;
-	font-weight: normal;
-	font-size: 20px;
-	color: rgba(0,0,0,1);
-}
-#n_8_cr {
-	left: 1317.75px;
-	top: 356px;
-	position: absolute;
-	overflow: visible;
-	width: 23px;
-	white-space: nowrap;
-	text-align: left;
-	font-family: Arial;
-	font-style: normal;
-	font-weight: normal;
-	font-size: 20px;
-	color: rgba(0,0,0,1);
-}
-#Marliardo_cs {
-	left: 880.75px;
-	top: 356px;
-	position: absolute;
-	overflow: visible;
-	width: 84px;
-	white-space: nowrap;
-	text-align: left;
-	font-family: Arial;
-	font-style: normal;
-	font-weight: normal;
-	font-size: 20px;
-	color: rgba(0,0,0,1);
-}
-#P-01_cu {
-	left: 494.75px;
-	top: 356px;
-	position: absolute;
-	overflow: visible;
-	width: 43px;
-	white-space: nowrap;
-	text-align: left;
-	font-family: Arial;
-	font-style: normal;
-	font-weight: normal;
-	font-size: 20px;
-	color: rgba(0,0,0,1);
-}
-#Umbao_cv {
-	left: 674.75px;
-	top: 356px;
-	position: absolute;
-	overflow: visible;
-	width: 65px;
-	white-space: nowrap;
-	text-align: left;
-	font-family: Arial;
-	font-style: normal;
-	font-weight: normal;
-	font-size: 20px;
-	color: rgba(0,0,0,1);
-}
-#Line_34 {
-	fill: transparent;
-	stroke: rgba(112,112,112,1);
-	stroke-width: 1px;
-	stroke-linejoin: miter;
-	stroke-linecap: butt;
-	stroke-miterlimit: 4;
-	shape-rendering: auto;
-}
-.Line_34 {
-	overflow: visible;
-	position: absolute;
-	width: 1449px;
-	height: 1px;
-	left: 437.25px;
-	top: 328.5px;
-	transform: matrix(1,0,0,1,0,0);
-}
-#Rectangle_96 {
-	fill: rgba(255,255,255,1);
-}
-.Rectangle_96 {
-	position: absolute;
-	overflow: visible;
-	width: 1449px;
-	height: 749px;
-	left: 436.75px;
-	top: 266px;
-}
-#Line_38 {
-	fill: transparent;
-	stroke: rgba(112,112,112,1);
-	stroke-width: 1px;
-	stroke-linejoin: miter;
-	stroke-linecap: butt;
-	stroke-miterlimit: 4;
-	shape-rendering: auto;
-}
-.Line_38 {
-	overflow: visible;
-	position: absolute;
-	width: 1449px;
-	height: 1px;
-	left: 436.75px;
-	top: 411.5px;
-	transform: matrix(1,0,0,1,0,0);
-}
-#Line_39 {
-	fill: transparent;
-	stroke: rgba(112,112,112,1);
-	stroke-width: 1px;
-	stroke-linejoin: miter;
-	stroke-linecap: butt;
-	stroke-miterlimit: 4;
-	shape-rendering: auto;
-}
-.Line_39 {
-	overflow: visible;
-	position: absolute;
-	width: 1px;
-	height: 749px;
-	left: 602.25px;
-	top: 266.5px;
-	transform: matrix(1,0,0,1,0,0);
-}
-#Line_40 {
-	fill: transparent;
-	stroke: rgba(112,112,112,1);
-	stroke-width: 1px;
-	stroke-linejoin: miter;
-	stroke-linecap: butt;
-	stroke-miterlimit: 4;
-	shape-rendering: auto;
-}
-.Line_40 {
-	overflow: visible;
-	position: absolute;
-	width: 1px;
-	height: 749px;
-	left: 812.25px;
-	top: 266.5px;
-	transform: matrix(1,0,0,1,0,0);
-}
-#Line_41 {
-	fill: transparent;
-	stroke: rgba(112,112,112,1);
-	stroke-width: 1px;
-	stroke-linejoin: miter;
-	stroke-linecap: butt;
-	stroke-miterlimit: 4;
-	shape-rendering: auto;
-}
-.Line_41 {
-	overflow: visible;
-	position: absolute;
-	width: 1px;
-	height: 749px;
-	left: 1038.25px;
-	top: 266.5px;
-	transform: matrix(1,0,0,1,0,0);
-}
-#Line_42 {
-	fill: transparent;
-	stroke: rgba(112,112,112,1);
-	stroke-width: 1px;
-	stroke-linejoin: miter;
-	stroke-linecap: butt;
-	stroke-miterlimit: 4;
-	shape-rendering: auto;
-}
-.Line_42 {
-	overflow: visible;
-	position: absolute;
-	width: 1px;
-	height: 749px;
-	left: 1254.25px;
-	top: 266.5px;
-	transform: matrix(1,0,0,1,0,0);
-}
-#Line_43 {
-	fill: transparent;
-	stroke: rgba(112,112,112,1);
-	stroke-width: 1px;
-	stroke-linejoin: miter;
-	stroke-linecap: butt;
-	stroke-miterlimit: 4;
-	shape-rendering: auto;
-}
-.Line_43 {
-	overflow: visible;
-	position: absolute;
-	width: 1px;
-	height: 749px;
-	left: 1406.25px;
-	top: 266.5px;
-	transform: matrix(1,0,0,1,0,0);
-}
-#Line_44 {
-	fill: transparent;
-	stroke: rgba(112,112,112,1);
-	stroke-width: 1px;
-	stroke-linejoin: miter;
-	stroke-linecap: butt;
-	stroke-miterlimit: 4;
-	shape-rendering: auto;
-}
-.Line_44 {
-	overflow: visible;
-	position: absolute;
-	width: 1px;
-	height: 749px;
-	left: 1590.25px;
-	top: 266.5px;
-	transform: matrix(1,0,0,1,0,0);
-}
-#Group_34 {
-	position: absolute;
-	width: 123px;
-	height: 44px;
-	left: 1610.75px;
-	top: 345px;
-	overflow: visible;
-}
-#Rectangle_97 {
-	fill: rgba(34,220,146,1);
-}
-.Rectangle_97 {
-	position: absolute;
-	overflow: visible;
-	width: 123px;
-	height: 44px;
-	left: 0px;
-	top: 0px;
-}
-#Update_cm {
-	left: 30px;
-	top: 11px;
-	position: absolute;
-	overflow: visible;
-	width: 65px;
-	white-space: nowrap;
-	text-align: left;
-	font-family: Arial;
-	font-style: normal;
-	font-weight: normal;
-	font-size: 20px;
-	color: rgba(255,255,255,1);
-}
-#Group_35 {
-	position: absolute;
-	width: 123px;
-	height: 44px;
-	left: 1742.75px;
-	top: 345px;
-	overflow: visible;
-}
-#Rectangle_98 {
-	fill: rgba(0,194,203,1);
-}
-.Rectangle_98 {
-	position: absolute;
-	overflow: visible;
-	width: 123px;
-	height: 44px;
-	left: 0px;
-	top: 0px;
-}
-#View_cp {
-	left: 40px;
-	top: 11px;
-	position: absolute;
-	overflow: visible;
-	width: 44px;
-	white-space: nowrap;
-	text-align: left;
-	font-family: Arial;
-	font-style: normal;
-	font-weight: normal;
-	font-size: 20px;
-	color: rgba(255,255,255,1);
-}
-#n_9123456789_cq {
-	left: 1438.75px;
-	top: 356px;
-	position: absolute;
-	overflow: visible;
-	width: 123px;
-	white-space: nowrap;
-	text-align: left;
-	font-family: Arial;
-	font-style: normal;
-	font-weight: normal;
-	font-size: 20px;
-	color: rgba(0,0,0,1);
-}
-#n_8_cr {
-	left: 1317.75px;
-	top: 356px;
-	position: absolute;
-	overflow: visible;
-	width: 23px;
-	white-space: nowrap;
-	text-align: left;
-	font-family: Arial;
-	font-style: normal;
-	font-weight: normal;
-	font-size: 20px;
-	color: rgba(0,0,0,1);
-}
-#Marliardo_cs {
-	left: 880.75px;
-	top: 356px;
-	position: absolute;
-	overflow: visible;
-	width: 84px;
-	white-space: nowrap;
-	text-align: left;
-	font-family: Arial;
-	font-style: normal;
-	font-weight: normal;
-	font-size: 20px;
-	color: rgba(0,0,0,1);
-}
-#Rectangle_175 {
-	fill: rgba(238,238,238,1);
-}
-.Rectangle_175 {
-	position: absolute;
-	overflow: visible;
-	width: 1449px;
-	height: 66px;
-	left: 436.75px;
-	top: 266px;
-}
-#P-01_cu {
-	left: 494.75px;
-	top: 356px;
-	position: absolute;
-	overflow: visible;
-	width: 43px;
-	white-space: nowrap;
-	text-align: left;
-	font-family: Arial;
-	font-style: normal;
-	font-weight: normal;
-	font-size: 20px;
-	color: rgba(0,0,0,1);
-}
-#Umbao_cv {
-	left: 674.75px;
-	top: 356px;
-	position: absolute;
-	overflow: visible;
-	width: 65px;
-	white-space: nowrap;
-	text-align: left;
-	font-family: Arial;
-	font-style: normal;
-	font-weight: normal;
-	font-size: 20px;
-	color: rgba(0,0,0,1);
-}
-#Line_45 {
-	fill: transparent;
-	stroke: rgba(112,112,112,1);
-	stroke-width: 1px;
-	stroke-linejoin: miter;
-	stroke-linecap: butt;
-	stroke-miterlimit: 4;
-	shape-rendering: auto;
-}
-.Line_45 {
-	overflow: visible;
-	position: absolute;
-	width: 1449px;
-	height: 1px;
-	left: 437.25px;
-	top: 328.5px;
-	transform: matrix(1,0,0,1,0,0);
-}
-#Case_No_cx {
-	left: 484.75px;
-	top: 291px;
-	position: absolute;
-	overflow: visible;
-	width: 84px;
-	white-space: nowrap;
-	text-align: left;
-	font-family: Arial;
-	font-style: normal;
-	font-weight: normal;
-	font-size: 20px;
-	color: rgba(0,0,0,1);
-}
-#Last_Name_cy {
-	left: 657.75px;
-	top: 291px;
-	position: absolute;
-	overflow: visible;
-	width: 98px;
-	white-space: nowrap;
-	text-align: left;
-	font-family: Arial;
-	font-style: normal;
-	font-weight: normal;
-	font-size: 20px;
-	color: rgba(0,0,0,1);
-}
-#First_Name_cz {
-	left: 872.75px;
-	top: 291px;
-	position: absolute;
-	overflow: visible;
-	width: 99px;
-	white-space: nowrap;
-	text-align: left;
-	font-family: Arial;
-	font-style: normal;
-	font-weight: normal;
-	font-size: 20px;
-	color: rgba(0,0,0,1);
-}
-#Middle_Name_c {
-	left: 1089.75px;
-	top: 291px;
-	position: absolute;
-	overflow: visible;
-	width: 119px;
-	white-space: nowrap;
-	text-align: left;
-	font-family: Arial;
-	font-style: normal;
-	font-weight: normal;
-	font-size: 20px;
-	color: rgba(0,0,0,1);
-}
-#Age_c {
-	left: 1310.75px;
-	top: 291px;
-	position: absolute;
-	overflow: visible;
-	width: 37px;
-	white-space: nowrap;
-	text-align: left;
-	font-family: Arial;
-	font-style: normal;
-	font-weight: normal;
-	font-size: 20px;
-	color: rgba(0,0,0,1);
-}
-#Contact_No_c {
-	left: 1446.75px;
-	top: 291px;
-	position: absolute;
-	overflow: visible;
-	width: 107px;
-	white-space: nowrap;
-	text-align: left;
-	font-family: Arial;
-	font-style: normal;
-	font-weight: normal;
-	font-size: 20px;
-	color: rgba(0,0,0,1);
-}
-#Action_c {
-	left: 1708.75px;
-	top: 291px;
-	position: absolute;
-	overflow: visible;
-	width: 57px;
-	white-space: nowrap;
-	text-align: left;
-	font-family: Arial;
-	font-style: normal;
-	font-weight: normal;
-	font-size: 20px;
-	color: rgba(0,0,0,1);
-}
-#Rectangle_177 {
-	fill: rgba(34,139,220,1);
-}
-.Rectangle_177 {
+.Rectangle_176 {
 	position: absolute;
 	overflow: visible;
 	width: 179px;
@@ -1210,11 +384,514 @@
 .Icon_map-accounting {
 	overflow: visible;
 	position: absolute;
-	width: 17.59px;
+	width: 17.591px;
 	height: 21.108px;
-	left: 1540.2px;
+	left: 1540.199px;
 	top: 40.445px;
 	transform: matrix(1,0,0,1,0,0);
+}
+#Group_59 {
+	position: absolute;
+	width: 1455.542px;
+	height: 618.936px;
+	left: 433.729px;
+	top: 300.568px;
+	overflow: visible;
+}
+#P-01 {
+	left: 93.75px;
+	top: 91px;
+	position: absolute;
+	overflow: visible;
+	width: 43px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Arial;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 20px;
+	color: rgba(0,0,0,1);
+}
+#Path_2 {
+	fill: rgba(255,255,255,1);
+	stroke: rgba(112,112,112,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Path_2 {
+	overflow: visible;
+	position: absolute;
+	width: 1448.542px;
+	height: 617.936px;
+	left: 7px;
+	top: 0px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#Path_23 {
+	fill: rgba(255,255,255,1);
+	stroke: rgba(112,112,112,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Path_23 {
+	overflow: visible;
+	position: absolute;
+	width: 1455.542px;
+	height: 617.936px;
+	left: 0px;
+	top: 1px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#Path_7 {
+	fill: rgba(238,238,238,1);
+	stroke: rgba(112,112,112,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Path_7 {
+	overflow: visible;
+	position: absolute;
+	width: 1455.542px;
+	height: 64.81px;
+	left: 0px;
+	top: 0px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#Brand_Name {
+	left: 43px;
+	top: 21px;
+	position: absolute;
+	overflow: visible;
+	width: 113px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Arial;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 20px;
+	color: rgba(0,0,0,1);
+}
+#Model {
+	left: 285.139px;
+	top: 21.405px;
+	position: absolute;
+	overflow: visible;
+	width: 55px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Arial;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 20px;
+	color: rgba(0,0,0,1);
+}
+#Description {
+	left: 464.465px;
+	top: 21.405px;
+	position: absolute;
+	overflow: visible;
+	width: 101px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Arial;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 20px;
+	color: rgba(0,0,0,1);
+}
+#Line_55 {
+	fill: transparent;
+	stroke: rgba(112,112,112,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Line_55 {
+	overflow: visible;
+	position: absolute;
+	width: 1px;
+	height: 549.867px;
+	left: 223.465px;
+	top: 1px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#Line_56 {
+	fill: transparent;
+	stroke: rgba(112,112,112,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Line_56 {
+	overflow: visible;
+	position: absolute;
+	width: 2.367px;
+	height: 549.869px;
+	left: 407.771px;
+	top: 1px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#Line_57 {
+	fill: transparent;
+	stroke: rgba(112,112,112,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Line_57 {
+	overflow: visible;
+	position: absolute;
+	width: 3.021px;
+	height: 549.871px;
+	left: 617.771px;
+	top: 1px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#Line_58 {
+	fill: transparent;
+	stroke: rgba(112,112,112,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Line_58 {
+	overflow: visible;
+	position: absolute;
+	width: 1px;
+	height: 550.867px;
+	left: 776.443px;
+	top: 0px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#Line_59 {
+	fill: transparent;
+	stroke: rgba(112,112,112,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Line_59 {
+	overflow: visible;
+	position: absolute;
+	width: 1px;
+	height: 617.936px;
+	left: 902px;
+	top: 0px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#Line_60 {
+	fill: transparent;
+	stroke: rgba(112,112,112,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Line_60 {
+	overflow: visible;
+	position: absolute;
+	width: 1px;
+	height: 617.936px;
+	left: 1088.001px;
+	top: 1px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#Line_61 {
+	fill: transparent;
+	stroke: rgba(112,112,112,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Line_61 {
+	overflow: visible;
+	position: absolute;
+	width: 1px;
+	height: 617.936px;
+	left: 1275px;
+	top: 0px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#Price {
+	left: 675.117px;
+	top: 21.405px;
+	position: absolute;
+	overflow: visible;
+	width: 47px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Arial;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 20px;
+	color: rgba(0,0,0,1);
+}
+#Profit {
+	left: 1158px;
+	top: 21.405px;
+	position: absolute;
+	overflow: visible;
+	width: 48px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Arial;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 20px;
+	color: rgba(0,0,0,1);
+}
+#Amount {
+	left: 963.674px;
+	top: 21.405px;
+	position: absolute;
+	overflow: visible;
+	width: 70px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Arial;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 20px;
+	color: rgba(0,0,0,1);
+}
+#Qty {
+	left: 831.771px;
+	top: 21.405px;
+	position: absolute;
+	overflow: visible;
+	width: 32px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Arial;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 20px;
+	color: rgba(0,0,0,1);
+}
+#Action {
+	left: 1330.326px;
+	top: 21.405px;
+	position: absolute;
+	overflow: visible;
+	width: 57px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Arial;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 20px;
+	color: rgba(0,0,0,1);
+}
+#Total_Amount_ {
+	left: 905.674px;
+	top: 506.982px;
+	position: absolute;
+	overflow: visible;
+	width: 140px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Arial;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 20px;
+	color: rgba(0,0,0,1);
+}
+#Total_Profit_ {
+	left: 1091.676px;
+	top: 506.982px;
+	position: absolute;
+	overflow: visible;
+	width: 117px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Arial;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 20px;
+	color: rgba(0,0,0,1);
+}
+#Rectangle_236 {
+	fill: rgba(238,238,238,1);
+}
+.Rectangle_236 {
+	position: absolute;
+	overflow: visible;
+	width: 120px;
+	height: 44px;
+	left: 1207px;
+	top: 224px;
+}
+#Rectangle_237 {
+	fill: rgba(34,121,220,1);
+}
+.Rectangle_237 {
+	position: absolute;
+	overflow: visible;
+	width: 169px;
+	height: 44px;
+	left: 1347px;
+	top: 223px;
+}
+#n_Add {
+	left: 1404px;
+	top: 232px;
+	position: absolute;
+	overflow: visible;
+	width: 57px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Segoe UI;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 20px;
+	color: rgba(255,255,255,1);
+}
+#Path_24 {
+	fill: rgba(238,238,238,1);
+}
+.Path_24 {
+	overflow: visible;
+	position: absolute;
+	width: 750px;
+	height: 44px;
+	left: 434px;
+	top: 224px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#Search_Product {
+	opacity: 0.5;
+	left: 451px;
+	top: 231px;
+	position: absolute;
+	overflow: visible;
+	width: 166px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Arial;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 24px;
+	color: rgba(0,0,0,1);
+}
+#Icon_open-magnifying-glass {
+	fill: rgba(0,0,0,1);
+}
+.Icon_open-magnifying-glass {
+	overflow: visible;
+	position: absolute;
+	width: 28.989px;
+	height: 31.423px;
+	left: 1147.006px;
+	top: 227.577px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#Rectangle_238 {
+	fill: rgba(34,121,220,1);
+}
+.Rectangle_238 {
+	position: absolute;
+	overflow: visible;
+	width: 102px;
+	height: 41px;
+	left: 1748px;
+	top: 385px;
+}
+#x_Cancel {
+	left: 1763px;
+	top: 390px;
+	position: absolute;
+	overflow: visible;
+	width: 74px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Segoe UI;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 20px;
+	color: rgba(255,255,255,1);
+}
+#Line_64 {
+	fill: transparent;
+	stroke: rgba(112,112,112,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Line_64 {
+	overflow: visible;
+	position: absolute;
+	width: 1456px;
+	height: 1px;
+	left: 433.271px;
+	top: 784.5px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#Line_65 {
+	fill: transparent;
+	stroke: rgba(112,112,112,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Line_65 {
+	overflow: visible;
+	position: absolute;
+	width: 1455.004px;
+	height: 6px;
+	left: 424px;
+	top: 849.946px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#Rectangle_239 {
+	fill: rgba(34,121,220,1);
+}
+.Rectangle_239 {
+	position: absolute;
+	overflow: visible;
+	width: 1455px;
+	height: 57px;
+	left: 434px;
+	top: 953px;
+}
+#SAVE {
+	left: 1132px;
+	top: 964px;
+	position: absolute;
+	overflow: visible;
+	width: 61px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Segoe UI;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 27px;
+	color: rgba(255,255,255,1);
 }
 #Icon_metro-users {
 	fill: rgba(255,255,255,1);
@@ -1225,7 +902,7 @@
 	width: 37.571px;
 	height: 33.396px;
 	left: 38px;
-	top: 661px;
+	top: 658px;
 	transform: matrix(1,0,0,1,0,0);
 }
 #MANAGE_USER {
@@ -1262,9 +939,9 @@
 .Icon_metro-truck {
 	overflow: visible;
 	position: absolute;
-	width: 39.851px;
+	width: 39.852px;
 	height: 37px;
 	left: 38px;
-	top: 749px;
+	top: 746px;
 	transform: matrix(1,0,0,1,0,0);
 }
