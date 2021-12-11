@@ -253,7 +253,7 @@ include "../../db_conn.php";
   width: 1347px;
   background-color: #fff;
   color: #000;
-  margin-top: -40%;
+  margin-top: -60%;
 }
 
 td, th {

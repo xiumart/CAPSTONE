@@ -10,10 +10,10 @@
 </head>
 <body>
 <div id="services">
-	<div id="SERVICES_y">
+	<div id="SERVICES_y" style="top: 230px;">
 		<span>SERVICES</span>
 	</div>
-	<div id="Home____Services_page">
+	<div id="Home____Services_page" style="top: 290px; left: 830px;">
 		<span>Home  »  Services page</span>
 	</div>
 	<img id="Untitled_design_23" src="Untitled_design_23.png" srcset="Untitled_design_23.png 1x, Untitled_design_23@2x.png 2x" style="top:100px;">
@@ -42,7 +42,7 @@
 		<span>HOME</span>
 	</div>
 	</a>
-	<a href="../Services/ervices.php">
+	<a href="../Services/services.php">
 	<div id="SERVICES_" style="top:35px; font-size:26px; left:1179px;">
 		<span>SERVICES</span>
 	</div>
@@ -117,5 +117,46 @@
 	<img id="Untitled_design_24" src="Untitled_design_24.png" srcset="Untitled_design_24.png 1x, Untitled_design_24@2x.png 2x">
 		
 </div>
+<style>	
+#myBtn {
+  display: none;
+  position: fixed;
+  bottom: 10px;
+  right: 30px;
+  z-index: 99;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  background-color: teal;
+  color: white;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+#myBtn:hover {
+  background-color: #555;
+}
+</style>
+<button onclick="topFunction()" id="myBtn" title="Go to top">Back to top</button>
+<script>
+var mybutton = document.getElementById("myBtn");
+
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+
+function topFunction() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
+</script>
+
 </body>
 </html>

@@ -41,7 +41,7 @@ if (isset($_POST['btnsubmit'])) {
  include "config.php";  
  if (isset($_GET['pro_id'])) {  
       $id=$_GET['pro_id'];  
-      $delete=mysqli_query($con,"delete from product where ID='$id'");  
+      $delete=mysqli_query($con,"delete from product where pro_id='$id'");  
       if ($delete) {  
            header("location:adminproduct.php");  
            die();  
@@ -214,7 +214,7 @@ $search=$_POST['searchproduct'];
   		<td>" . $row["profit"] . "</td>
   		<td>" . $row["supplier"] . "</td>
   		<td>" . $row["qty"] ."</td>
-  		<td><form method='post' action='?pro_id=".$row["ID"]."'>
+  		<td><form method='post' action='?pro_id=".$row["pro_id"]."'>
   		<button>DELETE</button></form></td>
   		</tr>
   		 ";

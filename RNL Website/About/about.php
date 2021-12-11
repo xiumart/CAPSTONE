@@ -14,10 +14,10 @@
 		<rect id="Rectangle_178" rx="0" ry="0" x="0" y="70" width="1920" height="250">
 		</rect>
 	</svg>
-	<div id="ABOUT_z">
+	<div id="ABOUT_z" style="top: 230px;">
 		<span>ABOUT</span>
 	</div>
-	<div id="Home____About_page">
+	<div id="Home____About_page" style="top: 290px; left: 850px;">
 		<span>Home  »  About page</span>
 	</div>
 	<img id="Untitled_design_23" src="Untitled_design_23.png" srcset="Untitled_design_23.png 1x, Untitled_design_23@2x.png 2x" style="top:100px;">
@@ -173,5 +173,46 @@
 	</div>
 	</a>
 </div>
+<style>	
+#myBtn {
+  display: none;
+  position: fixed;
+  bottom: 10px;
+  right: 30px;
+  z-index: 99;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  background-color: teal;
+  color: white;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+#myBtn:hover {
+  background-color: #555;
+}
+</style>
+<button onclick="topFunction()" id="myBtn" title="Go to top">Back to top</button>
+<script>
+var mybutton = document.getElementById("myBtn");
+
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+
+function topFunction() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
+</script>
+
 </body>
 </html>

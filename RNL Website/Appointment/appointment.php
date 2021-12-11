@@ -15,10 +15,10 @@ include "../db_conn.php";
 <body>
 <div id="appointment">
 
-	<div id="APPOINMENT_ck">
-		<span>APPOINMENT</span>
+	<div id="APPOINMENT_ck" style="top: 230px;">
+		<span>APPOINTMENT</span>
 	</div>
-	<div id="Home____Appoinment_page_cl">
+	<div id="Home____Appoinment_page_cl" style="top: 290px; left: 830px;">
 		<span>Home  »  Appoinment page</span>
 	</div>
 </svg>
@@ -228,5 +228,46 @@ include "../db_conn.php";
 	</div>
 
 </div>
+<style>	
+#myBtn {
+  display: none;
+  position: fixed;
+  bottom: 10px;
+  right: 30px;
+  z-index: 99;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  background-color: teal;
+  color: white;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+#myBtn:hover {
+  background-color: #555;
+}
+</style>
+<button onclick="topFunction()" id="myBtn" title="Go to top">Back to top</button>
+<script>
+var mybutton = document.getElementById("myBtn");
+
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+
+function topFunction() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
+</script>
+
 </body>
 </html>
