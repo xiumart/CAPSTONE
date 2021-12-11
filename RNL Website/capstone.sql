@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 10, 2021 at 04:37 PM
+-- Generation Time: Dec 11, 2021 at 04:16 PM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.1.27
 
@@ -47,7 +47,7 @@ INSERT INTO `appointment` (`app_id`, `app_name`, `app_email`, `app_contact`, `ap
 (3, 'Danver Omlang', 'danverjhon@gmail.com', '09560492266', '2021-12-27', 'Appointment test 1', 'ONGOING'),
 (6, 'Raymart Gahopo', 'raymart.gahopo@gmail.com', '09075647938', '2021-12-01', 'Check Up', 'ONGOING'),
 (28, 'Marl Umbao', 'marl.umbao@gmail.com', '09123456789', '2021-12-16', 'Check Up', 'ONGOING'),
-(29, 'Robert Vitalica', 'robert@gmail.com', '09123456789', '2021-12-22', 'Check Up', 'ONGOING');
+(171, 'sample', 'sample@gmail.com', '09123455678', '2021-12-18', 'tulog', 'ONGOING');
 
 -- --------------------------------------------------------
 
@@ -101,9 +101,9 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`pro_id`, `brand`, `model`, `category`, `dateofarrival`, `expdate`, `sellingprice`, `origprice`, `profit`, `supplier`, `qty`) VALUES
-(3, 'try', 'try', 'Lens', '2021-12-15', '2021-12-15', 1000, 1200, 200, 'Supplier', 2),
 (5, 'robert', 'robert', 'Lens', '2021-12-15', '2021-12-22', 1000, 1200, 200, 'Supplier', 3),
-(7, 'EO', 'sample', 'Frame', '2021-12-17', '2021-12-24', 500, 800, 300, 'Supplier', 3);
+(7, 'EO', 'sample', 'Frame', '2021-12-17', '2021-12-24', 500, 800, 300, 'Supplier', 3),
+(11, 'Sample', 'sample', 'Frame', '2021-12-11', '2021-12-18', 1000, 1200, 200, 'Supplier', 1);
 
 -- --------------------------------------------------------
 
@@ -112,7 +112,7 @@ INSERT INTO `product` (`pro_id`, `brand`, `model`, `category`, `dateofarrival`, 
 --
 
 CREATE TABLE `supplier` (
-  `id` int(11) NOT NULL,
+  `supp_id` int(11) NOT NULL,
   `supp_supply` varchar(255) NOT NULL,
   `supp_contactperson` varchar(100) NOT NULL,
   `supp_contactno` varchar(100) NOT NULL,
@@ -125,8 +125,9 @@ CREATE TABLE `supplier` (
 -- Dumping data for table `supplier`
 --
 
-INSERT INTO `supplier` (`id`, `supp_supply`, `supp_contactperson`, `supp_contactno`, `supp_address`, `supp_note`, `action`) VALUES
-(12, 'Roberto Boy Paos', 'Carlito Dimagiba', '09560492266', '1cc', 'haYPBESTY', '');
+INSERT INTO `supplier` (`supp_id`, `supp_supply`, `supp_contactperson`, `supp_contactno`, `supp_address`, `supp_note`, `action`) VALUES
+(12, 'Roberto Boy Paos', 'Carlito Dimagiba', '09560492266', '1cc', 'haYPBESTY', ''),
+(15, 'sample', 'sample', '09123456789', 'qc', 'sample', '');
 
 -- --------------------------------------------------------
 
@@ -168,7 +169,7 @@ ALTER TABLE `product`
 -- Indexes for table `supplier`
 --
 ALTER TABLE `supplier`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`supp_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -178,7 +179,7 @@ ALTER TABLE `supplier`
 -- AUTO_INCREMENT for table `appointment`
 --
 ALTER TABLE `appointment`
-  MODIFY `app_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=165;
+  MODIFY `app_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=172;
 
 --
 -- AUTO_INCREMENT for table `patients`
@@ -190,13 +191,13 @@ ALTER TABLE `patients`
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `pro_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `pro_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `supplier`
 --
 ALTER TABLE `supplier`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `supp_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

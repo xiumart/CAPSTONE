@@ -30,11 +30,11 @@ session_start();
 		<rect id="Rectangle_115" rx="0" ry="0" x="0" y="0" width="1920" height="101">
 		</rect>
 	</svg>
-	<a href="../Dashboard/dashboard.php">
+	<a href="../DASHBOARD/dashboard.php">
 	<img id="Untitled_design_12" src="Untitled_design_12.png" srcset="Untitled_design_12.png 1x, Untitled_design_12@2x.png 2x">
 		
 	</a>
-	<a href="../Dashboard/dashboard.php">
+	<a href="../DASHBOARD/dashboard.php">
 	<div id="RNL_Vision_Care">
 		<span>RNL Vision Care</span>
 	</div>
@@ -49,7 +49,7 @@ session_start();
 		<ellipse id="Ellipse_8" rx="23" ry="23" cx="23" cy="23">
 		</ellipse>
 	</svg>
-	<a href="../Dashboard/dashboard.php">
+	<a href="../DASHBOARD/dashboard.php">
 	<div id="DASHBOARD_">
 		<span>DASHBOARD</span>
 	</div>
