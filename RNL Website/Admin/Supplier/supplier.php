@@ -284,14 +284,14 @@ td, th {
   <?php
 
 $search=$_POST['searchsupp'];
-$sql1 = "SELECT * FROM `supplier` WHERE `supply`LIKE '%$search%'";
+$sql1 = "SELECT * FROM `supplier` WHERE `supp_supply`LIKE '%$search%'";
 
 $result1 = $conn->query($sql1);
 
 if($result1->num_rows > 0){
 	while($row = $result1 -> fetch_assoc()){
 		echo 
-		"<tr><td>" . $row["id"] . "</td><td>" . $row["supply"] . "</td><td>" . $row["contactperson"] . "</td><td>" . $row["contactno"] . "</td><td>" . $row["address"] . "</td><td>". $row["note"] . "</td><td><button style='cursor: pointer; background-color: #abd7ab; padding: 10px; border-radius: 10px;'>UPDATE</button></a>&nbsp&nbsp&nbsp&nbsp<button style='cursor: pointer; background-color: #8cd3ff; padding: 10px; border-radius: 10px;'>VIEW</button></td></tr>";
+		"<tr><td>" . $row["supp_id"] . "</td><td>" . $row["supp_supply"] . "</td><td>" . $row["supp_contactperson"] . "</td><td>" . $row["supp_contactno"] . "</td><td>" . $row["supp_address"] . "</td><td>". $row["supp_note"] . "</td></tr>";
 	}
 } else {
 	echo "NO RESULTS";
@@ -301,11 +301,6 @@ $conn->close();
 
 
 ?>
-<<<<<<< Updated upstream
-=======
-<td><a href="#"><button type="submit" style="cursor: pointer; background-color: #abd7ab; padding: 10px; border-radius: 10px; width: 120px;">UPDATE</button></a>&nbsp&nbsp&nbsp&nbsp<a href="#"><button type="submit" style="cursor: pointer; background-color: #8cd3ff; padding: 10px; border-radius: 10px; width: 120px;">VIEW</button></a></td>
-</table>
->>>>>>> Stashed changes
 </div>
 	<div id="Search_Supplier">
 	
