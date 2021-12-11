@@ -10,20 +10,22 @@
 <script id="applicationScript" type="text/javascript" src="js/script.js"></script>
 </head>
 <body>
+	<form action="loginformhandler.php" method="post">
 <div id="login">
 	<svg class="Rectangle_61">
 		<rect id="Rectangle_61" rx="20" ry="20" x="0" y="0" width="806" height="646">
 		</rect>
 	</svg>
 	<div id="EMAIL">
-		<input type="text" id="email_" placeholder="EMAIL">
+		<input type="text" id="email_" name="username" placeholder="EMAIL">
 	</div>
 	<div id="PASSWORD">
-		<input type="password" id="password_" placeholder="PASSWORD">
+		<input type="password" id="password_" name="password" placeholder="PASSWORD">
 	</div>
 	<div id="LOGIN_">
-		<input type="submit" value="LOGIN" id="loginbtn">
+		<input type="submit" value="login" name="submit" id="loginbtn">
 	</div>
+</form>
 	<svg class="Rectangle_65">
 		<rect id="Rectangle_65" rx="20" ry="20" x="0" y="0" width="806" height="197">
 		</rect>
