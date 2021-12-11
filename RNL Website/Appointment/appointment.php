@@ -21,10 +21,11 @@ include "../db_conn.php";
 	<div id="Home____Appoinment_page_cl">
 		<span>Home  »  Appoinment page</span>
 	</div>
-	<img id="Untitled_design_23_cm" src="Untitled_design_23_cm.png" srcset="Untitled_design_23_cm.png 1x, Untitled_design_23_cm@2x.png 2x">
+</svg>
+	<img id="Untitled_design_23_cm" src="Untitled_design_23_cm.png" srcset="Untitled_design_23_cm.png 1x, Untitled_design_23_cm@2x.png 2x" style="top:100px;">
 		
 	<svg class="Rectangle_103">
-		<rect id="Rectangle_103" rx="0" ry="0" x="0" y="0" width="1920" height="296">
+		<rect id="Rectangle_103" rx="0" ry="0" x="0" y="70" width="1920" height="250">
 		</rect>
 	</svg>
 	<div id="RNL_Vision_Care_co">
@@ -75,23 +76,44 @@ include "../db_conn.php";
 	<div id="Send_c">
 		<span>Send</span>
 	</div>
+	<style>
+		.Rectangle_107{
+		margin-left: -450px;
+		}
+			</style>
 	<svg class="Rectangle_107">
 		<rect id="Rectangle_107" rx="20" ry="20" x="0" y="0" width="806" height="646">
+			
 		</rect>
 	</svg>
+	
 <form name="form1" method="post" action="appformhandler.php" >
 
         <p class="error"><?php echo $_GET['error']; ?></p>
           <?php if (isset($_GET['success'])) { ?>
                <p class="success"><?php echo $_GET['success']; ?></p>
           <?php } ?>
+		  
 	<div id="FULL_NAME_db">
 		<label>Full Name:</label><br>
 			<input type="text" id="fname" name="fname" placeholder="Fullname" required="required"><br>
+			<style>
+			  input[type=text], select {
+				margin-left: -440px;
+			  }
+			  label {
+				margin-left: -440px;
+			  }
+			  </style>
 	</div>
 	<div id="EMAIL_dc">
 		<label>Email:</label><br>
 		<input type="email" id="email" name="email" placeholder="Email" required="required"><br>
+		<style>
+			  input[type=email], select {
+				margin-left: -440px;
+			  }
+			  </style>
 	</div>
 	<style>
 	input[type=tel], select {
@@ -105,6 +127,7 @@ include "../db_conn.php";
 					background-color: transparent;
 					font-size: 20px;
 					color: white;
+					margin-left: -440px;
 				  }
 				  </style>
 	<div id="CONTACT__dd">
@@ -114,105 +137,49 @@ include "../db_conn.php";
 	<div id="ddmmyyyy_de">
 		<label for="date">Date:</label><br>
   		<input type="date" id="date" name="date" required="required">
+		  <style>
+			  input[type=date], select {
+				margin-left: -440px;
+			  }
+			  label[for=date] {
+				margin-left: -440px;
+			  }
+			  </style>
 	</div>
 	<div id="PURPOSE_df">
 		<label>Purpose:</label><br>
 		<input type="text" id="purpose" name="purpose" placeholder="Purpose" required="required"><br>
+		
 	</div>
 	<div id="Set_Appointment_dh">
 		<input type="submit" name="submit" value="Set Appointment">
+		<style>
+			input[type=submit] {
+				margin-left: -465px;
+			}
+			</style>
 		</div>
         </form>
 	<!-- </div>
 		<div id="Calendar_Schedule_d">
 			<input type="submit" id="date"value="Calendar Schedule">
 		</div> -->
-	<div id="AVAILABLE_TIME_FOR_TODAY___di">
-		<span>AVAILABLE TIME FOR TODAY : </span>
-	</div>
-	<div id="n_00_AM_-_FREE_dj">
-		<span>8:00 AM - </span><span style="color:rgba(0,255,85,1);">FREE</span>
-	</div>
-	<div id="n_30_AM_-_RESERVED_dk">
-		<span>8:30 AM - </span><span style="color:rgba(255,125,125,1);">RESERVED</span>
-	</div>
-	<div id="n_00_AM_-_FREE_dl">
-		<span>9:00 AM - </span><span style="color:rgba(0,255,85,1);">FREE</span>
-	</div>
-	<div id="n_30_AM_-_RESERVED_dm">
-		<span>9:30 AM -</span><span style="color:rgba(255,125,125,1);"> RESERVED</span>
-	</div>
-	<div id="n_000_AM_-_FREE_dn">
-		<span>10:00 AM -</span><span style="color:rgba(0,255,85,1);"> FREE</span>
-	</div>
-	<div id="n_030_AM_-_RESERVED_do">
-		<span>10:30 AM -</span><span style="color:rgba(255,125,125,1);"> RESERVED</span>
-	</div>
-	<div id="n_100_AM_-_FREE_dp">
-		<span>11:00 AM -</span><span style="color:rgba(0,255,85,1);"> FREE</span>
-	</div>
-	<div id="n_130_AM_-_RESERVED_dq">
-		<span>11:30 AM -</span><span style="color:rgba(255,125,125,1);"> RESERVED</span>
-	</div>
-	<div id="n_200_PM_-_100_PM__LUNCH_BREAK_dr">
-		<span>12:00 PM - 1:00 PM ( LUNCH BREAK )</span>
-	</div>
-	<div id="n_30_PM_-_RESERVED_ds">
-		<span>1:30 PM - </span><span style="color:rgba(255,125,125,1);">RESERVED</span>
-	</div>
-	<div id="n_00_PM_-_FREE_dt">
-		<span>2:00 PM -</span><span style="color:rgba(0,255,85,1);"> FREE</span>
-	</div>
-	<div id="n_30_PM_-_RESERVED_du">
-		<span>2:30 PM - </span><span style="color:rgba(255,125,125,1);">RESERVED</span>
-	</div>
-	<div id="n_00_PM_-_FREE_dv">
-		<span>3:00 PM -</span><span style="color:rgba(0,255,85,1);"> FREE</span>
-	</div>
-	<div id="n_30_PM_-_RESERVED_dw">
-		<span>3:30 PM - </span><span style="color:rgba(255,125,125,1);">RESERVED</span>
-	</div>
-	<div id="n_00_PM_-_FREE_dx">
-		<span>4:00 PM -</span><span style="color:rgba(0,255,85,1);"> FREE</span>
-	</div>
-	<div id="n_30_PM_-_FREE_dy">
-		<span>4:30 PM -</span><span style="color:rgba(0,255,85,1);"> FREE</span>
-	</div>
-	<svg class="Line_15" viewBox="0 0 705 1">
-		<path id="Line_15" d="M 0 0 L 705 0">
-		</path>
-	</svg>
-	<svg class="Line_16" viewBox="0 0 705 1">
-		<path id="Line_16" d="M 0 0 L 705 0">
-		</path>
-	</svg>
-	<div id="n_1__02__21_d">
-		<span>11 / 02 / 21</span>
-	</div>
-	<div id="n_00_AM_-_FREE_d">
-		<span>1:00 AM - </span><span style="color:rgba(0,255,85,1);">FREE</span>
-	</div>
-	<div id="Calendar_Schedule_d">
-		<span>Calendar Schedule</span>
-	</div>
+		
+	
+	
 	
 	<svg class="Rectangle_1">
-		<rect id="Rectangle_1" rx="0" ry="0" x="0" y="0" width="1920" height="168">
+		<rect id="Rectangle_1" rx="0" ry="0" x="0" y="0" width="1920" height="100">
 		</rect>
 	</svg>
-	<a href="../Home/home.php">
-	<img id="Untitled_design_12_eh" src="Untitled_design_12_eh.png" srcset="Untitled_design_12_eh.png 1x, Untitled_design_12_eh@2x.png 2x">
 		
 	</a>
 	<a href="../Home/home.php">
-	<div id="RNL_Vision_Care_ei">
+	<div id="RNL_Vision_Care_ei" style="top: 30px;">
 		<span>RNL Vision Care</span>
 	</div>
 	</a>
-	<svg class="Icon_ionic-md-eye_ej" viewBox="2.25 7.383 53.692 36.194">
-		<path id="Icon_ionic-md-eye_ej" d="M 29.09608459472656 7.3828125 C 16.89549827575684 7.3828125 6.516610145568848 14.86136245727539 2.25 25.47994995117188 C 6.516610145568848 36.09852981567383 16.89549827575684 43.57708740234375 29.09608459472656 43.57708740234375 C 41.29667282104492 43.57708740234375 51.67556381225586 36.09852981567383 55.94216918945312 25.47994995117188 C 51.67556381225586 14.86136245727539 41.29667282104492 7.3828125 29.09608459472656 7.3828125 Z M 29.09608459472656 37.54870223999023 C 22.38456153869629 37.54870223999023 16.89549827575684 32.11956405639648 16.89549827575684 25.47994995117188 C 16.89549827575684 18.8403377532959 22.38456153869629 13.41119575500488 29.09608459472656 13.41119575500488 C 35.8076057434082 13.41119575500488 41.29667282104492 18.8403377532959 41.29667282104492 25.47994995117188 C 41.29667282104492 32.11956405639648 35.8076057434082 37.54870223999023 29.09608459472656 37.54870223999023 Z M 29.09608459472656 18.2410945892334 C 25.06916999816895 18.2410945892334 21.77333450317383 21.50097846984863 21.77333450317383 25.47994995117188 C 21.77333450317383 29.45891952514648 25.06916999816895 32.71880722045898 29.09608459472656 32.71880722045898 C 33.12299346923828 32.71880722045898 36.41883087158203 29.45892524719238 36.41883087158203 25.47994995117188 C 36.41883087158203 21.5009765625 33.12299346923828 18.2410945892334 29.09608459472656 18.2410945892334 Z">
-		</path>
-	</svg>
+
 	<div id="ABOUT">
 		<span>ABOUT</span>
 	</div>
@@ -222,52 +189,44 @@ include "../db_conn.php";
 	</div>
 	</a>
 	<svg class="Rectangle_106">
-		<rect id="Rectangle_106" rx="0" ry="0" x="0" y="0" width="1920" height="168">
+		<rect id="Rectangle_106" rx="0" ry="0" x="0" y="0" width="1920" height="100">
 		</rect>
 	</svg>
 	<a href="../Home/home.php">
-	<img id="Untitled_design_12_eh" src="Untitled_design_12_eh.png" srcset="Untitled_design_12_eh.png 1x, Untitled_design_12_eh@2x.png 2x">
+	<img id="Untitled_design_12_eh" src="Untitled_design_12_eh.png" srcset="Untitled_design_12_eh.png 1x, Untitled_design_12_eh@2x.png 2x" style="width:150px;height:100px;">
 		
 	</a>
 	<a href="../Home/home.php">
-	<div id="RNL_Vision_Care_ei">
+	<div id="RNL_Vision_Care_ei" style="top: 35px;">
 		<span>RNL Vision Care</span>
 	</div>
 	</a>
-	<svg class="Icon_ionic-md-eye_ej" viewBox="2.25 7.383 53.692 36.194">
-		<path id="Icon_ionic-md-eye_ej" d="M 29.09608459472656 7.3828125 C 16.89549827575684 7.3828125 6.516610145568848 14.86136245727539 2.25 25.47994995117188 C 6.516610145568848 36.09852981567383 16.89549827575684 43.57708740234375 29.09608459472656 43.57708740234375 C 41.29667282104492 43.57708740234375 51.67556381225586 36.09852981567383 55.94216918945312 25.47994995117188 C 51.67556381225586 14.86136245727539 41.29667282104492 7.3828125 29.09608459472656 7.3828125 Z M 29.09608459472656 37.54870223999023 C 22.38456153869629 37.54870223999023 16.89549827575684 32.11956405639648 16.89549827575684 25.47994995117188 C 16.89549827575684 18.8403377532959 22.38456153869629 13.41119575500488 29.09608459472656 13.41119575500488 C 35.8076057434082 13.41119575500488 41.29667282104492 18.8403377532959 41.29667282104492 25.47994995117188 C 41.29667282104492 32.11956405639648 35.8076057434082 37.54870223999023 29.09608459472656 37.54870223999023 Z M 29.09608459472656 18.2410945892334 C 25.06916999816895 18.2410945892334 21.77333450317383 21.50097846984863 21.77333450317383 25.47994995117188 C 21.77333450317383 29.45891952514648 25.06916999816895 32.71880722045898 29.09608459472656 32.71880722045898 C 33.12299346923828 32.71880722045898 36.41883087158203 29.45892524719238 36.41883087158203 25.47994995117188 C 36.41883087158203 21.5009765625 33.12299346923828 18.2410945892334 29.09608459472656 18.2410945892334 Z">
-		</path>
-	</svg>
+
 	<a href="../About/about.php">
-	<div id="ABOUT_ek">
+	<div id="ABOUT_ek" style="top:35px; font-size:26px; left:1035px;">
 		<span>ABOUT</span>
 	</div>
 	</a>
 	<a href="../Home/home.php">
-	<div id="HOME_el">
+	<div id="HOME_el" style="top:35px; font-size:26px; left:900px;">
 		<span>HOME</span>
 	</div>
 	</a>
 	<a href="../Services/services.php">
-	<div id="SERVICES_em">
+	<div id="SERVICES_em" style="top:35px; font-size:26px; left:1179px;">
 		<span>SERVICES</span>
 	</div>
 	</a>
 	<a href="../Product/product.php">
-	<div id="PRODUCT_en">
+	<div id="PRODUCT_en" style="top:35px; font-size:26px; left:1355px;">
 		<span>PRODUCT</span>
 	</div>
 	</a>
 	<a href="../Appointment/appointment.php">
-	<div id="APPOINTMENT_eo">
+	<div id="APPOINTMENT_eo" style="top:35px; font-size:26px; left:1518px;">
 		<span>APPOINTMENT</span>
 	</div>
-	</a>
-	<a href="../Login/login.php">
-	<div id="LOGIN_ep">
-		<span>LOGIN</span>
-	</div>
-	</a>
+
 </div>
 </body>
 </html>

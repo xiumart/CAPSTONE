@@ -11,7 +11,7 @@
 <body>
 <div id="about">
 	<svg class="Rectangle_178">
-		<rect id="Rectangle_178" rx="0" ry="0" x="0" y="0" width="1920" height="296">
+		<rect id="Rectangle_178" rx="0" ry="0" x="0" y="70" width="1920" height="250">
 		</rect>
 	</svg>
 	<div id="ABOUT_z">
@@ -20,7 +20,7 @@
 	<div id="Home____About_page">
 		<span>Home  »  About page</span>
 	</div>
-	<img id="Untitled_design_23" src="Untitled_design_23.png" srcset="Untitled_design_23.png 1x, Untitled_design_23@2x.png 2x">
+	<img id="Untitled_design_23" src="Untitled_design_23.png" srcset="Untitled_design_23.png 1x, Untitled_design_23@2x.png 2x" style="top:100px;">
 		
 	<img id="Untitled_design_24" src="Untitled_design_24.png" srcset="Untitled_design_24.png 1x, Untitled_design_24@2x.png 2x">
 		
@@ -93,7 +93,7 @@
 		<span>RNL Vision Care</span>
 	</div>
 	<svg class="Line_9" viewBox="0 0 1920 1">
-		<path id="Line_9" d="M 0 0 L 1920 0">
+		<path id="Line_9" d="M 0 0 L 1920 0">		
 		</path>
 	</svg>
 	<div id="n_2021_RNL_Vision_Care_All_Rig">
@@ -138,40 +138,37 @@
 		</rect>
 	</svg>
 	<a href="../Home/home.php">
-	<img id="Untitled_design_12" src="Untitled_design_12.png" srcset="Untitled_design_12.png 1x, Untitled_design_12@2x.png 2x">
+	<img id="Untitled_design_12" src="Untitled_design_12.png" srcset="Untitled_design_12.png 1x, Untitled_design_12@2x.png 2x" style="width:150px; height:100px;">
 		
 	</a>
 	<a href="../Home/home.php">
-	<div id="RNL_Vision_Care_b">
+	<div id="RNL_Vision_Care_b" style="top:35px;">
 		<span>RNL Vision Care</span>
 	</div>
 	</a>
-	<svg class="Icon_ionic-md-eye" viewBox="2.25 7.383 53.692 36.194">
-		<path id="Icon_ionic-md-eye" d="M 29.09608459472656 7.3828125 C 16.89549827575684 7.3828125 6.516610145568848 14.86136245727539 2.25 25.47994995117188 C 6.516610145568848 36.09852981567383 16.89549827575684 43.57708740234375 29.09608459472656 43.57708740234375 C 41.29667282104492 43.57708740234375 51.67556381225586 36.09852981567383 55.94216918945312 25.47994995117188 C 51.67556381225586 14.86136245727539 41.29667282104492 7.3828125 29.09608459472656 7.3828125 Z M 29.09608459472656 37.54870223999023 C 22.38456153869629 37.54870223999023 16.89549827575684 32.11956405639648 16.89549827575684 25.47994995117188 C 16.89549827575684 18.8403377532959 22.38456153869629 13.41119575500488 29.09608459472656 13.41119575500488 C 35.8076057434082 13.41119575500488 41.29667282104492 18.8403377532959 41.29667282104492 25.47994995117188 C 41.29667282104492 32.11956405639648 35.8076057434082 37.54870223999023 29.09608459472656 37.54870223999023 Z M 29.09608459472656 18.2410945892334 C 25.06916999816895 18.2410945892334 21.77333450317383 21.50097846984863 21.77333450317383 25.47994995117188 C 21.77333450317383 29.45891952514648 25.06916999816895 32.71880722045898 29.09608459472656 32.71880722045898 C 33.12299346923828 32.71880722045898 36.41883087158203 29.45892524719238 36.41883087158203 25.47994995117188 C 36.41883087158203 21.5009765625 33.12299346923828 18.2410945892334 29.09608459472656 18.2410945892334 Z">
-		</path>
-	</svg>
+	
 	<a href="../About/about.php">
-	<div id="ABOUT_b">
+	<div id="ABOUT_b" style="top:35px; font-size:26px; left: 1035px;">
 		<span>ABOUT</span>
 	</div>
 	</a>
 	<a href="../Home/home.php">
-	<div id="HOME">
+	<div id="HOME" style="top:35px; font-size:26px; left: 900px;">
 		<span>HOME</span>
 	</div>
 	</a>
 	<a href="../Services/services.php">
-	<div id="SERVICES">
+	<div id="SERVICES" style="top:35px; font-size:26px; left: 1179px;">
 		<span>SERVICES</span>
 	</div>
 	</a>
 	<a href="../Product/product.php">
-	<div id="PRODUCT">
+	<div id="PRODUCT" style="top:35px; font-size:26px; left: 1355px;">
 		<span>PRODUCT</span>
 	</div>
 	</a>
-	<a href="../Update/appointment.php">
-	<div id="APPOINTMENT">
+	<a href="../Appointment/appointment.php">
+	<div id="APPOINTMENT" style="top:35px; font-size:26px; left: 1518px;">
 		<span>APPOINTMENT</span>
 	</div>
 	</a>
