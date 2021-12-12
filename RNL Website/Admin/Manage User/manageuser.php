@@ -1,3 +1,18 @@
+
+ <?php   
+ include "../../db_conn.php";  
+ if (isset($_GET['users_id'])) {  
+      $userid=$_GET['users_id'];  
+      $delete=mysqli_query($conn,"delete from users where users_id='$userid'");  
+      if ($delete) {  
+           header("location:manageuser.php");  
+           die();  
+      }  
+ }
+
+
+ ?>  
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -142,7 +157,9 @@ echo "<tr><td>" . $row["users_id"]. "</td><td>" . $row["users_last"]. "</td><td>
 . $row["users_email"]. "</td><td>". $row["users_contact"]. "</td><td>". $row["user_role"]. "</td> 
 <td><form method='post' action='?users_id=".$row["users_id"]."'>
   		<button>UPDATE</button><span>&nbsp&nbsp&nbsp&nbsp</span>
-		  <button>REMOVE</button></form></td></tr>";
+		<form method='post' action='?users_id=".$row["users_id"]."'>
+  		<button>DELETE</button> 
+		</form></tr>";
 }
 echo "</table>";
 } else { echo "0 results"; }
