@@ -105,27 +105,6 @@ td, th {
 
 </style>
 	<div id="MANAGE_USER">
-<<<<<<< Updated upstream
-		<span>MANAGE USER</span><br><br><br>	
-		<input type="text" name="EMAIL" style="background-color: white; font-size: 20px; border:solid white 1px; width: 550px; border-radius: 10px; height:40px;  text-transform: lowercase;margin-top: -200px; margin-left: 740px;margin-top: 5px; padding-left: 10px;" placeholder="Search Username"><br><br><br><table>
-  <tr>
-    <th>Name</th>
-    <th>Username</th>
-    <th>Email</th>
-    <th>Contact no.</th>
-    <th>Position</th>
-    <th>Action</th>
-  </tr>
-  <tr>
-    <td>Ticia Joy M. Altarejos</td>
-    <td>trish0200</td>
-    <td>tricia.joy.magora.altarejos@gmail.com</td>
-    <td>09123456789</td>
-    <td>Front End Programmer</td>
-    <td><button style="cursor: pointer; background-color: #abd7ab; padding: 10px; border-radius: 10px;">UPDATE</button>&nbsp&nbsp&nbsp&nbsp<button style="cursor: pointer; background-color: #ff6666; padding: 10px; border-radius: 10px;">REMOVE</button></button>&nbsp&nbsp&nbsp&nbsp<button style="cursor: pointer; background-color: #397be6; padding: 10px; border-radius: 10px;">CHANGE PASSWORD</button></td>
-</tr>
-</table>
-=======
 		<span>MANAGE USER</span><br><br><br>
 		<form method="post">	
 		<input type="text" name="searchlname" style="background-color: white; font-size: 20px; border:solid white 1px; width: 550px; border-radius: 10px; height:40px; margin-top: -200px; margin-left: 740px;margin-top: 5px; padding-left: 10px;" placeholder="Search Lastname"></form><br><br><div id="Group_56">
@@ -175,7 +154,6 @@ $conn->close();
 			</div>
 			</div>
 			
->>>>>>> Stashed changes
 	</div>
 	<svg class="Line_17" viewBox="0 0 1376 1">
 		<path id="Line_17" d="M 0 0 L 1376 0">
