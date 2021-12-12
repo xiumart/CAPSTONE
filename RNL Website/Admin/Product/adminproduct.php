@@ -317,7 +317,7 @@ $search=$_POST['searchproduct'];
 				  </select><br><br>
 				<label style="color: #000;padding-right: 30%;">QTY:</label>
 				<input type="number" id="tentacles" name="qty" min="1" max="10000" placeholder="Quantity" style="background-color: white; font-size: 20px; border:solid black 2px; width: 200px;; height:43px;  text-transform:lowercase; padding-left: 10px; border-radius: 8px; padding: 3px;" ><br><br><br><br>
-				<center><button type="submit" name="btnsubmit">Submit</button></center>
+				<center><button type="submit" name="btnsubmit" onclick="return confirm('Are you sure')">Submit</button></center>
 			
 			  </form> 
 			</div>

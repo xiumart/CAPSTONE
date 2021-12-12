@@ -150,13 +150,40 @@ include "../db_conn.php";
 	</div>
 	<div id="PURPOSE_df">
 		<label>Purpose:</label><br>
-		<select>
+		<select name="purpose">
     <option value="Eye Check Up">Eye Check-Up</option>
 			</select>
 		
 	</div>
+	<div id="time" style="opacity: 0.5;
+	left: 1474.5px;
+	top: 777px;
+	position: absolute;
+	overflow: visible;
+	width: 113px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Arial;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 21px;
+	color: rgba(255,255,255,1);">
+		<label>Time:</label><br>
+		<select name="time" >
+    <option value="8:00am" style="color:black;">08:00am</option>
+	<option value="9:00am" style="color:black;">09:00am</option>
+	<option value="9:00am" style="color:black;">10:00am</option>
+	<option value="9:00am" style="color:black;">11:00am</option>
+	<option value="9:00am" style="color:black;">01:00pm</option>
+	<option value="9:00am" style="color:black;">02:00pm</option>
+	<option value="9:00am" style="color:black;">03:00pm</option>
+	<option value="9:00am" style="color:black;">04:00pm</option>
+			</select>
+		
+	</div>
+	
 	<div id="Set_Appointment_dh">
-		<input type="submit" name="submit" value="Set Appointment">
+		<input type="submit" name="submit" value="Set Appointment" onclick="return confirm('Are you sure set an appointment?')">
 		<style>
 			input[type=submit] {
 				margin-left: -465px;

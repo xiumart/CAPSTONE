@@ -207,12 +207,36 @@ include "db_conn.php";
 	</div>
 	<div id="PURPOSE"  style="width: 260px;">
 		<label>Purpose:</label><br><br>
-		<select>
+		<select name="purpose">
     <option value="Eye Check Up">Eye Check-Up</option>
 			</select>
 	</div>
+	<div id="time"  style="width: 230px;opacity: 0.5;
+	left: 1419.5px;
+	top: 4281px;
+	position: absolute;
+	overflow: visible;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Arial;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 21px;
+	color: rgba(255,255,255,1);">
+		<label>Time:</label><br><br>
+		<select name="time" >
+    <option value="8:00am" style="color:black;">08:00am</option>
+	<option value="9:00am" style="color:black;">09:00am</option>
+	<option value="9:00am" style="color:black;">10:00am</option>
+	<option value="9:00am" style="color:black;">11:00am</option>
+	<option value="9:00am" style="color:black;">01:00pm</option>
+	<option value="9:00am" style="color:black;">02:00pm</option>
+	<option value="9:00am" style="color:black;">03:00pm</option>
+	<option value="9:00am" style="color:black;">04:00pm</option>
+			</select>
+	</div>
 	<div id="Set_Appointment">
-		<input type="submit" value="Set Appointment">
+		<input type="submit" value="Set Appointment" onclick="return confirm('Are you sure set an appointment?')">
 		</div>
 	<div id="Contact_Us">
 		<input type= "submit" id="contactus" value="Contact Us"> 
@@ -245,13 +269,14 @@ include "db_conn.php";
 		<span>❝</span>
 	</div>
 	<div id="Kung_ikaw_ay_masaya_tumawa_ka_">
-		<span>Kung ikaw ay masaya tumawa ka <br/>HA HA.</span>
+		<span>The Doctors are <br> very sensitive that
+		make you<br> feel comfortable. Love them!</span>
 	</div>
 	<div id="Super_Saya_">
-		<span>Super Saya 〞</span>
+		<span>Excellent! 〞</span>
 	</div>
 	<div id="n__Marliardo_Umbao">
-		<span>- Marliardo Umbao</span>
+		<span>-Gail De lima</span>
 	</div>
 	<svg class="Rectangle_34">
 		<rect id="Rectangle_34" rx="43" ry="43" x="0" y="0" width="505" height="376">
@@ -261,10 +286,10 @@ include "db_conn.php";
 		<span>❝</span>
 	</div>
 	<div id="Kung_ikaw_ay_masaya_tumawa_ka__fk">
-		<span>Kung ikaw ay masaya tumawa ka <br/>HA HA.</span>
+		<span>I find that this pair is quite <br>comfortable on the eyes. I wore it<br> and it didn’t irritate my eyes.</span>
 	</div>
 	<div id="Super_Saya__fl">
-		<span>Super Saya 〞</span>
+		<span>Comfortable 〞</span>
 	</div>
 	<div id="n__Marliardo_Umbao_fm">
 		<span>- Marliardo Umbao</span>
@@ -277,13 +302,13 @@ include "db_conn.php";
 		<span>❝</span>
 	</div>
 	<div id="Kung_ikaw_ay_masaya_tumawa_ka__fp">
-		<span>Kung ikaw ay masaya tumawa ka <br/>HA HA.</span>
+		<span>Lightweight eyewear <br>and welcoming staff. <br>Fairview branch</span>
 	</div>
 	<div id="Super_Saya__fq">
-		<span>Super Saya 〞</span>
+		<span>Quality 〞</span>
 	</div>
 	<div id="n__Marliardo_Umbao_fr">
-		<span>- Marliardo Umbao</span>
+		<span>- Raymart Gahopo</span>
 	</div>
 	<svg class="Ellipse_1_fs">
 		<ellipse id="Ellipse_1_fs" rx="10" ry="10" cx="10" cy="10">
@@ -381,8 +406,8 @@ include "db_conn.php";
 	</div>
 	</a>
 
-<button class="btn btn-light" onclick="swapStyle('css/light.css')" id="wow"><img src="Untitled design(9).png" alt="" style="width:50px; background:rgba(18,18,18,1);"></button>
-		<button class="btn btn-dark" onclick="swapStyle('css/style.css')" id="wew"><img src="Untitled design(14).png" alt="" style="width:50px;"></button>
+<button class="btn btn-light" onclick="swapStyle('css/light.css')" id="wow" style="font-size:50px; background-color:rgba(18,18,18,1); color:white; margin-left: 50px;">👁</button>
+		<button class="btn btn-dark" onclick="swapStyle('css/style.css')" id="wew" style="font-size:50px; color:black; background-color:rgb(248, 248, 248);">👁</button>
 		<script type="text/javascript">
 
 		var setTheme = localStorage.getItem('theme')

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 12, 2021 at 03:11 AM
--- Server version: 10.4.11-MariaDB
--- PHP Version: 7.4.6
+-- Generation Time: Dec 12, 2021 at 03:29 PM
+-- Server version: 10.4.21-MariaDB
+-- PHP Version: 8.0.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -33,6 +33,7 @@ CREATE TABLE `appointment` (
   `app_email` varchar(150) NOT NULL,
   `app_contact` varchar(150) NOT NULL,
   `app_date` date NOT NULL,
+  `app_time` varchar(100) NOT NULL,
   `app_purpose` varchar(255) NOT NULL,
   `app_remarks` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -41,12 +42,10 @@ CREATE TABLE `appointment` (
 -- Dumping data for table `appointment`
 --
 
-INSERT INTO `appointment` (`app_id`, `app_name`, `app_email`, `app_contact`, `app_date`, `app_purpose`, `app_remarks`) VALUES
-(1, 'Danver Omlang', 'danverjhon@gmail.com', '09560492266', '2021-11-10', 'Appointment test', ''),
-(3, 'Danver Omlang', 'danverjhon@gmail.com', '09560492266', '2021-12-27', 'Appointment test 1', 'ONGOING'),
-(6, 'Raymart Gahopo', 'raymart.gahopo@gmail.com', '09075647938', '2021-12-01', 'Check Up', 'ONGOING'),
-(28, 'Marl Umbao', 'marl.umbao@gmail.com', '09123456789', '2021-12-16', 'Check Up', 'ONGOING'),
-(171, 'sample', 'sample@gmail.com', '09123455678', '2021-12-18', 'tulog', 'ONGOING');
+INSERT INTO `appointment` (`app_id`, `app_name`, `app_email`, `app_contact`, `app_date`, `app_time`, `app_purpose`, `app_remarks`) VALUES
+(273, 'Marliardo Umbao', 'mumbao222@gmail.com', '09454545454', '2021-12-12', '8:00am', 'Eye Check Up', 'ONGOING'),
+(274, 'Theresa Umbao', 'theresaumbao70@gmail.com', '09462911445', '2021-12-13', '9:00am', 'Eye Check Up', 'ONGOING'),
+(275, 'Marlon Umbao', 'marlon@gmail.com', '09454545454', '2021-12-05', '9:00am', 'Eye Check Up', 'ONGOING');
 
 -- --------------------------------------------------------
 
@@ -55,7 +54,6 @@ INSERT INTO `appointment` (`app_id`, `app_name`, `app_email`, `app_contact`, `ap
 --
 
 CREATE TABLE `patients` (
-  `pat_id` int(11) NOT NULL,
   `pat_last` varchar(255) NOT NULL,
   `pat_first` varchar(255) NOT NULL,
   `pat_middle` varchar(255) NOT NULL,
@@ -71,9 +69,9 @@ CREATE TABLE `patients` (
 -- Dumping data for table `patients`
 --
 
-INSERT INTO `patients` (`pat_id`, `pat_last`, `pat_first`, `pat_middle`, `pat_age`, `pat_sex`, `pat_address`, `pat_contact`, `pat_medhx`, `pat_date`) VALUES
-(1, 'RAMOS', 'EDMAR', 'CUADRO', 2021, 'Female', '002 Lydia St.', '4242424', 'dadada', '2021-12-11'),
-(3, 'vitalicia', 'john robert ', 'rosario', 2021, 'Male', '8 Humabon', '09123456789', 'sample', '2021-12-10');
+INSERT INTO `patients` (`pat_last`, `pat_first`, `pat_middle`, `pat_age`, `pat_sex`, `pat_address`, `pat_contact`, `pat_medhx`, `pat_date`) VALUES
+('RAMOS', 'EDMAR', 'CUADRO', 2021, 'Female', '002 Lydia St.', '4242424', 'dadada', '2021-12-11'),
+('', '', '', 0, 'Female', '', '', '', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -82,7 +80,7 @@ INSERT INTO `patients` (`pat_id`, `pat_last`, `pat_first`, `pat_middle`, `pat_ag
 --
 
 CREATE TABLE `product` (
-  `pro_id` int(255) NOT NULL,
+  `ID` int(255) NOT NULL,
   `brand` varchar(255) NOT NULL,
   `model` varchar(255) NOT NULL,
   `category` varchar(255) NOT NULL,
@@ -99,10 +97,8 @@ CREATE TABLE `product` (
 -- Dumping data for table `product`
 --
 
-INSERT INTO `product` (`pro_id`, `brand`, `model`, `category`, `dateofarrival`, `expdate`, `sellingprice`, `origprice`, `profit`, `supplier`, `qty`) VALUES
-(5, 'robert', 'robert', 'Lens', '2021-12-15', '2021-12-22', 1000, 1200, 200, 'Supplier', 3),
-(7, 'EO', 'sample', 'Frame', '2021-12-17', '2021-12-24', 500, 800, 300, 'Supplier', 3),
-(11, 'Sample', 'sample', 'Frame', '2021-12-11', '2021-12-18', 1000, 1200, 200, 'Supplier', 1);
+INSERT INTO `product` (`ID`, `brand`, `model`, `category`, `dateofarrival`, `expdate`, `sellingprice`, `origprice`, `profit`, `supplier`, `qty`) VALUES
+(5, 'Viseo Kids ', '1254', 'Frame', '2021-12-12', '2021-12-13', 1500, 100, 1400, 'Supplier', 6);
 
 -- --------------------------------------------------------
 
@@ -111,12 +107,12 @@ INSERT INTO `product` (`pro_id`, `brand`, `model`, `category`, `dateofarrival`, 
 --
 
 CREATE TABLE `supplier` (
-  `supp_id` int(11) NOT NULL,
-  `supp_supply` varchar(255) NOT NULL,
-  `supp_contactperson` varchar(100) NOT NULL,
-  `supp_contactno` varchar(100) NOT NULL,
-  `supp_address` varchar(255) NOT NULL,
-  `supp_note` varchar(100) NOT NULL,
+  `id` int(11) NOT NULL,
+  `supply` varchar(255) NOT NULL,
+  `contactperson` text NOT NULL,
+  `contactno` varchar(100) NOT NULL,
+  `address` varchar(255) NOT NULL,
+  `note` text NOT NULL,
   `action` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -124,9 +120,11 @@ CREATE TABLE `supplier` (
 -- Dumping data for table `supplier`
 --
 
-INSERT INTO `supplier` (`supp_id`, `supp_supply`, `supp_contactperson`, `supp_contactno`, `supp_address`, `supp_note`, `action`) VALUES
-(12, 'Roberto Boy Paos', 'Carlito Dimagiba', '09560492266', '1cc', 'haYPBESTY', ''),
-(15, 'sample', 'sample', '09123456789', 'qc', 'sample', '');
+INSERT INTO `supplier` (`id`, `supply`, `contactperson`, `contactno`, `address`, `note`, `action`) VALUES
+(1, 'Eye Glass', 'Trisha', '2147483647', 'bahay namin', 'masaya', 'nobela'),
+(2, 'kape', 'jepoy', '2147483647', 'malabon', 'malungkot', 'drama'),
+(3, 'tubig', 'popoy', '2147483647', 'bagumbong', 'seryoso', 'komedya'),
+(11, 'sample', 'sample', '2147483647', 'QC', 'sample', '');
 
 -- --------------------------------------------------------
 
@@ -135,27 +133,23 @@ INSERT INTO `supplier` (`supp_id`, `supp_supply`, `supp_contactperson`, `supp_co
 --
 
 CREATE TABLE `users` (
-  `users_id` int(11) NOT NULL,
-  `users_last` varchar(250) NOT NULL,
-  `users_first` varchar(250) NOT NULL,
-  `users_mid` varchar(250) NOT NULL,
-  `users_email` varchar(250) NOT NULL,
-  `users_username` varchar(250) NOT NULL,
-  `users_contact` varchar(11) NOT NULL,
-  `users_password` varchar(255) NOT NULL,
-  `user_role` varchar(250) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `users_id` int(100) NOT NULL,
+  `users_last` varchar(100) NOT NULL,
+  `users_first` varchar(100) NOT NULL,
+  `users_mid` varchar(100) NOT NULL,
+  `users_username` varchar(100) NOT NULL,
+  `users_email` varchar(100) NOT NULL,
+  `users_contact` varchar(100) NOT NULL,
+  `users_password` varchar(100) NOT NULL,
+  `user_role` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`users_id`, `users_last`, `users_first`, `users_mid`, `users_email`, `users_username`, `users_contact`, `users_password`, `user_role`) VALUES
-(1, '', '', '', '', '', '', 'admin', 'Administrator'),
-(2, '', '', '', '', '', '', '12345', 'Doctor'),
-(3, '', '', '', '', '', '', '', ''),
-(4, 'Omlang', 'Danver', 'John', 'admin@gmail.com', '', '09560492266', 'admin', 'Doctor'),
-(5, 'Gahopo', 'Raymart', 'Tomagan', 'raymart.gahopo@gmail.com', 'martmart', '09123456789', 'sample123', 'Doctor');
+INSERT INTO `users` (`users_id`, `users_last`, `users_first`, `users_mid`, `users_username`, `users_email`, `users_contact`, `users_password`, `user_role`) VALUES
+(3, 'Umbao', 'Marliardo', '-', 'marl', 'mumbao222@gmail.com', '09454545454', 'marl222', 'Administrator');
 
 --
 -- Indexes for dumped tables
@@ -168,22 +162,16 @@ ALTER TABLE `appointment`
   ADD PRIMARY KEY (`app_id`);
 
 --
--- Indexes for table `patients`
---
-ALTER TABLE `patients`
-  ADD PRIMARY KEY (`pat_id`);
-
---
 -- Indexes for table `product`
 --
 ALTER TABLE `product`
-  ADD PRIMARY KEY (`pro_id`);
+  ADD PRIMARY KEY (`ID`);
 
 --
 -- Indexes for table `supplier`
 --
 ALTER TABLE `supplier`
-  ADD PRIMARY KEY (`supp_id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `users`
@@ -199,31 +187,25 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `appointment`
 --
 ALTER TABLE `appointment`
-  MODIFY `app_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=172;
-
---
--- AUTO_INCREMENT for table `patients`
---
-ALTER TABLE `patients`
-  MODIFY `pat_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `app_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=277;
 
 --
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `pro_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `ID` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `supplier`
 --
 ALTER TABLE `supplier`
-  MODIFY `supp_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `users_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `users_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

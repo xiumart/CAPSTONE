@@ -136,9 +136,11 @@ session_start();
 		<span>P 1,500</span>
 	</div>
 	<div id="TOTAL_DOCTORS">
-		<span>TOTAL DOCTORS</span>
+		<span>PENDING APPOINTMENTS</span>
 	</div>
 	<div id="n_">
+
+
 		<span>4</span>
 	</div>
 	<div id="TOTAL_PATIENTS">
@@ -198,11 +200,10 @@ td, th {
                     
 					<table>
 						<tr>
-						  <th>#</th>
+						  <th>DATE</th>
+						  <th>TIME</th>
 						  <th>NAME</th>
-						  <th>EMAIL</th>
 						  <th>CONTACT NO.</th>
-						  <th>DATE & TIME</th>
 						  <th>PURPOSE</th>
 						  <th>REMARKS</th>
 						</tr>
@@ -212,12 +213,12 @@ $conn = mysqli_connect("localhost", "root", "", "capstone");
 if ($conn->connect_error) {
 die("Connection failed: " . $conn->connect_error);
 }
-$sql  = "SELECT * FROM appointment";
+$sql  = "SELECT * FROM appointment ORDER BY app_date ASC";
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
 // output data of each row
 while($row = $result->fetch_assoc()) {
-echo "<tr><td>" . $row["app_id"]. "</td><td>" . $row["app_name"]. "</td><td>" . $row["app_email"] . "</td><td>" . $row["app_contact"] . "</td><td>" . $row["app_date"] . "</td><td>"
+echo "<tr><td>" . $row["app_date"]. "</td><td>" . $row["app_time"] . "</td><td>" . $row["app_name"] . "</td><td>" . $row["app_contact"] . "</td><td>"
 . $row["app_purpose"]. "</td><td>" . $row["app_remarks"]. "</td></tr>";
 }
 echo "</table>";

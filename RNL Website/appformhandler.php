@@ -1,12 +1,13 @@
 
 <?php
-include "../db_conn.php";
+include "db_conn.php";
 
 
         $fname =  $_REQUEST['fname'];
         $email = $_REQUEST['email'];
         $contact =  $_REQUEST['contact'];
         $date = $_REQUEST['date'];
+        $time = $_REQUEST['time'];
         $purpose = $_REQUEST['purpose'];
         $remarks = "ONGOING";
 
@@ -22,6 +23,9 @@ include "../db_conn.php";
         }else if(empty($date)){
             header("Location: home.php?error=Date is required");
             exit();
+        }else if(empty($time)){
+            header("Location: home.php?error=Time is required");
+            exit();
         }else if(empty($purpose)){
             header("Location: home.php?error=Purpose is required");
             exit();
@@ -35,8 +39,8 @@ include "../db_conn.php";
                 exit();
             }else{
             
-            $sql1 = "INSERT INTO appointment (app_name,app_email,app_contact,app_date,app_purpose,app_remarks) VALUES ('$fname', 
-            '$email','$contact','$date','$purpose', '$remarks')";
+            $sql1 = "INSERT INTO appointment (app_name,app_email,app_contact,app_date,app_time,app_purpose,app_remarks) VALUES ('$fname', 
+            '$email','$contact','$date','$time','$purpose', '$remarks')";
           
                 if(mysqli_query($conn, $sql1)){
                     echo "<h3>data stored in a database successfully." 
