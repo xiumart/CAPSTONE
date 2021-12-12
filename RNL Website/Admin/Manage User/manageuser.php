@@ -105,6 +105,7 @@ td, th {
 
 </style>
 	<div id="MANAGE_USER">
+<<<<<<< Updated upstream
 		<span>MANAGE USER</span><br><br><br>	
 		<input type="text" name="EMAIL" style="background-color: white; font-size: 20px; border:solid white 1px; width: 550px; border-radius: 10px; height:40px;  text-transform: lowercase;margin-top: -200px; margin-left: 740px;margin-top: 5px; padding-left: 10px;" placeholder="Search Username"><br><br><br><table>
   <tr>
@@ -124,6 +125,57 @@ td, th {
     <td><button style="cursor: pointer; background-color: #abd7ab; padding: 10px; border-radius: 10px;">UPDATE</button>&nbsp&nbsp&nbsp&nbsp<button style="cursor: pointer; background-color: #ff6666; padding: 10px; border-radius: 10px;">REMOVE</button></button>&nbsp&nbsp&nbsp&nbsp<button style="cursor: pointer; background-color: #397be6; padding: 10px; border-radius: 10px;">CHANGE PASSWORD</button></td>
 </tr>
 </table>
+=======
+		<span>MANAGE USER</span><br><br><br>
+		<form method="post">	
+		<input type="text" name="searchlname" style="background-color: white; font-size: 20px; border:solid white 1px; width: 550px; border-radius: 10px; height:40px; margin-top: -200px; margin-left: 740px;margin-top: 5px; padding-left: 10px;" placeholder="Search Lastname"></form><br><br><div id="Group_56">
+		<div id="Group_55">
+				<div id="UPCOMING_APPOINTMENT">
+					<span>UPCOMING APPOINTMENT</span>
+                    
+					<table>
+						<tr>
+						  <th>#</th>
+						  <th>Last Name</th>
+						  <th>First Name</th>
+						  <th>Username</th>
+						  <th>Email</th>
+						  <th>Contact No</th>
+						  <th>Role</th>
+						  <th>Action</th>
+						</tr>
+					  <?php
+
+$conn = mysqli_connect("localhost", "root", "", "capstone");
+// Check connection
+if ($conn->connect_error) {
+die("Connection failed: " . $conn->connect_error);
+}
+error_reporting(0);
+$search=$_POST['searchlname'];
+  $sql = "SELECT * FROM `users` WHERE `users_last`LIKE '%$search%'";
+
+$result = $conn->query($sql);	
+if ($result->num_rows > 0) {
+// output data of each row
+while($row = $result->fetch_assoc()) {
+echo "<tr><td>" . $row["users_id"]. "</td><td>" . $row["users_last"]. "</td><td>" . $row["users_first"] . "</td><td>" . $row["users_username"] . "</td><td>"
+. $row["users_email"]. "</td><td>". $row["users_contact"]. "</td><td>". $row["user_role"]. "</td> 
+<td><form method='post' action='?users_id=".$row["users_id"]."'>
+  		<button>UPDATE</button><span>&nbsp&nbsp&nbsp&nbsp</span>
+		  <button>REMOVE</button></form></td></tr>";
+}
+echo "</table>";
+} else { echo "0 results"; }
+$conn->close();
+?>
+					  </table>
+				</div>
+				
+			</div>
+			</div>
+			
+>>>>>>> Stashed changes
 	</div>
 	<svg class="Line_17" viewBox="0 0 1376 1">
 		<path id="Line_17" d="M 0 0 L 1376 0">
@@ -224,24 +276,24 @@ td, th {
 			<!-- Modal content -->
 			<div class="modal-content">
 			  <span class="close">&times;</span>
-			  <form action="/action_page.php">
+			  <form action="manageuserhandler.php" method ="post">
 				<center><h2 style="color: #000;">New Users</h2><br><br></center>
 				<label style="color: #000;padding-right: 50px;">Last name:</label>
-				<input type="text" id="fname" name="fname" style="border: #000 2px; border-style:solid; font-size: 20px; border-radius: 8px; padding: 3px;"><br><br>
+				<input type="text" id="first" name="last" style="border: #000 2px; border-style:solid; font-size: 20px; border-radius: 8px; padding: 3px;"><br><br>
 				<label style="color: #000;padding-right: 49px;">First name:</label>
-				<input type="text" id="fname" name="fname" style="border: #000 2px; border-style:solid; font-size: 20px; border-radius: 8px; padding: 3px;"><br><br>
+				<input type="text" id="fname" name="first" style="border: #000 2px; border-style:solid; font-size: 20px; border-radius: 8px; padding: 3px;"><br><br>
 				<label style="color: #000;padding-right: 27px;">Middle name:</label>
-				<input type="text" id="fname" name="fname" style="border: #000 2px; border-style:solid; font-size: 20px; border-radius: 8px; padding: 3px;"><br><br>
+				<input type="text" id="fname" name="middle" style="border: #000 2px; border-style:solid; font-size: 20px; border-radius: 8px; padding: 3px;"><br><br>
 				<label style="color: #000;padding-right: 49px;">Username:</label>
-				<input type="text" id="fname" name="fname" style="border: #000 2px; border-style:solid; font-size: 20px; border-radius: 8px; padding: 3px;"><br><br>
+				<input type="text" id="fname" name="username" style="border: #000 2px; border-style:solid; font-size: 20px; border-radius: 8px; padding: 3px;"><br><br>
 				<label style="color: #000; padding-right: 89px;">Email:</label>
-				<input type="text" id="fname" name="fname" style="border: #000 2px; border-style:solid; font-size: 20px; border-radius: 8px; padding: 3px;"><br><br>
+				<input type="text" id="fname" name="email" style="border: #000 2px; border-style:solid; font-size: 20px; border-radius: 8px; padding: 3px;"><br><br>
 				<label style="color: #000;padding-right: 32px;">Contact No.:</label>
-				<input type="text" id="fname" name="fname" style="border: #000 2px; border-style:solid; font-size: 20px; border-radius: 8px; padding: 3px;"><br><br>
-				<label style="color: #000;padding-right: 67px;">Position:</label>
-				<input type="text" id="fname" name="fname" style="border: #000 2px; border-style:solid; font-size: 20px;border-radius: 8px; padding: 3px;"><br><br>
-				<label style="color: #000;padding-right: 49px;">Password:</label>
-				<input type="text" id="fname" name="fname" style="border: #000 2px; border-style:solid; font-size: 20px;border-radius: 8px; padding: 3px;"><br><br>
+				<input type="text" id="fname" name="contact" style="border: #000 2px; border-style:solid; font-size: 20px; border-radius: 8px; padding: 3px;"><br><br>
+				<label style="color: #000;padding-right: 67px;">Password:</label>
+				<input type="text" id="fname" name="password" style="border: #000 2px; border-style:solid; font-size: 20px;border-radius: 8px; padding: 3px;"><br><br>
+				<label style="color: #000;padding-right: 49px;">Position:</label>
+				<input type="text" id="fname" name="position" style="border: #000 2px; border-style:solid; font-size: 20px;border-radius: 8px; padding: 3px;"><br><br>
 				<center><button type="submit">Submit</button></center>
 			
 			  </form> 

@@ -17,10 +17,10 @@
 		</rect>
 	</svg>
 	<div id="EMAIL">
-		<input type="text" id="email_" name="username" placeholder="EMAIL">
+		<input type="text" id="email_" name="users_username" placeholder="EMAIL">
 	</div>
 	<div id="PASSWORD">
-		<input type="password" id="password_" name="password" placeholder="PASSWORD">
+		<input type="password" id="password_" name="users_password" placeholder="PASSWORD">
 	</div>
 	<div id="LOGIN_">
 		<input type="submit" value="login" name="submit" id="loginbtn">
