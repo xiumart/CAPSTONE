@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 4.9.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 12, 2021 at 03:11 AM
--- Server version: 10.4.11-MariaDB
--- PHP Version: 7.4.6
+-- Generation Time: Dec 12, 2021 at 01:06 PM
+-- Server version: 10.4.8-MariaDB
+-- PHP Version: 7.3.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -78,6 +79,56 @@ INSERT INTO `patients` (`pat_id`, `pat_last`, `pat_first`, `pat_middle`, `pat_ag
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `pos`
+--
+
+CREATE TABLE `pos` (
+  `id` int(255) NOT NULL,
+  `category` varchar(1000) NOT NULL,
+  `qty` int(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `pos`
+--
+
+INSERT INTO `pos` (`id`, `category`, `qty`) VALUES
+(5, '', 0),
+(7, '', 0),
+(11, '', 0),
+(5, '', 0),
+(5, '', 0),
+(5, '', 0),
+(7, '', 0),
+(7, '', 0),
+(5, '', 0),
+(7, 'Sample', 0),
+(5, 'EO', 0),
+(7, 'robert', 8),
+(7, 'robert', 8),
+(5, 'robert', 7),
+(5, 'robert', 10),
+(5, 'robert', 7),
+(7, 'Sample', 9);
+
+-- --------------------------------------------------------
+
+--
+-- Stand-in structure for view `pos_reports`
+-- (See below for the actual view)
+--
+CREATE TABLE `pos_reports` (
+`pro_id` int(255)
+,`category` varchar(255)
+,`qty` int(255)
+,`total_origprice` bigint(66)
+,`total_profit` bigint(66)
+,`total_sell` bigint(66)
+);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `product`
 --
 
@@ -101,7 +152,7 @@ CREATE TABLE `product` (
 
 INSERT INTO `product` (`pro_id`, `brand`, `model`, `category`, `dateofarrival`, `expdate`, `sellingprice`, `origprice`, `profit`, `supplier`, `qty`) VALUES
 (5, 'robert', 'robert', 'Lens', '2021-12-15', '2021-12-22', 1000, 1200, 200, 'Supplier', 3),
-(7, 'EO', 'sample', 'Frame', '2021-12-17', '2021-12-24', 500, 800, 300, 'Supplier', 3),
+(7, 'EO', 'sample', 'Frame', '2021-12-17', '2021-12-24', 500, 800, 300, 'Supplier', -8),
 (11, 'Sample', 'sample', 'Frame', '2021-12-11', '2021-12-18', 1000, 1200, 200, 'Supplier', 1);
 
 -- --------------------------------------------------------
@@ -156,6 +207,15 @@ INSERT INTO `users` (`users_id`, `users_last`, `users_first`, `users_mid`, `user
 (3, '', '', '', '', '', '', '', ''),
 (4, 'Omlang', 'Danver', 'John', 'admin@gmail.com', '', '09560492266', 'admin', 'Doctor'),
 (5, 'Gahopo', 'Raymart', 'Tomagan', 'raymart.gahopo@gmail.com', 'martmart', '09123456789', 'sample123', 'Doctor');
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `pos_reports`
+--
+DROP TABLE IF EXISTS `pos_reports`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `pos_reports`  AS  select `product`.`pro_id` AS `pro_id`,`product`.`category` AS `category`,`pos`.`qty` AS `qty`,`pos`.`qty` * `product`.`origprice` AS `total_origprice`,`pos`.`qty` * `product`.`profit` AS `total_profit`,`pos`.`qty` * `product`.`sellingprice` AS `total_sell` from (`pos` join `product`) where `product`.`pro_id` = `pos`.`id` ;
 
 --
 -- Indexes for dumped tables
