@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 11, 2021 at 04:16 PM
--- Server version: 10.1.38-MariaDB
--- PHP Version: 7.1.27
+-- Generation Time: Dec 12, 2021 at 03:11 AM
+-- Server version: 10.4.11-MariaDB
+-- PHP Version: 7.4.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -137,11 +136,26 @@ INSERT INTO `supplier` (`supp_id`, `supp_supply`, `supp_contactperson`, `supp_co
 
 CREATE TABLE `users` (
   `users_id` int(11) NOT NULL,
+  `users_last` varchar(250) NOT NULL,
+  `users_first` varchar(250) NOT NULL,
+  `users_mid` varchar(250) NOT NULL,
+  `users_email` varchar(250) NOT NULL,
   `users_username` varchar(250) NOT NULL,
+  `users_contact` varchar(11) NOT NULL,
   `users_password` varchar(255) NOT NULL,
-  `users_name` varchar(255) NOT NULL,
   `user_role` varchar(250) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`users_id`, `users_last`, `users_first`, `users_mid`, `users_email`, `users_username`, `users_contact`, `users_password`, `user_role`) VALUES
+(1, '', '', '', '', '', '', 'admin', 'Administrator'),
+(2, '', '', '', '', '', '', '12345', 'Doctor'),
+(3, '', '', '', '', '', '', '', ''),
+(4, 'Omlang', 'Danver', 'John', 'admin@gmail.com', '', '09560492266', 'admin', 'Doctor'),
+(5, 'Gahopo', 'Raymart', 'Tomagan', 'raymart.gahopo@gmail.com', 'martmart', '09123456789', 'sample123', 'Doctor');
 
 --
 -- Indexes for dumped tables
@@ -172,6 +186,12 @@ ALTER TABLE `supplier`
   ADD PRIMARY KEY (`supp_id`);
 
 --
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`users_id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -198,6 +218,12 @@ ALTER TABLE `product`
 --
 ALTER TABLE `supplier`
   MODIFY `supp_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `users_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
