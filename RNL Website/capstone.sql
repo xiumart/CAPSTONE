@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 12, 2021 at 03:29 PM
+-- Generation Time: Dec 12, 2021 at 03:42 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.10
 
@@ -71,7 +71,8 @@ CREATE TABLE `patients` (
 
 INSERT INTO `patients` (`pat_last`, `pat_first`, `pat_middle`, `pat_age`, `pat_sex`, `pat_address`, `pat_contact`, `pat_medhx`, `pat_date`) VALUES
 ('RAMOS', 'EDMAR', 'CUADRO', 2021, 'Female', '002 Lydia St.', '4242424', 'dadada', '2021-12-11'),
-('', '', '', 0, 'Female', '', '', '', '0000-00-00');
+('', '', '', 0, 'Female', '', '', '', '0000-00-00'),
+('Umbao', 'marliardo', '-', 2021, 'Male', 'sauyo', '09268040223', '-', '2021-12-12');
 
 -- --------------------------------------------------------
 
@@ -143,13 +144,6 @@ CREATE TABLE `users` (
   `users_password` varchar(100) NOT NULL,
   `user_role` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `users`
---
-
-INSERT INTO `users` (`users_id`, `users_last`, `users_first`, `users_mid`, `users_username`, `users_email`, `users_contact`, `users_password`, `user_role`) VALUES
-(3, 'Umbao', 'Marliardo', '-', 'marl', 'mumbao222@gmail.com', '09454545454', 'marl222', 'Administrator');
 
 --
 -- Indexes for dumped tables
