@@ -205,10 +205,16 @@ include "db_conn.php";
 		<label for="date">Appointment Date:</label><br>
   		<input type="date" id="date" name="date">
 	</div>
+	<style>
+		option {
+			color: black;
+		}
+		</style>
 	<div id="PURPOSE"  style="width: 260px;">
 		<label>Purpose:</label><br><br>
 		<select name="purpose">
-    <option value="Eye Check Up">Eye Check-Up</option>
+    <option>Eye Check-Up</option>
+	<option>Mata Check-Up</option>
 			</select>
 	</div>
 	<div id="time"  style="width: 230px;opacity: 0.5;
@@ -224,7 +230,22 @@ include "db_conn.php";
 	font-size: 21px;
 	color: rgba(255,255,255,1);">
 		<label>Time:</label><br><br>
-		<select name="time" >
+		<input type="time" id="time" name="time">
+		<style>
+		input[type=time], select {
+	width: 80%;
+	padding: 19px 10px;
+	margin: 8px 0;
+	display: inline-block;
+	border: 1px solid white;
+	border-radius: 8px;
+	box-sizing: border-box;
+	background-color: transparent;
+	font-size: 20px;
+	color: white;
+  }
+  </style>
+		<!-- <select name="time" >
     <option value="8:00am" style="color:black;">08:00am</option>
 	<option value="9:00am" style="color:black;">09:00am</option>
 	<option value="9:00am" style="color:black;">10:00am</option>
@@ -233,7 +254,7 @@ include "db_conn.php";
 	<option value="9:00am" style="color:black;">02:00pm</option>
 	<option value="9:00am" style="color:black;">03:00pm</option>
 	<option value="9:00am" style="color:black;">04:00pm</option>
-			</select>
+			</select> -->
 	</div>
 	<div id="Set_Appointment">
 		<input type="submit" value="Set Appointment" onclick="return confirm('Are you sure set an appointment?')">
