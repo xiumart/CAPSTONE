@@ -121,20 +121,60 @@ td, th {
   padding: 8px;
 }
 	</style>
+
 	<div id="POINT_OF_SALES">
 		<span>POINT OF SALES</span><br><br><br><br>
-		<select name ="prod" style="background-color: white; font-size: 20px; border:solid white 1px; padding: 5px;width: 400px;text-align: center;height: 43px;">
-			<option hidden="">PRODUCT</option>
-			<option>EYE GLASS</option>
-			<option>CONTACT LENSE</option>
-		</select>
-		
-		&nbsp&nbsp&nbsp<input type="number" id="tentacles" name="tentacles" min="1" max="10000" placeholder="Quantity" style="background-color: white; font-size: 20px; border:solid white 1px; width: 200px;; height:43px;  text-transform:lowercase; padding-left: 10px; " >
-		
+<form method="post">
+				<select name="class" id="sl" onchange="rel()" class="form-control"  style="background-color: white; font-size: 20px; border:solid white 1px; padding: 5px;width: 400px;text-align: center;height: 43px;">
+					<option hidden="">PRODUCT</option>
+		<?php 
+	include("config.php");
+	$sql1 = "SELECT * FROM `product`";
+  $result1 = $con->query($sql1);  
+  if($result1->num_rows > 0){
+  	while($row = $result1 -> fetch_assoc()){
+
+
+		echo"	<option name='boom' value='".$row['pro_id']."'>".$row['category']."</option>
+		";
+		  	}
+  } 
+  ?>
+
+	</select>
+	<input type="number" id="tent" name="tentacles" min="1" max="100" placeholder="Quantity" style="background-color: white; font-size: 20px; border:solid white 1px; width: 200px;; height:43px;  text-transform:lowercase;  " >
 		<br><br>
+</form>
+<script type="text/javascript">
+	function rel() {
+		var vl=document.getElementById('sl').value;
+		var tent=document.getElementById('tent').value;
+		self.location='../POS/pos.php?cat='+vl+'&qty='+tent;
+	}
+	function can(){
+		var retVal = confirm("Are you sure you want to cancel?");
+    if (retVal == true) {
+    	self.location='../POS/pos.php';
+        return true;
+
+    } else {
+        return false;
+    }
+	}
+</script>
 		
-		<table>
-			
+
+  <?php
+		error_reporting(0);
+$qty= $_GET['qty'];
+  	$cat=$_GET['cat'];
+  $sql1 = "SELECT * FROM `product` WHERE pro_id='$cat' ";
+  $result1 = $con->query($sql1);  
+  if($result1->num_rows > 0){
+  	while($row = $result1 -> fetch_assoc()){
+  		
+		  	?>
+		  			<table>
   <tr>
     <th>Brand Name</th>
     <th>Model</th>
@@ -146,14 +186,14 @@ td, th {
     <th>Action</th>
   </tr>
    <tr>
-    <th>&nbsp</th>
-    <th>&nbsp</th>
-    <th>&nbsp</th>
-    <th>&nbsp</th>
-    <th>&nbsp</th>
-    <th>&nbsp</th>
-    <th>&nbsp</th>
-    <th><button style="cursor: pointer; background-color: #ff6666; padding: 10px; border-radius: 10px;">CANCEL</button></th>
+    <th><?php echo $row['brand']; ?></th>
+    <th><?php echo $row['model']; ?></th>
+    <th><?php echo $row['category']; ?></th>
+    <th><?php echo $row['sellingprice']; ?></th>
+    <th><?php echo $_GET['qty']; ?></th>
+    <th><?php echo $row['sellingprice']; ?></th>
+    <th><?php echo $row['profit']; ?></th>
+    <th><button  onclick="can()" style="cursor: pointer; background-color: #ff6666; padding: 10px; border-radius: 10px;">CANCEL</button></th>
 </tr>
    <tr>
     <th>&nbsp</th>
@@ -167,12 +207,15 @@ td, th {
 </tr>
    <tr>
     <th colspan="5">&nbsp</th>
-    <th>&nbsp</th>
-    <th>&nbsp</th>
+    <th><?php echo $row['sellingprice']*$qty; ?></th>
+    <th><?php echo $row['profit']*$qty; ?></th>
     <th>&nbsp</th>
 </tr>
 </table>
-
+<?php
+}
+  } 
+?>
 	</div>
 	<svg class="Line_17" viewBox="0 0 1376 1">
 		<path id="Line_17" d="M 0 0 L 1376 0">
@@ -195,7 +238,8 @@ td, th {
 	</svg>
 	
 	<div id="n_Add">
-		<button style="cursor: pointer; background-color: rgba(34,121,220,1);font-size: 25px; padding:10px 40px; border-radius: 10px; margin: -10px; margin-top: 2px; margin-left: -290px; color: #fff;">+ Add</button>
+		<!--<form method="post">
+		<button name="search1" style="cursor: pointer; background-color: rgba(34,121,220,1);font-size: 25px; padding:10px 40px; border-radius: 10px; margin: -10px; margin-top: 2px; margin-left: -290px; color: #fff;">+ Add</button></form>-->
 	</div>
 
 	<div id="Search_Product">
