@@ -288,7 +288,10 @@ $conn->close();
 				<label style="color: #000;padding-right: 67px;">Password:</label>
 				<input type="text" id="fname" name="password" style="border: #000 2px; border-style:solid; font-size: 20px;border-radius: 8px; padding: 3px;"><br><br>
 				<label style="color: #000;padding-right: 49px;">Position:</label>
-				<input type="text" id="fname" name="position" style="border: #000 2px; border-style:solid; font-size: 20px;border-radius: 8px; padding: 3px;"><br><br>
+				<select name="position" id="fname"style="border: #000 2px; border-style:solid; font-size: 20px; border-radius: 8px; padding: 3px;" required="required">
+					<option value="Administrator">Administrator</option>
+					<option value="Doctor">Doctor</option>
+				  </select><br><br>
 				<center><button type="submit">Submit</button></center>
 			
 			  </form> 

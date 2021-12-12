@@ -5,6 +5,7 @@ if(isset($_POST['submit'])){
     $uname = mysqli_real_escape_string($conn,$_POST['users_username']);
     $password = mysqli_real_escape_string($conn,$_POST['users_password']);
     $roles = "Doctor";
+    $roles = "Administrator";
     if ($uname != "" && $password != ""){
 
         $sql_query = "select count(*) as cntUser from users where users_username='".$uname."' and users_password='".$password."' and users_roles='".$roles."'";
