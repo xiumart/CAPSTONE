@@ -120,8 +120,8 @@ td, th {
 	<div id="PATIENT_RECORDS_bg">
 
 		<span>PATIENT RECORDS</span><br><br><br>
-	
-		<input type="text" name="EMAIL" style="background-color: white; font-size: 20px; border:solid white 1px; width: 600px;; height:40px;  text-transform:lowercase; padding-left: 10px; padding-top: 5px;" placeholder="Search"> <button type="submit" class="button"><img src="icon.png"></button><br><br><br>
+	<form method="post">
+		<input type="text" name="searchpatients" style="background-color: white; font-size: 20px; border:solid white 1px; width: 600px;; height:40px;  text-transform:lowercase; padding-left: 10px; padding-top: 5px;" placeholder="Search by Lastname"></form><br><br>
 		<table>
   <tr>
     <th>Case no.</th>
@@ -134,14 +134,28 @@ td, th {
   </tr>
    
   <?php
-
+error_reporting(0);
+$search=$_POST['searchpatients'];
+  $sql1 = "SELECT * FROM `patients` WHERE `pat_last`LIKE '%$search%'";
+ 
 include "../../db_conn.php";
-$sql = "SELECT * from patients";
-$result = $conn->query($sql);
+// $sql = "SELECT * from patients";
+$result = $conn->query($sql1);
 
 if($result->num_rows > 0){
 	while($row = $result -> fetch_assoc()){
-		echo "<tr><td>" . $row["pat_id"] . "</td><td>" . $row["pat_last"] . "</td><td>" . $row["pat_first"] . "</td><td>" . $row["pat_middle"] . "</td><td>" . $row["pat_age"] . "</td><td>" . $row["pat_contact"] . "</td></tr>";
+		echo "<tr><td>" . $row["pat_id"] 
+		. "</td><td>" . $row["pat_last"] 
+		. "</td><td>" . $row["pat_first"] 
+		. "</td><td>" . $row["pat_middle"] 
+		. "</td><td>" . $row["pat_age"] 
+		. "</td><td>" . $row["pat_contact"] 
+		. "</td>
+		<td><form method='post' action='?pat_id=".$row["pat_id"]."'>
+  		<button>UPDATE</button>
+		<button>VIEW</button></form></td>
+  		</tr>
+		";
 	}
 } else {
 	echo "NO RESULTS";
@@ -151,10 +165,10 @@ $conn->close();
 
 
 ?>
+<!-- BUTTON
 <tr>
-
     <td><a href="../Update/update.php"><button style="cursor: pointer; background-color: #abd7ab; padding: 10px; border-radius: 10px;">UPDATE</button></a>&nbsp&nbsp&nbsp&nbsp<button style="cursor: pointer; background-color: #8cd3ff; padding: 10px; border-radius: 10px;">VIEW</button></td>
-  </tr>
+  </tr> -->
 </table>
 		
 	</div>
@@ -163,24 +177,27 @@ $conn->close();
 		</path>
 	</svg>
 	
+<style>
+		button[type=submit] {
+	width: 190%;
+	background-color: #1566a8;
+	color: white;
+	padding: 15px 20px;
+	margin: 8px 0;
+	border: none;
+	border-radius: 10px;
+	cursor: pointer;
+	position: relative;
+	top: -90%;
+	margin-left: -100%;
+	font-size: large;
+  }
+</style>
 	<a href="../New Patient/newpatients.php">
-	<svg class="Rectangle_125">
-		<rect id="Rectangle_125" rx="10" ry="10" x="0" y="0" width="159" height="43">
-		</rect>
-	</svg>
-</a>
-	
-	<a href="../New Patient/newpatients.php">
-
 	<div id="NEW_PATIENT">
-		<span>NEW PATIENT</span>
+		<button type="submit"> + NEW PATIENT</button>
 	</div>
-	</a>
-	<svg class="Icon_ionic-md-add" viewBox="6.75 6.75 22.5 22.5">
-		<path id="Icon_ionic-md-add" d="M 29.25 19.49997711181641 L 19.49997711181641 19.49997711181641 L 19.49997711181641 29.25 L 16.50002479553223 29.25 L 16.50002479553223 19.49997711181641 L 6.75 19.49997711181641 L 6.75 16.50002479553223 L 16.50002288818359 16.50002479553223 L 16.50002288818359 6.75 L 19.49997520446777 6.75 L 19.49997520446777 16.50002288818359 L 29.25 16.50002288818359 L 29.25 19.49997711181641 Z">
-		</path>
-	</svg>
-
+</a>
 	<a href="../Update/update.php">
 	<div id="Group_34">
 	</div>

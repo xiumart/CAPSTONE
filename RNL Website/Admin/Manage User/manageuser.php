@@ -121,24 +121,8 @@ td, th {
     <td>tricia.joy.magora.altarejos@gmail.com</td>
     <td>09123456789</td>
     <td>Front End Programmer</td>
-    <td><button style="cursor: pointer; background-color: #abd7ab; padding: 10px; border-radius: 10px;">UPDATE</button>&nbsp&nbsp&nbsp&nbsp<button style="cursor: pointer; background-color: #ff6666; padding: 10px; border-radius: 10px;">REMOVE</button></td>
-  </tr>
-    <tr>
-    <td>&nbsp</td>
-    <td>&nbsp</td>
-    <td>&nbsp</td>
-    <td>&nbsp</td>
-    <td>&nbsp</td>
-    <td><button style="cursor: pointer; background-color: #abd7ab; padding: 10px; border-radius: 10px;">UPDATE</button>&nbsp&nbsp&nbsp&nbsp<button style="cursor: pointer; background-color: #ff6666; padding: 10px; border-radius: 10px;">REMOVE</button></td>
-  </tr>
-    <tr>
-    <td>&nbsp</td>
-    <td>&nbsp</td>
-    <td>&nbsp</td>
-    <td>&nbsp</td>
-    <td>&nbsp</td>
-    <td><button style="cursor: pointer; background-color: #abd7ab; padding: 10px; border-radius: 10px;">UPDATE</button>&nbsp&nbsp&nbsp&nbsp<button style="cursor: pointer; background-color: #ff6666; padding: 10px; border-radius: 10px;">REMOVE</button></td>
-  </tr>
+    <td><button style="cursor: pointer; background-color: #abd7ab; padding: 10px; border-radius: 10px;">UPDATE</button>&nbsp&nbsp&nbsp&nbsp<button style="cursor: pointer; background-color: #ff6666; padding: 10px; border-radius: 10px;">REMOVE</button></button>&nbsp&nbsp&nbsp&nbsp<button style="cursor: pointer; background-color: #397be6; padding: 10px; border-radius: 10px;">CHANGE PASSWORD</button></td>
+</tr>
 </table>
 	</div>
 	<svg class="Line_17" viewBox="0 0 1376 1">
