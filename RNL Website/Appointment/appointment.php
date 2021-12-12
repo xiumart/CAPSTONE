@@ -133,7 +133,7 @@ include "../db_conn.php";
 				  </style>
 	<div id="CONTACT__dd">
 		<label>Contact No.:</label><br>
-		<input type="tel" pattern="[0-9]{11}"id="contact" name="contact" placeholder="Contact No." required="required"><br>
+		<input type="tel" pattern="[0-9]{11}"id="contact" name="contact" placeholder="Contact No." required="required" style="width:320px;"><br>
 	</div>
 	<div id="ddmmyyyy_de">
 		<label for="date">Date:</label><br>
@@ -141,6 +141,7 @@ include "../db_conn.php";
 		  <style>
 			  input[type=date], select {
 				margin-left: -440px;
+				width: 285px;
 			  }
 			  label[for=date] {
 				margin-left: -440px;
@@ -149,7 +150,9 @@ include "../db_conn.php";
 	</div>
 	<div id="PURPOSE_df">
 		<label>Purpose:</label><br>
-		<input type="text" id="purpose" name="purpose" placeholder="Purpose" required="required"><br>
+		<select>
+    <option value="Eye Check Up">Eye Check-Up</option>
+			</select>
 		
 	</div>
 	<div id="Set_Appointment_dh">

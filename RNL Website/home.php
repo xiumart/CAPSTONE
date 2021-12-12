@@ -183,7 +183,7 @@ include "db_conn.php";
 					color: white;
 				  }
 				  </style> -->
-	<div id="CONTACT_">
+	<div id="CONTACT_" style="width: 160px;">
 		<label>Contact No.:</label><br>
 		<input type="tel" pattern="[0-9]{11}" id="contact" name="contact" placeholder="Contact No."><br>
 	</div>
@@ -201,13 +201,15 @@ include "db_conn.php";
 		color: white;
 	  }
 	  </style> -->
-	<div id="ddmmyyyy">
+	<div id="ddmmyyyy" style="width: 140px;">
 		<label for="date">Appointment Date:</label><br>
   		<input type="date" id="date" name="date">
 	</div>
-	<div id="PURPOSE">
-		<label>Purpose:</label><br>
-		<input type="text" id="purpose" name="purpose" placeholder="Purpose"><br>
+	<div id="PURPOSE"  style="width: 260px;">
+		<label>Purpose:</label><br><br>
+		<select>
+    <option value="Eye Check Up">Eye Check-Up</option>
+			</select>
 	</div>
 	<div id="Set_Appointment">
 		<input type="submit" value="Set Appointment">

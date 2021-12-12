@@ -36,8 +36,8 @@
 	<div id="Search">
 		<span>Search...</span>
 	</div>
-	<svg class="Rectangle_67">
-		<rect id="Rectangle_67" rx="0" ry="0" x="0" y="0" width="1357" height="66">
+	<svg class="Rectangle_67" style="left:100px;">
+		<rect id="Rectangle_67" rx="0" ry="0" x="0" y="0" width="1745" height="66">
 		</rect>
 	</svg>
 	<div id="Group_11">
@@ -320,36 +320,11 @@
 	<div id="n_1500_de">
 		<span>₱ 1,500</span>
 	</div>
-	<svg class="Icon_awesome-filter" viewBox="0 0 33 33">
-		<path id="Icon_awesome-filter" d="M 31.45157241821289 0 L 1.548679828643799 0 C 0.1746682822704315 0 -0.5186537504196167 1.667144060134888 0.4549104273319244 2.640708446502686 L 12.37499713897705 14.56259822845459 L 12.37499713897705 27.84374237060547 C 12.37499713897705 28.34847640991211 12.62127208709717 28.82149696350098 13.03480339050293 29.11102294921875 L 18.19105339050293 32.71910095214844 C 19.20831680297852 33.43118286132812 20.6249942779541 32.70950317382812 20.6249942779541 31.45182609558105 L 20.6249942779541 14.56259822845459 L 32.54540634155273 2.640708446502686 C 33.5169677734375 1.669077634811401 32.82841491699219 0 31.45157241821289 0 Z">
-		</path>
-	</svg>
-	<div id="SEARCH_FILTER">
-		<span>SEARCH FILTER</span>
-	</div>
-	<div id="Price_Range">
-		<span>Price Range</span>
-	</div>
+	
 
-	<svg class="Rectangle_79">
-		<rect id="Rectangle_79" rx="0" ry="0" x="0" y="0" width="110" height="29">
-		</rect>
-	</svg>
-	<svg class="Rectangle_80">
-		<rect id="Rectangle_80" rx="0" ry="0" x="0" y="0" width="110" height="29">
-		</rect>
-	</svg>
-	<svg class="Rectangle_81">
-		<rect id="Rectangle_81" rx="0" ry="0" x="0" y="0" width="277" height="29">
-		</rect>
-	</svg>
-	<div id="Apply">
-		<span>Apply</span>
-	</div>
-	<svg class="Line_10" viewBox="0 0 277 1">
-		<path id="Line_10" d="M 0 0 L 277 0">
-		</path>
-	</svg>
+	
+
+	
 	<div id="Sort_by__">
 		<span>Sort by : </span>
 	</div>
