@@ -15,7 +15,7 @@ if (isset($_POST['btnsubmit'])) {
 		$expirationdate = $_POST['expirationdate'];
 		$sellingprice = $_POST['sellingprice'];
 		$originalprice = $_POST['originalprice'];
-		$profit = $originalprice - $sellingprice;
+		$profit = $sellingprice - $originalprice;
 		$supplier = $_POST['supplier'];
 		$qty = $_POST['qty'];
 		if(!empty($brandname) && !empty($model) && !empty($category) && !empty($dateofarrival) && !empty($expirationdate) && !empty($sellingprice) && !empty($originalprice) && !empty($profit) && !empty($supplier) && !empty($qty) && !is_numeric($brandname))
@@ -203,6 +203,7 @@ $search=$_POST['searchproduct'];
   $result1 = $con->query($sql1);  
   if($result1->num_rows > 0){
   	while($row = $result1 -> fetch_assoc()){
+  		$row["pro_id"];
   		echo "
   		<tr>
   		<td>" . $row["brand"] . "</td>
@@ -216,8 +217,12 @@ $search=$_POST['searchproduct'];
   		<td>" . $row["supplier"] . "</td>
   		<td>" . $row["qty"] ."</td>
   		<td><form method='post' action='?pro_id=".$row["pro_id"]."'>
-  		<button>DELETE</button></form></td>
+  		<button>DELETE</button> 
+		</form>
+		<a href=edit.php?editid=".$row['pro_id'].">EDIT</a>
+		</td>
   		</tr>
+  		
   		 ";
   	}
   } else {
@@ -281,8 +286,7 @@ $search=$_POST['searchproduct'];
 	<div id="n_New_Product">
 		<button id="myBtn">+ New Product</button>
 
-		<div id="myModal" class="modal">
-
+			<div id="myModal" class="modal">
 			<!-- Modal content -->
 			<div class="modal-content">
 			  <span class="close">&times;</span>
@@ -394,5 +398,22 @@ $search=$_POST['searchproduct'];
 		</path>
 	</svg>
 </div>
+
+
+<script>
+
+$(document).ready(function() {
+
+	$('.editbtn').on('click',function(){
+
+		$('#editmodal').modal('show'); 
+
+	});
+
+});
+
+</script>
+
+
 </body>
 </html>
