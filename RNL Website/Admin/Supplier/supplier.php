@@ -1,8 +1,18 @@
 
 <?php
 
-include "../../db_conn.php";
+include "../../db_conn.php";  
+if (isset($_GET['supp_id'])) {  
+	 $suppid=$_GET['supp_id'];  
+	 $delete=mysqli_query($conn,"delete from supplier where supp_id='$suppid'");  
+	 if ($delete) {  
+		  header("location:supplier.php");  
+		  die();  
+	 }  
+}
+
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -267,7 +277,7 @@ td, th {
 		<br><br><br>
 		<form method="post">
 		<input type="text" name="searchsupp" style="background-color: white; font-size: 20px; border-radius: 8px; width: 550px;; height:40px;  text-transform:lowercase; padding-left: 10px; margin-left: 870%; margin-top: 5px;" placeholder="Search Supplier"></form>
-		<br><br><br>
+		<br>
 		<table>
   <tr>
   	<th>ID</th>
@@ -289,7 +299,18 @@ $result1 = $conn->query($sql1);
 if($result1->num_rows > 0){
 	while($row = $result1 -> fetch_assoc()){
 		echo 
-		"<tr><td>" . $row["supp_id"] . "</td><td>" . $row["supp_supply"] . "</td><td>" . $row["supp_contactperson"] . "</td><td>" . $row["supp_contactno"] . "</td><td>" . $row["supp_address"] . "</td><td>". $row["supp_note"] . "</td></tr>";
+		"<tr><td>" . $row["supp_id"] . "</td><td>" 
+		. $row["supp_supply"] . "</td><td>" 
+		. $row["supp_contactperson"] . "</td><td>" 
+		. $row["supp_contactno"] . "</td><td>" . $row["supp_address"] 
+		. "</td><td>". $row["supp_note"] . "</td>
+		<td><form method='post' action='?supp_id=".$row["supp_id"]."'>
+		<button>UPDATE</button><span>&nbsp&nbsp&nbsp&nbsp</span>
+		<form method='post' action='?supp_id=".$row["supp_id"]."'>
+  		<button>DELETE</button> 
+		</form>
+		</td>
+		</tr>";
 	}
 } else {
 	echo "NO RESULTS";
