@@ -158,7 +158,7 @@ echo "<tr><td>" . $row["users_id"]. "</td><td>" . $row["users_last"]. "</td><td>
 <td><form method='post' action='edit.php?users_id=".$row["users_id"]."'>
   		<button style='cursor:pointer' id='btnsubmit'>UPDATE</button></form>
 		<form method='post' action='?users_id=".$row["users_id"]."'>
-  		<button style='cursor:pointer'>DELETE</button> 
+  		<button style='cursor:pointer' onclick='return confirm('Are you sure?')' >DELETE</button> 
 		</form></tr>";
 }
 echo "</table>";
@@ -292,7 +292,7 @@ $conn->close();
 					<option value="Administrator">Administrator</option>
 					<option value="Doctor">Doctor</option>
 				  </select><br><br>
-				<center><button type="submit">Submit</button></center>
+				<center><button type="submit" onclick="return confirm('Are you sure?')">Submit</button></center>
 			
 			  </form> 
 			</div>

@@ -219,7 +219,7 @@ if (isset($_GET['supp_id'])) {
 		<input type="text" id="fname" name="adress" style="border: #000 2px; border-style:solid; font-size: 20px; border-radius: 8px; padding: 3px;"><br><br>
 		<label style="color: #000; padding-right: 97px;">Note:</label>
 		<input type="text" id="fname" name="note" style="border: #000 2px; border-style:solid; font-size: 20px; border-radius: 8px; padding: 3px;"><br><br>
-		<center><button type="submit" name="insert">Submit</button></center>
+		<center><button type="submit" name="insert" onclick="return confirm('Are you sure?')">Submit</button></center>
 	  </form> 
 	</div>
   
