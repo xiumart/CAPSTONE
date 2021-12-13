@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 4.9.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 12, 2021 at 04:30 PM
--- Server version: 10.1.38-MariaDB
--- PHP Version: 7.1.27
+-- Generation Time: Dec 13, 2021 at 12:34 PM
+-- Server version: 10.4.8-MariaDB
+-- PHP Version: 7.3.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `capstone`
+-- Database: `capstone1`
 --
 
 -- --------------------------------------------------------
@@ -85,7 +85,8 @@ INSERT INTO `patients` (`pat_id`, `pat_last`, `pat_first`, `pat_middle`, `pat_ag
 
 CREATE TABLE `pos` (
   `id` int(255) NOT NULL,
-  `category` varchar(1000) NOT NULL,
+  `Customer_name` varchar(1000) NOT NULL,
+  `Date` varchar(1000) NOT NULL,
   `qty` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -93,28 +94,22 @@ CREATE TABLE `pos` (
 -- Dumping data for table `pos`
 --
 
-INSERT INTO `pos` (`id`, `category`, `qty`) VALUES
-(5, '', 0),
-(7, '', 0),
-(11, '', 0),
-(5, '', 0),
-(5, '', 0),
-(5, '', 0),
-(7, '', 0),
-(7, '', 0),
-(5, '', 0),
-(7, 'Sample', 0),
-(5, 'EO', 0),
-(7, 'robert', 8),
-(7, 'robert', 8),
-(5, 'robert', 7),
-(5, 'robert', 10),
-(5, 'robert', 7),
-(7, 'Sample', 9),
-(0, '', 0),
-(0, '', 0),
-(0, '', 0),
-(0, '', 0);
+INSERT INTO `pos` (`id`, `Customer_name`, `Date`, `qty`) VALUES
+(5, '', '', 0),
+(5, '', '', 0),
+(5, '', '', 0),
+(5, 'Tricia Joy', '2021-12-13', 0),
+(5, 'Tricia Joy', '2021-12-13', 0),
+(5, 'Tricia Joy Altarejos', '2021-12-13', 9),
+(5, 'Tricia Joy Altarejos', '2021-12-13', 9),
+(5, 'Tricia Joy Altarejos', '2021-12-13', 0),
+(5, 'Tricia Joy Altarejos', '2021-12-13', 9),
+(7, 'Tricia Joy Altarejos', '2021-12-23', 89),
+(5, 'Tricia Joy Altarejos', '2021-12-13', 100),
+(5, 'Tricia Joy Altarejos', '2021-12-13', 100),
+(5, 'Jonathan Altarejos', '2021-12-13', 9),
+(7, '', '', 8),
+(7, 'dfd', '2021-12-13', 9);
 
 -- --------------------------------------------------------
 
@@ -156,8 +151,8 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`pro_id`, `brand`, `model`, `category`, `dateofarrival`, `expdate`, `sellingprice`, `origprice`, `profit`, `supplier`, `qty`) VALUES
-(5, 'robert', 'robert', 'Lens', '2021-12-15', '2021-12-22', 1000, 1200, 200, 'Supplier', 3),
-(7, 'EO', 'sample', 'Frame', '2021-12-17', '2021-12-24', 500, 800, 300, 'Supplier', -8);
+(5, 'robert', 'robert', 'Lens', '2021-12-15', '2021-12-22', 1000, 1200, 200, 'Supplier', 0),
+(7, 'EO', 'sample', 'Frame', '2021-12-17', '2021-12-24', 500, 800, 300, 'Supplier', 0);
 
 -- --------------------------------------------------------
 
@@ -218,7 +213,7 @@ INSERT INTO `users` (`users_id`, `users_last`, `users_first`, `users_mid`, `user
 --
 DROP TABLE IF EXISTS `pos_reports`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `pos_reports`  AS  select `product`.`pro_id` AS `pro_id`,`product`.`category` AS `category`,`pos`.`qty` AS `qty`,(`pos`.`qty` * `product`.`origprice`) AS `total_origprice`,(`pos`.`qty` * `product`.`profit`) AS `total_profit`,(`pos`.`qty` * `product`.`sellingprice`) AS `total_sell` from (`pos` join `product`) where (`product`.`pro_id` = `pos`.`id`) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `pos_reports`  AS  select `product`.`pro_id` AS `pro_id`,`product`.`category` AS `category`,`pos`.`qty` AS `qty`,`pos`.`qty` * `product`.`origprice` AS `total_origprice`,`pos`.`qty` * `product`.`profit` AS `total_profit`,`pos`.`qty` * `product`.`sellingprice` AS `total_sell` from (`pos` join `product`) where `product`.`pro_id` = `pos`.`id` ;
 
 --
 -- Indexes for dumped tables
