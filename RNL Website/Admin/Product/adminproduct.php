@@ -217,9 +217,11 @@ $search=$_POST['searchproduct'];
   		<td>" . $row["supplier"] . "</td>
   		<td>" . $row["qty"] ."</td>
   		<td><form method='post' action='?pro_id=".$row["pro_id"]."'>
-  		<button>DELETE</button> 
+  		<button style='cursor:pointer'>DELETE</button> 
 		</form>
-		<a href=edit.php?editid=".$row['pro_id'].">EDIT</a>
+		<form method='post' action='edit.php?pro_id=".$row["pro_id"]."'>
+  		<button style='cursor:pointer' id='btnsubmit'>UPDATE</button> 
+		</form>
 		</td>
   		</tr>
   		

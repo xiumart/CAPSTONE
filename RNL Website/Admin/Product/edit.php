@@ -5,7 +5,7 @@
 include("config.php");
 
 
-$eid= $_GET['editid'];
+$eid= $_GET['pro_id'];
 
 if (isset($_POST['btnsubmit'])) {
 		//something was posted
@@ -65,7 +65,7 @@ if (isset($_POST['btnsubmit'])) {
 			  	<?php 
 
 
-			  		$eid= $_GET['editid'];
+			  		$eid= $_GET['pro_id'];
 			  		$sql=mysqli_query($con, "SELECT * from product WHERE pro_id='$eid'");
 			  		while($row=mysqli_fetch_array($sql)){
 
