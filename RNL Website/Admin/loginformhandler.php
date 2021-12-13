@@ -1,30 +1,54 @@
-<?php
+<?php 
+session_start(); 
 include "../db_conn.php";
-if(isset($_POST['submit'])){
 
-    $uname = mysqli_real_escape_string($conn,$_POST['users_username']);
-    $password = mysqli_real_escape_string($conn,$_POST['users_password']);
-    $roles = "Doctor";
-    if ($uname != "" && $password != ""){
+if (isset($_POST['users_username']) && isset($_POST['users_password'])) {
 
-        $sql_query = "select count(*) as cntUser from users where users_username='".$uname."' and users_password='".$password."' and users_roles='".$roles."'";
-        $result = mysqli_query($conn,$sql_query);
-        $row = mysqli_fetch_array($result);
+	function validate($data){
+       $data = trim($data);
+	   $data = stripslashes($data);
+	   $data = htmlspecialchars($data);
+	   return $data;
+	}
 
-        $count = $row['cntUser'];
-        
-            if($roles == 'Doctor'){
-            header('Location: ../doctor/dashboard/dashboard.php');
-            }
-            else if ($roles == 'Administrator'){
-                header('Location: ../admin/dashboard/dashboard.php');
-            }
-        }else{
-            echo "Invalid username and password";
-        }
+	$uname = validate($_POST['users_username']);
+	$pass = validate($_POST['users_password']);
 
-    }
+	if (empty($uname)) {
+		header("Location: index.php?error=Username is required");
+	    exit();
+	}else if(empty($pass)){
+        header("Location: index.php?error=Password is required");
+	    exit();
+	}else{
+		$sql = "SELECT * FROM users WHERE users_username='$uname' AND users_password='$pass'";
 
+		$result = mysqli_query($conn, $sql);
 
-?>
-
+		if (mysqli_num_rows($result) === 1) {
+			$row = mysqli_fetch_assoc($result);
+            if ($row['users_username'] === $uname && $row['users_password'] === $pass && $row['user_role'] === "Administrator") {
+            	$_SESSION['users_username'] = $row['users_username'];
+            	$_SESSION['users_first'] = $row['users_first'];
+            	$_SESSION['users_id'] = $row['users_id'];
+            	header("Location: dashboard/dashboard.php");
+		        exit();
+            }elseif ($row['users_username'] === $uname && $row['users_password'] === $pass && $row['user_role'] === "Doctor") {
+                $_SESSION['users_username'] = $row['users_username'];
+            	$_SESSION['users_first'] = $row['users_first'];
+            	$_SESSION['users_id'] = $row['users_id'];
+            	header("Location: ../Doctor/Dashboard/dashboard.php");
+            }else{
+				header("Location: index.php?error=Incorrect Username or Password");
+		        exit();
+			}
+		}else{
+			header("Location: index.php?error=Incorrect Username or Password");
+	        exit();
+		}
+	}
+	
+}else{
+	header("Location: index.php");
+	exit();
+}
