@@ -155,10 +155,10 @@ if ($result->num_rows > 0) {
 while($row = $result->fetch_assoc()) {
 echo "<tr><td>" . $row["users_id"]. "</td><td>" . $row["users_last"]. "</td><td>" . $row["users_first"] . "</td><td>" . $row["users_username"] . "</td><td>"
 . $row["users_email"]. "</td><td>". $row["users_contact"]. "</td><td>". $row["user_role"]. "</td> 
-<td><form method='post' action='?users_id=".$row["users_id"]."'>
-  		<button>UPDATE</button><span>&nbsp&nbsp&nbsp&nbsp</span>
+<td><form method='post' action='edit.php?users_id=".$row["users_id"]."'>
+  		<button style='cursor:pointer' id='btnupdate'>UPDATE</button><span>&nbsp&nbsp&nbsp&nbsp</span>
 		<form method='post' action='?users_id=".$row["users_id"]."'>
-  		<button>DELETE</button> 
+  		<button style='cursor:pointer'>DELETE</button> 
 		</form></tr>";
 }
 echo "</table>";
@@ -264,8 +264,7 @@ $conn->close();
 
 	</style>
 	<div id="n_New_User">
-		<button id="myBtn" height="100" width=>+ New User</button>
-
+		<button id="myBtn" height="100" >+ New User</button>
 		<div id="myModal" class="modal">
 
 			<!-- Modal content -->
