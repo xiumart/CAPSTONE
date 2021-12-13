@@ -2,10 +2,12 @@
  <?php   
  include "../../db_conn.php";  
  if (isset($_GET['users_id'])) {  
+	 
       $userid=$_GET['users_id'];  
       $delete=mysqli_query($conn,"delete from users where users_id='$userid'");  
       if ($delete) {  
-           header("location:manageuser.php");  
+           header("location:manageuser.php");
+
            die();  
       }  
  }
@@ -155,11 +157,11 @@ if ($result->num_rows > 0) {
 while($row = $result->fetch_assoc()) {
 echo "<tr><td>" . $row["users_id"]. "</td><td>" . $row["users_last"]. "</td><td>" . $row["users_first"] . "</td><td>" . $row["users_username"] . "</td><td>"
 . $row["users_email"]. "</td><td>". $row["users_contact"]. "</td><td>". $row["user_role"]. "</td> 
-<td><form method='post' action='edit.php?users_id=".$row["users_id"]."'>
-  		<button style='cursor:pointer' id='btnsubmit'>UPDATE</button></form>
-		<form method='post' action='?users_id=".$row["users_id"]."'>
-  		<button style='cursor:pointer' onclick='return confirm('Are you sure?')' >DELETE</button> 
-		</form></tr>";
+<td><form method='post' action='edit.php?users_id=".$row["users_id"]."'>"?>
+  		<button style='cursor:pointer' id='btnsubmit' onclick="return confirm('Are you sure?')">UPDATE</button></form>
+		<?php echo "<form method='post' action='?users_id=".$row["users_id"]."'>" ?>
+  		<button style='cursor:pointer' onclick="return confirm('Are you sure?')">DELETE</button>
+		</form><?php "</tr>";
 }
 echo "</table>";
 } else { echo "0 results"; }
@@ -285,8 +287,8 @@ $conn->close();
 				<input type="text" id="fname" name="email" style="border: #000 2px; border-style:solid; font-size: 20px; border-radius: 8px; padding: 3px;"><br><br>
 				<label style="color: #000;padding-right: 32px;">Contact No.:</label>
 				<input type="text" id="fname" name="contact" style="border: #000 2px; border-style:solid; font-size: 20px; border-radius: 8px; padding: 3px;"><br><br>
-				<label style="color: #000;padding-right: 67px;">Password:</label>
-				<input type="text" id="fname" name="password" style="border: #000 2px; border-style:solid; font-size: 20px;border-radius: 8px; padding: 3px;"><br><br>
+				<label style="color: #000;padding-right: 55px;">Password:</label>
+				<input type="password" id="fname" name="password" style="border: #000 2px; border-style:solid; font-size: 20px;border-radius: 8px; padding: 3px;"><br><br>
 				<label style="color: #000;padding-right: 49px;">Position:</label>
 				<select name="position" id="fname"style="border: #000 2px; border-style:solid; font-size: 20px; border-radius: 8px; padding: 3px;" required="required">
 					<option value="Administrator">Administrator</option>
