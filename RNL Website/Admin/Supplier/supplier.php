@@ -304,11 +304,9 @@ if($result1->num_rows > 0){
 		. $row["supp_contactperson"] . "</td><td>" 
 		. $row["supp_contactno"] . "</td><td>" . $row["supp_address"] 
 		. "</td><td>". $row["supp_note"] . "</td>
-		<td><form method='post' action='?supp_id=".$row["supp_id"]."'>
-		<button>UPDATE</button><span>&nbsp&nbsp&nbsp&nbsp</span>
+		<td><button style='cursor:pointer'>UPDATE</button>
 		<form method='post' action='?supp_id=".$row["supp_id"]."'>
-  		<button>DELETE</button> 
-		</form>
+		<button style='cursor:pointer'>DELETE</button></form>
 		</td>
 		</tr>";
 	}
@@ -320,6 +318,7 @@ $conn->close();
 
 
 ?>
+</table>
 </div>
 	<div id="Search_Supplier">
 	

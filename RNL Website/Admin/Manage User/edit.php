@@ -38,9 +38,6 @@ if (isset($_POST['btnsubmit'])) {
 			}
 
 	
-		}else
-		{
-			echo "Please enter some valid information!";
 		}
 
 ?>

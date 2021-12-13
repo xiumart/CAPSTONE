@@ -152,8 +152,8 @@ if($result->num_rows > 0){
 		. "</td><td>" . $row["pat_contact"] 
 		. "</td>
 		<td><form method='post' action='?pat_id=".$row["pat_id"]."'>
-  		<button>UPDATE</button>
-		<button>VIEW</button></form></td>
+  		<button style='cursor:pointer'>UPDATE</button>
+		<button style='cursor:pointer'>VIEW</button></form></td>
   		</tr>
 		";
 	}

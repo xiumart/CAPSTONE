@@ -156,7 +156,7 @@ while($row = $result->fetch_assoc()) {
 echo "<tr><td>" . $row["users_id"]. "</td><td>" . $row["users_last"]. "</td><td>" . $row["users_first"] . "</td><td>" . $row["users_username"] . "</td><td>"
 . $row["users_email"]. "</td><td>". $row["users_contact"]. "</td><td>". $row["user_role"]. "</td> 
 <td><form method='post' action='edit.php?users_id=".$row["users_id"]."'>
-  		<button style='cursor:pointer' id='btnupdate'>UPDATE</button><span>&nbsp&nbsp&nbsp&nbsp</span>
+  		<button style='cursor:pointer' id='btnsubmit'>UPDATE</button></form>
 		<form method='post' action='?users_id=".$row["users_id"]."'>
   		<button style='cursor:pointer'>DELETE</button> 
 		</form></tr>";
@@ -264,7 +264,8 @@ $conn->close();
 
 	</style>
 	<div id="n_New_User">
-		<button id="myBtn" height="100" >+ New User</button>
+		<button id="myBtn" height="100" width=>+ New User</button>
+
 		<div id="myModal" class="modal">
 
 			<!-- Modal content -->
