@@ -65,8 +65,11 @@
 		<rect id="Rectangle_41" rx="0" ry="0" x="0" y="70" width="1920" height="250">
 		</rect>
 	</svg>
-	<div id="n_Service_1__Blah_blah_Blah_bl">
-		<span>• Service 1 : Blah blah Blah blah Blah blah Blah blah Blah blah Blah blah<br/><br/>• Service 2: Blah blah Blah blah Blah blah Blah blah Blah blah Blah blah<br/><br/>• Service 3: Blah blah Blah blah Blah blah Blah blah Blah blah Blah blah<br/><br/>• Service 4: Blah blah Blah blah Blah blah Blah blah Blah blah Blah blah</span><br/>
+	<div id="n_Service_1__Blah_blah_Blah_bl" style="top:520px;">
+		<span>RNL Vision's standard procedures determine visual function, visual error, eye diseases <br><br>and base curve
+measurement of the cornea and prescription.
+
+We utilize state-of-the-art <br><br>equipment like autorefractometers, slit lamps or biomicroscopes, retinoscopes and  <br><br>opthalmoscopes.These equipments, together with our highly competent  Optometrists, <br><br>help us diagnosevision problems.</span><br/>
 	</div>
 	<div id="RNL_Vision_Care_be">
 		<span>RNL Vision Care</span>
@@ -115,7 +118,7 @@
 	<div id="Book_Appoinment_Here">
 		<input type="submit" id="bookappointment" value="Book Appointment Here">
 	</div>
-	<img id="Untitled_design_24" src="Untitled_design_24.png" srcset="Untitled_design_24.png 1x, Untitled_design_24@2x.png 2x">
+	<img id="Untitled_design_24" src="service.jpg" style="border:solid 1px;">
 		
 </div>
 <style>	

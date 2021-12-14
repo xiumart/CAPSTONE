@@ -297,7 +297,7 @@ include "db_conn.php";
 		<span>Excellent! 〞</span>
 	</div>
 	<div id="n__Marliardo_Umbao">
-		<span>-Gail De lima</span>
+		<span>-Gail Delima</span>
 	</div>
 	<svg class="Rectangle_34">
 		<rect id="Rectangle_34" rx="43" ry="43" x="0" y="0" width="505" height="376">

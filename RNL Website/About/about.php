@@ -23,10 +23,10 @@
 	</div>
 	<img id="Untitled_design_23" src="Untitled_design_23.png" srcset="Untitled_design_23.png 1x, Untitled_design_23@2x.png 2x" style="top:100px;">
 		
-	<img id="Untitled_design_24" src="Untitled_design_24.png" srcset="Untitled_design_24.png 1x, Untitled_design_24@2x.png 2x">
+	<img id="Untitled_design_24" src="labas.jpg">
 		
 	<div id="Lorem_ipsum_viverra_feugiat_Pe">
-		<span>Lorem ipsum viverra feugiat. Pellen tesque libero ut justo, ultrices in ligula. Semper at <br/>tempufddfel. Learn more about our work! Lorem ipsum viverra feugiat.consectetur adipisicing <br/>dolor et amet.<br/><br/>Lorem ipsum viverra feugiat. Pellen tesque libero ut justo, ultrices in ligula. Semper at <br/>tempufddfel. Learn more about our work! Lorem ipsum viverra feugiat.consectetur adipisicing <br/>dolor et amet.<br/><br/>Lorem ipsum viverra feugiat. Pellen tesque libero ut justo, ultrices in ligula. Semper at <br/>tempufddfel. Learn more about our work! Lorem ipsum viverra feugiat.consectetur adipisicing <br/>dolor et amet.<br/><br/>Lorem ipsum viverra feugiat. Pellen tesque libero ut justo, ultrices in ligula. Semper at <br/>tempufddfel. Learn more about our work! Lorem ipsum viverra feugiat.consectetur adipisicing <br/>dolor et amet.</span>
+		<span>RNL Vision Care Center Optical Clinic is currently located at Almar in Camarin Caloocan City. <br><br>It was established by Dr. Nanette Lalic on February 2021.<br><br><br>Trusted for our reliable eye care services, product variety, value pricing and services excellence, <br><br>RNL Vision's patrons have enjoyed the company’s popular fashion eye care products like sunglasses,<br><br> prescription frames, contact lenses, reading glasses and contact lens solutions with every visit they <br><br>make in our stores.</span>
 	</div>
 	<img id="Untitled_design_23_" src="Untitled_design_23_.png" srcset="Untitled_design_23_.png 1x, Untitled_design_23_@2x.png 2x">
 		
@@ -37,59 +37,33 @@
 		<span>MISSION</span>
 	</div>
 	<div id="Lorem_ipsum_viverra_feugiat_Pe_">
-		<span>Lorem ipsum viverra feugiat. Pellen tesque libero ut justo, ultrices in ligula. Semper at <br/>tempufddfel. Learn more about our work! Lorem ipsum viverra feugiat.consectetur ipisicing dolor et amet.</span>
+		<span>To be a world class organization, committed to provide excellent customer satisfaction through efficient services of our competent team of managers, doctors, and staff.</span>
 	</div>
 	<div id="VISION">
 		<span>VISION</span>
 	</div>
 	<div id="Lorem_ipsum_viverra_feugiat_Pe_ba">
-		<span>Lorem ipsum viverra feugiat. Pellen tesque libero ut justo, ultrices in ligula. Semper at <br/>tempufddfel. Learn more about our work! Lorem ipsum viverra feugiat.consectetur ipisicing dolor et amet.</span>
+		<span>To be the customers exclusive choice on eye care products and services in every territory we operate.</span>
 	</div>
 	<div id="MEET_OUR_DOCTORS">
-		<span>MEET OUR DOCTORS</span>
+		<span>MEET OUR DOCTOR</span>
 	</div>
 	<div id="Group_5">
-		<img id="Untitled_design_25" src="Untitled_design_25.png" srcset="Untitled_design_25.png 1x, Untitled_design_25@2x.png 2x">
+		<img id="Untitled_design_25" src="dr.jpg">
 			
 		<svg class="Rectangle_40">
 			<rect id="Rectangle_40" rx="0" ry="0" x="0" y="0" width="344" height="103">
 			</rect>
 		</svg>
 	</div>
-	<div id="Group_6">
-		<img id="Untitled_design_25_bf" src="Untitled_design_25_bf.png" srcset="Untitled_design_25_bf.png 1x, Untitled_design_25_bf@2x.png 2x">
-			
-		<svg class="Rectangle_40_bg">
-			<rect id="Rectangle_40_bg" rx="0" ry="0" x="0" y="0" width="344" height="103">
-			</rect>
-		</svg>
+
+	<div id="Marliardo_Umbao_bm" style="left: 825px;">
+		<span>Dr. Nanette Lavaro Lalic</span>
 	</div>
-	<div id="Group_7">
-		<img id="Untitled_design_25_bi" src="Untitled_design_25_bi.png" srcset="Untitled_design_25_bi.png 1x, Untitled_design_25_bi@2x.png 2x">
-			
-		<svg class="Rectangle_40_bj">
-			<rect id="Rectangle_40_bj" rx="0" ry="0" x="0" y="0" width="344" height="103">
-			</rect>
-		</svg>
+	<div id="OPHTHALMOLOGIST" style="left: 895px;">
+		<span>OPTOMERTRIST</span>
 	</div>
-	<div id="Marliardo_Umbao">
-		<span>Marliardo Umbao</span>
-	</div>
-	<div id="OPTOMETRIST">
-		<span>OPTOMETRIST</span>
-	</div>
-	<div id="Marliardo_Umbao_bm">
-		<span>Marliardo Umbao</span>
-	</div>
-	<div id="OPHTHALMOLOGIST">
-		<span>OPHTHALMOLOGIST</span>
-	</div>
-	<div id="Marliardo_Umbao_bo">
-		<span>Marliardo Umbao</span>
-	</div>
-	<div id="OPTICIAN">
-		<span>OPTICIAN</span>
-	</div>
+	
 	<div id="RNL_Vision_Care">
 		<span>RNL Vision Care</span>
 	</div>
