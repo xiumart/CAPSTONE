@@ -4,7 +4,7 @@
 <meta charset="utf-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PATIENT RECORDS | DOCTOR</title>
+<title>PATIENT RECORDS | ADMIN</title>
 <link rel="shorcut icon" type="img/png" href="logo.png">
 <link rel="stylesheet" type="text/css" id="applicationStylesheet" href="css/style.css"/>
 <script id="applicationScript" type="text/javascript" src="js/script.js"></script>
@@ -55,7 +55,8 @@
 	<div id="PATIENT_RECORDS">
 		<span>PATIENT RECORDS</span>
 	</div>
-	</a>
+
+	</svg>
 	<style type="text/css">
 		.button {
   padding: 3px 10px;
@@ -86,19 +87,55 @@ td, th {
   padding: 8px;
 }
 	</style>
+	
 	<div id="PATIENT_RECORDS_bg">
-
-		<span>PATIENT RECORDS</span><br><br><br>
+		<span style='color: white;'>PATIENT RECORDS</span><br><br><br>
 	<form method="post">
 		<input type="text" name="searchpatients" style="background-color: white; font-size: 20px; border:solid white 1px; width: 600px;; height:40px;  text-transform:lowercase; padding-left: 10px; padding-top: 5px;" placeholder="Search by Lastname"></form><br><br>
-		<table>
+		<a href="patientrecords.php">
+	<div id="Back">
+		<button type="submit" name="back" 
+		style='width: 80%; background-color: #1566a8; color: white;
+	padding: 15px 20px;
+	margin: 8px 0;
+	border: none;
+	border-radius: 10px;
+	cursor: pointer;
+	position: relative;
+	top: -90%;
+	margin-left: 626%;
+	top: -104px;
+	font-size: large;'>Refresh</button>
+	</div>
+</a>
+	</div>
+
+	<style>
+	}
+.example{
+	height: 560px; overflow-y: scroll; margin-top: 20px;padding: 0; width: 95%
+}
+.example::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.example {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+</style>
+<div class="example">
+	<table style="margin-top: 280px; margin-left: 24.5%;">
   <tr>
     <th>Case no.</th>
     <th>Lastname</th>
     <th>Firstname</th>
     <th>Middlename</th>
+	<th>Address</th>
     <th>Age</th>
     <th>Contact No.</th>
+	<th>Date</th>
     <th>Action</th>
   </tr>
    
@@ -117,9 +154,11 @@ if($result->num_rows > 0){
 		. "</td><td>" . $row["pat_last"] 
 		. "</td><td>" . $row["pat_first"] 
 		. "</td><td>" . $row["pat_middle"] 
+		. "</td><td>" . $row["pat_address"]
 		. "</td><td>" . $row["pat_age"] 
 		. "</td><td>" . $row["pat_contact"] 
-		. "</td>
+		. "</td><td>" . $row["pat_date"]. 
+		"</td>
 		<td><form method='post' action='?pat_id=".$row["pat_id"]."'>
   		<button style='cursor: pointer; background-color: rgba(0,194,203,1); padding: 7px; border-radius: 10px; width: 80px; margin-bottom: 10px;'>UPDATE</button>
 		<button style='cursor: pointer; background-color: rgba(0,194,203,1); padding: 7px; border-radius: 10px; width: 80px;'>VIEW</button></form></td>
@@ -164,9 +203,11 @@ $conn->close();
 </style>
 	<a href="../New Patient/newpatients.php">
 	<div id="NEW_PATIENT">
-		<button type="submit"> + NEW PATIENT</button>
+		<button type="submit"> + New Patient</button>
 	</div>
 </a>
+
+
 	<a href="../Update/update.php">
 	<div id="Group_34">
 	</div>
@@ -206,7 +247,7 @@ $conn->close();
 }
 #LOGOUT1 {
 	left: 118px;
-	top: 394px;
+	top: 395px;
 	position: absolute;
 	overflow: visible;
 	width: 152px;
@@ -220,7 +261,7 @@ $conn->close();
 }
 </style>
 	<!-- logout -->
-	<a href="../../Admin/logout.php" onclick="return confirm('Are you sure?')">
+	<a href="../logout.php" onclick="return confirm('Are you sure?')">
 	<div id="LOGOUT1" >
 		<span>LOG OUT</span>
 	</div>

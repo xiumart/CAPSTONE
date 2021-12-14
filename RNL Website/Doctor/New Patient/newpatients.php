@@ -4,12 +4,12 @@ session_start();
 	include("config.php");
 	// include("function.php");
 
-	if($_SERVER['REQUEST_METHOD'] == "POST")
+	if(isset($_POST['btnadd']))
 	{
 		/// something was posted
 		$lastname = $_POST['lastname'];
 		$firstname = $_POST['firstname'];
-		$middlename = $_post['middlename'];
+		$middlename = $_POST['middlename'];
 		$age = $_POST['age'];
 		$sex = $_POST['sex'];
 		$address = $_POST['address'];
@@ -23,7 +23,7 @@ session_start();
 		//newrx of sph
 		$newDODSPH = $_POST['newD_OD_SPH'];
 		$newDOSSPH = $_POST['newD_OS_SPH'];
-		$newCLODSPH = $_POST['newCL_OD_SPH'];
+		$newCLODSPH = $_POST['new_CL_OD_SPH'];
 		$newCLOSSPH = $_POST['newCL_OS_SPH'];
 		$newRODSPH = $_POST['newR_OD_SPH'];
 		$newROSSPH = $_POST['newR_OS_SPH'];
@@ -60,21 +60,14 @@ session_start();
 		$ishiharaAXIS = $_POST['ishihara_AXIS'];
 		$ishiharaPD = $_POST['ishihara_PD'];
 
-		if(!empty($lastname) && !empty($firstname) && !empty($middlename) && !empty($age) && !empty($sex) && !empty($address) && !empty($contactno) && !empty($medhx) && !empty($date) && !empty($oldOD) && !empty($oldOS) && !empty($oldODVA) && !empty($oldOSVA) && !empty($newDODSPH) && !empty($newDOSSPH) && !empty($newCLODSPH) && !empty($newCLOSSPH) && !empty($newRODSPH) && !empty($newROSSPH) && !empty($newDODCYL) && !empty($newDOSCYL) && !empty($newCLODCYL) && !empty($newCLOSCYL) && !empty($newRODCYL) && !empty($newROSCYL) && !empty($newDODAXIS) && !empty($newDOSAXIS) && !empty($newCLODAXIS) && !empty($newCLOSAXIS) && !empty($newRODAXIS) && !empty($newROSAXIS) && !empty($newDODVA) && !empty($newDOSVA) && !empty($newDODADD) && !empty($newDOSADD) && !empty($newCLMONOOD) && !empty($newCLPDOS) && !empty($newRSEGHTOD) && !empty($newRVERHTOS) && !empty($bp) && !empty($ishiharaCYL) && !empty($ishiharaAXIS) && !empty($ishiharaPD))
-		{
 			// save to database
 			// $user_id = random_num(20);
-			$query = "insert into patientrecord (lastname,firstname,middlename,age,sex,address,contactno,medhx,date,oldOD,oldOS,oldOD_VA,oldOS_VA,newD_OD_SPH,newD_OS_SPH,newCL_OD_SPH,newCL_OS_SPH,newR_OD_SPH,newR_OS_SPH,new_D_OD_CYL,new_D_OS_CYL,new_CL_OD_CYL,new_CL_OS_CYL,new_R_OD_CYL,new_R_OS_CYL,new_D_OD_AXIS,new_D_OS_AXIS,new_CL_OD_AXIS,new_CL_OS_AXIS,new_R_OD_AXIS,new_R_OS_AXIS,new_D_OD_VA,new_D_OS_VA,new_D_OD_ADD,new_D_OS_ADD,new_CL_MONO_OD,new_CL_PD_OS,new_R_SEGHT_OD,new_R_VERHT_OS,bp,ishihara_CYL,ishihara_AXIS,ishihara_PD) values ('$lastname','$firstname','$middlename','$age','$sex','$address','$contactno','$medhx','$date','$oldOD','$oldOS','$oldODVA','$oldOSVA','$newDODSPH','$newDOSSPH','$newCLODSPH','$newCLOSSPH','$newRODSPH','$newROSSPH','$newDODCYL','$newDOSCYL','$newCLODCYL','$newCLOSCYL','$newRODCYL','$newROSCYL','$newDODAXIS','$newDOSAXIS','$newCLODAXIS','$newCLOSAXIS','$newRODAXIS','$newROSAXIS','$newDODVA','$newDOSVA','$newDODADD','$newDOSADD','$newCLMONOOD','$newCLPDOS','$newRSEGHTOD','$newRVERHTOS','$bp','$ishiharaCYL','$ishiharaAXIS','$ishiharaPD')";
+			$query = "insert into `patients`(`pat_id`, `pat_last`, `pat_first`, `pat_middle`, `pat_age`, `pat_sex`, `pat_address`, `pat_contact`, `pat_medhx`, `pat_date`) values ('','$lastname','$firstname','$middlename','$age','$sex','$address','$contactno','$medhx','$date')";
+			$query1="INSERT INTO `patient_records`(`old_od`, `old_os`, `old_od_add`, `old_os_add`, `distance_od_sph`, `distance_os_sph`, `distance_od_cyl`, `distance_os_cyl`, `distance_od_axis`, `distance_os_axis`, `distance_od_va`, `distance_os_va`, `distance_od_add`, `distance_os_add`, `lense_od_sph`, `lendse_os_sph`, `lense_od_cyl`, `lense_os_cyl`, `lense_od_axis`, `lense_os_axis`, `lense_mono_od`, `lense_pd_os`, `reading_od_sph`, `reading_os_sph`, `reading_od_cyl`, `reading_os_cyl`, `reading_od_axis`, `reading_os_axis`, `reading_seght_od`, `reading_seght_os`, `bp`, `Isihara.cyl`, `Isihara.axis`, `Isihara.pd`, `contact`) VALUES ('$oldOD', '$oldOS', '$oldODVA', '$oldOSVA', '$newDODSPH', '$newDOSSPH', '$newDODCYL', '$newDODCYL', '$newDODAXIS', ' $newDOSAXIS', '$newDODVA','$newDOSVA', '$newDODADD', '$newDOSADD', '$newCLODSPH', '$newCLOSSPH', '$newCLODCYL', '$newCLOSCYL', '$newCLODAXIS', '$newCLOSAXIS', '$newCLMONOOD', '$newCLPDOS', '$newRODSPH', '$newRODSPH', '$newRODCYL', '$newROSCYL', '$newRODAXIS', '$newROSAXIS', '$newRSEGHTOD', '$newRVERHTOS', '$bp', '$ishiharaCYL', '$ishiharaAXIS', '$ishiharaPD', '$contactno') ";
 
 			mysqli_query($con, $query);
-
-			header("Location: newpatients.php");
-			die;
-		}else
-		{
-			echo "Please enter some valid information!";
+			mysqli_query($con, $query1);
 		}
-	}
 ?>
 <!DOCTYPE html>
 <html>
@@ -135,6 +128,7 @@ session_start();
 		<span>PATIENT RECORDS</span>
 	</div>
 	</a>
+	
 	<div id="NEW_PATIENT_">
 		<span>NEW PATIENT </span>
 	</div>
@@ -159,42 +153,42 @@ session_start();
 	</svg>
 	<style type="text/css">
 	</style>
-	<form action ="newpatientsformhandler.php" action="post">
+	<form method="post">
 	<div id="LASTNAME__">
 		<span>LASTNAME : </span><br>
-		<input type="text" name="patlastname" style="background-color: white; font-size: 20px; border:solid white 1px; width: 250px; border-radius: 10px; height:40px; padding: 10px; text-transform: lowercase;">
+		<input type="text" name="lastname" style="background-color: white; font-size: 20px; border:solid white 1px; width: 250px; border-radius: 10px; height:40px; padding: 10px; text-transform: lowercase;">
 	</div>
 	
 	<div id="FIRST_NAME_">
 		<span>FIRST NAME :</span><br>
-		<input type="text" name="patfirstname" style="background-color: white; font-size: 20px; border:solid white 1px; width: 250px; border-radius: 10px; height:40px; padding: 10px; text-transform: lowercase;">
+		<input type="text" name="firstname" style="background-color: white; font-size: 20px; border:solid white 1px; width: 250px; border-radius: 10px; height:40px; padding: 10px; text-transform: lowercase;">
 	</div>
 
 	<div id="MIDDLE_NAME_">
 		<span>MIDDLE NAME :</span><br>
-		<input type="text" name="patmidname" style="background-color: white; font-size: 20px; border:solid white 1px; width: 250px; border-radius: 10px; height:40px; padding: 10px; text-transform: lowercase;">
+		<input type="text" name="middlename" style="background-color: white; font-size: 20px; border:solid white 1px; width: 250px; border-radius: 10px; height:40px; padding: 10px; text-transform: lowercase;">
 	</div>
 	<
 	<div id="AGE_">
 		<span>AGE :</span><br>
-		<input type="text" name="patage" style="background-color: white; font-size: 20px; border:solid white 1px; width: 50px; border-radius: 10px; height:40px; padding: 10px; text-transform: lowercase;">
+		<input type="text" name="age" style="background-color: white; font-size: 20px; border:solid white 1px; width: 50px; border-radius: 10px; height:40px; padding: 10px; text-transform: lowercase;">
 	
 	</div>
 	<div id="SEX_">
 		<span>SEX :</span><br>
-			<select name ="patsex" style="background-color: white; font-size: 16px; border:solid white 1px; border-radius: 10px; padding: 10px;">
+			<select name ="sex" style="background-color: white; font-size: 16px; border:solid white 1px; border-radius: 10px; padding: 10px;">
 			<option style="font-size: 12px;">Female</option>
 			<option style="font-size: 12px;">Male</option>
 		</select>
 	</div>
 	<div id="ADDRESS">
 		<span>ADDRESS</span><br>
-		<input type="text" name="pataddress" style="background-color: white; font-size: 20px; border:solid white 1px; width: 450px; border-radius: 10px; height:40px; padding: 10px; text-transform: lowercase;">
+		<input type="text" name="address" style="background-color: white; font-size: 20px; border:solid white 1px; width: 450px; border-radius: 10px; height:40px; padding: 10px; text-transform: lowercase;">
 	</div>
 	</svg>
 	<div id="CONTACT_NO">
 		<span>CONTACT NO.</span><br>
-		<input type="text" name="patcontact" style="background-color: white; font-size: 20px; border:solid white 1px; width: 300px; border-radius: 10px; height:40px; padding: 10px; text-transform: lowercase;">
+		<input type="text" name="contactno" style="background-color: white; font-size: 20px; border:solid white 1px; width: 300px; border-radius: 10px; height:40px; padding: 10px; text-transform: lowercase;">
 	</div>
 	
 	<svg class="Line_46" viewBox="0 0 1376 1">
@@ -218,7 +212,7 @@ td, th {
 </style>
 	<div id="MEDICAL_Hx">
 		<span>MEDICAL Hx</span><br>
-		<input type="text" name="patmedhx" style="background-color: white; font-size: 20px; border:solid white 1px; width: 450px; border-radius: 10px; height:40px; padding: 10px; text-transform: lowercase;">
+		<input type="text" name="medhx" style="background-color: white; font-size: 20px; border:solid white 1px; width: 450px; border-radius: 10px; height:40px; padding: 10px; text-transform: lowercase;">
 		<br><br><br><br>
 		<table >
 			 <tr>
@@ -226,17 +220,17 @@ td, th {
   </tr>
   <tr>
     <td >OD</td>
-    <td style="width: 400px;padding: 0; margin: 0;"><input type="text" style="font-size: 20px; padding: 10px;width: 400px; height: 60px;"></td>
+    <td style="width: 400px;padding: 0; margin: 0;"><input type="text" style="font-size: 20px; padding: 10px;width: 400px; height: 60px;" name="oldOD"></td>
     <td>VA</td>
     <td>ADD</td>
-    <td style="width: 100px; padding: 0; margin: 0;"><input type="text" style="font-size: 20px; padding: 5px; width: 110px; height: 56px;"></td>
+    <td style="width: 100px; padding: 0; margin: 0;"><input type="text" style="font-size: 20px; padding: 5px; width: 110px; height: 56px;" name="oldOD_VA"></td>
   </tr>
   <tr>
     <td>OS</td>
-    <td style="width: 200px;padding: 0; margin: 0;"><input type="text" style="font-size: 20px; padding: 10px;width: 400px; height: 60px;"></td>
+    <td style="width: 200px;padding: 0; margin: 0;"><input type="text" style="font-size: 20px; padding: 10px;width: 400px; height: 60px;" name="oldOS"></td>
     <td>VA</td>
     <td>ADD</td>
-    <td style="width: 100px; padding: 0; margin: 0;"><input type="text" style="font-size: 20px; padding: 5px; width: 110px; height: 56px;"></td>
+    <td style="width: 100px; padding: 0; margin: 0;"><input type="text" style="font-size: 20px; padding: 5px; width: 110px; height: 56px;" name="oldOS_VA"></td>
   </tr>
 		</table><br><br>
 
@@ -252,78 +246,76 @@ td, th {
 			<tr><td rowspan="6" style="width: 5px;">NEW<br> RX</td>
 			  <td rowspan="2" style="width: 2px;">DISTANCE</td>
 			  <td style="width: 2px;">OD</td>
-			  <td style="width: 100px;height:45px;padding: 0; margin: 0;"><input type="text" style="width: 120px; height: 45px;font-size: 20px; padding: 5px;"></td>
-			  <td style="width: 100px;height:45px;padding: 0; margin: 0;"><input type="text" style="width: 120px; height: 45px;font-size: 20px; padding: 5px;"></td>
-			  <td style="width: 100px;height:45px;padding: 0; margin: 0;"><input type="text" style="width: 120px; height: 45px;font-size: 20px; padding: 5px;"></td>
-			  <td style="width: 100px;height:45px;padding: 0; margin: 0;"><input type="text" style="width: 120px; height: 45px;font-size: 20px; padding: 5px;"></td>
-			  <td style="width: 100px;height:45px;padding: 0; margin: 0;"><input type="text" style="width: 120px; height: 45px;font-size: 20px; padding: 5px;"></td>
+			  <td style="width: 100px;height:45px;padding: 0; margin: 0;"><input type="text" style="width: 120px; height: 45px;font-size: 20px; padding: 5px;" name="newD_OD_SPH"></td>
+			  <td style="width: 100px;height:45px;padding: 0; margin: 0;"><input type="text" style="width: 120px; height: 45px;font-size: 20px; padding: 5px;" name="new_D_OD_CYL"></td>
+			  <td style="width: 100px;height:45px;padding: 0; margin: 0;"><input type="text" style="width: 120px; height: 45px;font-size: 20px; padding: 5px;" name="new_D_OD_AXIS"></td>
+			  <td style="width: 100px;height:45px;padding: 0; margin: 0;"><input type="text" style="width: 120px; height: 45px;font-size: 20px; padding: 5px;" name="new_D_OD_VA"></td>
+			  <td style="width: 100px;height:45px;padding: 0; margin: 0;"><input type="text" style="width: 120px; height: 45px;font-size: 20px; padding: 5px;" name="new_D_OD_ADD"></td>
 			</tr>
 			<tr>
 			  <td>OS</td>
-			  <td style="width: 100px;height:45px;padding: 0; margin: 0;"><input type="text" style="width: 120px; height: 45px;font-size: 20px; padding: 5px;"></td>
-			  <td style="width: 100px;height:45px;padding: 0; margin: 0;"><input type="text" style="width: 120px; height: 45px;font-size: 20px; padding: 5px;"></td>
-			  <td style="width: 100px;height:45px;padding: 0; margin: 0;"><input type="text" style="width: 120px; height: 45px;font-size: 20px; padding: 5px;"></td>
-			  <td style="width: 100px;height:45px;padding: 0; margin: 0;"><input type="text" style="width: 120px; height: 45px;font-size: 20px; padding: 5px;"></td>
-			  <td style="width: 100px;height:45px;padding: 0; margin: 0;"><input type="text" style="width: 120px; height: 45px;font-size: 20px; padding: 5px;"></td>
+			  <td style="width: 100px;height:45px;padding: 0; margin: 0;"><input type="text" style="width: 120px; height: 45px;font-size: 20px; padding: 5px;" name="newD_OS_SPH"></td>
+			  <td style="width: 100px;height:45px;padding: 0; margin: 0;"><input type="text" style="width: 120px; height: 45px;font-size: 20px; padding: 5px;" name="new_D_OS_CYL"></td>
+			  <td style="width: 100px;height:45px;padding: 0; margin: 0;"><input type="text" style="width: 120px; height: 45px;font-size: 20px; padding: 5px;" name="new_D_OS_AXIS"></td>
+			  <td style="width: 100px;height:45px;padding: 0; margin: 0;"><input type="text" style="width: 120px; height: 45px;font-size: 20px; padding: 5px;" name="new_D_OS_VA"></td>
+			  <td style="width: 100px;height:45px;padding: 0; margin: 0;"><input type="text" style="width: 120px; height: 45px;font-size: 20px; padding: 5px;" name="new_D_OS_ADD"></td>
 			</tr>
 			<tr>
 			   <td rowspan="2">CONTACT LENS<br> RX</td>
 			  <td>OD</td>
-			  <td style="width: 100px;height:45px;padding: 0; margin: 0;"><input type="text" style="width: 120px; height: 45px;font-size: 20px; padding: 5px;"></td>
-			  <td style="width: 100px;height:45px;padding: 0; margin: 0;"><input type="text" style="width: 120px; height: 45px;font-size: 20px; padding: 5px;"></td>
-			  <td style="width: 100px;height:45px;padding: 0; margin: 0;"><input type="text" style="width: 120px; height: 45px;font-size: 20px; padding: 5px;"></td>
+			  <td style="width: 100px;height:45px;padding: 0; margin: 0;"><input type="text" style="width: 120px; height: 45px;font-size: 20px; padding: 5px;" name="new_CL_OD_SPH"></td>
+			  <td style="width: 100px;height:45px;padding: 0; margin: 0;"><input type="text" style="width: 120px; height: 45px;font-size: 20px; padding: 5px;" name="new_CL_OD_CYL"></td>
+			  <td style="width: 100px;height:45px;padding: 0; margin: 0;"><input type="text" style="width: 120px; height: 45px;font-size: 20px; padding: 5px;" name="new_CL_OD_AXIS"></td>
 			  <td>MONO</td>
-			  <td style="width: 100px;height:45px;padding: 0; margin: 0;">OD:<input type="text" style="font-size: 20px; padding: 5px; width: 85px;height: 43px;"></td>
+			  <td style="width: 100px;height:45px;padding: 0; margin: 0;">OD:<input type="text" style="font-size: 20px; padding: 5px; width: 85px;height: 43px;" name="new_CL_MONO_OD"></td>
 			</tr>
 			<tr>
 			  <td >OS</td>
-			  <td style="width: 100px;height:45px;padding: 0; margin: 0;"><input type="text" style="width: 120px; height: 45px;font-size: 20px; padding: 5px;"></td>
-			  <td style="width: 100px;height:45px;padding: 0; margin: 0;"><input type="text" style="width: 120px; height: 45px;font-size: 20px; padding: 5px;"></td>
-			  <td style="width: 100px;height:45px;padding: 0; margin: 0;"><input type="text" style="width: 120px; height: 45px;font-size: 20px; padding: 5px;"></td>
+			  <td style="width: 100px;height:45px;padding: 0; margin: 0;"><input type="text" style="width: 120px; height: 45px;font-size: 20px; padding: 5px;" name="newCL_OS_SPH"></td>
+			  <td style="width: 100px;height:45px;padding: 0; margin: 0;"><input type="text" style="width: 120px; height: 45px;font-size: 20px; padding: 5px;" name="new_CL_OS_CYL"></td>
+			  <td style="width: 100px;height:45px;padding: 0; margin: 0;"><input type="text" style="width: 120px; height: 45px;font-size: 20px; padding: 5px;" name="new_CL_OS_AXIS"></td>
 			  <td>PD</td>
-			  <td style="width: 100px;height:45px;padding: 0; margin: 0;">OS:<input type="text" style="font-size: 20px; padding: 5px; width: 86px;height: 43px;"></td>
+			  <td style="width: 100px;height:45px;padding: 0; margin: 0;">OS:<input type="text" style="font-size: 20px; padding: 5px; width: 86px;height: 43px;" name="new_CL_PD_OS"></td>
 			</tr>
 			<tr>
 			   <td rowspan="2">READING<br> RX</td>
 			  <td>OD</td>
-			  <td style="width: 100px;height:45px;padding: 0; margin: 0;"><input type="text" style="width: 120px; height: 45px;font-size: 20px; padding: 5px;"></td>
-			  <td style="width: 100px;height:45px;padding: 0; margin: 0;"><input type="text" style="width: 120px; height: 45px;font-size: 20px; padding: 5px;"></td>
-			  <td style="width: 100px;height:45px;padding: 0; margin: 0;"><input type="text" style="width: 120px; height: 45px;font-size: 20px; padding: 5px;"></td>
+			  <td style="width: 100px;height:45px;padding: 0; margin: 0;"><input type="text" style="width: 120px; height: 45px;font-size: 20px; padding: 5px;" name="newR_OD_SPH"></td>
+			  <td style="width: 100px;height:45px;padding: 0; margin: 0;"><input type="text" style="width: 120px; height: 45px;font-size: 20px; padding: 5px;" name="new_R_OD_CYL"></td>
+			  <td style="width: 100px;height:45px;padding: 0; margin: 0;"><input type="text" style="width: 120px; height: 45px;font-size: 20px; padding: 5px;" name="new_R_OD_AXIS"></td>
 			  <td>SEG HT</td>
-			  <td style="width: 100px;height:45px;padding: 0; margin: 0;">OD:<input type="text" style="font-size: 20px; padding: 5px; width: 85px;height: 43px;"></td>
+			  <td style="width: 100px;height:45px;padding: 0; margin: 0;">OD:<input type="text" style="font-size: 20px; padding: 5px; width: 85px;height: 43px;" name="new_R_SEGHT_OD"></td>
 			</tr>
 			<tr>
 			  <td>OS</td>
-			  <td style="width: 100px;height:45px;padding: 0; margin: 0;"><input type="text" style="width: 120px; height: 45px;font-size: 20px; padding: 5px;"></td>
-			  <td style="width: 100px;height:45px;padding: 0; margin: 0;"><input type="text" style="width: 120px; height: 45px;font-size: 20px; padding: 5px;"></td>
-			  <td style="width: 100px;height:45px;padding: 0; margin: 0;"><input type="text" style="width: 120px; height: 45px;font-size: 20px; padding: 5px;"></td>
+			  <td style="width: 100px;height:45px;padding: 0; margin: 0;"><input type="text" style="width: 120px; height: 45px;font-size: 20px; padding: 5px;" name="newR_OS_SPH"></td>
+			  <td style="width: 100px;height:45px;padding: 0; margin: 0;"><input type="text" style="width: 120px; height: 45px;font-size: 20px; padding: 5px;" name="new_R_OS_CYL"></td>
+			  <td style="width: 100px;height:45px;padding: 0; margin: 0;"><input type="text" style="width: 120px; height: 45px;font-size: 20px; padding: 5px;" name="new_R_OS_AXIS"></td>
 			  <td>VER HT</td>
-			  <td style="width: 100px;height:45px;padding: 0; margin: 0;">OS:<input type="text" style="font-size: 20px; padding: 5px; width: 86px;height: 43px;"></td>
+			  <td style="width: 100px;height:45px;padding: 0; margin: 0;">OS:<input type="text" style="font-size: 20px; padding: 5px; width: 86px;height: 43px;" name="new_R_VERHT_OS"></td>
 			</tr>
 			<tr>
 			<td>B.P.</td>
-			<td style="width: 100px;height:45px;padding: 0; margin: 0;"><input type="text" style="width: 170px; height: 45px;font-size: 20px; padding: 5px;"></td>
+			<td style="width: 100px;height:45px;padding: 0; margin: 0;"><input type="text" style="width: 170px; height: 45px;font-size: 20px; padding: 5px;" name="bp"></td>
 			<td colspan="2">Ishihara</td>
-			<td style="width: 100px;height:45px;padding: 0; margin: 0;"><input type="text" style="width: 120px; height: 45px;font-size: 20px; padding: 5px;"></td>
-			<td style="width: 100px;height:45px;padding: 0; margin: 0;"><input type="text" style="width: 120px; height: 45px;font-size: 20px; padding: 5px;"></td>
+			<td style="width: 100px;height:45px;padding: 0; margin: 0;"><input type="text" style="width: 120px; height: 45px;font-size: 20px; padding: 5px;" name="ishihara_CYL"></td>
+			<td style="width: 100px;height:45px;padding: 0; margin: 0;"><input type="text" style="width: 120px; height: 45px;font-size: 20px; padding: 5px;" name="ishihara_AXIS"></td>
 			<td>PD</td>
-			<td style="width: 100px;height:45px;padding: 0; margin: 0;"><input type="text" style="width: 120px; height: 45px;font-size: 20px; padding: 5px;"></td>
+			<td style="width: 100px;height:45px;padding: 0; margin: 0;"><input type="text" style="width: 120px; height: 45px;font-size: 20px; padding: 5px;" name="ishihara_PD"></td>
 			</tr>
 			
 		  </table>
 	</div>
-	
-	<a href="patientrecords.php">
+
 	<div id="Group_36">
 		
 		<div id="ADD_PATIENT">
-			<input type="submit" value="ADD PATIENT">
+			<input type="submit" value="ADD PATIENT" name="btnadd" onclick="return confirm('Are you sure?')">
 		</div>
 	</div>
-	</a>
 	<div id="DATE_">
 		<span>DATE :</span><br>
-		<input type="date" name="patdate" style="background-color: white; font-size: 20px; border:solid white 1px; width: 200px; border-radius: 10px; height:40px; padding: 10px; text-transform: lowercase;">
+		<input type="date" name="date" style="background-color: white; font-size: 20px; border:solid white 1px; width: 200px; border-radius: 10px; height:40px; padding: 10px; text-transform: lowercase;">
 	</div>
 
 </form>
@@ -344,7 +336,7 @@ td, th {
 }
 #LOGOUT1 {
 	left: 118px;
-	top: 394px;
+	top: 395px;
 	position: absolute;
 	overflow: visible;
 	width: 152px;
@@ -358,7 +350,7 @@ td, th {
 }
 </style>
 	<!-- logout -->
-	<a href="../../Admin/logout.php" onclick="return confirm('Are you sure?')">
+	<a href="../logout.php" onclick="return confirm('Are you sure?')">
 	<div id="LOGOUT1" >
 		<span>LOG OUT</span>
 	</div>

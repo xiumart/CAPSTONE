@@ -1661,6 +1661,7 @@ include "db_conn.php";
 					color: white;
 				  }
 				  </style> -->
+	
 	<div id="CONTACT_" style="width: 160px;">
 		<label>Contact No.:</label><br>
 		<input type="tel" pattern="[0-9]{11}" id="contact" name="contact" placeholder="Contact No."><br>
@@ -1734,10 +1735,11 @@ include "db_conn.php";
 			</select> -->
 	</div>
 	<div id="Set_Appointment">
-		<input type="submit" value="Set Appointment" onclick="return confirm('Are you sure set an appointment?')">
+	<br><input type="submit" value="Set Appointment" onclick="return confirm('Are you sure set an appointment?')">
 		</div>
+		
 	<div id="Contact_Us">
-		<input type= "submit" id="contactus" value="Contact Us"> 
+	<a href="About/about.php"><input type= "submit" id="contactus" value="Contact Us"></a> 
 	</div>
 	<div id="We_believe_in_providing_the_be">
 		<span>We believe in providing the best possible care <br/>to all our existing patients and welcome new <br/>patients to sample.</span>

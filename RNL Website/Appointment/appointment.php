@@ -136,7 +136,7 @@ include "../db_conn.php";
 		<input type="tel" pattern="[0-9]{11}"id="contact" name="contact" placeholder="Contact No." required="required" style="width:320px;"><br>
 	</div>
 	<div id="ddmmyyyy_de">
-		<label for="date">Date:</label><br>
+		<label for="date">Appointment Date:</label><br>
   		<input type="date" id="date" name="date" required="required">
 		  <style>
 			  input[type=date], select {

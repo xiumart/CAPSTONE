@@ -7,7 +7,7 @@ session_start();
 <meta charset="utf-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>POINT OF SALES | DOCTOR</title>
+<title>POINT OF SALES | ADMIN</title>
 <link rel="shorcut icon" type="img/png" href="logo.png">
 <link rel="stylesheet" type="text/css" id="applicationStylesheet" href="css/style.css"/>
 <script id="applicationScript" type="text/javascript" src="js/script.js"></script>
@@ -138,73 +138,22 @@ td, th {
 	</style>
 
 	<div id="POINT_OF_SALES">
+
 		<span>POINT OF SALES</span><br><br><br><br>
-		<button id="myBtn" style="padding: 10px; font-size: 20px;">PRODUCT &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp V</button>
-		<div id="myModal" class="modal">
-		<!---modal content-->
-		<div class="modal-content">
+		
 
-<form method="post">
-
-	
-		<?php 
-	include("config.php");
-	if (isset($_POST['name'])) {
-    $name = $_POST['name'];
-    	$_SESSION['name']=$name ;
-}
-
-	$sql1 = "SELECT * FROM `product`";
-  $result1 = $con->query($sql1);  
-  if($result1->num_rows > 0){
-  	while($row = $result1 -> fetch_assoc()){
-$qqty=$row['qty'];
-$_GET['pro_id']=$row['pro_id'];
-$_GET['brand']=$row['brand'];
-	if (isset($_POST['name'])) {
-    $name = $_POST['name'];
-    	$_SESSION['name']=$name ;
-}
-
-		echo"<center><a href='pos.php?id=".$_GET['pro_id']."' style='text-decoration:none; color:black;font-size:20px;'>".$_GET['brand']."</a></center><br>
-		";
-		  	}
-  } 
-  ?>
-
-
+<form method="post" action="pos.php">
 
 	</form>
-	</div>
-		  
-		  </div>
-		  <script>
-		var modal = document.getElementById("myModal");
-		var btn = document.getElementById("myBtn");
-		var span = document.getElementsByClassName("close")[0]; 
-		btn.onclick = function() {
-		  modal.style.display = "block";
-		}
-		span.onclick = function() {
-		  modal.style.display = "none";
-		}
-		window.onclick = function(event) {
-		  if (event.target == modal) {
-			modal.style.display = "none";
-		  }
-		}
-		</script>
 		<br><br>
 	<form method="post">
-
-		
-		
   <?php
-		//error_reporting(0);
+  	include("config.php");
+		error_reporting(0);
 	if (isset($_POST['search1'])) {
 		$qty=$_POST['tentacles'];
 
-  	$cat=$_GET['id'];
+  	$cat=$_POST['pro_id'];
 
   		$sql=mysqli_query($con, "SELECT * FROM `product` WHERE pro_id='$cat'");
 			  		while($row=mysqli_fetch_array($sql)){
@@ -218,6 +167,7 @@ $_GET['brand']=$row['brand'];
   </tr>
 
 		</table>
+		<input type="text" name="txtbrand" hidden="" value="<?php echo $_POST['pro_id']; ?>" >
 		  			<input type="text" name="qty1" hidden="" value="<?php echo $_POST['tentacles']; ?>" >
 		  			<table class="table">
   <tr>
@@ -296,8 +246,41 @@ $_GET['brand']=$row['brand'];
 	<?php
 	?>
 	<div id="n_Add">
-		<form method="post" action="pos.php?id=<?php echo $_GET['id']; ?>">
-	<input type="number" id="tent" name="tentacles" min="1" max="100" value="<?php echo $_POST['tentacles']?>" style="background-color: white; font-size: 20px; border:solid white 1px; width: 200px;; height:43px;  text-transform:lowercase; padding: 5px; margin-left: -530px;" >
+		<form method="post" action="pos.php">
+			<select name='pro_id' style="margin-left: -920px;width: 300px; height: 44px;text-align: center; font-size: 20px;  ">
+		<option hidden="">PRODUCT</option>
+
+		
+	
+	
+		<?php 
+	if (isset($_POST['name'])) {
+    $name = $_POST['name'];
+    	$_SESSION['name']=$name ;
+}
+
+	$sql1 = "SELECT * FROM `product`";
+  $result1 = $con->query($sql1);  
+  if($result1->num_rows > 0){
+  	while($row = $result1 -> fetch_assoc()){
+$qqty=$row['qty'];
+	if (isset($_POST['name'])) {
+    $name = $_POST['name'];
+    	$_SESSION['name']=$name ;
+}
+
+		echo"<option value='".$row['pro_id']."'>".$row['brand']."</option><br>
+		";
+		  	}
+  } 
+  ?>
+
+
+</select>&nbsp&nbsp
+
+	<input type="number" id="tent" name="tentacles" min="1" max="100" value="<?php echo $_POST['tentacles']?>" style="background-color: white; font-size: 20px; border:solid white 1px; width: 200px;; height:43px;  text-transform:lowercase; padding: 5px; " >
+
+
 		<button name="search1" style="cursor: pointer; background-color: rgba(34,121,220,1);font-size: 25px; padding:10px 40px; border-radius: 10px; margin: -10px; margin-top: 2px; margin-left: 5px; color: #fff;">+ Add</button></form>
 
 	</div>
@@ -313,7 +296,9 @@ $_GET['brand']=$row['brand'];
 		if (isset($_POST['pay'])) {
 			$brr1=$_POST['name'];
 			$qty1=$_POST['qty1'];
-			$date=$_POST['date'];		$cc=$_GET['id'];
+			$date=$_POST['date'];		
+			$cc=$_POST['txtbrand'];
+
 $query = "INSERT INTO `pos`(`id`, `Customer_name`, `Date`, `qty`) VALUES ('$cc','$brr1','$date','$qty1')";
 
 			mysqli_query($con, $query);
@@ -340,7 +325,7 @@ $query = "INSERT INTO `pos`(`id`, `Customer_name`, `Date`, `qty`) VALUES ('$cc',
 }
 #LOGOUT1 {
 	left: 118px;
-	top: 394px;
+	top: 395px;
 	position: absolute;
 	overflow: visible;
 	width: 152px;
@@ -354,7 +339,7 @@ $query = "INSERT INTO `pos`(`id`, `Customer_name`, `Date`, `qty`) VALUES ('$cc',
 }
 </style>
 	<!-- logout -->
-	<a href="../../Admin/logout.php" onclick="return confirm('Are you sure?')">
+	<a href="../logout.php" onclick="return confirm('Are you sure?')">
 	<div id="LOGOUT1" >
 		<span>LOG OUT</span>
 	</div>
