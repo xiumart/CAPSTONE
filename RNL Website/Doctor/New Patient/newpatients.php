@@ -135,42 +135,6 @@ session_start();
 		<span>PATIENT RECORDS</span>
 	</div>
 	</a>
-	<style>
-	#AUDIT_TRAIL {
-	left: 473px;
-	top: 127px;
-	position: absolute;
-	overflow: visible;
-	width: 113px;
-	white-space: nowrap;
-	text-align: left;
-	font-family: Segoe UI;
-	font-style: normal;
-	font-weight: normal;
-	font-size: 20px;
-	color: rgba(255,255,255,1);
-}
-#LOGOUT1 {
-	left: 118px;
-	top: 394px;
-	position: absolute;
-	overflow: visible;
-	width: 152px;
-	white-space: nowrap;
-	text-align: left;
-	font-family: Segoe UI;
-	font-style: normal;
-	font-weight: normal;
-	font-size: 27px;
-	color: white;
-}
-</style>
-	<!-- logout -->
-	<a href="../../logout.php" onclick="return confirm('Are you sure?')">
-	<div id="LOGOUT1" >
-		<span>LOG OUT</span>
-	</div>
-	</a>
 	<div id="NEW_PATIENT_">
 		<span>NEW PATIENT </span>
 	</div>
@@ -363,6 +327,42 @@ td, th {
 	</div>
 
 </form>
+	<style>
+	#AUDIT_TRAIL {
+	left: 473px;
+	top: 127px;
+	position: absolute;
+	overflow: visible;
+	width: 113px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Segoe UI;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 20px;
+	color: rgba(255,255,255,1);
+}
+#LOGOUT1 {
+	left: 118px;
+	top: 394px;
+	position: absolute;
+	overflow: visible;
+	width: 152px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Segoe UI;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 27px;
+	color: white;
+}
+</style>
+	<!-- logout -->
+	<a href="../../logout.php" onclick="return confirm('Are you sure?')">
+	<div id="LOGOUT1" >
+		<span>LOG OUT</span>
+	</div>
+	</a>
 </div>
 </body>
 </html>

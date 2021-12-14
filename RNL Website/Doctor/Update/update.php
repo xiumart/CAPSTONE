@@ -55,42 +55,10 @@
 		<span>PATIENT RECORDS</span>
 	</div>
 	</a>
-	<style>
-	#AUDIT_TRAIL {
-	left: 473px;
-	top: 127px;
-	position: absolute;
-	overflow: visible;
-	width: 113px;
-	white-space: nowrap;
-	text-align: left;
-	font-family: Segoe UI;
-	font-style: normal;
-	font-weight: normal;
-	font-size: 20px;
-	color: rgba(255,255,255,1);
-}
-#LOGOUT1 {
-	left: 118px;
-	top: 394px;
-	position: absolute;
-	overflow: visible;
-	width: 152px;
-	white-space: nowrap;
-	text-align: left;
-	font-family: Segoe UI;
-	font-style: normal;
-	font-weight: normal;
-	font-size: 27px;
-	color: white;
-}
-</style>
-	<!-- logout -->
-	<a href="../../logout.php" onclick="return confirm('Are you sure?')">
-	<div id="LOGOUT1" >
-		<span>LOG OUT</span>
-	</div>
-	</a>
+	<svg class="Icon_awesome-angle-double-left" viewBox="1.734 6.746 26.443 21.231">
+		<path id="Icon_awesome-angle-double-left" d="M 14.93550682067871 16.23446273803711 L 23.95588684082031 7.214083671569824 C 24.57935523986816 6.590617179870605 25.58751487731934 6.590617179870605 26.20434951782227 7.214083671569824 L 27.70332527160645 8.713059425354004 C 28.3267936706543 9.336525917053223 28.3267936706543 10.34468650817871 27.70332527160645 10.96152114868164 L 21.31609916687012 17.36201095581055 L 27.70995903015137 23.7558708190918 C 28.33342933654785 24.37933731079102 28.33342933654785 25.38749504089355 27.70995903015137 26.00433158874512 L 26.21098327636719 27.50993919372559 C 25.58751487731934 28.1334056854248 24.57935523986816 28.1334056854248 23.96252059936523 27.50993919372559 L 14.942138671875 18.48955726623535 C 14.31204032897949 17.8660888671875 14.31204032897949 16.85793113708496 14.93550682067871 16.23446273803711 Z M 2.200853824615479 18.48955726623535 L 11.22123527526855 27.50993919372559 C 11.84470176696777 28.1334056854248 12.85286140441895 28.1334056854248 13.46969604492188 27.50993919372559 L 14.96866989135742 26.01096534729004 C 15.59214019775391 25.38749504089355 15.59214019775391 24.37933731079102 14.96866989135742 23.76250267028809 L 8.581445693969727 17.36201095581055 L 14.97530364990234 10.96815395355225 C 15.5987720489502 10.34468650817871 15.5987720489502 9.336525917053223 14.97530364990234 8.719691276550293 L 13.4763298034668 7.214083671569824 C 12.85286140441895 6.590617179870605 11.84470176696777 6.590617179870605 11.22786712646484 7.214083671569824 L 2.207486629486084 16.23446273803711 C 1.577386617660522 16.85793113708496 1.577386617660522 17.8660888671875 2.200853824615479 18.48955726623535 Z">
+		</path>
+	</svg>
 	<div id="UPDATE_PATIENT_RECORD">
 		<span>UPDATE PATIENT RECORD</span>
 	</div>
@@ -260,6 +228,42 @@ td, th {
 		<a href="../History/history.php"><input type="submit" value="HISTORY"></a>
 		
 	</div>
+	<style>
+	#AUDIT_TRAIL {
+	left: 473px;
+	top: 127px;
+	position: absolute;
+	overflow: visible;
+	width: 113px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Segoe UI;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 20px;
+	color: rgba(255,255,255,1);
+}
+#LOGOUT1 {
+	left: 118px;
+	top: 394px;
+	position: absolute;
+	overflow: visible;
+	width: 152px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Segoe UI;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 27px;
+	color: white;
+}
+</style>
+	<!-- logout -->
+	<a href="../../logout.php" onclick="return confirm('Are you sure?')">
+	<div id="LOGOUT1" >
+		<span>LOG OUT</span>
+	</div>
+	</a>
 </div>
 </body>
 </html>
