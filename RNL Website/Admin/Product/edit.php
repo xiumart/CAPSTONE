@@ -51,6 +51,13 @@ if (isset($_POST['btnsubmit'])) {
 
 ?>
 
+ <?php 
+					
+					
+$resulta = mysqli_query($con, "SELECT * from supplier");
+
+ ?>
+
 
 
 <html>
@@ -92,8 +99,18 @@ if (isset($_POST['btnsubmit'])) {
 				
 				<label style="color: #000;padding-right: 23%;">Supplier:</label>
 				<select name="supplier" id="Category" value="<?php echo $row['supplier'];?>"style="border: #000 2px; border-style:solid; font-size: 20px; border-radius: 8px; padding: 3px;"required="required">
-					<option value="Supplier">Supplier 1</option>
-					<option value="Supplier">Supplier 2</option>
+
+					<?php 
+
+
+					while($rowsh = $resulta->fetch_assoc()){
+							$suppliers = $rowsh['supp_supply'];
+							echo"<option value='$suppliers'>$suppliers</option>";
+								}
+					
+
+					?>
+					
 				  </select><br><br>
 				<label style="color: #000;padding-right: 30%;">QTY:</label>
 				<input type="number" id="tentacles" value="<?php echo $row['qty'];?>" name="qty" min="1" max="10000" placeholder="Quantity" style="background-color: white; font-size: 20px; border:solid black 2px; width: 200px;; height:43px;  text-transform:lowercase; padding-left: 10px; border-radius: 8px; padding: 3px;" ><br><br><br><br>

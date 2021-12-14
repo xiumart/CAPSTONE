@@ -51,6 +51,14 @@ if (isset($_POST['btnsubmit'])) {
 
  ?>  
 
+ <?php 
+					
+					
+$resulta = mysqli_query($con, "SELECT * from supplier");
+
+ ?>
+
+
 
 <!DOCTYPE html>
 <html>
@@ -220,7 +228,7 @@ $search=$_POST['searchproduct'];
   		<button style='cursor: pointer; background-color: rgba(0,194,203,1); padding: 7px; border-radius: 10px; width: 80px; margin-bottom: 10px;' onclick="return confirm('Are you sure?')">UPDATE</button>
 		</form>
 		<?php echo "<form method='post' action='?pro_id=".$row["pro_id"]."'>"?>
-  		<button style='cursor: pointer; background-color: rgba(0,194,203,1); padding: 7px; border-radius: 10px; width: 80px;' id='btnsubmit' onclick="return confirm('Are you sure?')">REMOVE</button> <?php 
+  		<button style='cursor: pointer; background-color: rgba(0,194,203,1); padding: 7px; border-radius: 10px; width: 80px;' id='btnsubmit' onclick="return confirm('Are you sure?')">DELETE</button> <?php 
 		echo "</form>
 		</td>
   		</tr>
@@ -314,8 +322,18 @@ $search=$_POST['searchproduct'];
 				
 				<label style="color: #000;padding-right: 23%;">Supplier:</label>
 				<select name="supplier" id="Category"style="border: #000 2px; border-style:solid; font-size: 20px; border-radius: 8px; padding: 3px;"required="required">
-					<option value="Supplier">Supplier 1</option>
-					<option value="Supplier">Supplier 2</option>
+
+					<?php 
+
+
+					while($rowsh = $resulta->fetch_assoc()){
+							$suppliers = $rowsh['supp_supply'];
+							echo"<option value='$suppliers'>$suppliers</option>";
+								}
+					
+
+					?>
+					
 				  </select><br><br>
 				<label style="color: #000;padding-right: 30%;">QTY:</label>
 				<input type="number" id="tentacles" name="qty" min="1" max="10000" placeholder="Quantity" style="background-color: white; font-size: 20px; border:solid black 2px; width: 200px;; height:43px;  text-transform:lowercase; padding-left: 10px; border-radius: 8px; padding: 3px;" ><br><br><br><br>
