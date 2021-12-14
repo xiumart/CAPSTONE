@@ -304,9 +304,9 @@ if($result1->num_rows > 0){
 		. $row["supp_contactperson"] . "</td><td>" 
 		. $row["supp_contactno"] . "</td><td>" . $row["supp_address"] 
 		. "</td><td>". $row["supp_note"] . "</td>
-		<td><button style='cursor:pointer'>UPDATE</button>
-		<form method='post' action='?supp_id=".$row["supp_id"]."'>
-		<button style='cursor:pointer'>DELETE</button></form>
+		<td>"?><button style='cursor:pointer' onclick="return confirm('Are you sure?')">UPDATE</button>
+		<?php echo "<form method='post' action='?supp_id=".$row["supp_id"]."'> "?>
+		<button style='cursor:pointer' onclick="return confirm('Are you sure?')">DELETE</button><?php echo "</form>
 		</td>
 		</tr>";
 	}

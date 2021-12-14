@@ -1,5 +1,19 @@
 <?php 
 session_start();
+ 
+include "../../db_conn.php";  
+if (isset($_GET['app_id'])) {  
+	
+	 $app_id=$_GET['app_id'];  
+	 $delete=mysqli_query($conn,"delete from appointment where app_id='$app_id'");  
+	 if ($delete) {  
+		  header("location:dashboard.php");
+
+		  die();  
+	 }  
+}
+
+
 
  ?>
 <!DOCTYPE html>
@@ -139,14 +153,30 @@ session_start();
 	</div>
 	<div id="n_">
 
+	<?php include "../../db_conn.php";
+    $sql='SELECT * FROM appointment';
+$result = mysqli_query($conn, $sql);
+if ($result=mysqli_query($conn,$sql)) {
+    $rowcount=mysqli_num_rows($result);
+    echo "<span>".$rowcount."</span>";
+}
 
-		<span>4</span>
+?>
 	</div>
 	<div id="TOTAL_PATIENTS">
 		<span>TOTAL PATIENTS</span>
 	</div>
 	<div id="n_0">
-		<span>50</span>
+	<?php include "../../db_conn.php";
+    $sql='SELECT * FROM patients';
+$result = mysqli_query($conn, $sql);
+if ($result=mysqli_query($conn,$sql)) {
+    $rowcount=mysqli_num_rows($result);
+    echo "<span>".$rowcount."</span>";
+}
+
+?>
+
 	</div>
 
 	
@@ -220,10 +250,11 @@ if ($result->num_rows > 0) {
 // output data of each row
 while($row = $result->fetch_assoc()) {
 echo "<tr><td>" . $row["app_date"]. "</td><td>" . $row["app_time"] . "</td><td>" . $row["app_name"] . "</td><td>" . $row["app_contact"] . "</td><td>"
-. $row["app_purpose"]. "</td><td><a" . $row["app_remarks"]. "</td></tr>";
+. $row["app_purpose"]. "</td><td> <form method='post' action='?app_id=".$row["app_id"]."'>"?>
+<button style='cursor:pointer' id='btnsubmit' onclick="return confirm('Are you sure?')">DONE</button></form> <?php echo "</td></tr>";
 }
 echo "</table>";
-} else { echo "0 results"; }
+} else { echo "(No Appointments)"; }
 $conn->close();
 ?>
 					  </table>

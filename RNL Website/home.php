@@ -323,7 +323,7 @@ include "db_conn.php";
 		<span>❝</span>
 	</div>
 	<div id="Kung_ikaw_ay_masaya_tumawa_ka__fp">
-		<span>Lightweight eyewear <br>and welcoming staff. <br>Fairview branch</span>
+		<span>Lightweight eyewear <br>and welcoming staff. <br>Caloocan branch</span>
 	</div>
 	<div id="Super_Saya__fq">
 		<span>Quality 〞</span>

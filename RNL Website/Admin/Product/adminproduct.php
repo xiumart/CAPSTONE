@@ -216,12 +216,12 @@ $search=$_POST['searchproduct'];
   		<td>" . $row["profit"] . "</td>
   		<td>" . $row["supplier"] . "</td>
   		<td>" . $row["qty"] ."</td>
-  		<td><form method='post' action='?pro_id=".$row["pro_id"]."'>
-  		<button style='cursor:pointer'>DELETE</button> 
+  		<td><form method='post' action='?pro_id=".$row["pro_id"]."'>"?>
+  		<button style='cursor:pointer' onclick="return confirm('Are you sure?')">DELETE</button>
 		</form>
-		<form method='post' action='edit.php?pro_id=".$row["pro_id"]."'>
-  		<button style='cursor:pointer' id='btnsubmit'>UPDATE</button> 
-		</form>
+		<?php echo "<form method='post' action='edit.php?pro_id=".$row["pro_id"]."'>"?>
+  		<button style='cursor:pointer' id='btnsubmit' onclick="return confirm('Are you sure?')">UPDATE</button> <?php 
+		echo "</form>
 		</td>
   		</tr>
   		
