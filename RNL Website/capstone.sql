@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.1
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 14, 2021 at 05:40 PM
--- Server version: 10.4.8-MariaDB
--- PHP Version: 7.3.11
+-- Generation Time: Dec 14, 2021 at 05:59 PM
+-- Server version: 10.1.38-MariaDB
+-- PHP Version: 7.1.27
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -49,6 +49,28 @@ INSERT INTO `appointment` (`app_id`, `app_name`, `app_email`, `app_contact`, `ap
 (6, 'Raymart Gahopo', 'raymart.gahopo@gmail.com', '09075647938', '2021-12-01', '00:00:00.0000', 'Check Up', 'ONGOING'),
 (28, 'Marl Umbao', 'marl.umbao@gmail.com', '09123456789', '2021-12-16', '00:00:00.0000', 'Check Up', 'ONGOING'),
 (171, 'sample', 'sample@gmail.com', '09123455678', '2021-12-18', '00:00:00.0000', 'tulog', 'ONGOING');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `logs`
+--
+
+CREATE TABLE `logs` (
+  `logs_id` int(150) NOT NULL,
+  `log_user` varchar(150) NOT NULL,
+  `log_activity` varchar(150) NOT NULL,
+  `log_datentime` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `logs`
+--
+
+INSERT INTO `logs` (`logs_id`, `log_user`, `log_activity`, `log_datentime`) VALUES
+(1, 'junjun', 'Login', '2021-12-15 12:48:59'),
+(2, 'junjun', 'Logout', '2021-12-15 12:49:11'),
+(3, 'mart123', 'Login', '2021-12-15 12:49:31');
 
 -- --------------------------------------------------------
 
@@ -122,7 +144,8 @@ INSERT INTO `pos` (`id`, `Customer_name`, `Date`, `qty`) VALUES
 (7, 'Tricia Joy Altarejos', '2015-02-12', 2),
 (5, 'lala', '2017-02-14', 99),
 (7, 'boom', '2021-12-14', 89),
-(13, 'Tricia Joy Altarejos', '2021-12-23', 1);
+(13, 'Tricia Joy Altarejos', '2021-12-23', 1),
+(7, 'Roberto', '2021-12-22', 5);
 
 -- --------------------------------------------------------
 
@@ -222,7 +245,8 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`users_id`, `users_last`, `users_first`, `users_mid`, `users_email`, `users_username`, `users_contact`, `users_password`, `user_role`) VALUES
 (7, 'Gahopo', 'Raymart', 'Tomagan', 'r.gahopo@gmail.com', 'mart123', '09123456789', 'admin', 'Administrator'),
-(14, 'Altarejos      ', 'tricia02        ', 'Joy                  ', 'trishaaltarejos0200@gmail.com                ', 'trish02', '9284973948', 'sdsddasdasda', 'Administrator');
+(14, 'Altarejos      ', 'tricia02        ', 'Joy                  ', 'trishaaltarejos0200@gmail.com                ', 'trish02', '9284973948', 'sdsddasdasda', 'Administrator'),
+(15, 'Vitalicia', 'John Robert', 'Umbao', 'umbao@gmail.com', 'junjun', '09070605043', 'admin123', 'Doctor');
 
 -- --------------------------------------------------------
 
@@ -231,7 +255,7 @@ INSERT INTO `users` (`users_id`, `users_last`, `users_first`, `users_mid`, `user
 --
 DROP TABLE IF EXISTS `pos_reports`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `pos_reports`  AS  select `pos`.`Customer_name` AS `Customer_name`,`pos`.`Date` AS `Date`,`product`.`pro_id` AS `pro_id`,`product`.`brand` AS `brand`,`product`.`model` AS `model`,`product`.`category` AS `category`,`pos`.`qty` AS `qty`,`product`.`sellingprice` AS `sellingprice`,`pos`.`qty` * `product`.`origprice` AS `total_origprice`,`pos`.`qty` * `product`.`profit` AS `total_profit`,`pos`.`qty` * `product`.`sellingprice` AS `total_sell` from (`pos` join `product`) where `product`.`pro_id` = `pos`.`id` ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `pos_reports`  AS  select `pos`.`Customer_name` AS `Customer_name`,`pos`.`Date` AS `Date`,`product`.`pro_id` AS `pro_id`,`product`.`brand` AS `brand`,`product`.`model` AS `model`,`product`.`category` AS `category`,`pos`.`qty` AS `qty`,`product`.`sellingprice` AS `sellingprice`,(`pos`.`qty` * `product`.`origprice`) AS `total_origprice`,(`pos`.`qty` * `product`.`profit`) AS `total_profit`,(`pos`.`qty` * `product`.`sellingprice`) AS `total_sell` from (`pos` join `product`) where (`product`.`pro_id` = `pos`.`id`) ;
 
 --
 -- Indexes for dumped tables
@@ -242,6 +266,12 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 ALTER TABLE `appointment`
   ADD PRIMARY KEY (`app_id`);
+
+--
+-- Indexes for table `logs`
+--
+ALTER TABLE `logs`
+  ADD PRIMARY KEY (`logs_id`);
 
 --
 -- Indexes for table `patients`
@@ -278,6 +308,12 @@ ALTER TABLE `appointment`
   MODIFY `app_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=172;
 
 --
+-- AUTO_INCREMENT for table `logs`
+--
+ALTER TABLE `logs`
+  MODIFY `logs_id` int(150) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `patients`
 --
 ALTER TABLE `patients`
@@ -299,7 +335,7 @@ ALTER TABLE `supplier`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `users_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `users_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
