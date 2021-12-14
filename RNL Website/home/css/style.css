@@ -1,0 +1,2747 @@
+.mediaViewInfo {
+	--web-view-name: home;
+	--web-view-id: home;
+	--web-scale-to-fit: true;
+	--web-scale-to-fit-type: width;
+	--web-enable-scale-up: true;
+	--web-scale-on-resize: true;
+	--web-show-by-media-query: true;
+	--web-enable-deep-linking: true;
+}
+:root {
+	--web-view-ids: home;
+}
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	border: none;
+}
+#home {
+	position: absolute;
+	width: 1920px;
+	height: 5904px;
+	background-color: rgba(33,33,33,1);
+	overflow: hidden;
+	--web-view-name: home;
+	--web-view-id: home;
+	--web-scale-to-fit: true;
+	--web-scale-to-fit-type: width;
+	--web-enable-scale-up: true;
+	--web-scale-on-resize: true;
+	--web-show-by-media-query: true;
+	--web-enable-deep-linking: true;
+}
+@keyframes fadein {
+
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+
+}
+#background {
+	mix-blend-mode: soft-light;
+	position: absolute;
+	width: 1946px;
+	height: 937px;
+	left: -13px;
+	top: 149px;
+	overflow: visible;
+}
+#WHEN_LIFE_GETS_BLURRY_SEE_YOUR {
+	left: 166px;
+	top: 428px;
+	position: absolute;
+	overflow: visible;
+	width: 763px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Arial;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 53px;
+	color: rgba(255,255,255,1);
+}
+#FEATURED_PRODUCT {
+	left: 759px;
+	top: 1204px;
+	position: absolute;
+	overflow: visible;
+	width: 434px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Arial;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 37px;
+	color: rgba(255,255,255,1);
+}
+#Path_1 {
+	fill: rgba(0,0,0,0);
+	stroke: rgba(0,194,203,1);
+	stroke-width: 10px;
+	stroke-linejoin: miter;
+	stroke-linecap: round;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Path_1 {
+	overflow: visible;
+	position: absolute;
+	width: 310px;
+	height: 10px;
+	left: 825px;
+	top: 1281.5px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#Rectangle_54 {
+	fill: rgba(255,255,255,1);
+	stroke: rgba(112,112,112,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Rectangle_54 {
+	position: absolute;
+	overflow: visible;
+	width: 233px;
+	height: 233px;
+	left: 859px;
+	top: 1375px;
+}
+#Rectangle_55 {
+	fill: rgba(255,255,255,1);
+	stroke: rgba(112,112,112,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Rectangle_55 {
+	position: absolute;
+	overflow: visible;
+	width: 233px;
+	height: 233px;
+	left: 1140px;
+	top: 1375px;
+}
+#Rectangle_56 {
+	fill: rgba(255,255,255,1);
+	stroke: rgba(112,112,112,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Rectangle_56 {
+	position: absolute;
+	overflow: visible;
+	width: 233px;
+	height: 233px;
+	left: 578px;
+	top: 1375px;
+}
+#Rectangle_57 {
+	fill: rgba(255,255,255,1);
+	stroke: rgba(112,112,112,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Rectangle_57 {
+	position: absolute;
+	overflow: visible;
+	width: 233px;
+	height: 233px;
+	left: 1421px;
+	top: 1375px;
+}
+#Rectangle_58 {
+	fill: rgba(255,255,255,1);
+	stroke: rgba(112,112,112,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Rectangle_58 {
+	position: absolute;
+	overflow: visible;
+	width: 233px;
+	height: 233px;
+	left: 297px;
+	top: 1375px;
+}
+#LATEST_PRODUCT {
+	left: 789.5px;
+	top: 1962px;
+	position: absolute;
+	overflow: visible;
+	width: 372px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Arial;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 37px;
+	color: rgba(255,255,255,1);
+}
+#Path_2 {
+	fill: rgba(0,0,0,0);
+	stroke: rgba(0,194,203,1);
+	stroke-width: 10px;
+	stroke-linejoin: miter;
+	stroke-linecap: round;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Path_2 {
+	overflow: visible;
+	position: absolute;
+	width: 310px;
+	height: 10px;
+	left: 824.5px;
+	top: 2039.5px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#Group_1 {
+	position: absolute;
+	width: 171.5px;
+	height: 29.25px;
+	left: 297px;
+	top: 1644px;
+	overflow: visible;
+}
+#Icon_ionic-ios-star {
+	fill: rgba(0,194,203,1);
+}
+.Icon_ionic-ios-star {
+	overflow: visible;
+	position: absolute;
+	width: 29.459px;
+	height: 27.355px;
+	left: 0px;
+	top: 0.948px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#Icon_ionic-ios-star_bb {
+	fill: rgba(0,194,203,1);
+}
+.Icon_ionic-ios-star_bb {
+	overflow: visible;
+	position: absolute;
+	width: 29.459px;
+	height: 27.355px;
+	left: 35px;
+	top: 0.948px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#Icon_ionic-ios-star_bc {
+	fill: rgba(0,194,203,1);
+}
+.Icon_ionic-ios-star_bc {
+	overflow: visible;
+	position: absolute;
+	width: 29.459px;
+	height: 27.355px;
+	left: 70px;
+	top: 0.948px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#Icon_ionic-ios-star_bd {
+	fill: rgba(0,194,203,1);
+}
+.Icon_ionic-ios-star_bd {
+	overflow: visible;
+	position: absolute;
+	width: 29.459px;
+	height: 27.355px;
+	left: 105px;
+	top: 0.948px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#Icon_ionic-ios-star-half {
+	fill: rgba(0,194,203,1);
+}
+.Icon_ionic-ios-star-half {
+	overflow: visible;
+	position: absolute;
+	width: 31.5px;
+	height: 29.25px;
+	left: 140px;
+	top: 0px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#RNL_Eye_Glasses {
+	left: 297px;
+	top: 1614px;
+	position: absolute;
+	overflow: visible;
+	width: 197px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Arial;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 25px;
+	color: rgba(255,255,255,1);
+}
+#n_1500 {
+	left: 297px;
+	top: 1679px;
+	position: absolute;
+	overflow: visible;
+	width: 77px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Arial;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 22px;
+	color: rgba(255,255,255,1);
+}
+#Group_2 {
+	position: absolute;
+	width: 171.5px;
+	height: 29.25px;
+	left: 578px;
+	top: 1644px;
+	overflow: visible;
+}
+#Icon_ionic-ios-star_bi {
+	fill: rgba(0,194,203,1);
+}
+.Icon_ionic-ios-star_bi {
+	overflow: visible;
+	position: absolute;
+	width: 29.459px;
+	height: 27.355px;
+	left: 0px;
+	top: 0.948px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#Icon_ionic-ios-star_bj {
+	fill: rgba(0,194,203,1);
+}
+.Icon_ionic-ios-star_bj {
+	overflow: visible;
+	position: absolute;
+	width: 29.459px;
+	height: 27.355px;
+	left: 35px;
+	top: 0.948px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#Icon_ionic-ios-star_bk {
+	fill: rgba(0,194,203,1);
+}
+.Icon_ionic-ios-star_bk {
+	overflow: visible;
+	position: absolute;
+	width: 29.459px;
+	height: 27.355px;
+	left: 70px;
+	top: 0.948px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#Icon_ionic-ios-star_bl {
+	fill: rgba(0,194,203,1);
+}
+.Icon_ionic-ios-star_bl {
+	overflow: visible;
+	position: absolute;
+	width: 29.459px;
+	height: 27.355px;
+	left: 105px;
+	top: 0.948px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#Icon_ionic-ios-star-half_bm {
+	fill: rgba(0,194,203,1);
+}
+.Icon_ionic-ios-star-half_bm {
+	overflow: visible;
+	position: absolute;
+	width: 31.5px;
+	height: 29.25px;
+	left: 140px;
+	top: 0px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#RNL_Eye_Glasses_bn {
+	left: 578px;
+	top: 1614px;
+	position: absolute;
+	overflow: visible;
+	width: 197px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Arial;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 25px;
+	color: rgba(255,255,255,1);
+}
+#n_1500_bo {
+	left: 578px;
+	top: 1679px;
+	position: absolute;
+	overflow: visible;
+	width: 77px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Arial;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 22px;
+	color: rgba(255,255,255,1);
+}
+#Group_3 {
+	position: absolute;
+	width: 171.5px;
+	height: 29.25px;
+	left: 859px;
+	top: 1644px;
+	overflow: visible;
+}
+#Icon_ionic-ios-star_bq {
+	fill: rgba(0,194,203,1);
+}
+.Icon_ionic-ios-star_bq {
+	overflow: visible;
+	position: absolute;
+	width: 29.459px;
+	height: 27.355px;
+	left: 0px;
+	top: 0.948px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#Icon_ionic-ios-star_br {
+	fill: rgba(0,194,203,1);
+}
+.Icon_ionic-ios-star_br {
+	overflow: visible;
+	position: absolute;
+	width: 29.459px;
+	height: 27.355px;
+	left: 35px;
+	top: 0.948px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#Icon_ionic-ios-star_bs {
+	fill: rgba(0,194,203,1);
+}
+.Icon_ionic-ios-star_bs {
+	overflow: visible;
+	position: absolute;
+	width: 29.459px;
+	height: 27.355px;
+	left: 70px;
+	top: 0.948px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#Icon_ionic-ios-star_bt {
+	fill: rgba(0,194,203,1);
+}
+.Icon_ionic-ios-star_bt {
+	overflow: visible;
+	position: absolute;
+	width: 29.459px;
+	height: 27.355px;
+	left: 105px;
+	top: 0.948px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#Icon_ionic-ios-star-half_bu {
+	fill: rgba(0,194,203,1);
+}
+.Icon_ionic-ios-star-half_bu {
+	overflow: visible;
+	position: absolute;
+	width: 31.5px;
+	height: 29.25px;
+	left: 140px;
+	top: 0px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#RNL_Eye_Glasses_bv {
+	left: 859px;
+	top: 1614px;
+	position: absolute;
+	overflow: visible;
+	width: 197px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Arial;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 25px;
+	color: rgba(255,255,255,1);
+}
+#n_1500_bw {
+	left: 859px;
+	top: 1679px;
+	position: absolute;
+	overflow: visible;
+	width: 77px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Arial;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 22px;
+	color: rgba(255,255,255,1);
+}
+#Group_4 {
+	position: absolute;
+	width: 171.5px;
+	height: 29.25px;
+	left: 1140px;
+	top: 1644px;
+	overflow: visible;
+}
+#Icon_ionic-ios-star_by {
+	fill: rgba(0,194,203,1);
+}
+.Icon_ionic-ios-star_by {
+	overflow: visible;
+	position: absolute;
+	width: 29.459px;
+	height: 27.355px;
+	left: 0px;
+	top: 0.948px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#Icon_ionic-ios-star_bz {
+	fill: rgba(0,194,203,1);
+}
+.Icon_ionic-ios-star_bz {
+	overflow: visible;
+	position: absolute;
+	width: 29.459px;
+	height: 27.355px;
+	left: 35px;
+	top: 0.948px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#Icon_ionic-ios-star_b {
+	fill: rgba(0,194,203,1);
+}
+.Icon_ionic-ios-star_b {
+	overflow: visible;
+	position: absolute;
+	width: 29.459px;
+	height: 27.355px;
+	left: 70px;
+	top: 0.948px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#Icon_ionic-ios-star_ca {
+	fill: rgba(0,194,203,1);
+}
+.Icon_ionic-ios-star_ca {
+	overflow: visible;
+	position: absolute;
+	width: 29.459px;
+	height: 27.355px;
+	left: 105px;
+	top: 0.948px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#Icon_ionic-ios-star-half_b {
+	fill: rgba(0,194,203,1);
+}
+.Icon_ionic-ios-star-half_b {
+	overflow: visible;
+	position: absolute;
+	width: 31.5px;
+	height: 29.25px;
+	left: 140px;
+	top: 0px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#RNL_Eye_Glasses_b {
+	left: 1140px;
+	top: 1614px;
+	position: absolute;
+	overflow: visible;
+	width: 197px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Arial;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 25px;
+	color: rgba(255,255,255,1);
+}
+#n_1500_b {
+	left: 1140px;
+	top: 1679px;
+	position: absolute;
+	overflow: visible;
+	width: 77px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Arial;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 22px;
+	color: rgba(255,255,255,1);
+}
+#Group_5 {
+	position: absolute;
+	width: 171.5px;
+	height: 29.25px;
+	left: 1421px;
+	top: 1644px;
+	overflow: visible;
+}
+#Icon_ionic-ios-star_cb {
+	fill: rgba(0,194,203,1);
+}
+.Icon_ionic-ios-star_cb {
+	overflow: visible;
+	position: absolute;
+	width: 29.459px;
+	height: 27.355px;
+	left: 0px;
+	top: 0.948px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#Icon_ionic-ios-star_cc {
+	fill: rgba(0,194,203,1);
+}
+.Icon_ionic-ios-star_cc {
+	overflow: visible;
+	position: absolute;
+	width: 29.459px;
+	height: 27.355px;
+	left: 35px;
+	top: 0.948px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#Icon_ionic-ios-star_cd {
+	fill: rgba(0,194,203,1);
+}
+.Icon_ionic-ios-star_cd {
+	overflow: visible;
+	position: absolute;
+	width: 29.459px;
+	height: 27.355px;
+	left: 70px;
+	top: 0.948px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#Icon_ionic-ios-star_ce {
+	fill: rgba(0,194,203,1);
+}
+.Icon_ionic-ios-star_ce {
+	overflow: visible;
+	position: absolute;
+	width: 29.459px;
+	height: 27.355px;
+	left: 105px;
+	top: 0.948px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#Icon_ionic-ios-star-half_ca {
+	fill: rgba(0,194,203,1);
+}
+.Icon_ionic-ios-star-half_ca {
+	overflow: visible;
+	position: absolute;
+	width: 31.5px;
+	height: 29.25px;
+	left: 140px;
+	top: 0px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#RNL_Eye_Glasses_cb {
+	left: 1421px;
+	top: 1614px;
+	position: absolute;
+	overflow: visible;
+	width: 197px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Arial;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 25px;
+	color: rgba(255,255,255,1);
+}
+#n_1500_cc {
+	left: 1421px;
+	top: 1679px;
+	position: absolute;
+	overflow: visible;
+	width: 77px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Arial;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 22px;
+	color: rgba(255,255,255,1);
+}
+#Rectangle_59 {
+	fill: rgba(255,255,255,1);
+	stroke: rgba(112,112,112,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Rectangle_59 {
+	position: absolute;
+	overflow: visible;
+	width: 233px;
+	height: 233px;
+	left: 859px;
+	top: 2133px;
+}
+#Rectangle_60 {
+	fill: rgba(255,255,255,1);
+	stroke: rgba(112,112,112,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Rectangle_60 {
+	position: absolute;
+	overflow: visible;
+	width: 233px;
+	height: 233px;
+	left: 1140px;
+	top: 2133px;
+}
+#Rectangle_61 {
+	fill: rgba(255,255,255,1);
+	stroke: rgba(112,112,112,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Rectangle_61 {
+	position: absolute;
+	overflow: visible;
+	width: 233px;
+	height: 233px;
+	left: 578px;
+	top: 2133px;
+}
+#Rectangle_62 {
+	fill: rgba(255,255,255,1);
+	stroke: rgba(112,112,112,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Rectangle_62 {
+	position: absolute;
+	overflow: visible;
+	width: 233px;
+	height: 233px;
+	left: 1421px;
+	top: 2133px;
+}
+#Rectangle_63 {
+	fill: rgba(255,255,255,1);
+	stroke: rgba(112,112,112,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Rectangle_63 {
+	position: absolute;
+	overflow: visible;
+	width: 233px;
+	height: 233px;
+	left: 297px;
+	top: 2133px;
+}
+#Group_6 {
+	position: absolute;
+	width: 171.5px;
+	height: 29.25px;
+	left: 297px;
+	top: 2402px;
+	overflow: visible;
+}
+#Icon_ionic-ios-star_cj {
+	fill: rgba(0,194,203,1);
+}
+.Icon_ionic-ios-star_cj {
+	overflow: visible;
+	position: absolute;
+	width: 29.459px;
+	height: 27.355px;
+	left: 0px;
+	top: 0.948px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#Icon_ionic-ios-star_ck {
+	fill: rgba(0,194,203,1);
+}
+.Icon_ionic-ios-star_ck {
+	overflow: visible;
+	position: absolute;
+	width: 29.459px;
+	height: 27.355px;
+	left: 35px;
+	top: 0.948px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#Icon_ionic-ios-star_cl {
+	fill: rgba(0,194,203,1);
+}
+.Icon_ionic-ios-star_cl {
+	overflow: visible;
+	position: absolute;
+	width: 29.459px;
+	height: 27.355px;
+	left: 70px;
+	top: 0.948px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#Icon_ionic-ios-star_cm {
+	fill: rgba(0,194,203,1);
+}
+.Icon_ionic-ios-star_cm {
+	overflow: visible;
+	position: absolute;
+	width: 29.459px;
+	height: 27.355px;
+	left: 105px;
+	top: 0.948px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#Icon_ionic-ios-star-half_cn {
+	fill: rgba(0,194,203,1);
+}
+.Icon_ionic-ios-star-half_cn {
+	overflow: visible;
+	position: absolute;
+	width: 31.5px;
+	height: 29.25px;
+	left: 140px;
+	top: 0px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#RNL_Eye_Glasses_co {
+	left: 297px;
+	top: 2372px;
+	position: absolute;
+	overflow: visible;
+	width: 197px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Arial;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 25px;
+	color: rgba(255,255,255,1);
+}
+#n_1500_cp {
+	left: 297px;
+	top: 2437px;
+	position: absolute;
+	overflow: visible;
+	width: 77px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Arial;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 22px;
+	color: rgba(255,255,255,1);
+}
+#Group_7 {
+	position: absolute;
+	width: 171.5px;
+	height: 29.25px;
+	left: 578px;
+	top: 2402px;
+	overflow: visible;
+}
+#Icon_ionic-ios-star_cr {
+	fill: rgba(0,194,203,1);
+}
+.Icon_ionic-ios-star_cr {
+	overflow: visible;
+	position: absolute;
+	width: 29.459px;
+	height: 27.355px;
+	left: 0px;
+	top: 0.948px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#Icon_ionic-ios-star_cs {
+	fill: rgba(0,194,203,1);
+}
+.Icon_ionic-ios-star_cs {
+	overflow: visible;
+	position: absolute;
+	width: 29.459px;
+	height: 27.355px;
+	left: 35px;
+	top: 0.948px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#Icon_ionic-ios-star_ct {
+	fill: rgba(0,194,203,1);
+}
+.Icon_ionic-ios-star_ct {
+	overflow: visible;
+	position: absolute;
+	width: 29.459px;
+	height: 27.355px;
+	left: 70px;
+	top: 0.948px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#Icon_ionic-ios-star_cu {
+	fill: rgba(0,194,203,1);
+}
+.Icon_ionic-ios-star_cu {
+	overflow: visible;
+	position: absolute;
+	width: 29.459px;
+	height: 27.355px;
+	left: 105px;
+	top: 0.948px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#Icon_ionic-ios-star-half_cv {
+	fill: rgba(0,194,203,1);
+}
+.Icon_ionic-ios-star-half_cv {
+	overflow: visible;
+	position: absolute;
+	width: 31.5px;
+	height: 29.25px;
+	left: 140px;
+	top: 0px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#RNL_Eye_Glasses_cw {
+	left: 578px;
+	top: 2372px;
+	position: absolute;
+	overflow: visible;
+	width: 197px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Arial;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 25px;
+	color: rgba(255,255,255,1);
+}
+#n_1500_cx {
+	left: 578px;
+	top: 2437px;
+	position: absolute;
+	overflow: visible;
+	width: 77px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Arial;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 22px;
+	color: rgba(255,255,255,1);
+}
+#Group_8 {
+	position: absolute;
+	width: 171.5px;
+	height: 29.25px;
+	left: 859px;
+	top: 2402px;
+	overflow: visible;
+}
+#Icon_ionic-ios-star_cz {
+	fill: rgba(0,194,203,1);
+}
+.Icon_ionic-ios-star_cz {
+	overflow: visible;
+	position: absolute;
+	width: 29.459px;
+	height: 27.355px;
+	left: 0px;
+	top: 0.948px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#Icon_ionic-ios-star_c {
+	fill: rgba(0,194,203,1);
+}
+.Icon_ionic-ios-star_c {
+	overflow: visible;
+	position: absolute;
+	width: 29.459px;
+	height: 27.355px;
+	left: 35px;
+	top: 0.948px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#Icon_ionic-ios-star_da {
+	fill: rgba(0,194,203,1);
+}
+.Icon_ionic-ios-star_da {
+	overflow: visible;
+	position: absolute;
+	width: 29.459px;
+	height: 27.355px;
+	left: 70px;
+	top: 0.948px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#Icon_ionic-ios-star_db {
+	fill: rgba(0,194,203,1);
+}
+.Icon_ionic-ios-star_db {
+	overflow: visible;
+	position: absolute;
+	width: 29.459px;
+	height: 27.355px;
+	left: 105px;
+	top: 0.948px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#Icon_ionic-ios-star-half_c {
+	fill: rgba(0,194,203,1);
+}
+.Icon_ionic-ios-star-half_c {
+	overflow: visible;
+	position: absolute;
+	width: 31.5px;
+	height: 29.25px;
+	left: 140px;
+	top: 0px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#RNL_Eye_Glasses_c {
+	left: 859px;
+	top: 2372px;
+	position: absolute;
+	overflow: visible;
+	width: 197px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Arial;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 25px;
+	color: rgba(255,255,255,1);
+}
+#n_1500_c {
+	left: 859px;
+	top: 2437px;
+	position: absolute;
+	overflow: visible;
+	width: 77px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Arial;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 22px;
+	color: rgba(255,255,255,1);
+}
+#Group_9 {
+	position: absolute;
+	width: 171.5px;
+	height: 29.25px;
+	left: 1140px;
+	top: 2402px;
+	overflow: visible;
+}
+#Icon_ionic-ios-star_dc {
+	fill: rgba(0,194,203,1);
+}
+.Icon_ionic-ios-star_dc {
+	overflow: visible;
+	position: absolute;
+	width: 29.459px;
+	height: 27.355px;
+	left: 0px;
+	top: 0.948px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#Icon_ionic-ios-star_dd {
+	fill: rgba(0,194,203,1);
+}
+.Icon_ionic-ios-star_dd {
+	overflow: visible;
+	position: absolute;
+	width: 29.459px;
+	height: 27.355px;
+	left: 35px;
+	top: 0.948px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#Icon_ionic-ios-star_de {
+	fill: rgba(0,194,203,1);
+}
+.Icon_ionic-ios-star_de {
+	overflow: visible;
+	position: absolute;
+	width: 29.459px;
+	height: 27.355px;
+	left: 70px;
+	top: 0.948px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#Icon_ionic-ios-star_df {
+	fill: rgba(0,194,203,1);
+}
+.Icon_ionic-ios-star_df {
+	overflow: visible;
+	position: absolute;
+	width: 29.459px;
+	height: 27.355px;
+	left: 105px;
+	top: 0.948px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#Icon_ionic-ios-star-half_db {
+	fill: rgba(0,194,203,1);
+}
+.Icon_ionic-ios-star-half_db {
+	overflow: visible;
+	position: absolute;
+	width: 31.5px;
+	height: 29.25px;
+	left: 140px;
+	top: 0px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#RNL_Eye_Glasses_dc {
+	left: 1140px;
+	top: 2372px;
+	position: absolute;
+	overflow: visible;
+	width: 197px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Arial;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 25px;
+	color: rgba(255,255,255,1);
+}
+#n_1500_dd {
+	left: 1140px;
+	top: 2437px;
+	position: absolute;
+	overflow: visible;
+	width: 77px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Arial;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 22px;
+	color: rgba(255,255,255,1);
+}
+#Group_10 {
+	position: absolute;
+	width: 171.5px;
+	height: 29.25px;
+	left: 1421px;
+	top: 2402px;
+	overflow: visible;
+}
+#Icon_ionic-ios-star_dg {
+	fill: rgba(0,194,203,1);
+}
+.Icon_ionic-ios-star_dg {
+	overflow: visible;
+	position: absolute;
+	width: 29.459px;
+	height: 27.355px;
+	left: 0px;
+	top: 0.948px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#Icon_ionic-ios-star_dh {
+	fill: rgba(0,194,203,1);
+}
+.Icon_ionic-ios-star_dh {
+	overflow: visible;
+	position: absolute;
+	width: 29.459px;
+	height: 27.355px;
+	left: 35px;
+	top: 0.948px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#Icon_ionic-ios-star_di {
+	fill: rgba(0,194,203,1);
+}
+.Icon_ionic-ios-star_di {
+	overflow: visible;
+	position: absolute;
+	width: 29.459px;
+	height: 27.355px;
+	left: 70px;
+	top: 0.948px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#Icon_ionic-ios-star_dj {
+	fill: rgba(0,194,203,1);
+}
+.Icon_ionic-ios-star_dj {
+	overflow: visible;
+	position: absolute;
+	width: 29.459px;
+	height: 27.355px;
+	left: 105px;
+	top: 0.948px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#Icon_ionic-ios-star-half_dj {
+	fill: rgba(0,194,203,1);
+}
+.Icon_ionic-ios-star-half_dj {
+	overflow: visible;
+	position: absolute;
+	width: 31.5px;
+	height: 29.25px;
+	left: 140px;
+	top: 0px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#RNL_Eye_Glasses_dk {
+	left: 1421px;
+	top: 2372px;
+	position: absolute;
+	overflow: visible;
+	width: 197px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Arial;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 25px;
+	color: rgba(255,255,255,1);
+}
+#n_1500_dl {
+	left: 1421px;
+	top: 2437px;
+	position: absolute;
+	overflow: visible;
+	width: 77px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Arial;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 22px;
+	color: rgba(255,255,255,1);
+}
+#SEE_ALL_PRODUCT {
+	left: 1436px;
+	top: 2548px;
+	position: absolute;
+	overflow: visible;
+	width: 219px;
+	white-space: nowrap;
+	--web-animation: fadein 0.3s ease-out;
+	--web-action-type: view;
+	--web-action-target: product;
+	cursor: pointer;
+	text-align: left;
+	font-family: Arial;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 22px;
+	color: rgba(255,255,255,1);
+	text-decoration: underline;
+}
+#Rectangle_64 {
+	fill: rgba(25,25,25,1);
+}
+.Rectangle_64 {
+	position: absolute;
+	overflow: visible;
+	width: 1920px;
+	height: 950px;
+	left: 0px;
+	top: 2715px;
+}
+#WE_OFFERS {
+	left: 841.5px;
+	top: 2772px;
+	position: absolute;
+	overflow: visible;
+	width: 239px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Arial;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 37px;
+	color: rgba(255,255,255,1);
+}
+#Path_3 {
+	fill: rgba(0,0,0,0);
+	stroke: rgba(0,194,203,1);
+	stroke-width: 10px;
+	stroke-linejoin: miter;
+	stroke-linecap: round;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Path_3 {
+	overflow: visible;
+	position: absolute;
+	width: 310px;
+	height: 10px;
+	left: 810px;
+	top: 2840.5px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#Ordinary_Lens {
+	left: 112px;
+	top: 3095px;
+	position: absolute;
+	overflow: visible;
+	width: 221px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Arial;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 35px;
+	color: rgba(255,255,255,1);
+}
+#COMPLETE_EYEGLASS__FRAME__LENS {
+	left: 106px;
+	top: 2890px;
+	position: absolute;
+	overflow: visible;
+	width: 775px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Segoe UI;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 44px;
+	color: rgba(255,255,255,1);
+}
+#FOR_AS_LOW_AS {
+	left: 106px;
+	top: 2961px;
+	position: absolute;
+	overflow: visible;
+	width: 236px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Segoe UI;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 32px;
+	color: rgba(255,255,255,1);
+}
+#n_99 {
+	left: 798px;
+	top: 3095px;
+	position: absolute;
+	overflow: visible;
+	width: 83px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Arial;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 35px;
+	color: rgba(255,255,255,1);
+}
+#Double_Vision_Lens {
+	left: 112px;
+	top: 3159px;
+	position: absolute;
+	overflow: visible;
+	width: 302px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Arial;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 35px;
+	color: rgba(255,255,255,1);
+}
+#n_99_dv {
+	left: 798px;
+	top: 3159px;
+	position: absolute;
+	overflow: visible;
+	width: 83px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Arial;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 35px;
+	color: rgba(255,255,255,1);
+}
+#Multicoated_Lens {
+	left: 112px;
+	top: 3223px;
+	position: absolute;
+	overflow: visible;
+	width: 266px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Arial;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 35px;
+	color: rgba(255,255,255,1);
+}
+#n_99_dx {
+	left: 798px;
+	top: 3223px;
+	position: absolute;
+	overflow: visible;
+	width: 83px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Arial;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 35px;
+	color: rgba(255,255,255,1);
+}
+#Blue_Blocker_Lens {
+	left: 112px;
+	top: 3287px;
+	position: absolute;
+	overflow: visible;
+	width: 283px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Arial;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 35px;
+	color: rgba(255,255,255,1);
+}
+#n_799 {
+	left: 779px;
+	top: 3287px;
+	position: absolute;
+	overflow: visible;
+	width: 102px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Arial;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 35px;
+	color: rgba(255,255,255,1);
+}
+#Photochromic__Transition_Lens {
+	left: 112px;
+	top: 3351px;
+	position: absolute;
+	overflow: visible;
+	width: 482px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Arial;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 35px;
+	color: rgba(255,255,255,1);
+}
+#n_999 {
+	left: 779px;
+	top: 3351px;
+	position: absolute;
+	overflow: visible;
+	width: 102px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Arial;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 35px;
+	color: rgba(255,255,255,1);
+}
+#Progressive_Lens {
+	left: 112px;
+	top: 3415px;
+	position: absolute;
+	overflow: visible;
+	width: 271px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Arial;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 35px;
+	color: rgba(255,255,255,1);
+}
+#n_999_d {
+	left: 779px;
+	top: 3415px;
+	position: absolute;
+	overflow: visible;
+	width: 102px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Arial;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 35px;
+	color: rgba(255,255,255,1);
+}
+#Line_4 {
+	fill: transparent;
+	stroke: rgba(112,112,112,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Line_4 {
+	overflow: visible;
+	position: absolute;
+	width: 768px;
+	height: 1px;
+	left: 112px;
+	top: 3031.5px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#Line_5 {
+	fill: transparent;
+	stroke: rgba(112,112,112,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Line_5 {
+	overflow: visible;
+	position: absolute;
+	width: 768px;
+	height: 1px;
+	left: 112px;
+	top: 3503.5px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#FREE_COMPUTERIZE_EYE_EXAM {
+	left: 269px;
+	top: 3545px;
+	position: absolute;
+	overflow: visible;
+	width: 457px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Arial;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 29px;
+	color: rgba(255,255,255,1);
+}
+#Untitled_design_7 {
+	position: absolute;
+	width: 619px;
+	height: 664px;
+	left: 1144px;
+	top: 2911px;
+	overflow: visible;
+}
+#Icon_awesome-angle-right {
+	fill: rgba(0,194,203,1);
+}
+.Icon_awesome-angle-right {
+	overflow: visible;
+	position: absolute;
+	width: 63.906px;
+	height: 99.02px;
+	left: 1720px;
+	top: 1441.99px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#Icon_awesome-angle-right_d {
+	fill: rgba(0,194,203,1);
+}
+.Icon_awesome-angle-right_d {
+	overflow: visible;
+	position: absolute;
+	width: 63.906px;
+	height: 99.02px;
+	transform: matrix(1,0,0,1,167.0941,1441.9901) rotate(180deg);
+	transform-origin: center;
+	left: 0px;
+	top: 0px;
+}
+#Icon_awesome-angle-right_ea {
+	fill: rgba(0,194,203,1);
+}
+.Icon_awesome-angle-right_ea {
+	overflow: visible;
+	position: absolute;
+	width: 63.906px;
+	height: 99.02px;
+	left: 1720px;
+	top: 2199.99px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#Icon_awesome-angle-right_eb {
+	fill: rgba(0,194,203,1);
+}
+.Icon_awesome-angle-right_eb {
+	overflow: visible;
+	position: absolute;
+	width: 63.906px;
+	height: 99.02px;
+	transform: matrix(1,0,0,1,167.0941,2199.99) rotate(180deg);
+	transform-origin: center;
+	left: 0px;
+	top: 0px;
+}
+#Ellipse_1 {
+	fill: rgba(255,255,255,1);
+}
+.Ellipse_1 {
+	position: absolute;
+	overflow: visible;
+	width: 20px;
+	height: 20px;
+	left: 966px;
+	top: 1744px;
+}
+#Ellipse_2 {
+	fill: rgba(255,255,255,1);
+}
+.Ellipse_2 {
+	position: absolute;
+	overflow: visible;
+	width: 20px;
+	height: 20px;
+	left: 996px;
+	top: 1744px;
+}
+#Ellipse_3 {
+	fill: rgba(0,194,203,1);
+}
+.Ellipse_3 {
+	position: absolute;
+	overflow: visible;
+	width: 20px;
+	height: 20px;
+	left: 936px;
+	top: 1744px;
+}
+#Ellipse_4 {
+	fill: rgba(255,255,255,1);
+}
+.Ellipse_4 {
+	position: absolute;
+	overflow: visible;
+	width: 20px;
+	height: 20px;
+	left: 966px;
+	top: 2502px;
+}
+#Ellipse_5 {
+	fill: rgba(255,255,255,1);
+}
+.Ellipse_5 {
+	position: absolute;
+	overflow: visible;
+	width: 20px;
+	height: 20px;
+	left: 996px;
+	top: 2502px;
+}
+#Ellipse_6 {
+	fill: rgba(0,194,203,1);
+}
+.Ellipse_6 {
+	position: absolute;
+	overflow: visible;
+	width: 20px;
+	height: 20px;
+	left: 936px;
+	top: 2502px;
+}
+#MAKE_AN_APPOINTMENT {
+	left: 705px;
+	top: 3784px;
+	position: absolute;
+	overflow: visible;
+	width: 511px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Arial;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 37px;
+	color: rgba(255,255,255,1);
+}
+#Path_4 {
+	fill: rgba(0,0,0,0);
+	stroke: rgba(0,194,203,1);
+	stroke-width: 10px;
+	stroke-linejoin: miter;
+	stroke-linecap: round;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Path_4 {
+	overflow: visible;
+	position: absolute;
+	width: 310px;
+	height: 10px;
+	left: 810px;
+	top: 3849.5px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#Rectangle_5 {
+	fill: rgba(25,25,25,1);
+	stroke: rgba(112,112,112,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Rectangle_5 {
+	position: absolute;
+	overflow: visible;
+	width: 806px;
+	height: 678px;
+	left: 960px;
+	top: 3907px;
+}
+#Rectangle_6 {
+	fill: rgba(33,33,33,1);
+	stroke: rgba(25,25,25,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Rectangle_6 {
+	position: absolute;
+	overflow: visible;
+	width: 349px;
+	height: 77px;
+	left: 994px;
+	top: 3992px;
+}
+#Rectangle_12 {
+	fill: rgba(0,194,203,1);
+	stroke: rgba(25,25,25,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Rectangle_12 {
+	position: absolute;
+	overflow: visible;
+	width: 349px;
+	height: 77px;
+	left: 1383px;
+	top: 4425px;
+}
+#Rectangle_13 {
+	fill: rgba(33,33,33,1);
+	stroke: rgba(25,25,25,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Rectangle_13 {
+	position: absolute;
+	overflow: visible;
+	width: 349px;
+	height: 77px;
+	left: 1387px;
+	top: 3992px;
+}
+#Rectangle_14 {
+	fill: rgba(33,33,33,1);
+	stroke: rgba(25,25,25,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Rectangle_14 {
+	position: absolute;
+	overflow: visible;
+	width: 349px;
+	height: 77px;
+	left: 994px;
+	top: 4123px;
+}
+#Rectangle_15 {
+	fill: rgba(33,33,33,1);
+	stroke: rgba(25,25,25,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Rectangle_15 {
+	position: absolute;
+	overflow: visible;
+	width: 349px;
+	height: 77px;
+	left: 1387px;
+	top: 4123px;
+}
+#Rectangle_16 {
+	fill: rgba(33,33,33,1);
+	stroke: rgba(25,25,25,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Rectangle_16 {
+	position: absolute;
+	overflow: visible;
+	width: 349px;
+	height: 77px;
+	left: 994px;
+	top: 4254px;
+}
+#Rectangle_17 {
+	fill: rgba(33,33,33,1);
+	stroke: rgba(25,25,25,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Rectangle_17 {
+	position: absolute;
+	overflow: visible;
+	width: 349px;
+	height: 77px;
+	left: 1387px;
+	top: 4254px;
+}
+#FULL_NAME {
+	opacity: 0.5;
+	left: 1026.5px;
+	top: 4019px;
+	position: absolute;
+	overflow: visible;
+	width: 118px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Arial;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 21px;
+	color: rgba(255,255,255,1);
+}
+#EMAIL {
+	opacity: 0.5;
+	left: 1419.5px;
+	top: 4019px;
+	position: absolute;
+	overflow: visible;
+	width: 64px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Arial;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 21px;
+	color: rgba(255,255,255,1);
+}
+#CONTACT_ {
+	opacity: 0.5;
+	left: 1026.5px;
+	top: 4150px;
+	position: absolute;
+	overflow: visible;
+	width: 118px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Arial;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 21px;
+	color: rgba(255,255,255,1);
+}
+#ddmmyyyy {
+	opacity: 0.5;
+	left: 1419.5px;
+	top: 4150px;
+	position: absolute;
+	overflow: visible;
+	width: 113px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Arial;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 21px;
+	color: rgba(255,255,255,1);
+}
+#PURPOSE {
+	opacity: 0.5;
+	left: 1026.5px;
+	top: 4281px;
+	position: absolute;
+	overflow: visible;
+	width: 104px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Arial;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 21px;
+	color: rgba(255,255,255,1);
+}
+#TIME {
+	opacity: 0.5;
+	left: 1419.5px;
+	top: 4281px;
+	position: absolute;
+	overflow: visible;
+	width: 51px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Arial;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 21px;
+	color: rgba(255,255,255,1);
+}
+#Group_1_ey {
+	position: absolute;
+	width: 20px;
+	height: 13px;
+	left: 1294.5px;
+	top: 4287.5px;
+	overflow: visible;
+}
+#Line_6 {
+	fill: transparent;
+	stroke: rgba(112,112,112,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Line_6 {
+	overflow: visible;
+	position: absolute;
+	width: 10.793px;
+	height: 13.609px;
+	left: 0px;
+	top: 0px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#Line_7 {
+	fill: transparent;
+	stroke: rgba(112,112,112,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Line_7 {
+	overflow: visible;
+	position: absolute;
+	width: 10.793px;
+	height: 13.609px;
+	left: 10px;
+	top: 0px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#Group_2_e {
+	position: absolute;
+	width: 20px;
+	height: 13px;
+	left: 1699.5px;
+	top: 4287.5px;
+	overflow: visible;
+}
+#Line_6_e {
+	fill: transparent;
+	stroke: rgba(112,112,112,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Line_6_e {
+	overflow: visible;
+	position: absolute;
+	width: 10.793px;
+	height: 13.609px;
+	left: 0px;
+	top: 0px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#Line_7_e {
+	fill: transparent;
+	stroke: rgba(112,112,112,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Line_7_e {
+	overflow: visible;
+	position: absolute;
+	width: 10.793px;
+	height: 13.609px;
+	left: 10px;
+	top: 0px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#Set_Appointment {
+	left: 1448px;
+	top: 4447px;
+	position: absolute;
+	overflow: visible;
+	width: 221px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Arial;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 30px;
+	color: rgba(255,255,255,1);
+}
+#Rectangle_28 {
+	fill: rgba(0,194,203,1);
+	stroke: rgba(25,25,25,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Rectangle_28 {
+	position: absolute;
+	overflow: visible;
+	width: 349px;
+	height: 77px;
+	left: 322px;
+	top: 4322px;
+}
+#Contact_Us {
+	left: 423px;
+	top: 4344px;
+	position: absolute;
+	overflow: visible;
+	width: 149px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Arial;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 30px;
+	color: rgba(255,255,255,1);
+}
+#We_believe_in_providing_the_be {
+	left: 136px;
+	top: 4105px;
+	position: absolute;
+	overflow: visible;
+	width: 723px;
+	white-space: nowrap;
+	line-height: 60px;
+	margin-top: -12.5px;
+	text-align: center;
+	font-family: Arial;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 35px;
+	color: rgba(255,255,255,1);
+}
+#ENJOY_OUR_SERVICES {
+	left: 299px;
+	top: 4007px;
+	position: absolute;
+	overflow: visible;
+	width: 398px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Segoe UI;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 40px;
+	color: rgba(0,194,203,1);
+}
+#Rectangle_65 {
+	fill: rgba(25,25,25,1);
+}
+.Rectangle_65 {
+	position: absolute;
+	overflow: visible;
+	width: 1920px;
+	height: 950px;
+	left: 0px;
+	top: 4692px;
+}
+#TESTIMONIALS {
+	left: 804px;
+	top: 4824px;
+	position: absolute;
+	overflow: visible;
+	width: 313px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Arial;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 37px;
+	color: rgba(255,255,255,1);
+}
+#Path_5 {
+	fill: rgba(0,0,0,0);
+	stroke: rgba(0,194,203,1);
+	stroke-width: 10px;
+	stroke-linejoin: miter;
+	stroke-linecap: round;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Path_5 {
+	overflow: visible;
+	position: absolute;
+	width: 310px;
+	height: 10px;
+	left: 810px;
+	top: 4889.5px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#HAPPY_CLIENTS {
+	left: 863px;
+	top: 4775px;
+	position: absolute;
+	overflow: visible;
+	width: 196px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Segoe UI;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 27px;
+	color: rgba(0,194,203,1);
+}
+#Rectangle_33 {
+	fill: rgba(33,33,33,1);
+	stroke: rgba(112,112,112,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Rectangle_33 {
+	position: absolute;
+	overflow: visible;
+	width: 505px;
+	height: 376px;
+	left: 133px;
+	top: 4984px;
+}
+#Text {
+	left: 164px;
+	top: 5017px;
+	position: absolute;
+	overflow: visible;
+	width: 44px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Segoe UI;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 80px;
+	color: rgba(0,194,203,1);
+}
+#Kung_ikaw_ay_masaya_tumawa_ka_ {
+	left: 180px;
+	top: 5135px;
+	position: absolute;
+	overflow: visible;
+	width: 413px;
+	white-space: nowrap;
+	text-align: center;
+	font-family: Segoe UI;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 28px;
+	color: rgba(255,255,255,1);
+}
+#Super_Saya_ {
+	left: 308px;
+	top: 5052px;
+	position: absolute;
+	overflow: visible;
+	width: 177px;
+	white-space: nowrap;
+	text-align: center;
+	font-family: Segoe UI;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 28px;
+	color: rgba(255,255,255,1);
+}
+#n__Marliardo_Umbao {
+	left: 356px;
+	top: 5284px;
+	position: absolute;
+	overflow: visible;
+	width: 237px;
+	white-space: nowrap;
+	text-align: center;
+	font-family: Segoe UI;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 28px;
+	color: rgba(255,255,255,1);
+}
+#Rectangle_34 {
+	fill: rgba(33,33,33,1);
+	stroke: rgba(112,112,112,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Rectangle_34 {
+	position: absolute;
+	overflow: visible;
+	width: 505px;
+	height: 376px;
+	left: 708px;
+	top: 4984px;
+}
+#Text_fj {
+	left: 739px;
+	top: 5017px;
+	position: absolute;
+	overflow: visible;
+	width: 44px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Segoe UI;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 80px;
+	color: rgba(0,194,203,1);
+}
+#Kung_ikaw_ay_masaya_tumawa_ka__fk {
+	left: 755px;
+	top: 5135px;
+	position: absolute;
+	overflow: visible;
+	width: 413px;
+	white-space: nowrap;
+	text-align: center;
+	font-family: Segoe UI;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 28px;
+	color: rgba(255,255,255,1);
+}
+#Super_Saya__fl {
+	left: 883px;
+	top: 5052px;
+	position: absolute;
+	overflow: visible;
+	width: 177px;
+	white-space: nowrap;
+	text-align: center;
+	font-family: Segoe UI;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 28px;
+	color: rgba(255,255,255,1);
+}
+#n__Marliardo_Umbao_fm {
+	left: 931px;
+	top: 5284px;
+	position: absolute;
+	overflow: visible;
+	width: 237px;
+	white-space: nowrap;
+	text-align: center;
+	font-family: Segoe UI;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 28px;
+	color: rgba(255,255,255,1);
+}
+#Rectangle_35 {
+	fill: rgba(33,33,33,1);
+	stroke: rgba(112,112,112,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Rectangle_35 {
+	position: absolute;
+	overflow: visible;
+	width: 505px;
+	height: 376px;
+	left: 1283px;
+	top: 4984px;
+}
+#Text_fo {
+	left: 1314px;
+	top: 5017px;
+	position: absolute;
+	overflow: visible;
+	width: 44px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Segoe UI;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 80px;
+	color: rgba(0,194,203,1);
+}
+#Kung_ikaw_ay_masaya_tumawa_ka__fp {
+	left: 1330px;
+	top: 5135px;
+	position: absolute;
+	overflow: visible;
+	width: 413px;
+	white-space: nowrap;
+	text-align: center;
+	font-family: Segoe UI;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 28px;
+	color: rgba(255,255,255,1);
+}
+#Super_Saya__fq {
+	left: 1458px;
+	top: 5052px;
+	position: absolute;
+	overflow: visible;
+	width: 177px;
+	white-space: nowrap;
+	text-align: center;
+	font-family: Segoe UI;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 28px;
+	color: rgba(255,255,255,1);
+}
+#n__Marliardo_Umbao_fr {
+	left: 1506px;
+	top: 5284px;
+	position: absolute;
+	overflow: visible;
+	width: 237px;
+	white-space: nowrap;
+	text-align: center;
+	font-family: Segoe UI;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 28px;
+	color: rgba(255,255,255,1);
+}
+#Ellipse_1_fs {
+	fill: rgba(255,255,255,1);
+	stroke: rgba(112,112,112,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Ellipse_1_fs {
+	position: absolute;
+	overflow: visible;
+	width: 20px;
+	height: 20px;
+	left: 938px;
+	top: 5478px;
+}
+#Ellipse_2_ft {
+	fill: rgba(255,255,255,1);
+	stroke: rgba(112,112,112,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Ellipse_2_ft {
+	position: absolute;
+	overflow: visible;
+	width: 20px;
+	height: 20px;
+	left: 968px;
+	top: 5478px;
+}
+#Ellipse_3_fu {
+	fill: rgba(0,194,203,1);
+	stroke: rgba(112,112,112,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Ellipse_3_fu {
+	position: absolute;
+	overflow: visible;
+	width: 20px;
+	height: 20px;
+	left: 908px;
+	top: 5478px;
+}
+#RNL_Vision_Care {
+	left: 125.5px;
+	top: 5710px;
+	position: absolute;
+	overflow: visible;
+	width: 196px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Arial;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 25px;
+	color: rgba(255,255,255,1);
+}
+#Line_9 {
+	fill: transparent;
+	stroke: rgba(112,112,112,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Line_9 {
+	overflow: visible;
+	position: absolute;
+	width: 1920px;
+	height: 1px;
+	left: 0px;
+	top: 5835.5px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#n_2021_RNL_Vision_Care_All_Rig {
+	left: 760.5px;
+	top: 5858px;
+	position: absolute;
+	overflow: visible;
+	width: 399px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Arial;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 20px;
+	color: rgba(255,255,255,1);
+}
+#n_09123456789 {
+	left: 166.5px;
+	top: 5756px;
+	position: absolute;
+	overflow: visible;
+	width: 112px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Arial;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 15px;
+	color: rgba(255,255,255,1);
+}
+#n_RNLVisionCaregmailcom {
+	left: 117.5px;
+	top: 5788px;
+	position: absolute;
+	overflow: visible;
+	width: 211px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Arial;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 15px;
+	color: rgba(255,255,255,1);
+}
+#Our_Social_Media___f {
+	left: 671.5px;
+	top: 5762px;
+	position: absolute;
+	overflow: visible;
+	width: 226px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Arial;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 25px;
+	color: rgba(255,255,255,1);
+}
+#Untitled_design_19 {
+	position: absolute;
+	width: 64px;
+	height: 64px;
+	left: 1013.5px;
+	top: 5744px;
+	overflow: visible;
+}
+#Untitled_design_17 {
+	position: absolute;
+	width: 64px;
+	height: 64px;
+	left: 939.5px;
+	top: 5744px;
+	overflow: visible;
+}
+#Untitled_design_18 {
+	position: absolute;
+	width: 64px;
+	height: 64px;
+	left: 1087.5px;
+	top: 5744px;
+	overflow: visible;
+}
+#Our_Social_Media___f {
+	left: 671.5px;
+	top: 5762px;
+	position: absolute;
+	overflow: visible;
+	width: 226px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Arial;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 25px;
+	color: rgba(255,255,255,1);
+}
+#Feedback_Us__ {
+	left: 1516.5px;
+	top: 5710px;
+	position: absolute;
+	overflow: visible;
+	width: 177px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Arial;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 25px;
+	color: rgba(255,255,255,1);
+}
+#Rectangle_36 {
+	fill: rgba(25,25,25,1);
+	stroke: rgba(25,25,25,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Rectangle_36 {
+	position: absolute;
+	overflow: visible;
+	width: 485px;
+	height: 55px;
+	left: 1362.5px;
+	top: 5760px;
+}
+#Describe_your_issue_or_idea {
+	opacity: 0.5;
+	left: 1399.5px;
+	top: 5775px;
+	position: absolute;
+	overflow: visible;
+	width: 280px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Arial;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 22px;
+	color: rgba(255,255,255,1);
+}
+#Rectangle_37 {
+	fill: rgba(0,194,203,1);
+	stroke: rgba(25,25,25,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Rectangle_37 {
+	position: absolute;
+	overflow: visible;
+	width: 97px;
+	height: 55px;
+	left: 1750.5px;
+	top: 5760px;
+}
+#Send {
+	left: 1773.5px;
+	top: 5775px;
+	position: absolute;
+	overflow: visible;
+	width: 52px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Arial;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 22px;
+	color: rgba(255,255,255,1);
+}
+#Rectangle_1 {
+	fill: rgba(18,18,18,1);
+}
+.Rectangle_1 {
+	position: absolute;
+	overflow: visible;
+	width: 1920px;
+	height: 149px;
+	left: 0px;
+	top: 0px;
+}
+#Untitled_design_12 {
+	position: absolute;
+	width: 203px;
+	height: 149px;
+	left: 75px;
+	top: 0px;
+	overflow: visible;
+}
+#RNL_Vision_Care_gc {
+	left: 233px;
+	top: 51px;
+	position: absolute;
+	overflow: visible;
+	width: 273px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Arial;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 35px;
+	color: rgba(255,255,255,1);
+}
+#ABOUT {
+	left: 960px;
+	top: 72px;
+	position: absolute;
+	overflow: visible;
+	width: 100px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Segoe UI;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 31px;
+	color: rgba(255,255,255,1);
+}
+#HOME_ge {
+	left: 825px;
+	top: 72px;
+	position: absolute;
+	overflow: visible;
+	width: 90px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Segoe UI;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 31px;
+	color: rgba(0,194,203,1);
+}
+#SERVICES {
+	left: 1104px;
+	top: 71px;
+	position: absolute;
+	overflow: visible;
+	width: 131px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Segoe UI;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 31px;
+	color: rgba(255,255,255,1);
+}
+#PRODUCT {
+	left: 1280px;
+	top: 72px;
+	position: absolute;
+	overflow: visible;
+	width: 138px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Segoe UI;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 31px;
+	color: rgba(255,255,255,1);
+}
+#APPOINTMENT {
+	left: 1463px;
+	top: 72px;
+	position: absolute;
+	overflow: visible;
+	width: 210px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Segoe UI;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 31px;
+	color: rgba(255,255,255,1);
+}
