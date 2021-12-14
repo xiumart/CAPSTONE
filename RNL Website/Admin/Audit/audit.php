@@ -120,7 +120,7 @@ td, th {
        if ($conn-> connect_error) { 
         die("Connection Failed.". $conn-> connection_error);
        }
-       $sql = "SELECT * from logs";
+       $sql = "SELECT * from logs ORDER BY log_datentime DESC";
       $result = $conn-> query($sql);
 
       if ($result-> num_rows > 0) {
