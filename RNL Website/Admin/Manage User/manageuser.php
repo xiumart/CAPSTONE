@@ -160,7 +160,7 @@ echo "<tr><td>" . $row["users_id"]. "</td><td>" . $row["users_last"]. "</td><td>
 <td><form method='post' action='update.php?users_id=".$row["users_id"]."'>"?>
   		<button style="cursor: pointer; background-color: rgba(0,194,203,1); padding: 7px; border-radius: 10px; width: 80px; margin-bottom: 10px;" id='btnsubmit' onclick="return confirm('Are you sure?')">UPDATE</button></form>
 		<?php echo "<form method='post' action='?users_id=".$row["users_id"]."'>" ?>
-  		<button style="cursor: pointer; background-color: rgba(0,194,203,1); padding: 7px; border-radius: 10px; width: 80px;" onclick="return confirm('Are you sure?')">DELETE</button>
+  		<button style="cursor: pointer; background-color: rgba(0,194,203,1); padding: 7px; border-radius: 10px; width: 80px;" onclick="return confirm('Are you sure?')">REMOVE</button>
 		</form><?php "</tr>";
 }
 echo "</table>";

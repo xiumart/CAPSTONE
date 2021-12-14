@@ -342,7 +342,7 @@ if($result1->num_rows > 0){
 		<form method='post' action='update.php?supp_id=".$row["supp_id"]."'>
 		<td>"?><button style='cursor: pointer; background-color: rgba(0,194,203,1); padding: 7px; border-radius: 10px; width: 80px; margin-bottom: 10px;' onclick="return confirm('Are you sure?')">UPDATE</button>
 		<?php echo "<form method='post' action='?supp_id=".$row["supp_id"]."'> "?>
-		<button style='cursor: pointer; background-color: rgba(0,194,203,1); padding: 7px; border-radius: 10px; width: 80px;' onclick="return confirm('Are you sure?')">DELETE</button><?php echo "</form>
+		<button style='cursor: pointer; background-color: rgba(0,194,203,1); padding: 7px; border-radius: 10px; width: 80px;' onclick="return confirm('Are you sure?')">REMOVE</button><?php echo "</form>
 		</td>
 		</tr>";
 	}
