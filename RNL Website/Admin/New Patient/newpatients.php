@@ -64,7 +64,7 @@ session_start();
 		{
 			// save to database
 			// $user_id = random_num(20);
-			$query = "insert into patientrecord (lastname,firstname,middlename,age,sex,address,contactno,medhx,date,oldOD,oldOS,oldOD_VA,oldOS_VA,newD_OD_SPH,newD_OS_SPH,newCL_OD_SPH,newCL_OS_SPH,newR_OD_SPH,newR_OS_SPH,new_D_OD_CYL,new_D_OS_CYL,new_CL_OD_CYL,new_CL_OS_CYL,new_R_OD_CYL,new_R_OS_CYL,new_D_OD_AXIS,new_D_OS_AXIS,new_CL_OD_AXIS,new_CL_OS_AXIS,new_R_OD_AXIS,new_R_OS_AXIS,new_D_OD_VA,new_D_OS_VA,new_D_OD_ADD,new_D_OS_ADD,new_CL_MONO_OD,new_CL_PD_OS,new_R_SEGHT_OD,new_R_VERHT_OS,bp,ishihara_CYL,ishihara_AXIS,ishihara_PD) values ('$lastname','$firstname','$middlename','$age','$sex','$address','$contactno','$medhx','$date','$oldOD','$oldOS','$oldODVA','$oldOSVA','$newDODSPH','$newDOSSPH','$newCLODSPH','$newCLOSSPH','$newRODSPH','$newROSSPH','$newDODCYL','$newDOSCYL','$newCLODCYL','$newCLOSCYL','$newRODCYL','$newROSCYL','$newDODAXIS','$newDOSAXIS','$newCLODAXIS','$newCLOSAXIS','$newRODAXIS','$newROSAXIS','$newDODVA','$newDOSVA','$newDODADD','$newDOSADD','$newCLMONOOD','$newCLPDOS','$newRSEGHTOD','$newRVERHTOS','$bp','$ishiharaCYL','$ishiharaAXIS','$ishiharaPD')";
+			$query = "insert into patients (pat_last,pat_first,pat_middlen,pat_age,pat_sex,pat_address,pat_contactno,pat_medhx,date,oldOD,oldOS,oldOD_VA,oldOS_VA,newD_OD_SPH,newD_OS_SPH,newCL_OD_SPH,newCL_OS_SPH,newR_OD_SPH,newR_OS_SPH,new_D_OD_CYL,new_D_OS_CYL,new_CL_OD_CYL,new_CL_OS_CYL,new_R_OD_CYL,new_R_OS_CYL,new_D_OD_AXIS,new_D_OS_AXIS,new_CL_OD_AXIS,new_CL_OS_AXIS,new_R_OD_AXIS,new_R_OS_AXIS,new_D_OD_VA,new_D_OS_VA,new_D_OD_ADD,new_D_OS_ADD,new_CL_MONO_OD,new_CL_PD_OS,new_R_SEGHT_OD,new_R_VERHT_OS,bp,ishihara_CYL,ishihara_AXIS,ishihara_PD) values ('$lastname','$firstname','$middlename','$age','$sex','$address','$contactno','$medhx','$date','$oldOD','$oldOS','$oldODVA','$oldOSVA','$newDODSPH','$newDOSSPH','$newCLODSPH','$newCLOSSPH','$newRODSPH','$newROSSPH','$newDODCYL','$newDOSCYL','$newCLODCYL','$newCLOSCYL','$newRODCYL','$newROSCYL','$newDODAXIS','$newDOSAXIS','$newCLODAXIS','$newCLOSAXIS','$newRODAXIS','$newROSAXIS','$newDODVA','$newDOSVA','$newDODADD','$newDOSADD','$newCLMONOOD','$newCLPDOS','$newRSEGHTOD','$newRVERHTOS','$bp','$ishiharaCYL','$ishiharaAXIS','$ishiharaPD')";
 
 			mysqli_query($con, $query);
 
@@ -193,22 +193,22 @@ session_start();
 	<form action ="newpatientsformhandler.php" action="post">
 	<div id="LASTNAME__">
 		<span>LASTNAME : </span><br>
-		<input type="text" name="patlastname" style="background-color: white; font-size: 20px; border:solid white 1px; width: 250px; border-radius: 10px; height:40px; padding: 10px; text-transform: lowercase;">
+		<input type="text" name="patlastname" style="background-color: white; font-size: 20px; border:solid white 1px; width: 250px; border-radius: 10px; height:40px; padding: 10px;">
 	</div>
 	
 	<div id="FIRST_NAME_">
 		<span>FIRST NAME :</span><br>
-		<input type="text" name="patfirstname" style="background-color: white; font-size: 20px; border:solid white 1px; width: 250px; border-radius: 10px; height:40px; padding: 10px; text-transform: lowercase;">
+		<input type="text" name="patfirstname" style="background-color: white; font-size: 20px; border:solid white 1px; width: 250px; border-radius: 10px; height:40px; padding: 10px; ">
 	</div>
 
 	<div id="MIDDLE_NAME_">
 		<span>MIDDLE NAME :</span><br>
-		<input type="text" name="patmidname" style="background-color: white; font-size: 20px; border:solid white 1px; width: 250px; border-radius: 10px; height:40px; padding: 10px; text-transform: lowercase;">
+		<input type="text" name="patmidname" style="background-color: white; font-size: 20px; border:solid white 1px; width: 250px; border-radius: 10px; height:40px; padding: 10px;">
 	</div>
 	<
 	<div id="AGE_">
 		<span>AGE :</span><br>
-		<input type="text" name="patage" style="background-color: white; font-size: 20px; border:solid white 1px; width: 50px; border-radius: 10px; height:40px; padding: 10px; text-transform: lowercase;">
+		<input type="text" name="patage" style="background-color: white; font-size: 20px; border:solid white 1px; width: 50px; border-radius: 10px; height:40px; padding: 10px;">
 	
 	</div>
 	<div id="SEX_">
@@ -220,12 +220,12 @@ session_start();
 	</div>
 	<div id="ADDRESS">
 		<span>ADDRESS</span><br>
-		<input type="text" name="pataddress" style="background-color: white; font-size: 20px; border:solid white 1px; width: 450px; border-radius: 10px; height:40px; padding: 10px; text-transform: lowercase;">
+		<input type="text" name="pataddress" style="background-color: white; font-size: 20px; border:solid white 1px; width: 450px; border-radius: 10px; height:40px; padding: 10px;">
 	</div>
 	</svg>
 	<div id="CONTACT_NO">
 		<span>CONTACT NO.</span><br>
-		<input type="text" name="patcontact" style="background-color: white; font-size: 20px; border:solid white 1px; width: 300px; border-radius: 10px; height:40px; padding: 10px; text-transform: lowercase;">
+		<input type="text" name="patcontact" style="background-color: white; font-size: 20px; border:solid white 1px; width: 300px; border-radius: 10px; height:40px; padding: 10px;">
 	</div>
 	
 	<svg class="Line_46" viewBox="0 0 1376 1">
@@ -348,7 +348,7 @@ td, th {
 	<div id="Group_36">
 		
 		<div id="ADD_PATIENT">
-			<input type="submit" value="ADD PATIENT">
+			<input type="submit" value="ADD PATIENT" name='btnsubmit'>
 		</div>
 	</div>
 	</a>

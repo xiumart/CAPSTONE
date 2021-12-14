@@ -32,14 +32,14 @@ if (isset($_POST['users_username']) && isset($_POST['users_password'])) {
             	$_SESSION['users_username'] = $row['users_username'];
             	$_SESSION['user_role'] = $row['user_role'];
             	$_SESSION['users_id'] = $row['users_id'];
-				logs($_SESSION['users_username'], "Login", date("Y-m-d h:i:sa"));
+				logs($_SESSION['users_username'], "Login", date("Y-m-d h:i:A"));
             	header("Location: ../Admin/Dashboard/dashboard.php");
 		        exit();
             }elseif ($row['users_username'] === $uname && $row['users_password'] === $pass && $row['user_role'] === "Doctor") {
                 $_SESSION['users_username'] = $row['users_username'];
             	$_SESSION['user_role'] = $row['user_role'];
             	$_SESSION['users_id'] = $row['users_id'];
-				logs($_SESSION['users_username'], "Login", date("Y-m-d h:i:sa"));
+				logs($_SESSION['users_username'], "Login", date("Y-m-d h:i:A"));
             	header("Location: ../Doctor/Dashboard/dashboard.php");
 				exit();
             }else{

@@ -235,7 +235,7 @@ include "../db_conn.php";
 	<img id="Untitled_design_12_eh" src="Untitled_design_12_eh.png" srcset="Untitled_design_12_eh.png 1x, Untitled_design_12_eh@2x.png 2x" style="width:150px;height:100px;">
 		
 	</a>
-	<a href="../Home/home.php">
+	<a href="../home.php">
 	<div id="RNL_Vision_Care_ei" style="top: 35px;">
 		<span>RNL Vision Care</span>
 	</div>

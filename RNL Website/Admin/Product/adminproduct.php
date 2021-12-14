@@ -392,7 +392,7 @@ $search=$_POST['searchproduct'];
 	top: -90%;
 	margin-left: 796%;
 	margin-top: -9%;
-	font-size: large;'>BACK</button>
+	font-size: large;'>Refresh</button>
 	</div>
 </a>
 	<a href="../POS/pos.php">

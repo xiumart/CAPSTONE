@@ -212,7 +212,7 @@ $conn->close();
 	top: -90%;
 	margin-left: 75%;
 	margin-top: 10.7%;
-	font-size: large;'>BACK</button>
+	font-size: large;'>Refresh</button>
 	</div>
 </a>
 	<a href="../Update/update.php">

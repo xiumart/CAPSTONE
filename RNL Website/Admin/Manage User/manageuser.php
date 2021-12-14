@@ -375,7 +375,7 @@ $conn->close();
 	top: -90%;
 	margin-left: 987%;
 	margin-top: -10%;
-	font-size: large;'>BACK</button>
+	font-size: large;'>Refresh</button>
 	</div>
 </a>
 	<div id="Search_User">		

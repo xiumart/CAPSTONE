@@ -24,11 +24,11 @@ if (isset($_POST['btnsubmit'])) {
 		$qty = $_POST['qty'];*/
 
 
-		$supplier = $_POST['supplier'];
-		$contactperson = $_POST['contactperson'];
-		$contactnumber = $_POST['contactnumber'];
-		$address = $_POST['address'];
-		$note = $_POST['note'];
+		$supplier = $_POST['supp_supply'];
+		$contactperson = $_POST['supp_contactperson'];
+		$contactnumber = $_POST['supp_contactno'];
+		$address = $_POST['supp_address'];
+		$note = $_POST['supp_note'];
 
 			$sql = mysqli_query($con,"UPDATE supplier SET supp_supply = '$supplier', 
 				supp_contactperson = '$contactperson' , 
@@ -55,7 +55,7 @@ if (isset($_POST['btnsubmit'])) {
 <meta charset="utf-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MANAGE USER | ADMIN</title>
+<title>SUPPLIER | ADMIN</title>
 <link rel="shorcut icon" type="img/png" href="logo.png">
 <link rel="stylesheet" type="text/css" id="applicationStylesheet" href="css/stylec.css"/>
 <script id="applicationScript" type="text/javascript" src="js/script.js"></script>
@@ -78,7 +78,7 @@ if (isset($_POST['btnsubmit'])) {
 	<div id="RNL_Vision_Care">
 		<span>RNL Vision Care</span>
 	</div>
-	</a>
+	</a> 
 	<img id="Untitled_design_25" src="Untitled_design_25.png" srcset="Untitled_design_25.png 1x, Untitled_design_25@2x.png 2x">
 		
 	<svg class="Icon_ionic-md-notifications" viewBox="5.625 3.375 27.378 32.355">
@@ -141,7 +141,7 @@ if (isset($_POST['btnsubmit'])) {
 
 </style>
 	<div id="MANAGE_USER">
-		<span>UPDATE USER</span><br><br><br>
+		<span>UPDATE SUPPLIER</span><br><br><br>
 </div>
 <style>
 button[type=submit] {
@@ -220,12 +220,12 @@ button[type=submit] {
 	</svg>
 	<a href="../Manage User/manageuser.php">
 	<div id="MANAGE_USER_bm">
-		<span>MANAGE USER</span>
+		<span style="color: white;">MANAGE USER</span>
 	</div>
 	</a>
 	<a href="../Supplier/supplier.php">
 	<div id="SUPPLIER">
-		<span>SUPPLIER</span>
+		<span style='color:rgba(0,194,203,1);'>SUPPLIER</span>
 	</div>
 	</a>
 	<svg class="Icon_metro-truck" viewBox="2.571 5.784 39.851 37">
