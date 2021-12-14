@@ -251,7 +251,7 @@ if ($result->num_rows > 0) {
 while($row = $result->fetch_assoc()) {
 echo "<tr><td>" . $row["app_date"]. "</td><td>" . $row["app_time"] . "</td><td>" . $row["app_name"] . "</td><td>" . $row["app_contact"] . "</td><td>"
 . $row["app_purpose"]. "</td><td> <form method='post' action='?app_id=".$row["app_id"]."'>"?>
-<button style='cursor:pointer' id='btnsubmit' onclick="return confirm('Are you sure?')">DONE</button></form> <?php echo "</td></tr>";
+<button style="cursor: pointer; background-color: rgba(0,194,203,1); padding: 10px; border-radius: 10px; width: 90px;" id='btnsubmit' onclick="return confirm('Are you sure?')">DONE</button></form> <?php echo "</td></tr>";
 }
 echo "</table>";
 } else { echo "(No Appointments)"; }

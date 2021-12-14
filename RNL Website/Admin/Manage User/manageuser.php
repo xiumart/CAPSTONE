@@ -158,9 +158,9 @@ while($row = $result->fetch_assoc()) {
 echo "<tr><td>" . $row["users_id"]. "</td><td>" . $row["users_last"]. "</td><td>" . $row["users_first"] . "</td><td>" . $row["users_username"] . "</td><td>"
 . $row["users_email"]. "</td><td>". $row["users_contact"]. "</td><td>". $row["user_role"]. "</td> 
 <td><form method='post' action='edit.php?users_id=".$row["users_id"]."'>"?>
-  		<button style='cursor:pointer' id='btnsubmit' onclick="return confirm('Are you sure?')">UPDATE</button></form>
+  		<button style="cursor: pointer; background-color: rgba(0,194,203,1); padding: 7px; border-radius: 10px; width: 80px; margin-bottom: 10px;" id='btnsubmit' onclick="return confirm('Are you sure?')">UPDATE</button></form>
 		<?php echo "<form method='post' action='?users_id=".$row["users_id"]."'>" ?>
-  		<button style='cursor:pointer' onclick="return confirm('Are you sure?')">DELETE</button>
+  		<button style="cursor: pointer; background-color: rgba(0,194,203,1); padding: 7px; border-radius: 10px; width: 80px;" onclick="return confirm('Are you sure?')">DELETE</button>
 		</form><?php "</tr>";
 }
 echo "</table>";
