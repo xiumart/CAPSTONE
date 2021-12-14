@@ -408,7 +408,7 @@ $query = "INSERT INTO `pos`(`id`, `Customer_name`, `Date`, `qty`) VALUES ('$cc',
 }
 </style>
 	<!-- logout -->
-	<a href="../../logout.php" onclick="return confirm('Are you sure?')">
+	<a href="../logout.php" onclick="return confirm('Are you sure?')">
 	<div id="LOGOUT1" >
 		<span>LOG OUT</span>
 	</div>

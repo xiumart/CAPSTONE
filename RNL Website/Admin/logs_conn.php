@@ -3,7 +3,7 @@
 //TABLE NAME: logs
 //COLUMN: log_id, user, activiy, datentime
 
-include "db_conn.php";
+include "../db_conn.php";
 
 function logs($user, $activity, $datentime){
 $conn = $GLOBALS['conn'];

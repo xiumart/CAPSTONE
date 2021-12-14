@@ -1,6 +1,6 @@
 <?php 
 session_start(); 
-include "db_conn.php";
+include "../db_conn.php";
 include "logs_conn.php";
 date_default_timezone_set('Asia/Manila');
 if (isset($_POST['users_username']) && isset($_POST['users_password'])) {
@@ -33,14 +33,14 @@ if (isset($_POST['users_username']) && isset($_POST['users_password'])) {
             	$_SESSION['user_role'] = $row['user_role'];
             	$_SESSION['users_id'] = $row['users_id'];
 				logs($_SESSION['user_role'], "Login", date("Y-m-d h:i:sa"));
-            	header("Location: Admin/Dashboard/dashboard.php");
+            	header("Location: ../Admin/Dashboard/dashboard.php");
 		        exit();
             }elseif ($row['users_username'] === $uname && $row['users_password'] === $pass && $row['user_role'] === "Doctor") {
                 $_SESSION['users_username'] = $row['users_username'];
             	$_SESSION['user_role'] = $row['user_role'];
             	$_SESSION['users_id'] = $row['users_id'];
 				logs($_SESSION['user_role'], "Login", date("Y-m-d h:i:sa"));
-            	header("Location: Doctor/Dashboard/dashboard.php");
+            	header("Location: ../Doctor/Dashboard/dashboard.php");
 				exit();
             }else{
 				header("Location: index.php?error=Incorrect Username or Password");

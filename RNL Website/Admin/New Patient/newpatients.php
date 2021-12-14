@@ -412,7 +412,7 @@ td, th {
 }
 </style>
 	<!-- logout -->
-	<a href="../../logout.php" onclick="return confirm('Are you sure?')">
+	<a href="../logout.php" onclick="return confirm('Are you sure?')">
 	<div id="LOGOUT1" >
 		<span>LOG OUT</span>
 	</div>
