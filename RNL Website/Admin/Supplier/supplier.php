@@ -325,7 +325,7 @@ td, th {
     
   </tr>
   <?php
-error_reporting(0);
+
 $search=$_POST['searchsupp'];
 $sql1 = "SELECT * FROM `supplier` WHERE `supp_supply`LIKE '%$search%'";
 
