@@ -195,7 +195,24 @@ $conn->close();
 </style>
 	<a href="../New Patient/newpatients.php">
 	<div id="NEW_PATIENT">
-		<button type="submit"> + NEW PATIENT</button>
+		<button type="submit"> + New Patient</button>
+	</div>
+</a>
+
+<a href="patientrecords.php">
+	<div id="Back">
+		<button type="submit" name="back" 
+		style='width: 10%; background-color: #1566a8; color: white;
+	padding: 15px 20px;
+	margin: 8px 0;
+	border: none;
+	border-radius: 10px;
+	cursor: pointer;
+	position: relative;
+	top: -90%;
+	margin-left: 75%;
+	margin-top: 10.7%;
+	font-size: large;'>BACK</button>
 	</div>
 </a>
 	<a href="../Update/update.php">

@@ -164,7 +164,7 @@ button[type=submit] {
 			  		$sql=mysqli_query($con, "SELECT * from users WHERE users_id='$eid'");
 			  		while($row=mysqli_fetch_array($sql)){
 			  	?>
-				<center><h2 style="color: #000; margin-bottom: 10%;">Edit Product</h2><br><br></center>
+				<center><h1 style="color: white; margin-top: 10%; margin-left: 19%"></h1><br><br></center>
 				
 				<center>
 				<label style="color: white; padding-right: 2% ; font-size: 24px;">Lastname:</label>

@@ -124,7 +124,7 @@ td, th {
 	<div id="MANAGE_USER">
 		<span>MANAGE USER</span><br><br><br>
 		<form method="post">	
-		<input type="text" name="searchlname" style="background-color: white; font-size: 20px; border:solid white 1px; width: 550px; border-radius: 10px; height:40px; margin-top: -200px; margin-left: 740px;margin-top: 5px; padding-left: 10px;" placeholder="Search Lastname"></form><br><br><div id="Group_56">
+		<input type="text" name="searchlname" style="background-color: white; font-size: 20px; border:solid white 1px; width: 550px; border-radius: 10px; height:40px; margin-top: -200px; margin-left: -1px;margin-top: 5px; padding-left: 10px;" placeholder="Search Lastname"></form><br><br><div id="Group_56">
 		<div id="Group_55">
 				<div id="UPCOMING_APPOINTMENT">
 					<span>UPCOMING APPOINTMENT</span>
@@ -301,7 +301,7 @@ $conn->close();
 
 	</style>
 	<div id="n_New_User">
-		<button id="myBtn" height="100" width=>+ New User</button>
+		<button id="myBtn" height="100" style='margin-left: 1130%;'>+ New User</button>
 
 		<div id="myModal" class="modal">
 
@@ -362,6 +362,22 @@ $conn->close();
 			
 		}
 	</style>
+	<a href="manageuser.php">
+	<div id="n_New_User">
+		<button type="submit" name="back" 
+		style='width: 120%; background-color: #1566a8; color: white;
+	padding: 15px 20px;
+	margin: 8px 0;
+	border: none;
+	border-radius: 10px;
+	cursor: pointer;
+	position: relative;
+	top: -90%;
+	margin-left: 987%;
+	margin-top: -10%;
+	font-size: large;'>BACK</button>
+	</div>
+</a>
 	<div id="Search_User">		
 		
 	</div>

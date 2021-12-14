@@ -235,7 +235,7 @@ if (isset($_GET['supp_id'])) {
 	
 		</style>
 	<div id="n_New_Supplier">
-	<button id="myBtn" height="100" width=>+ New Supplier</button>
+	<button id="myBtn" height="100" style='margin-left: 857%;'>+ New Supplier</button>
 
 <div id="myModal" class="modal">
 
@@ -306,13 +306,28 @@ td, th {
 }
 
 	</style>
-
+<a href="supplier.php">
+	<div id="n_New_Supplier">
+		<button type="submit" name="back" 
+		style='width: 100%; background-color: #1566a8; color: white;
+	padding: 15px 20px;
+	margin: 8px 0;
+	border: none;
+	border-radius: 10px;
+	cursor: pointer;
+	position: relative;
+	top: -90%;
+	margin-left: 747%;
+	margin-top: -9%;
+	font-size: large;'>BACK</button>
+	</div>
+</a>
 	<div id="SUPPLIER_bv">
 		<span>SUPPLIER</span>
 		<br><br><br>
 		<form method="post">
-		<input type="text" name="searchsupp" style="background-color: white; font-size: 20px; border-radius: 8px; width: 550px;; height:40px;  text-transform:lowercase; padding-left: 10px; margin-left: 870%; margin-top: 5px;" placeholder="Search Supplier"></form>
-		<br>
+		<input type="text" name="searchsupp" style="background-color: white; font-size: 20px; border-radius: 8px; width: 550px;; height:40px;  text-transform:lowercase; padding-left: 10px; margin-left: 5%; margin-top: 5px;" placeholder="Search Supplier"></form>
+		<br><br><br>
 		<table>
   <tr>
   	<th>ID</th>

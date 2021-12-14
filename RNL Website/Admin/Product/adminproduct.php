@@ -185,8 +185,25 @@ td, th {
 	<div id="PRODUCT_bg">
 		<span>PRODUCT</span><br><br><br>
 			<form method="post">
-		<input type="text" name="searchproduct" style="background-color: white; font-size: 20px; border-radius:8px; width: 550px;; height:40px;  text-transform:lowercase; padding-left: 10px; margin-left: 815%;" placeholder="Search Product"></form><br><br>
-		<table>
+		<input type="text" name="searchproduct" style="background-color: white; font-size: 20px; border-radius:8px; width: 550px;; height:40px;  text-transform:lowercase; padding-left: 10px; margin-left: -5%;" placeholder="Search Product"></form><br><br>
+	
+	</div>
+	<style>
+.example{
+	height: 560px; overflow-y: scroll; margin-top: 300px;padding: 0; width: 110%; margin-left: 24.5%;
+}
+.example::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.example {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+</style>
+<div class="example">
+	<table style="margin-top: 10px;">
   <tr>
     <th>Brand Name</th>
     <th>Model</th>
@@ -244,7 +261,6 @@ $search=$_POST['searchproduct'];
 
   ?>
 </table>
-	</div>
 	<svg class="Line_17" viewBox="0 0 1376 1">
 		<path id="Line_17" d="M 0 0 L 1376 0">
 		</path>
@@ -294,7 +310,7 @@ $search=$_POST['searchproduct'];
 	
 		</style>
 	<div id="n_New_Product">
-		<button id="myBtn">+ New Product</button>
+		<button id="myBtn" style="margin-left: 916%;">+ New Product</button>
 
 			<div id="myModal" class="modal">
 			<!-- Modal content -->
@@ -363,14 +379,22 @@ $search=$_POST['searchproduct'];
 
 
 	</div>
-
-	<div id="Search_Product_cf">
+	<a href="adminproduct.php">
+	<div id="n_New_Product">
+		<button type="submit" name="back" 
+		style='width: 110%; background-color: #1566a8; color: white;
+	padding: 15px 20px;
+	margin: 8px 0;
+	border: none;
+	border-radius: 10px;
+	cursor: pointer;
+	position: relative;
+	top: -90%;
+	margin-left: 796%;
+	margin-top: -9%;
+	font-size: large;'>BACK</button>
 	</div>
-	
-	<div id="GO">
-		
-	</div>
-
+</a>
 	<a href="../POS/pos.php">
 	<svg class="Rectangle_176">
 		<rect id="Rectangle_176" rx="13" ry="13" x="0" y="0" width="179" height="30">
