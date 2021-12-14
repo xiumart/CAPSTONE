@@ -214,7 +214,6 @@ include "db_conn.php";
 		<label>Purpose:</label><br><br>
 		<select name="purpose">
     <option>Eye Check-Up</option>
-	<option>Mata Check-Up</option>
 			</select>
 	</div>
 	<div id="time"  style="width: 230px;opacity: 0.5;
