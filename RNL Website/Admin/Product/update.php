@@ -49,6 +49,10 @@ if (isset($_POST['btnsubmit'])) {
 		}
 
 ?>
+ <?php 			
+					$resulta = mysqli_query($con, "SELECT * from supplier");
+					
+					 ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -197,9 +201,13 @@ button[type=submit] {
 				<input type="text" id="fname" value="<?php echo $row['origprice'];?>" name="originalprice" style="border: #000 2px; border-style:solid; font-size: 20px; border-radius: 8px; padding: 3px;" required="required"><br><br>
 				
 				<label style="color:white;padding-right: 11.5%;padding-left: 500px">Supplier:</label>
-				<select name="supplier" id="Category" value="<?php echo $row['supplier'];?>"style="border: #000 2px; border-style:solid; font-size: 20px; border-radius: 8px; padding: 3px;"required="required">
-					<option value="Supplier">Supplier 1</option>
-					<option value="Supplier">Supplier 2</option>
+				<select name="supplier" id="Category" value="<?php echo $row['supp_supply'];?>"style="border: #000 2px; border-style:solid; font-size: 20px; border-radius: 8px; padding: 3px;"required="required">
+				<?php 
+while($rowsh = $resulta->fetch_assoc()){
+		$suppliers = $rowsh['supp_supply'];
+		echo"<option value='$suppliers'>$suppliers</option>";
+			}
+?>
 				  </select><br><br>
 				<label style="color: white;padding-right: 12.5%;padding-left: 500px">QTY:</label>
 				<input type="number" id="tentacles" value="<?php echo $row['qty'];?>" name="qty" min="1" max="10000" placeholder="Quantity" style="background-color: white; font-size: 20px; border:solid black 2px; width: 200px;; height:43px;  text-transform:lowercase; padding-left: 10px; border-radius: 8px; padding: 3px;" ><br><br><br><br>

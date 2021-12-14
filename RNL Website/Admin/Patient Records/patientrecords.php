@@ -117,19 +117,55 @@ td, th {
   padding: 8px;
 }
 	</style>
+	
 	<div id="PATIENT_RECORDS_bg">
-
 		<span>PATIENT RECORDS</span><br><br><br>
 	<form method="post">
 		<input type="text" name="searchpatients" style="background-color: white; font-size: 20px; border:solid white 1px; width: 600px;; height:40px;  text-transform:lowercase; padding-left: 10px; padding-top: 5px;" placeholder="Search by Lastname"></form><br><br>
-		<table>
+		<a href="patientrecords.php">
+	<div id="Back">
+		<button type="submit" name="back" 
+		style='width: 80%; background-color: #1566a8; color: white;
+	padding: 15px 20px;
+	margin: 8px 0;
+	border: none;
+	border-radius: 10px;
+	cursor: pointer;
+	position: relative;
+	top: -90%;
+	margin-left: 626%;
+	top: -104px;
+	font-size: large;'>Refresh</button>
+	</div>
+</a>
+	</div>
+
+	<style>
+	}
+.example{
+	height: 560px; overflow-y: scroll; margin-top: 20px;padding: 0; width: 95%
+}
+.example::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.example {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+</style>
+<div class="example">
+	<table style="margin-top: 280px; margin-left: 24.5%;">
   <tr>
     <th>Case no.</th>
     <th>Lastname</th>
     <th>Firstname</th>
     <th>Middlename</th>
+	<th>Address</th>
     <th>Age</th>
     <th>Contact No.</th>
+	<th>Date</th>
     <th>Action</th>
   </tr>
    
@@ -148,9 +184,11 @@ if($result->num_rows > 0){
 		. "</td><td>" . $row["pat_last"] 
 		. "</td><td>" . $row["pat_first"] 
 		. "</td><td>" . $row["pat_middle"] 
+		. "</td><td>" . $row["pat_address"]
 		. "</td><td>" . $row["pat_age"] 
 		. "</td><td>" . $row["pat_contact"] 
-		. "</td>
+		. "</td><td>" . $row["pat_date"]. 
+		"</td>
 		<td><form method='post' action='?pat_id=".$row["pat_id"]."'>
   		<button style='cursor: pointer; background-color: rgba(0,194,203,1); padding: 7px; border-radius: 10px; width: 80px; margin-bottom: 10px;'>UPDATE</button>
 		<button style='cursor: pointer; background-color: rgba(0,194,203,1); padding: 7px; border-radius: 10px; width: 80px;'>VIEW</button></form></td>
@@ -199,22 +237,7 @@ $conn->close();
 	</div>
 </a>
 
-<a href="patientrecords.php">
-	<div id="Back">
-		<button type="submit" name="back" 
-		style='width: 10%; background-color: #1566a8; color: white;
-	padding: 15px 20px;
-	margin: 8px 0;
-	border: none;
-	border-radius: 10px;
-	cursor: pointer;
-	position: relative;
-	top: -90%;
-	margin-left: 75%;
-	margin-top: 10.7%;
-	font-size: large;'>Refresh</button>
-	</div>
-</a>
+
 	<a href="../Update/update.php">
 	<div id="Group_34">
 	</div>

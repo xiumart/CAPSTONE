@@ -90,6 +90,21 @@
 	<div id="SALES_bh">
 		<span>SALES</span>
 	</div>
+	<a href="sales.php">
+	<div id="Back">
+		<button type="submit" name="back" 
+		style='width: 10%; background-color: #1566a8; color: white;
+	padding: 15px 20px;
+	margin: 8px 0;
+	border: none;
+	border-radius: 10px;
+	cursor: pointer;
+	position: relative;
+	margin-left: 78.5%;
+	margin-top: 10.7%;
+	font-size: large;'>Refresh</button>
+	</div>
+</a>
 	<svg class="Line_17" viewBox="0 0 1376 1">
 		<path id="Line_17" d="M 0 0 L 1376 0">
 		</path>
@@ -103,9 +118,8 @@
 		&nbsp&nbsp&nbsp<input type="date" id="txtDate" name="txtfrom" style="background-color: white; font-size: 20px; border-radius:8px; width: 200px;; height:40px;  text-transform:lowercase; padding-left: 10px;">&nbsp&nbsp&nbsp&nbsp&nbsp<input type="date" id="txtDate" name="txtto" style="background-color: white; font-size: 20px; border-radius:8px; width: 200px;; height:40px;  text-transform:lowercase; padding-left: 10px;">
 		<button name="btnsearch" style="cursor: pointer; background-color: rgba(34,121,220,1);font-size: 20px; padding:10px 10px; border-radius: 10px; ;margin:10px; color: #fff;">GO</button>
 		</form>
-
 	</div>
-
+	
 	<div id="To_">
 		<span>To :</span>
 	</div>
@@ -133,7 +147,7 @@ td, th {
   
 }
 .example{
-	height: 560px; overflow-y: scroll; margin-top: 300px;padding: 0; width: 95%
+	height: 560px; overflow-y: scroll; margin-top: 20px;padding: 0; width: 95%
 }
 .example::-webkit-scrollbar {
     display: none;
@@ -207,6 +221,7 @@ else{
 ?>
 </table>
 </div>
+
 	<a href="../POS/pos.php">
 	<svg class="Rectangle_176">
 		<rect id="Rectangle_176" rx="13" ry="13" x="0" y="0" width="179" height="30">

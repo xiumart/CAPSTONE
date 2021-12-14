@@ -238,7 +238,7 @@ td, th {
     <th>&nbsp</th>
 </tr>
 </table>
-<input type="submit" value="SAVE" name="pay" style="width: 500%; height: 50px; padding-top: 8%; margin-left: 200%;margin-top: 150%;">
+<input type="submit" value="PAY" name="pay" style="width: 500%; height: 50px; padding-top: 8%; margin-left: 200%;margin-top: 150%;">
 </form>
 <?php
 }	}

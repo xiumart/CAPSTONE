@@ -109,7 +109,23 @@ td, th {
 </style>
 	<div id="AUDIT_TRAIL">
 		<span>AUDIT TRAIL</span>
-		<table>
+	</div><style>
+	}
+.example{
+	height: 560px; overflow-y: scroll; margin-top: 20px;padding: 0; width: 95%;
+}
+.example::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.example {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+</style>
+<div class="example">
+	<table style="margin-top: 240px; margin-left: 24.5%;  font-size: 18px;">
 						<tr>
 						  <th>USER</th>
 						  <th>ACTIVITY</th>
@@ -136,7 +152,6 @@ td, th {
       
 ?>
 </table>
-	</div>
 	<svg class="Line_17" viewBox="0 0 1376 1">
 		<path id="Line_17" d="M 0 0 L 1376 0">
 		</path>

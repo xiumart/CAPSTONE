@@ -17,13 +17,13 @@
 		</rect>
 	</svg>
 	<div id="EMAIL">
-		<input type="text" id="email_" name="users_username" placeholder="EMAIL">
+		<input type="text" id="email_" name="users_username" placeholder="Username">
 	</div>
 	<div id="PASSWORD">
-		<input type="password" id="password_" name="users_password" placeholder="PASSWORD">
+		<input type="password" id="password_" name="users_password" placeholder="Password">
 	</div>
 	<div id="LOGIN_">
-		<input type="submit" value="login" name="submit" id="loginbtn">
+		<input type="submit" value="LOGIN" name="submit" id="loginbtn">
 	</div>
 </form>
 	<svg class="Rectangle_65">

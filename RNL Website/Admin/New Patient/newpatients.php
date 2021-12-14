@@ -340,7 +340,7 @@ td, th {
 	<div id="Group_36">
 		
 		<div id="ADD_PATIENT">
-			<input type="submit" value="ADD PATIENT" name="btnadd">
+			<input type="submit" value="ADD PATIENT" name="btnadd" onclick="return confirm('Are you sure?')">
 		</div>
 	</div>
 	<div id="DATE_">
