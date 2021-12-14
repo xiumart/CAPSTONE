@@ -26,35 +26,35 @@
 		</rect>
 	</svg>
 <center>
-	<img id="n_" src="n_.png" srcset="n_.png 1x, n_@2x.png 2x">
+	<img id="n_" src="n_.png" srcset="n_.png 1x, n_@2x.png 2x" style="border:solid white 1px; border-radius: 8px;">
 		
-	<img id="n__fq" src="n__fq.png" srcset="n__fq.png 1x, n__fq@2x.png 2x">
+	<img id="n__fq" src="n__fq.png" srcset="n__fq.png 1x, n__fq@2x.png 2x" style="border:solid white 1px; border-radius: 8px;">
 		
-	<img id="n__fr" src="n__fr.png" srcset="n__fr.png 1x, n__fr@2x.png 2x">
+	<img id="n__fr" src="n__fr.png" srcset="n__fr.png 1x, n__fr@2x.png 2x" style="border:solid white 1px; border-radius: 8px;">
 		
-	<img id="n__fs" src="n__fs.png" srcset="n__fs.png 1x, n__fs@2x.png 2x">
+	<img id="n__fs" src="n__fs.png" srcset="n__fs.png 1x, n__fs@2x.png 2x" style="border:solid white 1px; border-radius: 8px;">
 		
-	<img id="n__ft" src="n__ft.png" srcset="n__ft.png 1x, n__ft@2x.png 2x">
+	<img id="n__ft" src="n__ft.png" srcset="n__ft.png 1x, n__ft@2x.png 2x" style="border:solid white 1px; border-radius: 8px;">
 		
-	<img id="n__fu" src="n__fu.png" srcset="n__fu.png 1x, n__fu@2x.png 2x">
+	<img id="n__fu" src="n__fu.png" srcset="n__fu.png 1x, n__fu@2x.png 2x" style="border:solid white 1px; border-radius: 8px;">
 		
-	<img id="n__fv" src="n__fv.png" srcset="n__fv.png 1x, n__fv@2x.png 2x">
+	<img id="n__fv" src="n__fv.png" srcset="n__fv.png 1x, n__fv@2x.png 2x" style="border:solid white 1px; border-radius: 8px;">
 		
-	<img id="n__fw" src="n__fw.png" srcset="n__fw.png 1x, n__fw@2x.png 2x">
+	<img id="n__fw" src="n__fw.png" srcset="n__fw.png 1x, n__fw@2x.png 2x" style="border:solid white 1px; border-radius: 8px;">
 		
-	<img id="n__fx" src="n__fx.png" srcset="n__fx.png 1x, n__fx@2x.png 2x">
+	<img id="n__fx" src="n__fx.png" srcset="n__fx.png 1x, n__fx@2x.png 2x" style="border:solid white 1px; border-radius: 8px;">
 		
-	<img id="n_0" src="n_0.png" srcset="n_0.png 1x, n_0@2x.png 2x">
+	<img id="n_0" src="n_0.png" srcset="n_0.png 1x, n_0@2x.png 2x" style="border:solid white 1px; border-radius: 8px;">
 		
-	<img id="n_1" src="n_1.png" srcset="n_1.png 1x, n_1@2x.png 2x">
+	<img id="n_1" src="n_1.png" srcset="n_1.png 1x, n_1@2x.png 2x" style="border:solid white 1px; border-radius: 8px;">
 		
-	<img id="n_2" src="n_2.png" srcset="n_2.png 1x, n_2@2x.png 2x">
+	<img id="n_2" src="n_2.png" srcset="n_2.png 1x, n_2@2x.png 2x" style="border:solid white 1px; border-radius: 8px;">
 		
-	<img id="n_3" src="n_3.png" srcset="n_3.png 1x, n_3@2x.png 2x">
+	<img id="n_3" src="n_3.png" srcset="n_3.png 1x, n_3@2x.png 2x" style="border:solid white 1px; border-radius: 8px;">
 		
-	<img id="n_4" src="n_4.png" srcset="n_4.png 1x, n_4@2x.png 2x">
+	<img id="n_4" src="n_4.png" srcset="n_4.png 1x, n_4@2x.png 2x" style="border:solid white 1px; border-radius: 8px;">
 		
-	<img id="n_5" src="n_5.png" srcset="n_5.png 1x, n_5@2x.png 2x">
+	<img id="n_5" src="n_5.png" srcset="n_5.png 1x, n_5@2x.png 2x" style="border:solid white 1px; border-radius: 8px;">
 	<div id="Group_11">
 		<svg class="Icon_ionic-ios-star" viewBox="2.25 3.375 29.459 27.355">
 			<path id="Icon_ionic-ios-star" d="M 30.59146499633789 12.84407424926758 L 20.91854286193848 12.84407424926758 L 17.97918510437012 4.072029590606689 C 17.83451843261719 3.64460563659668 17.43339920043945 3.375 16.97967147827148 3.375 C 16.52594375610352 3.375 16.12482452392578 3.64460563659668 15.98015785217285 4.072029590606689 L 13.04079914093018 12.84407424926758 L 3.302119255065918 12.84407424926758 L 3.302119255065918 12.84407424926758 C 2.723453521728516 12.84407424926758 2.25 13.31752872467041 2.25 13.8961935043335 C 2.25 13.95537567138672 2.256575584411621 14.02113246917725 2.269727230072021 14.07373905181885 C 2.282878637313843 14.30389022827148 2.388090848922729 14.56034469604492 2.710302114486694 14.81679821014404 L 10.66037940979004 20.41933250427246 L 7.609233379364014 29.29001426696777 C 7.457991123199463 29.71743774414062 7.609233379364014 30.19746780395508 7.970899105072021 30.47364807128906 C 8.161595344543457 30.61173820495605 8.339140892028809 30.7301025390625 8.562716484069824 30.7301025390625 C 8.779715538024902 30.7301025390625 9.03617000579834 30.61831665039062 9.220291137695312 30.49337577819824 L 16.97967147827148 24.96317481994629 L 24.73905181884766 30.49337577819824 C 24.92317199707031 30.62489128112793 25.17962646484375 30.7301025390625 25.39662551879883 30.7301025390625 C 25.62020111083984 30.7301025390625 25.7977466583252 30.61831665039062 25.98186874389648 30.47364807128906 C 26.3501091003418 30.19746780395508 26.49477577209473 29.72401237487793 26.34353446960449 29.29001426696777 L 23.29238700866699 20.41933059692383 L 31.17670822143555 14.76419067382812 L 31.36740493774414 14.59979724884033 C 31.53837394714355 14.41567707061768 31.70934295654297 14.16579818725586 31.70934295654297 13.89619159698486 C 31.70934295654297 13.31752872467041 31.17013168334961 12.84407424926758 30.59146499633789 12.84407424926758 Z">
@@ -477,10 +477,8 @@
 		<span>₱ 1,500</span>
 	</div>
 
-
-
 	<svg class="Rectangle_100" style="height: 600px;">
-		<rect id="Rectangle_100" rx="0" ry="0" x="0" y="110" width="1920" height="600">
+		<rect id="Rectangle_100" rx="0" ry="0" x="0" y="70" width="1920" height="600">
 		</rect>
 	</svg>
 	<div id="RNL_Vision_Care">

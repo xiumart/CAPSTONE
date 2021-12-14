@@ -114,8 +114,27 @@ td, th {
 						  <th>USER</th>
 						  <th>ACTIVITY</th>
 						  <th>DATE & TIME</th>
-
 						</tr>
+						<?php
+       $conn = mysqli_connect("localhost", "root", "","capstone");
+       if ($conn-> connect_error) { 
+        die("Connection Failed.". $conn-> connection_error);
+       }
+       $sql = "SELECT * from logs";
+      $result = $conn-> query($sql);
+
+      if ($result-> num_rows > 0) {
+        while ($row = $result-> fetch_assoc()){
+         echo "</th><th>". $row["log_user"]. "</th><th>". $row["log_activity"]. "</th><th>". $row["log_datentime"]. "</th><tr>";
+      }
+      echo "</table>";
+      }
+      else {
+        echo "0 result";
+      }
+      $conn-> close();
+      
+?>
 </table>
 	</div>
 	<svg class="Line_17" viewBox="0 0 1376 1">
@@ -159,6 +178,42 @@ td, th {
 	<a href="../Audit/audit.php">
 	<div id="AUDIT_TRAIL_bp">
 		<span>AUDIT TRAIL</span>
+	</div>
+	</a>
+	<style>
+	#AUDIT_TRAIL {
+	left: 473px;
+	top: 127px;
+	position: absolute;
+	overflow: visible;
+	width: 113px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Segoe UI;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 20px;
+	color: rgba(255,255,255,1);
+}
+#LOGOUT1 {
+	left: 118px;
+	top: 921px;
+	position: absolute;
+	overflow: visible;
+	width: 152px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Segoe UI;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 27px;
+	color: white;
+}
+</style>
+	<!-- logout -->
+	<a href="logout.php" onclick="return confirm('Are you sure?')">
+	<div id="LOGOUT1" >
+		<span>LOG OUT</span>
 	</div>
 	</a>
 

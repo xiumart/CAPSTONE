@@ -23,7 +23,7 @@
 	</div>
 	<img id="Untitled_design_23" src="Untitled_design_23.png" srcset="Untitled_design_23.png 1x, Untitled_design_23@2x.png 2x" style="top:100px;">
 		
-	<img id="Untitled_design_24" src="labas.jpg">
+	<img id="Untitled_design_24" src="labas.jpg" style="border:solid white 1px; border-radius: 8px;">
 		
 	<div id="Lorem_ipsum_viverra_feugiat_Pe">
 		<span>RNL Vision Care Center Optical Clinic is currently located at Almar in Camarin Caloocan City. <br><br>It was established by Dr. Nanette Lalic on February 2021.<br><br><br>Trusted for our reliable eye care services, product variety, value pricing and services excellence, <br><br>RNL Vision's patrons have enjoyed the company’s popular fashion eye care products like sunglasses,<br><br> prescription frames, contact lenses, reading glasses and contact lens solutions with every visit they <br><br>make in our stores.</span>

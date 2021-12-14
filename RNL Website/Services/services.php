@@ -114,11 +114,11 @@ We utilize state-of-the-art <br><br>equipment like autorefractometers, slit lamp
 	<div id="Send">
 		<input type="button" value="Send" id="feedback_s">
 	</div>
-
+	
 	<div id="Book_Appoinment_Here">
-		<input type="submit" id="bookappointment" value="Book Appointment Here">
+		<a href="../Appointment/appointment.php"><input type="submit" id="bookappointment" value="Book Appointment Here"></a>
 	</div>
-	<img id="Untitled_design_24" src="service.jpg" style="border:solid 1px;">
+	<img id="Untitled_design_24" src="service.jpg" style="border:solid 1px; border-radius: 8px;">
 		
 </div>
 <style>	

@@ -148,16 +148,16 @@ include "../db_conn.php";
 			  }
 			  </style>
 	</div>
-	<div id="PURPOSE_df">
+	<div id="PURPOSE_df" style="width: 150px;">
 		<label>Purpose:</label><br>
-		<select name="purpose">
+		<select name="purpose" style="margin-left:-294%;">
     <option value="Eye Check Up">Eye Check-Up</option>
 			</select>
 		
 	</div>
 	<div id="time" style="opacity: 0.5;
 	left: 1474.5px;
-	top: 777px;
+	top: 779px;
 	position: absolute;
 	overflow: visible;
 	width: 113px;
@@ -168,17 +168,25 @@ include "../db_conn.php";
 	font-weight: normal;
 	font-size: 21px;
 	color: rgba(255,255,255,1);">
-		<label>Time:</label><br>
-		<select name="time" >
-    <option value="8:00am" style="color:black;">08:00am</option>
-	<option value="9:00am" style="color:black;">09:00am</option>
-	<option value="9:00am" style="color:black;">10:00am</option>
-	<option value="9:00am" style="color:black;">11:00am</option>
-	<option value="9:00am" style="color:black;">01:00pm</option>
-	<option value="9:00am" style="color:black;">02:00pm</option>
-	<option value="9:00am" style="color:black;">03:00pm</option>
-	<option value="9:00am" style="color:black;">04:00pm</option>
-			</select>
+	<style>
+		input[type=time], select {
+	width: 140%;
+	padding: 19px 10px;
+	margin: 8px 0;
+	display: inline-block;
+	border: 1px solid white;
+	border-radius: 8px;
+	box-sizing: border-box;
+	background-color: transparent;
+	font-size: 20px;
+	color: white;
+	margin-left: -422%;
+	
+  }
+  </style>
+		<label>Time:</label><br><br>
+		<input type="time" id="time" name="time" style="margin-left: -390%; margin-top: -45%;">
+		
 		
 	</div>
 	
