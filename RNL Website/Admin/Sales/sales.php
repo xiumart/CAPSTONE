@@ -95,14 +95,14 @@
 		</path>
 	</svg>
 
-	<div id="GO">
-		<button style="cursor: pointer; background-color: rgba(34,121,220,1);font-size: 20px; padding:10px 10px; border-radius: 10px; margin: -20px;  color: #fff;">GO</button>
-	</div>
 	<div id="From_">
-
+<!--SEARCH SQL-->
+		<form method="post">
 		<span>From :</span><br>
-		<input type="text" name="EMAIL" style="background-color: white; font-size: 20px; border-radius:8px; width: 300px;; height:40px;  text-transform:lowercase; padding-left: 10px;margin-left: -320px;margin-top: 10px;" placeholder="Search by Customer">
-		&nbsp&nbsp&nbsp<input type="date" id="txtDate" name="SelectedDate" style="background-color: white; font-size: 20px; border-radius:8px; width: 200px;; height:40px;  text-transform:lowercase; padding-left: 10px;">&nbsp&nbsp&nbsp&nbsp&nbsp<input type="date" id="txtDate" name="SelectedDate" style="background-color: white; font-size: 20px; border-radius:8px; width: 200px;; height:40px;  text-transform:lowercase; padding-left: 10px;">
+		<input type="text" name="txtsearch" style="background-color: white; font-size: 20px; border-radius:8px; width: 300px;; height:40px;  text-transform:capitalize; padding-left: 10px;margin-left: -320px;margin-top: 10px;" placeholder="Search by Customer">
+		&nbsp&nbsp&nbsp<input type="date" id="txtDate" name="txtfrom" style="background-color: white; font-size: 20px; border-radius:8px; width: 200px;; height:40px;  text-transform:lowercase; padding-left: 10px;">&nbsp&nbsp&nbsp&nbsp&nbsp<input type="date" id="txtDate" name="txtto" style="background-color: white; font-size: 20px; border-radius:8px; width: 200px;; height:40px;  text-transform:lowercase; padding-left: 10px;">
+		<button name="btnsearch" style="cursor: pointer; background-color: rgba(34,121,220,1);font-size: 20px; padding:10px 10px; border-radius: 10px; ;margin:10px; color: #fff;">GO</button>
+		</form>
 
 	</div>
 
@@ -132,9 +132,21 @@ td, th {
   padding: 4px;
   
 }
+.example{
+	height: 560px; overflow-y: scroll; margin-top: 300px;padding: 0; width: 95%
+}
+.example::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.example {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
 </style>
-	<table>
-			
+<div class="example">
+	<table style="margin-top: 10px;">
   <tr>
   	<th>Customer Name</th>
 	<th>Date</th>
@@ -145,21 +157,56 @@ td, th {
     <th>Qty</th>
     <th>Amount</th>
     <th>Profit</th>
-    <th>Action</th>
   </tr>
+  <?php 
+include("config.php");
+error_reporting(0);
+$search=$_POST['txtsearch'];
+$from=$_POST['txtfrom'];
+$to1=$_POST['txtto'];
+if (!empty($_POST['txtsearch']) && empty($_POST['txtfrom']) && empty($_POST['txtto'])) {
+	 $sql=mysqli_query($con, "SELECT * FROM `pos_reports` WHERE `Customer_name` LIKE '%$search%'");
+}
+elseif (empty($_POST['txtsearch']) && !empty($_POST['txtfrom']) && empty($_POST['txtto'])) {
+	$sql=mysqli_query($con, "SELECT * FROM `pos_reports` WHERE `Date`  LIKE '$from'");
+}
+elseif (empty($_POST['txtsearch']) && !empty($_POST['txtto']) && empty($_POST['txtfrom'])) {
+	$sql=mysqli_query($con, "SELECT * FROM `pos_reports` WHERE `Date`  LIKE '$to1'");
+}
+elseif (!empty($_POST['txtsearch']) && !empty($_POST['txtfrom']) && empty($_POST['txtto'])) {
+	$sql=mysqli_query($con, "SELECT * FROM `pos_reports` WHERE `Customer_name` LIKE '%$search%' AND `Date` LIKE '$from'");
+}
+elseif (!empty($_POST['txtsearch']) && empty($_POST['txtfrom']) && !empty($_POST['txtto'])) {
+	$sql=mysqli_query($con, "SELECT * FROM `pos_reports` WHERE `Customer_name` LIKE '%$search%' AND `Date` LIKE '$to1'");
+}
+elseif (!empty($_POST['txtfrom']) && !empty($_POST['txtto']) && empty($_POST['txtsearch'])) {
+	$sql=mysqli_query($con, "SELECT * FROM `pos_reports` WHERE `Date` BETWEEN '$from' AND '$to1'");
+}
+elseif (!empty($_POST['txtsearch']) && !empty($_POST['txtfrom'] && !empty($_POST['txtto'])) ) {
+	$sql=mysqli_query($con, "SELECT * FROM `pos_reports` WHERE `Customer_name` LIKE '%$search%' AND `Date` BETWEEN '$from' AND '$to1'  ");
+}
+
+else{
+	 $sql=mysqli_query($con, "SELECT * FROM `pos_reports`");
+}
+ 
+			  		while($row=mysqli_fetch_array($sql)){
+			  			?>
    <tr>
-   <th>&nbsp</th>
-   <th>&nbsp</th>
-    <th>&nbsp</th>
-    <th>&nbsp</th>
-    <th>&nbsp</th>
-    <th>&nbsp</th>
-    <th>&nbsp</th>
-    <th>&nbsp</th>
-    <th>&nbsp</th>
-    <th><button style="cursor: pointer; background-color: #ff6666; padding: 10px; border-radius: 10px;">CANCEL</button></th>
+   <th><?php echo $row['Customer_name']; ?></th>
+   <th><?php echo $row['Date']; ?></th>
+    <th><?php echo $row['brand']; ?></th>
+    <th><?php echo $row['model']; ?></th>
+    <th><?php echo $row['category']; ?></th>
+    <th><?php echo $row['sellingprice']; ?></th>
+    <th><?php echo $row['qty']; ?></th>
+    <th><?php echo $row['total_sell']; ?></th>
+    <th><?php echo $row['total_profit']; ?></th>
 </tr>
+<?php }
+?>
 </table>
+</div>
 	<a href="../POS/pos.php">
 	<svg class="Rectangle_176">
 		<rect id="Rectangle_176" rx="13" ry="13" x="0" y="0" width="179" height="30">
@@ -198,7 +245,7 @@ td, th {
 		<span>AUDIT TRAIL</span>
 	</div>
 	</a>
-	<style>
+<style>
 	#AUDIT_TRAIL {
 	left: 473px;
 	top: 127px;
