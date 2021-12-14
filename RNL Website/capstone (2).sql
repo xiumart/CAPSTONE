@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 4.9.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 14, 2021 at 05:59 PM
--- Server version: 10.1.38-MariaDB
--- PHP Version: 7.1.27
+-- Generation Time: Dec 14, 2021 at 09:26 PM
+-- Server version: 10.4.8-MariaDB
+-- PHP Version: 7.3.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -44,11 +44,9 @@ CREATE TABLE `appointment` (
 --
 
 INSERT INTO `appointment` (`app_id`, `app_name`, `app_email`, `app_contact`, `app_date`, `app_time`, `app_purpose`, `app_remarks`) VALUES
-(1, 'Danver Omlang', 'danverjhon@gmail.com', '09560492266', '2021-11-10', '00:00:00.0000', 'Appointment test', ''),
 (3, 'Danver Omlang', 'danverjhon@gmail.com', '09560492266', '2021-12-27', '00:00:00.0000', 'Appointment test 1', 'ONGOING'),
 (6, 'Raymart Gahopo', 'raymart.gahopo@gmail.com', '09075647938', '2021-12-01', '00:00:00.0000', 'Check Up', 'ONGOING'),
-(28, 'Marl Umbao', 'marl.umbao@gmail.com', '09123456789', '2021-12-16', '00:00:00.0000', 'Check Up', 'ONGOING'),
-(171, 'sample', 'sample@gmail.com', '09123455678', '2021-12-18', '00:00:00.0000', 'tulog', 'ONGOING');
+(28, 'Marl Umbao', 'marl.umbao@gmail.com', '09123456789', '2021-12-16', '00:00:00.0000', 'Check Up', 'ONGOING');
 
 -- --------------------------------------------------------
 
@@ -70,7 +68,8 @@ CREATE TABLE `logs` (
 INSERT INTO `logs` (`logs_id`, `log_user`, `log_activity`, `log_datentime`) VALUES
 (1, 'junjun', 'Login', '2021-12-15 12:48:59'),
 (2, 'junjun', 'Logout', '2021-12-15 12:49:11'),
-(3, 'mart123', 'Login', '2021-12-15 12:49:31');
+(3, 'mart123', 'Login', '2021-12-15 12:49:31'),
+(0, 'trish02', 'Login', '2021-12-15 01:43:55');
 
 -- --------------------------------------------------------
 
@@ -97,7 +96,72 @@ CREATE TABLE `patients` (
 
 INSERT INTO `patients` (`pat_id`, `pat_last`, `pat_first`, `pat_middle`, `pat_age`, `pat_sex`, `pat_address`, `pat_contact`, `pat_medhx`, `pat_date`) VALUES
 (1, 'RAMOS', 'EDMAR', 'CUADRO', 2021, 'Female', '002 Lydia St.', '4242424', 'dadada', '2021-12-11'),
-(3, 'vitalicia', 'john robert ', 'rosario', 2021, 'Male', '8 Humabon', '09123456789', 'sample', '2021-12-10');
+(3, 'vitalicia', 'john robert ', 'rosario', 2021, 'Male', '8 Humabon', '09123456789', 'sample', '2021-12-10'),
+(4, '$lastname', '$firstname', '$middlename', 0, '$sex', '$address', '$contactno', '$medhx', '0000-00-00'),
+(5, 'a', 'a', '', 5, 'Female', 's', '9', 'f', '2021-12-15'),
+(6, 'a', 'a', '', 5, 'Female', 's', '9', 'f', '2021-12-15'),
+(7, 'W', 'W', 'W', 4, 'Female', 'E', '6576', 'GHHJ', '0000-00-00'),
+(8, '', '', '', 0, 'Female', '', '', '', '0000-00-00'),
+(9, '', '', '', 0, 'Female', '', '', '', '0000-00-00'),
+(10, 'u', 'u', 'u', 0, 'Female', 'u', 'u', 'u', '0000-00-00'),
+(11, '', '', '', 0, 'Female', '', '', '', '0000-00-00'),
+(12, '', '', '', 0, 'Female', '', '', '', '0000-00-00'),
+(13, '', '', '', 0, 'Female', '', '', '', '0000-00-00'),
+(14, '', '', '', 0, 'Female', '', '', '', '0000-00-00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `patient_records`
+--
+
+CREATE TABLE `patient_records` (
+  `old_od` text NOT NULL,
+  `old_os` text NOT NULL,
+  `old_od_add` text NOT NULL,
+  `old_os_add` text NOT NULL,
+  `distance_od_sph` text NOT NULL,
+  `distance_os_sph` text NOT NULL,
+  `distance_od_cyl` text NOT NULL,
+  `distance_os_cyl` text NOT NULL,
+  `distance_od_axis` text NOT NULL,
+  `distance_os_axis` text NOT NULL,
+  `distance_od_va` varchar(500) NOT NULL,
+  `distance_os_va` varchar(500) NOT NULL,
+  `distance_od_add` varchar(500) NOT NULL,
+  `distance_os_add` varchar(500) NOT NULL,
+  `lense_od_sph` varchar(500) NOT NULL,
+  `lendse_os_sph` varchar(500) NOT NULL,
+  `lense_od_cyl` varchar(500) NOT NULL,
+  `lense_os_cyl` varchar(500) NOT NULL,
+  `lense_od_axis` varchar(500) NOT NULL,
+  `lense_os_axis` varchar(500) NOT NULL,
+  `lense_mono_od` varchar(500) NOT NULL,
+  `lense_pd_os` varchar(500) NOT NULL,
+  `reading_od_sph` varchar(500) NOT NULL,
+  `reading_os_sph` varchar(500) NOT NULL,
+  `reading_od_cyl` varchar(500) NOT NULL,
+  `reading_os_cyl` varchar(500) NOT NULL,
+  `reading_od_axis` varchar(500) NOT NULL,
+  `reading_os_axis` varchar(500) NOT NULL,
+  `reading_seght_od` varchar(500) NOT NULL,
+  `reading_seght_os` varchar(500) NOT NULL,
+  `bp` varchar(500) NOT NULL,
+  `Isihara.cyl` varchar(500) NOT NULL,
+  `Isihara.axis` varchar(500) NOT NULL,
+  `Isihara.pd` varchar(500) NOT NULL,
+  `contact` int(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `patient_records`
+--
+
+INSERT INTO `patient_records` (`old_od`, `old_os`, `old_od_add`, `old_os_add`, `distance_od_sph`, `distance_os_sph`, `distance_od_cyl`, `distance_os_cyl`, `distance_od_axis`, `distance_os_axis`, `distance_od_va`, `distance_os_va`, `distance_od_add`, `distance_os_add`, `lense_od_sph`, `lendse_os_sph`, `lense_od_cyl`, `lense_os_cyl`, `lense_od_axis`, `lense_os_axis`, `lense_mono_od`, `lense_pd_os`, `reading_od_sph`, `reading_os_sph`, `reading_od_cyl`, `reading_os_cyl`, `reading_od_axis`, `reading_os_axis`, `reading_seght_od`, `reading_seght_os`, `bp`, `Isihara.cyl`, `Isihara.axis`, `Isihara.pd`, `contact`) VALUES
+('$oldOD', '$oldOS', '$oldODVA', '$oldOSVA', '$newDODSPH', '$newDOSSPH', '$newDODCYL', '$newDODCYL', '$newDODAXIS', ' $newDOSAXIS', '$newDODVA', '$newDOSVA', '$newDODADD', '$newDOSADD', '$newCLODSPH', '$newCLOSSPH', '$newCLODCYL', '$newCLOSCYL', '$newCLODAXIS', '$newCLOSAXIS', '$newCLMONOOD', '$newCLPDOS', '$newRODSPH', '$newRODSPH', '$newRODCYL', '$newROSCYL', '$newRODAXIS', '$newROSAXIS', '$newRSEGHTOD', '$newRVERHTOS', '$bp', '$ishiharaCYL', '$ishiharaAXIS', '$ishiharaPD', 0),
+('r', 'r', 'r', 'r', 'r', 'r', 'r', 'r', 'rr', ' r', 'r', 'r', 'r', 'r', '', 'r', 'r', 'r', 'r', 'r', 'r', 'r', 'r', 'r', 'r', 'r', 'r', 'r', 'r', 'r', 'r', 'r', 'r', 'r', 0),
+('W', 'W', 'W', 'W', 'WW', 'WW', 'W', 'W', 'W', ' W', 'W', 'W', 'W', 'WW', '', 'W', 'W', 'W', '', 'W', 'WW', 'WW', 'W', 'W', 'W', 'W', 'W', 'W', 'WW', 'WW', 'W', 'W', 'WW', 'W', 0),
+('w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', ' w', 'w', 'w', 'w', 'w', 'w', '', 'w', 'ww', 'w', 'w', 'w', 'w', 'ww', 'ww', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 0);
 
 -- --------------------------------------------------------
 
@@ -144,8 +208,7 @@ INSERT INTO `pos` (`id`, `Customer_name`, `Date`, `qty`) VALUES
 (7, 'Tricia Joy Altarejos', '2015-02-12', 2),
 (5, 'lala', '2017-02-14', 99),
 (7, 'boom', '2021-12-14', 89),
-(13, 'Tricia Joy Altarejos', '2021-12-23', 1),
-(7, 'Roberto', '2021-12-22', 5);
+(13, 'Tricia Joy Altarejos', '2021-12-23', 1);
 
 -- --------------------------------------------------------
 
@@ -194,7 +257,6 @@ CREATE TABLE `product` (
 INSERT INTO `product` (`pro_id`, `brand`, `model`, `category`, `dateofarrival`, `expdate`, `sellingprice`, `origprice`, `profit`, `supplier`, `qty`) VALUES
 (5, 'robert', 'robert', 'Lens', '2021-12-15', '2021-12-22', 1000, 1200, 200, 'Supplier', 0),
 (7, 'EO', 'sample', 'Frame', '2021-12-17', '2021-12-24', 500, 800, 300, 'Supplier', 0),
-(13, 'dfghj', 'dfgh', 'Frame', '2021-12-15', '2021-12-15', 23456, 34567, -11111, 'Supplier', 0),
 (14, 'ANO', 'DAW', 'Lens', '2021-12-15', '2021-12-15', 12345, 3456, 8889, 'Supplier', 99);
 
 -- --------------------------------------------------------
@@ -245,8 +307,7 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`users_id`, `users_last`, `users_first`, `users_mid`, `users_email`, `users_username`, `users_contact`, `users_password`, `user_role`) VALUES
 (7, 'Gahopo', 'Raymart', 'Tomagan', 'r.gahopo@gmail.com', 'mart123', '09123456789', 'admin', 'Administrator'),
-(14, 'Altarejos      ', 'tricia02        ', 'Joy                  ', 'trishaaltarejos0200@gmail.com                ', 'trish02', '9284973948', 'sdsddasdasda', 'Administrator'),
-(15, 'Vitalicia', 'John Robert', 'Umbao', 'umbao@gmail.com', 'junjun', '09070605043', 'admin123', 'Doctor');
+(14, 'Altarejos        ', 'tricia ', 'Magora        ', 'trishaaltarejos0200@gmail.com                  ', 'trish02', '9284973948', 'sdsddasdasda', 'Administrator');
 
 -- --------------------------------------------------------
 
@@ -255,7 +316,7 @@ INSERT INTO `users` (`users_id`, `users_last`, `users_first`, `users_mid`, `user
 --
 DROP TABLE IF EXISTS `pos_reports`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `pos_reports`  AS  select `pos`.`Customer_name` AS `Customer_name`,`pos`.`Date` AS `Date`,`product`.`pro_id` AS `pro_id`,`product`.`brand` AS `brand`,`product`.`model` AS `model`,`product`.`category` AS `category`,`pos`.`qty` AS `qty`,`product`.`sellingprice` AS `sellingprice`,(`pos`.`qty` * `product`.`origprice`) AS `total_origprice`,(`pos`.`qty` * `product`.`profit`) AS `total_profit`,(`pos`.`qty` * `product`.`sellingprice`) AS `total_sell` from (`pos` join `product`) where (`product`.`pro_id` = `pos`.`id`) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `pos_reports`  AS  select `pos`.`Customer_name` AS `Customer_name`,`pos`.`Date` AS `Date`,`product`.`pro_id` AS `pro_id`,`product`.`brand` AS `brand`,`product`.`model` AS `model`,`product`.`category` AS `category`,`pos`.`qty` AS `qty`,`product`.`sellingprice` AS `sellingprice`,`pos`.`qty` * `product`.`origprice` AS `total_origprice`,`pos`.`qty` * `product`.`profit` AS `total_profit`,`pos`.`qty` * `product`.`sellingprice` AS `total_sell` from (`pos` join `product`) where `product`.`pro_id` = `pos`.`id` ;
 
 --
 -- Indexes for dumped tables
@@ -266,12 +327,6 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 ALTER TABLE `appointment`
   ADD PRIMARY KEY (`app_id`);
-
---
--- Indexes for table `logs`
---
-ALTER TABLE `logs`
-  ADD PRIMARY KEY (`logs_id`);
 
 --
 -- Indexes for table `patients`
@@ -308,16 +363,10 @@ ALTER TABLE `appointment`
   MODIFY `app_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=172;
 
 --
--- AUTO_INCREMENT for table `logs`
---
-ALTER TABLE `logs`
-  MODIFY `logs_id` int(150) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
 -- AUTO_INCREMENT for table `patients`
 --
 ALTER TABLE `patients`
-  MODIFY `pat_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `pat_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `product`
@@ -335,7 +384,7 @@ ALTER TABLE `supplier`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `users_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `users_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
