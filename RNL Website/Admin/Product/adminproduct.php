@@ -224,7 +224,7 @@ $search=$_POST['searchproduct'];
   		<td>" . $row["profit"] . "</td>
   		<td>" . $row["supplier"] . "</td>
   		<td>" . $row["qty"] ."</td>
-  		<td><form method='post' action='edit.php?pro_id=".$row["pro_id"]."'>"?>
+  		<td><form method='post' action='update.php?pro_id=".$row["pro_id"]."'>"?>
   		<button style='cursor: pointer; background-color: rgba(0,194,203,1); padding: 7px; border-radius: 10px; width: 80px; margin-bottom: 10px;' onclick="return confirm('Are you sure?')">UPDATE</button>
 		</form>
 		<?php echo "<form method='post' action='?pro_id=".$row["pro_id"]."'>"?>
