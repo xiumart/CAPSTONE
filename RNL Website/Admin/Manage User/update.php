@@ -181,8 +181,11 @@ button[type=submit] {
 				<input type="text" id="fname" value="<?php echo $row['users_username'];?>" name="username" style="border: #000 2px; border-style:solid; font-size: 20px; border-radius: 8px; padding: 3px; margin-right: -14.3%;" required="required"><br><br>
 				<label style="color: white;padding-right: 2%; font-size: 24px;">Password:</label>
 				<input type="text" id="fname" value="<?php echo $row['users_password'];?>" name="password" style="border: #000 2px; border-style:solid; font-size: 20px; border-radius: 8px; padding: 3px; margin-right: -14.5%;" required="required"><br><br>
-                                <label style="color: white;padding-right: 2%; font-size: 24px;">Role:</label>
-                                <input type="text" id="fname" value="<?php echo $row['user_role'];?>" name="role" style="border: #000 2px; border-style:solid; font-size: 20px; border-radius: 8px; padding: 3px; margin-right: -16.9%;" required="required"><br><br></center>
+                <label style="color: white;padding-right: 2%; font-size: 24px;">Position:</label>
+				<select name="position" id="fname"style="border: #000 2px; border-style:solid; font-size: 20px; border-radius: 8px; padding: 3px; margin-right: -10%;" required="required">
+					<option value="Administrator">Administrator</option>
+					<option value="Doctor">Doctor</option>
+				  </select><br><br>    
 				<center><button type="submit" name="btnsubmit" style='cursor:pointer; margin-right: 3%;'>UPDATE</button></center>
 			
 			  </form> 
