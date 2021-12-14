@@ -61,7 +61,7 @@
 		<span>Dr. Nanette Lavaro Lalic</span>
 	</div>
 	<div id="OPHTHALMOLOGIST" style="left: 895px;">
-		<span>OPTOMERTRIST</span>
+		<span>OPTOMETRIST</span>
 	</div>
 	
 	<div id="RNL_Vision_Care">
