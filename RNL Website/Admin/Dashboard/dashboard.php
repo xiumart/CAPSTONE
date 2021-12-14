@@ -146,7 +146,13 @@ if (isset($_GET['app_id'])) {
 		<span>TOTAL PROFIT</span>
 	</div>
 	<div id="P_1500">
-		<span>P 1,500</span>
+	<?php include "../../db_conn.php";
+ $sql=mysqli_query($conn, "SELECT SUM(`total_profit`) as pro FROM `pos_reports`");
+while($row=mysqli_fetch_array($sql)){
+    echo "<span>".$row['pro']."</span>";
+}
+
+?>
 	</div>
 	<div id="TOTAL_DOCTORS">
 		<span>PENDING APPOINTMENTS</span>
