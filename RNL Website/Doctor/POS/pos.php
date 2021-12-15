@@ -7,7 +7,7 @@ session_start();
 <meta charset="utf-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>POINT OF SALES | ADMIN</title>
+<title>POINT OF SALES | DOCTOR</title>
 <link rel="shorcut icon" type="img/png" href="logo.png">
 <link rel="stylesheet" type="text/css" id="applicationStylesheet" href="css/style.css"/>
 <script id="applicationScript" type="text/javascript" src="js/script.js"></script>

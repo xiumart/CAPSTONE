@@ -143,7 +143,7 @@ td, th {
 	<style>
 	}
 .example{
-	height: 560px; overflow-y: scroll; margin-top: 20px;padding: 0; width: 95%
+	height: 560px; overflow-y: scroll; margin-top: 20px;padding: 0; width: 95%;
 }
 .example::-webkit-scrollbar {
     display: none;
@@ -156,7 +156,7 @@ td, th {
 }
 </style>
 <div class="example">
-	<table style="margin-top: 280px; margin-left: 24.5%;">
+	<table style="margin-top: 280px; margin-left: 24.5%; font-size: 20px;">
   <tr>
     <th>Case no.</th>
     <th>Lastname</th>

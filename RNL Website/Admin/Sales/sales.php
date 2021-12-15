@@ -147,7 +147,7 @@ td, th {
   
 }
 .example{
-	height: 560px; overflow-y: scroll; margin-top: 20px;padding: 0; width: 95%
+	height: 560px; overflow-y: scroll; margin-top: 20px;padding: 0; width: 95%;font-size: 20px;
 }
 .example::-webkit-scrollbar {
     display: none;
@@ -160,7 +160,7 @@ td, th {
 }
 </style>
 <div class="example">
-	<table style="margin-top: 10px;">
+	<table style="margin-top: 10px; ">
   <tr>
   	<th>Customer Name</th>
 	<th>Date</th>
