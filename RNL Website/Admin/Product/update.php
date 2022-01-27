@@ -24,6 +24,7 @@ if (isset($_POST['btnsubmit'])) {
 		$profit = $sellprice - $originalprice;
 		$supplier = $_POST['supplier'];
 		$qty = $_POST['qty'];
+		$img = $_FILES['uploadfile']['name'];
 
 			$sql = mysqli_query($con,"UPDATE product SET brand = '$brandname', 
 				model = '$model' , 
@@ -35,6 +36,7 @@ if (isset($_POST['btnsubmit'])) {
 				profit = '$profit' , 
 				supplier = '$supplier' , 
 				qty = '$qty' 
+				image = '$img'
 				WHERE pro_id = '$eid'");
 			if($sql){
 				echo "<script>alert('you have successfully updated the record');</script>";
@@ -210,7 +212,12 @@ while($rowsh = $resulta->fetch_assoc()){
 ?>
 				  </select><br><br>
 				<label style="color: white;padding-right: 12.5%;padding-left: 500px">QTY:</label>
-				<input type="number" id="tentacles" value="<?php echo $row['qty'];?>" name="qty" min="1" max="10000" placeholder="Quantity" style="background-color: white; font-size: 20px; border:solid black 2px; width: 200px;; height:43px;  text-transform:lowercase; padding-left: 10px; border-radius: 8px; padding: 3px;" ><br><br><br><br>
+				<input type="number" id="tentacles" value="<?php echo $row['qty'];?>" name="qty" min="1" max="10000" placeholder="Quantity" style="background-color: white; font-size: 20px; border:solid black 2px; width: 200px;; height:43px;  text-transform:lowercase; padding-left: 10px; border-radius: 8px; padding: 3px;" ><br><br>
+				<label style="color: white;padding-right: 12.5%;padding-left: 500px">Image:</label>
+				<input type="file" id="uploadfile" value="<?php echo $row['image'];?>" name="uploadfile"  style="font-size: 20px;" ><br><br>
+
+
+				<br><br>
 				<center><button type="submit" name="btnsubmit">UPDATE</button></center>
 			
 			  </form> 

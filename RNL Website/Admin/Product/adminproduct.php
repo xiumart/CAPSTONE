@@ -17,15 +17,24 @@ if (isset($_POST['btnsubmit'])) {
 		$originalprice = $_POST['originalprice'];
 		$profit = $sellingprice - $originalprice;
 		$supplier = $_POST['supplier'];
-		$qty = $_POST['qty'];
-		if(!empty($brandname) && !empty($model) && !empty($category) && !empty($dateofarrival) && !empty($expirationdate) && !empty($sellingprice) && !empty($originalprice) && !empty($profit) && !empty($supplier) && !empty($qty) && !is_numeric($brandname))
+		$qty = $_POST['qty'];	
+		$img = $_FILES['uploadfile']['name'];
+		
+
+		$tempname = $_FILES['uploadfile']['tmp_name'];    
+        $folder = "Miggy/Applications/XAMPP/xamppfiles/htdocs/CAPSTONE/RNL Website/Admin/Product/images".$img;
+
+        
+        
+		if(!empty($brandname) && !empty($model) && !empty($category) && !empty($dateofarrival) && !empty($expirationdate) && !empty($sellingprice) && !empty($originalprice) && !empty($profit) && !empty($supplier) && !empty($qty) && !empty($img) && !is_numeric($brandname))
 		{
 
 			//save to database
 			//$user_id = random_num(20);
-			$query = "insert into product (brand,model,category,dateofarrival,expdate,sellingprice,origprice,profit,supplier,qty) values ('$brandname','$model','$category','$dateofarrival','$expirationdate','$sellingprice','$originalprice','$profit','$supplier','$qty')";
+			$query = "insert into product (brand,model,category,dateofarrival,expdate,sellingprice,origprice,profit,supplier,qty,image) values ('$brandname','$model','$category','$dateofarrival','$expirationdate','$sellingprice','$originalprice','$profit','$supplier','$qty','$img')";
 
 			mysqli_query($con, $query);
+			move_uploaded_file($tempname, $folder);
 
 			header("Location: adminproduct.php");
 			die;
@@ -33,6 +42,8 @@ if (isset($_POST['btnsubmit'])) {
 		{
 			echo "Please enter some valid information!";
 		}
+
+		
 	}
 
 ?>
@@ -205,6 +216,7 @@ td, th {
 <div class="example">
 	<table style="margin-top: 10px; font-size: 20px;">
   <tr>
+  	<th>Image</th>
     <th>Brand Name</th>
     <th>Model</th>
     <th>Category</th>
@@ -231,6 +243,7 @@ $search=$_POST['searchproduct'];
   		$row["pro_id"];
   		echo "
   		<tr>
+  		<td> <img src='image/".$row['image']."'></td>
   		<td>" . $row["brand"] . "</td>
   		<td>" . $row["model"] . "</td>
   		<td>" . $row["category"] . "</td>
@@ -241,7 +254,13 @@ $search=$_POST['searchproduct'];
   		<td>" . $row["profit"] . "</td>
   		<td>" . $row["supplier"] . "</td>
   		<td>" . $row["qty"] ."</td>
-  		<td><form method='post' action='update.php?pro_id=".$row["pro_id"]."'>"?>
+  		<td><form method='post' action='update.php?pro_id=".$row["pro_id"]."'>"
+
+
+
+  		?>
+
+
   		<button style='cursor: pointer; background-color: rgba(0,194,203,1); padding: 7px; border-radius: 10px; width: 80px; margin-bottom: 10px;' onclick="return confirm('Are you sure?')">UPDATE</button>
 		</form>
 		<?php echo "<form method='post' action='?pro_id=".$row["pro_id"]."'>"?>
@@ -316,7 +335,7 @@ $search=$_POST['searchproduct'];
 			<!-- Modal content -->
 			<div class="modal-content">
 			  <span class="close">&times;</span>
-			  <form method="post">
+			  <form method="post" enctype="multipart/form-data">
 				<center><h2 style="color: #000;">New Product</h2><br><br></center>
 				<label style="color: #000;padding-right: 15%;">Brand Name:</label>
 				<input type="text" id="fname" name="bname" style="border: #000 2px; border-style:solid; font-size: 20px; border-radius: 8px; padding: 3px;" required="required" ><br><br>
@@ -335,9 +354,11 @@ $search=$_POST['searchproduct'];
 				<input type="text" id="fname" name="sellingprice" style="border: #000 2px; border-style:solid; font-size: 20px; border-radius: 8px; padding: 3px;" required="required"><br><br>
 				<label style="color: #000;padding-right:  14%;">Orignal Price:</label>
 				<input type="text" id="fname" name="originalprice" style="border: #000 2px; border-style:solid; font-size: 20px; border-radius: 8px; padding: 3px;" required="required"><br><br>
-				
+
 				<label style="color: #000;padding-right: 23%;">Supplier:</label>
 				<select name="supplier" id="Category"style="border: #000 2px; border-style:solid; font-size: 20px; border-radius: 8px; padding: 3px;"required="required">
+
+
 
 					<?php 
 
@@ -352,8 +373,14 @@ $search=$_POST['searchproduct'];
 					
 				  </select><br><br>
 				<label style="color: #000;padding-right: 30%;">QTY:</label>
-				<input type="number" id="tentacles" name="qty" min="1" max="10000" placeholder="Quantity" style="background-color: white; font-size: 20px; border:solid black 2px; width: 200px;; height:43px;  text-transform:lowercase; padding-left: 10px; border-radius: 8px; padding: 3px;" ><br><br><br><br>
+				<input type="number" id="tentacles" name="qty" min="1" max="10000" placeholder="Quantity" style="background-color: white; font-size: 20px; border:solid black 2px; width: 200px;; height:43px;  text-transform:lowercase; padding-left: 10px; border-radius: 8px; padding: 3px;" ><br><br>
+				<label for="photo" style="color: #000;padding-right: 30%;">Image:</label>
+				<input type="file" id="uploadfile" name="uploadfile" accept="image/*" style="font-size: 20px;" ><br><br>
+
+
+				<br><br>
 				<center><button type="submit" name="btnsubmit" onclick="return confirm('Are you sure')">Submit</button></center>
+
 			
 			  </form> 
 			</div>
