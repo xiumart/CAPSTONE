@@ -24,7 +24,13 @@ if (isset($_POST['btnsubmit'])) {
 		$profit = $sellprice - $originalprice;
 		$supplier = $_POST['supplier'];
 		$qty = $_POST['qty'];
-		$img = $_FILES['uploadfile']['name'];
+		//picture coding
+$picture_name=$_FILES['picture']['name'];
+$picture_type=$_FILES['picture']['type'];
+$picture_tmp_name=$_FILES['picture']['tmp_name'];
+$picture_size=$_FILES['picture']['size'];
+
+
 
 			$sql = mysqli_query($con,"UPDATE product SET brand = '$brandname', 
 				model = '$model' , 
@@ -35,10 +41,16 @@ if (isset($_POST['btnsubmit'])) {
 				origprice = '$originalprice' , 
 				profit = '$profit' , 
 				supplier = '$supplier' , 
-				qty = '$qty' 
-				image = '$img'
+				qty = '$qty',
+				image = '$picture_name'
 				WHERE pro_id = '$eid'");
 			if($sql){
+				if($picture_type=="image/jpeg" || $picture_type=="image/jpg" || $picture_type=="image/png" || $picture_type=="image/gif")
+
+					if($picture_size<=50000000)
+
+				$pic_name=time()."_".$picture_name;
+				move_uploaded_file($picture_tmp_name,"productImage/".$pic_name);
 				echo "<script>alert('you have successfully updated the record');</script>";
 				echo "<script>document.location='adminproduct.php';</script>";
 				
@@ -46,8 +58,6 @@ if (isset($_POST['btnsubmit'])) {
 			else{
 				echo "<script>alert('something went wrong!!!')</script>";
 			}
-
-	
 		}
 
 ?>
@@ -214,7 +224,8 @@ while($rowsh = $resulta->fetch_assoc()){
 				<label style="color: white;padding-right: 12.5%;padding-left: 500px">QTY:</label>
 				<input type="number" id="tentacles" value="<?php echo $row['qty'];?>" name="qty" min="1" max="10000" placeholder="Quantity" style="background-color: white; font-size: 20px; border:solid black 2px; width: 200px;; height:43px;  text-transform:lowercase; padding-left: 10px; border-radius: 8px; padding: 3px;" ><br><br>
 				<label style="color: white;padding-right: 12.5%;padding-left: 500px">Image:</label>
-				<input type="file" id="uploadfile" value="<?php echo $row['image'];?>" name="uploadfile"  style="font-size: 20px;" ><br><br>
+				<input type="file" id="uploadfile" name="picture" accept="image/*" style="font-size: 20px;" ><br><br>
+
 
 
 				<br><br>
