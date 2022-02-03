@@ -18,12 +18,18 @@ if (isset($_POST['btnsubmit'])) {
 		$profit = $sellingprice - $originalprice;
 		$supplier = $_POST['supplier'];
 		$qty = $_POST['qty'];	
-		$img = $_FILES['uploadfile']['name'];
-		
+		//picture coding
+$picture_name=$_FILES['picture']['name'];
+$picture_type=$_FILES['picture']['type'];
+$picture_tmp_name=$_FILES['picture']['tmp_name'];
+$picture_size=$_FILES['picture']['size'];
 
-		$tempname = $_FILES['uploadfile']['tmp_name'];    
-        $folder = "Miggy/Applications/XAMPP/xamppfiles/htdocs/CAPSTONE/RNL Website/Admin/Product/images".$img;
-
+if($picture_type=="image/jpeg" || $picture_type=="image/jpg" || $picture_type=="image/png" || $picture_type=="image/gif")
+{
+	if($picture_size<=50000000)
+	
+		$pic_name=time()."_".$picture_name;
+		move_uploaded_file($picture_tmp_name,"productImage/".$pic_name);
         
         
 		if(!empty($brandname) && !empty($model) && !empty($category) && !empty($dateofarrival) && !empty($expirationdate) && !empty($sellingprice) && !empty($originalprice) && !empty($profit) && !empty($supplier) && !empty($qty) && !empty($img) && !is_numeric($brandname))
@@ -42,7 +48,7 @@ if (isset($_POST['btnsubmit'])) {
 		{
 			echo "Please enter some valid information!";
 		}
-
+}
 		
 	}
 
@@ -375,7 +381,7 @@ $search=$_POST['searchproduct'];
 				<label style="color: #000;padding-right: 30%;">QTY:</label>
 				<input type="number" id="tentacles" name="qty" min="1" max="10000" placeholder="Quantity" style="background-color: white; font-size: 20px; border:solid black 2px; width: 200px;; height:43px;  text-transform:lowercase; padding-left: 10px; border-radius: 8px; padding: 3px;" ><br><br>
 				<label for="photo" style="color: #000;padding-right: 30%;">Image:</label>
-				<input type="file" id="uploadfile" name="uploadfile" accept="image/*" style="font-size: 20px;" ><br><br>
+				<input type="file" id="uploadfile" name="picture" accept="image/*" style="font-size: 20px;" ><br><br>
 
 
 				<br><br>
