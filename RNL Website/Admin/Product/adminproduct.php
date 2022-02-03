@@ -7,7 +7,6 @@ session_start();
 
 if (isset($_POST['btnsubmit'])) {
 		//something was posted
-		
 		$brandname = $_POST['bname'];
 		$model = $_POST['model'];
 		$category = $_POST['category'];
@@ -32,22 +31,17 @@ if($picture_type=="image/jpeg" || $picture_type=="image/jpg" || $picture_type=="
 		move_uploaded_file($picture_tmp_name,"productImage/".$pic_name);
         
         
-		if(!empty($brandname) && !empty($model) && !empty($category) && !empty($dateofarrival) && !empty($expirationdate) && !empty($sellingprice) && !empty($originalprice) && !empty($profit) && !empty($supplier) && !empty($qty) && !empty($img) && !is_numeric($brandname))
-		{
-
+	
 			//save to database
 			//$user_id = random_num(20);
-			$query = "insert into product (brand,model,category,dateofarrival,expdate,sellingprice,origprice,profit,supplier,qty,image) values ('$brandname','$model','$category','$dateofarrival','$expirationdate','$sellingprice','$originalprice','$profit','$supplier','$qty','$img')";
+			$query = "insert into product (brand,model,category,dateofarrival,expdate,sellingprice,origprice,profit,supplier,qty,image) values ('$brandname','$model','$category','$dateofarrival','$expirationdate','$sellingprice','$originalprice','$profit','$supplier','$qty','$pic_name')";
 
 			mysqli_query($con, $query);
 			move_uploaded_file($tempname, $folder);
 
 			header("Location: adminproduct.php");
 			die;
-		}else
-		{
-			echo "Please enter some valid information!";
-		}
+		
 }
 		
 	}
@@ -249,7 +243,7 @@ $search=$_POST['searchproduct'];
   		$row["pro_id"];
   		echo "
   		<tr>
-  		<td> <img src='image/".$row['image']."'></td>
+  		<td> <img src='productImage/".$row['image']."' style='width:100px; height:100px; border:groove #000' ></td>
   		<td>" . $row["brand"] . "</td>
   		<td>" . $row["model"] . "</td>
   		<td>" . $row["category"] . "</td>
@@ -265,8 +259,6 @@ $search=$_POST['searchproduct'];
 
 
   		?>
-
-
   		<button style='cursor: pointer; background-color: rgba(0,194,203,1); padding: 7px; border-radius: 10px; width: 80px; margin-bottom: 10px;' onclick="return confirm('Are you sure?')">UPDATE</button>
 		</form>
 		<?php echo "<form method='post' action='?pro_id=".$row["pro_id"]."'>"?>
