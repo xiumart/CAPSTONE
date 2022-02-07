@@ -395,8 +395,7 @@ Author URL: http://w3layouts.com
 			</div>
 		</div>
 		<div class="cpy-right py-3">
-			<p class="text-center">© 2020 Dentile. All rights reserved | Design by
-				<a href="http://w3layouts.com"> W3layouts.</a>
+			<p class="text-center">© 2020 Dentile. All rights reserved
 			</p>
 		</div>
 		<!-- move top -->
