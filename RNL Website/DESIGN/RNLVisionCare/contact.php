@@ -16,6 +16,7 @@ Author URL: http://w3layouts.com
 	<!-- Template CSS -->
 	<link href="//fonts.googleapis.com/css?family=Poppins:300,400,400i,500,600,700&display=swap" rel="stylesheet">
 	<!-- Template CSS -->
+	<link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
 </head>
 
 <body>
@@ -56,6 +57,13 @@ Author URL: http://w3layouts.com
 							<a class="nav-link" href="contact.php">Product</a>
 						</li>
 					</ul>
+					<div class="darkLight-searchBox">
+                		<div class="dark-light">
+                    		<i class='bx bx-moon moon'></i>
+                    		<i class='bx bx-sun sun'></i>
+                		</div>
+					</div>
+					<script src="script.js"></script>
 					<!--/search-right-->
 					<div class="search-right">
 						<a href="#search" title="search"><span class="fa fa-search" aria-hidden="true"></span></a>

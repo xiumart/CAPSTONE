@@ -12,6 +12,8 @@
 	<!-- Template CSS -->
 	<link href="//fonts.googleapis.com/css?family=Poppins:300,400,400i,500,600,700&display=swap" rel="stylesheet">
 	<!-- Template CSS -->
+	<link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+
 </head>
 
 <body>
@@ -52,6 +54,13 @@
 							<a class="nav-link" href="contact.php">Product</a>
 						</li>
 					</ul>
+					<div class="darkLight-searchBox">
+                		<div class="dark-light">
+                    		<i class='bx bx-moon moon'></i>
+                    		<i class='bx bx-sun sun'></i>
+                		</div>
+					</div>
+					<script src="script.js"></script>
 					<!--/search-right-->
 					<div class="search-right">
 						<a href="#search" title="search"><span class="fa fa-search" aria-hidden="true"></span></a>
@@ -193,17 +202,7 @@
 		<div class="container py-lg-5 pt-4">
 			<div class="row">
 				<div class="col-lg-3 col-md-6">
-					<div class="card text-center">
-						<div class="icon-holder">
-							<span class="fa fa-signal service-icon" aria-hidden="true"></span>
-						</div>
-						<h4 class="mission">Free 
-							Computerize Eye Exam</h4>
-						<div class="open-description">
-							<p>Maecenas sodales eu commodo ligula eget dolor dolor sit amet ligula</p>
-							<a href="#read">Read More</a>
-						</div>
-					</div>
+					
 				</div>
 				<div class="col-lg-3 col-md-6 mt-md-0 mt-5 pt-md-0 pt-3">
 					<div class="card text-center">
