@@ -25,12 +25,17 @@ if (isset($_POST['btnsubmit'])) {
 		$supplier = $_POST['supplier'];
 		$qty = $_POST['qty'];
 		//picture coding
-$picture_name=$_FILES['picture']['name'];
-$picture_type=$_FILES['picture']['type'];
-$picture_tmp_name=$_FILES['picture']['tmp_name'];
-$picture_size=$_FILES['picture']['size'];
+		$picture_name=$_FILES['picture']['name'];
+		$picture_type=$_FILES['picture']['type'];
+		$picture_tmp_name=$_FILES['picture']['tmp_name'];
+		$picture_size=$_FILES['picture']['size'];
 
+if($picture_type=="image/jpeg" || $picture_type=="image/jpg" || $picture_type=="image/png" || $picture_type=="image/gif"){
 
+					if($picture_size<=50000000)
+
+				$pic_name=time()."_".$picture_name;
+				move_uploaded_file($picture_tmp_name,"productImage/".$pic_name);
 
 			$sql = mysqli_query($con,"UPDATE product SET brand = '$brandname', 
 				model = '$model' , 
@@ -42,22 +47,15 @@ $picture_size=$_FILES['picture']['size'];
 				profit = '$profit' , 
 				supplier = '$supplier' , 
 				qty = '$qty',
-				image = '$picture_name'
+				image = '$pic_name'
 				WHERE pro_id = '$eid'");
-			if($sql){
-				if($picture_type=="image/jpeg" || $picture_type=="image/jpg" || $picture_type=="image/png" || $picture_type=="image/gif")
-
-					if($picture_size<=50000000)
-
-				$pic_name=time()."_".$picture_name;
-				move_uploaded_file($picture_tmp_name,"productImage/".$pic_name);
+		
+				
 				echo "<script>alert('you have successfully updated the record');</script>";
 				echo "<script>document.location='adminproduct.php';</script>";
 				
 			}
-			else{
-				echo "<script>alert('something went wrong!!!')</script>";
-			}
+			
 		}
 
 ?>
@@ -182,7 +180,7 @@ button[type=submit] {
 			<!-- Modal content -->
 			<div class="modal-content">
 			  <span class="close">&times;</span>
-			  <form method="post">
+			  <form method="post" enctype="multipart/form-data">
 
 			  	<?php 
 
