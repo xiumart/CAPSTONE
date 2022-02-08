@@ -50,10 +50,15 @@ if($picture_type=="image/jpeg" || $picture_type=="image/jpg" || $picture_type=="
 				image = '$pic_name'
 				WHERE pro_id = '$eid'");
 		
-				
+			if($sql){
 				echo "<script>alert('you have successfully updated the record');</script>";
 				echo "<script>document.location='adminproduct.php';</script>";
+
+			}
+			else{
+				echo"<script>alert('something went wrong!!!!')</script>";
 				
+			}
 			}
 			
 		}
