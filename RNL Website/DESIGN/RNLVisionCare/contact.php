@@ -54,7 +54,7 @@ Author URL: http://w3layouts.com
 							<a class="nav-link" href="contact.php">Contact</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="contact.php">Product</a>
+							<a class="nav-link" href="product.php">Product</a>
 						</li>
 					</ul>
 					<div class="darkLight-searchBox">
