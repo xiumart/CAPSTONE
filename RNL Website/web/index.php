@@ -38,9 +38,9 @@ include "../db_conn.php";
     <div class="container d-flex align-items-center justify-content-between">
       <!--dito mo lagay yung image carousel--><div class="logo">
         <!-- Uncomment below if you prefer to use an image logo -->
-        <a href="index.php"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>
+        <a href="index.php"><img src="assets/img/logo1.png" alt="" class="img-fluid"></a>
       </div>
-      <div class="logo"><h1><a href="index.php">RNL Vision Care</a></h1></div>
+      <!-- <div class="logos"><h1><a href="index.php">RNL Vision Care</a></h1></div> -->
       <nav id="navbar" class="navbar">
         <ul>
           <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
@@ -72,7 +72,7 @@ include "../db_conn.php";
     <div class="container">
       <div class="row">
         <div class="col-lg-6 pt-5 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center">
-          <h1 data-aos="fade-up">When life gets BLURRY <br>
+          <h1 data-aos="fade-right">When life gets BLURRY <br>
             see your DOCTOR</h1>
         </div>
         <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="fade-left" data-aos-delay="200">
@@ -80,6 +80,7 @@ include "../db_conn.php";
         </div>
       </div>
     </div>
+    
   </section><!-- End Hero -->
 
   <main id="main">
@@ -95,7 +96,7 @@ include "../db_conn.php";
         </div>
 
         <div class="row content">
-          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="150">
+          <div class="col-lg-6" data-aos="fade-right" data-aos-delay="150">
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
               magna aliqua.
@@ -106,13 +107,13 @@ include "../db_conn.php";
               <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat</li>
             </ul>
           </div>
-          <div class="col-lg-6 pt-4 pt-lg-0" data-aos="fade-up" data-aos-delay="300">
+          <div class="col-lg-6 pt-4 pt-lg-0" data-aos="fade-left" data-aos-delay="300">
             <p>
               Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
               velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
               culpa qui officia deserunt mollit anim id est laborum.
             </p>
-            <a href="#" class="btn-learn-more">Learn More</a>
+            <!-- <a href="#" class="btn-learn-more">Learn More</a> -->
           </div>
         </div>
 
@@ -165,7 +166,7 @@ include "../db_conn.php";
 
         <div class="row">
           <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-            <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
+            <div class="icon-box" data-aos="fade-right" data-aos-delay="100">
               <div class="icon"><i class="bx bxl-dribbble"></i></div>
               <h4 class="title"><a href="">Lorem Ipsum</a></h4>
               <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
@@ -173,7 +174,7 @@ include "../db_conn.php";
           </div>
 
           <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-            <div class="icon-box" data-aos="fade-up" data-aos-delay="200">
+            <div class="icon-box" data-aos="fade-left" data-aos-delay="200">
               <div class="icon"><i class="bx bx-file"></i></div>
               <h4 class="title"><a href="">Sed ut perspiciatis</a></h4>
               <p class="description">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</p>
@@ -431,7 +432,7 @@ include "../db_conn.php";
 
         <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="400">
 
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+          <div class="col-lg-3 col-md-6 portfolio-item filter-app">
             <div class="portfolio-wrap">
               <img src="assets/img/products/product1.jpg" class="img-fluid" alt="">
               <div class="portfolio-info">
@@ -445,7 +446,7 @@ include "../db_conn.php";
             </div>
           </div>
 
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+          <div class="col-lg-3 col-md-6 portfolio-item filter-web">
             <div class="portfolio-wrap">
               <img src="assets/img/products/product2.png" class="img-fluid" alt="">
               <div class="portfolio-info">
@@ -459,7 +460,7 @@ include "../db_conn.php";
             </div>
           </div>
 
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+          <div class="col-lg-3 col-md-6 portfolio-item filter-app">
             <div class="portfolio-wrap">
               <img src="assets/img/products/product3.jpg" class="img-fluid" alt="">
               <div class="portfolio-info">
@@ -473,7 +474,7 @@ include "../db_conn.php";
             </div>
           </div>
 
-          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
+          <div class="col-lg-3 col-md-6 portfolio-item filter-card">
             <div class="portfolio-wrap">
               <img src="assets/img/products/product4.jpg" class="img-fluid" alt="">
               <div class="portfolio-info">
@@ -481,13 +482,13 @@ include "../db_conn.php";
                 <p>Card</p>
                 <div class="portfolio-links">
                   <a href="assets/img/products/product4.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 2"><i class="bx bx-plus"></i></a>
-                  
+                  3
                 </div>
               </div>
             </div>
           </div>
 
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+          <div class="col-lg-3 col-md-6 portfolio-item filter-web">
             <div class="portfolio-wrap">
               <img src="assets/img/products/product5.jpg" class="img-fluid" alt="">
               <div class="portfolio-info">
@@ -501,7 +502,7 @@ include "../db_conn.php";
             </div>
           </div>
 
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+          <div class="col-lg-3 col-md-6 portfolio-item filter-app">
             <div class="portfolio-wrap">
               <img src="assets/img/products/product6.jpg" class="img-fluid" alt="">
               <div class="portfolio-info">
@@ -515,7 +516,7 @@ include "../db_conn.php";
             </div>
           </div>
 
-          <!-- <div class="col-lg-4 col-md-6 portfolio-item filter-card">
+          <div class="col-lg-3 col-md-6 portfolio-item filter-card">
             <div class="portfolio-wrap">
               <img src="assets/img/products/product7.png" class="img-fluid" alt="">
               <div class="portfolio-info">
@@ -527,7 +528,7 @@ include "../db_conn.php";
                 </div>
               </div>
             </div>
-          </div> -->
+          </div>
 
           <!-- <div class="col-lg-4 col-md-6 portfolio-item filter-card">
             <div class="portfolio-wrap">
@@ -568,8 +569,9 @@ include "../db_conn.php";
 
         <div class="section-title" data-aos="fade-up">
           <h2>Doctor</h2>
+          <!--ang ilagay nyo is eye catching na motto<p></p>-->
         </div>
-        <div class="w-25 p-3 d-flex justify-content-lg-center">
+        <div class="col-lg-3 col-md-6 d-flex align-items-center">
             <div class="member" data-aos="fade-up" data-aos-delay="100">
               <div class="member-img">
                 <img src="assets/img/staff/doctor.jpg" class="img-fluid" alt="">
@@ -587,18 +589,14 @@ include "../db_conn.php";
       <div class="container">
 
         <div class="section-title">
-          <h2>We Offers</h2>
-          <p></p>
+          <h2>We Offer</h2>
         </div>
-        <section class="w3l-free-consultion">
-		<div class="container">
-			<div class="consultation-grids">
-				<div class="apply-form">
+
         <div class="row">
-          <div class="col">
-            <div class="col-lg-12 col-md-6 mt-4 mt-md-0">
-            <div class="row align-items-start box recommended" data-aos="zoom-in" data-aos-delay="100">
-              <h4>Complete Eyeglass (Frame + Lens)</h4><br>
+          <div class="col-lg-6 col-md-6 align-items-center">
+            <div class="box" data-aos="fade-right" data-aos-delay="200">
+            <h4>Complete Eyeglass<br>
+              (Frame + Lens)</h4>
               <h3>For as low as:</h3>
               <ul>
                 <li>Ordinary Lens ₱499</li>
@@ -610,19 +608,17 @@ include "../db_conn.php";
               </ul>
             </div>
           </div>
+
+          <div class="col-lg-4 col-md-6 mt-4 mt-md-0 align-items-center">
+            <div class="mr-12" data-aos="fade-left" data-aos-delay="100">
+            <img src="assets/img/staff/doctor.jpg" style="height: 500px; border-radius: 8px;" class="img-fluid" alt="">
+            </div>
           </div>
+
         </div>
 
       </div>
-					
-				<div class="consultation-imgs">
-        <div class="row align-items-start" data-aos="zoom-in" data-aos-delay="100">
-					<img src="assets/img/staff/offers.jpg" class="img-fluid" alt="/">
-				</div>
-			</div>
-</div>
-		</div>
-	</section>
+    </section>
         
     </section><!-- End WE OFFER Section -->
 
@@ -639,10 +635,10 @@ include "../db_conn.php";
 				<div class="apply-form">
 					<h5>Set an Appointment</h5>
 					<form method="post" action="appformhandler.php" >
-          <p class="error"><?php echo $_GET['error']; ?></p>
+          <!-- <p class="error"><?php echo $_GET['error']; ?></p>
           <?php if (isset($_GET['success'])) { ?>
                <p class="success"><?php echo $_GET['success']; ?></p>
-          <?php } ?>
+          <?php } ?> -->
 						<div class="admission-form">
 							<div class="form-group">
 								<input type="text" id="fname" name="fname" class="form-control" placeholder="Full Name*" required="">
@@ -673,7 +669,7 @@ include "../db_conn.php";
         </div>
 				<div class="consultation-img">
         <div class="row align-items-start" data-aos="zoom-in" data-aos-delay="100">
-					<img src="assets/img/staff/doctor.jpg" class="img-fluid" alt="/">
+					<img src="assets/img/staff/doctor.jpg" class="img-fluid" alt="">
 				</div>
 			</div>
 		</div>

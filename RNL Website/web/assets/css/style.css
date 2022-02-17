@@ -44,12 +44,21 @@
 .dark .section-bg {
   background-color: #18191A;
 }
+.dark .portfolio #portfolio-flters li {
+  color: white;
+}
 .dark #hero h1 {
 color: white;
 }
 .dark .w3l-free-consultion .apply-form h5 {
-  color: #444444;
+  color: white;
 }
+.dark .w3l-free-consultion .consultation-grids {
+  background-color: #18191A;
+  border-style: solid;
+  border-color: white;
+}
+
 .navbar .darkLight-searchBox{
   display: flex;
   align-items: center;
@@ -91,9 +100,10 @@ color: white;
 .nav {
   background-color: #b3c7e8;
 }
+
 body {
   font-family: "Open Sans", sans-serif;
-  color: #444444;
+  color: black;
   background-color: #b3c7e8;
 }
 
@@ -113,6 +123,9 @@ h1, h2, h3, h4, h5, h6 {
 /*--------------------------------------------------------------
 # Appointment
 --------------------------------------------------------------*/
+.admission-form{
+  box-sizing: content-box;
+}
 .w3l-free-consultion {
   background-color: transparent;
   position: relative;
@@ -147,7 +160,6 @@ h1, h2, h3, h4, h5, h6 {
   grid-gap: 20px;
 }
 .consultation-imgs img {
-  border: 2px solid #3498db;
   border-radius: 8px;
   height: 473px;
   width: 95%;
@@ -298,11 +310,10 @@ h1, h2, h3, h4, h5, h6 {
 #header .logo h1 {
   font-size: 30px;
   margin: 0;
-  padding: 0;
   line-height: 1;
   font-weight: 700;
   letter-spacing: 1px;
-  margin-left: 20px;
+  text-align: center;
 }
 #header .logo h1 a, #header .logo h1 a:hover {
   color: #222222;
@@ -310,10 +321,9 @@ h1, h2, h3, h4, h5, h6 {
   padding: 0;
 }
 #header .logo img {
-  padding: 0;
   margin: 0;
-  margin-left: 30%;
   max-height: 100px;
+  text-align: center;
 }
 
 /*--------------------------------------------------------------
@@ -340,8 +350,8 @@ h1, h2, h3, h4, h5, h6 {
   align-items: center;
   justify-content: space-between;
   padding: 10px 0 10px 30px;
-  font-size: 15px;
-  font-weight: 400;
+  font-size: large;
+  font-weight: 600;
   color: #555555;
   white-space: nowrap;
   transition: 0.3s;
@@ -442,6 +452,9 @@ h1, h2, h3, h4, h5, h6 {
     display: none;
   }
 }
+.logos-mobile {
+  box-sizing: content-box;
+}
 .navbar-mobile {
   position: fixed;
   overflow: hidden;
@@ -516,6 +529,7 @@ h1, h2, h3, h4, h5, h6 {
   width: 100%;
   height: 70vh;
   margin-top: 70px;
+  box-sizing: content-box;
 }
 #hero h1 {
   margin: 0 0 10px 0;
@@ -1051,7 +1065,7 @@ section {
 # Portfolio
 --------------------------------------------------------------*/
 .portfolio .portfolio-item {
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 .portfolio #portfolio-flters {
   padding: 0;
@@ -1104,8 +1118,8 @@ section {
 .portfolio .portfolio-wrap img {
   transition: all ease-in-out 0.3s;
   border-radius: 3%;
-  height: 300px;
-  width: 430px;
+  height: 200px;
+  width: 330px;
 }
 .portfolio .portfolio-wrap .portfolio-info {
   opacity: 0;
@@ -1217,6 +1231,10 @@ section {
 /*--------------------------------------------------------------
 # Team
 --------------------------------------------------------------*/
+.doctor {
+  text-align: center;
+  box-sizing: content-box;
+}
 .team .member {
   margin-bottom: 20px;
   overflow: hidden;
@@ -1225,6 +1243,7 @@ section {
   background: #fff;
   box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
   align-content: center;
+  
 }
 .team .member .member-img {
   position: relative;
@@ -1261,7 +1280,7 @@ section {
   font-size: 18px;
   margin: 0 2px;
 }
-.team .member .member-info {
+.team .member .member-info {  
   padding: 25px 15px;
 }
 .team .member .member-info h4 {
@@ -1289,6 +1308,8 @@ section {
 /*--------------------------------------------------------------
 # Pricing
 --------------------------------------------------------------*/
+
+
 .pricing .box {
   padding: 20px;
   background: #f9f9f9;
@@ -1444,7 +1465,7 @@ section {
   color: #fff;
 }
 .contact .info {
-  color: #444444;
+  color: black;
 }
 .contact .info i {
   font-size: 32px;
