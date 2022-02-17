@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Dashboard - Brand</title>
+    <title>Table - Brand</title>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web:400,600,700">
@@ -29,15 +29,15 @@
                 </a>
                 <hr class="sidebar-divider my-0">
                 <ul class="navbar-nav text-light" id="accordionSidebar-1">
-                    <li class="nav-item"><a class="nav-link" href="index.html"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
-                    <li class="nav-item"><a class="nav-link" href="patient_records.html"><i class="fa fa-files-o"></i>Patient Records</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.php"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="patient_records.php"><i class="fa fa-files-o"></i>Patient Records</a></li>
                     <li class="nav-item"></li>
-                    <li class="nav-item"><a class="nav-link" href="POS.html"><i class="fas fa-shopping-cart"></i>Point of Sale</a><a class="nav-link" href="Sales.html"><i class="fa fa-money"></i>Sales</a></li>
-                    <li class="nav-item"><a class="nav-link" href="products.html"><i class="fas fa-glasses"></i>Product</a></li>
+                    <li class="nav-item"><a class="nav-link" href="POS.php"><i class="fas fa-shopping-cart"></i>Point of Sale</a><a class="nav-link active" href="Sales.php"><i class="fa fa-money"></i>Sales</a></li>
+                    <li class="nav-item"><a class="nav-link" href="products.php"><i class="fas fa-glasses"></i>Product</a></li>
                     <li class="nav-item"></li>
-                    <li class="nav-item"><a class="nav-link" href="supplier.html"><i class="fa fa-cab"></i>Supplier</a></li>
-                    <li class="nav-item"><a class="nav-link" href="reports.html"><i class="fas fa-table"></i>Reports</a><a class="nav-link" href="manage_users.html"><i class="fa fa-group"></i><span>Manage Users</span></a></li>
-                    <li class="nav-item"><a class="nav-link active" href="audittrails101-1.html"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" class="bi bi-file-post">
+                    <li class="nav-item"><a class="nav-link" href="supplier.php"><i class="fa fa-cab"></i>Supplier</a></li>
+                    <li class="nav-item"><a class="nav-link" href="reports.php"><i class="fas fa-table"></i>Reports</a><a class="nav-link" href="manage_users.php"><i class="fa fa-group"></i><span>Manage Users</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="audittrails.php"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" class="bi bi-file-post">
                                 <path d="M4 5.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5v-8z"></path>
                                 <path fill-rule="evenodd" d="M4 3.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z"></path>
                                 <path fill-rule="evenodd" d="M4 0h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2zm0 1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H4z"></path>
@@ -96,7 +96,7 @@
                         <div class="d-none d-sm-block topbar-divider"></div>
                         <li class="nav-item dropdown no-arrow">
                             <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" aria-expanded="false" data-toggle="dropdown" href="#"><span class="d-none d-lg-inline mr-2 text-gray-600 small">Dr. Coco Melon</span><img class="border rounded-circle img-profile" src="assets/img/dogs/image3.jpeg"></a>
-                                <div class="dropdown-menu shadow dropdown-menu-right animated--grow-in"><a class="dropdown-item" href="profile.html"><i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Profile</a><a class="dropdown-item" href="#"><i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Theme</a><a class="dropdown-item" href="#"><i class="fas fa-key fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Change Password</a>
+                                <div class="dropdown-menu shadow dropdown-menu-right animated--grow-in"><a class="dropdown-item" href="profile.php"><i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Profile</a><a class="dropdown-item" href="#"><i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Theme</a><a class="dropdown-item" href="#"><i class="fas fa-key fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Change Password</a>
                                     <div class="dropdown-divider"></div><a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Logout</a>
                                 </div>
                             </div>
@@ -106,52 +106,88 @@
             </nav>
             <div id="content">
                 <div class="d-sm-flex justify-content-between align-items-center mb-4" style="margin-top: 30px;">
-                    <h1 class="text-info mb-0">Audit Trails</h1>
+                    <h1 class="text-info mb-0" style="margin-left: 31px;">Sales</h1>
                 </div>
-                <div class="container-fluid">
+                <div class="container">
                     <div class="row">
-                        <div class="col">
-                            <div style="padding: 22px;">
-                                <section>
-                                    <hr>
-                                    <div>
-                                        <h3 style="font-size: 20px;">Search by dates</h3>
-                                    </div>
-                                    <div style="height: 48px;"><label style="height: 30px;">To:&nbsp;</label><input type="date" style="height: 30px;width: 155px;"><label style="margin: 0px 50px 0px;width: 0px;height: 30px;">From</label><input type="date" style="width: 155px;margin: 0px;padding: 0px 0px 0px px;"><button class="btn btn-primary" type="button" style="margin: 0px 80px;">Generate</button></div>
-                                    <div>
-                                        <hr>
-                                        <h3 style="font-size: 22px;">Socios deudores</h3>
-                                    </div>
-                                    <div class="table-responsive">
-                                        <table class="table">
-                                            <thead class="text-center">
-                                                <tr class="text-center">
-                                                    <th>User</th>
-                                                    <th>Activity</th>
-                                                    <th>Date and Time</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr class="text-center">
-                                                    <td>11111111-1</td>
-                                                    <td>Nombre1</td>
-                                                    <td>ApellidoP1</td>
-                                                </tr>
-                                                <tr class="text-center">
-                                                    <td>22222222-2</td>
-                                                    <td>Nombre2</td>
-                                                    <td>ApellidoP2</td>
-                                                </tr>
-                                                <tr class="text-center">
-                                                    <td>33333333-3</td>
-                                                    <td>Nombre3<br></td>
-                                                    <td>ApellidoP3</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </section>
-                                <section class="text-right"><button class="btn btn-primary" type="button" style="margin: 15px;font-size: 16px;width: 92px;height: 41px;">Print</button><button class="btn btn-primary" type="button" style="margin: 15px;background-color: #ff0000;"><i class="fa fa-file-pdf-o" style="font-size: 24px;"></i></button><button class="btn btn-primary" type="button" style="margin: 15px;margin-left: 15px;margin-right: 50px;background-color: #008000;"><i class="fa fa-file-excel-o" style="font-size: 24px;"></i></button></section>
+                        <div class="col-md-4">
+                            <h6>TO</h6><input type="date">
+                        </div>
+                        <div class="col-md-4">
+                            <h6>FROM</h6><input type="date">
+                        </div>
+                        <div class="col-md-4"><input type="search" class="form-control form-control-sm" aria-controls="dataTable" placeholder="Search by customer" style="margin-top: 25px;">
+                            <div class="float-left float-md-right mt-5 mt-md-0 search-area"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container-fluid" style="margin-top: 15px;">
+                    <div class="card shadow">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6 text-nowrap">
+                                    <div id="dataTable_length" class="dataTables_length" aria-controls="dataTable"><label>Show&nbsp;<select class="form-control form-control-sm custom-select custom-select-sm">
+                                                <option value="10" selected="">10</option>
+                                                <option value="25">25</option>
+                                                <option value="50">50</option>
+                                                <option value="100">100</option>
+                                            </select>&nbsp;</label></div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="text-md-right dataTables_filter" id="dataTable_filter"><label></label></div>
+                                </div>
+                            </div>
+                            <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
+                                <table class="table my-0" id="dataTable">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Position</th>
+                                            <th>Office</th>
+                                            <th>Age</th>
+                                            <th>Start date</th>
+                                            <th>Salary</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr></tr>
+                                        <tr></tr>
+                                        <tr></tr>
+                                        <tr></tr>
+                                        <tr></tr>
+                                        <tr></tr>
+                                        <tr></tr>
+                                        <tr></tr>
+                                        <tr></tr>
+                                        <tr></tr>
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 align-self-center">
+                                    <p id="dataTable_info" class="dataTables_info" role="status" aria-live="polite">Showing 1 to 10 of 27</p>
+                                </div>
+                                <div class="col-md-6">
+                                    <nav class="d-lg-flex justify-content-lg-end dataTables_paginate paging_simple_numbers">
+                                        <ul class="pagination">
+                                            <li class="page-item disabled"><a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
+                                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                            <li class="page-item"><a class="page-link" href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
+                                        </ul>
+                                    </nav>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -163,7 +199,7 @@
                 </div>
             </footer>
         </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
-    </div><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button>
+    </div>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/chart.min.js"></script>

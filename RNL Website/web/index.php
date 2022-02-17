@@ -1,3 +1,6 @@
+<?php 
+include "../db_conn.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -579,7 +582,7 @@
           </div><!--ito si doctora mo-->
     </section><!-- End Team Section -->
 
-    <!-- ======= Pricing Section ======= -->
+    <!-- ======= WE OFFER Section ======= -->
     <section id="pricing" class="pricing">
       <div class="container">
 
@@ -621,7 +624,7 @@
 		</div>
 	</section>
         
-    </section><!-- End Pricing Section -->
+    </section><!-- End WE OFFER Section -->
 
     <!-- ======= Appointment ======= -->
     <section id="appointment" class="faq">
@@ -635,26 +638,36 @@
       <div class="row align-items-start" data-aos="zoom-in" data-aos-delay="100">
 				<div class="apply-form">
 					<h5>Set an Appointment</h5>
-					<form action="#" method="post">
+					<form method="post" action="appformhandler.php" >
+          <p class="error"><?php echo $_GET['error']; ?></p>
+          <?php if (isset($_GET['success'])) { ?>
+               <p class="success"><?php echo $_GET['success']; ?></p>
+          <?php } ?>
 						<div class="admission-form">
 							<div class="form-group">
-								<input type="text" class="form-control" placeholder="Full Name*" required="">
+								<input type="text" id="fname" name="fname" class="form-control" placeholder="Full Name*" required="">
 							</div>
 							<div class="form-group">
-								<input type="text" class="form-control" placeholder="Phone Number*" required="">
+								<input type="number" id="contact" name="contact" pattern="[0-9]{11}" class="form-control" placeholder="Phone Number*" required="">
 							</div>
 							<div class="form-group">
-								<input type="email" class="form-control" placeholder="Email*" required="">
+								<input type="email" id="email" name="email" class="form-control" placeholder="Email*" required="">
 							</div>
-							<select class="form-control">
+              <div class="form-group">
+								<input type="date" id="date" name="date" class="form-control" required="">
+							</div>
+              <div class="form-group">
+								<input type="time" id="time" name="time" class="form-control" required="">
+							</div>
+							<select class="form-control" id="purpose" name="purpose">
 								<option>Eye Check up</option>
 								<option>Others</option>
 							</select>
-						</div>
-						<div class="form-group">
+						</div><br>
+						<!-- <div class="form-group">
 							<textarea name="Comment" class="form-control" placeholder="Message*" required=""></textarea>
-						</div>
-						<button type="submit" class="btn btn-primary submit">Confirm</button>
+						</div> -->
+						<button type="submit" class="btn btn-primary submit" onclick="return confirm('Are you sure set an appointment?')">Confirm</button>
 					</form>
 				</div>
         </div>

@@ -18,7 +18,6 @@
     <link rel="stylesheet" href="assets/css/Search-Input-responsive.css">
     <link rel="stylesheet" href="assets/css/Table-With-Search-1.css">
     <link rel="stylesheet" href="assets/css/Table-With-Search.css">
-    <link rel="stylesheet" href="assets/css/modal.css">
 </head>
 
 <body id="page-top">
@@ -30,15 +29,15 @@
                 </a>
                 <hr class="sidebar-divider my-0">
                 <ul class="navbar-nav text-light" id="accordionSidebar-1">
-                    <li class="nav-item"><a class="nav-link" href="index.html"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
-                    <li class="nav-item"><a class="nav-link active" href="patient_records.html"><i class="fa fa-files-o"></i>Patient Records</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.php"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="patient_records.php"><i class="fa fa-files-o"></i>Patient Records</a></li>
                     <li class="nav-item"></li>
-                    <li class="nav-item"><a class="nav-link" href="POS.html"><i class="fas fa-shopping-cart"></i>Point of Sale</a><a class="nav-link" href="Sales.html"><i class="fa fa-money"></i>Sales</a></li>
-                    <li class="nav-item"><a class="nav-link" href="products.html"><i class="fas fa-glasses"></i>Product</a></li>
+                    <li class="nav-item"><a class="nav-link" href="POS.php"><i class="fas fa-shopping-cart"></i>Point of Sale</a><a class="nav-link" href="Sales.php"><i class="fa fa-money"></i>Sales</a></li>
+                    <li class="nav-item"><a class="nav-link" href="products.php"><i class="fas fa-glasses"></i>Product</a></li>
                     <li class="nav-item"></li>
-                    <li class="nav-item"><a class="nav-link" href="supplier.html"><i class="fa fa-cab"></i>Supplier</a></li>
-                    <li class="nav-item"><a class="nav-link" href="reports.html"><i class="fas fa-table"></i>Reports</a><a class="nav-link" href="manage_users.html"><i class="fa fa-group"></i><span>Manage Users</span></a></li>
-                    <li class="nav-item"><a class="nav-link" href="audittrails101-1.html"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" class="bi bi-file-post">
+                    <li class="nav-item"><a class="nav-link" href="supplier.php"><i class="fa fa-cab"></i>Supplier</a></li>
+                    <li class="nav-item"><a class="nav-link" href="reports.php"><i class="fas fa-table"></i>Reports</a><a class="nav-link active" href="manage_users.php"><i class="fa fa-group"></i><span>Manage Users</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="audittrails.php"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" class="bi bi-file-post">
                                 <path d="M4 5.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5v-8z"></path>
                                 <path fill-rule="evenodd" d="M4 3.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z"></path>
                                 <path fill-rule="evenodd" d="M4 0h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2zm0 1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H4z"></path>
@@ -97,7 +96,7 @@
                         <div class="d-none d-sm-block topbar-divider"></div>
                         <li class="nav-item dropdown no-arrow">
                             <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" aria-expanded="false" data-toggle="dropdown" href="#"><span class="d-none d-lg-inline mr-2 text-gray-600 small">Dr. Coco Melon</span><img class="border rounded-circle img-profile" src="assets/img/dogs/image3.jpeg"></a>
-                                <div class="dropdown-menu shadow dropdown-menu-right animated--grow-in"><a class="dropdown-item" href="profile.html"><i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Profile</a><a class="dropdown-item" href="#"><i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Theme</a><a class="dropdown-item" href="#"><i class="fas fa-key fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Change Password</a>
+                                <div class="dropdown-menu shadow dropdown-menu-right animated--grow-in"><a class="dropdown-item" href="profile.php"><i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Profile</a><a class="dropdown-item" href="#"><i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Theme</a><a class="dropdown-item" href="#"><i class="fas fa-key fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Change Password</a>
                                     <div class="dropdown-divider"></div><a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Logout</a>
                                 </div>
                             </div>
@@ -107,57 +106,20 @@
             </nav>
             <div id="content">
                 <div class="container-fluid">
-                    <div class="d-sm-flex justify-content-between align-items-center mb-4" style="margin-top: 30px;">
-                        <h1 class="text-info mb-0">Patient Records</h1>
-                    </div>
+                    <h1 class="text-info mb-4" style="margin-top: 30px;">Manage Users</h1>
                     <div class="card shadow">
+                        <div class="card-header py-3">
+                            <p class="text-primary m-0 font-weight-bold">Users Info</p>
+                        </div>
                         <div class="card-body">
                             <div class="row">
-                                <div class="col-md-6 text-nowrap"><button id="myBtn" a class="btn btn-primary btn-sm d-none d-sm-inline-block" role="button" href="#" style="background: rgba(26,38,50,0.74);">
-                                <i class="fas fa-plus fa-sm text-white-50"></i>&nbsp;Add New Patient</a></button>
-                                <!-- <button id="myBtn"></i>&nbsp;Add New Patient</button> -->
-                                    <div id="dataTable_length" class="dataTables_length" aria-controls="dataTable"></div>
-                                    <div id="myModal" class="modal">
-                                        <!-- Modal content -->
-                                        <div class="modal-content">
-                                          <span class="close">&times;</span>
-                                          <form method="post" enctype="multipart/form-data">
-                                            <center><h2 style="color: #000;">New Product</h2><br><br></center>
-                                            <label style="color: #000;padding-right: 15%;">Brand Name:</label>
-                                            <input type="text" id="fname" name="bname" style="border: #000 2px; border-style:solid; font-size: 20px; border-radius: 8px; padding: 3px;" required="required" ><br><br>
-                                            <label style="color: #000;padding-right: 27%;">Model:</label>
-                                            <input type="text" id="fname" name="model" style="border: #000 2px; border-style:solid; font-size: 20px; border-radius: 8px; padding: 3px;" required="required"><br><br>
-                                            <label style="color: #000;padding-right: 21.5%;">Category:</label>
-                                            <select name="category" id="Category"style="border: #000 2px; border-style:solid; font-size: 20px; border-radius: 8px; padding: 3px;" required="required">
-                                                <option value="Frame">Frame</option>
-                                                <option value="Lens">Lens</option>
-                                              </select><br><br>
-                                            <label style="color: #000;padding-right: 12%;">Date of Arrival:</label>
-                                            <input type="date" id="fname" name="dateofarrival" style="border: #000 2px; border-style:solid; font-size: 20px; border-radius: 8px; padding: 3px;" required="required"><br><br>
-                                            <label style="color: #000; padding-right: 10%;">Expiration Date:</label>
-                                            <input type="date" id="fname" name="expirationdate" style="border: #000 2px; border-style:solid; font-size: 20px; border-radius: 8px; padding: 3px;" required="required"><br><br>
-                                            <label style="color: #000;padding-right:  15%;">Selling Price:</label>
-                                            <input type="text" id="fname" name="sellingprice" style="border: #000 2px; border-style:solid; font-size: 20px; border-radius: 8px; padding: 3px;" required="required"><br><br>
-                                            <label style="color: #000;padding-right:  14%;">Orignal Price:</label>
-                                            <input type="text" id="fname" name="originalprice" style="border: #000 2px; border-style:solid; font-size: 20px; border-radius: 8px; padding: 3px;" required="required"><br><br>
-                            
-                                            <label style="color: #000;padding-right: 23%;">Supplier:</label>
-                                            <select name="supplier" id="Category"style="border: #000 2px; border-style:solid; font-size: 20px; border-radius: 8px; padding: 3px;"required="required">
-                                            </select><br><br>
-                                            <label style="color: #000;padding-right: 30%;">QTY:</label>
-                                            <input type="number" id="tentacles" name="qty" min="1" max="10000" placeholder="Quantity" style="background-color: white; font-size: 20px; border:solid black 2px; width: 200px;; height:43px;  text-transform:lowercase; padding-left: 10px; border-radius: 8px; padding: 3px;" ><br><br>
-                                            <label for="photo" style="color: #000;padding-right: 30%;">Image:</label>
-                                            <input type="file" id="uploadfile" name="picture" accept="image/*" style="font-size: 20px;" ><br><br>
-                            
-                            
-                                            <br><br>
-                                            <center><button type="submit" name="btnsubmit" onclick="return confirm('Are you sure')">Submit</button></center>
-                            
-                                        
-                                          </form>  
-                                        </div>
-                                      
-                                      </div>
+                                <div class="col-md-6 text-nowrap">
+                                    <div id="dataTable_length" class="dataTables_length" aria-controls="dataTable"><label>Show&nbsp;<select class="form-control form-control-sm custom-select custom-select-sm">
+                                                <option value="10" selected="">10</option>
+                                                <option value="25">25</option>
+                                                <option value="50">50</option>
+                                                <option value="100">100</option>
+                                            </select>&nbsp;</label></div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="text-md-right dataTables_filter" id="dataTable_filter"><label><input type="search" class="form-control form-control-sm" aria-controls="dataTable" placeholder="Search by lastname"></label></div>
@@ -167,12 +129,13 @@
                                 <table class="table my-0" id="dataTable">
                                     <thead>
                                         <tr>
-                                            <th>Case No</th>
+                                            <th>Id no</th>
                                             <th>Name</th>
-                                            <th>Position</th>
-                                            <th>Contact No</th>
-                                            <th>Age</th>
-                                            <th class="text-center">Action</th>
+                                            <th>Username</th>
+                                            <th>Email</th>
+                                            <th>Contact</th>
+                                            <th>Role</th>
+                                            <th style="text-align: center;">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -182,7 +145,8 @@
                                             <td>Accountant</td>
                                             <td>Tokyo</td>
                                             <td>33</td>
-                                            <td><a href="#" style="margin: 11px;">UPDATE</a><a href="#">VIEW</a></td>
+                                            <td>2008/11/28</td>
+                                            <td><button class="btn btn-success" data-toggle="modal" data-target="#modal1" type="button" style="margin-left: 38px;">UPDATE</button><button class="btn btn-danger" data-toggle="modal" data-target="#modal1" type="button" style="margin-left: 38px;margin-top: 5px;">REMOVE</button></td>
                                         </tr>
                                         <tr>
                                             <td>Cell 1</td>
@@ -190,18 +154,9 @@
                                             <td>Chief Executive Officer(CEO)</td>
                                             <td>London</td>
                                             <td>47</td>
-                                            <td><a href="#" style="margin: 11px;">UPDATE</a><a href="#">VIEW</a></td>
+                                            <td>2009/10/09<br></td>
+                                            <td><button class="btn btn-success" data-toggle="modal" data-target="#modal1" type="button" style="margin-left: 38px;">UPDATE</button><button class="btn btn-danger" data-toggle="modal" data-target="#modal1" type="button" style="margin-left: 38px;margin-top: 5px;">REMOVE</button></td>
                                         </tr>
-                                        <tr>
-                                            <td>Cell 1</td>
-                                            <td><img class="rounded-circle mr-2" width="30" height="30" src="assets/img/avatars/avatar3.jpeg">Ashton Cox</td>
-                                            <td>Junior Technical Author</td>
-                                            <td>San Francisco</td>
-                                            <td>66</td>
-                                            <td><a href="#" style="margin: 11px;">UPDATE</a><a href="#">VIEW</a></td>
-                                        </tr>
-                                        <tr></tr>
-                                        <tr></tr>
                                         <tr></tr>
                                     </tbody>
                                     <tfoot>
@@ -235,7 +190,7 @@
                 </div>
             </footer>
         </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
-    </div>
+    </div><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/chart.min.js"></script>
@@ -244,7 +199,6 @@
     <script src="assets/js/Multi-step-form.js"></script>
     <script src="assets/js/Table-With-Search.js"></script>
     <script src="assets/js/theme.js"></script>
-    <script src="assets/js/modal.js"></script>
 </body>
 
 </html>
