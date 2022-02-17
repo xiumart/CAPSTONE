@@ -18,7 +18,6 @@
     <link rel="stylesheet" href="assets/css/Search-Input-responsive.css">
     <link rel="stylesheet" href="assets/css/Table-With-Search-1.css">
     <link rel="stylesheet" href="assets/css/Table-With-Search.css">
-    <link rel="stylesheet" href="assets/css/modal.css">
 </head>
 
 <body id="page-top">
@@ -30,15 +29,15 @@
                 </a>
                 <hr class="sidebar-divider my-0">
                 <ul class="navbar-nav text-light" id="accordionSidebar-1">
-                    <li class="nav-item"><a class="nav-link" href="index.php"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
-                    <li class="nav-item"><a class="nav-link active" href="patient_recordsphp"><i class="fa fa-files-o"></i>Patient Records</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
+                    <li class="nav-item"><a class="nav-link active" href="patient_records.html"><i class="fa fa-files-o"></i>Patient Records</a></li>
                     <li class="nav-item"></li>
-                    <li class="nav-item"><a class="nav-link" href="POS.php"><i class="fas fa-shopping-cart"></i>Point of Sale</a><a class="nav-link" href="Sales.php"><i class="fa fa-money"></i>Sales</a></li>
-                    <li class="nav-item"><a class="nav-link" href="products.php"><i class="fas fa-glasses"></i>Product</a></li>
+                    <li class="nav-item"><a class="nav-link" href="POS.html"><i class="fas fa-shopping-cart"></i>Point of Sale</a><a class="nav-link" href="Sales.html"><i class="fa fa-money"></i>Sales</a></li>
+                    <li class="nav-item"><a class="nav-link" href="products.html"><i class="fas fa-glasses"></i>Product</a></li>
                     <li class="nav-item"></li>
-                    <li class="nav-item"><a class="nav-link" href="supplier.php"><i class="fa fa-cab"></i>Supplier</a></li>
-                    <li class="nav-item"><a class="nav-link" href="reports.php"><i class="fas fa-table"></i>Reports</a><a class="nav-link" href="manage_users.php"><i class="fa fa-group"></i><span>Manage Users</span></a></li>
-                    <li class="nav-item"><a class="nav-link" href="audittrails.php"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" class="bi bi-file-post">
+                    <li class="nav-item"><a class="nav-link" href="supplier.html"><i class="fa fa-cab"></i>Supplier</a></li>
+                    <li class="nav-item"><a class="nav-link" href="reports.html"><i class="fas fa-table"></i>Reports</a><a class="nav-link" href="manage_users.html"><i class="fa fa-group"></i><span>Manage Users</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="audittrails101-1.html"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" class="bi bi-file-post">
                                 <path d="M4 5.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5v-8z"></path>
                                 <path fill-rule="evenodd" d="M4 3.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z"></path>
                                 <path fill-rule="evenodd" d="M4 0h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2zm0 1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H4z"></path>
@@ -97,7 +96,7 @@
                         <div class="d-none d-sm-block topbar-divider"></div>
                         <li class="nav-item dropdown no-arrow">
                             <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" aria-expanded="false" data-toggle="dropdown" href="#"><span class="d-none d-lg-inline mr-2 text-gray-600 small">Dr. Coco Melon</span><img class="border rounded-circle img-profile" src="assets/img/dogs/image3.jpeg"></a>
-                                <div class="dropdown-menu shadow dropdown-menu-right animated--grow-in"><a class="dropdown-item" href="profile.php"><i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Profile</a><a class="dropdown-item" href="#"><i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Theme</a><a class="dropdown-item" href="#"><i class="fas fa-key fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Change Password</a>
+                                <div class="dropdown-menu shadow dropdown-menu-right animated--grow-in"><a class="dropdown-item" href="profile.html"><i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Profile</a><a class="dropdown-item" href="#"><i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Theme</a><a class="dropdown-item" href="#"><i class="fas fa-key fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Change Password</a>
                                     <div class="dropdown-divider"></div><a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Logout</a>
                                 </div>
                             </div>
@@ -113,96 +112,113 @@
                     <div class="card shadow">
                         <div class="card-body">
                             <div class="row">
-                                <div class="col-md-6 text-nowrap"><button id="myBtn" a class="btn btn-primary btn-sm d-none d-sm-inline-block" role="button" href="#" style="background: rgba(26,38,50,0.74);">
-                                <i class="fas fa-plus fa-sm text-white-50"></i>&nbsp;Add New Patient</a></button>
-                                <!-- <button id="myBtn"></i>&nbsp;Add New Patient</button> -->
+                                <div class="col-md-6 text-nowrap"><a class="btn btn-primary btn-sm d-none d-sm-inline-block" role="button" href="addpatient.php"><i class="fas fa-plus fa-sm text-white-50"></i>&nbsp;Add New Patient</a>
                                     <div id="dataTable_length" class="dataTables_length" aria-controls="dataTable"></div>
-                                    <div id="myModal" class="modal">
-                                        <!-- Modal content -->
-                                        <div class="modal-content">
-                                          <span class="close">&times;</span>
-                                          <form method="post" enctype="multipart/form-data">
-                                            <center><h2 style="color: #000;">New Product</h2><br><br></center>
-                                            <label style="color: #000;padding-right: 15%;">Brand Name:</label>
-                                            <input type="text" id="fname" name="bname" style="border: #000 2px; border-style:solid; font-size: 20px; border-radius: 8px; padding: 3px;" required="required" ><br><br>
-                                            <label style="color: #000;padding-right: 27%;">Model:</label>
-                                            <input type="text" id="fname" name="model" style="border: #000 2px; border-style:solid; font-size: 20px; border-radius: 8px; padding: 3px;" required="required"><br><br>
-                                            <label style="color: #000;padding-right: 21.5%;">Category:</label>
-                                            <select name="category" id="Category"style="border: #000 2px; border-style:solid; font-size: 20px; border-radius: 8px; padding: 3px;" required="required">
-                                                <option value="Frame">Frame</option>
-                                                <option value="Lens">Lens</option>
-                                              </select><br><br>
-                                            <label style="color: #000;padding-right: 12%;">Date of Arrival:</label>
-                                            <input type="date" id="fname" name="dateofarrival" style="border: #000 2px; border-style:solid; font-size: 20px; border-radius: 8px; padding: 3px;" required="required"><br><br>
-                                            <label style="color: #000; padding-right: 10%;">Expiration Date:</label>
-                                            <input type="date" id="fname" name="expirationdate" style="border: #000 2px; border-style:solid; font-size: 20px; border-radius: 8px; padding: 3px;" required="required"><br><br>
-                                            <label style="color: #000;padding-right:  15%;">Selling Price:</label>
-                                            <input type="text" id="fname" name="sellingprice" style="border: #000 2px; border-style:solid; font-size: 20px; border-radius: 8px; padding: 3px;" required="required"><br><br>
-                                            <label style="color: #000;padding-right:  14%;">Orignal Price:</label>
-                                            <input type="text" id="fname" name="originalprice" style="border: #000 2px; border-style:solid; font-size: 20px; border-radius: 8px; padding: 3px;" required="required"><br><br>
-                            
-                                            <label style="color: #000;padding-right: 23%;">Supplier:</label>
-                                            <select name="supplier" id="Category"style="border: #000 2px; border-style:solid; font-size: 20px; border-radius: 8px; padding: 3px;"required="required">
-                                            </select><br><br>
-                                            <label style="color: #000;padding-right: 30%;">QTY:</label>
-                                            <input type="number" id="tentacles" name="qty" min="1" max="10000" placeholder="Quantity" style="background-color: white; font-size: 20px; border:solid black 2px; width: 200px;; height:43px;  text-transform:lowercase; padding-left: 10px; border-radius: 8px; padding: 3px;" ><br><br>
-                                            <label for="photo" style="color: #000;padding-right: 30%;">Image:</label>
-                                            <input type="file" id="uploadfile" name="picture" accept="image/*" style="font-size: 20px;" ><br><br>
-                            
-                            
-                                            <br><br>
-                                            <center><button type="submit" name="btnsubmit" onclick="return confirm('Are you sure')">Submit</button></center>
-                            
-                                        
-                                          </form>  
-                                        </div>
-                                      
-                                      </div>
                                 </div>
+                                <?php
+                                error_reporting(0);
+                                if(isset($_POST['btnrefresh']))
+                                    {
+                                        header("Refresh:0");
+                                    }
+                                ?>
                                 <div class="col-md-6">
-                                    <div class="text-md-right dataTables_filter" id="dataTable_filter"><label><input type="search" class="form-control form-control-sm" aria-controls="dataTable" placeholder="Search by lastname"></label></div>
+                                    <div class="text-md-right dataTables_filter" id="dataTable_filter">
+                                        <form method="post">
+                                        <button class="btn btn-primary" style="margin-left: 5px; background-color: #77a4ed;" type="submit" name="btnhistory">History</button>
+                                        <button class="btn btn-primary" style="margin-left: 5px; background-color: #77a4ed;" type="submit"><i class="fa fa-trash" style="font-size: 15px;"></i></button><button class="btn btn-primary" style="margin-left: 5px; background-color: #77a4ed;" type="submit" name="btnrefresh"><i class="fa fa-refresh" style="font-size: 15px;"></i></button>&nbsp&nbsp&nbsp<label>
+                                        <input type="search" class="form-control form-control-sm" aria-controls="dataTable" placeholder="Search by lastname" name="searchpatients">
+                                        </form>
+                                    </label></div>
                                 </div>
                             </div>
                             <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
                                 <table class="table my-0" id="dataTable">
                                     <thead>
                                         <tr>
-                                            <th>Case No</th>
-                                            <th>Name</th>
-                                            <th>Position</th>
-                                            <th>Contact No</th>
+                                            <th>Case no.</th>
+                                            <th>Lastname</th>
+                                            <th>Firstname</th>
+                                            <th>Middlename</th>
+                                            <th>Address</th>
                                             <th>Age</th>
+                                            <th>Contact No.</th>
+                                            <th>Date</th>
                                             <th class="text-center">Action</th>
                                         </tr>
                                     </thead>
+
                                     <tbody>
-                                        <tr>
-                                            <td>Cell 1</td>
-                                            <td><img class="rounded-circle mr-2" width="30" height="30" src="assets/img/avatars/avatar1.jpeg">Airi Satou</td>
-                                            <td>Accountant</td>
-                                            <td>Tokyo</td>
-                                            <td>33</td>
-                                            <td><a href="#" style="margin: 11px;">UPDATE</a><a href="#">VIEW</a></td>
+                                       <?php
+                                       error_reporting(0);
+                                      include "config.php";
+                    $del_id=$_GET['pat_id'];
+                    $search=$_POST['searchpatients'];
+                    $sql2 = "DELETE FROM `patient_records` WHERE `ID`='$del_id' ";
+                                    $result = $con->query($sql2);
+                                    if (isset($_POST['btnhistory'])) {
+                                       $sql1 = "SELECT * FROM `patients_history` WHERE `pat_last`LIKE '%$search%'";
+                                        echo "<style type='text/css'>.btnedit{display: none;}
+                                        .btnview{
+                                            display:none;
+                                        }</style>";
+                                    }
+                                    else{
+                                    $sql1 = "SELECT * FROM `patient_records` WHERE `pat_last`LIKE '%$search%'";
+                                }
+                                    $result = $con->query($sql1);
+
+                                    if($result->num_rows > 0){
+                                        while($row = $result -> fetch_assoc()){
+
+                                        ?>
+                                        <style type="text/css">.btnview{display: block;}</style>
+
                                         </tr>
                                         <tr>
-                                            <td>Cell 1</td>
-                                            <td><img class="rounded-circle mr-2" width="30" height="30" src="assets/img/avatars/avatar2.jpeg">Angelica Ramos</td>
-                                            <td>Chief Executive Officer(CEO)</td>
-                                            <td>London</td>
-                                            <td>47</td>
-                                            <td><a href="#" style="margin: 11px;">UPDATE</a><a href="#">VIEW</a></td>
+                                            <td><?php echo $row['ID']; ?></td>  
+            <td><?php echo $row['pat_last'];?></td>
+            <td><?php echo $row['pat_first'];?></td>
+            <td><?php echo $row['pat_middle'];?></td>
+            <td><?php echo $row['pat_address'];?></td>
+            <td><?php echo $row['pat_age']; ?> </td>
+                <td><?php echo $row['contact']; ?> </td>
+                <td><?php echo $row['pat_date']; ?></td>
+                 <td>
+
+                    <!--update--->
+                    <form method='post' action='updatepatient.php?pat_id=<?php echo $row["ID"]; ?>'>
+                    <div class="btnedit">
+                    <button class="btn btn-success" style="margin-left: 5px;margin-bottom: 5px;" type="submit"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icon-tabler-pencil" style="font-size: 15px;">
+                                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                <path d="M4 20h4l10.5 -10.5a1.5 1.5 0 0 0 -4 -4l-10.5 10.5v4"></path>
+                                                <line x1="13.5" y1="6.5" x2="17.5" y2="10.5"></line>
+                                            </svg></button>
+                    </div>
+                    </form>
+                     <!--view--->
+                    <div class="btnview" style="display: none;">
+                    <form method='post' action='patient_records.php?pat_id=<?php echo $row["ID"]; ?>'>
+                    
+                    <button class="btn btn-secondary" style="margin-left: 5px;" type="submit"><i class="fa fa-eye" style="font-size: 15px;"></i></button>
+                    </form>
+                    </div>
+                    <!--delete--->
+                    
+                    <form method='post' action='patient_records.php?pat_id=<?php echo $row["ID"]; ?>'>
+                    <button class="btn btn-danger" style="margin-left: 5px;" type="submit"><i class="fa fa-trash" style="font-size: 15px;"></i></button>
+                    </form>
+                        </td> 
                                         </tr>
-                                        <tr>
-                                            <td>Cell 1</td>
-                                            <td><img class="rounded-circle mr-2" width="30" height="30" src="assets/img/avatars/avatar3.jpeg">Ashton Cox</td>
-                                            <td>Junior Technical Author</td>
-                                            <td>San Francisco</td>
-                                            <td>66</td>
-                                            <td><a href="#" style="margin: 11px;">UPDATE</a><a href="#">VIEW</a></td>
-                                        </tr>
-                                        <tr></tr>
-                                        <tr></tr>
-                                        <tr></tr>
+                                      
+      <?php
+                }
+            } else {
+                    echo "NO RESULTS";
+                    }
+
+        $con->close();
+        ?>
                                     </tbody>
                                     <tfoot>
                                         <tr></tr>
@@ -244,7 +260,6 @@
     <script src="assets/js/Multi-step-form.js"></script>
     <script src="assets/js/Table-With-Search.js"></script>
     <script src="assets/js/theme.js"></script>
-    <script src="assets/js/modal.js"></script>
 </body>
 
 </html>
