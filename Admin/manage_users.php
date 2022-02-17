@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Dashboard - Brand</title>
+    <title>Table - Brand</title>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web:400,600,700">
@@ -29,14 +29,14 @@
                 </a>
                 <hr class="sidebar-divider my-0">
                 <ul class="navbar-nav text-light" id="accordionSidebar-1">
-                    <li class="nav-item"><a class="nav-link" href="index.php"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="dashboard.php"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
                     <li class="nav-item"><a class="nav-link" href="patient_records.php"><i class="fa fa-files-o"></i>Patient Records</a></li>
                     <li class="nav-item"></li>
-                    <li class="nav-item"><a class="nav-link active" href="POS.php"><i class="fas fa-shopping-cart"></i>Point of Sale</a><a class="nav-link" href="Sales.php"><i class="fa fa-money"></i>Sales</a></li>
+                    <li class="nav-item"><a class="nav-link" href="POS.php"><i class="fas fa-shopping-cart"></i>Point of Sale</a><a class="nav-link" href="Sales.php"><i class="fa fa-money"></i>Sales</a></li>
                     <li class="nav-item"><a class="nav-link" href="products.php"><i class="fas fa-glasses"></i>Product</a></li>
                     <li class="nav-item"></li>
                     <li class="nav-item"><a class="nav-link" href="supplier.php"><i class="fa fa-cab"></i>Supplier</a></li>
-                    <li class="nav-item"><a class="nav-link" href="reports.php"><i class="fas fa-table"></i>Reports</a><a class="nav-link" href="manage_users.php"><i class="fa fa-group"></i><span>Manage Users</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="reports.php"><i class="fas fa-table"></i>Reports</a><a class="nav-link active" href="manage_users.php"><i class="fa fa-group"></i><span>Manage Users</span></a></li>
                     <li class="nav-item"><a class="nav-link" href="audittrails.php"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" class="bi bi-file-post">
                                 <path d="M4 5.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5v-8z"></path>
                                 <path fill-rule="evenodd" d="M4 3.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z"></path>
@@ -106,78 +106,79 @@
             </nav>
             <div id="content">
                 <div class="container-fluid">
-                    <div class="d-sm-flex justify-content-between align-items-center mb-4" style="margin-top: 30px;">
-                        <h1 class="text-info mb-0">Point of Sales</h1>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            <div style="padding: 22px;">
-                                <section>
-                                    <hr>
-                                    <div>
-                                        <h3 style="font-size: 20px;">Search by dates</h3>
-                                    </div><div class="input-group">
-  <select class="custom-select" id="inputGroupSelect04" aria-label="Example select with button addon">
-    <option selected>Choose...</option>
-    <option value="1">One</option>
-    <option value="2">Two</option>
-    <option value="3">Three</option>
-  </select>
-  <div class="input-group-append">
-    <button class="btn btn-outline-secondary" type="button">Button</button>
-  </div>
-</div><input type="number" style="margin-top: 10px;">
-                                    <div style="margin-top: 10px;"><label>Customer name</label><input type="date" style="margin-right: 0px;margin-left: 13px;"><button class="btn btn-primary" type="button" style="margin-right: -8px;margin-bottom: 14px;margin-left: 10px;">Generate</button></div>
-                                    <div class="table-responsive">
-                                        <table class="table">
-                                            <thead class="text-center">
-                                                <tr class="text-center">
-                                                    <th><strong>Brand Name</strong><br></th>
-                                                    <th>Model</th>
-                                                    <th>Category</th>
-                                                    <th>Price</th>
-                                                    <th>Quantity</th>
-                                                    <th>Amount</th>
-                                                    <th>Profit</th>
-                                                    <th>Action</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr class="text-center">
-                                                    <td>11111111-1</td>
-                                                    <td>Nombre1</td>
-                                                    <td>ApellidoP1</td>
-                                                    <td>Cell 4</td>
-                                                    <td>Cell 4</td>
-                                                    <td>Cell 6</td>
-                                                    <td>Cell 7</td>
-                                                    <td><a class="text-danger" href="#">Cancel</a></td>
-                                                </tr>
-                                                <tr class="text-center">
-                                                    <td>22222222-2</td>
-                                                    <td>Nombre2</td>
-                                                    <td>ApellidoP2</td>
-                                                    <td>Cell 4</td>
-                                                    <td>Cell 4</td>
-                                                    <td>Cell 6</td>
-                                                    <td>Cell 7</td>
-                                                    <td><a class="text-danger" href="#">Cancel</a></td>
-                                                </tr>
-                                                <tr class="text-center">
-                                                    <td>33333333-3</td>
-                                                    <td>Nombre3<br></td>
-                                                    <td>ApellidoP3</td>
-                                                    <td>Cell 4</td>
-                                                    <td>Cell 4</td>
-                                                    <td>Cell 6</td>
-                                                    <td>Cell 7</td>
-                                                    <td><a class="text-danger" href="#">Cancel</a></td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </section>
-                                <section class="text-right"></section>
+                    <h1 class="text-info mb-4" style="margin-top: 30px;">Manage Users</h1>
+                    <div class="card shadow">
+                        <div class="card-header py-3">
+                            <p class="text-primary m-0 font-weight-bold">Users Info</p>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6 text-nowrap">
+                                    <div id="dataTable_length" class="dataTables_length" aria-controls="dataTable"><label>Show&nbsp;<select class="form-control form-control-sm custom-select custom-select-sm">
+                                                <option value="10" selected="">10</option>
+                                                <option value="25">25</option>
+                                                <option value="50">50</option>
+                                                <option value="100">100</option>
+                                            </select>&nbsp;</label></div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="text-md-right dataTables_filter" id="dataTable_filter"><label><input type="search" class="form-control form-control-sm" aria-controls="dataTable" placeholder="Search by lastname"></label></div>
+                                </div>
+                            </div>
+                            <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
+                                <table class="table my-0" id="dataTable">
+                                    <thead>
+                                        <tr>
+                                            <th>Id no</th>
+                                            <th>Name</th>
+                                            <th>Username</th>
+                                            <th>Email</th>
+                                            <th>Contact</th>
+                                            <th>Role</th>
+                                            <th style="text-align: center;">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Cell 1</td>
+                                            <td><img class="rounded-circle mr-2" width="30" height="30" src="assets/img/avatars/avatar1.jpeg">Airi Satou</td>
+                                            <td>Accountant</td>
+                                            <td>Tokyo</td>
+                                            <td>33</td>
+                                            <td>2008/11/28</td>
+                                            <td><button class="btn btn-success" data-toggle="modal" data-target="#modal1" type="button" style="margin-left: 38px;">UPDATE</button><button class="btn btn-danger" data-toggle="modal" data-target="#modal1" type="button" style="margin-left: 38px;margin-top: 5px;">REMOVE</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Cell 1</td>
+                                            <td><img class="rounded-circle mr-2" width="30" height="30" src="assets/img/avatars/avatar2.jpeg">Angelica Ramos</td>
+                                            <td>Chief Executive Officer(CEO)</td>
+                                            <td>London</td>
+                                            <td>47</td>
+                                            <td>2009/10/09<br></td>
+                                            <td><button class="btn btn-success" data-toggle="modal" data-target="#modal1" type="button" style="margin-left: 38px;">UPDATE</button><button class="btn btn-danger" data-toggle="modal" data-target="#modal1" type="button" style="margin-left: 38px;margin-top: 5px;">REMOVE</button></td>
+                                        </tr>
+                                        <tr></tr>
+                                    </tbody>
+                                    <tfoot>
+                                        <tr></tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 align-self-center">
+                                    <p id="dataTable_info" class="dataTables_info" role="status" aria-live="polite">Showing 1 to 10 of 27</p>
+                                </div>
+                                <div class="col-md-6">
+                                    <nav class="d-lg-flex justify-content-lg-end dataTables_paginate paging_simple_numbers">
+                                        <ul class="pagination">
+                                            <li class="page-item disabled"><a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
+                                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                            <li class="page-item"><a class="page-link" href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
+                                        </ul>
+                                    </nav>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -189,7 +190,7 @@
                 </div>
             </footer>
         </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
-    </div>
+    </div><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/chart.min.js"></script>
