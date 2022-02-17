@@ -1119,7 +1119,7 @@ section {
   transition: all ease-in-out 0.3s;
   border-radius: 3%;
   height: 200px;
-  width: 330px;
+  width: 400px;
 }
 .portfolio .portfolio-wrap .portfolio-info {
   opacity: 0;
@@ -1515,7 +1515,7 @@ section {
   -webkit-animation: animate-loading 1s linear infinite;
   animation: animate-loading 1s linear infinite;
 }
-.contact .php-email-form .form-group {
+.contact .php-email-form .-form-group {
   margin-bottom: 20px;
 }
 .contact .php-email-form input, .contact .php-email-form textarea {
