@@ -280,26 +280,7 @@ if (isset($_GET['app_id'])) {
                                             <th>Remarks</th>
                                             <th class="text-center">Action</th>
                                         </tr>
-                                        <?php
-                                            $conn = mysqli_connect("localhost", "root", "", "capstone");
-                                            // Check connection
-                                            if ($conn->connect_error) {
-                                                die("Connection failed: " . $conn->connect_error);
-                                            }
-                                            $sql  = "SELECT * FROM finish_appointment ORDER BY app_date ASC";
-                                            $result = $conn->query($sql);
-                                                if ($result->num_rows > 0) {
-                                            // output data of each row
-                                                while($row = $result->fetch_assoc()) {
-                                                    echo "<tr><td>" . $row["app_name"]. "</td><td>" . $row["app_email"] . "</td><td>" . $row["app_contact"] . "</td><td>" . $row["app_date"] . "</td><td>"
-                                                    . $row["app_time"]. "</td><td>" . $row["app_purpose"]. "</td><td>" . $row["app_remarks"]. "</td><td> <form method='post' action='?app_id=".$row["app_id"]."'>"?>
-                                            <a href="#" style="margin-left: 8px;">Remove</a><?php echo "</td></tr>";
-                                            // <button style="cursor: pointer; background-color: rgba(0,194,203,1); padding: 10px; border-radius: 10px; width: 90px;" id='btnsubmit' onclick="return confirm('Are you sure?')">DONE</button></form> 
-                                            }
-                                            echo "</table>";
-                                            } else { echo "(No Finish Appointments)"; }
-                                            $conn->close();
-                                            ?>
+                                       
                                     </tbody>
                                 </table>
                             </div>
