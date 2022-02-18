@@ -123,7 +123,7 @@
                     <h1 class="text-info mb-4" style="margin-top: 30px;color: rgb(22,40,160);">Products</h1>
                 </div>
                  <div class="col-md-12 search-table-col" style="margin-top: 40px;">
-                    <div class="form-group pull-right col-lg-4"><input type="text" class="search form-control" placeholder="Search by typing here.."></div><span class="counter pull-right"></span>
+                    <div class="form-group pull-right col-lg-4"><input type="text" class="search form-control" name="searchproduct" placeholder="Search by typing here.."></div><span class="counter pull-right"></span>
             
                     <button class="btn btn-primary" data-toggle="modal" onclick="location='addproduct.php'" data-target="#modal1" type="button" style="margin-bottom: 16px;"><i class="far fa-plus-square" style="font-size: 15px;margin-right: 7px;margin-top: -4px;"></i>Add new product</button>
 
@@ -152,7 +152,10 @@
     <th>Action</th>
   </tr>
   <?php
+  error_reporting(0);
   include('config.php');
+
+  $search=$_POST['searchproduct'];
   $sql1 = "SELECT * FROM `product` WHERE `brand`LIKE '%$search%'";
   $result1 = $con->query($sql1);
   if($result1->num_rows > 0){
