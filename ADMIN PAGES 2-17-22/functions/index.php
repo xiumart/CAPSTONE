@@ -50,7 +50,7 @@ if( isset($_SESSION['ERRMSG_ARR']) && is_array($_SESSION['ERRMSG_ARR']) && count
 ?>
 <form action="login.php" method="post">
 
-			<font style=" font:bold 44px 'Aleo'; text-shadow:1px 1px 15px #000; color:#fff;"><center>EREC`s Pharmacy</center></font>
+			<font style=" font:bold 44px 'Aleo'; text-shadow:1px 1px 15px #000; color:#fff;"><center>POS LOGIN RNL</center></font>
 		<br>
 
 		
