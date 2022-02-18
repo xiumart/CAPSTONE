@@ -29,7 +29,7 @@
                 </a>
                 <hr class="sidebar-divider my-0">
                 <ul class="navbar-nav text-light" id="accordionSidebar-1">
-                    <li class="nav-item"><a class="nav-link" href="dashboard.php"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.php"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
                     <li class="nav-item"><a class="nav-link active" href="patient_records.php"><i class="fa fa-files-o"></i>Patient Records</a></li>
                     <li class="nav-item"></li>
                     <li class="nav-item"><a class="nav-link" href="POS.php"><i class="fas fa-shopping-cart"></i>Point of Sale</a><a class="nav-link" href="Sales.php"><i class="fa fa-money"></i>Sales</a></li>
@@ -37,7 +37,7 @@
                     <li class="nav-item"></li>
                     <li class="nav-item"><a class="nav-link" href="supplier.php"><i class="fa fa-cab"></i>Supplier</a></li>
                     <li class="nav-item"><a class="nav-link" href="reports.php"><i class="fas fa-table"></i>Reports</a><a class="nav-link" href="manage_users.php"><i class="fa fa-group"></i><span>Manage Users</span></a></li>
-                    <li class="nav-item"><a class="nav-link" href="audittrails.php"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" class="bi bi-file-post">
+                    <li class="nav-item"><a class="nav-link" href="audittrails101-1.php"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" class="bi bi-file-post">
                                 <path d="M4 5.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5v-8z"></path>
                                 <path fill-rule="evenodd" d="M4 3.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z"></path>
                                 <path fill-rule="evenodd" d="M4 0h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2zm0 1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H4z"></path>
@@ -112,7 +112,8 @@
                     <div class="card shadow">
                         <div class="card-body">
                             <div class="row">
-                                <div class="col-md-6 text-nowrap"><a class="btn btn-primary btn-sm d-none d-sm-inline-block" role="button" href="addpatient.php"><i class="fas fa-plus fa-sm text-white-50"></i>&nbsp;Add New Patient</a>
+                                <div class="col-md-6 text-nowrap"><a class="btn btn-primary btn-sm d-none d-sm-inline-block" role="button" href="addpatient.php"><i class="fas fa-plus fa-sm text-white-50"></i>&nbsp;Add New Patient</a><br><br>
+                                    <form method="post">To:&nbsp<input type="date" name="txtto">&nbsp&nbsp&nbspFrom:&nbsp<input type="date" name="txtfrom"> <button class="btn btn-primary" style="margin-left: 5px;" type="submit" name="btngenerate">GENERATE</button></form>
                                     <div id="dataTable_length" class="dataTables_length" aria-controls="dataTable"></div>
                                 </div>
                                 <?php
@@ -121,12 +122,37 @@
                                     {
                                         header("Refresh:0");
                                     }
+                                elseif (isset($_POST['btnhistory'])) {
+                                    echo "<script>document.location='history.php';</script>";
+                                }
+                                    
                                 ?>
+                                <link href="css/bootstrap-responsive.css" rel="stylesheet">
+<link href="../style.css" media="screen" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="tcal.css" />
+<script type="text/javascript" src="tcal.js"></script>
+<script language="javascript">
+function Clickheretoprint()
+{ 
+  var disp_setting="toolbar=yes,location=no,directories=yes,menubar=yes,"; 
+      disp_setting+="scrollbars=yes,width=700, height=400, left=100, top=25"; 
+  var content_vlue = document.getElementById("content").innerHTML; 
+  
+  var docprint=window.open("","",disp_setting); 
+   docprint.document.open(); 
+   docprint.document.write('</head><body onLoad="self.print()" style="width: 700px; font-size:11px; font-family:arial; font-weight:normal;">');          
+   docprint.document.write(content_vlue); 
+   docprint.document.close(); 
+   docprint.focus(); 
+}
+</script>
                                 <div class="col-md-6">
                                     <div class="text-md-right dataTables_filter" id="dataTable_filter">
                                         <form method="post">
-                                        <button class="btn btn-primary" style="margin-left: 5px; background-color: #77a4ed;" type="submit" name="btnhistory">History</button>
-                                        <button class="btn btn-primary" style="margin-left: 5px; background-color: #77a4ed;" type="submit"><i class="fa fa-trash" style="font-size: 15px;"></i></button><button class="btn btn-primary" style="margin-left: 5px; background-color: #77a4ed;" type="submit" name="btnrefresh"><i class="fa fa-refresh" style="font-size: 15px;"></i></button>&nbsp&nbsp&nbsp<label>
+                                           
+                                        <button  style="float:right;" class="btn btn-success btn-mini"><a href="javascript:Clickheretoprint()"> Print</a></button>  
+                                        <a href="history.php" class="btn btn-primary" style="margin-left: 5px;"><i class="fa fa-history" style="font-size: 15px;"></i></a>
+                                        <button class="btn btn-primary" style="margin-left: 5px;" type="submit"><i class="fa fa-trash" style="font-size: 15px;"></i></button><button class="btn btn-primary" style="margin-left: 5px;" type="submit" name="btnrefresh"><i class="fa fa-refresh" style="font-size: 15px;"></i></button>&nbsp&nbsp&nbsp<label>
                                         <input type="search" class="form-control form-control-sm" aria-controls="dataTable" placeholder="Search by lastname" name="searchpatients">
                                         </form>
                                     </label></div>
@@ -154,18 +180,16 @@
                                       include "config.php";
                     $del_id=$_GET['pat_id'];
                     $search=$_POST['searchpatients'];
+                    $to=$_POST['txtto'];
+                    $from=$_POST['txtfrom'];
                     $sql2 = "DELETE FROM `patient_records` WHERE `ID`='$del_id' ";
                                     $result = $con->query($sql2);
-                                    if (isset($_POST['btnhistory'])) {
-                                       $sql1 = "SELECT * FROM `patients_history` WHERE `pat_last`LIKE '%$search%'";
-                                        echo "<style type='text/css'>.btnedit{display: none;}
-                                        .btnview{
-                                            display:none;
-                                        }</style>";
+                                    if (isset($_POST['btngenerate'])) {
+                                         $sql1 = "SELECT * FROM `patient_records` WHERE `pat_date` BETWEEN '$to' AND '$from'";
                                     }
                                     else{
                                     $sql1 = "SELECT * FROM `patient_records` WHERE `pat_last`LIKE '%$search%'";
-                                }
+                                    }
                                     $result = $con->query($sql1);
 
                                     if($result->num_rows > 0){
@@ -196,17 +220,10 @@
                                             </svg></button>
                     </div>
                     </form>
-                     <!--view--->
-                    <div class="btnview" style="display: none;">
-                    <form method='post' action='patient_records.php?pat_id=<?php echo $row["ID"]; ?>'>
-                    
-                    <button class="btn btn-secondary" style="margin-left: 5px;" type="submit"><i class="fa fa-eye" style="font-size: 15px;"></i></button>
-                    </form>
-                    </div>
                     <!--delete--->
                     
                     <form method='post' action='patient_records.php?pat_id=<?php echo $row["ID"]; ?>'>
-                    <button class="btn btn-danger" style="margin-left: 5px;" type="submit"onclick="return confirm('Are you sure you want to cancel the update?')"><i class="fa fa-trash" style="font-size: 15px;"></i></button>
+                    <button class="btn btn-danger" style="margin-left: 5px;" type="submit"><i class="fa fa-trash" style="font-size: 15px;"></i></button>
                     </form>
                         </td> 
                                         </tr>
