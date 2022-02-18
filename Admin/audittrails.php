@@ -111,7 +111,36 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col">
-                              
+                        <div class="row">
+                        <div class="col mb-4">
+                            <div class="card shadow mb-4"></div>
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Username</th>
+                                            <th>User Activity</th>
+                                            <th>Date & Time</th>
+                                        </tr>
+                                        <?php
+                                                include "config.php";
+                                                $sql = "SELECT * from logs ORDER BY log_datentime DESC";
+                                                $result = $con-> query($sql);
+                                                if ($result-> num_rows > 0) {
+                                                    while ($row = $result-> fetch_assoc()){
+                                                        echo "</th><th>". $row["log_user"]. "</th><th>". $row["log_activity"]. "</th><th>". $row["log_datentime"]. "</th><tr>";
+                                                }
+                                                    echo "</table>";
+                                                }
+                                                else {
+                                                    echo "0 result";
+                                                }
+                                                $con-> close();
+                                            ?>
+                                        </thead>
+                                    <tbody>
+                                    </table>
+                            </div>  
                         </div>
                     </div>
                 </div>
