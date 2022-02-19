@@ -151,8 +151,8 @@ window.onload=startclock;
 	<div style="width: 100%; height: 190px;" >
 	<div style="width: 900px; float: left;">
 	<center><div style="font:bold 25px 'Aleo';">Sales Receipt</div>
-	EREC`s Pharmacy	<br>
-	La Castellana, Negros Occidental	<br>	<br>
+	RNL EYE CENTER	<br>
+	San Andres Bukid	<br>	<br>
 	</center>
 	<div>
 	<?php
