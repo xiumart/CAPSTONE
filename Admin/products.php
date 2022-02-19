@@ -131,7 +131,7 @@ function Clickheretoprint()
                                     }
 ?>
                 <div class="col-md-12 search-table-col" style="margin-top: 40px;">
-                    <div class="form-group pull-right col-lg-4"><input type="text" class="search form-control" placeholder="Search by typing here.."></div><span class="pull-right"><form method="post"><a href="javascript:Clickheretoprint()"  class="btn btn-dark btn-mini"> <i class="fa fa-print" style="font-size: 15px;"></i></a>
+                    <div class="form-group pull-right col-lg-4"><input type="text" name="searchproduct" class="search form-control" placeholder="Search by typing here.."></div><span class="pull-right"><form method="post"><a href="javascript:Clickheretoprint()"  class="btn btn-dark btn-mini"> <i class="fa fa-print" style="font-size: 15px;"></i></a>
 
                         <button class="btn btn-primary" style="margin-left: 5px;" type="submit" name="btnrefresh"><i class="fa fa-refresh" style="font-size: 15px;"></i></button></form>
                     </span><button class="btn btn-primary" data-toggle="modal" data-target="#modal1" type="button" style="margin-bottom: 16px;" onclick="location='addproduct.php'"><i class="far fa-plus-square" style="font-size: 15px;margin-right: 7px;margin-top: -4px;"></i>Add new product</button>
