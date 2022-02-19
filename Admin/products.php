@@ -1,17 +1,3 @@
-<?php   
- include "config.php";  
- if (isset($_GET['pro_id'])) {  
-      $id=$_GET['pro_id'];  
-      $delete=mysqli_query($con,"delete from product where pro_id='$id'");  
-      if ($delete) {  
-           header("location:products.php");  
-           die();  
-      }  
- }
-
-
- ?>  
-
 <!DOCTYPE html>
 <html>
 
@@ -43,15 +29,15 @@
                 </a>
                 <hr class="sidebar-divider my-0">
                 <ul class="navbar-nav text-light" id="accordionSidebar-1">
-                    <li class="nav-item"><a class="nav-link" href="index.html"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
-                    <li class="nav-item"><a class="nav-link" href="patient_records.html"><i class="fa fa-files-o"></i>Patient Records</a></li>
+                    <li class="nav-item"><a class="nav-link" href="dashboard.php"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="patient_records.php"><i class="fa fa-files-o"></i>Patient Records</a></li>
                     <li class="nav-item"></li>
-                    <li class="nav-item"><a class="nav-link" href="POS.html"><i class="fas fa-shopping-cart"></i>Point of Sale</a><a class="nav-link" href="Sales.html"><i class="fa fa-money"></i>Sales</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="products.html"><i class="fas fa-glasses"></i>Product</a></li>
+                    <li class="nav-item"><a class="nav-link" href="POS.php"><i class="fas fa-shopping-cart"></i>Point of Sale</a><a class="nav-link" href="Sales.php"><i class="fa fa-money"></i>Sales</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="products.php"><i class="fas fa-glasses"></i>Product</a></li>
                     <li class="nav-item"></li>
-                    <li class="nav-item"><a class="nav-link" href="supplier.html"><i class="fa fa-cab"></i>Supplier</a></li>
-                    <li class="nav-item"><a class="nav-link" href="reports.html"><i class="fas fa-table"></i>Reports</a><a class="nav-link" href="manage_users.html"><i class="fa fa-group"></i><span>Manage Users</span></a></li>
-                    <li class="nav-item"><a class="nav-link" href="audittrails101-1.html"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" class="bi bi-file-post">
+                    <li class="nav-item"><a class="nav-link" href="supplier.php"><i class="fa fa-cab"></i>Supplier</a></li>
+                    <li class="nav-item"><a class="nav-link" href="reports.php"><i class="fas fa-table"></i>Reports</a><a class="nav-link" href="manage_users.php"><i class="fa fa-group"></i><span>Manage Users</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="audittrails.php"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" class="bi bi-file-post">
                                 <path d="M4 5.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5v-8z"></path>
                                 <path fill-rule="evenodd" d="M4 3.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z"></path>
                                 <path fill-rule="evenodd" d="M4 0h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2zm0 1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H4z"></path>
@@ -110,7 +96,7 @@
                         <div class="d-none d-sm-block topbar-divider"></div>
                         <li class="nav-item dropdown no-arrow">
                             <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" aria-expanded="false" data-toggle="dropdown" href="#"><span class="d-none d-lg-inline mr-2 text-gray-600 small">Dr. Coco Melon</span><img class="border rounded-circle img-profile" src="assets/img/dogs/image3.jpeg"></a>
-                                <div class="dropdown-menu shadow dropdown-menu-right animated--grow-in"><a class="dropdown-item" href="profile.html"><i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Profile</a><a class="dropdown-item" href="#"><i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Theme</a><a class="dropdown-item" href="#"><i class="fas fa-key fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Change Password</a>
+                                <div class="dropdown-menu shadow dropdown-menu-right animated--grow-in"><a class="dropdown-item" href="profile.php"><i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Profile</a><a class="dropdown-item" href="#"><i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Theme</a><a class="dropdown-item" href="#"><i class="fas fa-key fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Change Password</a>
                                     <div class="dropdown-divider"></div><a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Logout</a>
                                 </div>
                             </div>
@@ -118,23 +104,16 @@
                     </ul>
                 </div>
             </nav>
-
-
             <div id="content">
                 <div class="container-fluid">
                     <h1 class="text-info mb-4" style="margin-top: 30px;color: rgb(22,40,160);">Products</h1>
                 </div>
-
-                <link href="css/bootstrap-responsive.css" rel="stylesheet">
-<link href="../style.css" media="screen" rel="stylesheet" type="text/css" />
-<link rel="stylesheet" type="text/css" href="tcal.css" />
-<script type="text/javascript" src="tcal.js"></script>
 <script language="javascript">
 function Clickheretoprint()
 { 
   var disp_setting="toolbar=yes,location=no,directories=yes,menubar=yes,"; 
       disp_setting+="scrollbars=yes,width=700, height=400, left=100, top=25"; 
-  var content_vlue = document.getElementById("content").innerHTML; 
+  var content_vlue = document.getElementById("con11").innerHTML; 
   
   var docprint=window.open("","",disp_setting); 
    docprint.document.open(); 
@@ -144,136 +123,102 @@ function Clickheretoprint()
    docprint.focus(); 
 }
 </script>
-                               <!-- <div class="col-md-6">
-                                    <div class="text-md-right dataTables_filter" id="dataTable_filter"> -->
-                                        <form method="post">
-                                           
-                                        <button  style="float:right;" class="btn btn-success btn-mini"><a href="javascript:Clickheretoprint()"> Print</a></button>  
-                                        
-                 <div class="col-md-12 search-table-col" style="margin-top: 40px;">
-                    <div class="form-group pull-right col-lg-4"><input type="text" class="search form-control" name="searchproduct" placeholder="Search by typing here.."></div><span class="counter pull-right"></span>
-            
-                    <button class="btn btn-primary" data-toggle="modal" onclick="location='addproduct.php'" data-target="#modal1" type="button" style="margin-bottom: 16px;"><i class="far fa-plus-square" style="font-size: 15px;margin-right: 7px;margin-top: -4px;"></i>Add new product</button> <br>
-                    <form method="post">To:&nbsp<input type="date" name="txtto">&nbsp&nbsp&nbspFrom:&nbsp<input type="date" name="txtfrom"> <button class="btn btn-primary" style="margin-left: 5px;" type="submit" name="btngenerate">GENERATE</button></form>
+<?php
+                                error_reporting(0);
+                                if(isset($_POST['btnrefresh']))
+                                    {
+                                        header("Location: products.php");
+                                    }
+?>
+                <div class="col-md-12 search-table-col" style="margin-top: 40px;">
+                    <div class="form-group pull-right col-lg-4"><input type="text" class="search form-control" placeholder="Search by typing here.."></div><span class="pull-right"><form method="post"><a href="javascript:Clickheretoprint()"  class="btn btn-dark btn-mini"> <i class="fa fa-print" style="font-size: 15px;"></i></a>
 
-
-
-
-
-
+                        <button class="btn btn-primary" style="margin-left: 5px;" type="submit" name="btnrefresh"><i class="fa fa-refresh" style="font-size: 15px;"></i></button></form>
+                    </span><button class="btn btn-primary" data-toggle="modal" data-target="#modal1" type="button" style="margin-bottom: 16px;" onclick="location='addproduct.php'"><i class="far fa-plus-square" style="font-size: 15px;margin-right: 7px;margin-top: -4px;"></i>Add new product</button>
+                    <table>
+                        <tr><th><center>Sort by Date of Arrival</center></th></tr>
+                        <tr><td>
+                     <form method="post">To:&nbsp<input type="date" name="txtto">&nbsp&nbsp&nbspFrom:&nbsp<input type="date" name="txtfrom"></td><td><button class="btn btn-primary" style="margin-left: 5px;" type="submit" name="btngenerate">GENERATE</button></td></form>
+                     </tr>
+                    </table>
                     <div class="table-responsive table-bordered table table-hover table-bordered results">
+                        <div id="con11">
                         <table class="table table-bordered table-hover">
                             <thead class="bill-header cs">
-                                <tr> 
-
-
-    <th>Image</th>
-    <th>Brand Name</th>
-    <th>Model</th>
-    <th>Category</th>
-    <th>Arrival</th>
-    <th>Exp. Date</th>
-    <th>Selling Price</th>
-    <th>Original Price</th>
-    <th>Profit</th>
-    <th>Supplier</th>
-    <th>Qty</th>
-    <th>Action</th>
-  </tr>
-  <?php
-  error_reporting(0);
-  include('config.php');
-
-  $search=$_POST['searchproduct'];
-  $sql1 = "SELECT * FROM `product` WHERE `brand`LIKE '%$search%'";
-  $result1 = $con->query($sql1);
-  if($result1->num_rows > 0){
-    while($row = $result1 -> fetch_assoc()){
-        $row["pro_id"];
-        echo "
-        <tr>
-        <td> <img src='productImage/".$row['image']."' style='width:100px; height:100px; border:groove #000' ></td>
-        <td>" . $row["brand"] . "</td>
-        <td>" . $row["model"] . "</td>
-        <td>" . $row["category"] . "</td>
-        <td>" . $row["dateofarrival"] . "</td>
-        <td>" . $row["expdate"] . "</td>
-        <td>" . $row["sellingprice"] . "</td>
-        <td>" . $row["origprice"] . "</td>
-        <td>" . $row["profit"] . "</td>
-        <td>" . $row["supplier"] . "</td>
-        <td>" . $row["qty"] ."</td>
-        <td><form method='post' action='update.php?pro_id=".$row["pro_id"]."'>"
-    
-  ?>
-        <button class="btn btn-success" style="margin-left: 5px;margin-bottom: 5px;" type="submit"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icon-tabler-pencil" style="font-size: 15px;">
-        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-        <path d="M4 20h4l10.5 -10.5a1.5 1.5 0 0 0 -4 -4l-10.5 10.5v4"></path>
-            <line x1="13.5" y1="6.5" x2="17.5" y2="10.5"></line>
-            </svg></button>
-        
-
-        <?php echo "<form method='post' action='?pro_id=".$row["pro_id"]."'>"?>
-        <button id='btnsubmit' class="btn btn-danger" style="margin-left: 5px;"><i class="fa fa-trash" style="font-size: 15px;"></i></button></td> 
-
-
-<?php 
-echo "</form>
-</td>
-</tr>
-";
-}
-}else{
-    echo "NO RESULTS";
-}
-
-$con->close();
-?>
-                                <!--<tr>
-                                    <th>No</th>
+                                <tr>
+                                    <th>Image</th>
                                     <th id="trs-hd" class="col-lg-1">Brand name</th>
                                     <th id="trs-hd" class="col-lg-2">Model</th>
                                     <th id="trs-hd" class="col-lg-3">Category</th>
                                     <th id="trs-hd" class="col-lg-2">Arrival</th>
-                                    <th id="trs-hd" class="col-lg-2">Expiration Date</th>
+                                    <th id="trs-hd" class="col-lg-2">Exp. Date</th>
                                     <th>Selling price</th>
                                     <th>Original price</th>
                                     <th>Profit</th>
                                     <th>Supplier</th>
                                     <th>Quantity</th>
                                     <th id="trs-hd" class="col-lg-2">Action</th>
-                                </tr> 
+                                </tr>
                             </thead>
                             <tbody>
-                                <tr class="warning no-result">
-                                    <td>Cell 1</td>
-                                    <td colspan="12"><i class="fa fa-warning"></i>&nbsp; No Result !!!</td>
-                                    <td>Cell 3</td>
-                                    <td>Cell 4</td>
-                                    <td>Cell 5</td>
-                                    <td>Cell 6</td>
-                                    <td>Cell 7</td>
-                                </tr>
+                                </div>
+                                 <?php
+  error_reporting(0);
+  include('config.php');
+
+  $search=$_POST['searchproduct'];
+  $to=$_POST['txtto'];
+  $from=$_POST['txtfrom'];
+   $del_id=$_GET['pro_id'];
+$sql2 = "DELETE FROM `product` WHERE `pro_id`='$del_id' ";
+                                    $result = $con->query($sql2);
+  if (isset($_POST['btngenerate'])) {
+      $sql1 = "SELECT * FROM `product` WHERE `dateofarrival` BETWEEN '$to' AND '$from'";
+  }
+  else{
+  $sql1 = "SELECT * FROM `product` WHERE `brand`LIKE '%$search%'";
+  }
+  $result1 = $con->query($sql1);
+  if($result1->num_rows > 0){
+    while($row = $result1 -> fetch_assoc()){
+        ?>
+        
+
                                 <tr>
-                                    <td>Cell 1</td>
-                                    <td>01</td>
-                                    <td>India</td>
-                                    <td>Souvik Kundu</td>
-                                    <td>Bootstrap Stuido</td>
-                                    <td>2014</td>
-                                    <td>Cell 7</td>
-                                    <td>Cell 7</td>
-                                    <td>Cell 7</td>
-                                    <td>Cell 10</td>
-                                    <td>Cell 10</td>
-                                    <td><button class="btn btn-success" style="margin-left: 5px;margin-bottom: 5px;" type="submit"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icon-tabler-pencil" style="font-size: 15px;">
+
+                                    <td><img src='RNL Website/Admin/Product/productImage/<?php echo $row['image'];?>' style='width:100px; height:100px; border:groove #000' ></td>
+                                    <td><?php echo $row["brand"]; ?></td>
+                                    <td><?php echo $row["model"]; ?></td>
+                                    <td><?php echo $row["category"]; ?></td>
+                                    <td><?php echo $row["dateofarrival"]; ?></td>
+                                    <td><?php echo $row["expdate"]; ?></td>
+                                    <td><?php echo $row["sellingprice"]; ?></td>
+                                    <td><?php echo $row["origprice"]; ?></td>
+                                    <td><?php echo $row["profit"]; ?></td>
+                                    <td><?php echo $row["supplier"]; ?></td>
+                                    <td><?php echo $row["qty"]; ?></td>
+
+                                    <td> <!--update--->
+                    <form method='post' action='updateproduct.php?pro_id=<?php echo $row["pro_id"]; ?>'>
+                    <div class="btnedit">
+                    <button class="btn btn-success" style="margin-left: 5px;margin-bottom: 5px;" type="submit"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icon-tabler-pencil" style="font-size: 15px;">
                                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                                 <path d="M4 20h4l10.5 -10.5a1.5 1.5 0 0 0 -4 -4l-10.5 10.5v4"></path>
                                                 <line x1="13.5" y1="6.5" x2="17.5" y2="10.5"></line>
-                                            </svg></button><button class="btn btn-danger" style="margin-left: 5px;" type="submit"><i class="fa fa-trash" style="font-size: 15px;"></i></button></td>
+                                            </svg></button>
+                    </div>
+                    </form>
+                                            <!--delete--->
+                                            <form method='post' action='products.php?pro_id=<?php echo $row["pro_id"]; ?>'>
+                    <button class="btn btn-danger" style="margin-left: 5px;" type="submit"><i class="fa fa-trash" style="font-size: 15px;"></i></button>
+                    </form></td>
                                 </tr>
+<?php
+}}
+?>
+</div>
                             </tbody>
-                        </table> -->
+                        </table>
                     </div>
                 </div>
             </div>
@@ -292,51 +237,6 @@ $con->close();
     <script src="assets/js/Multi-step-form.js"></script>
     <script src="assets/js/Table-With-Search.js"></script>
     <script src="assets/js/theme.js"></script>
-<?php
-include("config.php");
-
-                    $to=$_POST['txtto'];
-                    $from=$_POST['txtfrom'];
-                                    $result = $con->query($sql2);
-                                    if (isset($_POST['btngenerate'])) {
-                                         $sql1 = "SELECT * FROM `patient_records` WHERE `pat_date` BETWEEN '$to' AND '$from'";
-                                    }
-                                    else{
-                                    $sql1 = "SELECT * FROM `patient_records` WHERE `pat_last`LIKE '%$search%'";
-                                    }
-                                    $result = $con->query($sql1);
-
-                                    if($result->num_rows > 0){
-                                        while($row = $result -> fetch_assoc()){
-
-                                        ?>
-                                        <style type="text/css">.btnview{display: block;}</style>
-
-                                         </tr>
-                                        <tr>
-            <td><?php echo "<img src='productImage/".$row['image']."' style='width:100px; height:100px; border:groove #000'"; ?></td>
-            <td><?php echo $row['brand']; ?></td>  
-            <td><?php echo $row['model'];?></td>
-            <td><?php echo $row['category'];?></td>
-            <td><?php echo $row['dateofarrival'];?></td>
-            <td><?php echo $row['expdate'];?></td>
-            <td><?php echo $row['sellingprice']; ?> </td>
-                <td><?php echo $row['origprice']; ?> </td>
-                <td><?php echo $row['profit']; ?></td>
-                <td><?php echo $row['supplier']; ?></td>
-                <td><?php echo $row['qty']; ?></td>
-
-
-                 </tr>
-
-                 <?php
-                }
-            } else {
-                    echo "NO RESULTS";
-                    }
-
-        $con->close();
-        ?>
 </body>
 
 </html>
