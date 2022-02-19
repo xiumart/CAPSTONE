@@ -623,8 +623,8 @@ include "../db_conn.php";
     </section><!-- End WE OFFER Section -->
 
     <!-- ======= Appointment ======= -->
-    <!-- <section id="appointment" class="faq">
-      <div class="container"> -->
+    <section id="appointment" class="faq">
+      <div class="container">
       <div class="section-title">
           <h2>Appointment</h2>
       </div>

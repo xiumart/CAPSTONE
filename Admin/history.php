@@ -33,7 +33,7 @@
                     <li class="nav-item"><a class="nav-link active" href="patient_records.php"><i class="fa fa-files-o"></i>Patient Records</a></li>
                     <li class="nav-item"></li>
                     <li class="nav-item"><a class="nav-link" href="POS.php"><i class="fas fa-shopping-cart"></i>Point of Sale</a><a class="nav-link" href="Sales.php"><i class="fa fa-money"></i>Sales</a></li>
-                    <li class="nav-item"><a class="nav-link" href="products.php"><i Fclass="fas fa-glasses"></i>Product</a></li>
+                    <li class="nav-item"><a class="nav-link" href="products.php"><i class="fas fa-glasses"></i>Product</a></li>
                     <li class="nav-item"></li>
                     <li class="nav-item"><a class="nav-link" href="supplier.php"><i class="fa fa-cab"></i>Supplier</a></li>
                     <li class="nav-item"><a class="nav-link" href="reports.php"><i class="fas fa-table"></i>Reports</a><a class="nav-link" href="manage_users.php"><i class="fa fa-group"></i><span>Manage Users</span></a></li>
@@ -96,7 +96,7 @@
                         <div class="d-none d-sm-block topbar-divider"></div>
                         <li class="nav-item dropdown no-arrow">
                             <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" aria-expanded="false" data-toggle="dropdown" href="#"><span class="d-none d-lg-inline mr-2 text-gray-600 small">Dr. Coco Melon</span><img class="border rounded-circle img-profile" src="assets/img/dogs/image3.jpeg"></a>
-                                <div class="dropdown-menu shadow dropdown-menu-right animated--grow-in"><a class="dropdown-item" href="profile.html"><i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Profile</a><a class="dropdown-item" href="#"><i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Theme</a><a class="dropdown-item" href="#"><i class="fas fa-key fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Change Password</a>
+                                <div class="dropdown-menu shadow dropdown-menu-right animated--grow-in"><a class="dropdown-item" href="profile.php"><i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Profile</a><a class="dropdown-item" href="#"><i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Theme</a><a class="dropdown-item" href="#"><i class="fas fa-key fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Change Password</a>
                                     <div class="dropdown-divider"></div><a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Logout</a>
                                 </div>
                             </div>
@@ -107,65 +107,25 @@
             <div id="content">
                 <div class="container-fluid">
                     <div class="d-sm-flex justify-content-between align-items-center mb-4" style="margin-top: 30px;">
-                        <h1 class="text-info mb-0">Patient Records</h1>
+                        <h1 class="text-info mb-0">History</h1>
                     </div>
                     <div class="card shadow">
                         <div class="card-body">
                             <div class="row">
-                                <div class="col-md-6 text-nowrap"><a class="btn btn-primary btn-sm d-none d-sm-inline-block" role="button" href="addpatient.php"><i class="fas fa-plus fa-sm text-white-50"></i>&nbsp;Add New Patient</a><br><br>
-                                    
+                                <div class="col-md-6 text-nowrap"><a class="btn btn-primary btn-sm d-none d-sm-inline-block" role="button" href="addpatient.php"><i class="fas fa-plus fa-sm text-white-50"></i>&nbsp;Add New Patient</a>
                                     <div id="dataTable_length" class="dataTables_length" aria-controls="dataTable"></div>
                                 </div>
-                                <?php
-                                error_reporting(0);
-                                if(isset($_POST['btnrefresh']))
-                                    {
-                                        header("Refresh:0");
-                                    }
-                                elseif (isset($_POST['btnhistory'])) {
-                                    echo "<script>document.location='history.php';</script>";
-                                }
-                                    
-                                ?>
-                                <link href="css/bootstrap-responsive.css" rel="stylesheet">
-<link href="../style.css" media="screen" rel="stylesheet" type="text/css" />
-<link rel="stylesheet" type="text/css" href="tcal.css" />
-<script type="text/javascript" src="tcal.js"></script>
-<script language="javascript">
-function Clickheretoprint()
-{ 
-  var disp_setting="toolbar=yes,location=no,directories=yes,menubar=yes,"; 
-      disp_setting+="scrollbars=yes,width=700, height=400, left=100, top=25"; 
-  var content_vlue = document.getElementById("con11").innerHTML; 
-  
-  var docprint=window.open("","",disp_setting); 
-   docprint.document.open(); 
-   docprint.document.write('</head><body onLoad="self.print()" style="width: 700px; font-size:11px; font-family:arial; font-weight:normal;">');          
-   docprint.document.write(content_vlue); 
-   docprint.document.close(); 
-   docprint.focus(); 
-}
-</script>
                                 <div class="col-md-6">
                                     <div class="text-md-right dataTables_filter" id="dataTable_filter">
-                                        
                                         <form method="post">
-                                           
-                                          <a href="javascript:Clickheretoprint()"  class="btn btn-dark btn-mini"> <i class="fa fa-print" style="font-size: 15px;"></i></a>
-                                        <a href="history.php" class="btn btn-primary" style="margin-left: 5px;"><i class="fa fa-history" style="font-size: 15px;"></i></a>
+                                        <a href="patient_records.php" class="btn btn-primary" style="margin-left: 5px;"><i class="fa fa-arrow-left" style="font-size: 15px;"></i></a>
                                         <button class="btn btn-primary" style="margin-left: 5px;" type="submit"><i class="fa fa-trash" style="font-size: 15px;"></i></button><button class="btn btn-primary" style="margin-left: 5px;" type="submit" name="btnrefresh"><i class="fa fa-refresh" style="font-size: 15px;"></i></button>&nbsp&nbsp&nbsp<label>
                                         <input type="search" class="form-control form-control-sm" aria-controls="dataTable" placeholder="Search by lastname" name="searchpatients">
                                         </form>
-
-                                    </label>
-                                    
-                                </div>
+                                    </label></div>
                                 </div>
                             </div>
-                            
                             <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
-                                <form method="post">To:&nbsp<input type="date" name="txtto">&nbsp&nbsp&nbspFrom:&nbsp<input type="date" name="txtfrom"> <button class="btn btn-primary" style="margin-left: 5px;" type="submit" name="btngenerate">GENERATE</button></form>
-                            <div id="con11">
                                 <table class="table my-0" id="dataTable">
                                     <thead>
                                         <tr>
@@ -187,16 +147,16 @@ function Clickheretoprint()
                                       include "config.php";
                     $del_id=$_GET['pat_id'];
                     $search=$_POST['searchpatients'];
-                    $to=$_POST['txtto'];
-                    $from=$_POST['txtfrom'];
-                    $sql2 = "DELETE FROM `patient_records` WHERE `ID`='$del_id' ";
+                    $sql2 = "DELETE FROM `patients_history` WHERE `ID`='$del_id' ";
                                     $result = $con->query($sql2);
-                                    if (isset($_POST['btngenerate'])) {
-                                         $sql1 = "SELECT * FROM `patient_records` WHERE `pat_date` BETWEEN '$to' AND '$from'";
+                                    if (isset($_POST['searchpatients'])) {
+                                       $sql1 = "SELECT * FROM `patients_history` WHERE `pat_last`LIKE '%$search%'";
+                                      
                                     }
                                     else{
-                                    $sql1 = "SELECT * FROM `patient_records` WHERE `pat_last`LIKE '%$search%'";
-                                    }
+                                    $sql1 = "SELECT * FROM `patients_history`";
+
+                                }
                                     $result = $con->query($sql1);
 
                                     if($result->num_rows > 0){
@@ -214,24 +174,19 @@ function Clickheretoprint()
             <td><?php echo $row['pat_address'];?></td>
             <td><?php echo $row['pat_age']; ?> </td>
                 <td><?php echo $row['contact']; ?> </td>
-                <td><?php echo $row['pat_date']; ?></td>
-                            </div>
-                        <!--con11 end--->   
+                <td><?php echo $row['up_date']; ?></td>
                  <td>
+
+                     <!--view--->
                     
-                    <!--update--->
-                    <form method='post' action='updatepatient.php?pat_id=<?php echo $row["ID"]; ?>'>
-                    <div class="btnedit">
-                    <button class="btn btn-success" style="margin-left: 5px;margin-bottom: 5px;" type="submit"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icon-tabler-pencil" style="font-size: 15px;">
-                                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                                <path d="M4 20h4l10.5 -10.5a1.5 1.5 0 0 0 -4 -4l-10.5 10.5v4"></path>
-                                                <line x1="13.5" y1="6.5" x2="17.5" y2="10.5"></line>
-                                            </svg></button>
-                    </div>
+                    <form method='post' action='viewpatient.php?pat_id=<?php echo $row["ID"]; ?>'>
+                    
+                    <button class="btn btn-secondary" style="margin-left: 5px;" type="submit" name="btnview"><i class="fa fa-eye" style="font-size: 15px;"></i></button>
                     </form>
+                   
                     <!--delete--->
                     
-                    <form method='post' action='patient_records.php?pat_id=<?php echo $row["ID"]; ?>'>
+                    <form method='post' action='history.php?pat_id=<?php echo $row["ID"]; ?>'>
                     <button class="btn btn-danger" style="margin-left: 5px;" type="submit"><i class="fa fa-trash" style="font-size: 15px;"></i></button>
                     </form>
                         </td> 
@@ -251,7 +206,6 @@ function Clickheretoprint()
                                     </tfoot>
                                 </table>
                             </div>
-                            
                             <div class="row">
                                 <div class="col-md-6 align-self-center">
                                     <p id="dataTable_info" class="dataTables_info" role="status" aria-live="polite">Showing 1 to 10 of 27</p>

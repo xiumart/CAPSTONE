@@ -1,6 +1,17 @@
 <?php
 session_start();
 include "config.php"; 
+if (isset($_GET['app_id'])) {  
+	
+    $app_id=$_GET['app_id'];  
+    $delete=mysqli_query($conn,"delete from appointment where app_id='$app_id'");  
+    if ($delete) { 
+         $sql='INSERT into finish_appointment';
+         header("location:dashboard.php");
+
+         die();  
+    }  
+}
 ?>
 
 
@@ -105,7 +116,7 @@ include "config.php";
                             <li class="nav-item dropdown no-arrow">
                                 <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" aria-expanded="false" data-toggle="dropdown" href="#"><span class="d-none d-lg-inline mr-2 text-gray-600 small">Dr. Coco Melon</span><img class="border rounded-circle img-profile" src="assets/img/dogs/image3.jpeg"></a>
                                     <div class="dropdown-menu shadow dropdown-menu-right animated--grow-in"><a class="dropdown-item" href="profil.php"><i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Profile</a><a class="dropdown-item" href="#"><i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Theme</a><a class="dropdown-item" href="#"><i class="fas fa-key fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Change Password</a>
-                                        <div class="dropdown-divider"></div><a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Logout</a>
+                                        <div class="dropdown-divider"></div><a class="dropdown-item" href="logout.php" onclick="return confirm('Are you sure?')"><i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Logout</a>
                                     </div>
                                 </div>
                             </li>
@@ -203,70 +214,43 @@ include "config.php";
                                 <table class="table">
                                     <thead>
                                         <tr>
-                                            <th>Time</th>
                                             <th>Name</th>
+                                            <th>Email</th>
                                             <th>Contact</th>
+                                            <th>Date</th>
+                                            <th>Time</th>
                                             <th>Purpose</th>
+                                            <th>Remarks</th>
                                             <th class="text-center">Action</th>
                                         </tr>
+                                        <?php
+                                            include "config.php";
+                                            $sql  = "SELECT * FROM appointment ORDER BY app_date ASC";
+                                            $result = $con->query($sql);
+                                                if ($result->num_rows > 0) {
+                                            // output data of each row
+                                                while($row = $result->fetch_assoc()) {
+                                                    echo "<tr><td>" . $row["app_name"]. "</td><td>" . $row["app_email"] . "</td><td>" . $row["app_contact"] . "</td><td>" . $row["app_date"] . "</td><td>"
+                                                    . $row["app_time"]. "</td><td>" . $row["app_purpose"]. "</td><td>" . $row["app_remarks"]. "</td><td> <form method='post' action='?app_id=".$row["app_id"]."'>"?>
+                                            <a class="text-success" onclick="return confirm('Are you sure?')" href="dashboard.php" style="margin-left: 8px;">Finish</a>
+                                            <a class="text-danger" onclick="return confirm('Are you sure?')" href="dashboard.php" style="margin-left: 8px;">Remove</a>
+                                            <?php echo "</td></tr>";
+                                            // <button style="cursor: pointer; background-color: rgba(0,194,203,1); padding: 10px; border-radius: 10px; width: 90px;" id='btnsubmit' onclick="return confirm('Are you sure?')">DONE</button></form> 
+                                            }
+                                            echo "</table>";
+                                            } else { echo "(No Appointments)"; }
+                                            $con->close();
+                                            ?>
+                                            <!-- <a href="dashboard.php">Confirm</a> -->
                                     </thead>
                                     <tbody>
-                                        <tr>
+                                        <!-- <tr>
                                             <td>Cell 1</td>
                                             <td>Cell 2</td>
                                             <td>Cell 3</td>
                                             <td>Cell 4</td>
                                             <td><a href="#">Confirm</a><a class="text-success" href="#" style="margin-left: 8px;">Finish</a><a class="text-danger" href="#" style="margin-left: 8px;">Remove</a></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Cell 1</td>
-                                            <td>Cell 2</td>
-                                            <td>Cell 3</td>
-                                            <td>Cell 4</td>
-                                            <td><a href="#">Confirm</a><a class="text-success" href="#" style="margin-left: 8px;">Finish</a><a class="text-danger" href="#" style="margin-left: 8px;">Remove</a></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Cell 1</td>
-                                            <td>Cell 2</td>
-                                            <td>Cell 3</td>
-                                            <td>Cell 4</td>
-                                            <td><a href="#">Confirm</a><a class="text-success" href="#" style="margin-left: 8px;">Finish</a><a class="text-danger" href="#" style="margin-left: 8px;">Remove</a></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Cell 1</td>
-                                            <td>Cell 2</td>
-                                            <td>Cell 3</td>
-                                            <td>Cell 4</td>
-                                            <td><a href="#">Confirm</a><a class="text-success" href="#" style="margin-left: 8px;">Finish</a><a class="text-danger" href="#" style="margin-left: 8px;">Remove</a></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Cell 1</td>
-                                            <td>Cell 2</td>
-                                            <td>Cell 3</td>
-                                            <td>Cell 4</td>
-                                            <td><a href="#">Confirm</a><a class="text-success" href="#" style="margin-left: 8px;">Finish</a><a class="text-danger" href="#" style="margin-left: 8px;">Remove</a></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Cell 3</td>
-                                            <td>Cell 4</td>
-                                            <td>Cell 3</td>
-                                            <td>Cell 4</td>
-                                            <td><a href="#">Confirm</a><a class="text-success" href="#" style="margin-left: 8px;">Finish</a><a class="text-danger" href="#" style="margin-left: 8px;">Remove</a></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Cell 1</td>
-                                            <td>Cell 2</td>
-                                            <td>Cell 3</td>
-                                            <td>Cell 4</td>
-                                            <td><a href="#">Confirm</a><a class="text-success" href="#" style="margin-left: 8px;">Finish</a><a class="text-danger" href="#" style="margin-left: 8px;">Remove</a></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Cell 1</td>
-                                            <td>Cell 2</td>
-                                            <td>Cell 3</td>
-                                            <td>Cell 4</td>
-                                            <td><a href="#">Confirm</a><a class="text-success" href="#" style="margin-left: 8px;">Finish</a><a class="text-danger" href="#" style="margin-left: 8px;">Remove</a></td>
-                                        </tr>
+                                        </tr> --> 
                                     </tbody>
                                 </table>
                             </div>
@@ -286,71 +270,17 @@ include "config.php";
                             <div class="table-responsive">
                                 <table class="table">
                                     <thead>
-                                        <tr>
-                                            <th>Time</th>
+                                    <tr>
                                             <th>Name</th>
+                                            <th>Email</th>
                                             <th>Contact</th>
+                                            <th>Date</th>
+                                            <th>Time</th>
                                             <th>Purpose</th>
+                                            <th>Remarks</th>
                                             <th class="text-center">Action</th>
                                         </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>Cell 1</td>
-                                            <td>Cell 2</td>
-                                            <td>Cell 3</td>
-                                            <td>Cell 4</td>
-                                            <td><a class="text-danger" href="#" style="margin-left: 8px;">Remove</a></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Cell 1</td>
-                                            <td>Cell 2</td>
-                                            <td>Cell 3</td>
-                                            <td>Cell 4</td>
-                                            <td><a class="text-danger" href="#" style="margin-left: 8px;">Remove</a></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Cell 1</td>
-                                            <td>Cell 2</td>
-                                            <td>Cell 3</td>
-                                            <td>Cell 4</td>
-                                            <td><a class="text-danger" href="#" style="margin-left: 8px;">Remove</a></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Cell 1</td>
-                                            <td>Cell 2</td>
-                                            <td>Cell 3</td>
-                                            <td>Cell 4</td>
-                                            <td><a class="text-danger" href="#" style="margin-left: 8px;">Remove</a></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Cell 1</td>
-                                            <td>Cell 2</td>
-                                            <td>Cell 3</td>
-                                            <td>Cell 4</td>
-                                            <td><a class="text-danger" href="#" style="margin-left: 8px;">Remove</a></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Cell 3</td>
-                                            <td>Cell 4</td>
-                                            <td>Cell 3</td>
-                                            <td>Cell 4</td>
-                                            <td><a class="text-danger" href="#" style="margin-left: 8px;">Remove</a></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Cell 1</td>
-                                            <td>Cell 2</td>
-                                            <td>Cell 3</td>
-                                            <td>Cell 4</td>
-                                            <td><a class="text-danger" href="#" style="margin-left: 8px;">Remove</a></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Cell 1</td>
-                                            <td>Cell 2</td>
-                                            <td>Cell 3</td>
-                                            <td>Cell 4</td>
-                                            <td><a class="text-danger" href="#" style="margin-left: 8px;">Remove</a></td>
-                                        </tr>
+                                       
                                     </tbody>
                                 </table>
                             </div>

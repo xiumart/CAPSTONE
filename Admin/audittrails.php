@@ -32,7 +32,7 @@
                     <li class="nav-item"><a class="nav-link" href="dashboard.php"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
                     <li class="nav-item"><a class="nav-link" href="patient_records.php"><i class="fa fa-files-o"></i>Patient Records</a></li>
                     <li class="nav-item"></li>
-                    <li class="nav-item"><a class="nav-link" href="POS.hphp"><i class="fas fa-shopping-cart"></i>Point of Sale</a><a class="nav-link" href="Sales.php"><i class="fa fa-money"></i>Sales</a></li>
+                    <li class="nav-item"><a class="nav-link" href="POS.php"><i class="fas fa-shopping-cart"></i>Point of Sale</a><a class="nav-link" href="Sales.php"><i class="fa fa-money"></i>Sales</a></li>
                     <li class="nav-item"><a class="nav-link" href="products.php"><i class="fas fa-glasses"></i>Product</a></li>
                     <li class="nav-item"></li>
                     <li class="nav-item"><a class="nav-link" href="supplier.php"><i class="fa fa-cab"></i>Supplier</a></li>
@@ -111,7 +111,36 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col">
-                              
+                        <div class="row">
+                        <div class="col mb-4">
+                            <div class="card shadow mb-4"></div>
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Username</th>
+                                            <th>User Activity</th>
+                                            <th>Date & Time</th>
+                                        </tr>
+                                        <?php
+                                                include "config.php";
+                                                $sql = "SELECT * from logs ORDER BY log_datentime DESC";
+                                                $result = $con-> query($sql);
+                                                if ($result-> num_rows > 0) {
+                                                    while ($row = $result-> fetch_assoc()){
+                                                        echo "</th><th>". $row["log_user"]. "</th><th>". $row["log_activity"]. "</th><th>". $row["log_datentime"]. "</th><tr>";
+                                                }
+                                                    echo "</table>";
+                                                }
+                                                else {
+                                                    echo "0 result";
+                                                }
+                                                $con-> close();
+                                            ?>
+                                        </thead>
+                                    <tbody>
+                                    </table>
+                            </div>  
                         </div>
                     </div>
                 </div>
