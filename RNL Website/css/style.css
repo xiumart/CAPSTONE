@@ -47,6 +47,12 @@ input[type=text], select {
 	  font-size: large;
 	  color: white;
 	}
+
+.gmails {
+		color: #202124;
+		direction: ltr;
+		display: inline-block;
+	}
   input[type=submit] {
 	  width: 130%;
 	  background-color: rgba(0,194,203,1);

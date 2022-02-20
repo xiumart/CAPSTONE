@@ -644,7 +644,9 @@ include "../db_conn.php";
 								<input type="text" id="fname" name="fname" class="form-control" placeholder="Full Name*" required="">
 							</div>
 							<div class="form-group">
-								<input type="number" id="contact" name="contact" pattern="[0-9]{11}" class="form-control" placeholder="Phone Number*" required="">
+								<input type="text" id="contact" name="contact" pattern="(^09)([0-9]+){2}\s([0-9]+){3,4}\s([0-9]+){4}" class="form-control" placeholder="Phone Number*" required>
+                <div class="invalid-feedback">Format(11 Digits): '09XXX XXX XXX.'
+          </div>
 							</div>
 							<div class="form-group">
 								<input type="email" id="email" name="email" class="form-control" placeholder="Email*" required="">
