@@ -139,53 +139,54 @@ function Clickheretoprint()
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h4 class="modal-title">Modal Title</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                        <h4 class="modal-title">New Product</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color: black;"><span aria-hidden="true">×</span></button>
                                     </div>
                                     <div class="modal-body">
                                        <form method="post" enctype="multipart/form-data" action="">
                                       
-                <label >Brand Name:</label>
-                <input type="text" id="fname" name="bname"  required="required" ><br><br>
-                <label >Model:</label>
-                <input type="text" id="fname" name="model"  required="required"><br><br>
-                <label >Category:</label>
-                <select name="category" id="Category" required="required">
+                <label style="color: #000; padding-right: 15%;">Brand Name:</label>
+                <input type="text" id="fname" name="bname" style="border: #000 2px; border-style: solid; font-size: 18px; border-radius: 8px; padding: 3px;" required="required" >
+                <br><br>
+                <label style="color: #000; padding-right: 24.7%;">Model:</label>
+                <input type="text" id="fname" name="model" style="border: #000 2px; border-style: solid; font-size: 18px; border-radius: 8px; padding: 3px;" required="required">
+                <br><br>
+                <label style="color: #000; padding-right: 20.3%;">Category:</label>
+                <select name="category" id="Category" style="border: #000 2px; border-style: solid; font-size: 18px; border-radius: 8px; padding: 3px;" required="required">
                     <option value="Frame">Frame</option>
                     <option value="Lens">Lens</option>
-                  </select><br><br>
-                <label >Date of Arrival:</label>
-                <input type="date" id="fname" name="dateofarrival" required="required"><br><br>
-                <label >Expiration Date:</label>
-                <input type="date" id="fname" name="expirationdate"  required="required"><br><br>
-                <label >Selling Price:</label>
-                <input type="text" id="fname" name="sellingprice"  required="required"><br><br>
-                <label >Orignal Price:</label>
-                <input type="text" id="fname" name="originalprice"  required="required"><br><br>
-
-                <label >Supplier:</label>
-                <select name="supplier" id="Category">
-                    <option>Supplier</option>
-
-
-
-             
-                    
-                  </select><br><br>
-                <label >QTY:</label>
-                <input type="number" id="tentacles" name="qty" min="1" max="10000" placeholder="Quantity"  ><br><br>
-                <label for="photo" style="color: #000;padding-right: 30%;">Image:</label>
-                <input type="file" id="uploadfile" name="picture" accept="image/*" style="font-size: 20px;" ><br><br>
-
-
+                  </select>
+                  <br><br>
+                <label style="color: #000; padding-right: 11.8%;">Date of Arrival:</label>
+                <input type="date" id="fname" name="dateofarrival" style="border: #000 2px;  border-style: solid; font-size: 18px; border-radius: 8px; padding: 3px;" required="required">
                 <br><br>
-                <center><button type="submit" name="btnsubmit" onclick="return confirm('Are you sure')">Submit</button></center>
-
-                                           
-
-                                       </form>
-                                    </div>
-                                    <div class="modal-footer"><button class="btn btn-warning" data-dismiss="modal" style="background-color:rgb(255,139,160);" type="button">Close</button></div>
-                                </div>
+                <label style="color: #000; padding-right: 10.5%;">Expiration Date:</label>
+                <input type="date" id="fname" name="expirationdate" style="border: #000 2px; border-style: solid; font-size: 18px; border-radius: 8px; padding: 3px;" required="required">
+                <br><br>
+                <label style="color: #000; padding-right: 15.2%;">Selling Price:</label>
+                <input type="text" id="fname" name="sellingprice" style="border: #000 2px; border-style: solid; font-size: 18px; border-radius: 8px; padding: 3px;" required="required">
+                <br><br>
+                <label style="color: #000; padding-right: 13.7%;">Original Price:</label>
+                <input type="text" id="fname" name="originalprice" style="border: #000 2px; border-style: solid; font-size: 18px; border-radius: 8px; padding: 3px;" required="required">
+                <br><br>
+                <label style="color: #000; padding-right: 21.5%;">Supplier:</label>
+                <select name="supplier" id="Category" style="border: #000 2px; border-style: solid; font-size: 18px; border-radius: 8px; padding: 3px;" required="required">
+                    <option style="font-size: 18px;"value="Supplier1">Supplier1</option>
+                    <option style="font-size: 18px;"value="Supplier2">Supplier2</option>
+                  </select>
+                  <br><br>
+                <label style="color: #000; padding-right: 27.9%;">QTY:</label>
+                <input type="number" id="tentacles" name="qty" min="1" max="10000" placeholder="Quantity" style="background-color: white; font-size: 18px; border: solid black 2px; width: 200px; height:43px; text-transform: lowercase; padding-left: 10px; border-radius: 8px; padding: 3px;">
+                <br><br>
+                <label for="photo" style="color: #000;padding-right: 116.9px;">Image:</label>
+                <input type="file" id="uploadfile" name="picture" accept="image/*" style="font-size: 13px; ">
+                <br>
+                
+                <center>
+                    <button type="submit" name="btnsubmit" onclick="return confirm('Are you sure')" style="background-color: #1566a8; color: white; padding: 15px 20px; margin: 8px 0; border: none; border-radius: 10px; cursor: pointer; position: relative; top: 5px; margin-left: 25.9%; font-size: large; width: 250px; height:43px; padding-top: 10px;">Submit</button>
+                </center>
+                </form>
+                </div>
+                    </div>
                             </div>
                         </div><button class="btn btn-info" data-toggle="modal" data-target="#exampleModal" type="button">Add products</button>
                     </div>
