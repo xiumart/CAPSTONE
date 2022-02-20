@@ -134,7 +134,61 @@ function Clickheretoprint()
                     <div class="form-group pull-right col-lg-4"><input type="text" name="searchproduct" class="search form-control" placeholder="Search by typing here.."></div><span class="pull-right"><form method="post"><a href="javascript:Clickheretoprint()"  class="btn btn-dark btn-mini"> <i class="fa fa-print" style="font-size: 15px;"></i></a>
 
                         <button class="btn btn-primary" style="margin-left: 5px;" type="submit" name="btnrefresh"><i class="fa fa-refresh" style="font-size: 15px;"></i></button></form>
-                    </span><button class="btn btn-primary" data-toggle="modal" data-target="#modal1" type="button" style="margin-bottom: 16px;" onclick="location='addproduct.php'"><i class="far fa-plus-square" style="font-size: 15px;margin-right: 7px;margin-top: -4px;"></i>Add new product</button>
+                    </span> <div id="modal-open">
+                        <div class="modal fade" role="dialog" tabindex="-1" id="exampleModal" aria-labelledby="exampleModalLabel">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title">Modal Title</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                    </div>
+                                    <div class="modal-body">
+                                       <form method="post" enctype="multipart/form-data" action="">
+                                      
+                <label >Brand Name:</label>
+                <input type="text" id="fname" name="bname"  required="required" ><br><br>
+                <label >Model:</label>
+                <input type="text" id="fname" name="model"  required="required"><br><br>
+                <label >Category:</label>
+                <select name="category" id="Category" required="required">
+                    <option value="Frame">Frame</option>
+                    <option value="Lens">Lens</option>
+                  </select><br><br>
+                <label >Date of Arrival:</label>
+                <input type="date" id="fname" name="dateofarrival" required="required"><br><br>
+                <label >Expiration Date:</label>
+                <input type="date" id="fname" name="expirationdate"  required="required"><br><br>
+                <label >Selling Price:</label>
+                <input type="text" id="fname" name="sellingprice"  required="required"><br><br>
+                <label >Orignal Price:</label>
+                <input type="text" id="fname" name="originalprice"  required="required"><br><br>
+
+                <label >Supplier:</label>
+                <select name="supplier" id="Category">
+                    <option>Supplier</option>
+
+
+
+             
+                    
+                  </select><br><br>
+                <label >QTY:</label>
+                <input type="number" id="tentacles" name="qty" min="1" max="10000" placeholder="Quantity"  ><br><br>
+                <label for="photo" style="color: #000;padding-right: 30%;">Image:</label>
+                <input type="file" id="uploadfile" name="picture" accept="image/*" style="font-size: 20px;" ><br><br>
+
+
+                <br><br>
+                <center><button type="submit" name="btnsubmit" onclick="return confirm('Are you sure')">Submit</button></center>
+
+                                           
+
+                                       </form>
+                                    </div>
+                                    <div class="modal-footer"><button class="btn btn-warning" data-dismiss="modal" style="background-color:rgb(255,139,160);" type="button">Close</button></div>
+                                </div>
+                            </div>
+                        </div><button class="btn btn-info" data-toggle="modal" data-target="#exampleModal" type="button">Add products</button>
+                    </div>
                     <table>
                         <tr><th><center>Sort by Date of Arrival</center></th></tr>
                         <tr><td>
@@ -240,3 +294,46 @@ $sql2 = "DELETE FROM `product` WHERE `pro_id`='$del_id' ";
 </body>
 
 </html>
+<?php
+include("config.php");  
+
+if (isset($_POST['btnsubmit'])) {
+        //something was posted
+        $brandname = $_POST['bname'];
+        $model = $_POST['model'];
+        $category = $_POST['category'];
+        $dateofarrival = $_POST['dateofarrival'];
+        $expirationdate = $_POST['expirationdate'];
+        $sellingprice = $_POST['sellingprice'];
+        $originalprice = $_POST['originalprice'];
+        $profit = $sellingprice - $originalprice;
+        $supplier = $_POST['supplier'];
+        $qty = $_POST['qty'];   
+        //picture coding
+$picture_name=$_FILES['picture']['name'];
+$picture_type=$_FILES['picture']['type'];
+$picture_tmp_name=$_FILES['picture']['tmp_name'];
+$picture_size=$_FILES['picture']['size'];
+
+if($picture_type=="image/jpeg" || $picture_type=="image/jpg" || $picture_type=="image/png" || $picture_type=="image/gif")
+{
+    if($picture_size<=50000000)
+    
+        $pic_name=time()."_".$picture_name;
+        move_uploaded_file($picture_tmp_name,"productImage/".$pic_name);
+        
+        
+    
+            //save to database
+            //$user_id = random_num(20);
+            $query = "insert into product (brand,model,category,dateofarrival,expdate,sellingprice,origprice,profit,supplier,qty,image) values ('$brandname','$model','$category','$dateofarrival','$expirationdate','$sellingprice','$originalprice','$profit','$supplier','$qty','$pic_name')";
+
+            mysqli_query($con, $query);
+            move_uploaded_file($tempname, $folder);
+
+            header("Location: products.php");
+            die;
+        
+}
+        
+    } ?>
