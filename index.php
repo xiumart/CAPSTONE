@@ -657,7 +657,8 @@ include "../db_conn.php";
 							</div>
 							<select class="form-control" id="purpose" name="purpose">
 								<option>Eye Check up</option>
-								<option>Others</option>
+								<option>Complete Eyeglass</option>
+                <option>Contact Lense</option>
 							</select>
 						</div><br>
 						<!-- <div class="form-group">
