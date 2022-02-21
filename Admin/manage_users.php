@@ -1,3 +1,18 @@
+<?php   
+ include "config.php";  
+ if (isset($_GET['users_id'])) {  
+	 
+      $userid=$_GET['users_id'];  
+      $delete=mysqli_query($con,"delete from users where users_id='$userid'");  
+      if ($delete) {  
+           header("location:manage_users.php");
+
+           die();  
+      }  
+ }
+
+ ?>
+
 <!DOCTYPE html>
 <html>
 
@@ -121,16 +136,118 @@
                                                 <option value="100">100</option>
                                             </select>&nbsp;</label></div>
                                 </div>
+                                <!-- New User Modal-->
+                                <div id="modal-open">
+                        <div class="modal fade" role="dialog" tabindex="-1" id="exampleModal" aria-labelledby="exampleModalLabel">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title">ADD USER</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color: black;"><span aria-hidden="true">×</span></button>
+                                    </div>
+                                    <div class="modal-body">
+                                       <form method="post" enctype="multipart/form-data" action="manageuserhandler.php">
+
+                                        <label style="color: #000; padding-right: 10%;">Last Name:</label>
+                                            <input type="text" id="fname" name="lname" style="border: #000 2px; border-style: solid; font-size: 18px; border-radius: 8px; padding: 3px;" required="required" >
+                                            <br><br>
+                                        <label style="color: #000; padding-right: 11%;">Firs Name:</label>
+                                            <input type="text" id="fname" name="fname" style="border: #000 2px; border-style: solid; font-size: 18px; border-radius: 8px; padding: 3px;" required="required">
+                                            <br><br>
+                                        <label style="color: #000; padding-right: 6%;">Middle Name:</label>
+                                            <input type="text" id="fname" name="mname" style="border: #000 2px; border-style: solid; font-size: 18px; border-radius: 8px; padding: 3px;" required="required">
+                                            <br><br>
+                                        <label style="color: #000; padding-right: 11%;">Username:</label>
+                                        <input type="text" id="fname" name="username" style="border: #000 2px; border-style: solid; font-size: 18px; border-radius: 8px; padding: 3px;" required="required">
+                                            <br><br>
+                                        <label style="color: #000; padding-right: 11%;">Password:</label>
+                                            <input type="password" id="fname" name="password" style="border: #000 2px; border-style: solid; font-size: 18px; border-radius: 8px; padding: 3px;" required="required">
+                                            <br><br>
+                                        <label style="color: #000; padding-right: 18%;">Email:</label>
+                                            <input type="email" id="fname" name="email" style="border: #000 2px;  border-style: solid; font-size: 18px; border-radius: 8px; padding: 3px;" required="required">
+                                            <br><br>
+                                        <label style="color: #000; padding-right: 8.7%;">Contact No.:</label>
+                                            <input type="tel" pattern="[0-9]{11}" id="fname" name="contact" style="border: #000 2px; border-style: solid; font-size: 18px; border-radius: 8px; padding: 3px;" required="required">
+                                            <br><br>
+                                        <label style="color: #000; padding-right: 19.5%;">Role:</label>
+                                        <select name="position" id="Category" style="border: #000 2px; border-style: solid; font-size: 18px; border-radius: 8px; padding: 3px;" required="required">
+                                            <option value="Administrator">Administrator</option>
+                                            <option value="Doctor">Doctor</option>
+                                        </select>
+                                        <br><br>
+                                            <button type="submit" name="btnsubmit" onclick="return confirm('Are you sure')" 
+                                            style="background-color: #1566a8; color: white; padding: 15px 20px; margin: 8px 0;
+                                            border: none; border-radius: 10px; cursor: pointer; position: relative; top: 5px; margin-left: 25.9%; font-size: large; 
+                                            width: 250px; height:43px; padding-top: 10px;">Add User</button>
+                                        </form>
+                                        </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <table>
                                 <div class="col-md-6">
-                                    <div class="text-md-right dataTables_filter" id="dataTable_filter"><label><input type="search" class="form-control form-control-sm" aria-controls="dataTable" placeholder="Search by lastname"></label></div>
+                                <div class="form-group pull-right col-lg-4"><input type="text" name="searchlname" class="search form-control" placeholder="Search by lastname"></div><span class="counter pull-right"></span>
+                                <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" type="button" style="margin-bottom: 16px; margin-left: 43%;">
+                                <i class="far fa-plus-square" style="font-size: 15px;margin-right: 7px;margin-top: -4px;"></i>Add new user</button> 
+                                </div>
+                                </div>
+                            </div>
+
+                            <!-- Update User Modal-->
+                            <div id="modal-open">
+                        <div class="modal fade" role="dialog" tabindex="-1" id="updateModal" aria-labelledby="exampleModalLabel">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title">UPDATE USER</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color: black;"><span aria-hidden="true">×</span></button>
+                                    </div>
+                                    <div class="modal-body">
+                                       <form method="post" enctype="multipart/form-data" action="manage_users_update.php">
+                                        
+                                        <label style="color: #000; padding-right: 10%;">Last Name:</label>
+                                            <input type="text" id="fname" name="lname" style="border: #000 2px; border-style: solid; font-size: 18px; border-radius: 8px; padding: 3px;" required="required" >
+                                            <br><br>
+                                        <label style="color: #000; padding-right: 11%;">Firs Name:</label>
+                                            <input type="text" id="fname" name="fname" style="border: #000 2px; border-style: solid; font-size: 18px; border-radius: 8px; padding: 3px;" required="required">
+                                            <br><br>
+                                        <label style="color: #000; padding-right: 6%;">Middle Name:</label>
+                                            <input type="text" id="fname" name="mname" style="border: #000 2px; border-style: solid; font-size: 18px; border-radius: 8px; padding: 3px;" required="required">
+                                            <br><br>
+                                        <label style="color: #000; padding-right: 11%;">Username:</label>
+                                        <input type="text" id="fname" name="username" style="border: #000 2px; border-style: solid; font-size: 18px; border-radius: 8px; padding: 3px;" required="required">
+                                            <br><br>
+                                        <label style="color: #000; padding-right: 11%;">Password:</label>
+                                            <input type="password" id="fname" name="password" style="border: #000 2px; border-style: solid; font-size: 18px; border-radius: 8px; padding: 3px;" required="required">
+                                            <br><br>
+                                        <label style="color: #000; padding-right: 18%;">Email:</label>
+                                            <input type="email" id="fname" name="email" style="border: #000 2px;  border-style: solid; font-size: 18px; border-radius: 8px; padding: 3px;" required="required">
+                                            <br><br>
+                                        <label style="color: #000; padding-right: 8.7%;">Contact No.:</label>
+                                            <input type="contact" id="fname" name="contact" style="border: #000 2px; border-style: solid; font-size: 18px; border-radius: 8px; padding: 3px;" required="required">
+                                            <br><br>
+                                        <label style="color: #000; padding-right: 19.5%;">Role:</label>
+                                        <select name="position" id="Category" style="border: #000 2px; border-style: solid; font-size: 18px; border-radius: 8px; padding: 3px;" required="required">
+                                            <option value="Administrator">Administrator</option>
+                                            <option value="Doctor">Doctor</option>
+                                        </select>
+                                        <br><br>
+                                            <button type="submit" name="btn_submit" onclick="return confirm('Are you sure')" 
+                                            style="background-color: #1566a8; color: white; padding: 15px 20px; margin: 8px 0;
+                                            border: none; border-radius: 10px; cursor: pointer; position: relative; top: 5px; margin-left: 25.9%; font-size: large; 
+                                            width: 250px; height:43px; padding-top: 10px;">Update</button>
+                                        </form>
+                                        </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
                                 <table class="table my-0" id="dataTable">
                                     <thead>
                                         <tr>
-                                            <th>Id no</th>
-                                            <th>Name</th>
+                                            <th>Last Name</th>
+                                            <th>First Name</th>
+                                            <th>Middle Name</th>
                                             <th>Username</th>
                                             <th>Email</th>
                                             <th>Contact</th>
@@ -139,25 +256,34 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>Cell 1</td>
-                                            <td><img class="rounded-circle mr-2" width="30" height="30" src="assets/img/avatars/avatar1.jpeg">Airi Satou</td>
-                                            <td>Accountant</td>
-                                            <td>Tokyo</td>
-                                            <td>33</td>
-                                            <td>2008/11/28</td>
-                                            <td><button class="btn btn-success" data-toggle="modal" data-target="#modal1" type="button" style="margin-left: 38px;">UPDATE</button><button class="btn btn-danger" data-toggle="modal" data-target="#modal1" type="button" style="margin-left: 38px;margin-top: 5px;">REMOVE</button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Cell 1</td>
-                                            <td><img class="rounded-circle mr-2" width="30" height="30" src="assets/img/avatars/avatar2.jpeg">Angelica Ramos</td>
-                                            <td>Chief Executive Officer(CEO)</td>
-                                            <td>London</td>
-                                            <td>47</td>
-                                            <td>2009/10/09<br></td>
-                                            <td><button class="btn btn-success" data-toggle="modal" data-target="#modal1" type="button" style="margin-left: 38px;">UPDATE</button><button class="btn btn-danger" data-toggle="modal" data-target="#modal1" type="button" style="margin-left: 38px;margin-top: 5px;">REMOVE</button></td>
-                                        </tr>
-                                        <tr></tr>
+                                    <?php
+
+                                        $con = mysqli_connect("localhost", "root", "", "capstone");
+                                        // Check connection
+                                            if ($con->connect_error) {
+                                                die("Connection failed: " . $con->connect_error);
+                                            }
+                                            error_reporting(0);
+                                            $search=$_POST['searchlname'];
+                                            $sql = "SELECT * FROM `users` WHERE `users_last`LIKE '%$search%'";
+                                            $result = $con->query($sql);
+                                            
+                                                if ($result->num_rows > 0) {
+                                            // output data of each row
+                                                    while($row = $result->fetch_assoc()) {
+                                                    echo "<tr><td>" . $row["users_last"]. "</td><td>" . $row["users_first"] . "</td><td>" . $row["users_mid"]. "</td><td>" . $row["users_username"] . "</td><td>"
+                                                    . $row["users_email"]. "</td><td>". $row["users_contact"]. "</td><td>". $row["user_role"]. "</td> 
+                                                    <td><form method='post' action='manage_users_update.php?users_id=".$row["users_id"]."'>"?>
+  		                                            </form>
+                                                    <button class="btn btn-success" data-target="#updateModal" style="margin-left: 38px;">UPDATE</button>
+                                                    <form method='post' action='?users_id=<?php echo $row["users_id"]; ?>'>
+                                                    <button class="btn btn-danger" onclick="return confirm('Are you sure?')" style="margin-left: 38px;margin-top: 5px;">REMOVE</button>
+		                                        </form><?php "</tr>";
+                                            }
+                                                echo "</table>";
+                                            } else { echo "0 results"; }
+                                            $con->close();
+                                        ?>
                                     </tbody>
                                     <tfoot>
                                         <tr></tr>
