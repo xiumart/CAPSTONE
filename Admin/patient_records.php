@@ -33,7 +33,8 @@
                     <li class="nav-item"><a class="nav-link active" href="patient_records.php"><i class="fa fa-files-o"></i>Patient Records</a></li>
                     <li class="nav-item"></li>
                     <li class="nav-item"><a class="nav-link" href="POS.php"><i class="fas fa-shopping-cart"></i>Point of Sale</a><a class="nav-link" href="Sales.php"><i class="fa fa-money"></i>Sales</a></li>
-                    <li class="nav-item"><a class="nav-link" href="products.php"><i Fclass="fas fa-glasses"></i>Product</a></li>
+                    <li class="nav-item"><a class="nav-link" href="products.php"><i class="fas fa-glasses">
+                    </i>Product</a></li>
                     <li class="nav-item"></li>
                     <li class="nav-item"><a class="nav-link" href="supplier.php"><i class="fa fa-cab"></i>Supplier</a></li>
                     <li class="nav-item"><a class="nav-link" href="reports.php"><i class="fas fa-table"></i>Reports</a><a class="nav-link" href="manage_users.php"><i class="fa fa-group"></i><span>Manage Users</span></a></li>
