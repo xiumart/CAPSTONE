@@ -585,7 +585,7 @@ input[type=button]{
 	position: absolute;
 	overflow: visible;
 	width: 1920px;
-	height: 1000px;
+	height: 100px;
 	left: 0px;
 	top: 0px;
 }
@@ -685,20 +685,6 @@ input[type=button]{
 	position: absolute;
 	overflow: visible;
 	width: 210px;
-	white-space: nowrap;
-	text-align: left;
-	font-family: Segoe UI;
-	font-style: normal;
-	font-weight: normal;
-	font-size: 31px;
-	color: rgba(255,255,255,1);
-}
-#LOGIN {
-	left: 1672px;
-	top: 63px;
-	position: absolute;
-	overflow: visible;
-	width: 91px;
 	white-space: nowrap;
 	text-align: left;
 	font-family: Segoe UI;
