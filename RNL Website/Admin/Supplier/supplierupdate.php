@@ -145,7 +145,7 @@ try{
 function getPosts()
 {
     $posts = array();
-    $posts[0] = $_POST['supplier_ID'];
+    $posts[0] = $_POST['supp_id'];
     $posts[1] = $_POST['supply'];
     $posts[2] = $_POST['contactperson'];
     $posts[3] = $_POST['contactno'];
@@ -161,7 +161,7 @@ if(isset($_POST['search']))
 {
     $data = getPosts();
     
-    $search_Query = "SELECT * FROM supplier WHERE supplier_ID= $data[0]";
+    $search_Query = "SELECT * FROM supplier WHERE supp_id= $data[0]";
     
     $search_Result = mysqli_query($connect, $search_Query);
     
@@ -171,7 +171,7 @@ if(isset($_POST['search']))
         {
             while($row = mysqli_fetch_array($search_Result))
             {
-                $supplier_ID = $row['supplier_ID'];
+                $supplier_ID = $row['supp_id'];
                 $supply = $row['supply'];
                 $contactperson= $row['contactperson'];
                 $contactno= $row['contactno'];

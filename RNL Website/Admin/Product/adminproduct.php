@@ -5,37 +5,70 @@ session_start();
 	//include("function.php");
 
 
-	if($_SERVER['REQUEST_METHOD'] == "POST")
-	{
+if (isset($_POST['btnsubmit'])) {
 		//something was posted
-		$brand = $_POST['bname'];
+		$brandname = $_POST['bname'];
 		$model = $_POST['model'];
 		$category = $_POST['category'];
 		$dateofarrival = $_POST['dateofarrival'];
-		$expdate = $_POST['expirationdate'];
+		$expirationdate = $_POST['expirationdate'];
 		$sellingprice = $_POST['sellingprice'];
-		$origprice = $_POST['originalprice'];
-		$profit = $origprice - $sellingprice;
+		$originalprice = $_POST['originalprice'];
+		$profit = $sellingprice - $originalprice;
 		$supplier = $_POST['supplier'];
-		$qty = $_POST['qty'];
+		$qty = $_POST['qty'];	
+		//picture coding
+$picture_name=$_FILES['picture']['name'];
+$picture_type=$_FILES['picture']['type'];
+$picture_tmp_name=$_FILES['picture']['tmp_name'];
+$picture_size=$_FILES['picture']['size'];
 
-		if(!empty($brand) && !empty($model) && !empty($category) && !empty($dateofarrival) && !empty($expdate) && !empty($sellingprice) && !empty($origprice) && !empty($profit) && !empty($supplier) && !empty($qty))
-		{
-
+if($picture_type=="image/jpeg" || $picture_type=="image/jpg" || $picture_type=="image/png" || $picture_type=="image/gif")
+{
+	if($picture_size<=50000000)
+	
+		$pic_name=time()."_".$picture_name;
+		move_uploaded_file($picture_tmp_name,"productImage/".$pic_name);
+        
+        
+	
 			//save to database
 			//$user_id = random_num(20);
-			$query = "insert into product (brand,model,category,dateofarrival,expdate,sellingprice,origprice,profit,supplier,qty) values ('$brand','$model','$category','$dateofarrival','$expdate','$sellingprice','$origprice','$profit','$supplier','$qty')";
+			$query = "insert into product (brand,model,category,dateofarrival,expdate,sellingprice,origprice,profit,supplier,qty,image) values ('$brandname','$model','$category','$dateofarrival','$expirationdate','$sellingprice','$originalprice','$profit','$supplier','$qty','$pic_name')";
 
 			mysqli_query($con, $query);
+			move_uploaded_file($tempname, $folder);
 
 			header("Location: adminproduct.php");
 			die;
-		}else
-		{
-			echo "Please enter some valid information!";
-		}
+		
+}
+		
 	}
+
 ?>
+
+ <?php   
+ include "config.php";  
+ if (isset($_GET['pro_id'])) {  
+      $id=$_GET['pro_id'];  
+      $delete=mysqli_query($con,"delete from product where pro_id='$id'");  
+      if ($delete) {  
+           header("location:adminproduct.php");  
+           die();  
+      }  
+ }
+
+
+ ?>  
+
+ <?php 
+					
+					
+$resulta = mysqli_query($con, "SELECT * from supplier");
+
+ ?>
+
 
 
 <!DOCTYPE html>
@@ -44,7 +77,8 @@ session_start();
 <meta charset="utf-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>adminproduct</title>
+<title>PRODUCT | ADMIN</title>
+<link rel="shorcut icon" type="img/png" href="logo.png">
 <link rel="stylesheet" type="text/css" id="applicationStylesheet" href="css/style.css"/>
 <script id="applicationScript" type="text/javascript" src="css/script.js"></script>
 </head>
@@ -127,11 +161,6 @@ session_start();
 		</path>
 	</svg>
 	<style type="text/css">
-		input::placeholder{
-			font-size: 20px;
-			color: #000;
-			text-transform: capitalize;
-		}
 		table {
   font-family: arial, sans-serif;
   border-collapse: collapse;
@@ -145,13 +174,49 @@ td, th {
   text-align: center;
   padding: 8px;
 }
+ .opt{  
+                background-color:red;  
+                color: #fff; 
+                font-size: 1em;  
+                padding: 5px;  
+                text-decoration: none;  
+                border-style: cursor;
+           }  
+
+            .opt1{  
+                background-color: #abd7ab;  
+                color: black; 
+                font-size: 1em;  
+                padding: 5px;  
+                text-decoration: none;  
+                border-style: cursor;
+           }  
 
 	</style>
 	<div id="PRODUCT_bg">
 		<span>PRODUCT</span><br><br><br>
-		<input type="text" name="EMAIL" style="background-color: white; font-size: 20px; border-radius:8px; width: 550px;; height:40px;  text-transform:lowercase; padding-left: 10px; margin-left: 815%;" placeholder="Search Product"><br><br>
-		<table>
+			<form method="post">
+		<input type="text" name="searchproduct" style="background-color: white; font-size: 20px; border-radius:8px; width: 550px;; height:40px;  text-transform:lowercase; padding-left: 10px; margin-left: -5%;" placeholder="Search Product"></form><br><br>
+	
+	</div>
+	<style>
+.example{
+	height: 560px; overflow-y: scroll; margin-top: 300px;padding: 0; width: 110%; margin-left: 24.5%;
+}
+.example::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.example {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+</style>
+<div class="example">
+	<table style="margin-top: 10px; font-size: 20px;">
   <tr>
+  	<th>Image</th>
     <th>Brand Name</th>
     <th>Model</th>
     <th>Category</th>
@@ -162,21 +227,47 @@ td, th {
     <th>Profit</th>
     <th>Supplier</th>
     <th>Qty</th>
-	<th>Action</th>
+    <th>Action</th>
   </tr>
+  
 
   <?php
+error_reporting(0);
+$search=$_POST['searchproduct'];
+  $sql1 = "SELECT * FROM `product` WHERE `brand`LIKE '%$search%'";
+ 
+
+  $result1 = $con->query($sql1);  
+  if($result1->num_rows > 0){
+  	while($row = $result1 -> fetch_assoc()){
+  		$row["pro_id"];
+  		echo "
+  		<tr>
+  		<td> <img src='productImage/".$row['image']."' style='width:100px; height:100px; border:groove #000' ></td>
+  		<td>" . $row["brand"] . "</td>
+  		<td>" . $row["model"] . "</td>
+  		<td>" . $row["category"] . "</td>
+  		<td>" . $row["dateofarrival"] . "</td>
+  		<td>" . $row["expdate"] . "</td>
+  		<td>" . $row["sellingprice"] . "</td>
+  		<td>" . $row["origprice"] . "</td>
+  		<td>" . $row["profit"] . "</td>
+  		<td>" . $row["supplier"] . "</td>
+  		<td>" . $row["qty"] ."</td>
+  		<td><form method='post' action='update.php?pro_id=".$row["pro_id"]."'>"
 
 
-  include("config.php");
-  $sql = "SELECT * from product";
-  $result = $con->query($sql);
 
-  if($result->num_rows > 0){
-  	while($row = $result -> fetch_assoc()){
-  		echo "<tr><td>" . $row["brand"] . "</td><td>" . $row["model"] . "</td><td>" . $row["category"] . "</td><td>" . $row["dateofarrival"] . "</td><td>" 
-		. $row["expdate"] . "</td><td>" . $row["sellingprice"] . "</td><td>" . $row["origprice"] . "</td><td>" . $row["profit"] . "</td><td>" 
-		. $row["supplier"] . "</td><td>" . $row["qty"] . "</td><tr>";
+  		?>
+  		<button style='cursor: pointer; background-color: rgba(0,194,203,1); padding: 7px; border-radius: 10px; width: 80px; margin-bottom: 10px;' onclick="return confirm('Are you sure?')">UPDATE</button>
+		</form>
+		<?php echo "<form method='post' action='?pro_id=".$row["pro_id"]."'>"?>
+  		<button style='cursor: pointer; background-color: rgba(0,194,203,1); padding: 7px; border-radius: 10px; width: 80px;' id='btnsubmit' onclick="return confirm('Are you sure?')">REMOVE</button> <?php 
+		echo "</form>
+		</td>
+  		</tr>
+  		
+  		 ";
   	}
   } else {
   	echo "NO RESULTS";
@@ -186,10 +277,7 @@ td, th {
 
 
   ?>
-  <td><a href="#"><button style="cursor: pointer; background-color: #abd7ab; padding: 10px; border-radius: 10px;">UPDATE</button></a>&nbsp&nbsp&nbsp&nbsp<button style="cursor: pointer; background-color: #8cd3ff; padding: 10px; border-radius: 10px;">VIEW</button></td>
 </table>
-	</div>
-	
 	<svg class="Line_17" viewBox="0 0 1376 1">
 		<path id="Line_17" d="M 0 0 L 1376 0">
 		</path>
@@ -197,8 +285,7 @@ td, th {
 
 	<style>
 		body {font-family: Arial, Helvetica, sans-serif;}
-		
-		
+
 		.modal {
 		  display: none; 
 		  position: fixed; 
@@ -240,14 +327,13 @@ td, th {
 	
 		</style>
 	<div id="n_New_Product">
-		<button id="myBtn">+ New Product</button>
+		<button id="myBtn" style="margin-left: 916%;">+ New Product</button>
 
-		<div id="myModal" class="modal">
-
+			<div id="myModal" class="modal">
 			<!-- Modal content -->
 			<div class="modal-content">
 			  <span class="close">&times;</span>
-			  <form method="post">
+			  <form method="post" enctype="multipart/form-data">
 				<center><h2 style="color: #000;">New Product</h2><br><br></center>
 				<label style="color: #000;padding-right: 15%;">Brand Name:</label>
 				<input type="text" id="fname" name="bname" style="border: #000 2px; border-style:solid; font-size: 20px; border-radius: 8px; padding: 3px;" required="required" ><br><br>
@@ -266,15 +352,33 @@ td, th {
 				<input type="text" id="fname" name="sellingprice" style="border: #000 2px; border-style:solid; font-size: 20px; border-radius: 8px; padding: 3px;" required="required"><br><br>
 				<label style="color: #000;padding-right:  14%;">Orignal Price:</label>
 				<input type="text" id="fname" name="originalprice" style="border: #000 2px; border-style:solid; font-size: 20px; border-radius: 8px; padding: 3px;" required="required"><br><br>
-				
+
 				<label style="color: #000;padding-right: 23%;">Supplier:</label>
 				<select name="supplier" id="Category"style="border: #000 2px; border-style:solid; font-size: 20px; border-radius: 8px; padding: 3px;"required="required">
-					<option value="Supplier">Supplier 1</option>
-					<option value="Supplier">Supplier 2</option>
+
+
+
+					<?php 
+
+
+					while($rowsh = $resulta->fetch_assoc()){
+							$suppliers = $rowsh['supp_supply'];
+							echo"<option value='$suppliers'>$suppliers</option>";
+								}
+					
+
+					?>
+					
 				  </select><br><br>
 				<label style="color: #000;padding-right: 30%;">QTY:</label>
-				<input type="number" id="tentacles" name="qty" min="1" max="10000" placeholder="Quantity" style="background-color: white; font-size: 20px; border:solid black 2px; width: 200px;; height:43px;  text-transform:lowercase; padding-left: 10px; border-radius: 8px; padding: 3px;" ><br><br><br><br>
-				<center><button type="submit">Submit</button></center>
+				<input type="number" id="tentacles" name="qty" min="1" max="10000" placeholder="Quantity" style="background-color: white; font-size: 20px; border:solid black 2px; width: 200px;; height:43px;  text-transform:lowercase; padding-left: 10px; border-radius: 8px; padding: 3px;" ><br><br>
+				<label for="photo" style="color: #000;padding-right: 30%;">Image:</label>
+				<input type="file" id="uploadfile" name="picture" accept="image/*" style="font-size: 20px;" ><br><br>
+
+
+				<br><br>
+				<center><button type="submit" name="btnsubmit" onclick="return confirm('Are you sure')">Submit</button></center>
+
 			
 			  </form> 
 			</div>
@@ -300,12 +404,22 @@ td, th {
 
 
 	</div>
-
-	<div id="Search_Product_cf">
+	<a href="adminproduct.php">
+	<div id="n_New_Product">
+		<button type="submit" name="back" 
+		style='width: 110%; background-color: #1566a8; color: white;
+	padding: 15px 20px;
+	margin: 8px 0;
+	border: none;
+	border-radius: 10px;
+	cursor: pointer;
+	position: relative;
+	top: -90%;
+	margin-left: 796%;
+	margin-top: -9%;
+	font-size: large;'>Refresh</button>
 	</div>
-	<!-- <div id="GO">
-		<button style="cursor: pointer; background-color: rgba(34,121,220,1);font-size: 20px; padding:10px 10px; border-radius: 10px; margin: -10px; margin-left: -156%; color: #fff;">GO</button>
-	</div> -->
+</a>
 	<a href="../POS/pos.php">
 	<svg class="Rectangle_176">
 		<rect id="Rectangle_176" rx="13" ry="13" x="0" y="0" width="179" height="30">
@@ -321,10 +435,6 @@ td, th {
 		<path id="Icon_map-accounting" d="M 19.43109512329102 0.7199999094009399 L 5.359010696411133 0.7199999094009399 C 4.391554832458496 0.7199999094009399 3.599999904632568 1.511554718017578 3.599999904632568 2.479010343551636 L 3.599999904632568 20.06911468505859 C 3.599999904632568 21.03656959533691 4.391554832458496 21.828125 5.359010696411133 21.828125 L 19.43109512329102 21.828125 C 20.39855194091797 21.828125 21.19010734558105 21.03656959533691 21.19010734558105 20.06911468505859 L 21.19010734558105 2.479010343551636 C 21.19010734558105 1.511554479598999 20.39855194091797 0.7199997901916504 19.43109512329102 0.7199997901916504 Z M 8.877031326293945 18.31010437011719 C 8.877031326293945 18.79383277893066 8.481254577636719 19.18961143493652 7.997526168823242 19.18961143493652 L 6.23851490020752 19.18961143493652 C 5.754787445068359 19.18961143493652 5.359009742736816 18.79383277893066 5.359009742736816 18.31010437011719 L 5.359009742736816 17.87035179138184 C 5.359009742736816 17.38662528991699 5.754787445068359 16.99084663391113 6.23851490020752 16.99084663391113 L 7.997526168823242 16.99084663391113 C 8.481253623962402 16.99084663391113 8.877031326293945 17.38662528991699 8.877031326293945 17.87035179138184 L 8.877031326293945 18.31010437011719 Z M 8.877031326293945 14.79208469390869 C 8.877031326293945 15.27581214904785 8.481254577636719 15.67158985137939 7.997526168823242 15.67158985137939 L 6.23851490020752 15.67158985137939 C 5.754787445068359 15.67158985137939 5.359009742736816 15.27581214904785 5.359009742736816 14.79208469390869 L 5.359009742736816 14.35233211517334 C 5.359009742736816 13.86860466003418 5.754787445068359 13.47282695770264 6.23851490020752 13.47282695770264 L 7.997526168823242 13.47282695770264 C 8.481253623962402 13.47282695770264 8.877031326293945 13.86860466003418 8.877031326293945 14.35233211517334 L 8.877031326293945 14.79208469390869 Z M 8.877031326293945 11.27406311035156 C 8.877031326293945 11.75779151916504 8.481254577636719 12.15356922149658 7.997526168823242 12.15356922149658 L 6.23851490020752 12.15356922149658 C 5.754787445068359 12.15356922149658 5.359009742736816 11.75779151916504 5.359009742736816 11.27406311035156 L 5.359009742736816 10.83431148529053 C 5.359009742736816 10.35058307647705 5.754787445068359 9.954805374145508 6.23851490020752 9.954805374145508 L 7.997526168823242 9.954805374145508 C 8.481253623962402 9.954805374145508 8.877031326293945 10.35058307647705 8.877031326293945 10.83431148529053 L 8.877031326293945 11.27406311035156 Z M 14.15406322479248 18.31010437011719 C 14.15406322479248 18.79383277893066 13.75828552246094 19.18961143493652 13.27455806732178 19.18961143493652 L 11.51554775238037 19.18961143493652 C 11.03182029724121 19.18961143493652 10.63604259490967 18.79383277893066 10.63604259490967 18.31010437011719 L 10.63604259490967 17.87035179138184 C 10.63604259490967 17.38662528991699 11.03181934356689 16.99084663391113 11.51554775238037 16.99084663391113 L 13.27455902099609 16.99084663391113 C 13.75828647613525 16.99084663391113 14.15406513214111 17.38662528991699 14.15406513214111 17.87035179138184 L 14.15406513214111 18.31010437011719 Z M 14.15406322479248 14.79208469390869 C 14.15406322479248 15.27581214904785 13.75828552246094 15.67158985137939 13.27455806732178 15.67158985137939 L 11.51554775238037 15.67158985137939 C 11.03182029724121 15.67158985137939 10.63604259490967 15.27581214904785 10.63604259490967 14.79208469390869 L 10.63604259490967 14.35233211517334 C 10.63604259490967 13.86860466003418 11.03181934356689 13.47282695770264 11.51554775238037 13.47282695770264 L 13.27455902099609 13.47282695770264 C 13.75828647613525 13.47282695770264 14.15406513214111 13.86860466003418 14.15406513214111 14.35233211517334 L 14.15406513214111 14.79208469390869 Z M 14.15406322479248 11.27406311035156 C 14.15406322479248 11.75779151916504 13.75828552246094 12.15356922149658 13.27455806732178 12.15356922149658 L 11.51554775238037 12.15356922149658 C 11.03182029724121 12.15356922149658 10.63604259490967 11.75779151916504 10.63604259490967 11.27406311035156 L 10.63604259490967 10.83431148529053 C 10.63604259490967 10.35058307647705 11.03181934356689 9.954805374145508 11.51554775238037 9.954805374145508 L 13.27455902099609 9.954805374145508 C 13.75828647613525 9.954805374145508 14.15406513214111 10.35058307647705 14.15406513214111 10.83431148529053 L 14.15406513214111 11.27406311035156 Z M 19.43109512329102 18.31010437011719 C 19.43109512329102 18.79383277893066 19.03531837463379 19.18961143493652 18.55158996582031 19.18961143493652 L 16.79257965087891 19.18961143493652 C 16.30885124206543 19.18961143493652 15.91307353973389 18.79383277893066 15.91307353973389 18.31010437011719 L 15.91307353973389 17.87035179138184 C 15.91307353973389 17.38662528991699 16.30885124206543 16.99084663391113 16.79257965087891 16.99084663391113 L 18.55159187316895 16.99084663391113 C 19.03531837463379 16.99084663391113 19.43109703063965 17.38662528991699 19.43109703063965 17.87035179138184 L 19.43109703063965 18.31010437011719 Z M 19.43109512329102 14.79208469390869 C 19.43109512329102 15.27581214904785 19.03531837463379 15.67158985137939 18.55158996582031 15.67158985137939 L 16.79257965087891 15.67158985137939 C 16.30885124206543 15.67158985137939 15.91307353973389 15.27581214904785 15.91307353973389 14.79208469390869 L 15.91307353973389 14.35233211517334 C 15.91307353973389 13.86860466003418 16.30885124206543 13.47282695770264 16.79257965087891 13.47282695770264 L 18.55159187316895 13.47282695770264 C 19.03531837463379 13.47282695770264 19.43109703063965 13.86860466003418 19.43109703063965 14.35233211517334 L 19.43109703063965 14.79208469390869 Z M 19.43109512329102 11.27406311035156 C 19.43109512329102 11.75779151916504 19.03531837463379 12.15356922149658 18.55158996582031 12.15356922149658 L 16.79257965087891 12.15356922149658 C 16.30885124206543 12.15356922149658 15.91307353973389 11.75779151916504 15.91307353973389 11.27406311035156 L 15.91307353973389 10.83431148529053 C 15.91307353973389 10.35058307647705 16.30885124206543 9.954805374145508 16.79257965087891 9.954805374145508 L 18.55159187316895 9.954805374145508 C 19.03531837463379 9.954805374145508 19.43109703063965 10.35058307647705 19.43109703063965 10.83431148529053 L 19.43109703063965 11.27406311035156 Z M 19.43109512329102 7.31628942489624 C 19.43109512329102 7.800017356872559 19.03531837463379 8.195795059204102 18.55158996582031 8.195795059204102 L 6.238515853881836 8.195795059204102 C 5.754788398742676 8.195795059204102 5.359010696411133 7.800017833709717 5.359010696411133 7.31628942489624 L 5.359010696411133 3.79826831817627 C 5.359010696411133 3.31454062461853 5.754788398742676 2.918763160705566 6.238515853881836 2.918763160705566 L 18.55158996582031 2.918763160705566 C 19.03531837463379 2.918763160705566 19.43109512329102 3.31454062461853 19.43109512329102 3.79826831817627 L 19.43109512329102 7.31628942489624 Z">
 		</path>
 	</svg>
-	<div id="Group_59">
-
-
-	</div>
 	<div id="Search_Product_cf">
 		
 	</div>
@@ -351,14 +461,63 @@ td, th {
 		<span>AUDIT TRAIL</span>
 	</div>
 	</a>
-	<svg class="Icon_ionic-md-eye" viewBox="2.25 7.383 53.692 36.194">
-		<path id="Icon_ionic-md-eye" d="M 29.09608459472656 7.3828125 C 16.89549827575684 7.3828125 6.516610145568848 14.86136245727539 2.25 25.47994995117188 C 6.516610145568848 36.09852981567383 16.89549827575684 43.57708740234375 29.09608459472656 43.57708740234375 C 41.29667282104492 43.57708740234375 51.67556381225586 36.09852981567383 55.94216918945312 25.47994995117188 C 51.67556381225586 14.86136245727539 41.29667282104492 7.3828125 29.09608459472656 7.3828125 Z M 29.09608459472656 37.54870223999023 C 22.38456153869629 37.54870223999023 16.89549827575684 32.11956405639648 16.89549827575684 25.47994995117188 C 16.89549827575684 18.8403377532959 22.38456153869629 13.41119575500488 29.09608459472656 13.41119575500488 C 35.8076057434082 13.41119575500488 41.29667282104492 18.8403377532959 41.29667282104492 25.47994995117188 C 41.29667282104492 32.11956405639648 35.8076057434082 37.54870223999023 29.09608459472656 37.54870223999023 Z M 29.09608459472656 18.2410945892334 C 25.06916999816895 18.2410945892334 21.77333450317383 21.50097846984863 21.77333450317383 25.47994995117188 C 21.77333450317383 29.45891952514648 25.06916999816895 32.71880722045898 29.09608459472656 32.71880722045898 C 33.12299346923828 32.71880722045898 36.41883087158203 29.45892524719238 36.41883087158203 25.47994995117188 C 36.41883087158203 21.5009765625 33.12299346923828 18.2410945892334 29.09608459472656 18.2410945892334 Z">
-		</path>
-	</svg>
+	<style>
+	#AUDIT_TRAIL {
+	left: 473px;
+	top: 127px;
+	position: absolute;
+	overflow: visible;
+	width: 113px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Segoe UI;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 20px;
+	color: rgba(255,255,255,1);
+}
+#LOGOUT1 {
+	left: 118px;
+	top: 921px;
+	position: absolute;
+	overflow: visible;
+	width: 152px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Segoe UI;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 27px;
+	color: white;
+}
+</style>
+	<!-- logout -->
+	<a href="../logout.php" onclick="return confirm('Are you sure?')">
+	<div id="LOGOUT1" >
+		<span>LOG OUT</span>
+	</div>
+	</a>
 	<svg class="Icon_awesome-clipboard-list" viewBox="0 0 33.146 39.779">
 		<path id="Icon_awesome-clipboard-list" d="M 29.0023193359375 4.972412109375 L 22.09700584411621 4.972412109375 C 22.09700584411621 2.22981595993042 19.61972427368164 0 16.57275390625 0 C 13.52578449249268 0 11.04850292205811 2.22981595993042 11.04850292205811 4.972412109375 L 4.1431884765625 4.972412109375 C 1.855803251266479 4.972412109375 0 6.642831802368164 0 8.70172119140625 L 0 36.04998779296875 C 0 38.10887908935547 1.855803251266479 39.779296875 4.1431884765625 39.779296875 L 29.0023193359375 39.779296875 C 31.28970527648926 39.779296875 33.1455078125 38.10887908935547 33.1455078125 36.04998779296875 L 33.1455078125 8.70172119140625 C 33.1455078125 6.642831802368164 31.28970527648926 4.972412109375 29.0023193359375 4.972412109375 Z M 8.286376953125 32.94223022460938 C 7.138368606567383 32.94223022460938 6.21478271484375 32.11090469360352 6.21478271484375 31.07757568359375 C 6.21478271484375 30.04424667358398 7.138368606567383 29.21292114257812 8.286376953125 29.21292114257812 C 9.434385299682617 29.21292114257812 10.35797119140625 30.04424667358398 10.35797119140625 31.07757568359375 C 10.35797119140625 32.11090469360352 9.434385299682617 32.94223022460938 8.286376953125 32.94223022460938 Z M 8.286376953125 25.48361206054688 C 7.138368606567383 25.48361206054688 6.21478271484375 24.65228652954102 6.21478271484375 23.61895751953125 C 6.21478271484375 22.58562850952148 7.138368606567383 21.75430297851562 8.286376953125 21.75430297851562 C 9.434385299682617 21.75430297851562 10.35797119140625 22.58562850952148 10.35797119140625 23.61895751953125 C 10.35797119140625 24.65228652954102 9.434385299682617 25.48361206054688 8.286376953125 25.48361206054688 Z M 8.286376953125 18.02499389648438 C 7.138368606567383 18.02499389648438 6.21478271484375 17.19366836547852 6.21478271484375 16.16033935546875 C 6.21478271484375 15.12701034545898 7.138368606567383 14.29568481445312 8.286376953125 14.29568481445312 C 9.434385299682617 14.29568481445312 10.35797119140625 15.12701034545898 10.35797119140625 16.16033935546875 C 10.35797119140625 17.19366836547852 9.434385299682617 18.02499389648438 8.286376953125 18.02499389648438 Z M 16.57275390625 3.107757568359375 C 17.72076225280762 3.107757568359375 18.64434814453125 3.939082622528076 18.64434814453125 4.972412109375 C 18.64434814453125 6.005741596221924 17.72076225280762 6.837066650390625 16.57275390625 6.837066650390625 C 15.4247465133667 6.837066650390625 14.50115966796875 6.005741596221924 14.50115966796875 4.972412109375 C 14.50115966796875 3.939082622528076 15.4247465133667 3.107757568359375 16.57275390625 3.107757568359375 Z M 27.62125778198242 31.69912719726562 C 27.62125778198242 32.04098129272461 27.31051826477051 32.3206787109375 26.93072509765625 32.3206787109375 L 14.50115966796875 32.3206787109375 C 14.12136840820312 32.3206787109375 13.81062889099121 32.04098129272461 13.81062889099121 31.69912719726562 L 13.81062889099121 30.45602416992188 C 13.81062889099121 30.11417007446289 14.12136840820312 29.83447265625 14.50115966796875 29.83447265625 L 26.93072509765625 29.83447265625 C 27.31051826477051 29.83447265625 27.62125778198242 30.11417007446289 27.62125778198242 30.45602416992188 L 27.62125778198242 31.69912719726562 Z M 27.62125778198242 24.24050903320312 C 27.62125778198242 24.58236312866211 27.31051826477051 24.862060546875 26.93072509765625 24.862060546875 L 14.50115966796875 24.862060546875 C 14.12136840820312 24.862060546875 13.81062889099121 24.58236312866211 13.81062889099121 24.24050903320312 L 13.81062889099121 22.99740600585938 C 13.81062889099121 22.65555191040039 14.12136840820312 22.3758544921875 14.50115966796875 22.3758544921875 L 26.93072509765625 22.3758544921875 C 27.31051826477051 22.3758544921875 27.62125778198242 22.65555191040039 27.62125778198242 22.99740600585938 L 27.62125778198242 24.24050903320312 Z M 27.62125778198242 16.78189086914062 C 27.62125778198242 17.12374305725098 27.31051826477051 17.4034423828125 26.93072509765625 17.4034423828125 L 14.50115966796875 17.4034423828125 C 14.12136840820312 17.4034423828125 13.81062889099121 17.12374305725098 13.81062889099121 16.78189086914062 L 13.81062889099121 15.53878784179688 C 13.81062889099121 15.19693470001221 14.12136840820312 14.917236328125 14.50115966796875 14.917236328125 L 26.93072509765625 14.917236328125 C 27.31051826477051 14.917236328125 27.62125778198242 15.19693470001221 27.62125778198242 15.53878784179688 L 27.62125778198242 16.78189086914062 Z">
 		</path>
 	</svg>
 </div>
+
+
+<script>
+
+$(document).ready(function() {
+
+	$('.editbtn').on('click',function(){
+
+		$('#editmodal').modal('show'); 
+
+	});
+
+});
+
+</script>
+
+
 </body>
 </html>

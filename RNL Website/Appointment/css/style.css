@@ -10,6 +10,7 @@
 				  background-color: transparent;
 				  font-size: large;
 				  color: white;
+				 
 				}
 				input[type=email], select {
 					width: 450%;
@@ -136,6 +137,7 @@
 	top: 168px;
 	overflow: visible;
 }
+
 #Rectangle_100 {
 	fill: rgba(33,33,33,1);
 }

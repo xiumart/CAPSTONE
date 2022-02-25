@@ -4,7 +4,8 @@
 <meta charset="utf-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>patientrecords</title>
+<title>PATIENT RECORDS | ADMIN</title>
+<link rel="shorcut icon" type="img/png" href="logo.png">
 <link rel="stylesheet" type="text/css" id="applicationStylesheet" href="css/style.css"/>
 <script id="applicationScript" type="text/javascript" src="js/script.js"></script>
 </head>
@@ -18,11 +19,11 @@
 		<rect id="Rectangle_115" rx="0" ry="0" x="0" y="0" width="1920" height="101">
 		</rect>
 	</svg>
-	<a href="../Dashboard/dashboard.php">
+	<a href="../DASHBOARD/dashboard.php">
 	<img id="Untitled_design_12" src="Untitled_design_12.png" srcset="Untitled_design_12.png 1x, Untitled_design_12@2x.png 2x">
 		
 	</a>
-	<a href="../Dashboard/dashboard.php">
+	<a href="../DASHBOARD/dashboard.php">
 	<div id="RNL_Vision_Care">
 		<span>RNL Vision Care</span>
 	</div>
@@ -37,7 +38,7 @@
 		<ellipse id="Ellipse_8" rx="23" ry="23" cx="23" cy="23">
 		</ellipse>
 	</svg>
-	<a href="../Dashboard/dashboard.php">
+	<a href="../DASHBOARD/dashboard.php">
 	<div id="DASHBOARD">
 		<span>DASHBOARD</span>
 	</div>
@@ -116,31 +117,83 @@ td, th {
   padding: 8px;
 }
 	</style>
-	<div id="PATIENT_RECORDS_bg">
-
-		<span>PATIENT RECORDS</span><br><br><br>
 	
-		<input type="text" name="EMAIL" style="background-color: white; font-size: 20px; border:solid white 1px; width: 600px;; height:40px;  text-transform:lowercase; padding-left: 10px; padding-top: 5px;" placeholder="Search"> <button type="submit" class="button"><img src="icon.png"></button><br><br><br>
-		<table>
+	<div id="PATIENT_RECORDS_bg">
+		<span>PATIENT RECORDS</span><br><br><br>
+	<form method="post">
+		<input type="text" name="searchpatients" style="background-color: white; font-size: 20px; border:solid white 1px; width: 600px;; height:40px;  text-transform:lowercase; padding-left: 10px; padding-top: 5px;" placeholder="Search by Lastname"></form><br><br>
+		<a href="patientrecords.php">
+	<div id="Back">
+		<button type="submit" name="back" 
+		style='width: 80%; background-color: #1566a8; color: white;
+	padding: 15px 20px;
+	margin: 8px 0;
+	border: none;
+	border-radius: 10px;
+	cursor: pointer;
+	position: relative;
+	top: -90%;
+	margin-left: 626%;
+	top: -104px;
+	font-size: large;'>Refresh</button>
+	</div>
+</a>
+	</div>
+
+	<style>
+	}
+.example{
+	height: 560px; overflow-y: scroll; margin-top: 20px;padding: 0; width: 95%;
+}
+.example::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.example {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+</style>
+<div class="example">
+	<table style="margin-top: 280px; margin-left: 24.5%; font-size: 20px;">
   <tr>
     <th>Case no.</th>
     <th>Lastname</th>
     <th>Firstname</th>
     <th>Middlename</th>
+	<th>Address</th>
     <th>Age</th>
     <th>Contact No.</th>
+	<th>Date</th>
     <th>Action</th>
   </tr>
    
   <?php
-
+error_reporting(0);
+$search=$_POST['searchpatients'];
+  $sql1 = "SELECT * FROM `patients` WHERE `pat_last`LIKE '%$search%'";
+ 
 include "../../db_conn.php";
-$sql = "SELECT * from patients";
-$result = $conn->query($sql);
+// $sql = "SELECT * from patients";
+$result = $conn->query($sql1);
 
 if($result->num_rows > 0){
 	while($row = $result -> fetch_assoc()){
-		echo "<tr><td>" . $row["pat_id"] . "</td><td>" . $row["pat_last"] . "</td><td>" . $row["pat_first"] . "</td><td>" . $row["pat_middle"] . "</td><td>" . $row["pat_age"] . "</td><td>" . $row["pat_contact"] . "</td></tr>";
+		echo "<tr><td>" . $row["pat_id"] 
+		. "</td><td>" . $row["pat_last"] 
+		. "</td><td>" . $row["pat_first"] 
+		. "</td><td>" . $row["pat_middle"] 
+		. "</td><td>" . $row["pat_address"]
+		. "</td><td>" . $row["pat_age"] 
+		. "</td><td>" . $row["pat_contact"] 
+		. "</td><td>" . $row["pat_date"]. 
+		"</td>
+		<td><form method='post' action='?pat_id=".$row["pat_id"]."'>
+  		<button style='cursor: pointer; background-color: rgba(0,194,203,1); padding: 7px; border-radius: 10px; width: 80px; margin-bottom: 10px;'>UPDATE</button>
+		<button style='cursor: pointer; background-color: rgba(0,194,203,1); padding: 7px; border-radius: 10px; width: 80px;'>VIEW</button></form></td>
+  		</tr>
+		";
 	}
 } else {
 	echo "NO RESULTS";
@@ -150,10 +203,10 @@ $conn->close();
 
 
 ?>
+<!-- BUTTON
 <tr>
-
     <td><a href="../Update/update.php"><button style="cursor: pointer; background-color: #abd7ab; padding: 10px; border-radius: 10px;">UPDATE</button></a>&nbsp&nbsp&nbsp&nbsp<button style="cursor: pointer; background-color: #8cd3ff; padding: 10px; border-radius: 10px;">VIEW</button></td>
-  </tr>
+  </tr> -->
 </table>
 		
 	</div>
@@ -162,23 +215,28 @@ $conn->close();
 		</path>
 	</svg>
 	
+<style>
+		button[type=submit] {
+	width: 190%;
+	background-color: #1566a8;
+	color: white;
+	padding: 15px 20px;
+	margin: 8px 0;
+	border: none;
+	border-radius: 10px;
+	cursor: pointer;
+	position: relative;
+	top: -90%;
+	margin-left: -100%;
+	font-size: large;
+  }
+</style>
 	<a href="../New Patient/newpatients.php">
-	<svg class="Rectangle_125">
-		<rect id="Rectangle_125" rx="10" ry="10" x="0" y="0" width="159" height="43">
-		</rect>
-	</svg>
-</a>
-	
-	<a href="../New Patient/newpatients.php">
-
 	<div id="NEW_PATIENT">
-		<span>NEW PATIENT</span>
+		<button type="submit"> + New Patient</button>
 	</div>
-	</a>
-	<svg class="Icon_ionic-md-add" viewBox="6.75 6.75 22.5 22.5">
-		<path id="Icon_ionic-md-add" d="M 29.25 19.49997711181641 L 19.49997711181641 19.49997711181641 L 19.49997711181641 29.25 L 16.50002479553223 29.25 L 16.50002479553223 19.49997711181641 L 6.75 19.49997711181641 L 6.75 16.50002479553223 L 16.50002288818359 16.50002479553223 L 16.50002288818359 6.75 L 19.49997520446777 6.75 L 19.49997520446777 16.50002288818359 L 29.25 16.50002288818359 L 29.25 19.49997711181641 Z">
-		</path>
-	</svg>
+</a>
+
 
 	<a href="../Update/update.php">
 	<div id="Group_34">
@@ -225,10 +283,42 @@ $conn->close();
 		<span>AUDIT TRAIL</span>
 	</div>
 	</a>
-	<svg class="Icon_ionic-md-eye" viewBox="2.25 7.383 53.692 36.194">
-		<path id="Icon_ionic-md-eye" d="M 29.09608459472656 7.3828125 C 16.89549827575684 7.3828125 6.516610145568848 14.86136245727539 2.25 25.47994995117188 C 6.516610145568848 36.09852981567383 16.89549827575684 43.57708740234375 29.09608459472656 43.57708740234375 C 41.29667282104492 43.57708740234375 51.67556381225586 36.09852981567383 55.94216918945312 25.47994995117188 C 51.67556381225586 14.86136245727539 41.29667282104492 7.3828125 29.09608459472656 7.3828125 Z M 29.09608459472656 37.54870223999023 C 22.38456153869629 37.54870223999023 16.89549827575684 32.11956405639648 16.89549827575684 25.47994995117188 C 16.89549827575684 18.8403377532959 22.38456153869629 13.41119575500488 29.09608459472656 13.41119575500488 C 35.8076057434082 13.41119575500488 41.29667282104492 18.8403377532959 41.29667282104492 25.47994995117188 C 41.29667282104492 32.11956405639648 35.8076057434082 37.54870223999023 29.09608459472656 37.54870223999023 Z M 29.09608459472656 18.2410945892334 C 25.06916999816895 18.2410945892334 21.77333450317383 21.50097846984863 21.77333450317383 25.47994995117188 C 21.77333450317383 29.45891952514648 25.06916999816895 32.71880722045898 29.09608459472656 32.71880722045898 C 33.12299346923828 32.71880722045898 36.41883087158203 29.45892524719238 36.41883087158203 25.47994995117188 C 36.41883087158203 21.5009765625 33.12299346923828 18.2410945892334 29.09608459472656 18.2410945892334 Z">
-		</path>
-	</svg>
+	<style>
+	#AUDIT_TRAIL {
+	left: 473px;
+	top: 127px;
+	position: absolute;
+	overflow: visible;
+	width: 113px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Segoe UI;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 20px;
+	color: rgba(255,255,255,1);
+}
+#LOGOUT1 {
+	left: 118px;
+	top: 921px;
+	position: absolute;
+	overflow: visible;
+	width: 152px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Segoe UI;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 27px;
+	color: white;
+}
+</style>
+	<!-- logout -->
+	<a href="../logout.php" onclick="return confirm('Are you sure?')">
+	<div id="LOGOUT1" >
+		<span>LOG OUT</span>
+	</div>
+	</a>
 	<svg class="Icon_awesome-clipboard-list" viewBox="0 0 33.146 39.779">
 		<path id="Icon_awesome-clipboard-list" d="M 29.0023193359375 4.972412109375 L 22.09700584411621 4.972412109375 C 22.09700584411621 2.22981595993042 19.61972427368164 0 16.57275390625 0 C 13.52578449249268 0 11.04850292205811 2.22981595993042 11.04850292205811 4.972412109375 L 4.1431884765625 4.972412109375 C 1.855803251266479 4.972412109375 0 6.642831802368164 0 8.70172119140625 L 0 36.04998779296875 C 0 38.10887908935547 1.855803251266479 39.779296875 4.1431884765625 39.779296875 L 29.0023193359375 39.779296875 C 31.28970527648926 39.779296875 33.1455078125 38.10887908935547 33.1455078125 36.04998779296875 L 33.1455078125 8.70172119140625 C 33.1455078125 6.642831802368164 31.28970527648926 4.972412109375 29.0023193359375 4.972412109375 Z M 8.286376953125 32.94223022460938 C 7.138368606567383 32.94223022460938 6.21478271484375 32.11090469360352 6.21478271484375 31.07757568359375 C 6.21478271484375 30.04424667358398 7.138368606567383 29.21292114257812 8.286376953125 29.21292114257812 C 9.434385299682617 29.21292114257812 10.35797119140625 30.04424667358398 10.35797119140625 31.07757568359375 C 10.35797119140625 32.11090469360352 9.434385299682617 32.94223022460938 8.286376953125 32.94223022460938 Z M 8.286376953125 25.48361206054688 C 7.138368606567383 25.48361206054688 6.21478271484375 24.65228652954102 6.21478271484375 23.61895751953125 C 6.21478271484375 22.58562850952148 7.138368606567383 21.75430297851562 8.286376953125 21.75430297851562 C 9.434385299682617 21.75430297851562 10.35797119140625 22.58562850952148 10.35797119140625 23.61895751953125 C 10.35797119140625 24.65228652954102 9.434385299682617 25.48361206054688 8.286376953125 25.48361206054688 Z M 8.286376953125 18.02499389648438 C 7.138368606567383 18.02499389648438 6.21478271484375 17.19366836547852 6.21478271484375 16.16033935546875 C 6.21478271484375 15.12701034545898 7.138368606567383 14.29568481445312 8.286376953125 14.29568481445312 C 9.434385299682617 14.29568481445312 10.35797119140625 15.12701034545898 10.35797119140625 16.16033935546875 C 10.35797119140625 17.19366836547852 9.434385299682617 18.02499389648438 8.286376953125 18.02499389648438 Z M 16.57275390625 3.107757568359375 C 17.72076225280762 3.107757568359375 18.64434814453125 3.939082622528076 18.64434814453125 4.972412109375 C 18.64434814453125 6.005741596221924 17.72076225280762 6.837066650390625 16.57275390625 6.837066650390625 C 15.4247465133667 6.837066650390625 14.50115966796875 6.005741596221924 14.50115966796875 4.972412109375 C 14.50115966796875 3.939082622528076 15.4247465133667 3.107757568359375 16.57275390625 3.107757568359375 Z M 27.62125778198242 31.69912719726562 C 27.62125778198242 32.04098129272461 27.31051826477051 32.3206787109375 26.93072509765625 32.3206787109375 L 14.50115966796875 32.3206787109375 C 14.12136840820312 32.3206787109375 13.81062889099121 32.04098129272461 13.81062889099121 31.69912719726562 L 13.81062889099121 30.45602416992188 C 13.81062889099121 30.11417007446289 14.12136840820312 29.83447265625 14.50115966796875 29.83447265625 L 26.93072509765625 29.83447265625 C 27.31051826477051 29.83447265625 27.62125778198242 30.11417007446289 27.62125778198242 30.45602416992188 L 27.62125778198242 31.69912719726562 Z M 27.62125778198242 24.24050903320312 C 27.62125778198242 24.58236312866211 27.31051826477051 24.862060546875 26.93072509765625 24.862060546875 L 14.50115966796875 24.862060546875 C 14.12136840820312 24.862060546875 13.81062889099121 24.58236312866211 13.81062889099121 24.24050903320312 L 13.81062889099121 22.99740600585938 C 13.81062889099121 22.65555191040039 14.12136840820312 22.3758544921875 14.50115966796875 22.3758544921875 L 26.93072509765625 22.3758544921875 C 27.31051826477051 22.3758544921875 27.62125778198242 22.65555191040039 27.62125778198242 22.99740600585938 L 27.62125778198242 24.24050903320312 Z M 27.62125778198242 16.78189086914062 C 27.62125778198242 17.12374305725098 27.31051826477051 17.4034423828125 26.93072509765625 17.4034423828125 L 14.50115966796875 17.4034423828125 C 14.12136840820312 17.4034423828125 13.81062889099121 17.12374305725098 13.81062889099121 16.78189086914062 L 13.81062889099121 15.53878784179688 C 13.81062889099121 15.19693470001221 14.12136840820312 14.917236328125 14.50115966796875 14.917236328125 L 26.93072509765625 14.917236328125 C 27.31051826477051 14.917236328125 27.62125778198242 15.19693470001221 27.62125778198242 15.53878784179688 L 27.62125778198242 16.78189086914062 Z">
 		</path>

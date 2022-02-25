@@ -10,7 +10,7 @@ $conn = mysqli_connect($sname, $uname, $password, $db_name);
 if (!$conn) {
 	echo "Connection failed!";
 }
-
+if (isset($_POST['btnsubmit'])) {
 
 
  		$patlastname =  $_REQUEST['patlastname'];
@@ -34,8 +34,7 @@ if (!$conn) {
             echo "ERROR: Hush! Sorry $sql. " 
                 . mysqli_error($conn);
         }
-          
+    }
         // Close connection
         mysqli_close($conn);
         ?>
-?>

@@ -4,41 +4,57 @@
 <meta charset="utf-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>product</title>
+<title>PRODUCT | RNL VISION CARE</title>
+<link rel="shorcut icon" type="img/png" href="../logo.png">
 <link rel="stylesheet" type="text/css" id="applicationStylesheet" href="css/style.css"/>
 <script id="applicationScript" type="text/javascript" src="script/script.js"></script>
 </head>
 <body>
 <div id="product">
-	<div id="PRODUCT_y">
+	<div id="PRODUCT_y" style="top: 230px;">
 		<span>PRODUCT</span>
 	</div>
-	<div id="Home____Product_page">
+	<div id="Home____Product_page" style="top: 290px; left: 830px;">
 		<span>Home  »  Product page</span>
 	</div>
-	<img id="Untitled_design_23" src="Untitled_design_23.png" srcset="Untitled_design_23.png 1x, Untitled_design_23@2x.png 2x">
+	<img id="Untitled_design_23" src="Untitled_design_23.png" srcset="Untitled_design_23.png 1x, Untitled_design_23@2x.png 2x" style="top:100px;">
+
+
+	
+	<svg class="Rectangle_67" style="left:100px; top: 470px;">
+		<rect id="Rectangle_67" rx="0" ry="0" x="0" y="0" width="1745" height="66">
+		</rect>
+	</svg>
+<center>
+	<img id="n_" src="n_.png" srcset="n_.png 1x, n_@2x.png 2x" style="border:solid white 1px; border-radius: 8px;">
 		
-	<svg class="Rectangle_66">
-		<rect id="Rectangle_66" rx="27.5" ry="27.5" x="0" y="0" width="639" height="55">
-		</rect>
-	</svg>
-	<div id="Icon_feather-search">
-		<svg class="Path_6" viewBox="4.5 4.5 17.7 17.7">
-			<path id="Path_6" d="M 22.19962692260742 13.34981346130371 C 22.19962692260742 18.23743057250977 18.23743057250977 22.19962692260742 13.34981346130371 22.19962692260742 C 8.462196350097656 22.19962692260742 4.5 18.23743057250977 4.5 13.34981346130371 C 4.5 8.462196350097656 8.462197303771973 4.5 13.34981346130371 4.5 C 18.23743057250977 4.5 22.19962692260742 8.462197303771973 22.19962692260742 13.34981346130371 Z">
-			</path>
-		</svg>
-		<svg class="Path_7" viewBox="24.975 24.975 4.812 4.812">
-			<path id="Path_7" d="M 29.78708267211914 29.78708267211914 L 24.97499847412109 24.97499847412109">
-			</path>
-		</svg>
-	</div>
-	<div id="Search">
-		<span>Search...</span>
-	</div>
-	<svg class="Rectangle_67">
-		<rect id="Rectangle_67" rx="0" ry="0" x="0" y="0" width="1357" height="66">
-		</rect>
-	</svg>
+	<img id="n__fq" src="n__fq.png" srcset="n__fq.png 1x, n__fq@2x.png 2x" style="border:solid white 1px; border-radius: 8px;">
+		
+	<img id="n__fr" src="n__fr.png" srcset="n__fr.png 1x, n__fr@2x.png 2x" style="border:solid white 1px; border-radius: 8px;">
+		
+	<img id="n__fs" src="n__fs.png" srcset="n__fs.png 1x, n__fs@2x.png 2x" style="border:solid white 1px; border-radius: 8px;">
+		
+	<img id="n__ft" src="n__ft.png" srcset="n__ft.png 1x, n__ft@2x.png 2x" style="border:solid white 1px; border-radius: 8px;">
+		
+	<img id="n__fu" src="n__fu.png" srcset="n__fu.png 1x, n__fu@2x.png 2x" style="border:solid white 1px; border-radius: 8px;">
+		
+	<img id="n__fv" src="n__fv.png" srcset="n__fv.png 1x, n__fv@2x.png 2x" style="border:solid white 1px; border-radius: 8px;">
+		
+	<img id="n__fw" src="n__fw.png" srcset="n__fw.png 1x, n__fw@2x.png 2x" style="border:solid white 1px; border-radius: 8px;">
+		
+	<img id="n__fx" src="n__fx.png" srcset="n__fx.png 1x, n__fx@2x.png 2x" style="border:solid white 1px; border-radius: 8px;">
+		
+	<img id="n_0" src="n_0.png" srcset="n_0.png 1x, n_0@2x.png 2x" style="border:solid white 1px; border-radius: 8px;">
+		
+	<img id="n_1" src="n_1.png" srcset="n_1.png 1x, n_1@2x.png 2x" style="border:solid white 1px; border-radius: 8px;">
+		
+	<img id="n_2" src="n_2.png" srcset="n_2.png 1x, n_2@2x.png 2x" style="border:solid white 1px; border-radius: 8px;">
+		
+	<img id="n_3" src="n_3.png" srcset="n_3.png 1x, n_3@2x.png 2x" style="border:solid white 1px; border-radius: 8px;">
+		
+	<img id="n_4" src="n_4.png" srcset="n_4.png 1x, n_4@2x.png 2x" style="border:solid white 1px; border-radius: 8px;">
+		
+	<img id="n_5" src="n_5.png" srcset="n_5.png 1x, n_5@2x.png 2x" style="border:solid white 1px; border-radius: 8px;">
 	<div id="Group_11">
 		<svg class="Icon_ionic-ios-star" viewBox="2.25 3.375 29.459 27.355">
 			<path id="Icon_ionic-ios-star" d="M 30.59146499633789 12.84407424926758 L 20.91854286193848 12.84407424926758 L 17.97918510437012 4.072029590606689 C 17.83451843261719 3.64460563659668 17.43339920043945 3.375 16.97967147827148 3.375 C 16.52594375610352 3.375 16.12482452392578 3.64460563659668 15.98015785217285 4.072029590606689 L 13.04079914093018 12.84407424926758 L 3.302119255065918 12.84407424926758 L 3.302119255065918 12.84407424926758 C 2.723453521728516 12.84407424926758 2.25 13.31752872467041 2.25 13.8961935043335 C 2.25 13.95537567138672 2.256575584411621 14.02113246917725 2.269727230072021 14.07373905181885 C 2.282878637313843 14.30389022827148 2.388090848922729 14.56034469604492 2.710302114486694 14.81679821014404 L 10.66037940979004 20.41933250427246 L 7.609233379364014 29.29001426696777 C 7.457991123199463 29.71743774414062 7.609233379364014 30.19746780395508 7.970899105072021 30.47364807128906 C 8.161595344543457 30.61173820495605 8.339140892028809 30.7301025390625 8.562716484069824 30.7301025390625 C 8.779715538024902 30.7301025390625 9.03617000579834 30.61831665039062 9.220291137695312 30.49337577819824 L 16.97967147827148 24.96317481994629 L 24.73905181884766 30.49337577819824 C 24.92317199707031 30.62489128112793 25.17962646484375 30.7301025390625 25.39662551879883 30.7301025390625 C 25.62020111083984 30.7301025390625 25.7977466583252 30.61831665039062 25.98186874389648 30.47364807128906 C 26.3501091003418 30.19746780395508 26.49477577209473 29.72401237487793 26.34353446960449 29.29001426696777 L 23.29238700866699 20.41933059692383 L 31.17670822143555 14.76419067382812 L 31.36740493774414 14.59979724884033 C 31.53837394714355 14.41567707061768 31.70934295654297 14.16579818725586 31.70934295654297 13.89619159698486 C 31.70934295654297 13.31752872467041 31.17013168334961 12.84407424926758 30.59146499633789 12.84407424926758 Z">
@@ -319,64 +335,7 @@
 	<div id="n_1500_de">
 		<span>₱ 1,500</span>
 	</div>
-	<svg class="Icon_awesome-filter" viewBox="0 0 33 33">
-		<path id="Icon_awesome-filter" d="M 31.45157241821289 0 L 1.548679828643799 0 C 0.1746682822704315 0 -0.5186537504196167 1.667144060134888 0.4549104273319244 2.640708446502686 L 12.37499713897705 14.56259822845459 L 12.37499713897705 27.84374237060547 C 12.37499713897705 28.34847640991211 12.62127208709717 28.82149696350098 13.03480339050293 29.11102294921875 L 18.19105339050293 32.71910095214844 C 19.20831680297852 33.43118286132812 20.6249942779541 32.70950317382812 20.6249942779541 31.45182609558105 L 20.6249942779541 14.56259822845459 L 32.54540634155273 2.640708446502686 C 33.5169677734375 1.669077634811401 32.82841491699219 0 31.45157241821289 0 Z">
-		</path>
-	</svg>
-	<div id="SEARCH_FILTER">
-		<span>SEARCH FILTER</span>
-	</div>
-	<div id="Price_Range">
-		<span>Price Range</span>
-	</div>
-
-	<svg class="Rectangle_79">
-		<rect id="Rectangle_79" rx="0" ry="0" x="0" y="0" width="110" height="29">
-		</rect>
-	</svg>
-	<svg class="Rectangle_80">
-		<rect id="Rectangle_80" rx="0" ry="0" x="0" y="0" width="110" height="29">
-		</rect>
-	</svg>
-	<svg class="Rectangle_81">
-		<rect id="Rectangle_81" rx="0" ry="0" x="0" y="0" width="277" height="29">
-		</rect>
-	</svg>
-	<div id="Apply">
-		<span>Apply</span>
-	</div>
-	<svg class="Line_10" viewBox="0 0 277 1">
-		<path id="Line_10" d="M 0 0 L 277 0">
-		</path>
-	</svg>
-	<div id="Sort_by__">
-		<span>Sort by : </span>
-	</div>
-	<svg class="Rectangle_83">
-		<rect id="Rectangle_83" rx="4" ry="4" x="0" y="0" width="200" height="35">
-		</rect>
-	</svg>
-	<div id="Latest">
-		<span>Latest</span>
-	</div>
-	<svg class="Icon_awesome-angle-down" viewBox="-0.004 10.74 22.493 14.527">
-		<path id="Icon_awesome-angle-down" d="M 10.0546875 24.77109336853027 L 0.4921875 15.20859336853027 C -0.168749988079071 14.54765605926514 -0.168749988079071 13.47890567779541 0.4921875 12.82499980926514 L 2.081249952316284 11.23593711853027 C 2.7421875 10.57499980926514 3.810937404632568 10.57499980926514 4.46484375 11.23593711853027 L 11.24296855926514 18.01406097412109 L 18.02109336853027 11.23593616485596 C 18.68203163146973 10.57499885559082 19.75078010559082 10.57499885559082 20.40468788146973 11.23593616485596 L 21.99374961853027 12.82499885559082 C 22.65468788146973 13.48593616485596 22.65468788146973 14.55468654632568 21.99374961853027 15.20859241485596 L 12.43124961853027 24.77109146118164 C 11.78437423706055 25.43202972412109 10.71562480926514 25.43202972412109 10.0546875 24.77109146118164 Z">
-		</path>
-	</svg>
-	<div id="Price_">
-		<span>Price: </span>
-	</div>
-	<svg class="Rectangle_84">
-		<rect id="Rectangle_84" rx="4" ry="4" x="0" y="0" width="263" height="35">
-		</rect>
-	</svg>
-	<div id="Lowest_to_Highest">
-		<span>Lowest to Highest</span>
-	</div>
-	<svg class="Icon_awesome-angle-down_du" viewBox="-0.004 10.74 22.493 14.527">
-		<path id="Icon_awesome-angle-down_du" d="M 10.0546875 24.77109336853027 L 0.4921875 15.20859336853027 C -0.168749988079071 14.54765605926514 -0.168749988079071 13.47890567779541 0.4921875 12.82499980926514 L 2.081249952316284 11.23593711853027 C 2.7421875 10.57499980926514 3.810937404632568 10.57499980926514 4.46484375 11.23593711853027 L 11.24296855926514 18.01406097412109 L 18.02109336853027 11.23593616485596 C 18.68203163146973 10.57499885559082 19.75078010559082 10.57499885559082 20.40468788146973 11.23593616485596 L 21.99374961853027 12.82499885559082 C 22.65468788146973 13.48593616485596 22.65468788146973 14.55468654632568 21.99374961853027 15.20859241485596 L 12.43124961853027 24.77109146118164 C 11.78437423706055 25.43202972412109 10.71562480926514 25.43202972412109 10.0546875 24.77109146118164 Z">
-		</path>
-	</svg>
+	
 	<div id="Group_27">
 		<svg class="Icon_ionic-ios-star_dw" viewBox="2.25 3.375 29.459 27.355">
 			<path id="Icon_ionic-ios-star_dw" d="M 30.59146499633789 12.84407424926758 L 20.91854286193848 12.84407424926758 L 17.97918510437012 4.072029590606689 C 17.83451843261719 3.64460563659668 17.43339920043945 3.375 16.97967147827148 3.375 C 16.52594375610352 3.375 16.12482452392578 3.64460563659668 15.98015785217285 4.072029590606689 L 13.04079914093018 12.84407424926758 L 3.302119255065918 12.84407424926758 L 3.302119255065918 12.84407424926758 C 2.723453521728516 12.84407424926758 2.25 13.31752872467041 2.25 13.8961935043335 C 2.25 13.95537567138672 2.256575584411621 14.02113246917725 2.269727230072021 14.07373905181885 C 2.282878637313843 14.30389022827148 2.388090848922729 14.56034469604492 2.710302114486694 14.81679821014404 L 10.66037940979004 20.41933250427246 L 7.609233379364014 29.29001426696777 C 7.457991123199463 29.71743774414062 7.609233379364014 30.19746780395508 7.970899105072021 30.47364807128906 C 8.161595344543457 30.61173820495605 8.339140892028809 30.7301025390625 8.562716484069824 30.7301025390625 C 8.779715538024902 30.7301025390625 9.03617000579834 30.61831665039062 9.220291137695312 30.49337577819824 L 16.97967147827148 24.96317481994629 L 24.73905181884766 30.49337577819824 C 24.92317199707031 30.62489128112793 25.17962646484375 30.7301025390625 25.39662551879883 30.7301025390625 C 25.62020111083984 30.7301025390625 25.7977466583252 30.61831665039062 25.98186874389648 30.47364807128906 C 26.3501091003418 30.19746780395508 26.49477577209473 29.72401237487793 26.34353446960449 29.29001426696777 L 23.29238700866699 20.41933059692383 L 31.17670822143555 14.76419067382812 L 31.36740493774414 14.59979724884033 C 31.53837394714355 14.41567707061768 31.70934295654297 14.16579818725586 31.70934295654297 13.89619159698486 C 31.70934295654297 13.31752872467041 31.17013168334961 12.84407424926758 30.59146499633789 12.84407424926758 Z">
@@ -517,8 +476,9 @@
 	<div id="n_1500_ey">
 		<span>₱ 1,500</span>
 	</div>
-	<svg class="Rectangle_100">
-		<rect id="Rectangle_100" rx="0" ry="0" x="0" y="0" width="1920" height="296">
+
+	<svg class="Rectangle_100" style="height: 600px;">
+		<rect id="Rectangle_100" rx="0" ry="0" x="0" y="70" width="1920" height="600">
 		</rect>
 	</svg>
 	<div id="RNL_Vision_Care">
@@ -565,82 +525,109 @@
 		<input type="button" value="Send" id="feedback_s">
 	</div>
 	<svg class="Rectangle_1">
-		<rect id="Rectangle_1" rx="0" ry="0" x="0" y="0" width="1920" height="168">
+		<rect id="Rectangle_1" rx="0" ry="0" x="0" y="0" width="1920" height="100px">
 		</rect>
 	</svg>
-	<a href="../Home/home.php">
-	<img id="Untitled_design_12" src="Untitled_design_12.png" srcset="Untitled_design_12.png 1x, Untitled_design_12@2x.png 2x">
+	<a href="../home.php">
+	<img id="Untitled_design_12" src="Untitled_design_12.png" srcset="Untitled_design_12.png 1x, Untitled_design_12@2x.png 2x" style="width:150px; height:100px;">
 		
 	</a>
-	<a href="../Home/home.php">
-	<div id="RNL_Vision_Care_fh">
+	<a href="../home.php">
+	<div id="RNL_Vision_Care_fh" style="top:35px;">
 		<span>RNL Vision Care</span>
 	</div>
 	</a>
-	<svg class="Icon_ionic-md-eye" viewBox="2.25 7.383 53.692 36.194">
-		<path id="Icon_ionic-md-eye" d="M 29.09608459472656 7.3828125 C 16.89549827575684 7.3828125 6.516610145568848 14.86136245727539 2.25 25.47994995117188 C 6.516610145568848 36.09852981567383 16.89549827575684 43.57708740234375 29.09608459472656 43.57708740234375 C 41.29667282104492 43.57708740234375 51.67556381225586 36.09852981567383 55.94216918945312 25.47994995117188 C 51.67556381225586 14.86136245727539 41.29667282104492 7.3828125 29.09608459472656 7.3828125 Z M 29.09608459472656 37.54870223999023 C 22.38456153869629 37.54870223999023 16.89549827575684 32.11956405639648 16.89549827575684 25.47994995117188 C 16.89549827575684 18.8403377532959 22.38456153869629 13.41119575500488 29.09608459472656 13.41119575500488 C 35.8076057434082 13.41119575500488 41.29667282104492 18.8403377532959 41.29667282104492 25.47994995117188 C 41.29667282104492 32.11956405639648 35.8076057434082 37.54870223999023 29.09608459472656 37.54870223999023 Z M 29.09608459472656 18.2410945892334 C 25.06916999816895 18.2410945892334 21.77333450317383 21.50097846984863 21.77333450317383 25.47994995117188 C 21.77333450317383 29.45891952514648 25.06916999816895 32.71880722045898 29.09608459472656 32.71880722045898 C 33.12299346923828 32.71880722045898 36.41883087158203 29.45892524719238 36.41883087158203 25.47994995117188 C 36.41883087158203 21.5009765625 33.12299346923828 18.2410945892334 29.09608459472656 18.2410945892334 Z">
-		</path>
-	</svg>
+
 	<a href="../About/about.php">
-	<div id="ABOUT">
+	<div id="ABOUT" style="top:35px; font-size:26px; left:1035px;" >
 		<span>ABOUT</span>
 	</div>
 	</a>
-	<a href="../Home/home.php">
-	<div id="HOME">
+	<a href="../home.php">
+	<div id="HOME" style="top:35px; font-size:26px; left:900px;">
 		<span>HOME</span>
 	</div>
 	</a>
 	<a href="../Services/services.php">
-	<div id="SERVICES">
+	<div id="SERVICES" style="top:35px; font-size:26px; left:1179px;">
 		<span>SERVICES</span>
 	</div>
 	</a>
 	<a href="../Product/product.php">
-	<div id="PRODUCT_fm">
+	<div id="PRODUCT_fm" style="top:35px; font-size:26px; left:1355px;">
 		<span>PRODUCT</span>
 	</div>
 	</a>
-	<a href="../Appointment/appointment.php">
-	<div id="APPOINTMENT">
+	<a href="../Appointment/appointment.php" >
+	<div id="APPOINTMENT" style="top:35px; font-size:26px; left:1518px;">
 		<span>APPOINTMENT</span>
 	</div>
 	</a>
-	<a href="../Login/login.php">
-	<div id="LOGIN">
-		<span>LOGIN</span>
+
+	<div id="Sort_by__" style="left: 1420px; top: 490px;">
+		<span>Price : </span>
 	</div>
-	</a>
-	<img id="n_" src="n_.png" srcset="n_.png 1x, n_@2x.png 2x">
-		
-	<img id="n__fq" src="n__fq.png" srcset="n__fq.png 1x, n__fq@2x.png 2x">
-		
-	<img id="n__fr" src="n__fr.png" srcset="n__fr.png 1x, n__fr@2x.png 2x">
-		
-	<img id="n__fs" src="n__fs.png" srcset="n__fs.png 1x, n__fs@2x.png 2x">
-		
-	<img id="n__ft" src="n__ft.png" srcset="n__ft.png 1x, n__ft@2x.png 2x">
-		
-	<img id="n__fu" src="n__fu.png" srcset="n__fu.png 1x, n__fu@2x.png 2x">
-		
-	<img id="n__fv" src="n__fv.png" srcset="n__fv.png 1x, n__fv@2x.png 2x">
-		
-	<img id="n__fw" src="n__fw.png" srcset="n__fw.png 1x, n__fw@2x.png 2x">
-		
-	<img id="n__fx" src="n__fx.png" srcset="n__fx.png 1x, n__fx@2x.png 2x">
-		
-	<img id="n_0" src="n_0.png" srcset="n_0.png 1x, n_0@2x.png 2x">
-		
-	<img id="n_1" src="n_1.png" srcset="n_1.png 1x, n_1@2x.png 2x">
-		
-	<img id="n_2" src="n_2.png" srcset="n_2.png 1x, n_2@2x.png 2x">
-		
-	<img id="n_3" src="n_3.png" srcset="n_3.png 1x, n_3@2x.png 2x">
-		
-	<img id="n_4" src="n_4.png" srcset="n_4.png 1x, n_4@2x.png 2x">
-		
-	<img id="n_5" src="n_5.png" srcset="n_5.png 1x, n_5@2x.png 2x">
+	<div id="Sort_by__" style="left: 890px; top: 490px;">
+		<span>Sort by : </span>
+	</div>
+	
+	<div id="Latest"  style="left: 1020px; top: 490px;opacity:1;">
+		<select name="" id="" style="width:300px;">
+			<option value="" style="color:black;">Latest Product</option>
+			<option value="" style="color:black;">Best Selling Product</option>
+		</select>
+	</div>
+
+	<div id="Lowest_to_Highest" style="left: 1520px; top: 490px;opacity:1;height:10px;">
+	<select name="" id="" style="width:300px;">
+			<option value="" style="color:black;">Lowest to Highest</option>
+			<option value="" style="color:black;">Highest to Lowest</option>
+		</select>
+	</div>
+	
+	
 		
 </div>
+<style>	
+#myBtn {
+  display: none;
+  position: fixed;
+  bottom: 10px;
+  right: 30px;
+  z-index: 99;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  background-color: teal;
+  color: white;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+#myBtn:hover {
+  background-color: #555;
+}
+</style>
+<button onclick="topFunction()" id="myBtn" title="Go to top">Back to top</button>
+<script>
+var mybutton = document.getElementById("myBtn");
+
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+
+function topFunction() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
+</script>
+
 </body>
 </html>
