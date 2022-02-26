@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Dashboard - Brand</title>
+    <title>Table - Brand</title>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web:400,600,700">
@@ -30,9 +30,9 @@
                 <hr class="sidebar-divider my-0">
                 <ul class="navbar-nav text-light" id="accordionSidebar-1">
                     <li class="nav-item"><a class="nav-link" href="dashboard.php"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
-                    <li class="nav-item"><a class="nav-link" href="patient_records.php"><i class="fa fa-files-o"></i>Patient Records</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="patient_records.php"><i class="fa fa-files-o"></i>Patient Records</a></li>
                     <li class="nav-item"></li>
-                    <li class="nav-item"><a class="nav-link active" href="POS.php"><i class="fas fa-shopping-cart"></i>Point of Sale</a><a class="nav-link" href="Sales.php"><i class="fa fa-money"></i>Sales</a></li>
+                    <li class="nav-item"><a class="nav-link" href="POS.php"><i class="fas fa-shopping-cart"></i>Point of Sale</a><a class="nav-link" href="Sales.php"><i class="fa fa-money"></i>Sales</a></li>
                     <li class="nav-item"><a class="nav-link" href="products.php"><i class="fas fa-glasses"></i>Product</a></li>
                     <li class="nav-item"></li>
                     <li class="nav-item"><a class="nav-link" href="supplier.php"><i class="fa fa-cab"></i>Supplier</a></li>
@@ -62,8 +62,6 @@
                                 </form>
                             </div>
                         </li>
-                        <span id='time' style="margin-top:23px;"></span>
-                        <script src="assets/js/datentime.js"></script>
                         <li class="nav-item dropdown no-arrow mx-1">
                             <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" aria-expanded="false" data-toggle="dropdown" href="#"><span class="badge badge-danger badge-counter">3+</span><i class="fas fa-bell fa-fw"></i></a>
                                 <div class="dropdown-menu dropdown-menu-right dropdown-list animated--grow-in">
@@ -109,77 +107,120 @@
             <div id="content">
                 <div class="container-fluid">
                     <div class="d-sm-flex justify-content-between align-items-center mb-4" style="margin-top: 30px;">
-                        <h1 class="text-info mb-0">Point of Sales</h1>
+                        <h1 class="text-info mb-0">History</h1>
                     </div>
-                    <div class="row">
-                        <div class="col">
-                            <div style="padding: 22px;">
-                                <section>
-                                    <hr>
-                                    <div>
-                                        <h3 style="font-size: 20px;">Search by dates</h3>
-                                    </div><div class="input-group">
-  <select class="custom-select" id="inputGroupSelect04" aria-label="Example select with button addon">
-    <option selected>Choose...</option>
-    <option value="1">One</option>
-    <option value="2">Two</option>
-    <option value="3">Three</option>
-  </select>
-  <div class="input-group-append">
-    <button class="btn btn-outline-secondary" type="button">Button</button>
-  </div>
-</div><input type="number" style="margin-top: 10px;">
-                                    <div style="margin-top: 10px;"><label>Customer name</label><input type="date" style="margin-right: 0px;margin-left: 13px;"><button class="btn btn-primary" type="button" style="margin-right: -8px;margin-bottom: 14px;margin-left: 10px;">Generate</button></div>
-                                    <div class="table-responsive">
-                                        <table class="table">
-                                            <thead class="text-center">
-                                                <tr class="text-center">
-                                                    <th><strong>Brand Name</strong><br></th>
-                                                    <th>Model</th>
-                                                    <th>Category</th>
-                                                    <th>Price</th>
-                                                    <th>Quantity</th>
-                                                    <th>Amount</th>
-                                                    <th>Profit</th>
-                                                    <th>Action</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr class="text-center">
-                                                    <td>11111111-1</td>
-                                                    <td>Nombre1</td>
-                                                    <td>ApellidoP1</td>
-                                                    <td>Cell 4</td>
-                                                    <td>Cell 4</td>
-                                                    <td>Cell 6</td>
-                                                    <td>Cell 7</td>
-                                                    <td><a class="text-danger" href="#">Cancel</a></td>
-                                                </tr>
-                                                <tr class="text-center">
-                                                    <td>22222222-2</td>
-                                                    <td>Nombre2</td>
-                                                    <td>ApellidoP2</td>
-                                                    <td>Cell 4</td>
-                                                    <td>Cell 4</td>
-                                                    <td>Cell 6</td>
-                                                    <td>Cell 7</td>
-                                                    <td><a class="text-danger" href="#">Cancel</a></td>
-                                                </tr>
-                                                <tr class="text-center">
-                                                    <td>33333333-3</td>
-                                                    <td>Nombre3<br></td>
-                                                    <td>ApellidoP3</td>
-                                                    <td>Cell 4</td>
-                                                    <td>Cell 4</td>
-                                                    <td>Cell 6</td>
-                                                    <td>Cell 7</td>
-                                                    <td><a class="text-danger" href="#">Cancel</a></td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </section>
-                                <section class="text-right"></section>
+                    <div class="card shadow">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6 text-nowrap"><a class="btn btn-primary btn-sm d-none d-sm-inline-block" role="button" href="addpatient.php"><i class="fas fa-plus fa-sm text-white-50"></i>&nbsp;Add New Patient</a>
+                                    <div id="dataTable_length" class="dataTables_length" aria-controls="dataTable"></div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="text-md-right dataTables_filter" id="dataTable_filter">
+                                        <form method="post">
+                                        <a href="patient_records.php" class="btn btn-primary" style="margin-left: 5px;"><i class="fa fa-arrow-left" style="font-size: 15px;"></i></a>
+                                        <button class="btn btn-primary" style="margin-left: 5px;" type="submit"><i class="fa fa-trash" style="font-size: 15px;"></i></button><button class="btn btn-primary" style="margin-left: 5px;" type="submit" name="btnrefresh"><i class="fa fa-refresh" style="font-size: 15px;"></i></button>&nbsp&nbsp&nbsp<label>
+                                        <input type="search" class="form-control form-control-sm" aria-controls="dataTable" placeholder="Search by lastname" name="searchpatients">
+                                        </form>
+                                    </label></div>
+                                </div>
+                            </div>
+                            <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
+                                <table class="table my-0" id="dataTable">
+                                    <thead>
+                                        <tr>
+                                            <th>Case no.</th>
+                                            <th>Lastname</th>
+                                            <th>Firstname</th>
+                                            <th>Middlename</th>
+                                            <th>Address</th>
+                                            <th>Age</th>
+                                            <th>Contact No.</th>
+                                            <th>Date</th>
+                                            <th class="text-center">Action</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                       <?php
+                                       error_reporting(0);
+                                      include "config.php";
+                    $del_id=$_GET['pat_id'];
+                    $search=$_POST['searchpatients'];
+                    $sql2 = "DELETE FROM `patients_history` WHERE `ID`='$del_id' ";
+                                    $result = $con->query($sql2);
+                                    if (isset($_POST['searchpatients'])) {
+                                       $sql1 = "SELECT * FROM `patients_history` WHERE `pat_last`LIKE '%$search%'";
+                                      
+                                    }
+                                    else{
+                                    $sql1 = "SELECT * FROM `patients_history`";
+
+                                }
+                                    $result = $con->query($sql1);
+
+                                    if($result->num_rows > 0){
+                                        while($row = $result -> fetch_assoc()){
+
+                                        ?>
+                                        <style type="text/css">.btnview{display: block;}</style>
+
+                                        </tr>
+                                        <tr>
+                                            <td><?php echo $row['ID']; ?></td>  
+            <td><?php echo $row['pat_last'];?></td>
+            <td><?php echo $row['pat_first'];?></td>
+            <td><?php echo $row['pat_middle'];?></td>
+            <td><?php echo $row['pat_address'];?></td>
+            <td><?php echo $row['pat_age']; ?> </td>
+                <td><?php echo $row['contact']; ?> </td>
+                <td><?php echo $row['up_date']; ?></td>
+                 <td>
+
+                     <!--view--->
+                    
+                    <form method='post' action='viewpatient.php?pat_id=<?php echo $row["ID"]; ?>'>
+                    
+                    <button class="btn btn-secondary" style="margin-left: 5px;" type="submit" name="btnview"><i class="fa fa-eye" style="font-size: 15px;"></i></button>
+                    </form>
+                   
+                    <!--delete--->
+                    
+                    <form method='post' action='history.php?pat_id=<?php echo $row["ID"]; ?>'>
+                    <button class="btn btn-danger" style="margin-left: 5px;" type="submit"><i class="fa fa-trash" style="font-size: 15px;"></i></button>
+                    </form>
+                        </td> 
+                                        </tr>
+                                      
+      <?php
+                }
+            } else {
+                    echo "NO RESULTS";
+                    }
+
+        $con->close();
+        ?>
+                                    </tbody>
+                                    <tfoot>
+                                        <tr></tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 align-self-center">
+                                    <p id="dataTable_info" class="dataTables_info" role="status" aria-live="polite">Showing 1 to 10 of 27</p>
+                                </div>
+                                <div class="col-md-6">
+                                    <nav class="d-lg-flex justify-content-lg-end dataTables_paginate paging_simple_numbers">
+                                        <ul class="pagination">
+                                            <li class="page-item disabled"><a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
+                                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                            <li class="page-item"><a class="page-link" href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
+                                        </ul>
+                                    </nav>
+                                </div>
                             </div>
                         </div>
                     </div>

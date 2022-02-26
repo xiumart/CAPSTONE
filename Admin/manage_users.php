@@ -77,6 +77,7 @@
                                 </form>
                             </div>
                         </li>
+                        <span id='time' style="margin-top:23px;"></span>
                         <li class="nav-item dropdown no-arrow mx-1">
                             <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" aria-expanded="false" data-toggle="dropdown" href="#"><span class="badge badge-danger badge-counter">3+</span><i class="fas fa-bell fa-fw"></i></a>
                                 <div class="dropdown-menu dropdown-menu-right dropdown-list animated--grow-in">
@@ -105,9 +106,11 @@
                                 </div>
                             </div>
                         </li>
+                        
                         <li class="nav-item dropdown no-arrow mx-1">
                             <div class="shadow dropdown-list dropdown-menu dropdown-menu-right" aria-labelledby="alertsDropdown"></div>
                         </li>
+                        
                         <div class="d-none d-sm-block topbar-divider"></div>
                         <li class="nav-item dropdown no-arrow">
                             <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" aria-expanded="false" data-toggle="dropdown" href="#"><span class="d-none d-lg-inline mr-2 text-gray-600 small">Dr. Coco Melon</span><img class="border rounded-circle img-profile" src="assets/img/dogs/image3.jpeg"></a>
@@ -119,6 +122,7 @@
                     </ul>
                 </div>
             </nav>
+            
             <div id="content">
                 <div class="container-fluid">
                     <h1 class="text-info mb-4" style="margin-top: 30px;">Manage Users</h1>
@@ -186,8 +190,8 @@
                             </div>
                             <table>
                                 <div class="col-md-6">
-                                <div class="form-group pull-right col-lg-4"><input type="text" name="searchlname" class="search form-control" placeholder="Search by lastname"></div><span class="counter pull-right"></span>
-                                <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" type="button" style="margin-bottom: 16px; margin-left: 43%;">
+                                <div class="form-group pull-right col-lg-5"><input type="text" name="searchlname" class="search form-control" placeholder="Search by lastname"></div><span class="counter pull-right"></span>
+                                <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" type="button" style="margin-bottom: 0; margin-left: 26%;">
                                 <i class="far fa-plus-square" style="font-size: 15px;margin-right: 7px;margin-top: -4px;"></i>Add new user</button> 
                                 </div>
                                 </div>
@@ -271,11 +275,16 @@
                                                 if ($result->num_rows > 0) {
                                             // output data of each row
                                                     while($row = $result->fetch_assoc()) {
-                                                    echo "<tr><td>" . $row["users_last"]. "</td><td>" . $row["users_first"] . "</td><td>" . $row["users_mid"]. "</td><td>" . $row["users_username"] . "</td><td>"
-                                                    . $row["users_email"]. "</td><td>". $row["users_contact"]. "</td><td>". $row["user_role"]. "</td> 
-                                                    <td><form method='post' action='manage_users_update.php?users_id=".$row["users_id"]."'>"?>
-  		                                            </form>
-                                                    <button class="btn btn-success" data-target="#updateModal" style="margin-left: 38px;">UPDATE</button>
+                                                    echo "<tr><td>" . $row["users_last"]. 
+                                                    "</td><td>" . $row["users_first"]. 
+                                                    "</td><td>" . $row["users_mid"]. 
+                                                    "</td><td>" . $row["users_username"] . 
+                                                    "</td><td>". $row["users_email"]. 
+                                                    "</td><td>". $row["users_contact"]. 
+                                                    "</td><td>". $row["user_role"]. 
+                                                    "</td> <td><form method='post' action='manage_users_update.php?users_id=".$row["users_id"]."'>"?>
+  		                                            
+                                                    <button class="btn btn-success" data-target="#updateModal" style="margin-left: 38px;">UPDATE</button></form>
                                                     <form method='post' action='?users_id=<?php echo $row["users_id"]; ?>'>
                                                     <button class="btn btn-danger" onclick="return confirm('Are you sure?')" style="margin-left: 38px;margin-top: 5px;">REMOVE</button>
 		                                        </form><?php "</tr>";
@@ -325,6 +334,7 @@
     <script src="assets/js/Multi-step-form.js"></script>
     <script src="assets/js/Table-With-Search.js"></script>
     <script src="assets/js/theme.js"></script>
+    <script src="assets/js/datentime.js"></script>
 </body>
 
 </html>

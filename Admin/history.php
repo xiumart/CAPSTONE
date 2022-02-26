@@ -62,6 +62,8 @@
                                 </form>
                             </div>
                         </li>
+                        <span id='time' style="margin-top:23px;"></span>
+                            <script src="assets/js/datentime.js"></script>
                         <li class="nav-item dropdown no-arrow mx-1">
                             <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" aria-expanded="false" data-toggle="dropdown" href="#"><span class="badge badge-danger badge-counter">3+</span><i class="fas fa-bell fa-fw"></i></a>
                                 <div class="dropdown-menu dropdown-menu-right dropdown-list animated--grow-in">
