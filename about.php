@@ -14,7 +14,7 @@
     
     <!-- Template CSS -->
     <link rel="stylesheet" href="assets/css/style-starter.css">
-    <link rel="shorcut icon" type="img/png" href="logo.png">
+    <link rel="shorcut icon" type="img/png" href="assets\images\logo.png">
   </head>
   <body>
 <!--header-->
@@ -22,8 +22,8 @@
   <div class="container">
     <nav class="navbar navbar-expand-lg navbar-dark stroke">
       <h1>
-        <a class="navbar-brand" href="index.html">
-          <img src="logo.png" height="80px">RNL Vision Care</span></a>
+        <a class="navbar-brand" href="index.php">
+          <img src="assets\images\logo.png" height="80px">RNL Vision Care</span></a>
       </h1>
 
       <!-- if logo is image enable this   
@@ -41,22 +41,22 @@
       <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
         <ul class="navbar-nav mx-lg-auto">
           <li class="nav-item @@home__active">
-            <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="index.php">Home<span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="about.html">About</a>
+            <a class="nav-link" href="about.php">About</a>
           </li>
           <li class="nav-item @@courses__active">
-            <a class="nav-link" href="product.html">Product</a>
+            <a class="nav-link" href="product.php">Product</a>
           </li>
           <li class="nav-item @@contact__active">
-            <a class="nav-link" href="contact.html">Contact</a>
+            <a class="nav-link" href="contact.php">Contact</a>
           </li>
         </ul>
 
        
         <div class="top-quote mr-lg-2 text-center">
-          <a href="login.html" class="btn login mr-2"><span class="fa fa-user"></span> login</a>
+          <a href="login.php" class="btn login mr-2"><span class="fa fa-user"></span> login</a>
         </div>
       </div>    
       <!-- toggle switch for light and dark theme -->
@@ -84,7 +84,7 @@
         <div class="container pt-lg-5 pt-3 p-lg-4 pb-3">
             <h2 class="title mt-5 pt-lg-5 pt-sm-3">About Company</h2>
             <ul class="breadcrumbs-custom-path pb-sm-5 pb-4 mt-2 text-center mb-5">
-                <li><a href="index.html">Home</a></li>
+                <li><a href="index.php">Home</a></li>
                 <li class="active"> / About us </li>
             </ul>
         </div>
@@ -186,9 +186,9 @@
 
           <ul>
             <h6 class="footer-title-29">RNL Vision Care</h6>
-            <li><a href="about.html">About company</a></li>
-            <li><a href="product.html">Product</a></li>
-            <li><a href="contact.html">Get in touch</a></li>
+            <li><a href="about.php">About company</a></li>
+            <li><a href="product.php">Product</a></li>
+            <li><a href="contact.php">Get in touch</a></li>
           </ul>
         </div>
         

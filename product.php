@@ -22,7 +22,7 @@
   <div class="container">
     <nav class="navbar navbar-expand-lg navbar-dark stroke">
       <h1>
-        <a class="navbar-brand" href="index.html">
+        <a class="navbar-brand" href="index.php">
           <img src="logo.png" height="80px">RNL Vision Care</span></a>
       </h1>
 
@@ -41,16 +41,16 @@
       <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
         <ul class="navbar-nav mx-lg-auto">
           <li class="nav-item @@home__active">
-            <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="index.php">Home<span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item @@about__active">
-            <a class="nav-link" href="about.html">About</a>
+            <a class="nav-link" href="about.php">About</a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="product.html">Product</a>
+            <a class="nav-link" href="product.php">Product</a>
           </li>
           <li class="nav-item @@contact__active">
-            <a class="nav-link" href="contact.html">Contact</a>
+            <a class="nav-link" href="contact.php">Contact</a>
           </li>
         </ul>
 

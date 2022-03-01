@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="assets/css/style.css" />
     <title>RNL Vision Care
     </title>
-    <link rel="shorcut icon" type="img/png" href="logo.png">
+    <link rel="shorcut icon" type="img/png" href="assets\images\logo.png">
   </head>
   <body>
     <div class="container">
@@ -81,7 +81,7 @@
             <br>
             <h5><u> <a href="index.php" style="color: rgb(255, 255, 255);">BACK TO HOME PAGE</a></u></h5>
           </div>
-          <img src="logo.png" class="image" alt="" />
+          <img src="assets\images\logo.png" class="image" alt="" />
         </div>
         <div class="panel right-panel">
           <div class="content">
@@ -96,12 +96,12 @@
             <br>
             <h5><u> <a href="index.php" style="color: rgb(255, 255, 255);">BACK TO HOME PAGE</a></u></h5>
           </div>
-          <img src="logo.png" class="image" alt="" />
+          <img src="assets\images\logo.png" class="image" alt="" />
         </div>
       </div>
     </div>
 
-    <script src="app.js"></script>
+    <script src="assets\js\app.js"></script>
   </body>
 </html>
 

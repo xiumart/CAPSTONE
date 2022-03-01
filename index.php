@@ -14,7 +14,7 @@
     
     <!-- Template CSS -->
     <link rel="stylesheet" href="assets/css/style-starter.css">
-    <link rel="shorcut icon" type="img/png" href="logo.png">
+    <link rel="shorcut icon" type="img/png" href="assets\images\logo.png">
   </head>
   <body>
 <!--header-->
@@ -23,7 +23,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark stroke">
       <h1>
         <a class="navbar-brand" href="index.php">
-          <img src="logo.png" height="80px">RNL Vision Care</a>
+          <img src="assets\images\logo.png" height="80px">RNL Vision Care</a>
       </h1>
 
       <!-- if logo is image enable this   
@@ -41,7 +41,7 @@
       <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
         <ul class="navbar-nav mx-lg-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="index.php">Home<span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item @@about__active">
             <a class="nav-link" href="about.php">About</a>
