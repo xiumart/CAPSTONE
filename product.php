@@ -14,7 +14,7 @@
     
     <!-- Template CSS -->
     <link rel="stylesheet" href="assets/css/style-starter.css">
-    <link rel="shorcut icon" type="img/png" href="logo.png">
+    <link rel="shorcut icon" type="img/png" href="assets\images\logo.png">
   </head>
   <body>
 <!--header-->
@@ -23,7 +23,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark stroke">
       <h1>
         <a class="navbar-brand" href="index.php">
-          <img src="logo.png" height="80px">RNL Vision Care</span></a>
+          <img src="assets\images\logo.png" height="80px">RNL Vision Care</span></a>
       </h1>
 
       <!-- if logo is image enable this   
@@ -59,7 +59,7 @@
          
         </div>
         <div class="top-quote mr-lg-2 text-center">
-          <a href="login.html" class="btn login mr-2"><span class="fa fa-user"></span> login</a>
+          <a href="login.php" class="btn login mr-2"><span class="fa fa-user"></span> login</a>
         </div>
       </div>
       <!-- toggle switch for light and dark theme -->
@@ -87,7 +87,7 @@
         <div class="container pt-lg-5 pt-3 p-lg-4 pb-3">
             <h2 class="title mt-5 pt-lg-5 pt-sm-3">Product</h2>
             <ul class="breadcrumbs-custom-path pb-sm-5 pb-4 mt-2 text-center mb-md-5">
-                <li><a href="index.html">Home</a></li>
+                <li><a href="index.php">Home</a></li>
                 <li class="active"> / Product </li>
             </ul>
         </div>
@@ -336,9 +336,9 @@
 
           <ul>
             <h6 class="footer-title-29">RNL Vision Care</h6>
-            <li><a href="about.html">About company</a></li>
-            <li><a href="product.html">Product</a></li>
-            <li><a href="contact.html">Get in touch</a></li>
+            <li><a href="about.php">About company</a></li>
+            <li><a href="product.php">Product</a></li>
+            <li><a href="contact.php">Get in touch</a></li>
           </ul>
         </div>
         
