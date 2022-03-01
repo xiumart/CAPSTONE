@@ -243,7 +243,7 @@ $sql2 = "DELETE FROM `product` WHERE `pro_id`='$del_id' ";
 
                                 <tr>
 
-                                    <td><img src='RNL Website/Admin/Product/productImage/<?php echo $row['image'];?>' style='width:100px; height:100px; border:groove #000' ></td>
+                                    <td><img src='..productImage/<?php echo $row['image'];?>' style='width:100px; height:100px; border:groove #000' ></td>
                                     <td><?php echo $row["brand"]; ?></td>
                                     <td><?php echo $row["model"]; ?></td>
                                     <td><?php echo $row["category"]; ?></td>
