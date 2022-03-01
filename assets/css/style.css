@@ -163,7 +163,7 @@ form.sign-in-form {
 .container:before {
   content: "";
   position: absolute;
-  height: 690px;
+  height: 790px;
   width: 1800px;
   top: -10%;
   right: 48%;
@@ -175,7 +175,7 @@ form.sign-in-form {
 }
 
 .image {
-  width: 120%;
+  width: 100%;
   transition: transform 1.1s ease-in-out;
   transition-delay: 0.4s;
 }
