@@ -22,12 +22,12 @@
   <div class="container">
     <nav class="navbar navbar-expand-lg navbar-dark stroke">
       <h1>
-        <a class="navbar-brand" href="index.html">
+        <a class="navbar-brand" href="index.php">
           <img src="logo.png" height="80px">RNL Vision Care</a>
       </h1>
 
       <!-- if logo is image enable this   
-        <a class="navbar-brand" href="#index.html">
+        <a class="navbar-brand" href="#index.php">
             <img src="image-path" alt="Your logo" title="Your logo" style="height:35px;" />
         </a> -->
       <button class="navbar-toggler  collapsed bg-gradient" type="button" data-toggle="collapse"
@@ -41,16 +41,16 @@
       <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
         <ul class="navbar-nav mx-lg-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item @@about__active">
-            <a class="nav-link" href="about.html">About</a>
+            <a class="nav-link" href="about.php">About</a>
           </li>
           <li class="nav-item @@courses__active">
-            <a class="nav-link" href="product.html">Product</a>
+            <a class="nav-link" href="product.php">Product</a>
           </li>
           <li class="nav-item @@contact__active">
-            <a class="nav-link" href="contact.html">Contact</a>
+            <a class="nav-link" href="contact.php">Contact</a>
           </li>
         </ul>
 
@@ -60,7 +60,7 @@
         
         </div>
         <div class="top-quote mr-lg-2 text-center">
-          <a href="login.html" class="btn login mr-2"><span class="fa fa-user"></span> login</a>
+          <a href="login.php" class="btn login mr-2"><span class="fa fa-user"></span> login</a>
         </div>
       </div>
       <!-- toggle switch for light and dark theme -->
@@ -94,7 +94,7 @@
                                 <div class="banner-info-bg">
                                     <h5>When Life Gets Blurry <br>See Your Eye Doctor</h5>
                                     <p class="mt-4 pr-lg-4">RNL Vision Care is with you </p>
-                                    <a class="btn btn-style btn-primary mt-sm-5 mt-4 mr-2" href="about.html"> Set an Appointment</a>
+                                    <a class="btn btn-style btn-primary mt-sm-5 mt-4 mr-2" href="about.php"> Set an Appointment</a>
                                 </div>
                             </div>
                         </div>
@@ -187,7 +187,7 @@
             <div class="mt-5 text-more">
                 <p class="pt-md-3 sample text-center">
             
-                    <a href="product.html">View All Product <span class="pl-2 fa fa-long-arrow-right"></span></a>
+                    <a href="product.php">View All Product <span class="pl-2 fa fa-long-arrow-right"></span></a>
                 </p>
             </div>
         </div>
@@ -239,7 +239,7 @@
             <h5 class="title-small mb-1">Online Appointment</h5>
             <h3 class="title-big">See our free online appointment.</h3>
             <a href="#started" class="btn btn-style btn-outline-light mt-sm-5 mt-4 mr-2">Set an Appointment now!</a>
-            <a href="contact.html" class="btn btn-style btn-primary mt-sm-5 mt-4">Contact Us</a>
+            <a href="contact.php" class="btn btn-style btn-primary mt-sm-5 mt-4">Contact Us</a>
         </div>
     </div>
 </div>
@@ -456,9 +456,9 @@
 
           <ul>
             <h6 class="footer-title-29">RNL Vision Care</h6>
-            <li><a href="about.html">About company</a></li>
-            <li><a href="product.html">Product</a></li>
-            <li><a href="contact.html">Get in touch</a></li>
+            <li><a href="about.php">About company</a></li>
+            <li><a href="product.php">Product</a></li>
+            <li><a href="contact.php">Get in touch</a></li>
           </ul>
         </div>
      

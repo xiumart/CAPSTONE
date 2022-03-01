@@ -1,3 +1,8 @@
+
+<?php session_start()
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -16,19 +21,25 @@
     <div class="container">
       <div class="forms-container">
         <div class="signin-signup">
-          <form action="#" class="sign-in-form">
+          <form method="POST" action="" class="sign-in-form">
             <h2 class="title">LOGIN HERE !</h2>
+            
+
+
             <div class="input-field">
               <i class="fas fa-user"></i>
-              <input type="text" placeholder="Username" />
+              <input type="text" placeholder="Username" name="username" required="required" />
             </div>
             <div class="input-field">
               <i class="fas fa-lock"></i>
-              <input type="password" placeholder="Password" />
+              <input type="password" placeholder="Password" name="password" required="required" />
             </div>
-            <input type="submit" value="Login" class="btn solid" />
-            
+
+            <button class="btn btn-primary" name='login' <?php if(!ISSET($_SESSION['msg'])){ echo $_SESSION['msg'];}?>>Login</button>
+            <p id="demo"></p>
+
           </form>
+
           <form action="#" class="sign-up-form">
             <h2 class="title">REGISTER HERE ! </h2>
             <div class="input-field">
@@ -64,9 +75,11 @@
             <button class="btn transparent" id="sign-up-btn">
               Sign up
             </button>
+
+
             <br>
             <br>
-            <h5><u> <a href="index.html" style="color: rgb(255, 255, 255);">BACK TO HOME PAGE</a></u></h5>
+            <h5><u> <a href="index.php" style="color: rgb(255, 255, 255);">BACK TO HOME PAGE</a></u></h5>
           </div>
           <img src="logo.png" class="image" alt="" />
         </div>
@@ -81,7 +94,7 @@
             </button>
             <br>
             <br>
-            <h5><u> <a href="index.html" style="color: rgb(255, 255, 255);">BACK TO HOME PAGE</a></u></h5>
+            <h5><u> <a href="index.php" style="color: rgb(255, 255, 255);">BACK TO HOME PAGE</a></u></h5>
           </div>
           <img src="logo.png" class="image" alt="" />
         </div>
@@ -91,3 +104,41 @@
     <script src="app.js"></script>
   </body>
 </html>
+
+<?php
+
+
+  if(ISSET($_POST['login'])){
+    require 'conn.php'; 
+ 
+    $username=$_POST['username'];
+    $password=$_POST['password'];
+ 
+    $query=mysqli_query($conn, "SELECT * FROM `users_account` WHERE `username`='$username' AND `password`='$password'") or die(mysqli_error());
+    $row=mysqli_num_rows($query);
+ 
+    if($row > 0){
+      echo "<center><label class='text-success'>Login success!</label></center>";
+      session_destroy();
+    }else{
+      if(!ISSET($_SESSION['attempt'])){
+        $_SESSION['attempt'] = 0;
+      }
+ 
+      $_SESSION['attempt'] += 1;
+ 
+      if($_SESSION['attempt'] === 3){
+        $_SESSION['msg'] = "disabled";
+        echo '<script>alert("To many failed login attempts. Please login after 45 sec")</script>';
+        header("Refresh:1;url=wait.php");
+      }
+ 
+ 
+      echo '<script>alert("Invalid username or password")</script>';
+    }
+  }
+?>
+
+
+
+
