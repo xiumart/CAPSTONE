@@ -173,7 +173,7 @@
         <div class="col-lg-4 col-md-6 col-sm-7 footer-list-29 footer-1 pr-lg-5">
           <h6 class="footer-title-29">Contact Info </h6>
           <p>Address : Stall #13 2nd floor Inno Block Mall Zabarte Road Cor Camarin-Susano Road, North Caloocan City</p>
-          <p class="my-2">Phone : <a href="tel:+1(21) 234 4567">+1(21) 234 4567</a></p>
+          <p class="my-2">Phone : <a href="tel:(+63)998 218 1412">(+63)998 218 1412</a></p>
           <p>Email : <a href="mailto:rnlvisioncare@gmail.com">rnlvisioncare@gmail.com</a></p>
           <div class="main-social-footer-29 mt-4">
             <a href="#facebook" class="facebook"><span class="fa fa-facebook"></span></a>
