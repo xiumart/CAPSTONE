@@ -126,7 +126,7 @@ Author URL: http://w3layouts.com
                         </div>
                         <div class="cont-right">
                             <h6>Call for help </h6>
-                            <p><a href="tel:+(21) 255 999 8888">+(21) 255 999 8888</a></p>
+                            <p><a href="tel:(+63)998 218 1412">(+63)998 218 1412</a></p>
                         </div>
                     </div>
                     <div class="cont-top margin-up">
