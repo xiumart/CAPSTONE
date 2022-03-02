@@ -40,26 +40,26 @@
 
           </form>
 
-          <form action="#" class="sign-up-form">
+          <form action="login.php" method = "POST" class="sign-up-form">
             <h2 class="title">REGISTER HERE ! </h2>
             <div class="input-field">
               <i class="fas fa-user"></i>
-              <input type="text" placeholder="Username" />
+              <input type="text" placeholder="Username" name = "username"/>
             </div>
             <div class="input-field">
               <i class="fas fa-user"></i>
-              <input type="text" placeholder="Contact No." />
+              <input type="text" placeholder="Contact No." name = "contactno"/>
             </div>
             
             <div class="input-field">
               <i class="fas fa-envelope"></i>
-              <input type="email" placeholder="Email" />
+              <input type="email" placeholder="Email" name = "email"/>
             </div>
             <div class="input-field">
               <i class="fas fa-lock"></i>
-              <input type="password" placeholder="Password" />
+              <input type="password" placeholder="Password" name = "password" />
             </div>
-            <input type="submit" class="btn" value="Sign up" />
+            <input type="submit" class="btn" value="Sign up" name = 'signup'/>
             
           </form>
         </div>
@@ -72,7 +72,7 @@
             <p style="margin-bottom: 29px;">
               New here? click the sign up button! <br>
             </p>
-            <button class="btn transparent" id="sign-up-btn">
+            <button class="btn transparent" id="sign-up-btn"> 
               Sign up
             </button>
 
@@ -137,6 +137,39 @@
       echo '<script>alert("Invalid username or password")</script>';
     }
   }
+  
+  
+
+
+//sign up 
+if (isset($_POST['signup']))
+{
+
+ require 'conn.php';
+    $username = $_POST['username'];
+    $contactno = $_POST['contactno'];
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+
+  
+
+  $query_signup = "INSERT INTO user(username,contactno,email,password) VALUES ('$username','$contactno', '$email', '$password')" ;
+
+  $result = mysqli_query($conn, $query_signup);
+  
+  if ($result)
+  {
+    echo '<script>alert("Data Inserted ")</script>';
+ 
+  }
+  else{
+    echo '<script>alert("Data not Inserted")</script>';
+  }
+  mysqli_close($conn);
+
+}
+
+
 ?>
 
 
