@@ -104,43 +104,38 @@
   
   </section>
 
-
-
-  
-
-
   <section class="table">
     <div class="container">
 
-      <h3>Appoinments</h3>
-      <div class="text-right" style="float:right;margin-bottom:14px;">
-        <a href="users-appointment-set.php"><button type="submit" class="btn btn-primary btn-style mt-4">Set an Appointment</button></a>
-
-      </div>
-      <table>
-        <thead>
-          <tr>
-            <th>Appointment Id</th>
-            <th>Date and Time </th>
-            <th>Purpose<th>
-            <th>Action</th>
-          </tr>
-        </thead>
-
-       
-        </tbody>
-      </table>
-
-      <div class="pagination">
-        <ul>
-          <li><i class="fas fa-chevron-left"></i> </li>
-          <li class="active">1</li>
-          <li>2</li>
-          <li>3</li>
-          <li><i class="fas fa-chevron-right"></i> </li>
-        </ul>
-      </div>
-    </div>
+      <h3> <u><a href="users-appointment.php"> <font color="blue"> Appointment</font></a></u> / Set an appointment</a></h3>
+      <div class="map-content-9">
+                    <form action="" method="post">
+                        <div class="twice">
+                             <h3>Name</h3>
+                            <input type="text" class="form-control" name="w3lSubject" id="w3lSubject"
+                                placeholder="Subject" required="">
+                             <h3>Contact No.</h3>
+                            <input type="text" class="form-control" name="w3lSubject" id="w3lSubject"
+                                placeholder="Subject" required="">
+                                <h3>Email</h3>
+                            <input type="text" class="form-control" name="w3lSubject" id="w3lSubject"
+                                placeholder="Subject" required="">
+                                <h3>Purpose</h3>
+                            <input type="text" class="form-control" name="w3lSubject" id="w3lSubject"
+                                placeholder="Subject" required="">
+                                <h3>Date and Time</h3>
+                                <div class="twice-two">
+                            <input type="text" class="form-control" name="w3lName" id="w3lName" placeholder="Date"
+                                required="">
+                            <input type="email" class="form-control" name="w3lSender" id="w3lSender" placeholder="Time"
+                                required="">
+                        </div>  
+                        </div>
+                        <div class="text-right">
+                            <button type="submit" class="btn btn-primary btn-style mt-4">Set Appointment</button>
+                        </div>
+                    </form>
+                </div>
   </section>
 
 
