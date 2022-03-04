@@ -141,7 +141,7 @@ Author URL: http://w3layouts.com
                 </div>
                 <div class="map-content-9">
                     <h5 class="mb-sm-4 mb-3">Write to us</h5>
-                    <form action="https://sendmail.w3layouts.com/submitForm" method="post">
+                    <form action="" method="post">
                         <div class="twice-two">
                             <input type="text" class="form-control" name="w3lName" id="w3lName" placeholder="Name"
                                 required="">
