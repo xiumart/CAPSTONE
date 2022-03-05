@@ -1,4 +1,8 @@
 
+<?php
+include "config.php";
+error_reporting(0);
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -98,224 +102,154 @@
         </svg>
     </div>
 </section>
-<!-- //about breadcrumb -->
-<section class="w3l-courses">
-    <div class="blog pb-5" id="courses">
-        <div class="container py-lg-5 py-md-4 py-2">
-            <div class="row">
-                <div class="col-lg-4 col-md-6 item">
-                    <div class="card">
-                        <div class="card-header p-0 position-relative">
-                            <a href="#course-single" class="zoom d-block">
-                                <img class="card-img-bottom d-block" src="assets/images/c1.jpg"
-                                    alt="Card image cap">
-                            </a>
-                            <div class="post-pos">
-                               
-                            </div>
-                        </div>
-                        <div class="card-body course-details">
-                            <div class="price-review d-flex justify-content-between mb-1align-items-center">
-                                <p>$35.00</p>
-                                <ul class="rating-star">
-                                    
-                                </ul>
-                            </div>
-                            <a href="#course-single" class="course-desc">RNL EYE GLASSES - BRAND
-                            </a>
-                            <div class="course-meta mt-4">
-                                <div class="meta-item course-lesson">
-                                    
-                                </div>
-                                <div class="meta-item course-">
-                                  
-                                </div>
-                            </div>
-                        </div>
-                       
-                    </div>
-                </div>
+  <!---Side bar-->
+  <section class="category">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-3">
+          <div>
+            <aside class="side-area product-side side-shadow mt-5">
+              <div class="side-title">
+                <h4>Product Categories</h4>
 
-                <div class="col-lg-4 col-md-6 item mt-md-0 mt-5">
-                  <div class="card">
-                    <div class="card-header p-0 position-relative">
-                        <a href="#course-single" class="zoom d-block">
-                            <img class="card-img-bottom d-block" src="assets/images/c1.jpg"
-                                alt="Card image cap">
-                        </a>
-                        <div class="post-pos">
-                           
-                        </div>
-                    </div>
-                    <div class="card-body course-details">
-                        <div class="price-review d-flex justify-content-between mb-1align-items-center">
-                            <p>$35.00</p>
-                            <ul class="rating-star">
-                                
-                            </ul>
-                        </div>
-                        <a href="#course-single" class="course-desc">RNL EYE GLASSES - BRAND
-                        </a>
-                        <div class="course-meta mt-4">
-                            <div class="meta-item course-lesson">
-                                
-                            </div>
-                            <div class="meta-item course-">
-                              
-                            </div>
-                        </div>
-                    </div>
-                   
-                </div>
-                </div>
+              </div>
+              <div class="side-content">
+                <form method="post">
+                <ul class="list">
+                  <li>
+                    <input type="submit" name="all" value="ALL">
+                  </li>
+                  <li>
+                    <input type="submit" name="all" value="Contact Lenses">
+                  </li>
+                  <li>
+                    <input type="submit" name="all" value="Contact Lens Solution">
+                  </li>
+                  <li>
+                    <input type="submit" name="all" value="Reading Glasses">
+                  </li>
+                  <li>
+                    <input type="submit" name="all" value="Accessories">
+                  </li>
+                </ul>
+                </form>
+              </div>
+            </aside>
+          </div>
+        </div>
+        <div class="col-lg-9">
+          <div class="row">
+              <!--prod-->
+              <?php
+              $limit=9;
+              $cat=$_POST['all'];
+              $page=isset($_GET['page']) ? $_GET['page']:1;
+               $start=($page-1)*$limit;
+               if ($_POST['all']=='Reading Glasses') {
+               $sql2 =$con->query("SELECT count(pro_id) AS id FROM `product` WHERE `category`='$cat'");
+                   $sql1 = "SELECT * FROM `product`WHERE `category`='$cat' LIMIT $limit ";
+               }
+               elseif ($_POST['all']=='Contact Lenses') {
+                 $sql2 =$con->query("SELECT count(pro_id) AS id FROM `product` WHERE `category`='$cat'");
+                   $sql1 = "SELECT * FROM `product`WHERE `category`='$cat' LIMIT $limit ";
+               }
+               elseif ($_POST['all']=='Contact Lenses Solution') {
+                 $sql2 =$con->query("SELECT count(pro_id) AS id FROM `product` WHERE `category`='$cat'");
+                   $sql1 = "SELECT * FROM `product`WHERE `category`='$cat' LIMIT $limit ";
+               }
+               elseif ($_POST['all']=='Accessories') {
+                 $sql2 =$con->query("SELECT count(pro_id) AS id FROM `product` WHERE `category`='$cat'");
+                   $sql1 = "SELECT * FROM `product`WHERE `category`='$cat' LIMIT $limit ";
+               }
+               else{
+                $sql2 =$con->query("SELECT count(pro_id) AS id FROM `product`");
+                    $sql1 = "SELECT * FROM `product` LIMIT $limit ";
+               }
+                $result2 = $sql2->fetch_all(MYSQLI_ASSOC);
+                $total=$result2[0]['id'];
+                $pages=ceil($total/$limit);
+                $prev=$page-1;
+                $next=$page+1;
+                
+           
 
-                <div class="col-lg-4 col-md-6 item mt-lg-0 mt-5">
-                  <div class="card">
-                    <div class="card-header p-0 position-relative">
-                        <a href="#course-single" class="zoom d-block">
-                            <img class="card-img-bottom d-block" src="assets/images/c1.jpg"
-                                alt="Card image cap">
-                        </a>
-                        <div class="post-pos">
-                           
-                        </div>
-                    </div>
-                    <div class="card-body course-details">
-                        <div class="price-review d-flex justify-content-between mb-1align-items-center">
-                            <p>₱1541.00</p>
-                            <ul class="rating-star">
-                                
-                            </ul>
-                        </div>
-                        <a href="#course-single" class="course-desc">RNL EYE GLASSES - BRAND
-                        </a>
-                        <div class="course-meta mt-4">
-                            <div class="meta-item course-lesson">
-                                
-                            </div>
-                            <div class="meta-item course-">
-                              
-                            </div>
-                        </div>
-                    </div>
-                   
-                </div>
-                </div>
-                <div class="col-lg-4 col-md-6 item mt-5 pt-lg-2">
-                  <div class="card">
-                    <div class="card-header p-0 position-relative">
-                        <a href="#course-single" class="zoom d-block">
-                            <img class="card-img-bottom d-block" src="assets/images/c1.jpg"
-                                alt="Card image cap">
-                        </a>
-                        <div class="post-pos">
-                           
-                        </div>
-                    </div>
-                    <div class="card-body course-details">
-                        <div class="price-review d-flex justify-content-between mb-1align-items-center">
-                            <p>₱1541.00</p>
-                            <ul class="rating-star">
-                                
-                            </ul>
-                        </div>
-                        <a href="#course-single" class="course-desc">RNL EYE GLASSES - BRAND
-                        </a>
-                        <div class="course-meta mt-4">
-                            <div class="meta-item course-lesson">
-                                
-                            </div>
-                            <div class="meta-item course-">
-                              
-                            </div>
-                        </div>
-                    </div>
-                   
-                </div>
-                </div>
+                $result = $con->query($sql1);
 
-                <div class="col-lg-4 col-md-6 item mt-5 pt-lg-2">
-                  <div class="card">
-                    <div class="card-header p-0 position-relative">
-                        <a href="#course-single" class="zoom d-block">
-                            <img class="card-img-bottom d-block" src="assets/images/c1.jpg"
-                                alt="Card image cap">
-                        </a>
-                        <div class="post-pos">
-                           
-                        </div>
-                    </div>
-                    <div class="card-body course-details">
-                        <div class="price-review d-flex justify-content-between mb-1align-items-center">
-                            <p>₱1541.00</p>
-                            <ul class="rating-star">
-                                
-                            </ul>
-                        </div>
-                        <a href="#course-single" class="course-desc">RNL EYE GLASSES - BRAND
-                        </a>
-                        <div class="course-meta mt-4">
-                            <div class="meta-item course-lesson">
-                                
-                            </div>
-                            <div class="meta-item course-">
-                              
-                            </div>
-                        </div>
-                    </div>
-                   
-                </div>
-                </div>
 
-                <div class="col-lg-4 col-md-6 item mt-5 pt-lg-2">
-                  <div class="card">
-                    <div class="card-header p-0 position-relative">
-                        <a href="#course-single" class="zoom d-block">
-                            <img class="card-img-bottom d-block" src="assets/images/c1.jpg"
-                                alt="Card image cap">
-                        </a>
-                        <div class="post-pos">
-                           
-                        </div>
-                    </div>
-                    <div class="card-body course-details">
-                        <div class="price-review d-flex justify-content-between mb-1align-items-center">
-                            <p>₱1541.00</p>
-                            <ul class="rating-star">
-                                
-                            </ul>
-                        </div>
-                        <a href="#course-single" class="course-desc">RNL EYE GLASSES - BRAND
-                        </a>
-                        <div class="course-meta mt-4">
-                            <div class="meta-item course-lesson">
-                                
-                            </div>
-                            <div class="meta-item course-">
-                              
-                            </div>
-                        </div>
-                    </div>
-                   
+                                    if($result->num_rows > 0){
+                                        while($row = $result -> fetch_assoc()){
+              ?>
+            <div class="col-lg-4 col-sm-6">
+              <div class="product-cate">
+                <div>
+                  <img src="product_img/<?php echo $row['image'];?>" alt="<?php echo $row['image'];?>" style="width: 100%; height: 100%;" >
+                  <div class="product-des">
+                    <h5><?php echo $row['brand'];?>&nbsp<?php echo $row['model'];?>&nbsp<?php echo $row['category'];?></h5>
+                    <p>₱<?php echo $row['sellingprice'];?>.00</p>
+                  </div>
                 </div>
-                </div>
+              </div>
             </div>
-            <!-- pagination -->
+            <?php
+          }}
+            ?>
+            <!--prod-->
+          </div>
+        </div>
+      </div>
+      <!-- pagination -->
             <div class="pagination-wrapper mt-5 pt-lg-3 text-center">
                 <ul class="page-pagination">
-                    <li><a class="next" href="#url"><span class="fa fa-angle-left"></span> Prev</a></li>
-                    <li><span aria-current="page" class="page-numbers current">1</span></li>
-                    <li><a class="page-numbers" href="#url">2</a></li>
-                    <li><a class="page-numbers" href="#url">3</a></li>
-                    <li><a class="page-numbers" href="#url">....</a></li>
-                    <li><a class="next" href="#url">Next <span class="fa fa-angle-right"></span></a></li>
+                  <?php if ($_GET['page']==1) {
+                    ?>
+                     <style type="text/css">
+                       #pre{
+                        pointer-events: none;
+                       }
+                     </style>
+                    <?php
+                     }
+                    else{
+                      ?>
+                      <style type="text/css">
+                       #pre{
+                        pointer-events: auto;
+                       }
+                     </style>
+                      <?php
+                      }
+                   ?>
+                    <li><a class="next" id="pre" href="product.php?page=<?=$prev; ?>"><span class="fa fa-angle-left"></span> Prev</a></li>
+
+                    
+                      <?php  for($i=1; $i <=$pages ; $i++): ?>
+                            <li>
+                               <a class="page-numbers" href="product.php?page=<?=$i; ?>"><?=$i; ?></a>
+                            </li>
+                      <?php endfor; 
+                          if ($_GET['page']==$pages) {
+                      ?>
+                        <style type="text/css">
+                       #pnext{
+                        pointer-events: none;
+                       }
+                     </style>
+                    <?php } else{ ?>
+                    <style type="text/css">
+                       #pnext{
+                        pointer-events: auto;
+                       }
+                     </style>
+
+                    <?php } ?>
+                    <li><a class="next" id="pnext" href="product.php?page=<?=$next; ?>">Next <span class="fa fa-angle-right"></span></a></li>
                 </ul>
             </div>
             <!-- //pagination -->
-        </div>
     </div>
-</section>
-<!-- footer -->
+
+  </section>
+  <!--End of Sidebar-->
 <section class="w3l-footer-29-main">
   <div class="footer-29 py-5">
     <div class="container py-md-4">
