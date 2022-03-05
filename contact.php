@@ -141,18 +141,18 @@ Author URL: http://w3layouts.com
                 </div>
                 <div class="map-content-9">
                     <h5 class="mb-sm-4 mb-3">Write to us</h5>
-                    <form action="" method="post">
+                    <form action="contactformhandler.php" method="post">
                         <div class="twice-two">
-                            <input type="text" class="form-control" name="w3lName" id="w3lName" placeholder="Name"
+                            <input type="text" class="form-control" name="Name" id="Name" placeholder="Name"
                                 required="">
-                            <input type="email" class="form-control" name="w3lSender" id="w3lSender" placeholder="Email"
+                            <input type="email" class="form-control" name="Email" id="Email" placeholder="Email"
                                 required="">
                         </div>
                         <div class="twice">
-                            <input type="text" class="form-control" name="w3lSubject" id="w3lSubject"
+                            <input type="text" class="form-control" name="Subject" id="Subject"
                                 placeholder="Subject" required="">
                         </div>
-                        <textarea name="w3lMessage" class="form-control" id="w3lMessage" placeholder="Message"
+                        <textarea name="Message" class="form-control" name ="Message" id="Message" placeholder="Message"
                             required=""></textarea>
                         <div class="text-right">
                             <button type="submit" class="btn btn-primary btn-style mt-4">Send Message</button>
