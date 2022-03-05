@@ -109,7 +109,7 @@
 
       <h3>Feedback Us !</h3>
       <div class="map-content-9">
-                    <form action="" method="post">
+                    <form action="user-feedbackhandler.php" method="post">
                         <div class="twice">
                              <h3>Subject</h3>
                             <input type="text" class="form-control" name="w3lSubject" id="w3lSubject"
@@ -119,7 +119,8 @@
                         <textarea name="w3lMessage" class="form-control" id="w3lMessage" placeholder="Message"
                             required=""></textarea>
                         <div class="text-right">
-                            <button type="submit" class="btn btn-primary btn-style mt-4">Send Message</button>
+                            <button type="submit" class="btn btn-primary btn-style mt-4" style="cursor:pointer;"
+                            onclick="return confirm('Are you sure')">Send Message</button>
                         </div>
                     </form>
                 </div>
