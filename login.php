@@ -1,8 +1,63 @@
+<?php
+session_start();
+include('conn.php');
+$msg1='';
+$msg='';
+if(isset($_POST['login'])){
+  $time=time()-45;
+  $ip_address=getIpAddr();
+// Getting total count of hits on the basis of IP
+  $query=mysqli_query($conn,"select count(*) as total_count from loginlogs where TryTime > $time and IpAddress='$ip_address'");
+ $check_login_row=mysqli_fetch_assoc($query);
+  $total_count=$check_login_row['total_count'];
+  //Checking if the attempt 3, or youcan set the no of attempt her. For now we taking only 3 fail attempted
+  if($total_count==3){
+    $msg1='disabled';
+    $msg="To many failed login attempts. Please login after 60 sec";
+  }else{
+    //Getting Post Values
+    $username=$_POST['username'];
+    $password=md5($_POST['password']);
+    // Coding for login
+    $res=mysqli_query($conn,"select * from user where username='$username' and password='$password'");
+    if(mysqli_num_rows($res)){ 
+      $_SESSION['IS_LOGIN']='yes';
+      mysqli_query($conn,"delete from loginlogs where IpAddress='$ip_address'");
+      
+     echo "<script>window.location.href='../Admin/dashboard.php';</script>";
 
-<?php session_start()
+    }else{
+      $total_count++;
+      $rem_attm=3-$total_count;
+      if($rem_attm==0){
+        $msg1='disabled';
+        $msg="To many failed login attempts. Please login after 45 sec";
+      }else{
+        $msg="Please enter valid login details.<br/>$rem_attm attempts remaining";
+      }
+      $try_time=time();
+      mysqli_query($conn,"insert into loginlogs(IpAddress,TryTime) values('$ip_address','$try_time')");
+      
+    }
+  }
+}
+
+// Getting IP Address
+function getIpAddr(){
+    if (!empty($_SERVER['HTTP_CLIENT_IP'])){
+       $ipAddr=$_SERVER['HTTP_CLIENT_IP'];
+    }elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])){
+       $ipAddr=$_SERVER['HTTP_X_FORWARDED_FOR'];
+    }else{
+       $ipAddr=$_SERVER['REMOTE_ADDR'];
+    }
+   return $ipAddr;
+   }
 
 
-?>
+
+  ?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -13,6 +68,9 @@
       crossorigin="anonymous"
     ></script>
     <link rel="stylesheet" href="assets/css/style.css" />
+     <style type="text/css">
+      #result{color:red;}
+     </style>
     <title>RNL Vision Care
     </title>
     <link rel="shorcut icon" type="img/png" href="assets\images\logo.png">
@@ -35,8 +93,9 @@
               <input type="password" placeholder="Password" name="password" required="required" />
             </div>
 
-            <button class="btn btn-primary" name='login' <?php if(!ISSET($_SESSION['msg'])){ echo $_SESSION['msg'];}?>>Login</button>
-            <p id="demo"></p>
+            <button class="btn btn-primary" name='login' <?php echo $msg1; ?>>Login</button>
+            
+           <div id="result"><?php echo $msg; ?></div>
 
           </form>
 
@@ -105,39 +164,11 @@
   </body>
 </html>
 
-<?php
 
 
-  if(ISSET($_POST['login'])){
-    require 'conn.php'; 
- 
-    $username=$_POST['username'];
-    $password=$_POST['password'];
- 
-    $query=mysqli_query($conn, "SELECT * FROM `users_account` WHERE `username`='$username' AND `password`='$password'") or die(mysqli_error());
-    $row=mysqli_num_rows($query);
- 
-    if($row > 0){
-      echo "<center><label class='text-success'>Login success!</label></center>";
-      session_destroy();
-    }else{
-      if(!ISSET($_SESSION['attempt'])){
-        $_SESSION['attempt'] = 0;
-      }
- 
-      $_SESSION['attempt'] += 1;
- 
-      if($_SESSION['attempt'] === 3){
-        $_SESSION['msg'] = "disabled";
-        echo '<script>alert("To many failed login attempts. Please login after 45 sec")</script>';
-        header("Refresh:1;url=wait.php");
-      }
- 
- 
-      echo '<script>alert("Invalid username or password")</script>';
-    }
-  }
-  
+
+
+  <?php
   
 
 
