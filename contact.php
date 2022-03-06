@@ -135,7 +135,7 @@ Author URL: http://w3layouts.com
                         </div>
                         <div class="cont-right">
                             <h6>Contact with our support</h6>
-                            <p><a href="mailto:coursing@mail.com" class="mail">rnlvisioncare@gmail.com</a></p>
+                            <p><a href="mailto:rnlvisioncare@mail.com" class="mail">rnlvisioncare@gmail.com</a></p>
                         </div>
                     </div>
                 </div>

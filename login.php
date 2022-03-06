@@ -13,18 +13,25 @@ if(isset($_POST['login'])){
   //Checking if the attempt 3, or youcan set the no of attempt her. For now we taking only 3 fail attempted
   if($total_count==3){
     $msg1='disabled';
-    $msg="To many failed login attempts. Please login after 60 sec";
+    $msg="To many failed login attempts. Please login after 45 sec";
   }else{
     //Getting Post Values
     $username=$_POST['username'];
     $password=md5($_POST['password']);
+    $date = date("m-d-Y");
+    $time = date("h:i:sa");
+    $activity1 = 'Login';
+
     // Coding for login
-    $res=mysqli_query($conn,"select * from user where username='$username' and password='$password'");
+    $res=mysqli_query($conn,"select * from client_user where client_username='$username' and client_password='$password'");
     if(mysqli_num_rows($res)){ 
       $_SESSION['IS_LOGIN']='yes';
       mysqli_query($conn,"delete from loginlogs where IpAddress='$ip_address'");
-      
-     echo "<script>window.location.href='../Admin/dashboard.php';</script>";
+
+      $query_signup3 = "INSERT INTO client_logs (log_userid, log_username, log_activity, log_date, log_time) VALUES ('$logid','$username','$activity1','$date','$time')" ;
+
+      $result3 = mysqli_query($conn, $query_signup3);
+     echo "<script>window.location.href='users.php?$username';</script>";
 
     }else{
       $total_count++;
@@ -180,21 +187,33 @@ if (isset($_POST['signup']))
     $username = $_POST['username'];
     $contactno = $_POST['contactno'];
     $email = $_POST['email'];
-    $password = $_POST['password'];
+    $password = md5($_POST['password']);
+    $client_id = uniqid();
+    $date = date("m-d-Y");
+    $time = date("h:i:sa");
+    $activity = 'signup';
 
   
 
-  $query_signup = "INSERT INTO user(username,contactno,email,password) VALUES ('$username','$contactno', '$email', '$password')" ;
+  $query_signup = "INSERT INTO client_user (client_id,client_username,client_password) VALUES ('$client_id','$username','$password')" ;
 
   $result = mysqli_query($conn, $query_signup);
+
+  $query_signup1 = "INSERT INTO client_user_info (client_id, client_contact,client_email) VALUES ('$client_id','$contact','$email')" ;
+
+  $result1 = mysqli_query($conn, $query_signup1);
+
+  $query_signup2 = "INSERT INTO client_logs (log_userid, log_username, log_activity, log_date, log_time) VALUES ('$client_id','$username','$activity','$date','$time')" ;
+
+  $result2 = mysqli_query($conn, $query_signup2);
   
   if ($result)
   {
-    echo '<script>alert("Data Inserted ")</script>';
+    echo '<script>alert("Sign-up Completed!")</script>';
  
   }
   else{
-    echo '<script>alert("Data not Inserted")</script>';
+    echo '<script>alert("Sign-up Failed.")</script>';
   }
   mysqli_close($conn);
 

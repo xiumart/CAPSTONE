@@ -15,7 +15,7 @@ $db = mysqli_connect("localhost", "root","", "capstone");
 		$subject = $_POST['Subject'];
 		$message = $_POST['Message'];
 
-		$sql = "INSERT INTO contact(con_name, con_email, con_subj, cont_mess) VALUES ('$name', '$email', '$subject', '$message')";
+		$sql = "INSERT INTO client_inquiries (inquiries_name, inquiries_email, inquiries_subject, inquiries_message) VALUES ('$name', '$email', '$subject', '$message')";
 		if(mysqli_query($db, $sql)){
     echo '<script language="javascript">';
 	echo 'alert("Thank you for Contacting Us!");';
