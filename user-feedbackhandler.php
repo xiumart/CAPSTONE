@@ -21,8 +21,10 @@ if ($con->connect_error) {
            $sql = "INSERT INTO feedback (feed_subj,feed_comments) VALUES ('$fsubject','$fcomment')";
           
         if(mysqli_query($con, $sql)){
-            echo "<script>alert('Feedback save successfully.')</script>"; 
-                header("Location: users-feedback.php");
+            echo '<script language="javascript">';
+	        echo 'alert("Thank you for your feedback!");';
+	        echo 'window.location="users.php";';
+	        echo '</script>';
         } else{
             echo "ERROR: Hush! Sorry $sql. " 
                 . mysqli_error($con);
