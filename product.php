@@ -1,6 +1,6 @@
 
 <?php
-include "config.php";
+include "conn.php";
 error_reporting(0);
 ?>
 <!doctype html>
@@ -146,23 +146,23 @@ error_reporting(0);
               $page=isset($_GET['page']) ? $_GET['page']:1;
                $start=($page-1)*$limit;
                if ($_POST['all']=='Reading Glasses') {
-               $sql2 =$con->query("SELECT count(pro_id) AS id FROM `product` WHERE `category`='$cat'");
+               $sql2 =$conn->query("SELECT count(pro_id) AS id FROM `product` WHERE `category`='$cat'");
                    $sql1 = "SELECT * FROM `product`WHERE `category`='$cat' LIMIT $limit ";
                }
                elseif ($_POST['all']=='Contact Lenses') {
-                 $sql2 =$con->query("SELECT count(pro_id) AS id FROM `product` WHERE `category`='$cat'");
+                 $sql2 =$conn->query("SELECT count(pro_id) AS id FROM `product` WHERE `category`='$cat'");
                    $sql1 = "SELECT * FROM `product`WHERE `category`='$cat' LIMIT $limit ";
                }
                elseif ($_POST['all']=='Contact Lenses Solution') {
-                 $sql2 =$con->query("SELECT count(pro_id) AS id FROM `product` WHERE `category`='$cat'");
+                 $sql2 =$conn->query("SELECT count(pro_id) AS id FROM `product` WHERE `category`='$cat'");
                    $sql1 = "SELECT * FROM `product`WHERE `category`='$cat' LIMIT $limit ";
                }
                elseif ($_POST['all']=='Accessories') {
-                 $sql2 =$con->query("SELECT count(pro_id) AS id FROM `product` WHERE `category`='$cat'");
+                 $sql2 =$conn->query("SELECT count(pro_id) AS id FROM `product` WHERE `category`='$cat'");
                    $sql1 = "SELECT * FROM `product`WHERE `category`='$cat' LIMIT $limit ";
                }
                else{
-                $sql2 =$con->query("SELECT count(pro_id) AS id FROM `product`");
+                $sql2 =$conn->query("SELECT count(pro_id) AS id FROM `product`");
                     $sql1 = "SELECT * FROM `product` LIMIT $limit ";
                }
                 $result2 = $sql2->fetch_all(MYSQLI_ASSOC);
@@ -173,7 +173,7 @@ error_reporting(0);
                 
            
 
-                $result = $con->query($sql1);
+                $result = $conn->query($sql1);
 
 
                                     if($result->num_rows > 0){
@@ -182,7 +182,7 @@ error_reporting(0);
             <div class="col-lg-4 col-sm-6">
               <div class="product-cate">
                 <div>
-                  <img src="product_img/<?php echo $row['image'];?>" alt="<?php echo $row['image'];?>" style="width: 100%; height: 100%;" >
+                  <img src="admin/images/product_img/<?php echo $row['image'];?>" alt="<?php echo $row['image'];?>" style="width: 100%; height: 100%;" >
                   <div class="product-des">
                     <h5><?php echo $row['brand'];?>&nbsp<?php echo $row['model'];?>&nbsp<?php echo $row['category'];?></h5>
                     <p>₱<?php echo $row['sellingprice'];?>.00</p>
