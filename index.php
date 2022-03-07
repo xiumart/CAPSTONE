@@ -256,174 +256,31 @@
             <!-- /grids -->
             <div class="testimonial-width">
                 <div id="owl-demo1" class="owl-two owl-carousel owl-theme">
-                    <div class="item">
+                <?php
+              require_once("db/feedback/feedbackdisplay.php");
+              while($row = mysqli_fetch_assoc($query)){
+            ?>
+              <div class="item">
                         <div class="testimonial-content">
                             <div class="testimonial">
                                 <blockquote>
-                                    <q>Lorem ipsum dolor sit amet elit. Velit beatae
-                                        laudantium
-                                        voluptate rem ullam dolore nisi voluptatibus esse quasi, doloribus tempora.
-                                        Dolores molestias adipisci dolo amet!.</q>
+                                    <q><?php echo $row['feed_comments'];?></q>
                                 </blockquote>
                                 <div class="testi-des">
-                                    <div class="test-img"><img src="assets/images/team1.jpg" class="img-fluid"
+                                    <div class="test-img"><img src="assets/images/logo.png" class="img-fluid"
                                             alt="client-img">
                                     </div>
                                     <div class="peopl align-self">
-                                        <h3>John wilson</h3>
-                                        <p class="indentity">Student</p>
+                                        <h3><?php echo $row['feed_subj'];?></h3>
+                                        <p class="indentity"><?php echo $row['feedbackdate'];?></p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="item">
-                        <div class="testimonial-content">
-                            <div class="testimonial">
-                                <blockquote>
-                                    <q>Lorem ipsum dolor sit amet elit. Velit beatae
-                                        laudantium
-                                        voluptate rem ullam dolore nisi voluptatibus esse quasi, doloribus tempora.
-                                        Dolores molestias adipisci dolo amet!.</q>
-                                </blockquote>
-                                <div class="testi-des">
-                                    <div class="test-img"><img src="assets/images/team2.jpg" class="img-fluid"
-                                            alt="client-img">
-                                    </div>
-                                    <div class="peopl align-self">
-                                        <h3>Julia sakura</h3>
-                                        <p class="indentity">Student</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="testimonial-content">
-                            <div class="testimonial">
-                                <blockquote>
-                                    <q>Lorem ipsum dolor sit amet elit. Velit beatae
-                                        laudantium
-                                        voluptate rem ullam dolore nisi voluptatibus esse quasi, doloribus tempora.
-                                        Dolores molestias adipisci dolo amet!.</q>
-                                </blockquote>
-                                <div class="testi-des">
-                                    <div class="test-img"><img src="assets/images/team3.jpg" class="img-fluid"
-                                            alt="client-img">
-                                    </div>
-                                    <div class="peopl align-self">
-                                        <h3>Roy Linderson</h3>
-                                        <p class="indentity">Student</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="testimonial-content">
-                            <div class="testimonial">
-                                <blockquote>
-                                    <q>Lorem ipsum dolor sit amet elit. Velit beatae
-                                        laudantium
-                                        voluptate rem ullam dolore nisi voluptatibus esse quasi, doloribus tempora.
-                                        Dolores molestias adipisci dolo amet!.</q>
-                                </blockquote>
-                                <div class="testi-des">
-                                    <div class="test-img"><img src="assets/images/team4.jpg" class="img-fluid"
-                                            alt="client-img">
-                                    </div>
-                                    <div class="peopl align-self">
-                                        <h3>Mike Thyson</h3>
-                                        <p class="indentity">Student</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="testimonial-content">
-                            <div class="testimonial">
-                                <blockquote>
-                                    <q>Lorem ipsum dolor sit amet elit. Velit beatae
-                                        laudantium
-                                        voluptate rem ullam dolore nisi voluptatibus esse quasi, doloribus tempora.
-                                        Dolores molestias adipisci dolo amet!.</q>
-                                </blockquote>
-                                <div class="testi-des">
-                                    <div class="test-img"><img src="assets/images/team2.jpg" class="img-fluid"
-                                            alt="client-img">
-                                    </div>
-                                    <div class="peopl align-self">
-                                        <h3>Laura gill</h3>
-                                        <p class="indentity">Student</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="testimonial-content">
-                            <div class="testimonial">
-                                <blockquote>
-                                    <q>Lorem ipsum dolor sit amet elit. Velit beatae
-                                        laudantium
-                                        voluptate rem ullam dolore nisi voluptatibus esse quasi, doloribus tempora.
-                                        Dolores molestias adipisci dolo amet!.</q>
-                                </blockquote>
-                                <div class="testi-des">
-                                    <div class="test-img"><img src="assets/images/team3.jpg" class="img-fluid"
-                                            alt="client-img">
-                                    </div>
-                                    <div class="peopl align-self">
-                                        <h3>Smith Johnson</h3>
-                                        <p class="indentity">Student</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="testimonial-content">
-                            <div class="testimonial">
-                                <blockquote>
-                                    <q>Lorem ipsum dolor sit amet elit. Velit beatae
-                                        laudantium
-                                        voluptate rem ullam dolore nisi voluptatibus esse quasi, doloribus tempora.
-                                        Dolores molestias adipisci dolo amet!.</q>
-                                </blockquote>
-                                <div class="testi-des">
-                                    <div class="test-img"><img src="assets/images/team2.jpg" class="img-fluid"
-                                            alt="client-img">
-                                    </div>
-                                    <div class="peopl align-self">
-                                        <h3>Laura gill</h3>
-                                        <p class="indentity">Student</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="testimonial-content">
-                            <div class="testimonial">
-                                <blockquote>
-                                    <q>Lorem ipsum dolor sit amet elit. Velit beatae
-                                        laudantium
-                                        voluptate rem ullam dolore nisi voluptatibus esse quasi, doloribus tempora.
-                                        Dolores molestias adipisci dolo amet!.</q>
-                                </blockquote>
-                                <div class="testi-des">
-                                    <div class="test-img"><img src="assets/images/team3.jpg" class="img-fluid"
-                                            alt="client-img">
-                                    </div>
-                                    <div class="peopl align-self">
-                                        <h3>Smith Johnson</h3>
-                                        <p class="indentity">Student</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+            <?php
+              }
+            ?>
                 </div>
             </div>
         </div>
@@ -622,3 +479,6 @@
 </body>
 
 </html>
+
+
+
