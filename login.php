@@ -114,7 +114,7 @@ function getIpAddr(){
             </div>
             <div class="input-field">
               <i class="fas fa-user"></i>
-              <input type="text" placeholder="Contact No." name = "contactno"/>
+              <input type="tel" placeholder="Contact No." name = "contactno"/>
             </div>
             
             <div class="input-field">
@@ -193,6 +193,19 @@ if (isset($_POST['signup']))
     $time = date("h:i:sa");
     $activity = 'signup';
 
+    if(!preg_match("/^[0-9]*$/",$contactno)){
+          echo '<script language="javascript">';
+	        echo 'alert("Invalid Contact Number!");';
+	        echo 'window.location="login.php";';
+	        echo '</script>';
+    exit();
+    } else if(strlen($password) < 6){
+          echo '<script language="javascript">';
+	        echo 'alert("Password must contain atleast 6 characters!");';
+	        echo 'window.location="login.php";';
+	        echo '</script>';
+    exit();
+  }
   
 
   $query_signup = "INSERT INTO client_user (client_id,client_username,client_password) VALUES ('$client_id','$username','$password')" ;
