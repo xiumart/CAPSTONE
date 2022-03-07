@@ -1,6 +1,6 @@
 
 <?php
-include "config.php";
+include "conn.php";
 error_reporting(0);
 ?>
 <!doctype html>
