@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
@@ -38,8 +41,12 @@
           <div class="admin flex">
             <img src="assets\images\a1.jpg" alt="">
             <div class="text flex">
-              <label>Firstname</label>
-              <i class="fas fa-chevron-down"></i>
+              <?php 
+              if($_SESSION["login_user"]) {?>
+<label><?php echo $_SESSION['login_user'];  ?>&nbsp;</label>
+              <a href ="logout.php"> <label> | Log Out </label> </a> <?php
+}else echo "<h1>Please login first .</h1>";
+?>
             </div>
           </div>
 
@@ -125,9 +132,9 @@
                                 placeholder="Subject" required="">
                                 <h3>Date and Time</h3>
                                 <div class="twice-two">
-                            <input type="text" class="form-control" name="w3lName" id="w3lName" placeholder="Date"
+                            <input type="time" class="form-control" name="w3lName" id="w3lName" placeholder="Date"
                                 required="">
-                            <input type="email" class="form-control" name="w3lSender" id="w3lSender" placeholder="Time"
+                            <input type="date" class="form-control" name="w3lSender" id="w3lSender" placeholder="Time"
                                 required="">
                         </div>  
                         </div>

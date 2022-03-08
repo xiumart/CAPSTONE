@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
@@ -38,8 +41,12 @@
           <div class="admin flex">
             <img src="assets\images\a1.jpg" alt="">
             <div class="text flex">
-              <label>Firstname</label>
-              <i class="fas fa-chevron-down"></i>
+              <?php 
+              if($_SESSION["login_user"]) {?>
+<label><?php echo $_SESSION['login_user'];  ?>&nbsp;</label>
+              <a href ="logout.php"> <label> | Log Out </label> </a> <?php
+}else echo "<h1>Please login first .</h1>";
+?>
             </div>
           </div>
 
