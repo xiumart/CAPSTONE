@@ -40,11 +40,13 @@ if(isset($_POST['login'])){
       if($rem_attm==0){
         $msg1='disabled';
         $msg="To many failed login attempts. Please login after 45 sec";
+        header( "refresh:45; url=reset.php" );
       }else{
         $msg="Please enter valid login details.<br/>$rem_attm attempts remaining";
       }
       $try_time=time();
       mysqli_query($conn,"insert into loginlogs(IpAddress,TryTime) values('$ip_address','$try_time')");
+
       
     }
   }
