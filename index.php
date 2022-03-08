@@ -110,22 +110,31 @@
             <h5 class="title-small text-center mb-1">See our product</h5>
             <h3 class="title-big text-center mb-sm-5 mb-4">Featured <span>Product</span></h3>
             <div class="row">
+<?php
+include "conn.php";
+error_reporting(0);
+  $sql1 = "SELECT * FROM `product` LIMIT 3 ";
+   $result = $conn->query($sql1);
+
+
+                                    if($result->num_rows > 0){
+                                        while($row = $result -> fetch_assoc()){
+?>
                 <div class="col-lg-4 col-md-6 item">
                     <div class="card">
                         <div class="card-header p-0 position-relative">
                             <a href="#course-single" class="zoom d-block">
-                                <img class="card-img-bottom d-block" src="assets/images/c1.jpg"
-                                    alt="Card image cap">
+                              <img src="admin/images/product_img/<?php echo $row['image'];?>" alt="<?php echo $row['image'];?>" class="card-img-bottom d-block" >
+                              
                             </a>
                            
                         </div>
                         <div class="card-body course-details">
                             <div class="price-review d-flex justify-content-between mb-1align-items-center">
-                                <p>₱1995.00</p>
+                                <p>₱<?php echo $row['sellingprice'];?>.00</p>
                               
                             </div>
-                            <a href="#course-single" class="course-desc">RNL EYE GLASSES : BRAND
-                            </a>
+                            <h5><?php echo $row['brand'];?>&nbsp<?php echo $row['model'];?>&nbsp<?php echo $row['category'];?></h5>
                             <div class="course-meta mt-4">
                                
                                 
@@ -134,55 +143,9 @@
                        
                     </div>
                 </div>
-
-                <div class="col-lg-4 col-md-6 item mt-md-0 mt-5">
-                    <div class="card">
-                        <div class="card-header p-0 position-relative">
-                            <a href="#course-single" class="zoom d-block">
-                                <img class="card-img-bottom d-block" src="assets/images/c5.jpg"
-                                    alt="Card image cap">
-                            </a>
-                           
-                            
-                        </div>
-                        <div class="card-body course-details">
-                            <div class="price-review d-flex justify-content-between mb-1align-items-center">
-                                <p>₱1841.00</p>
-                                
-                            </div>
-                            <a href="#course-single" class="course-desc">RNL EYE GLASSES : BRAND</a>
-                            <div class="course-meta mt-4">
-                                
-                                
-                            </div>
-                        </div>
-                       
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 item mt-lg-0 mt-5">
-                    <div class="card">
-                        <div class="card-header p-0 position-relative">
-                            <a href="#course-single" class="zoom d-block">
-                                <img class="card-img-bottom d-block" src="assets/images/c6.jpg"
-                                    alt="Card image cap">
-                            </a>
-                            
-                        </div>
-                        <div class="card-body course-details">
-                            <div class="price-review d-flex justify-content-between mb-1align-items-center">
-                                <p>₱1541.00</p>
-                                
-                            </div>
-                            <a href="#course-single" class="course-desc">RNL CONTACT LENS : BRAND </a>
-                            <div class="course-meta mt-4">
-                                
-                                
-                            </div>
-                        </div>
-                      
-                    </div>
-                </div>
+<?php
+}}
+?>
             </div>
             <div class="mt-5 text-more">
                 <p class="pt-md-3 sample text-center">

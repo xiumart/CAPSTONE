@@ -43,12 +43,15 @@ session_start();
             <img src="assets\images\a1.jpg" alt="">
             <div class="text flex">
               <?php 
+
+              include('conn.php');
               if($_SESSION["login_user"]) {?>
 <label><?php echo $_SESSION['login_user'];  ?>&nbsp;</label>
               <a href ="logout.php"> <label> | Log Out </label> </a> <?php
 }else echo "<h1>Please login first .</h1>";
-?>
+$user=$_SESSION['login_user'];
 
+?>
 
 
               
@@ -137,10 +140,39 @@ session_start();
           </tr>
         </thead>
 
-       
-        </tbody>
+       <?php 
+       $sql1 = "SELECT * FROM `client_user` WHERE `client_username`='$user'";
+      $result = $conn->query($sql1);
+      if($result->num_rows > 0){
+      while($row = $result -> fetch_assoc()){
+       ?>
+       <input type="text" name="bam" value="<?php echo $row['client_id']; ?>" hidden>
+        <?php 
+        $id=$row['client_id'];
+       $sql1 = "SELECT * FROM `patient_records` WHERE `ID`='$id'";
+      $result = $conn->query($sql1);
+      if($result->num_rows > 0){
+      while($row = $result -> fetch_assoc()){
+       ?>
+       <tbody>
+         <tr>
+           <td>gh</td><td>gh</td><td>gh</td><td>gh</td>
+            <?php
+          }}
+      else{
+        echo "NO RECORDS";
+      }
+         ?>
+         </tr>
+       </tbody>
+        <?php
+     
+      }}
+      ?>
       </table>
+      
 
+      
       <div class="pagination">
         <ul>
           <li><i class="fas fa-chevron-left"></i> </li>
