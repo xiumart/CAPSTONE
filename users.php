@@ -186,6 +186,7 @@ if (isset($_SESSION['login_user'])) {
         </thead>
 
        <?php 
+       $user=$_SESSION['login_user'];
        $sql1 = "SELECT * FROM `client_user` WHERE `client_username`='$user'";
       $result = $conn->query($sql1);
       if($result->num_rows > 0){
