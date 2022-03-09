@@ -207,6 +207,9 @@ $user=$_SESSION['login_user'];
         <h3>Age </h3>
         <input type="number" name="age" style="font-size: 18px;border: 2px solid #ccc; width: 55%; padding: 10px; margin: 10px auto; border-radius: 5px;" required>
 
+        <h3>Address </h3>
+        <input type="text" name="address" style="font-size: 18px;border: 2px solid #ccc; width: 55%; padding: 10px; margin: 10px auto; border-radius: 5px;" required>
+
         <h3>Contact No.</h3>
         <input type="tel" name="contactno" pattern="[0-9]{4}[0-9]{3}[0-9]{4}" style="font-size: 18px;border: 2px solid #ccc; width: 55%; padding: 10px; margin: 10px auto; border-radius: 5px;" required>
 
