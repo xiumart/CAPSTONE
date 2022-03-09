@@ -185,10 +185,39 @@ if (isset($_SESSION['login_user'])) {
           </tr>
         </thead>
 
-       
-        </tbody>
+       <?php 
+       $sql1 = "SELECT * FROM `client_user` WHERE `client_username`='$user'";
+      $result = $conn->query($sql1);
+      if($result->num_rows > 0){
+      while($row = $result -> fetch_assoc()){
+       ?>
+       <input type="text" name="bam" value="<?php echo $row['client_id']; ?>" hidden>
+        <?php 
+        $id=$row['client_id'];
+       $sql1 = "SELECT * FROM `patient_records` WHERE `ID`='$id'";
+      $result = $conn->query($sql1);
+      if($result->num_rows > 0){
+      while($row = $result -> fetch_assoc()){
+       ?>
+       <tbody>
+         <tr>
+           <td>gh</td><td>gh</td><td>gh</td><td>gh</td>
+            <?php
+          }}
+      else{
+        echo "NO RECORDS";
+      }
+         ?>
+         </tr>
+       </tbody>
+        <?php
+     
+      }}
+      ?>
       </table>
+      
 
+      
       <div class="pagination">
         <ul>
           <li><i class="fas fa-chevron-left"></i> </li>

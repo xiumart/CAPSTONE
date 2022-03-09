@@ -11,7 +11,7 @@ if(isset($_POST['login'])){
   $query=mysqli_query($conn,"select count(*) as total_count from loginlogs where TryTime > $time and IpAddress='$ip_address'");
  $check_login_row=mysqli_fetch_assoc($query);
   $total_count=$check_login_row['total_count'];
-  //Checking if the attempt 3, or youcan set the no of attempt her. For now we taking only 3 fail attempted
+  //Checking if the attempt 3, or you can set the no of attempt her. For now we taking only 3 fail attempted
   if($total_count==3){
     $msg1='disabled';
     $msg="To many failed login attempts. Please login after 45 sec";
@@ -19,6 +19,7 @@ if(isset($_POST['login'])){
     //Getting Post Values
     $username=$_POST['username'];
     $password=md5($_POST['password']);
+    date_default_timezone_set("Philippines/Manila");
     $date = date("m-d-Y");
     $time = date("h:i:sa");
     $activity1 = 'Login';
@@ -40,11 +41,13 @@ if(isset($_POST['login'])){
       if($rem_attm==0){
         $msg1='disabled';
         $msg="To many failed login attempts. Please login after 45 sec";
+        header( "refresh:45; url=reset.php" );
       }else{
         $msg="Please enter valid login details.<br/>$rem_attm attempts remaining";
       }
       $try_time=time();
       mysqli_query($conn,"insert into loginlogs(IpAddress,TryTime) values('$ip_address','$try_time')");
+
       
     }
   }
@@ -61,8 +64,6 @@ function getIpAddr(){
     }
    return $ipAddr;
    }
-
-
 
   ?>
 
@@ -172,14 +173,7 @@ function getIpAddr(){
   </body>
 </html>
 
-
-
-
-
   <?php
-  
-
-
 //sign up 
 if (isset($_POST['signup']))
 {
