@@ -1,4 +1,8 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
+
 <html lang="en" dir="ltr">
 
 <head>
@@ -43,7 +47,7 @@
       <div class="container flex1">
         <div class="left flex1">
           <div class="logo">
-            <h3>RNL Vision Care</h3>
+            <h3><a href="users.php" style="color:white;">RNL Vision Care</a></h3>
           </div>
 
           <div class="search flex">
@@ -57,21 +61,81 @@
         <div class="right flex ">
           
           </div>
+          <style>
+.dropbtn {
+  background-color: #00c2cb;
+  color: white;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  border-radius: 8px;
+  width: 120%;
+}
 
-         
+.dropdown {
+  position: relative;
+  display: inline-block;
+  border-radius: 8px;
+}
 
-          
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  border-radius: 8px;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  border-radius: 8px;
+}
+
+.dropdown-content a:hover {
+  background-color: #00c2cb;
+  
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+  border-radius: 8px;
+}
+
+.dropdown:hover .dropbtn {
+  background-color: #2881e0;
+  border-radius: 8px;
+}
+
+button:hover{
+  background-color: #00c2cb;
+}
+</style>
           <div class="admin flex">
             <img src="assets\images\a1.jpg" alt="">
-            <div class="text flex">
-              <label>Firstname</label>
-              <i class="fas fa-chevron-down"></i>
+            <!-- <div class="text flex"> -->
+            <div class="dropdown">
+  <button class="dropbtn" style="background-color: #01969e;">
+    <?php 
+include('conn.php');
+if($_SESSION["login_user"]) {?>
+<label style="cursor: pointer;"><?php echo $_SESSION['login_user'];  ?>&nbsp;</label></button>
+  <div class="dropdown-content">
+    <a href="users-profile.php">Edit Profile</a>
+    <a href="users-changepassword.php">Change Password</a>
+    <a href="logout.php">Logout</a>
+    <?php
+}else echo "<h1>Please login first .</h1>";
+$user=$_SESSION['login_user'];
+?>
+  </div>
+</div>  
             </div>
-          </div>
-
-          
-        </div>
-      </div>
     </section>
 <!--
     <section class="menu">
@@ -108,7 +172,7 @@
     </section>
 -->
   </header>
-<!--
+
   <script>
     var menuitem = document.getElementById("menuitem");
     menuitem.style.maxHeight = "0px";
@@ -126,8 +190,16 @@
       header.classList.toggle("sticky", window.scrollY > 50);
     })
   </script>
--->
+
+  <section class="home">
   
+  </section>
+
+
+
+  
+
+
   <section class="table">
     <div class="container">
 
@@ -141,16 +213,16 @@
       <table align="center">
         <br>
         <h3>Old Password</h3>
-        <input type="password" name="opwd" id="opwd" style="border: 2px solid #ccc; width: 55%; padding: 10px; margin: 10px auto; border-radius: 5px;">
+        <input type="password" name="opwd" id="opwd" style="font-size: 18px;border: 2px solid #ccc; width: 55%; padding: 10px; margin: 10px auto; border-radius: 5px;">
 
         <h3>New Password</h3>
-        <input type="password" name="npwd" id="npwd" style="border: 2px solid #ccc; width: 55%; padding: 10px; margin: 10px auto; border-radius: 5px;">
+        <input type="password" name="npwd" id="npwd" style="font-size: 18px;border: 2px solid #ccc; width: 55%; padding: 10px; margin: 10px auto; border-radius: 5px;">
 
 
         <h3>Confirm Password</h3>
-        <input type="password" name="cpwd" id="cpwd" style="border: 2px solid #ccc; width: 55%; padding: 10px; margin: 10px auto; border-radius: 5px;">
+        <input type="password" name="cpwd" id="cpwd" style="font-size: 18px;border: 2px solid #ccc; width: 55%; padding: 10px; margin: 10px auto; border-radius: 5px;">
 
-        <td><button type="submit" style="font-size: 120%;">Change Password </button></td>
+        <td><button type="submit" style="font-size: 120%; cursor:pointer;">Change Password </button></td>
 
                 <tr>
               <td></td>
