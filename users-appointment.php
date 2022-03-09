@@ -1,8 +1,11 @@
 <?php
 session_start();
+<<<<<<< HEAD
 $con = mysqli_connect("localhost","root","","capstone");
 $sql = "SELECT DISTINCT app_id, app_date, app_time, app_purpose  FROM appointment,client_user where appointment.app_user = client_user.client_username";
 $result = mysqli_query($con, $sql) or die( mysqli_error($con));
+=======
+>>>>>>> parent of 7aebe80 (appointmentfunction)
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -177,6 +180,7 @@ $result = mysqli_query($con, $sql) or die( mysqli_error($con));
         <thead>
           <tr>
             <th>Appointment Id</th>
+<<<<<<< HEAD
             <th>Date</th>
             <th>Time</th>
             <th>Purpose</th>
@@ -209,6 +213,18 @@ echo "</tbody>";
 echo "</table>";
 ?>
 
+=======
+            <th>Date and Time </th>
+            <th>Purpose<th>
+            <th>Action</th>
+          </tr>
+        </thead>
+
+       
+        </tbody>
+      </table>
+
+>>>>>>> parent of 7aebe80 (appointmentfunction)
       <div class="pagination">
         <ul>
           <li><i class="fas fa-chevron-left"></i> </li>

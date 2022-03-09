@@ -1,6 +1,5 @@
 <?php
 session_start();
-$call = $_SESSION["login_user"];
 ?>
 
 <html lang="en" dir="ltr">
@@ -107,7 +106,13 @@ $call = $_SESSION["login_user"];
             </div>
           </div>
 
+<<<<<<< HEAD
 
+=======
+          
+        </div>
+      </div>
+>>>>>>> parent of 7aebe80 (appointmentfunction)
     </section>
 
     <section class="menu">
@@ -171,25 +176,23 @@ $call = $_SESSION["login_user"];
 
       <h3> <u><a href="users-appointment.php"> <font color="blue"> Appointment</font></a></u> / Set an appointment</a></h3>
       <div class="map-content-9">
-                    <form action="appointmenthandler.php" method="post">
+                    <form action="" method="post">
                         <div class="twice">
-                            <h3>Client User<label style = "color:red;'">*</label></h3>
-                            <input type="text" class="form-control" name="Appointment" id="w3lSubject"
-                                value="<?php echo $call; ?>" required="1">
-                             <h3>Name<label style = "color:red;'">*</label></h3>
-                            <input type="text" class="form-control" name="Name" id="w3lSubject"
-                                placeholder="Subject" required="1">
-                             <h3>Contact No.<label style = "color:red;'">*</label></h3>
-                            <input type="text" class="form-control" name="Contact" id="w3lSubject"
-                                placeholder="Subject" required="1">
-                                <h3>Email<label style = "color:red;'">*</label></h3>
-                            <input type="email" class="form-control" name="Email" id="w3lSubject"
-                                placeholder="Subject" required="1">
-                                <h3>Purpose<label style = "color:red;'">*</label></h3>
-                            <input type="text" class="form-control" name="Purpose" id="w3lSubject"
-                                placeholder="Subject" required="1">
-                                <h3>Date and Time<label style = "color:red;'">*</label></h3>
+                             <h3>Name</h3>
+                            <input type="text" class="form-control" name="w3lSubject" id="w3lSubject"
+                                placeholder="Subject" required="">
+                             <h3>Contact No.</h3>
+                            <input type="text" class="form-control" name="w3lSubject" id="w3lSubject"
+                                placeholder="Subject" required="">
+                                <h3>Email</h3>
+                            <input type="text" class="form-control" name="w3lSubject" id="w3lSubject"
+                                placeholder="Subject" required="">
+                                <h3>Purpose</h3>
+                            <input type="text" class="form-control" name="w3lSubject" id="w3lSubject"
+                                placeholder="Subject" required="">
+                                <h3>Date and Time</h3>
                                 <div class="twice-two">
+<<<<<<< HEAD
                             <input type="time" class="form-control" name="Time" id="w3lName" placeholder="Date"
                                 required="1">
                             <input type="date" class="form-control" name="Date" id="w3lSender" placeholder="Time"
@@ -218,6 +221,12 @@ $call = $_SESSION["login_user"];
                             <input type="time" class="form-control" name="time" 
                                 id="time" placeholder="Time" style="width: 30%;" required="">
 
+=======
+                            <input type="time" class="form-control" name="w3lName" id="w3lName" placeholder="Date"
+                                required="">
+                            <input type="date" class="form-control" name="w3lSender" id="w3lSender" placeholder="Time"
+                                required="">
+>>>>>>> parent of 7aebe80 (appointmentfunction)
                         </div>  
                         </div>
                         <div class="text-right">
@@ -231,6 +240,7 @@ $call = $_SESSION["login_user"];
   <footer>
     <div class="container flex1">
       <span>2022 © RNL Vision Care.</span>
+     
     </div>
   </footer>
   <!-- chart js-->
