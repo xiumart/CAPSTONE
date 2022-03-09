@@ -19,7 +19,7 @@ if(isset($_POST['login'])){
     //Getting Post Values
     $username=$_POST['username'];
     $password=md5($_POST['password']);
-    date_default_timezone_set("Asia/Singapore");
+    date_default_timezone_set("Philippines/Manila");
     $date = date("m-d-Y");
     $time = date("h:i:sa");
     $activity1 = 'Login';
