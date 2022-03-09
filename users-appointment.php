@@ -3,17 +3,6 @@ session_start();
 $con = mysqli_connect("localhost","root","","capstone");
 $sql = "SELECT DISTINCT app_id, app_date, app_time, app_purpose  FROM appointment,client_user where appointment.app_user = client_user.client_username";
 $result = mysqli_query($con, $sql) or die( mysqli_error($con));
-
-
-
- 
-
-
-
- 
-
-
-
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -48,26 +37,77 @@ $result = mysqli_query($con, $sql) or die( mysqli_error($con));
         <div class="right flex ">
           
           </div>
+          <style>
+.dropbtn {
+  background-color: #4287f5;
+  color: white;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  
+  width: 200%;
+  border-radius: 10px;
+}
 
-         
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
 
-          
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  border-radius: 10px;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #2770e6;
+  border-radius: 10px;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+  border-radius: 10px;
+}
+
+.dropdown:hover .dropbtn {
+  background-color: #2770e6;
+  border-radius: 10px;
+}
+          </style>
           <div class="admin flex">
             <img src="assets\images\a1.jpg" alt="">
-             <div class="text flex">
-            <?php 
-              if($_SESSION["login_user"]) {?>
-<label><?php echo $_SESSION['login_user'];  ?>&nbsp;</label>
-              <a href ="logout.php"> <label> | Log Out </label> </a> <?php
+            <!-- <div class="text flex"> -->
+<div class="dropdown">
+  <button class="dropbtn">
+    <?php 
+        if($_SESSION["login_user"]) {?>
+<label><?php echo $_SESSION['login_user'];  ?>&nbsp;</label></button>
+  <div class="dropdown-content">
+  <a href="#">Edit Profile</a>
+  <a href="#">Change Password</a>
+  <a href="logout.php">Logout</a>
+  <?php
 }else echo "<h1>Please login first .</h1>";
-?>
+?> 
+  </div>
+ 
+</div>
+                     
             </div>
-          </div>
-
-          
-        </div>
-      </div>
-    </section>
+    <header>
 
     <section class="menu">
       <div class="container">
@@ -125,11 +165,6 @@ $result = mysqli_query($con, $sql) or die( mysqli_error($con));
   
   </section>
 
-
-
-  
-
-
   <section class="table">
     <div class="container">
 
@@ -145,10 +180,13 @@ $result = mysqli_query($con, $sql) or die( mysqli_error($con));
             <th>Date</th>
             <th>Time</th>
             <th>Purpose</th>
+
+            <th>Purpose<th>
+
             <th>Action</th>
           </tr>
-        </thead>
-        <tbody>
+          <tbody>
+            
             <?php
             while($row = mysqli_fetch_array($result))
 
@@ -169,15 +207,7 @@ $result = mysqli_query($con, $sql) or die( mysqli_error($con));
   }
 echo "</tbody>";
 echo "</table>";
-
- 
-
-mysqli_close($con);
-
 ?>
-
-       
-  
 
       <div class="pagination">
         <ul>
@@ -188,8 +218,7 @@ mysqli_close($con);
           <li><i class="fas fa-chevron-right"></i> </li>
         </ul>
       </div>
-    </div>
-  </section>
+
 
 
   <footer>
@@ -205,3 +234,9 @@ mysqli_close($con);
 </body>
 
 </html>
+<?php 
+}else{
+     header("Location: login.php");
+     exit();
+}
+ ?>
