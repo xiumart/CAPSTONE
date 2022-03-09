@@ -12,6 +12,7 @@
 <!--webfonts-->
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,300,600,700' rel='stylesheet' type='text/css'>
 <!--//webfonts-->
+<link rel="shorcut icon" type="img/png" href="images\logo.png">
 </head>
 <body>
 
