@@ -1,5 +1,19 @@
 <?php
 session_start();
+$con = mysqli_connect("localhost","root","","capstone");
+$sql = "SELECT DISTINCT app_id, app_date, app_time, app_purpose  FROM appointment,client_user where appointment.app_user = client_user.client_username";
+$result = mysqli_query($con, $sql) or die( mysqli_error($con));
+
+
+
+ 
+
+
+
+ 
+
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -128,15 +142,42 @@ session_start();
         <thead>
           <tr>
             <th>Appointment Id</th>
-            <th>Date and Time </th>
-            <th>Purpose<th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Purpose</th>
             <th>Action</th>
           </tr>
         </thead>
+        <tbody>
+            <?php
+            while($row = mysqli_fetch_array($result))
+
+  {
+
+  echo "<tr>";
+
+  echo "<td>" . $row['app_id'] . "</td>";
+
+  echo "<td>" . $row['app_date'] . "</td>";
+
+  echo "<td>" . $row['app_time'] . "</td>";
+
+  echo "<td>" . $row['app_purpose'] . "</td>";
+
+  echo "</tr>";
+
+  }
+echo "</tbody>";
+echo "</table>";
+
+ 
+
+mysqli_close($con);
+
+?>
 
        
-        </tbody>
-      </table>
+  
 
       <div class="pagination">
         <ul>
