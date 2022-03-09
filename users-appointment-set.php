@@ -1,6 +1,8 @@
 <?php
 session_start();
-?>
+include "conn.php";
+if (isset($_SESSION['login_user'])) {
+  ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
@@ -34,25 +36,76 @@ session_start();
         <div class="right flex ">
           
           </div>
+          <style>
+.dropbtn {
+  background-color: #4287f5;
+  color: white;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  
+  width: 200%;
+  border-radius: 10px;
+}
 
-         
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
 
-          
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  border-radius: 10px;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #2770e6;
+  border-radius: 10px;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+  border-radius: 10px;
+}
+
+.dropdown:hover .dropbtn {
+  background-color: #2770e6;
+  border-radius: 10px;
+}
+          </style>
           <div class="admin flex">
             <img src="assets\images\a1.jpg" alt="">
-            <div class="text flex">
-              <?php 
-              if($_SESSION["login_user"]) {?>
-<label><?php echo $_SESSION['login_user'];  ?>&nbsp;</label>
-              <a href ="logout.php"> <label> | Log Out </label> </a> <?php
+            <!-- <div class="text flex"> -->
+<div class="dropdown">
+  <button class="dropbtn">
+    <?php 
+        if($_SESSION["login_user"]) {?>
+<label><?php echo $_SESSION['login_user'];  ?>&nbsp;</label></button>
+  <div class="dropdown-content">
+  <a href="#">Edit Profile</a>
+  <a href="#">Change Password</a>
+  <a href="logout.php">Logout</a>
+  <?php
 }else echo "<h1>Please login first .</h1>";
-?>
+?> 
+  </div>
+ 
+</div>
+                     
             </div>
-          </div>
-
-          
-        </div>
-      </div>
     </section>
 
     <section class="menu">
@@ -116,30 +169,31 @@ session_start();
 
       <h3> <u><a href="users-appointment.php"> <font color="blue"> Appointment</font></a></u> / Set an appointment</a></h3>
       <div class="map-content-9">
-                    <form action="" method="post">
+                    <form action="users-appointmenthandler.php" method="post">
                         <div class="twice">
                              <h3>Name</h3>
-                            <input type="text" class="form-control" name="w3lSubject" id="w3lSubject"
+                            <input type="text" class="form-control" name="name" id="name"
                                 placeholder="Subject" required="">
                              <h3>Contact No.</h3>
-                            <input type="text" class="form-control" name="w3lSubject" id="w3lSubject"
+                            <input type="tel" class="form-control" name="contact" id="contact"
                                 placeholder="Subject" required="">
                                 <h3>Email</h3>
-                            <input type="text" class="form-control" name="w3lSubject" id="w3lSubject"
+                            <input type="email" class="form-control" name="email" id="email"
                                 placeholder="Subject" required="">
                                 <h3>Purpose</h3>
-                            <input type="text" class="form-control" name="w3lSubject" id="w3lSubject"
+                            <input type="text" class="form-control" name="purpose" id="purpose"
                                 placeholder="Subject" required="">
-                                <h3>Date and Time</h3>
-                                <div class="twice-two">
-                            <input type="time" class="form-control" name="w3lName" id="w3lName" placeholder="Date"
-                                required="">
-                            <input type="date" class="form-control" name="w3lSender" id="w3lSender" placeholder="Time"
-                                required="">
+                                <h3>Date</h3>
+                                <!-- <div class="twice-two"> -->
+                            <input type="date" class="form-control" name="date" 
+                                id="date" placeholder="Date" style="width: 30%;" required="">
+                                <h3>Time</h3>
+                            <input type="time" class="form-control" name="time" 
+                                id="time" placeholder="Time" style="width: 30%;" required="">
                         </div>  
                         </div>
                         <div class="text-right">
-                            <button type="submit" class="btn btn-primary btn-style mt-4">Set Appointment</button>
+                            <button type="submit" class="btn btn-primary btn-style mt-4" style="margin-left: 40px;">Set Appointment</button>
                         </div>
                     </form>
                 </div>
@@ -159,3 +213,9 @@ session_start();
 </body>
 
 </html>
+<?php 
+}else{
+     header("Location: login.php");
+     exit();
+}
+ ?>

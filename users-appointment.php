@@ -1,6 +1,8 @@
 <?php
 session_start();
-?>
+include "conn.php";
+if (isset($_SESSION['login_user'])) {
+  ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
@@ -34,25 +36,76 @@ session_start();
         <div class="right flex ">
           
           </div>
+          <style>
+.dropbtn {
+  background-color: #4287f5;
+  color: white;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  
+  width: 200%;
+  border-radius: 10px;
+}
 
-         
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
 
-          
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  border-radius: 10px;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #2770e6;
+  border-radius: 10px;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+  border-radius: 10px;
+}
+
+.dropdown:hover .dropbtn {
+  background-color: #2770e6;
+  border-radius: 10px;
+}
+          </style>
           <div class="admin flex">
             <img src="assets\images\a1.jpg" alt="">
-             <div class="text flex">
-            <?php 
-              if($_SESSION["login_user"]) {?>
-<label><?php echo $_SESSION['login_user'];  ?>&nbsp;</label>
-              <a href ="logout.php"> <label> | Log Out </label> </a> <?php
+            <!-- <div class="text flex"> -->
+<div class="dropdown">
+  <button class="dropbtn">
+    <?php 
+        if($_SESSION["login_user"]) {?>
+<label><?php echo $_SESSION['login_user'];  ?>&nbsp;</label></button>
+  <div class="dropdown-content">
+  <a href="#">Edit Profile</a>
+  <a href="#">Change Password</a>
+  <a href="logout.php">Logout</a>
+  <?php
 }else echo "<h1>Please login first .</h1>";
-?>
+?> 
+  </div>
+ 
+</div>
+                     
             </div>
-          </div>
-
-          
-        </div>
-      </div>
     </section>
 
     <section class="menu">
@@ -111,11 +164,6 @@ session_start();
   
   </section>
 
-
-
-  
-
-
   <section class="table">
     <div class="container">
 
@@ -128,14 +176,31 @@ session_start();
         <thead>
           <tr>
             <th>Appointment Id</th>
-            <th>Date and Time </th>
+            <th>Date</th>
+            <th>Time</th>
             <th>Purpose<th>
             <th>Action</th>
           </tr>
-        </thead>
+          <tbody>
+            <?php
+              echo $_SESSION['app_name'];
+              require_once("db/appointment/displayappointment.php");
+              while($row = mysqli_fetch_assoc($result)){
+            ?>
+            <tr>
+              <tr>
+                <td><?php echo $row['app_id'];  ?></td>
+                <td><?php echo $row['app_date'];  ?></td>
+                <td><?php echo $row['app_time'];  ?></td>
+                <td><?php echo $row['app_purpose'];  ?></td>
+              </tr>
+            </tr>
 
-       
-        </tbody>
+            <?php
+              }
+            ?>
+          </tbody>
+        </thead>
       </table>
 
       <div class="pagination">
@@ -164,3 +229,9 @@ session_start();
 </body>
 
 </html>
+<?php 
+}else{
+     header("Location: login.php");
+     exit();
+}
+ ?>
