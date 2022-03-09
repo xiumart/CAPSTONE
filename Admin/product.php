@@ -127,12 +127,56 @@
 
 			
 			<div class="table-data">
-				<div class="order">
+			<div class="order">
 					<div class="head">
-						<h3></h3>
+					<a href="product-add.php"><button style="background-color:#00c2cb;
+				float:right;
+				font-size:15px;
+				border:none;
+				color: white;
+				padding: 10px;
+				cursor:pointer;
+				border-radius:10px;">+ Add Product </button></a>
 						<i class='bx bx-search' ></i>
 						<i class='bx bx-filter' ></i>
 					</div>
+					<table class="table">
+     <thead>
+     	<tr>
+     	 <th>Brand Name</th>
+     	 <th>Model</th>
+     	 <th>Category</th>
+     	 <th>Original Price</th>
+		 <th>Selling Price</th>
+		 <th>Exp. Date</th>
+		 <th>Qty.</th>
+		 <th>Action</th>
+     	</tr>
+     </thead>
+     <tbody>
+     	  <tr>
+     	  	  <td data-label="Brand">RNL Eyeglass</td>
+     	  	  <td data-label="Model">RNL Anti-radation</td>
+     	  	  <td data-label="Category">Eyeglass</td>
+     	  	  <td data-label="Orig.">1500</td>
+			  <td data-label="Selling">2000</td>
+			  <td data-label="Expire">03/21/23</td>
+			  <td data-label="Qty">123</td>
+			  <td data-label="Action"><a href="product-update.php"><button>Update</button></a><<button>Remove</button></td>
+     	  </tr>
+
+     </tbody>
+   </table>
+   <a href="d-appointment-history.php"><button style="background-color:#00c2cb;
+				float:right;
+				font-size:15px;
+				border:none;
+				color: white;
+				margin-top: 10px;
+				padding: 10px;
+				cursor:pointer;
+				border-radius:10px;"><i class='bx bxs-printer' ></i> Print </button></a>
+
 					
 
 				</div>
