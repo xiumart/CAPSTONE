@@ -1,6 +1,7 @@
 <?php
 session_start();
 <<<<<<< HEAD
+<<<<<<< HEAD
 $con = mysqli_connect("localhost","root","","capstone");
 $sql = "SELECT DISTINCT app_id, app_date, app_time, app_purpose  FROM appointment,client_user where appointment.app_user = client_user.client_username";
 $result = mysqli_query($con, $sql) or die( mysqli_error($con));
@@ -20,6 +21,8 @@ $result = mysqli_query($con, $sql) or die( mysqli_error($con));
 
 
 >>>>>>> parent of f10fd89 (Merge branch 'main' of https://github.com/xiumart/CAPSTONE)
+=======
+>>>>>>> parent of 7aebe80 (appointmentfunction)
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -149,39 +152,17 @@ $result = mysqli_query($con, $sql) or die( mysqli_error($con));
           <tr>
             <th>Appointment Id</th>
 <<<<<<< HEAD
+<<<<<<< HEAD
             <th>Date</th>
             <th>Time</th>
             <th>Purpose</th>
+=======
+            <th>Date and Time </th>
+            <th>Purpose<th>
+>>>>>>> parent of 7aebe80 (appointmentfunction)
             <th>Action</th>
           </tr>
         </thead>
-        <tbody>
-            <?php
-            while($row = mysqli_fetch_array($result))
-
-  {
-
-  echo "<tr>";
-
-  echo "<td>" . $row['app_id'] . "</td>";
-
-  echo "<td>" . $row['app_date'] . "</td>";
-
-  echo "<td>" . $row['app_time'] . "</td>";
-
-  echo "<td>" . $row['app_purpose'] . "</td>";
-
-  echo "</tr>";
-
-  }
-echo "</tbody>";
-echo "</table>";
-
- 
-
-mysqli_close($con);
-
-?>
 
 <<<<<<< HEAD
 =======
@@ -198,7 +179,8 @@ mysqli_close($con);
 >>>>>>> parent of 7aebe80 (appointmentfunction)
 =======
        
-  
+        </tbody>
+      </table>
 
 >>>>>>> parent of f10fd89 (Merge branch 'main' of https://github.com/xiumart/CAPSTONE)
       <div class="pagination">
