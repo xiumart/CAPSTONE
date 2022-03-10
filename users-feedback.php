@@ -85,9 +85,7 @@ session_start();
   background-color: #2881e0;
   border-radius: 8px;
 } 
-button:hover{
-  background-color: #00c2cb;
-}
+
 </style>
           <div class="admin flex">
             <img src="assets\images\a1.jpg" alt="">
@@ -97,7 +95,7 @@ button:hover{
     <?php 
 include('conn.php');
 if($_SESSION["login_user"]) {?>
-<label style="cursor:pointer"><?php echo $_SESSION['login_user'];  ?>&nbsp;</label></button>
+<label style="cursor:pointer;">Hello, <?php echo $_SESSION['login_user'];  ?>&nbsp;</label></button>
   <div class="dropdown-content">
     <a href="users-profile.php">Edit Profile</a>
     <a href="users-changepassword.php">Change Password</a>
