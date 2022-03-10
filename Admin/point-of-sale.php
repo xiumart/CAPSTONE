@@ -35,20 +35,22 @@
 		color: black;
 	}
 
-	input, select {
+
+	.cust{
+		width: 320px;
 		padding:5px;
 		font-size:20px;
 	}
 
-	input[type=text]{
-		width: 320px;
-	}
-
-	select {
+	.sel {
 		width: 400px;
+		padding:5px;
+		font-size:20px;
 	}
-	input[type=number] {
+	.num {
 		width:100px;
+		padding:5px;
+		font-size:20px;
 	}
 </style>
 <body>
@@ -169,11 +171,11 @@
 			<div class="table-data">
 				
 				<div class="order">
-					<input type="text">
-					<select name="" id="">
+					<input type="text" class="cust">
+					<select name="" id="" class="sel">
 
 					</select>
-					<input type="number"><br><br>
+					<input type="number" class="num"><br><br>
 					<table class="table">
 						<thead>
 							<tr>

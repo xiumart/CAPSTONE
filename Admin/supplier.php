@@ -22,9 +22,14 @@
 
 	.btn-upd:hover { background-color: #4CAF50;}
 	.btn-rem:hover { background-color: red;}
-	.btn-addpt:hover { background-color: #00b2b3;}
-
+	.btn-addpt:hover { background-color: #00a2a3;}
+	.btn-print:hover {background-color: #00a2a3;}
 	.btn-addpt {float:right; margin-bottom: 20px;}
+	.btn-print {
+		margin-top: 20px;
+		float: right;
+		width: 10%;
+	}
 </style>
 <body>
 
@@ -172,7 +177,7 @@
      	  
      </tbody>
    </table>
-
+   <a href="#"><button class="btn-print"><i class='bx bxs-printer' ></i> Print </button></a>
 				</div>
 
 				

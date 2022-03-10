@@ -11,6 +11,22 @@
 	<link rel="shorcut icon" type="img/png" href="images\logo.png">
 	<title>RNL Vision Care | Admin</title>
 </head>
+<style>
+	.btn-upd, .btn-rem, .btn-apph {
+		background-color: #00c2cb;
+		padding: 12px;
+		border: none;
+		border-radius: 10%;
+		float: right;
+		margin-left: 10px;
+		
+	}
+
+	.btn-upd:hover { background-color: #4CAF50;}
+	.btn-rem:hover { background-color: red;}
+	.btn-apph:hover { background-color: #00a2a3;}
+
+</style>
 <body>
 
 
@@ -150,13 +166,7 @@
 			</ul>
 
 			<div><br>
-				<a href="d-appointment-history.php"><button style="background-color:#00c2cb;
-				float:right;
-				font-size:15px;
-				border:none;
-				padding: 10px;
-				cursor:pointer;
-				border-radius:10px;">Appointment History</button></a>
+				<a href="d-appointment-history.php"><button class="btn-apph">Appointment History</button></a>
 			</div><br>
 			<div class="table-data">
 				<div class="order">
@@ -185,38 +195,9 @@
      	  	  <td data-label="Date">03/09/2022</td>
 			  <td data-label="Time">10:00am</td>
 			  <td data-label="Purpose">Eye Check up</td>
-			  <td data-label="Action"><button>Accept</button><button>Denied</button></td>
+			  <td data-label="Action"><button class="btn-rem">Denied</button><button class="btn-upd">Accept</button></td>
      	  </tr>
 
-     	  <tr>
-     	  	  <td data-label="Name">Marliardo Umbao</td>
-     	  	  <td data-label="Email">marl@gmail.com</td>
-     	  	  <td data-label="Contact">09481231233</td>
-     	  	  <td data-label="Date">03/09/2022</td>
-			  <td data-label="Time">10:00am</td>
-			  <td data-label="Purpose">Eye Check up</td>
-			  <td data-label="Action"><button>Accept</button><button>Denied</button></td>
-     	  </tr>
-
-     	  <tr>
-     	  	  <td data-label="Name">Marliardo Umbao</td>
-     	  	  <td data-label="Email">marl@gmail.com</td>
-     	  	  <td data-label="Contact">09481231233</td>
-     	  	  <td data-label="Date">03/09/2022</td>
-			  <td data-label="Time">10:00am</td>
-			  <td data-label="Purpose">Eye Check up</td>
-			  <td data-label="Action"><button>Accept</button><button>Denied</button></td>
-     	  </tr>
-
-		   <tr>
-     	  	  <td data-label="Name">Marliardo Umbao</td>
-     	  	  <td data-label="Email">marl@gmail.com</td>
-     	  	  <td data-label="Contact">09481231233</td>
-     	  	  <td data-label="Date">03/09/2022</td>
-			  <td data-label="Time">10:00am</td>
-			  <td data-label="Purpose">Eye Check up</td>
-			  <td data-label="Action"><button>Accept</button><button>Denied</button></td>
-     	  </tr>
      </tbody>
    </table>
 				</div>
@@ -245,15 +226,6 @@
      	</tr>
      </thead>
      <tbody>
-     	  <tr>
-     	  	  <td data-label="Name">Marliardo Umbao</td>
-     	  	  <td data-label="Email">marl@gmail.com</td>
-     	  	  <td data-label="Contact">09481231233</td>
-     	  	  <td data-label="Date">03/09/2022</td>
-			  <td data-label="Time">10:00am</td>
-			  <td data-label="Purpose">Eye Check up</td>
-			  <td data-label="Action"><button>Finish</button><button>Cancel</button></td>
-     	  </tr>
 
      	  <tr>
      	  	  <td data-label="Name">Marliardo Umbao</td>
@@ -262,28 +234,9 @@
      	  	  <td data-label="Date">03/09/2022</td>
 			  <td data-label="Time">10:00am</td>
 			  <td data-label="Purpose">Eye Check up</td>
-			  <td data-label="Action"><button>Finish</button><button>Cancel</button></td>
+			  <td data-label="Action"><button class="btn-rem">Cancel</button><button class="btn-upd">Finish</button></td>
      	  </tr>
 
-     	  <tr>
-     	  	  <td data-label="Name">Marliardo Umbao</td>
-     	  	  <td data-label="Email">marl@gmail.com</td>
-     	  	  <td data-label="Contact">09481231233</td>
-     	  	  <td data-label="Date">03/09/2022</td>
-			  <td data-label="Time">10:00am</td>
-			  <td data-label="Purpose">Eye Check up</td>
-			  <td data-label="Action"><button>Finish</button><button>Cancel</button></td>
-     	  </tr>
-
-		   <tr>
-     	  	  <td data-label="Name">Marliardo Umbao</td>
-     	  	  <td data-label="Email">marl@gmail.com</td>
-     	  	  <td data-label="Contact">09481231233</td>
-     	  	  <td data-label="Date">03/09/2022</td>
-			  <td data-label="Time">10:00am</td>
-			  <td data-label="Purpose">Eye Check up</td>
-			  <td data-label="Action"><button>Finish</button><button>Cancel</button></td>
-     	  </tr>
      </tbody>
    </table>
 

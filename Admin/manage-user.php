@@ -22,8 +22,8 @@
 
 	.btn-upd:hover { background-color: #4CAF50;}
 	.btn-rem:hover { background-color: red;}
-	.btn-print:hover { background-color:blue;}
-	.btn-addpt:hover { background-color: #00b2b3}
+	.btn-print:hover { background-color:#00a2a3;}
+	.btn-addpt:hover { background-color: #00a2a3}
 	.btn-addpt {float:right; margin-bottom: 20px;}
 	.btn-print {
 		margin-top: 20px;

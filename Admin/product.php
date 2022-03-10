@@ -22,7 +22,7 @@
 
 	.btn-upd:hover { background-color: #4CAF50;}
 	.btn-rem:hover { background-color: red;}
-	.btn-print:hover { background-color:blue;}
+	.btn-print:hover { background-color:#00b2b3;}
 	.btn-addp:hover { background-color: #e5eaf0}
 
 	.btn-print {
@@ -180,7 +180,7 @@
 
      </tbody>
    </table>
-   <a href="d-appointment-history.php"><button class="btn-print"><i class='bx bxs-printer' ></i> Print </button></a>
+   <a href=""><button class="btn-print"><i class='bx bxs-printer' ></i> Print </button></a>
 
 					
 

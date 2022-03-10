@@ -11,6 +11,20 @@
 	<link rel="shorcut icon" type="img/png" href="images\logo.png">
 	<title>RNL Vision Care | Admin</title>
 </head>
+<style>
+	button {
+		background-color:#00c2cb;
+		float:right;
+		font-size:15px;
+		border:none;
+		color: white;
+		padding: 10px;
+		cursor:pointer;
+		border-radius:10px;
+	}
+
+	.btn-print:hover { background-color: #00a2a3;}
+</style>
 <body>
 
 
@@ -129,14 +143,7 @@
 			<div class="table-data">
 			<div class="order">
 					<div class="head">
-					<a href="d-appointment-history.php"><button style="background-color:#00c2cb;
-				float:right;
-				font-size:15px;
-				border:none;
-				color: white;
-				padding: 10px;
-				cursor:pointer;
-				border-radius:10px;"><i class='bx bxs-printer' ></i> Print Audit Logs</button></a>
+					<a href="d-appointment-history.php"><button class="btn-print"><i class='bx bxs-printer' ></i> Print Audit Logs</button></a>
 						<i class='bx bx-search' ></i>
 						<i class='bx bx-filter' ></i>
 					</div>
