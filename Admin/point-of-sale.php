@@ -125,124 +125,177 @@
 			
 			</div>
 			<style>
-.dropbtn {
-  background-color: #00c2cb;
-  color: white;
-  padding: 16px;
-  font-size: 16px;
-  border: none;
-  cursor: pointer;
-  border-radius: 8px;
-  width: 110%;
-}
 
-.dropdown {
-  position: relative;
-  display: inline-block;
-  border-radius: 8px;
-}
 
-.dropdown-content {
-  display: none;
+.select {
+  height: 40px;
+  width: 15%;
+  overflow: hidden;
   position: absolute;
-  background-color: #f9f9f9;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-  border-radius: 8px;
+  border-radius: 3px;
+  margin-bottom: 1em;
+  top: 39.5%;
 }
 
-.dropdown-content a {
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-  border-radius: 8px;
-}
-
-.dropdown-content a:hover {
-	background-color: #00c2cb;
-	
-}
-
-.dropdown:hover .dropdown-content {
-  display: block;
-  border-radius: 8px;
-}
-
-.dropdown:hover .dropbtn {
-  background-color: #2881e0;
-  border-radius: 8px;
-}
-.dropbtn1 {
-  background-color: #00c2cb;
-  color: white;
-  padding: 16px;
-  font-size: 16px;
-  border: none;
-  cursor: pointer;
-  border-radius: 8px;
-  width: 110%;
-  margin-left: 20%;
-}
-
-.dropdown1 {
-  position: relative;
-  display: inline-block;
-  border-radius: 8px;
-}
-
-.dropdown-content1 {
-  display: none;
+.select:after {
+  content: "▼";
+  padding: 12px 8px;
   position: absolute;
-  background-color: #f9f9f9;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  right: 10px;
+  top: 0;
   z-index: 1;
-  border-radius: 8px;
+  text-align: center;
+  width: 10%;
+  height: 100%;
+  pointer-events: none;
 }
 
-.dropdown-content1 a {
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-  border-radius: 8px;
+.select__field {
+  height: 40px;
+  width: 100%;
+  padding: 5px 15px;
+  color: #616263;
+  background-color: #ececec;
+  border: 1px solid #e3e3e3;
+  outline: none;
+  font-size: 16px;
+  -webkit-appearance: none;
+  /* for webkit browsers */
+  -moz-appearance: none;
+  /* for firefox */
+  appearance: none;
+  /* for modern browsers */
 }
 
-.dropdown-content1 a:hover {
-	background-color: #00c2cb;
-	
+
+/* remove default caret for ie */
+
+.select__field::-ms-expand {
+  display: none;
 }
 
-.dropdown1:hover .dropdown-content1 {
-  display: block;
-  border-radius: 8px;
-  margin-left: 20%;
+.select__field:focus:invalid {
+  border-color: #FD6347;
 }
 
-.dropdown1:hover .dropbtn1 {
-  background-color: #2881e0;
-  border-radius: 8px;
+.select__field:required:valid {
+  border-color: #006400;
 }
-</style>
+
+.select1 {
+  height: 40px;
+  width: 15%;
+  overflow: hidden;
+  position: relative;
+  border-radius: 3px;
+  margin-bottom: 1em;
+  left: 17%;
+}
+
+.select1:after {
+  content: "▼";
+  padding: 12px 8px;
+  position: absolute;
+  right: 10px;
+  top: 0;
+  z-index: 1;
+  text-align: center;
+  width: 10%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.select__field1 {
+  height: 40px;
+  width: 100%;
+  padding: 5px 15px;
+  color: #616263;
+  background-color: #ececec;
+  border: 1px solid #e3e3e3;
+  outline: none;
+  font-size: 16px;
+  -webkit-appearance: none;
+  /* for webkit browsers */
+  -moz-appearance: none;
+  /* for firefox */
+  appearance: none;
+  /* for modern browsers */
+}
+
+
+/* remove default caret for ie */
+
+.select__field1::-ms-expand {
+  display: none;
+}
+
+.select__field1:focus:invalid {
+  border-color: #FD6347;
+}
+
+.select__field1:required:valid {
+  border-color: #006400;
+}
+
+/* input type */
+input[type=number] {
+        /*for absolutely positioning spinners*/
+        position: absolute; 
+        padding: 5px;
+		padding-bottom: 7px;
+		font-size: 20px;
+		left: 34%;
+		width: 100px;
+      }
+
+      input[type=number]::-webkit-inner-spin-button,
+      input[type=number]::-webkit-outer-spin-button {
+        opacity: 1;
+      }
+
+      input[type=number]::-webkit-outer-spin-button, 
+      input[type=number]::-webkit-inner-spin-button {
+        -webkit-appearance: inner-spin-button !important;
+        width: 25px;
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 100%;
+      }
+</style> 
 			
 			<div class="table-data">
+				
 				<div class="order">
-					<!-- <div class="head">
-						<h3></h3>
-						<i class='bx bx-search' ></i>
-						<i class='bx bx-filter' ></i>
-					</div> -->
-					<div class="dropdown">
-  <button class="dropbtn">Customer name</button>
-  <div class="dropdown-content">
-    <a href="#">Name</a>
-    <a href="#">Name</a>
-    <a href="#">Name</a>
+				<input type="number" value="1" step="1" />
+				<form action="#" method="post">
+  <div class="select1">
+    <select name="nameValueSelect1" class="select__field1" required>
+      <option value="" selected>Select product</option>
+      <option>Option 1</option>
+      <option>Option 2</option>
+      <option>Option 3</option>
+      <option>Option 4</option>
+      <option>Option 5</option>
+      <option>Option 6</option>
+    </select>
   </div>
-</div>
-					<table class="table">
+</form>
+				<form action="#" method="post">
+  <div class="select">
+    <select name="nameValueSelect" class="select__field" required>
+      <option value="" selected>Select customer</option>
+      <option>Option 1</option>
+      <option>Option 2</option>
+      <option>Option 3</option>
+      <option>Option 4</option>
+      <option>Option 5</option>
+      <option>Option 6</option>
+    </select>
+  </div>
+</form>
+
+  <table class="table">
      <thead>
      	<tr>
      	 <th>Product Name</th>
@@ -252,6 +305,7 @@
 		 <th>Qty</th>
 		 <th>Amount</th>
 		 <th>Profit</th>
+		 <th>Total</th>
 		 <th>Action</th>
      	</tr>
      </thead>
@@ -264,20 +318,37 @@
 			  <td></td>
 			  <td></td>
 			  <td></td>
-			  <td><button>Cancel</button></td>
+			  <td></td>
+			  <td><button type="button" class="btn btn-warning">Cancel</button></td>
      	  </tr>
 </tbody>
-				</div>
-	
-			</div>
-			<div class="dropdown1">
-  <button class="dropbtn1">Product name</button>
-  <div class="dropdown-content1">
-    <a href="#">Name</a>
-    <a href="#">Name</a>
-    <a href="#">Name</a>
+
   </div>
 </div>
+
+</table>
+<div><br>
+				<a href="#"><button style="background-color:#00c2cb;
+				float:right;
+				font-size:15px;
+				border:none;
+				padding: 10px;
+				cursor:pointer;
+				width: 10%;
+				border-radius:10px;">PAY</button></a>
+			</div>
+
+					<!-- <div class="head">
+						<h3></h3>
+						<i class='bx bx-search' ></i>
+						<i class='bx bx-filter' ></i>
+					</div> -->
+<div class="table-data">
+<div class="order">
+					
+</div>
+</div>
+
 			<div class="table-data">
 			
 			</div>
