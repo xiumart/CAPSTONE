@@ -11,6 +11,26 @@
 	<link rel="shorcut icon" type="img/png" href="images\logo.png">
 	<title>RNL Vision Care | Admin</title>
 </head>
+<style>
+		button {
+		background-color: #00c2cb;
+		padding: 12px;
+		border: none;
+		margin: 3px;
+		border-radius: 10%;
+	}
+
+	.btn-upd:hover { background-color: #4CAF50;}
+	.btn-rem:hover { background-color: red;}
+	.btn-print:hover { background-color:blue;}
+	.btn-addpt:hover { background-color: #00b2b3}
+	.btn-addpt {float:right; margin-bottom: 20px;}
+	.btn-print {
+		margin-top: 20px;
+		float: right;
+		width: 10%;
+	}
+</style>
 <body>
 
 
@@ -125,49 +145,37 @@
 			
 			</div>
 
-			
+			<button class="btn-addpt"> + Add User</button>
 			<div class="table-data">
 			<div class="order">
 					<div class="head">
-					<a href="d-appointment-history.php"><button style="background-color:#00c2cb;
-				float:right;
-				font-size:15px;
-				border:none;
-				color: white;
-				padding: 10px;
-				cursor:pointer;
-				border-radius:10px;">+ Add User </button></a>
 						<i class='bx bx-search' ></i>
 						<i class='bx bx-filter' ></i>
 					</div>
 					<table class="table">
      <thead>
      	<tr>
+     	 <th>Name</th>
      	 <th>Username</th>
-     	 <th>Activiy</th>
-     	 <th>Date</th>
-     	 <th>Time</th>
+		 <th>Contact</th>
+		 <th>Email</th>
+     	 <th>Position</th>
+     	 <th>Action</th>
      	</tr>
      </thead>
      <tbody>
      	  <tr>
-     	  	  <td data-label="Username">marl</td>
-     	  	  <td data-label="Activity">Update Patient Record</td>
-     	  	  <td data-label="Date">03/09/2022</td>
-     	  	  <td data-label="Time">02:00pm</td>
+     	  	  <td data-label="Name">Marliardo Umbao</td>
+     	  	  <td data-label="Username">marl222</td>
+     	  	  <td data-label="Contact">091234567852</td>
+     	  	  <td data-label="Email">marl@gmail.com</td>
+			  <td data-label="Position">Administrator</td>
+			  <td data-label="Action"><button class="btn-upd">Update</button><button class="btn-rem">Remove</button></td>
      	  </tr>
 
      </tbody>
    </table>
-   <a href="d-appointment-history.php"><button style="background-color:#00c2cb;
-				float:right;
-				font-size:15px;
-				border:none;
-				color: white;
-				margin-top: 10px;
-				padding: 10px;
-				cursor:pointer;
-				border-radius:10px;"><i class='bx bxs-printer' ></i> Print </button></a>
+   <a href="#"><button class="btn-print"><i class='bx bxs-printer' ></i> Print </button></a>
 
 				</div>
 

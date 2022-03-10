@@ -172,7 +172,7 @@
 		<main>
 			<div class="head-title">
 				<div class="left">
-					<h1>Product</h1>
+					<h1>Add Product</h1>
 					<ul class="breadcrumb">
 						<li>
 							<a class="active" href="product.php">Back</a>

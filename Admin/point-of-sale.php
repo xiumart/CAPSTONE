@@ -11,6 +11,46 @@
 	<link rel="shorcut icon" type="img/png" href="images\logo.png">
 	<title>RNL Vision Care | Admin</title>
 </head>
+<style>
+	.btn-t {
+		background-color: #00c2cb;
+		border-radius: 5px;
+		border:none;
+		padding: 10px;
+	}
+
+	.btn-t:hover {
+		background-color: red;
+	}
+	.btn-p {
+		background-color: #00c2cb;
+		border-radius: 5px;
+		border:none;
+		padding: 10px;
+		width: 100%;
+	}
+
+	.btn-p:hover {
+		background-color: #4CAF50;
+		color: black;
+	}
+
+	input, select {
+		padding:5px;
+		font-size:20px;
+	}
+
+	input[type=text]{
+		width: 320px;
+	}
+
+	select {
+		width: 400px;
+	}
+	input[type=number] {
+		width:100px;
+	}
+</style>
 <body>
 
 
@@ -124,234 +164,51 @@
 				</div>
 			
 			</div>
-			<style>
-
-
-.select {
-  height: 40px;
-  width: 15%;
-  overflow: hidden;
-  position: absolute;
-  border-radius: 3px;
-  margin-bottom: 1em;
-  top: 39.5%;
-}
-
-.select:after {
-  content: "▼";
-  padding: 12px 8px;
-  position: absolute;
-  right: 10px;
-  top: 0;
-  z-index: 1;
-  text-align: center;
-  width: 10%;
-  height: 100%;
-  pointer-events: none;
-}
-
-.select__field {
-  height: 40px;
-  width: 100%;
-  padding: 5px 15px;
-  color: #616263;
-  background-color: #ececec;
-  border: 1px solid #e3e3e3;
-  outline: none;
-  font-size: 16px;
-  -webkit-appearance: none;
-  /* for webkit browsers */
-  -moz-appearance: none;
-  /* for firefox */
-  appearance: none;
-  /* for modern browsers */
-}
-
-
-/* remove default caret for ie */
-
-.select__field::-ms-expand {
-  display: none;
-}
-
-.select__field:focus:invalid {
-  border-color: #FD6347;
-}
-
-.select__field:required:valid {
-  border-color: #006400;
-}
-
-.select1 {
-  height: 40px;
-  width: 15%;
-  overflow: hidden;
-  position: relative;
-  border-radius: 3px;
-  margin-bottom: 1em;
-  left: 17%;
-}
-
-.select1:after {
-  content: "▼";
-  padding: 12px 8px;
-  position: absolute;
-  right: 10px;
-  top: 0;
-  z-index: 1;
-  text-align: center;
-  width: 10%;
-  height: 100%;
-  pointer-events: none;
-}
-
-.select__field1 {
-  height: 40px;
-  width: 100%;
-  padding: 5px 15px;
-  color: #616263;
-  background-color: #ececec;
-  border: 1px solid #e3e3e3;
-  outline: none;
-  font-size: 16px;
-  -webkit-appearance: none;
-  /* for webkit browsers */
-  -moz-appearance: none;
-  /* for firefox */
-  appearance: none;
-  /* for modern browsers */
-}
-
-
-/* remove default caret for ie */
-
-.select__field1::-ms-expand {
-  display: none;
-}
-
-.select__field1:focus:invalid {
-  border-color: #FD6347;
-}
-
-.select__field1:required:valid {
-  border-color: #006400;
-}
-
-/* input type */
-input[type=number] {
-        /*for absolutely positioning spinners*/
-        position: absolute; 
-        padding: 5px;
-		padding-bottom: 7px;
-		font-size: 20px;
-		left: 34%;
-		width: 100px;
-      }
-
-      input[type=number]::-webkit-inner-spin-button,
-      input[type=number]::-webkit-outer-spin-button {
-        opacity: 1;
-      }
-
-      input[type=number]::-webkit-outer-spin-button, 
-      input[type=number]::-webkit-inner-spin-button {
-        -webkit-appearance: inner-spin-button !important;
-        width: 25px;
-        position: absolute;
-        top: 0;
-        right: 0;
-        height: 100%;
-      }
-</style> 
+		
 			
 			<div class="table-data">
 				
 				<div class="order">
-				<input type="number" value="1" step="1" />
-				<form action="#" method="post">
-  <div class="select1">
-    <select name="nameValueSelect1" class="select__field1" required>
-      <option value="" selected>Select product</option>
-      <option>Option 1</option>
-      <option>Option 2</option>
-      <option>Option 3</option>
-      <option>Option 4</option>
-      <option>Option 5</option>
-      <option>Option 6</option>
-    </select>
-  </div>
-</form>
-				<form action="#" method="post">
-  <div class="select">
-    <select name="nameValueSelect" class="select__field" required>
-      <option value="" selected>Select customer</option>
-      <option>Option 1</option>
-      <option>Option 2</option>
-      <option>Option 3</option>
-      <option>Option 4</option>
-      <option>Option 5</option>
-      <option>Option 6</option>
-    </select>
-  </div>
-</form>
+					<input type="text">
+					<select name="" id="">
 
-  <table class="table">
-     <thead>
-     	<tr>
-     	 <th>Product Name</th>
-     	 <th>Generic Name</th>
-     	 <th>Category</th>
-     	 <th>Price</th>
-		 <th>Qty</th>
-		 <th>Amount</th>
-		 <th>Profit</th>
-		 <th>Total</th>
-		 <th>Action</th>
-     	</tr>
-     </thead>
-	 <tbody>
-     	  <tr>
-     	  	  <td></td>
-     	  	  <td></td>
-     	  	  <td></td>
-     	  	  <td></td>
-			  <td></td>
-			  <td></td>
-			  <td></td>
-			  <td></td>
-			  <td><button type="button" class="btn btn-warning">Cancel</button></td>
-     	  </tr>
-</tbody>
+					</select>
+					<input type="number"><br><br>
+					<table class="table">
+						<thead>
+							<tr>
+							<th>Product Name</th>
+							<th>Generic Name</th>
+							<th>Category</th>
+							<th>Price</th>
+							<th>Qty</th>
+							<th>Amount</th>
+							<th>Profit</th>
+							<th>Total</th>
+							<th>Action</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td><button type="button" class="btn-t">Cancel</button></td>
+							</tr>
+						</tbody>
 
-  </div>
-</div>
-
-</table>
-<div><br>
-				<a href="#"><button style="background-color:#00c2cb;
-				float:right;
-				font-size:15px;
-				border:none;
-				padding: 10px;
-				cursor:pointer;
-				width: 10%;
-				border-radius:10px;">PAY</button></a>
+					</div>
+					</div>
+				</table>
+				<div><br><br>
+				<button type="button" class="btn-p">PAY</button></td>
 			</div>
 
-					<!-- <div class="head">
-						<h3></h3>
-						<i class='bx bx-search' ></i>
-						<i class='bx bx-filter' ></i>
-					</div> -->
-<div class="table-data">
-<div class="order">
-					
-</div>
-</div>
-
-			<div class="table-data">
-			
-			</div>
 		</main>
 		<!-- MAIN -->
 	</section>

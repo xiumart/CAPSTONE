@@ -11,6 +11,21 @@
 	<link rel="shorcut icon" type="img/png" href="images\logo.png">
 	<title>RNL Vision Care | Admin</title>
 </head>
+<style>
+	button {
+		background-color: #00c2cb;
+		padding: 12px;
+		border: none;
+		margin: 3px;
+		border-radius: 10%;
+	}
+
+	.btn-upd:hover { background-color: #4CAF50;}
+	.btn-rem:hover { background-color: red;}
+	.btn-addpt:hover { background-color: #00b2b3;}
+
+	.btn-addpt {float:right; margin-bottom: 20px;}
+</style>
 <body>
 
 
@@ -125,18 +140,11 @@
 			
 			</div>
 
-			
+			<button class="btn-addpt"> + Add Supplier</button>
 			<div class="table-data">
 				<div class="order">
 					<div class="head">
-					<a href="d-appointment-history.php"><button style="background-color:#00c2cb;
-				float:right;
-				font-size:15px;
-				border:none;
-				color: white;
-				padding: 10px;
-				cursor:pointer;
-				border-radius:10px;"> + Add Supplier </button></a>
+					
 						<i class='bx bx-search' ></i>
 						<i class='bx bx-filter' ></i>
 					</div>
@@ -148,6 +156,7 @@
      	 <th>Contact No.</th>
      	 <th>Email</th>
 		 <th>Remarks</th>
+		 <th>Action</th>
      	</tr>
      </thead>
      <tbody>
@@ -157,31 +166,10 @@
      	  	  <td data-label="Contact">09481231233</td>
      	  	  <td data-label="Email">marl@gmail.com</td>
 			  <td data-label="Remark">Description here!</td>
+			  <td data-label="Action"><button class="btn-upd">Update</button><button class="btn-rem">Remove</button></td>
      	  </tr>
 
-     	  <tr>
-     	  	  <td data-label="Company">Marliardo Corps.</td>
-     	  	  <td data-label="Name">Marliardo Umbao</td>
-     	  	  <td data-label="Contact">09481231233</td>
-     	  	  <td data-label="Email">marl@gmail.com</td>
-			  <td data-label="Remark">Description here!</td>
-     	  </tr>
-
-     	  <tr>
-     	  	  <td data-label="Company">Marliardo Corps.</td>
-     	  	  <td data-label="Name">Marliardo Umbao</td>
-     	  	  <td data-label="Contact">09481231233</td>
-     	  	  <td data-label="Email">marl@gmail.com</td>
-			  <td data-label="Remark">Description here!</td>
-     	  </tr>
-
-     	  <tr>
-     	  	  <td data-label="Company">Marliardo Corps.</td>
-     	  	  <td data-label="Name">Marliardo Umbao</td>
-     	  	  <td data-label="Contact">09481231233</td>
-     	  	  <td data-label="Email">marl@gmail.com</td>
-			  <td data-label="Remark">Description here!</td>
-     	  </tr>
+     	  
      </tbody>
    </table>
 

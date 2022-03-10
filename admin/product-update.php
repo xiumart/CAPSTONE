@@ -70,6 +70,21 @@
 		margin-top: 0;
 	}
 	}
+	button {
+	padding: 12px;
+	border: none;
+	margin: 3px;
+	border-radius: 10%;
+	float: right;
+	width: 200px;
+	color: white;
+	}								
+	
+	.btn-can { background-color: #DB504A;}
+	.btn-upd { background-color : #4CAF50}
+	.btn-can:hover { background-color:#FD7238; }
+	.btn-upd:hover { background-color:#00c2cb; }
+
 </style>
 </head>
 <body>
@@ -284,30 +299,14 @@
 							<label for="fname">Image</label>
 						</div>
 						<div class="col-75">
-							<button style="
-							width: 40%;
-  							padding: 8px;
-							border: 1px solid #ccc;
-							border-radius: 4px;
-							resize: vertical;
-							">Upload</button>
+							
 							
 						</div>
 						<img src="logo.png" alt="" width="200px">
 						</div>
 						<div class="row">
-						<a href="product.php"><button style="
-						margin-left:20px;
-						background-color: red;
-						color: white;
-						padding: 12px 20px;
-						border: none;
-						border-radius: 4px;
-						cursor: pointer;
-						float: right;
-						">Cancel</button></a>
-
-						<input type="submit" value="Update">
+							<button class="btn-can">Cancel</button>
+							<button class="btn-upd">Update</button>
 						
 						</div>
 				</form>

@@ -11,6 +11,26 @@
 	<link rel="shorcut icon" type="img/png" href="images\logo.png">
 	<title>RNL Vision Care | Admin</title>
 </head>
+<style>
+	button {
+		background-color: #00c2cb;
+		padding: 12px;
+		border: none;
+		margin: 3px;
+		border-radius: 10%;
+	}
+
+	.btn-upd:hover { background-color: #4CAF50;}
+	.btn-rem:hover { background-color: red;}
+	.btn-print:hover { background-color:blue;}
+	.btn-addp:hover { background-color: #e5eaf0}
+
+	.btn-print {
+		margin-top: 20px;
+		float: right;
+		width: 10%;
+	}
+</style>
 <body>
 
 
@@ -129,14 +149,7 @@
 			<div class="table-data">
 			<div class="order">
 					<div class="head">
-					<a href="product-add.php"><button style="background-color:#00c2cb;
-				float:right;
-				font-size:15px;
-				border:none;
-				color: white;
-				padding: 10px;
-				cursor:pointer;
-				border-radius:10px;">+ Add Product </button></a>
+					<a href="product-add.php"><button class="btn-addp">+ Add Product </button></a>
 						<i class='bx bx-search' ></i>
 						<i class='bx bx-filter' ></i>
 					</div>
@@ -162,20 +175,12 @@
 			  <td data-label="Selling">2000</td>
 			  <td data-label="Expire">03/21/23</td>
 			  <td data-label="Qty">123</td>
-			  <td data-label="Action"><a href="product-update.php"><button>Update</button></a><<button>Remove</button></td>
+			  <td data-label="Action"><a href="product-update.php"><button class="btn-upd">Update</button></a><button class="btn-rem">Remove</button></td>
      	  </tr>
 
      </tbody>
    </table>
-   <a href="d-appointment-history.php"><button style="background-color:#00c2cb;
-				float:right;
-				font-size:15px;
-				border:none;
-				color: white;
-				margin-top: 10px;
-				padding: 10px;
-				cursor:pointer;
-				border-radius:10px;"><i class='bx bxs-printer' ></i> Print </button></a>
+   <a href="d-appointment-history.php"><button class="btn-print"><i class='bx bxs-printer' ></i> Print </button></a>
 
 					
 

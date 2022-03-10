@@ -11,6 +11,23 @@
 	<link rel="shorcut icon" type="img/png" href="images\logo.png">
 	<title>RNL Vision Care | Admin</title>
 </head>
+<style>
+	button {
+		background-color: #00c2cb;
+		padding: 12px;
+		border: none;
+		margin: 3px;
+		border-radius: 10%;
+	}
+
+	.btn-upd:hover { background-color: #4CAF50;}
+	.btn-rem:hover { background-color: red;}
+	.btn-print:hover { background-color:blue;}
+	.btn-addp:hover { background-color: #e5eaf0}
+	.btn-addpt:hover { background-color: #00b2b3;}
+
+	.btn-addpt {float:right; margin-bottom: 20px;}
+</style>
 <body>
 
 
@@ -125,7 +142,7 @@
 			
 			</div>
 
-			
+			<button class="btn-addpt"> + Add Patient</button>
 			<div class="table-data">
 				<div class="order">
 					<div class="head">
@@ -151,7 +168,7 @@
      	  	  <td data-label="Contact">09481231233</td>
      	  	  <td data-label="Address">Sauyo Rd., Quezon City</td>
 			  <td data-label="Age">18</td>
-			  <td data-label="Action"><button>Update</button><button>Remove</button></td>
+			  <td data-label="Action"><button class="btn-upd">Update</button><button class="btn-rem">Remove</button></td>
      	  </tr>
      </tbody>
    </table>
