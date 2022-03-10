@@ -149,7 +149,7 @@
 			<div class="table-data">
 			<div class="order">
 					<div class="head">
-					<a href="product-add.php"><button class="btn-addp">+ Add Product </button></a>
+					<a href="product-add.php"><button class="btn-addp" style="cursor: pointer;">+ Add Product </button></a>
 						<i class='bx bx-search' ></i>
 						<i class='bx bx-filter' ></i>
 					</div>
@@ -175,12 +175,14 @@
 			  <td data-label="Selling">2000</td>
 			  <td data-label="Expire">03/21/23</td>
 			  <td data-label="Qty">123</td>
-			  <td data-label="Action"><a href="product-update.php"><button class="btn-upd">Update</button></a><button class="btn-rem">Remove</button></td>
+			  <td data-label="Action">
+			<a href="product-update.php"><button class="btn-upd" style="cursor: pointer;">Update</button></a>
+			<button class="btn-rem" style="cursor: pointer;">Remove</button></td>
      	  </tr>
 
      </tbody>
    </table>
-   <a href=""><button class="btn-print"><i class='bx bxs-printer' ></i> Print </button></a>
+   <a href=""><button class="btn-print" style="cursor: pointer;"><i class='bx bxs-printer' ></i> Print </button></a>
 
 					
 

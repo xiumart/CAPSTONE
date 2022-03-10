@@ -131,62 +131,155 @@
 		<main>
 			<div class="head-title">
 				<div class="left">
-					<h1>Supplier</h1>
+					<h1>Update Supplier</h1>
 					<ul class="breadcrumb">
 						<li>
-							<a href="supplier.php">Supplier</a>
+							<a href="supplier.php">Update Supplier</a>
 						</li>
-						<li><i class='bx bx-chevron-right' ></i></li>
+						<li><i class='bx bx-chevron-right'></i></li>
 						<li>
 							<a class="active" href="supplier.php">Home</a>
 						</li>
 					</ul>
 				</div>
-			
 			</div>
+			<style>
+	input[type=text], select, textarea {
+  		width: 100%;
+  		padding: 12px;
+  		border: 1px solid #ccc;
+  		border-radius: 4px;
+  		resize: vertical;
+	}
+	input[type=tel], select, textarea {
+  		width: 100%;
+  		padding: 12px;
+  		border: 1px solid #ccc;
+  		border-radius: 4px;
+  		resize: vertical;
+	}
+	input[type=email], select, textarea {
+  		width: 100%;
+  		padding: 12px;
+  		border: 1px solid #ccc;
+  		border-radius: 4px;
+  		resize: vertical;
+	}
 
-			<a href="supplier-add.php"><button class="btn-addpt" style="cursor: pointer;"> + Add Supplier</button></a>
-			<div class="table-data">
-				<div class="order">
-					<table class="table">
-     <thead>
-     	<tr>
-		 <th>Last name</th> 
-		 <th>First name</th>
-     	 <th>Company name</th>
-     	 <th>Description</th>
-     	 <th>Contact No.</th>
-     	 <th>Email</th>
-		 <th>Action</th>
-     	</tr>
-     </thead>
-     <tbody>
-     	  <tr>
-     	  	  <td data-label="Last Name"></td>
-     	  	  <td data-label="First Name"></td>
-     	  	  <td data-label="Company Name"></td>
-     	  	  <td data-label="Description"></td>
-			  <td data-label="Contact No."></td>
-			  <td data-label="Email"></td>
-			  <td data-label="Action">
-			  <a href="supplier-update.php"><button class="btn-upd" style="cursor: pointer;">Update</button></a>
-			<button class="btn-rem" style="cursor: pointer;">Remove</button></td>
-     	  </tr>
+	label {
+  		padding: 12px 12px 12px 0;
+  		display: inline-block;
+	}
 
-     	  
-     </tbody>
-   </table>
-   <a href="#"><button class="btn-print" style="cursor: pointer;"><i class='bx bxs-printer' ></i> Print </button></a>
-				</div>
+	input[type=submit] {
+	background-color: #04AA6D;
+	color: white;
+	padding: 12px 20px;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	float: right;
+	font-size: 20px;
+	}
 
-				
-				
-			</div>
+	input[type=submit]:hover {
+	background-color: #00c2cb;
+	}
+
+	.container {
+	border-radius: 5px;
+	background-color: #f2f2f2;
+	padding: 20px;
+	}
+
+	.col-25 {
+	float: left;
+	width: 25%;
+	margin-top: 6px;
+	}
+
+	.col-75 {
+	float: left;
+	width: 75%;
+	margin-top: 6px;
+	}
+
+	/* Clear floats after the columns */
+	.row:after {
+	content: "";
+	display: table;
+	clear: both;
+	}
+
+	/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+	@media screen and (max-width: 600px) {
+	.col-25, .col-75, input[type=submit] {
+		width: 100%;
+		margin-top: 0;
+	}
+	}
+</style>
+<div class="table-data">
+			<div class="order">
 			
+				<form action="#">
+				<div class="row">
+						<div class="row">
+						<div class="col-25">
+							<label for="lname">Last Name</label>
+						</div>
+						<div class="col-75">
+							<input type="text" id="lname" name="lname" placeholder="Enter last name" required="">
+						</div>
+						</div>
+						<div class="row">
+						<div class="col-25">
+							<label for="fname">First Name</label>
+						</div>
+						<div class="col-75">
+							<input type="text" id="fname" name="fname" placeholder="Enter first name" required="">
+						</div>
+						</div>
+						<div class="row">
+						<div class="col-25">
+							<label for="cname">Company Name</label>
+						</div>
+						<div class="col-75">
+							<input type="text" id="cname" name="cname" placeholder="Enter company name" required="">
+						</div>
+						</div>
+						<div class="row">
+						<div class="col-25">
+							<label for="contact">Contact Number</label>
+						</div>
+						<div class="col-75">
+							<input type="tel" id="contact" name="contact" placeholder="Enter contact number" required="">
+						</div>
+						</div>
+						<div class="row">
+						<div class="col-25">
+							<label for="email">Email</label>
+						</div>
+						<div class="col-75">
+							<input type="email" id="email" name="email" placeholder="Enter email" required="">
+						</div>
+						</div>
+						<div class="row">
+						<div class="col-25">
+							<label for="description">Description</label>
+						</div>
+						<div class="col-75">
+							<input type="text" id="description" name="description" placeholder="Enter description" required="">
+						</div>
+						</div>
+						<center>
+						<div class="row">
+						<input type="submit" value="UPDATE"></center>
+						</div>
+						</form>
+			</div>
+	    </div>
 			<div class="table-data">
-	
-				
-				
 			</div>
 		</main>
 		<!-- MAIN -->
