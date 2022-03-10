@@ -70,8 +70,8 @@
             <label class="theme-switch" for="checkbox">
               <input type="checkbox" id="checkbox">
               <div class="mode-container py-1">
-                <i class="gg-sun"></i>
-                <i class="gg-moon"></i>
+                <i class="gg-sun" style="cursor:pointer;"></i>
+                <i class="gg-moon" style="cursor:pointer;"></i>
               </div>
             </label>
           </div>
@@ -94,7 +94,7 @@
                                 <div class="banner-info-bg">
                                     <h5>When Life Gets Blurry <br>See Your Eye Doctor</h5>
                                     <p class="mt-4 pr-lg-4">RNL Vision Care is with you </p>
-                                    <a class="btn btn-style btn-primary mt-sm-5 mt-4 mr-2" href="about.php"> Set an Appointment</a>
+                                    <a class="btn btn-style btn-primary mt-sm-5 mt-4 mr-2" href="login.php"> Set an Appointment</a>
                                 </div>
                             </div>
                         </div>
@@ -173,7 +173,7 @@ error_reporting(0);
                             <li>- Photochromic/Transition Lens ₱1999</li>
                             <li>- Progressive Lens ₱1999</li>
                         </ul>
-                    <a href="#url" class="btn btn-primary btn-style mt-md-5 mt-4">Contact Us !</a>
+                    <a href="contact.php" class="btn btn-primary btn-style mt-md-5 mt-4">Contact Us !</a>
                 </div>
                 <div class="col-lg-7 feature-grid-right mt-lg-0 mt-5">
                     <div class="call-grids-w3 d-grid">
@@ -201,7 +201,7 @@ error_reporting(0);
         <div class="welcome-left text-center py-lg-4">
             <h5 class="title-small mb-1">Online Appointment</h5>
             <h3 class="title-big">See our free online appointment.</h3>
-            <a href="#started" class="btn btn-style btn-outline-light mt-sm-5 mt-4 mr-2">Set an Appointment now!</a>
+            <a href="login.php" class="btn btn-style btn-outline-light mt-sm-5 mt-4 mr-2">Set an Appointment now!</a>
             <a href="contact.php" class="btn btn-style btn-primary mt-sm-5 mt-4">Contact Us</a>
         </div>
     </div>
