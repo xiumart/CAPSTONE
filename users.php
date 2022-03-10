@@ -21,7 +21,7 @@ session_start();
       <div class="container flex1">
         <div class="left flex1">
           <div class="logo">
-            <h3>RNL Vision Care</h3>
+            <h3><a href="users.php" style="color: white;">RNL Vision Care</a></h3>
           </div>
 
           <div class="search flex">
@@ -85,19 +85,20 @@ session_start();
   background-color: #2881e0;
   border-radius: 8px;
 } 
+
 </style>
           <div class="admin flex">
             <img src="assets\images\a1.jpg" alt="">
             <!-- <div class="text flex"> -->
             <div class="dropdown">
-  <button class="dropbtn">
+  <button class="dropbtn" style="background-color: #01969e;">
     <?php 
 include('conn.php');
 if($_SESSION["login_user"]) {?>
-<label><?php echo $_SESSION['login_user'];  ?>&nbsp;</label></button>
+<label style="cursor:pointer;">Hello, <?php echo $_SESSION['login_user'];  ?>&nbsp;</label></button>
   <div class="dropdown-content">
-    <a href="#">Edit Profile</a>
-    <a href="#">Change Password</a>
+    <a href="users-profile.php">Edit Profile</a>
+    <a href="users-changepassword.php">Change Password</a>
     <a href="logout.php">Logout</a>
     <?php
 }else echo "<h1>Please login first .</h1>";

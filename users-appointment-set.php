@@ -49,23 +49,14 @@ session_start();
 ?>
             </div>
           </div>
-<<<<<<< HEAD
-<<<<<<< HEAD
 
-<<<<<<< HEAD
-
-=======
-=======
-
->>>>>>> parent of 7aebe80 (appointmentfunction)
           
         </div>
       </div>
->>>>>>> parent of 7aebe80 (appointmentfunction)
-=======
+
         </div>
       </div>
->>>>>>> parent of f10fd89 (Merge branch 'main' of https://github.com/xiumart/CAPSTONE)
+
     </section>
 
     <section class="menu">
@@ -145,14 +136,13 @@ session_start();
                                 placeholder="Subject" required="">
                                 <h3>Date and Time</h3>
                                 <div class="twice-two">
-<<<<<<< HEAD
-<<<<<<< HEAD
+
                             <input type="time" class="form-control" name="Time" id="w3lName" placeholder="Date"
                                 required="1">
                             <input type="date" class="form-control" name="Date" id="w3lSender" placeholder="Time"
                                 required="1">
                             <input type ="hidden" class ="form-control" name='App_User' value='<?php echo $call; ?>'>
-<<<<<<< HEAD
+
 
                     <form action="users-appointmenthandler.php" method="post"></form>
                         <div class="twice">
@@ -176,19 +166,12 @@ session_start();
                             <input type="time" class="form-control" name="time" 
                                 id="time" placeholder="Time" style="width: 30%;" required="">
 
-=======
-=======
->>>>>>> parent of 7aebe80 (appointmentfunction)
+
                             <input type="time" class="form-control" name="w3lName" id="w3lName" placeholder="Date"
                                 required="">
                             <input type="date" class="form-control" name="w3lSender" id="w3lSender" placeholder="Time"
                                 required="">
-<<<<<<< HEAD
->>>>>>> parent of 7aebe80 (appointmentfunction)
-=======
->>>>>>> parent of f10fd89 (Merge branch 'main' of https://github.com/xiumart/CAPSTONE)
-=======
->>>>>>> parent of 7aebe80 (appointmentfunction)
+
                         </div>  
                         </div>
                         <div class="text-right">

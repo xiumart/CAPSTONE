@@ -2,6 +2,7 @@
 session_start();
 ?>
 <!DOCTYPE html>
+
 <html lang="en" dir="ltr">
 
 <head>
@@ -20,7 +21,7 @@ session_start();
       <div class="container flex1">
         <div class="left flex1">
           <div class="logo">
-            <h3><a href="users.php" style="color: white;">RNL Vision Care</a></h3>
+            <h3><a href="users.php" style="color:white;">RNL Vision Care</a></h3>
           </div>
 
           <div class="search flex">
@@ -71,8 +72,8 @@ session_start();
 }
 
 .dropdown-content a:hover {
-	background-color: #00c2cb;
-	
+  background-color: #00c2cb;
+  
 }
 
 .dropdown:hover .dropdown-content {
@@ -83,7 +84,8 @@ session_start();
 .dropdown:hover .dropbtn {
   background-color: #2881e0;
   border-radius: 8px;
-} 
+}
+
 button:hover{
   background-color: #00c2cb;
 }
@@ -96,7 +98,7 @@ button:hover{
     <?php 
 include('conn.php');
 if($_SESSION["login_user"]) {?>
-<label style="cursor:pointer"><?php echo $_SESSION['login_user'];  ?>&nbsp;</label></button>
+<label style="cursor: pointer;"><?php echo $_SESSION['login_user'];  ?>&nbsp;</label></button>
   <div class="dropdown-content">
     <a href="users-profile.php">Edit Profile</a>
     <a href="users-changepassword.php">Change Password</a>
@@ -109,7 +111,7 @@ $user=$_SESSION['login_user'];
 </div>  
             </div>
     </section>
-
+<!--
     <section class="menu">
       <div class="container">
         <div class="navbar">
@@ -142,6 +144,7 @@ $user=$_SESSION['login_user'];
         </div>
       </div>
     </section>
+-->
   </header>
 
   <script>
@@ -166,26 +169,65 @@ $user=$_SESSION['login_user'];
   
   </section>
 
+
+
+  
+
+
   <section class="table">
     <div class="container">
-    
-      <h3>Feedback Us !</h3>
-      <div class="map-content-9">
-                    <form action="user-feedbackhandler.php" method="post">
-                        <div class="twice">
-                             <h3>Subject</h3>
-                            <input type="text" class="form-control" name="w3lSubject" id="w3lSubject"
-                                placeholder="Subject" required="">
-                        </div>
-                        <h3>Message</h3>
-                        <textarea name="w3lMessage" class="form-control" id="w3lMessage" placeholder="Message"
-                            required=""></textarea>
-                        <div class="text-right">
-                            <button type="submit" class="btn btn-primary btn-style mt-4" style="cursor:pointer;"
-                            onclick="return confirm('Are you sure')">Send Message</button>
-                        </div>
-                    </form>
-                </div>
+
+      <h1>Edit your Profile</h1>
+
+      <!-- Page Content -->
+
+        <div class="row">
+            <div class="col-lg-12 text-center">
+             <form name="chngpwd" action="" method="post" onSubmit="return valid();">
+      <table align="center">
+        <br>
+
+          <h3>Upload your Photo</h3>
+          <image src="assets\images\a1.jpg" width="149px" height="149px"></image>
+          <br>
+          <input type="file" name="" id="file" accept="image/*">
+
+        <h3>First Name </h3>
+        <input type="text" name="firstname" style="font-size: 18px;border: 2px solid #ccc; width: 55%; padding: 10px; margin: 10px auto; border-radius: 5px;" required>
+
+        <h3>Middle Name </h3>
+        <input type="text" name="middlename" style="font-size: 18px;border: 2px solid #ccc; width: 55%; padding: 10px; margin: 10px auto; border-radius: 5px;" required>
+
+        <h3>Last Name </h3>
+        <input type="text" name="lastname" style="font-size: 18px;border: 2px solid #ccc; width: 55%; padding: 10px; margin: 10px auto; border-radius: 5px;" required>
+
+        <h3>Birthday </h3>
+        <input type="date" name="bday" style="font-size: 18px;border: 2px solid #ccc; width: 55%; padding: 10px; margin: 10px auto; border-radius: 5px;" required>
+
+        <h3>Age </h3>
+        <input type="number" name="age" style="font-size: 18px;border: 2px solid #ccc; width: 55%; padding: 10px; margin: 10px auto; border-radius: 5px;" required>
+
+        <h3>Address </h3>
+        <input type="text" name="address" style="font-size: 18px;border: 2px solid #ccc; width: 55%; padding: 10px; margin: 10px auto; border-radius: 5px;" required>
+
+        <h3>Contact No.</h3>
+        <input type="tel" name="contactno" pattern="[0-9]{4}[0-9]{3}[0-9]{4}" style="font-size: 18px;border: 2px solid #ccc; width: 55%; padding: 10px; margin: 10px auto; border-radius: 5px;" required>
+
+        <h3>Email</h3>
+        <input type="email" name="email" style="font-size: 18px;border: 2px solid #ccc; width: 55%; padding: 10px; margin: 10px auto; border-radius: 5px;" required>
+
+        <td><button type="submit" style="font-size: 120%; cursor:pointer;">Save Profile </button></td>
+
+                <tr>
+              <td></td>
+              <td></td>
+              </tr>
+        </table>
+        </form>
+            </div>
+        </div>
+        <!-- /.row -->  
+    </div>
   </section>
 
 
