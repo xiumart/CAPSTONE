@@ -145,37 +145,37 @@
 			
 			</div>
 
-			<button class="btn-addpt"> + Add User</button>
+			<a href="user-add.php"><button class="btn-addpt"style="cursor: pointer;"> + Add User</button>
 			<div class="table-data">
 			<div class="order">
-					<div class="head">
-						<i class='bx bx-search' ></i>
-						<i class='bx bx-filter' ></i>
-					</div>
 					<table class="table">
      <thead>
      	<tr>
-     	 <th>Name</th>
-     	 <th>Username</th>
-		 <th>Contact</th>
-		 <th>Email</th>
+     	 <th>Lastname</th>
+     	 <th>Firstname</th>
+		 <th>Middlename</th>
+		 <th>Contact Number</th>
      	 <th>Position</th>
+		 <th>Category</th>
      	 <th>Action</th>
      	</tr>
      </thead>
      <tbody>
      	  <tr>
-     	  	  <td data-label="Name">Marliardo Umbao</td>
-     	  	  <td data-label="Username">marl222</td>
-     	  	  <td data-label="Contact">091234567852</td>
-     	  	  <td data-label="Email">marl@gmail.com</td>
-			  <td data-label="Position">Administrator</td>
-			  <td data-label="Action"><button class="btn-upd">Update</button><button class="btn-rem">Remove</button></td>
+     	  	  <td data-label="Lastname"></td>
+     	  	  <td data-label="Firstname"></td>
+     	  	  <td data-label="Middlename"></td>
+     	  	  <td data-label="ContactNp"></td>
+				<td data-label="Position"></td>
+			  <td data-label="Category"></td>
+			  <td data-label="Action">
+			<a href="user-update.php"><button class="btn-upd" style="cursor: pointer;">Update</button></a>
+			<button class="btn-rem" style="cursor: pointer;">Remove</button></td>
      	  </tr>
 
      </tbody>
    </table>
-   <a href="#"><button class="btn-print"><i class='bx bxs-printer' ></i> Print </button></a>
+   <a href="#"><button class="btn-print" style="cursor: pointer;"><i class='bx bxs-printer' ></i> Print </button></a>
 
 				</div>
 
@@ -185,9 +185,6 @@
 			
 			<div class="table-data">
 	
-
-				
-				
 			</div>
 		</main>
 		<!-- MAIN -->
