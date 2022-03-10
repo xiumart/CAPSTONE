@@ -130,7 +130,7 @@ $call = $_SESSION["login_user"];
                             <input type="text" class="form-control" name="Name" id="w3lSubject"
                                 placeholder="Subject" required="">
                              <h3>Contact No.</h3>
-                            <input type="text" class="form-control" name="Contact" id="w3lSubject"
+                            <input type="text" class="form-control" pattern="[0-9]{4}[0-9]{3}[0-9]{4}" name="Contact" id="w3lSubject"
                                 placeholder="Subject" required="">
                                 <h3>Email</h3>
                             <input type="text" class="form-control" name="Email" id="w3lSubject"

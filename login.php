@@ -111,20 +111,20 @@ function getIpAddr(){
             <h2 class="title">REGISTER HERE ! </h2>
             <div class="input-field">
               <i class="fas fa-user"></i>
-              <input type="text" placeholder="Username" name = "username"/>
+              <input type="text" placeholder="Username" name = "username" required />
             </div>
             <div class="input-field">
               <i class="fas fa-user"></i>
-              <input type="tel" placeholder="Contact No." name = "contactno"/>
+              <input type="tel" pattern="[0-9]{4}[0-9]{3}[0-9]{4}" placeholder="Contact No." name = "contactno" required />
             </div>
             
             <div class="input-field">
               <i class="fas fa-envelope"></i>
-              <input type="email" placeholder="Email" name = "email"/>
+              <input type="email" placeholder="Email" name = "email" required />
             </div>
             <div class="input-field">
               <i class="fas fa-lock"></i>
-              <input type="password" placeholder="Password" name = "password" />
+              <input type="password" placeholder="Password" name = "password" required />
             </div>
             <input type="submit" class="btn" value="Sign up" name = 'signup'/>
             

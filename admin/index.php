@@ -42,7 +42,7 @@
 		</div>
 <!--start-copyright-->
    		<div class="copy-right">
-				<p> &copy; 2020  All rights  Reserved | RNL Vision Care</a></p>
+				<p> &copy; 2022  All rights  Reserved | RNL Vision Care</a></p>
 		</div>
 	<!--//end-copyright-->
 </body>

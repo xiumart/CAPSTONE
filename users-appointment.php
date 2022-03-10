@@ -203,7 +203,7 @@ $user=$_SESSION['login_user'];
     while($row = mysqli_fetch_array($result))
       {
       echo "<tr><td>". $row['app_id'] . "</td>";
-      echo "<td>" . $row['app_date'] . "" . $row['app_time'] . "</td>";
+      echo "<td>" . $row['app_date'] . " " . $row['app_time'] . "</td>";
       echo "<td>" . $row['app_purpose'] ."</td> </tr>";
       }
 

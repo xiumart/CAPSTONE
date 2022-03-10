@@ -29,7 +29,7 @@
 	.btn-addpt {float:right; margin-bottom: 20px;}
 </style>
 <body>
-
+   
 
 	<!-- SIDEBAR -->
 	<section id="sidebar">
@@ -142,7 +142,7 @@
 			
 			</div>
 
-			<button class="btn-addpt"> + Add Patient</button>
+			<a href="patient-addrecord.php"><button class="btn-addpt" style="cursor: pointer;"> + Add Patient</button></a>
 			<div class="table-data">
 				<div class="order">
 					<div class="head">
