@@ -131,10 +131,10 @@
 		<main>
 			<div class="head-title">
 				<div class="left">
-					<h1>Add New Supplier</h1>
+					<h1>Update Supplier</h1>
 					<ul class="breadcrumb">
 						<li>
-							<a href="supplier.php">Add New Supplier</a>
+							<a href="supplier.php">Update Supplier</a>
 						</li>
 						<li><i class='bx bx-chevron-right'></i></li>
 						<li>
