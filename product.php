@@ -153,7 +153,7 @@ error_reporting(0);
                  $sql2 =$conn->query("SELECT count(pro_id) AS id FROM `product` WHERE `category`='$cat'");
                    $sql1 = "SELECT * FROM `product`WHERE `category`='$cat' LIMIT $limit ";
                }
-               elseif ($_POST['all']=='Contact Lenses Solution') {
+               elseif ($_POST['all']=='Contact Lens Solution') {
                  $sql2 =$conn->query("SELECT count(pro_id) AS id FROM `product` WHERE `category`='$cat'");
                    $sql1 = "SELECT * FROM `product`WHERE `category`='$cat' LIMIT $limit ";
                }
@@ -163,7 +163,7 @@ error_reporting(0);
                }
                else{
                 $sql2 =$conn->query("SELECT count(pro_id) AS id FROM `product`");
-                    $sql1 = "SELECT * FROM `product` LIMIT $limit ";
+                    $sql1 = "SELECT * FROM `product` LIMIT $start, $limit ";
                }
                 $result2 = $sql2->fetch_all(MYSQLI_ASSOC);
                 $total=$result2[0]['id'];

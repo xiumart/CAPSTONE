@@ -167,6 +167,52 @@
 			</a>
 		</nav>
 		<!-- NAVBAR -->
+		<!--START INSERT SQL -->
+		<?php
+		error_reporting(0);
+		include("../conn.php");
+		if (isset($_POST['btnsubmit'])) {
+			//something was posted
+		$brandname = $_POST['brand'];
+		$model = $_POST['model'];
+		$category = $_POST['category'];
+		$dateofarrival = $_POST['dtarrival'];
+		$expirationdate = $_POST['expdate'];
+		$sellingprice = $_POST['sell'];
+		$originalprice = $_POST['orig'];
+		$profit = $sellingprice - $originalprice;
+		$supplier = $_POST['supplier'];
+		$qty = $_POST['qty'];
+		$remarks=$_POST['remarks'];
+		//picture coding
+		$picture_name=$_FILES['picture']['name'];
+		$picture_type=$_FILES['picture']['type'];
+		$picture_tmp_name=$_FILES['picture']['tmp_name'];
+		$picture_size=$_FILES['picture']['size'];
+
+if($picture_type=="image/jpeg" || $picture_type=="image/jpg" || $picture_type=="image/png" || $picture_type=="image/gif")
+{
+	if($picture_size<=50000000)
+	
+		$pic_name=time()."_".$picture_name;
+		move_uploaded_file($picture_tmp_name,"images/product_img/".$pic_name);
+        
+        
+	
+			//save to database
+			//$user_id = random_num(20);
+			$query = "insert into product (brand,model,category,dateofarrival,expdate,sellingprice,origprice,profit,supplier,qty,image,remarks) values ('$brandname','$model','$category','$dateofarrival','$expirationdate','$sellingprice','$originalprice','$profit','$supplier','$qty','$pic_name','$remarks')";
+			mysqli_query($conn, $query);
+
+			header("Location: product.php");
+			die;
+		
+}
+		}
+
+		?>
+		<!--END INSERT SQL -->
+
 
 		<!-- MAIN -->
 		<main>
@@ -190,7 +236,7 @@
 		<div class="table-data">
 			<div class="order">
 			
-				<form action="/action_page.php">
+				<form method="post" enctype="multipart/form-data">
 				<div class="row">
 						<div class="row">
 						<div class="col-25">
@@ -214,9 +260,11 @@
 						</div>
 						<div class="col-75">
 							<select id="category" name="category">
-							<option value="Frame">Frame</option>
-							<option value="Lens">Lens</option>
-							<option value="Eyeglass">Eyeglass</option>
+							<option disabled="" selected="">Select your option..</option>
+							<option value="Contact Lens Solution">Contact Lens Solution</option>
+							<option value="Contact Lenses">Contact Lenses</option>
+							<option value="Reading Glasses">Reading Glasses</option>
+							<option value="Accessories">Accessories</option>
 							</select>
 						</div>
 						</div>
@@ -225,7 +273,7 @@
 							<label for="dtarrival">Date of Arrival</label>
 						</div>
 						<div class="col-75">
-							<input type="text" id="dtarrival" name="dtarrival" placeholder="Enter Arrival Date..">
+							<input type="date" id="dtarrival" name="dtarrival" placeholder="Enter Arrival Date.." style="width: 100%;padding: 12px;border: 1px solid #ccc;border-radius: 4px;">
 						</div>
 						</div>
 						<div class="row">
@@ -233,7 +281,7 @@
 							<label for="expdate">Expiration Date</label>
 						</div>
 						<div class="col-75">
-							<input type="text" id="expdate" name="expdate" placeholder="Enter Expiration date..">
+							<input type="date" id="expdate" name="expdate" placeholder="Enter Expiration date.." style="width: 100%;padding: 12px;border: 1px solid #ccc;border-radius: 4px;">
 						</div>
 						</div>
 						<div class="row">
@@ -241,7 +289,7 @@
 							<label for="lname">Original Price</label>
 						</div>
 						<div class="col-75">
-							<input type="text" id="origp" name="orig" placeholder="Enter original price..">
+							<input type="number" id="origp" name="orig" placeholder="Enter original price.." style="width: 100%;padding: 12px;border: 1px solid #ccc;border-radius: 4px;">
 						</div>
 						</div>
 						<div class="row">
@@ -249,7 +297,7 @@
 							<label for="sell">Selling Price</label>
 						</div>
 						<div class="col-75">
-							<input type="text" id="sell" name="sell" placeholder="Enter selling price..">
+							<input type="number" id="sell" name="sell" placeholder="Enter selling price.." style="width: 100%;padding: 12px;border: 1px solid #ccc;border-radius: 4px;">
 						</div>
 						</div>
 						<div class="row">
@@ -258,7 +306,8 @@
 						</div>
 						<div class="col-75">
 							<select id="supplier" name="supplier">
-							<option value="">Supplier </option>
+							<option disabled="" selected="">Select your option..</option>
+							<option value="Supplier">Supplier </option>
 							<option value=""></option>
 							<option value=""></option>
 							</select>
@@ -269,7 +318,7 @@
 							<label for="qty">Qty</label>
 						</div>
 						<div class="col-75">
-							<input type="text" id="qty" name="qty" placeholder="Enter quantity..">
+							<input type="number" id="qty" name="qty" placeholder="Enter quantity.." style="width: 100%;padding: 12px;border: 1px solid #ccc;border-radius: 4px;">
 						</div>
 						</div>
 						<div class="row">
@@ -284,21 +333,27 @@
 							<label for="fname">Image</label>
 						</div>
 						<div class="col-75">
-							<button style="
+							<input type="file" name="picture" id="uploadfile" accept="image/*" onchange="loadFile(event)" style="
 							width: 40%;
   							padding: 8px;
 							border: 1px solid #ccc;
 							border-radius: 4px;
-							resize: vertical;
-							">Upload</button>
-							
+							" >
 						</div>
-						<img src="logo.png" alt="" width="200px">
+						<img src="#" id="output" alt="" style="width: 30%; height: 30%">
+							<!--Image Viewer-->
+								<script>
+									var loadFile = function(event) {
+										var image = document.getElementById('output');
+										image.src = URL.createObjectURL(event.target.files[0]);
+									};
+								</script>
 						</div>
 						<div class="row">
-						<input type="submit" value="Submit">
+						<input type="submit" value="Submit" name="btnsubmit">
 						</div>
 				</form>
+				
 			</div>
 	    </div>	
 	</main>

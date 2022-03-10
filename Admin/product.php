@@ -1,3 +1,12 @@
+<?php
+error_reporting(0);
+include("../conn.php");
+if (isset($_GET['id'])) {
+	$pro_id1=$_GET['id'];
+	$query = "DELETE FROM `product` WHERE pro_id='$pro_id1'";
+			mysqli_query($conn, $query);
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,6 +27,7 @@
 		border: none;
 		margin: 3px;
 		border-radius: 10%;
+		cursor: pointer;
 	}
 
 	.btn-upd:hover { background-color: #4CAF50;}
@@ -30,6 +40,13 @@
 		float: right;
 		width: 10%;
 	}
+	.page{
+		background-color: #00c2cb;
+		padding: 12px;
+		border: none;
+		border-radius: 10%;
+	}
+	.page:hover { background-color:#00b2b3;}
 </style>
 <body>
 
@@ -149,11 +166,13 @@
 			<div class="table-data">
 			<div class="order">
 					<div class="head">
-					<a href="product-add.php"><button class="btn-addp" style="cursor: pointer;">+ Add Product </button></a>
+					<a href="product-add.php"><button class="btn-addp">+ Add Product </button></a>
 						<i class='bx bx-search' ></i>
 						<i class='bx bx-filter' ></i>
 					</div>
+<div id="printing">
 					<table class="table">
+
      <thead>
      	<tr>
      	 <th>Brand Name</th>
@@ -167,23 +186,80 @@
      	</tr>
      </thead>
      <tbody>
+     	<?php
+     	$limit=25;
+        $cat=$_POST['all'];
+        $page=isset($_GET['page']) ? $_GET['page']:1;
+        $start=($page-1)*$limit;
+     	$sql2 =$conn->query("SELECT count(pro_id) AS id FROM `product`");
+        $sql1 = "SELECT * FROM `product` LIMIT $start, $limit ";
+        $result2 = $sql2->fetch_all(MYSQLI_ASSOC);
+                $total=$result2[0]['id'];
+                $pages=ceil($total/$limit);
+                $prev=$page-1;
+                $next=$page+1;
+     	  $result1 = $conn->query($sql1);  
+  			if($result1->num_rows > 0){
+  				while($row = $result1 -> fetch_assoc()){ 
+     	?>
      	  <tr>
-     	  	  <td data-label="Brand">RNL Eyeglass</td>
-     	  	  <td data-label="Model">RNL Anti-radation</td>
-     	  	  <td data-label="Category">Eyeglass</td>
-     	  	  <td data-label="Orig.">1500</td>
-			  <td data-label="Selling">2000</td>
-			  <td data-label="Expire">03/21/23</td>
-			  <td data-label="Qty">123</td>
-			  <td data-label="Action">
-			<a href="product-update.php"><button class="btn-upd" style="cursor: pointer;">Update</button></a>
-			<button class="btn-rem" style="cursor: pointer;">Remove</button></td>
+     	  	  <td data-label="Brand"><?php echo $row['brand'];?></td>
+     	  	  <td data-label="Model"><?php echo $row['model'];?></td>
+     	  	  <td data-label="Category"><?php echo $row['category'];?></td>
+     	  	  <td data-label="Orig."><?php echo $row['origprice'];?></td>
+			  <td data-label="Selling"><?php echo $row['sellingprice'];?></td>
+			  <td data-label="Expire"><?php echo $row['expdate'];?></td>
+			  <td data-label="Qty"><?php echo $row['qty'];?></td>
+			  <td data-label="Action"><a href="product-update.php?id=<?php echo $row['pro_id'];?>"><button class="btn-upd">Update</button></a><a href="?id=<?php echo $row['pro_id'];?>"><button class="btn-rem" name="btnremove">Remove</button></a></td>
      	  </tr>
+    
+     	 <?php
+     	}}
+
+     	?>
 
      </tbody>
-   </table>
-   <a href=""><button class="btn-print" style="cursor: pointer;"><i class='bx bxs-printer' ></i> Print </button></a>
 
+   </table>
+</div>
+   <!--page-->
+  	<br>
+  	<?php
+  	if ($_GET['page']==1) {
+  		
+  	}
+  	elseif ($_GET['page']==1) {
+  		# code...
+  	}
+  	?>
+   <a class="page" id="pre" href="product.php?page=<?=$prev; ?>">< Prev</a>
+    	  <?php  for($i=1; $i <=$pages ; $i++): ?>
+    <a class="page" href="product.php?page=<?=$i; ?>"><?=$i; ?></a>
+                      <?php endfor; ?>
+    <a class="page" id="pnext" href="product.php?page=<?=$next; ?>">Next ></a>
+	
+	<a href="javascript:Clickheretoprint()">
+   	<button class="btn-print"><i class='bx bxs-printer' ></i> Print </button></a>
+<!--print-->
+<link href="css/bootstrap-responsive.css" rel="stylesheet">
+<link href="../style.css" media="screen" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="tcal.css" />
+<script type="text/javascript" src="tcal.js"></script>
+<script language="javascript">
+function Clickheretoprint()
+{ 
+  var disp_setting="toolbar=yes,location=no,directories=yes,menubar=yes,"; 
+      disp_setting+="scrollbars=yes,width=1000, height=1000, left=100, top=25"; 
+  var content_vlue = document.getElementById("printing").innerHTML; 
+  
+  var docprint=window.open("","",disp_setting); 
+   docprint.document.open(); 
+   docprint.document.write('</head><body onLoad="self.print()" style="width: 700px; font-size:11px; font-family:arial; font-weight:normal;">');          
+   docprint.document.write(content_vlue); 
+   docprint.document.close(); 
+   docprint.focus(); 
+}
+</script>
 					
 
 				</div>
