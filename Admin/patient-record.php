@@ -25,6 +25,7 @@
 	.btn-print:hover { background-color:blue;}
 	.btn-addp:hover { background-color: #e5eaf0}
 	.btn-addpt:hover { background-color: #00b2b3;}
+	.btn-view:hover { background-color: #00b2b3;}
 
 	.btn-addpt {float:right; margin-bottom: 20px;}
 </style>
@@ -168,7 +169,7 @@
      	  	  <td data-label="Contact">09481231233</td>
      	  	  <td data-label="Address">Sauyo Rd., Quezon City</td>
 			  <td data-label="Age">18</td>
-			  <td data-label="Action"><button class="btn-upd">Update</button><button class="btn-rem">Remove</button></td>
+			  <td data-label="Action"><button class="btn-view">View</button><button class="btn-rem">Remove</button></td>
      	  </tr>
      </tbody>
    </table>
