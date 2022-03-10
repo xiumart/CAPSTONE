@@ -131,20 +131,30 @@ $result = mysqli_query($con, $sql) or die( mysqli_error($con));
         <thead>
           <tr>
             <th>Appointment Id</th>
-            <th>Date</th>
-            <th>Time</th>
-            <th>Purpose</th>
             <th>Date and Time </th>
             <th>Purpose<th>
             <th>Action</th>
           </tr>
         </thead>
+        <?php
+    $con=mysqli_connect("localhost","root","","capstone");
+    // Check connection
+    if (mysqli_connect_errno())
+      {
+      echo "Failed to connect to MySQL: " . mysqli_connect_error();
+      }
 
-            <th>Date and Time </th>
-            <th>Purpose<th>
-            <th>Action</th>
-          </tr>
-        </thead>
+    $result = mysqli_query($con,"SELECT DISTINCT app_id, app_date, app_time, app_purpose FROM appointment, client_user where appointment.app_user = client_user.client_username");
+
+    while($row = mysqli_fetch_array($result))
+      {
+      echo "<tr><td>". $row['app_id'] . "</td>";
+      echo "<td>" . $row['app_date'] . "" . $row['app_time'] . "</td>";
+      echo "<td>" . $row['app_purpose'] ."</td> </tr>";
+      }
+
+    mysqli_close($con);
+    ?>
 
        
         </tbody>
