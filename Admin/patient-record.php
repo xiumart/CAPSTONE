@@ -18,6 +18,7 @@
 		border: none;
 		margin: 3px;
 		border-radius: 10%;
+		cursor: pointer;
 	}
 
 	.btn-view:hover { background-color: #4CAF50;}
@@ -168,7 +169,7 @@
      	  	  <td data-label="Contact">09481231233</td>
      	  	  <td data-label="Address">Sauyo Rd., Quezon City</td>
 			  <td data-label="Age">18</td>
-			  <td data-label="Action"><button class="btn-view">View</button><button class="btn-rem">Remove</button></td>
+			  <td data-label="Action"><a href="patient-view.php"><button class="btn-view">View</button></a><button class="btn-rem">Remove</button></td>
      	  </tr>
      </tbody>
    </table>
