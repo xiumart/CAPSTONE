@@ -1,5 +1,27 @@
 <?php 
 include("../conn.php");
+
+if (isset($_GET['id'])) {
+	$app_id=$_GET['id'];
+	$queryaccept = "UPDATE `appointment` SET app_remarks = 'ONGOING' WHERE app_id='$app_id'";
+			mysqli_query($conn, $queryaccept);
+
+}
+
+if (isset($_GET['id1'])) {
+	$app_id=$_GET['id1'];
+	$queryaccept = "UPDATE `appointment` SET app_remarks = 'FINISH' WHERE app_id='$app_id'";
+			mysqli_query($conn, $queryaccept);
+			
+}
+
+if (isset($_GET['id2'])) {
+	$app_id=$_GET['id2'];
+	$queryaccept = "UPDATE `appointment` SET app_remarks = 'PENDING' WHERE app_id='$app_id'";
+			mysqli_query($conn, $queryaccept);
+			
+}
+
 ?>
 
 
@@ -228,7 +250,7 @@ include("../conn.php");
      	  	  <td data-label="Date"><?php echo $row['app_date'];?></td>
 			  <td data-label="Time"><?php echo $row['app_time'];?></td>
 			  <td data-label="Purpose"><?php echo $row['app_purpose'];?></td>
-			  <td data-label="Action"><button class="btn-rem">Denied</button><button class="btn-upd">Accept</button></td>
+			  <td data-label="Action"><button class="btn-rem">Denied</button><a href="?id=<?php echo $row['app_id'];?>"><button class="btn-upd">Accept</button></a></td>
      	  </tr>
 
      	<?php  } ?>
@@ -280,7 +302,7 @@ include("../conn.php");
      	  	  <td data-label="Date"><?php echo $row1['app_date'];?></td>
 			  <td data-label="Time"><?php echo $row1['app_time'];?></td>
 			  <td data-label="Purpose"><?php echo $row1['app_purpose'];?></td>
-			  <td data-label="Action"><button class="btn-rem">Cancel</button><button class="btn-upd">Finish</button></td>
+			  <td data-label="Action"><a href="?id2=<?php echo $row1['app_id'];?>"><button class="btn-rem">Cancel</button><a href="?id1=<?php echo $row1['app_id'];?>"><button class="btn-upd">Finish</button></td>
 
 
      	  </tr>
