@@ -1,3 +1,8 @@
+<?php 
+include("../conn.php");
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -145,21 +150,38 @@
 				<li>
 					<i class='bx bxs-calendar-plus' ></i>
 					<span class="text">
-						<h3>0</h3>
+						<h3><?php 
+							$query = mysqli_query($conn, "SELECT COUNT(*) as total from appointment where app_remarks = 'PENDING';");
+									while($result=mysqli_fetch_array($query)){
+										echo $result['total'];
+						  							}			
+						  ?></h3>
 						<p>Total Request Appointment</p>
 					</span>
 				</li>
 				<li>
 					<i class='bx bxs-calendar' ></i>
 					<span class="text">
-						<h3>0</h3>
+						<h3>
+							<?php 
+							$query2 = mysqli_query($conn, "SELECT COUNT(*) as total from appointment where app_remarks = 'ONGOING';");
+									while($result2=mysqli_fetch_array($query2)){
+										echo $result2['total'];
+						  							}			
+						  ?>
+						  </h3>
 						<p>Total Ongoing Appointment</p>
 					</span>
 				</li>
 				<li>
 					<i class='bx bxs-calendar-check' ></i>
 					<span class="text">
-						<h3>0</h3>
+						<h3><?php 
+							$query3 = mysqli_query($conn, "SELECT COUNT(*) as total from appointment where app_remarks = 'FINISH';");
+									while($result3=mysqli_fetch_array($query3)){
+										echo $result3['total'];
+						  							}			
+						  ?></h3>
 						<p>Total Finish Appointment</p>
 					</span>
 				</li>
@@ -188,15 +210,28 @@
      	</tr>
      </thead>
      <tbody>
-     	  <tr>
-     	  	  <td data-label="Name">Marliardo Umbao</td>
-     	  	  <td data-label="Email">marl@gmail.com</td>
-     	  	  <td data-label="Contact">09481231233</td>
-     	  	  <td data-label="Date">03/09/2022</td>
-			  <td data-label="Time">10:00am</td>
-			  <td data-label="Purpose">Eye Check up</td>
+     	  	<tr>
+
+
+     	  		<?php 
+
+     	  		$query4 = mysqli_query($conn, "Select * from appointment where app_remarks = 'PENDING'");
+     	  		while($row = $query4 -> fetch_assoc()){
+
+
+
+
+     	  ?>
+     	  	  <td data-label="Name"><?php echo $row['app_name'];?></td>
+     	  	  <td data-label="Email"><?php echo $row['app_email'];?></td>
+     	  	  <td data-label="Contact"><?php echo $row['app_contact'];?></td>
+     	  	  <td data-label="Date"><?php echo $row['app_date'];?></td>
+			  <td data-label="Time"><?php echo $row['app_time'];?></td>
+			  <td data-label="Purpose"><?php echo $row['app_purpose'];?></td>
 			  <td data-label="Action"><button class="btn-rem">Denied</button><button class="btn-upd">Accept</button></td>
      	  </tr>
+
+     	<?php  } ?>
 
      </tbody>
    </table>
@@ -228,15 +263,29 @@
      <tbody>
 
      	  <tr>
-     	  	  <td data-label="Name">Marliardo Umbao</td>
-     	  	  <td data-label="Email">marl@gmail.com</td>
-     	  	  <td data-label="Contact">09481231233</td>
-     	  	  <td data-label="Date">03/09/2022</td>
-			  <td data-label="Time">10:00am</td>
-			  <td data-label="Purpose">Eye Check up</td>
+
+
+     	  	  <?php 
+
+     	  		$query5 = mysqli_query($conn, "Select * from appointment where app_remarks = 'ONGOING'");
+     	  		while($row1 = $query5 -> fetch_assoc()){
+
+
+
+
+     	  ?>
+     	  	  <td data-label="Name"><?php echo $row1['app_name'];?></td>
+     	  	  <td data-label="Email"><?php echo $row1['app_email'];?></td>
+     	  	  <td data-label="Contact"><?php echo $row1['app_contact'];?></td>
+     	  	  <td data-label="Date"><?php echo $row1['app_date'];?></td>
+			  <td data-label="Time"><?php echo $row1['app_time'];?></td>
+			  <td data-label="Purpose"><?php echo $row1['app_purpose'];?></td>
 			  <td data-label="Action"><button class="btn-rem">Cancel</button><button class="btn-upd">Finish</button></td>
+
+
      	  </tr>
 
+     	<?php } ?>
      </tbody>
    </table>
 
