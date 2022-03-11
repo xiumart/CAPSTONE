@@ -142,7 +142,8 @@
      	 <th>Date</th>
 		 <th>Time</th>
 		 <th>Purpose</th>
-		 <th>Finished Date & Time</th>
+		 <th>Remarks</th>
+		 <th>Date and Time</th>
      	</tr>
      </thead>
      <tbody>
@@ -153,7 +154,8 @@
      	  	  <td data-label="Date">03/09/2022</td>
 			  <td data-label="Time">10:00am</td>
 			  <td data-label="Purpose">Eye Check up</td>
-			  <td data-label="Action">03/09/2022 11:00pm</td>
+			  <td data-label="Remarks">Cancel</td>
+			  <td data-label="DateTime">03/09/2022 11:00pm</td>
      	  </tr>
 
      	 
