@@ -10,88 +10,27 @@
 	<link rel="stylesheet" href="css\sys_style.css">
 	<link rel="shorcut icon" type="img/png" href="images\logo.png">
 	<title>RNL Vision Care | Admin</title>
-	<style>
-	input[type=text], input[type=date], input[type=tel], input[type=email], select, textarea {
-  		width: 100%;
-  		padding: 12px;
-  		border: 1px solid #ccc;
-  		border-radius: 4px;
-  		resize: vertical;
-  		font-family: var(poppins);
-	}
-
-	label {
-  		padding: 12px 12px 12px 0;
-  		display: inline-block;
-	}
-
-	input[type=submit] {
-	background-color: #4CAF50;
-	color: white;
-	padding: 12px 33px;
-	border: none;
-	border-radius: 4px;
-	cursor: pointer;
-	float: right;
-	}
-
-	input[type=button] {
-	background-color: red;
-	color: white;
-	padding: 12px 20px;
-	border: none;
-	border-radius: 4px;
-	cursor: pointer;
-	float: right;
-	margin-right: 120px;
-	margin-top: -39px;
-	width: 110px;
-	}
-
-	input[type=submit]:hover {
-	background-color: #00c2cb;
-	}
-
-	input[type=button]:hover {
-	background-color: #00c2cb;
-	}
-	.container {
-	border-radius: 5px;
-	background-color: #f2f2f2;
-	padding: 20px;
-	}
-
-	.col-25 {
-	float: left;
-	width: 25%;
-	margin-top: 6px;
-	}
-
-	.col-75 {
-	float: left;
-	width: 75%;
-	margin-top: 6px;
-	}
-
-	/* Clear floats after the columns */
-	.row:after {
-	content: "";
-	display: table;
-	clear: both;
-	}
-
-	/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
-	@media screen and (max-width: 600px) {
-	.col-25, .col-75, input[type=submit], input[type=button] {
-		width: 100%;
-		margin-top: 0;
-	}
-	}
-
-</style>
 </head>
-<body>
+<style>
+	button {
+		background-color: #00c2cb;
+		padding: 12px;
+		border: none;
+		margin: 3px;
+		border-radius: 10%;
+		cursor: pointer;
+	}
 
+	.btn-view:hover { background-color: #4CAF50;}
+	.btn-rem:hover { background-color: red;}
+	.btn-print:hover { background-color:blue;}
+	.btn-addp:hover { background-color: #e5eaf0}
+	.btn-addpt:hover { background-color: #00b2b3;}
+
+	.btn-addpt {float:right; margin-bottom: 20px;}
+</style>
+<body>
+   
 
 	<!-- SIDEBAR -->
 	<section id="sidebar">
@@ -190,91 +129,58 @@
 		<main>
 			<div class="head-title">
 				<div class="left">
-					<h1>Update Patient Record</h1>
+					<h1>View Patient Record</h1>
 					<ul class="breadcrumb">
 						<li>
-							<a class="active" href="patient-record.php">Back</a>
+							<a href="patient-record.php">View Patient Record</a>
 						</li>
 						<li><i class='bx bx-chevron-right' ></i></li>
 						<li>
-							<a href="">View Record</a>
+							<a class="active" href="patient-record.php">Back</a>
 						</li>
 					</ul>
 				</div>
 			
 			</div>
 
-			
-		<div class="table-data">
-			<div class="order">
-			
-				<form action="/action_page.php">
-				<div class="row">
-						<div class="row">
-						<div class="col-25">
-							<label for="firstname">First Name</label>
-						</div>
-						<div class="col-75">
-							<input type="text" id="firstname" name="firstname" placeholder="Enter first name..">
-						</div>
-						</div>
-						<div class="row">
-						<div class="col-25">
-							<label for="middlename">Middle Name</label>
-						</div>
-						<div class="col-75">
-							<input type="text" id="middlename" name="middlename" placeholder="Enter middle name..">
-						</div>
-						</div>
-						<div class="row">
-						<div class="col-25">
-							<label for="lastname">Last Name</label>
-						</div>
-						<div class="col-75">
-							<input type="text" id="lastname" name="lastname" placeholder="Enter last name..">
-						</div>
-						</div>
-						<div class="col-25">
-							<label for="bday">Birthdate</label>
-						</div>
-						<div class="col-75">
-							<input type="date" id="bday" name="bday" placeholder="">
-						</div>
-						</div>
-						<div class="row">
-						<div class="col-25">
-							<label for="contact">Contact No.</label>
-						</div>
-						<div class="col-75">
-							<input type="tel" id="contact" name="contact" pattern="[0-9]{4}[0-9]{3}[0-9]{4}" placeholder="Enter contact no..">
-						</div>
-						</div>
-						<div class="row">
-						<div class="col-25">
-							<label for="email">Email</label>
-						</div>
-						<div class="col-75">
-							<input type="email" id="email" name="email" placeholder="Enter email..">
-						</div>
-						</div>
-						<div class="row">
-						<div class="col-25">
-							<label for="address">Address</label>
-						</div>
-						<div class="col-75">
-							<input type="text" id="address" name="address" placeholder="Enter address..">
-						</div>
-						</div>
-						<div class="row">
-						<input type="submit" value="Update">
-						</div>
-						<div class="row">
-						<a href="patient-record.php"><input type="button" value="Cancel"></a>
-						</div>
-				</form>
+			<div class="table-data">
+				<div class="order">
+					<div class="head">
+						<h3>MARLIARDO UMBAO</h3><br>
+						<a href="patient-update.php"><button class="btn-addpt" style="cursor: pointer;"> Update Basic Info.</button></a>
+					</div>
+					<h4>Check-up History</h4>
+					<table class="table">
+     <thead>
+     	<tr>
+     	 <th>Check-up id</th>
+     	 <th>Date and Time</th>
+     	 <th>Check-up by</th>
+		 <th>Action</th>
+     	</tr>
+     </thead>
+     <tbody>
+     	  <tr>
+     	  	  <td data-label="Checkid"></td>
+     	  	  <td data-label="DateTime"></td>
+     	  	  <td data-label="Checkby"></td>
+			  <td data-label="Action"><a href="patient-updcheckk.php"><button class="btn-view">View</button></a><button class="btn-rem">Remove</button></td>
+     	  </tr>
+     </tbody>
+   </table>
+				</div>
+
+				
+				
 			</div>
-	    </div>	
-	</main>
+			
+			<div class="table-data">
+	
+
+				
+				
+			</div>
+		</main>
 		<!-- MAIN -->
 	</section>
 	<!-- CONTENT -->

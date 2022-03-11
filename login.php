@@ -114,7 +114,7 @@ function getIpAddr(){
               <input type="text" placeholder="Username" name = "username" required />
             </div>
             <div class="input-field">
-              <i class="fas fa-user"></i>
+              <i class="fas fa-phone"></i>
               <input type="tel" pattern="[0-9]{4}[0-9]{3}[0-9]{4}" placeholder="Contact No." name = "contactno" required />
             </div>
             
