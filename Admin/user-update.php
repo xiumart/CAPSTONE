@@ -279,15 +279,12 @@
 						</div>
 						<div class="row">
 						<div class="col-25">
-							<label for="category">Category</label>
+							<label for="contact">Change Password</label>
 						</div>
 						<div class="col-75">
-							<select id="category" name="category">
-							<option value="Doctor">Doctor</option>
-							<option value="Sales Staff">Sales Staff</option>
-      						<option value="Inventory Clerk">Inventory Clerk</option>
-							</select><br><br>
+							<input type="tel" id="contact" name="contact" placeholder="Enter new password" required="">
 						</div>
+					
 						</div>
 						<center>
 						<div class="row">

@@ -131,10 +131,10 @@
 		<main>
 			<div class="head-title">
 				<div class="left">
-					<h1>Update User</h1>
+					<h1>Add User</h1>
 					<ul class="breadcrumb">
 						<li>
-							<a href="manage-user.php">Update User</a>
+							<a href="manage-user.php">Add User</a>
 						</li>
 						<li><i class='bx bx-chevron-right' ></i></li>
 						<li>
@@ -279,18 +279,7 @@
 							</select>
 						</div>
 						</div>
-						<div class="row">
-						<div class="col-25">
-							<label for="category">Category</label>
-						</div>
-						<div class="col-75">
-							<select id="category" name="category">
-							<option value="Doctor">Doctor</option>
-							<option value="Sales Staff">Sales Staff</option>
-      						<option value="Inventory Clerk">Inventory Clerk</option>
-							</select><br><br>
-						</div>
-						</div>
+					
 						<center>
 						<div class="row">
 						<input type="submit" value="SUBMIT"></center>

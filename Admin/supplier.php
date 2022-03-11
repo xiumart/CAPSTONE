@@ -151,23 +151,21 @@
 					<table class="table">
      <thead>
      	<tr>
-		 <th>Last name</th> 
-		 <th>First name</th>
      	 <th>Company name</th>
-     	 <th>Description</th>
+		 <th>Contact Person</th>
      	 <th>Contact No.</th>
      	 <th>Email</th>
+		 <th>Description</th>
 		 <th>Action</th>
      	</tr>
      </thead>
      <tbody>
      	  <tr>
-     	  	  <td data-label="Last Name"></td>
-     	  	  <td data-label="First Name"></td>
      	  	  <td data-label="Company Name"></td>
-     	  	  <td data-label="Description"></td>
+			  <td data-label="Contact Person"></td>
 			  <td data-label="Contact No."></td>
 			  <td data-label="Email"></td>
+			  <td data-label="Description"></td>
 			  <td data-label="Action">
 			  <a href="supplier-update.php"><button class="btn-upd" style="cursor: pointer;">Update</button></a>
 			<button class="btn-rem" style="cursor: pointer;">Remove</button></td>

@@ -155,8 +155,8 @@
      	 <th>Firstname</th>
 		 <th>Middlename</th>
 		 <th>Contact Number</th>
-     	 <th>Position</th>
-		 <th>Category</th>
+     	 <th>Email</th>
+		 <th>Position</th>
      	 <th>Action</th>
      	</tr>
      </thead>
