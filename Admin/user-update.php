@@ -7,17 +7,17 @@ include("../conn.php");
 
 $eid= $_GET['users_id'];
 
-if (isset($_POST['btnsubmit'])) {
+if (isset($_REQUEST['btnsubmit'])) {
 		//something was posted
 		
-		$lname = $_POST['lname'];
-		$fname = $_POST['fname'];
-		$mname = $_POST['mname'];
-		$role = $_POST['position'];
-		$email = $_POST['email'];
-		$contact = $_POST['contact'];
-		$username = $_POST['uname'];
-		$password = $_POST['password'];
+		$lname = $_REQUEST['lname'];
+		$fname = $_REQUEST['fname'];
+		$mname = $_REQUEST['mname'];
+		$role = $_REQUEST['position'];
+		$email = $_REQUEST['email'];
+		$contact = $_REQUEST['contact'];
+		$username = $_REQUEST['uname'];
+		$password = $_REQUEST['cpass'];
 			$sql = mysqli_query($conn,"UPDATE users_account SET 
 				`users_lastname`='$lname ' , 
 				`users_firstname`='$fname ' , 
@@ -209,6 +209,13 @@ if (isset($_POST['btnsubmit'])) {
       border-radius: 4px;
       resize: vertical;
   }
+  input[type=password], select, textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      resize: vertical;
+  }
 
   label {
       padding: 12px 12px 12px 0;
@@ -337,7 +344,7 @@ if (isset($_POST['btnsubmit'])) {
                         </div>
                         <div class="col-75">
                             <select id="position" name="position">
-                            <option value="<?php echo $row['users_roles'];?>"></option>
+                            <option value="Doctoe">Doctor</option>
                             <option value="Sales Staff">Sales Staff</option>
                             <option value="Inventory Clerk">Inventory Clerk</option>
                             </select>
