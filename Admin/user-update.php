@@ -177,11 +177,11 @@ if (isset($_REQUEST['btnsubmit'])) {
           <h1>Update User</h1>
           <ul class="breadcrumb">
             <li>
-              <a href="manage-user.php">Update User</a>
+              <a  class="active" href="manage-user.php">Back</a>
             </li>
             <li><i class='bx bx-chevron-right' ></i></li>
             <li>
-              <a class="active" href="manage-user.php">Home</a>
+              <a href="manage-user.php">Update User</a>
             </li>
           </ul>
         </div>

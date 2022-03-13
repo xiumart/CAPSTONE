@@ -45,7 +45,7 @@ if (isset($_GET['id'])) {
 
 	<!-- SIDEBAR -->
 	<section id="sidebar">
-		<a href="#" class="brand">
+		<a href="manage-user.php" class="brand">
 			<img src="images\logo.png" alt="" width="60px;">
 			<span class="text" style="text-shadow:0.5px 0px #000;">RNL Vision Care</span>
 		</a>
