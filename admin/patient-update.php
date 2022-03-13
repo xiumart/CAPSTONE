@@ -149,6 +149,7 @@
 				</a>
 			</li>
 		</ul>
+		<!--
 		<ul class="side-menu">
 			<li>
 				<a href="#" class="logout">
@@ -157,6 +158,7 @@
 				</a>
 			</li>
 		</ul>
+	-->
 	</section>
 	<!-- SIDEBAR -->
 
@@ -193,7 +195,7 @@
 					<h1>Update Patient Record</h1>
 					<ul class="breadcrumb">
 						<li>
-							<a class="active" href="patient-record.php">Back</a>
+							<a class="active" href="patient-view.php">Back</a>
 						</li>
 						<li><i class='bx bx-chevron-right' ></i></li>
 						<li>
@@ -269,7 +271,7 @@
 						<input type="submit" value="Update">
 						</div>
 						<div class="row">
-						<a href="patient-record.php"><input type="button" value="Cancel"></a>
+						<a href="patient-view.php"><input type="button" value="Cancel"></a>
 						</div>
 				</form>
 			</div>

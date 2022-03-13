@@ -200,6 +200,7 @@ else{
 				</a>
 			</li>
 		</ul>
+		<!--
 		<ul class="side-menu">
 			<li>
 				<a href="#" class="logout">
@@ -208,6 +209,7 @@ else{
 				</a>
 			</li>
 		</ul>
+	-->
 	</section>
 	<!-- SIDEBAR -->
 
@@ -428,7 +430,7 @@ else{
 								</script>
 						</div>
 						<div class="row">
-							<button class="btn-can" name="btncancel">Cancel</button>
+							<a href="product.php"><button class="btn-can" name="btncancel">Cancel</button></a>
 							<button class="btn-upd" name="btnupdate">Update</button>
 						
 						</div>

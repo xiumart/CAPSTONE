@@ -90,6 +90,7 @@
 				</a>
 			</li>
 		</ul>
+		<!--
 		<ul class="side-menu">
 			<li>
 				<a href="#" class="logout">
@@ -98,6 +99,7 @@
 				</a>
 			</li>
 		</ul>
+	-->
 	</section>
 	<!-- SIDEBAR -->
 
@@ -134,11 +136,11 @@
 					<h1>Add New Supplier</h1>
 					<ul class="breadcrumb">
 						<li>
-							<a href="supplier.php">Add New Supplier</a>
+							<a class="active" href="supplier.php">Back</a>
 						</li>
 						<li><i class='bx bx-chevron-right'></i></li>
 						<li>
-							<a class="active" href="supplier.php">Home</a>
+							<a href="supplier.php">Add New Supplier</a>
 						</li>
 					</ul>
 				</div>

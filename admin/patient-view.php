@@ -88,6 +88,7 @@
 				</a>
 			</li>
 		</ul>
+		<!--
 		<ul class="side-menu">
 			<li>
 				<a href="#" class="logout">
@@ -96,6 +97,7 @@
 				</a>
 			</li>
 		</ul>
+	-->
 	</section>
 	<!-- SIDEBAR -->
 
@@ -132,11 +134,11 @@
 					<h1>View Patient Record</h1>
 					<ul class="breadcrumb">
 						<li>
-							<a href="patient-record.php">View Patient Record</a>
+							<a class="active" href="patient-record.php">Back</a>
 						</li>
 						<li><i class='bx bx-chevron-right' ></i></li>
 						<li>
-							<a class="active" href="patient-record.php">Back</a>
+							<a href="patient-record.php">View Patient Record</a>
 						</li>
 					</ul>
 				</div>
