@@ -1,6 +1,9 @@
 <?php
 error_reporting(0);
 include("../conn.php");
+if (isset($_POST['btncancel'])) {
+			header("Location: product.php");
+		}
 if (isset($_POST['btnupdate'])) {
 			//something was posted
 		$pro_id1 = $_GET['id'];
@@ -49,6 +52,8 @@ else{
 			die;
 }
 		}
+
+
 
 ?>
 <!DOCTYPE html>
@@ -430,7 +435,7 @@ else{
 								</script>
 						</div>
 						<div class="row">
-							<a href="product.php"><button class="btn-can" name="btncancel">Cancel</button></a>
+							<a href="product.php"><button onclick="product.php" class="btn-can" name="btncancel">Cancel</button></a>
 							<button class="btn-upd" name="btnupdate">Update</button>
 						
 						</div>

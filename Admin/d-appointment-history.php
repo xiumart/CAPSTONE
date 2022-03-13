@@ -1,3 +1,10 @@
+
+<?php
+
+include("../conn.php");
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -70,7 +77,6 @@
 				</a>
 			</li>
 		</ul>
-		<!--
 		<ul class="side-menu">
 			<li>
 				<a href="#" class="logout">
@@ -79,7 +85,6 @@
 				</a>
 			</li>
 		</ul>
-	-->
 	</section>
 	<!-- SIDEBAR -->
 
@@ -116,11 +121,11 @@
 					<h1>Dashboard</h1>
 					<ul class="breadcrumb">
 						<li>
-							<a class="active" href="dashboard.php">Back</a>
+							<a href="dashboard.php">Dashboard</a>
 						</li>
 						<li><i class='bx bx-chevron-right' ></i></li>
 						<li>
-							<a href="d-appointment-history.php">Appointment History</a>
+							<a class="active" href="d-appointment-history.php">Appointment History</a>
 						</li>
 					</ul>
 				</div>
@@ -150,15 +155,23 @@
      </thead>
      <tbody>
      	  <tr>
-     	  	  <td data-label="Name">Marliardo Umbao</td>
-     	  	  <td data-label="Email">marl@gmail.com</td>
-     	  	  <td data-label="Contact">09481231233</td>
-     	  	  <td data-label="Date">03/09/2022</td>
-			  <td data-label="Time">10:00am</td>
-			  <td data-label="Purpose">Eye Check up</td>
-			  <td data-label="Remarks">Cancel</td>
-			  <td data-label="DateTime">03/09/2022 11:00pm</td>
+
+     	  		<?php 
+
+     	  		$query4 = mysqli_query($conn, "Select * from appointment_history");
+     	  		while($row = $query4 -> fetch_assoc()){
+?>
+     	  	  <td data-label="Name"><?php echo $row['app_name'];?></td>
+     	  	  <td data-label="Email"><?php echo $row['app_email'];?></td>
+     	  	  <td data-label="Contact"><?php echo $row['app_contact'];?></td>
+     	  	  <td data-label="Date"><?php echo $row['app_date'];?></td>
+			  <td data-label="Time"><?php echo $row['app_time'];?></td>
+			  <td data-label="Purpose"><?php echo $row['app_purpose'];?></td>
+			  <td data-label="Remarks"><?php echo $row['app_remarks'];?></td>
+			  <td data-label="DateTime"><?php echo $row['app_DateTime'];?></td>
      	  </tr>
+
+     	  <?php  } ?>
 
      	 
      </tbody>

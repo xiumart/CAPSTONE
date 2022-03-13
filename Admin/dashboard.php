@@ -1,28 +1,45 @@
 <?php 
 include("../conn.php");
 
+// Set the new timezone
+date_default_timezone_set('Asia/Manila');
+$date = date('d-m-y g:i a');
+
 if (isset($_GET['id'])) {
 	$app_id=$_GET['id'];
 	$queryaccept = "UPDATE `appointment` SET app_remarks = 'ONGOING' WHERE app_id='$app_id'";
 			mysqli_query($conn, $queryaccept);
-
 }
-
 if (isset($_GET['id1'])) {
 	$app_id=$_GET['id1'];
-	$queryaccept = "UPDATE `appointment` SET app_remarks = 'FINISH' WHERE app_id='$app_id'";
-			mysqli_query($conn, $queryaccept);
-			
-}
+	$DateTime = $date;
+		$queryaccept = "UPDATE `appointment` SET app_remarks = 'FINISH' WHERE app_id='$app_id';";
+		$queryaccept .= "INSERT into appointment_history (app_id, app_name, app_email, app_contact, app_date, app_time, app_purpose, app_remarks) SELECT app_id, app_name, app_email, app_contact, app_date, app_time, app_purpose, app_remarks from appointment where app_id = '$app_id';";
+		$queryaccept .= "UPDATE appointment_history set app_DateTime = '$date' where app_id = '$app_id';";
+		$queryaccept .= "DELETE from appointment where app_id = '$app_id'";
+		mysqli_multi_query($conn, $queryaccept);
 
+}
 if (isset($_GET['id2'])) {
 	$app_id=$_GET['id2'];
-	$queryaccept = "UPDATE `appointment` SET app_remarks = 'PENDING' WHERE app_id='$app_id'";
-			mysqli_query($conn, $queryaccept);
-			
+	$queryaccept = "UPDATE `appointment` SET app_remarks = 'CANCELLED' WHERE app_id='$app_id';";
+		$queryaccept .= "INSERT into appointment_history (app_id, app_name, app_email, app_contact, app_date, app_time, app_purpose, app_remarks) SELECT app_id, app_name, app_email, app_contact, app_date, app_time, app_purpose, app_remarks from appointment where app_id = '$app_id';";
+		$queryaccept .= "UPDATE appointment_history set app_DateTime = '$date' where app_id = '$app_id';";
+		$queryaccept .= "DELETE from appointment where app_id = '$app_id'";
+			mysqli_multi_query($conn, $queryaccept);			
 }
+if (isset($_GET['id3'])) {
+	$app_id=$_GET['id3'];
+	$queryaccept = "UPDATE `appointment` SET app_remarks = 'DENIED' WHERE app_id='$app_id';";
+		$queryaccept .= "INSERT into appointment_history (app_id, app_name, app_email, app_contact, app_date, app_time, app_purpose, app_remarks) SELECT app_id, app_name, app_email, app_contact, app_date, app_time, app_purpose, app_remarks from appointment where app_id = '$app_id';";
+		$queryaccept .= "UPDATE appointment_history set app_DateTime = '$date' where app_id = '$app_id';";
+		$queryaccept .= "DELETE from appointment where app_id = '$app_id'";
+			mysqli_multi_query($conn, $queryaccept);			
 
+}
 ?>
+
+
 
 
 <!DOCTYPE html>
@@ -115,7 +132,7 @@ if (isset($_GET['id2'])) {
 		</ul>
 		<ul class="side-menu">
 			<li>
-				<a href="index.php" class="logout">
+				<a href="#" class="logout">
 					<i class='bx bxs-log-out-circle' ></i>
 					<span class="text">Logout</span>
 				</a>
@@ -199,7 +216,7 @@ if (isset($_GET['id2'])) {
 					<i class='bx bxs-calendar-check' ></i>
 					<span class="text">
 						<h3><?php 
-							$query3 = mysqli_query($conn, "SELECT COUNT(*) as total from appointment where app_remarks = 'FINISH';");
+							$query3 = mysqli_query($conn, "SELECT COUNT(*) as total from appointment_history where app_remarks = 'FINISH';");
 									while($result3=mysqli_fetch_array($query3)){
 										echo $result3['total'];
 						  							}			
@@ -250,7 +267,7 @@ if (isset($_GET['id2'])) {
      	  	  <td data-label="Date"><?php echo $row['app_date'];?></td>
 			  <td data-label="Time"><?php echo $row['app_time'];?></td>
 			  <td data-label="Purpose"><?php echo $row['app_purpose'];?></td>
-			  <td data-label="Action"><button class="btn-rem">Denied</button><a href="?id=<?php echo $row['app_id'];?>"><button class="btn-upd">Accept</button></a></td>
+			  <td data-label="Action"><a href="?id3=<?php echo $row['app_id'];?>"><button class="btn-rem">Denied</button></a><a href="?id=<?php echo $row['app_id'];?>"><button class="btn-upd">Accept</button></a></td>
      	  </tr>
 
      	<?php  } ?>
