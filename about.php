@@ -66,8 +66,8 @@
             <label class="theme-switch" for="checkbox">
               <input type="checkbox" id="checkbox">
               <div class="mode-container py-1">
-                <i class="gg-sun"></i>
-                <i class="gg-moon"></i>
+                <i class="gg-sun" style="cursor:pointer;"></i>
+                <i class="gg-moon" style="cursor:pointer;"></i>
               </div>
             </label>
           </div>
