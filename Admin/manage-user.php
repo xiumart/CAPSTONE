@@ -1,3 +1,12 @@
+<?php
+error_reporting(0);
+include("../conn.php");
+if (isset($_GET['id'])) {
+	$users_id=$_GET['id'];
+	$query = "DELETE FROM `users_account` WHERE users_id='$users_id'";
+			mysqli_query($conn, $query);
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -148,40 +157,84 @@
 			<a href="user-add.php"><button class="btn-addpt"style="cursor: pointer;"> + Add User</button>
 			<div class="table-data">
 			<div class="order">
-					<table class="table">
+			<table class="table">
      <thead>
-     	<tr>
-     	 <th>Lastname</th>
-     	 <th>Firstname</th>
-		 <th>Middlename</th>
-		 <th>Contact Number</th>
-     	 <th>Email</th>
-		 <th>Position</th>
-     	 <th>Action</th>
-     	</tr>
+      <tr>
+    <tr>
+      <th>Lastname</th>
+      <th>Firstname</th>
+      <th>Middlename</th>
+      <th>Username</th>
+      <th>Contact Number</th>
+      <th>Email</th>
+      <th>Position</th>
+      <th>Action</th>
+      </tr>
      </thead>
      <tbody>
-     	  <tr>
-     	  	  <td data-label="Lastname"></td>
-     	  	  <td data-label="Firstname"></td>
-     	  	  <td data-label="Middlename"></td>
-     	  	  <td data-label="ContactNp"></td>
-				<td data-label="Position"></td>
-			  <td data-label="Category"></td>
-			  <td data-label="Action">
-			<a href="user-update.php"><button class="btn-upd" style="cursor: pointer;">Update</button></a>
-			<button class="btn-rem" style="cursor: pointer;">Remove</button></td>
-     	  </tr>
+	 <?php
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "capstone";
 
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
+}
+
+$sql = "SELECT * FROM users_account";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+//   echo "<table><tr><th>ID</th><th>Name</th></tr>";
+  // output data of each row
+  while($row = $result->fetch_assoc()) {
+    echo 
+	"<tr><td>".$row["users_lastname"].
+	"</td><td>".$row["users_firstname"].
+	"</td><td>".$row["users_middlename"].
+	"</td><td>".$row["users_username"].
+	"</td><td>".$row["users_contact"].
+	"</td><td>".$row["users_email"].
+	"</td><td>".$row["users_roles"].
+	"</td><td>
+	<form method='post' action='user-update.php?users_id=".$row["users_id"]."'>"?>
+	<button class="btn-upd" style="cursor: pointer;">UPDATE</button></form>
+  	<?php echo "<form method='post' action='?id=".$row["users_id"]."'>" ?>
+	  <button class="btn-rem" style="cursor: pointer;" onclick="return confirm('Are you sure?')">DELETE</button>
+  </form><?php "</tr>";
+  }
+  echo "</table>";
+} else {
+  echo "0 results";
+}
+$conn->close();
+?>
      </tbody>
+
    </table>
-   <a href="#"><button class="btn-print" style="cursor: pointer;"><i class='bx bxs-printer' ></i> Print </button></a>
-
+   <br>
+  	<?php
+  	if ($_GET['page']==1) {
+  		
+  	}
+  	elseif ($_GET['page']==1) {
+  		# code...
+  	}
+  	?>
+   <a class="page" id="pre" href="manage-user.php?page=<?=$prev; ?>">< Prev</a>
+    	  <?php  for($i=1; $i <=$pages ; $i++): ?>
+    <a class="page" href="manage-user.php?page=<?=$i; ?>"><?=$i; ?></a>
+                      <?php endfor; ?>
+    <a class="page" id="pnext" href="manage-user.php?page=<?=$next; ?>">Next ></a>
 				</div>
-
 				
 				
 			</div>
+		  </div>
 			
 			<div class="table-data">
 	
