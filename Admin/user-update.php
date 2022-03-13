@@ -311,7 +311,7 @@ if (isset($_POST['btnsubmit'])) {
                             <label for="cpass">Change Password</label>
                         </div>
                         <div class="col-75">
-                            <input type="text" id="cpass" name="cpass" placeholder="Enter new password" value= "<?php echo $row['users_password'];?>">
+                            <input type="password" id="cpass" name="cpass" placeholder="Enter new password" value= "<?php echo $row['users_password'];?>">
                         </div>
                         </div>
                         
