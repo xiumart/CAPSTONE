@@ -133,6 +133,7 @@ if (isset($_REQUEST['btnsubmit'])) {
         </a>
       </li>
     </ul>
+    <!--
     <ul class="side-menu">
       <li>
         <a href="#" class="logout">
@@ -141,6 +142,7 @@ if (isset($_REQUEST['btnsubmit'])) {
         </a>
       </li>
     </ul>
+  -->
   </section>
   <!-- SIDEBAR -->
 

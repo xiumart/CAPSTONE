@@ -121,11 +121,11 @@ include("../conn.php");
 					<h1>Dashboard</h1>
 					<ul class="breadcrumb">
 						<li>
-							<a href="dashboard.php">Dashboard</a>
+							<a class="active" href="dashboard.php">Back</a>
 						</li>
 						<li><i class='bx bx-chevron-right' ></i></li>
 						<li>
-							<a class="active" href="d-appointment-history.php">Appointment History</a>
+							<a  href="d-appointment-history.php">Appointment History</a>
 						</li>
 					</ul>
 				</div>
