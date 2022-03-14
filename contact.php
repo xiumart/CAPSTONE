@@ -86,7 +86,7 @@ Author URL: http://w3layouts.com
 <section class="w3l-breadcrumb">
     <div class="breadcrumb-bg breadcrumb-bg-about py-5">
         <div class="container pt-lg-5 pt-3 p-lg-4 pb-3">
-            <h2 class="title mt-5 pt-lg-5 pt-sm-3">Get in touch</h2>
+            <h2 class="title mt-5 pt-lg-5 pt-sm-3">Contact Us</h2>
             <ul class="breadcrumbs-custom-path pb-sm-5 pb-4 mt-2 text-center mb-md-5">
                 <li><a href="index.php">Home</a></li>
                 <li class="active"> / Contact us </li>
@@ -107,7 +107,7 @@ Author URL: http://w3layouts.com
         <div class="container">
             <div class="d-grid contact-view">
                 <div class="cont-details">
-                    <h4 class="title-small">Get in touch</h4>
+                    <h4 class="title-small">Contact Us</h4>
                     <h3 class="title-big mb-4">Feel free to contact us</h3>
                     <p class="mb-sm-5 mb-4">Start working with Us, We guarantee that you’ll be able to have any issue resolved within 24 hours.</p>
 
@@ -191,7 +191,7 @@ Author URL: http://w3layouts.com
             <h6 class="footer-title-29">RNL Vision Care</h6>
             <li><a href="about.php">About company</a></li>
             <li><a href="product.php">Product</a></li>
-            <li><a href="contact.php">Get in touch</a></li>
+            <li><a href="contact.php">Contact Us</a></li>
           </ul>
         </div>
        

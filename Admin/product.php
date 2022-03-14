@@ -85,7 +85,7 @@ if (isset($_GET['id'])) {
 			<li class="active">
 				<a href="product.php">
 					<i class='bx bxs-shopping-bag-alt' ></i>
-					<span class="text">Product</span>
+					<span class="text">Product Inventory</span>
 				</a>
 			</li>
 			<li>
@@ -148,7 +148,7 @@ if (isset($_GET['id'])) {
 		<main>
 			<div class="head-title">
 				<div class="left">
-					<h1>Product</h1>
+					<h1>Product Inventory</h1>
 					<ul class="breadcrumb">
 						<li>
 							<a href="product.php">Product</a>

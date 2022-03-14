@@ -109,7 +109,7 @@
 			<li class="active">
 				<a href="product.php">
 					<i class='bx bxs-shopping-bag-alt' ></i>
-					<span class="text">Product</span>
+					<span class="text">Product Inventory</span>
 				</a>
 			</li>
 			<li>

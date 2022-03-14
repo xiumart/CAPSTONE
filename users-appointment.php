@@ -188,6 +188,7 @@ $user=$_SESSION['login_user'];
             <th>Date and Time </th>
             <th>Purpose<th>
             <th>Action</th>
+            <th>Status</th>
           </tr>
         </thead>
         <?php
