@@ -39,6 +39,13 @@ if (isset($_GET['id'])) {
 		float: right;
 		width: 10%;
 	}
+	.page{
+		background-color: #00c2cb;
+		padding: 12px;
+		border: none;
+		border-radius: 10%;
+	}
+	.page:hover { background-color:#00b2b3;}
 </style>
 <body>
 
@@ -184,8 +191,17 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
-
-$sql = "SELECT * FROM users_account";
+$limit=5;
+$cat=$_POST['all'];
+$page=isset($_GET['page']) ? $_GET['page']:1;
+$start=($page-1)*$limit;
+$sql2 =$conn->query("SELECT count(users_id) AS id FROM `users_account`");
+$sql = "SELECT * FROM users_account LIMIT $start, $limit ";
+$result2 = $sql2->fetch_all(MYSQLI_ASSOC);
+                $total=$result2[0]['id'];
+                $pages=ceil($total/$limit);
+                $prev=$page-1;
+                $next=$page+1;
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
