@@ -9,7 +9,6 @@ $eid= $_GET['users_id'];
 
 if (isset($_REQUEST['btnsubmit'])) {
 		//something was posted
-		
 		$lname = $_REQUEST['lname'];
 		$fname = $_REQUEST['fname'];
 		$mname = $_REQUEST['mname'];
@@ -18,6 +17,8 @@ if (isset($_REQUEST['btnsubmit'])) {
 		$contact = $_REQUEST['contact'];
 		$username = $_REQUEST['uname'];
 		$password = $_REQUEST['cpass'];
+
+    
 			$sql = mysqli_query($conn,"UPDATE users_account SET 
 				`users_lastname`='$lname ' , 
 				`users_firstname`='$fname ' , 
@@ -28,8 +29,9 @@ if (isset($_REQUEST['btnsubmit'])) {
 				`users_password`='$password',  
 				`users_roles`='$role'
 				WHERE `users_id` = '$eid'");
+        
 			if($sql){
-				echo "<script>alert('you have successfully updated the record');</script>";
+				echo "<script>alert('You have successfully updated the record.');</script>";
 				echo "<script>document.location='manage-user.php';</script>";
 				
 			}
@@ -329,7 +331,7 @@ if (isset($_REQUEST['btnsubmit'])) {
                             <label for="contact">Contact Number</label>
                         </div>
                         <div class="col-75">
-                            <input type="tel" id="contact" name="contact" placeholder="Enter contact number" required="" value= "<?php echo $row['users_contact'];?>">
+                            <input type="tel" id="contact" name="contact" pattern="[0-9]{4}[0-9]{3}[0-9]{4}" placeholder="Enter contact number" required="" value= "<?php echo $row['users_contact'];?>">
                         </div>
                         </div>
                         <div class="row">
@@ -346,7 +348,7 @@ if (isset($_REQUEST['btnsubmit'])) {
                         </div>
                         <div class="col-75">
                             <select id="position" name="position">
-                            <option value="Doctoe">Doctor</option>
+                            <option value="Doctor">Doctor</option>
                             <option value="Sales Staff">Sales Staff</option>
                             <option value="Inventory Clerk">Inventory Clerk</option>
                             </select>
