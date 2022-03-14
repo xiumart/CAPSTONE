@@ -17,6 +17,7 @@
 
 <!--/start-login-one-->
 <h1></h1>
+
 		<div class="login">	
 			<div class="ribbon-wrapper h2 ribbon-red">
 				<div class="ribbon-front">
@@ -25,21 +26,20 @@
 				<div class="ribbon-edge-topleft2"></div>
 				<div class="ribbon-edge-bottomleft"></div>
 			</div>
-			<form>
+			<form action="loginhandler.php" method="post">
 				<ul>
 					<li>
-						<input type="text" class="text" value="Email Address" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email Address';}" ><a href="#" class=" icon user"></a>
+						<input type="text" class="text" name="users_username" value="Email Address" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email Address';}" ><a class=" icon user"></a>
 					</li>
 					 <li>
-						<input type="password" value="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}"><a href="#" class=" icon lock"></a>
+						<input type="password" name="users_password" value="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}"><a class=" icon lock"></a>
 					</li>
 				</ul>
-
-			</form>
 			<div class="submit">
 				<input type="submit" onclick="myFunction()" value="Log in" >
 			</div>
 		</div>
+		</form>
 <!--start-copyright-->
    		<div class="copy-right">
 				<p> &copy; 2022  All rights  Reserved | RNL Vision Care</a></p>

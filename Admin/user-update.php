@@ -135,16 +135,16 @@ if (isset($_REQUEST['btnsubmit'])) {
         </a>
       </li>
     </ul>
-    <!--
+
     <ul class="side-menu">
       <li>
-        <a href="#" class="logout">
+        <a href="logout.php" class="logout">
           <i class='bx bxs-log-out-circle' ></i>
           <span class="text">Logout</span>
         </a>
       </li>
     </ul>
-  -->
+
   </section>
   <!-- SIDEBAR -->
 

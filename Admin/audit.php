@@ -86,7 +86,7 @@
 		</ul>
 		<ul class="side-menu">
 			<li>
-				<a href="index.php" class="logout">
+				<a href="logout.php" class="logout">
 					<i class='bx bxs-log-out-circle' ></i>
 					<span class="text">Logout</span>
 				</a>
@@ -152,19 +152,38 @@
      	<tr>
      	 <th>Username</th>
      	 <th>Activiy</th>
-     	 <th>Date</th>
-     	 <th>Time</th>
+     	 <th>Date & Time</th>
+     	 <th>Role</th>
      	</tr>
      </thead>
      <tbody>
-     	  <tr>
-     	  	  <td data-label="Username">marl</td>
-     	  	  <td data-label="Activity">Update Patient Record</td>
-     	  	  <td data-label="Date">03/09/2022</td>
-     	  	  <td data-label="Time">02:00pm</td>
-     	  </tr>
+	 <?php
+       $conn = mysqli_connect("localhost", "root", "","capstone");
+       if ($conn-> connect_error) { 
+        die("Connection Failed.". $conn-> connection_error);
+       }
+       $sql = "SELECT * from users_logs";
+      $result = $conn-> query($sql);
 
+      if ($result-> num_rows > 0) {
+        while ($row = $result-> fetch_assoc()){
+         echo "</tr><td>". $row["logs_username"]. 
+		 "</td><td>". $row["logs_activity"]. 
+		 "</td><td>". $row["logs_datentime"]. 
+		 "</td><td>". $row["logs_roles"].
+		 "</td><tr>";
+      }
+      echo "</table>";
+      }
+      else {
+        echo "0 result";
+      }
+      $conn-> close();
+      
+?>
+	
      </tbody>
+	 
    </table>
 
 				</div>
