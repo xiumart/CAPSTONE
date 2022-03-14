@@ -221,25 +221,27 @@
 	}
 	}
 </style>
+
 <div class="table-data">
 			<div class="order">
 			
-				<form action="#">
+				<form action="supplierhandler.php" method="post">
 				<div class="row">
-						<div class="row">
-						<div class="col-25">
-							<label for="conperson">Contact Person</label>
-						</div>
-						<div class="col-75">
-							<input type="text" id="lname" name="lname" placeholder="Enter contact person" required="">
-						</div>
-						</div>
+						
 						<div class="row">
 						<div class="col-25">
 							<label for="cname">Company Name</label>
 						</div>
 						<div class="col-75">
 							<input type="text" id="cname" name="cname" placeholder="Enter company name" required="">
+						</div>
+						</div>
+						<div class="row">
+						<div class="col-25">
+							<label for="conperson">Contact Person</label>
+						</div>
+						<div class="col-75">
+							<input type="text" id="lname" name="lname" placeholder="Enter contact person" required="">
 						</div>
 						</div>
 						<div class="row">

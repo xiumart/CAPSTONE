@@ -151,6 +151,7 @@
 					<table class="table">
      <thead>
      	<tr>
+		 
      	 <th>Company name</th>
 		 <th>Contact Person</th>
      	 <th>Contact No.</th>
@@ -160,16 +161,49 @@
      	</tr>
      </thead>
      <tbody>
-     	  <tr>
+	 <?php
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "capstone";
+
+// Create connection
+$mysqli = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+if ($mysqli->connect_error) {
+  die("Connection failed: " . $mysqli->connect_error);
+}
+$result = mysqli_query($mysqli, "SELECT * FROM supplier ORDER by supplier_id")
+
+?>
+     	   
+		   	 <?php
+				while($res = mysqli_fetch_array($result)){
+
+				
+				
+				echo "<tr>";
+				echo "<td>".$res['cname']."</td>";
+				echo "<td>".$res['lname']."</td>";
+				echo "<td>".$res['contact']."</td>";
+				echo "<td>".$res['email']."</td>";
+				echo "<td>".$res['description']."</td>";
+				echo "<td><a href=\"supplier-update.php?supplier_id=$res[supplier_id]\"><button class="btn-upd" style="cursor: pointer;">Update</button></a>
+				<button class="btn-rem" style="cursor: pointer;">Remove</button></td>";
+				}
+				?>
+				<!--
      	  	  <td data-label="Company Name"></td>
 			  <td data-label="Contact Person"></td>
 			  <td data-label="Contact No."></td>
 			  <td data-label="Email"></td>
 			  <td data-label="Description"></td>
+			  
 			  <td data-label="Action">
 			  <a href="supplier-update.php"><button class="btn-upd" style="cursor: pointer;">Update</button></a>
 			<button class="btn-rem" style="cursor: pointer;">Remove</button></td>
-     	  </tr>
+			-->
+     	  
 
      	  
      </tbody>
@@ -189,6 +223,8 @@
 		</main>
 		<!-- MAIN -->
 	</section>
+
+	
 	<!-- CONTENT -->
 	
 
