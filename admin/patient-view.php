@@ -169,7 +169,8 @@ $sql1 = "SELECT * FROM `patient_distancerx` WHERE `patient_no`='$id'";
 						<form method="post">
 						<input type="text" name="patid" value="<?php echo $pat_id;?>" hidden>
 						</form>
-						<a href="patient-update.php?id=<?php echo $id;?>"><button class="btn-addpt" style="cursor: pointer;"> Update Basic Info.</button></a>
+						<a href="patient-certificate.php?id=<?php echo $id;?>"><button class="btn-addpt" style="cursor: pointer;"> Preview Certificate</button></a>
+						<a href="patient-update.php?id=<?php echo $id;?>"><button class="btn-addpt" style="cursor: pointer;"> Update Records</button></a>
 					</div>
 					<h4>Check-up History</h4>
 					<table class="table">
