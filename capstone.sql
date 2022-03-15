@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 15, 2022 at 12:15 PM
+-- Generation Time: Mar 15, 2022 at 03:44 PM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.1.27
 
@@ -55,10 +55,8 @@ INSERT INTO `appointment` (`app_id`, `app_user`, `app_name`, `app_email`, `app_c
 (179, 'Danver', 'Mark Anthony Asa', 'edmar.ramos623@gmail.com', '0977879789', '2022-03-18', '14:54', 'Hide', 'ONGOING'),
 (180, 'Danver', 'Mark Anthony Asa', 'danverjhon@gmail.com', '09757298152', '0000-00-00', '', 'Check ups', 'ONGOING'),
 (185, 'jona12', 'Jona Sugabo', 'zjhyn16@gmail.com', '09154919806', '2022-03-12', '14:00', 'Eye Check Up', 'ONGOING'),
-(186, 'jojo', 'Jojo', 'zjhyn16@gmail.com', '09154919806', '2022-03-25', '14:30', 'Inquire lg', 'PENDING'),
 (187, 'jojo', 'Jojo', 'zjhyn16@gmail.com', '09154919806', '2022-03-25', '14:30', 'Inquire lg', 'ONGOING'),
 (188, 'raymart', 'Raymart Gahopo', 'raymart.gahopo@gmail.com', '09075647938', '2022-03-15', '12:00', 'Check Up', 'PENDING'),
-(189, 'raymart', 'Raymart Gahopo', 'raymart.gahopo@gmail.com', '09075647938', '2022-03-15', '12:00', 'Dine in', 'PENDING'),
 (190, 'raymart', 'Raymart Gahopo', 'raymart.gahopo@gmail.com', '09075647938', '2022-03-14', '13:00', 'Check Up', 'ONGOING');
 
 -- --------------------------------------------------------
@@ -92,7 +90,9 @@ INSERT INTO `appointment_history` (`app_id`, `app_name`, `app_email`, `app_conta
 (181, 'Mark Anthony Asa', 'danverjhon@gmail.com', '09757298152', '2022-03-26', '22:37', 'Check ups', 'DENIED', '13-03-22 11:50 pm'),
 (182, 'Danver Omlang', 'danverjhon@gmail.com', '09757298152', '2022-03-26', '22:36', 'Check ups', 'DENIED', '13-03-22 11:50 pm'),
 (183, 'Danver Omlang', 'edmar.ramos623@gmail.com', '09757298152', '2022-03-11', '22:35', 'Check ups', 'DENIED', '14-03-22 12:11 am'),
-(184, 'Raymart', 'raymart.gahopo@gmail.com', '09075647938', '2022-03-11', '10:55', 'Check Up', 'DENIED', '14-03-22 9:07 am');
+(184, 'Raymart', 'raymart.gahopo@gmail.com', '09075647938', '2022-03-11', '10:55', 'Check Up', 'DENIED', '14-03-22 9:07 am'),
+(186, 'Jojo', 'zjhyn16@gmail.com', '09154919806', '2022-03-25', '14:30', 'Inquire lg', 'DENIED', '15-03-22 10:10 pm'),
+(189, 'Raymart Gahopo', 'raymart.gahopo@gmail.com', '09075647938', '2022-03-15', '12:00', 'Dine in', 'DENIED', '15-03-22 10:28 pm');
 
 -- --------------------------------------------------------
 
@@ -180,7 +180,8 @@ INSERT INTO `client_logs` (`log_id`, `log_userid`, `log_username`, `log_activity
 (43, '', 'jojo', 'Login', '0000-00-00', '01:33:15'),
 (44, '', 'raymart', 'Login', '0000-00-00', '05:17:30'),
 (45, '', 'raymart', 'Login', '0000-00-00', '05:50:43'),
-(46, '', 'raymart', 'Login', '0000-00-00', '09:02:06');
+(46, '', 'raymart', 'Login', '0000-00-00', '09:02:06'),
+(47, '', 'raymart', 'Login', '0000-00-00', '02:42:49');
 
 -- --------------------------------------------------------
 
@@ -301,110 +302,99 @@ CREATE TABLE `loginlogs` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `patients_history`
+-- Table structure for table `patient_distancerx`
 --
 
-CREATE TABLE `patients_history` (
-  `ID` int(200) NOT NULL,
-  `pat_last` varchar(500) NOT NULL,
-  `pat_first` varchar(500) NOT NULL,
-  `pat_middle` varchar(500) NOT NULL,
-  `pat_age` int(100) NOT NULL,
-  `pat_sex` varchar(500) NOT NULL,
-  `pat_address` varchar(500) NOT NULL,
-  `pat_medhx` varchar(500) NOT NULL,
-  `pat_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `old_od` text NOT NULL,
-  `old_os` text NOT NULL,
-  `old_od_add` text NOT NULL,
-  `old_os_add` text NOT NULL,
-  `distance_od_sph` text NOT NULL,
-  `distance_os_sph` text NOT NULL,
-  `distance_od_cyl` text NOT NULL,
-  `distance_os_cyl` text NOT NULL,
-  `distance_od_axis` text NOT NULL,
-  `distance_os_axis` text NOT NULL,
-  `distance_od_va` varchar(500) NOT NULL,
-  `distance_os_va` varchar(500) NOT NULL,
-  `distance_od_add` varchar(500) NOT NULL,
-  `distance_os_add` varchar(500) NOT NULL,
-  `lense_od_sph` varchar(500) NOT NULL,
-  `lendse_os_sph` varchar(500) NOT NULL,
-  `lense_od_cyl` varchar(500) NOT NULL,
-  `lense_os_cyl` varchar(500) NOT NULL,
-  `lense_od_axis` varchar(500) NOT NULL,
-  `lense_os_axis` varchar(500) NOT NULL,
-  `lense_mono_od` varchar(500) NOT NULL,
-  `lense_pd_os` varchar(500) NOT NULL,
-  `reading_od_sph` varchar(500) NOT NULL,
-  `reading_os_sph` varchar(500) NOT NULL,
-  `reading_od_cyl` varchar(500) NOT NULL,
-  `reading_os_cyl` varchar(500) NOT NULL,
-  `reading_od_axis` varchar(500) NOT NULL,
-  `reading_os_axis` varchar(500) NOT NULL,
-  `reading_seght_od` varchar(500) NOT NULL,
-  `reading_seght_os` varchar(500) NOT NULL,
-  `bp` varchar(500) NOT NULL,
-  `Isihara.cyl` varchar(500) NOT NULL,
-  `Isihara.axis` varchar(500) NOT NULL,
-  `Isihara.pd` varchar(500) NOT NULL,
-  `contact` text NOT NULL,
-  `status` varchar(500) NOT NULL,
-  `up_date` datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6)
+CREATE TABLE `patient_distancerx` (
+  `patient_no` int(255) NOT NULL,
+  `patient_id` varchar(500) NOT NULL,
+  `type` varchar(500) NOT NULL,
+  `patient_name` varchar(500) NOT NULL,
+  `patient_bday` date NOT NULL,
+  `patient_contact` varchar(500) NOT NULL,
+  `patient_email` varchar(500) NOT NULL,
+  `patient_address` varchar(500) NOT NULL,
+  `patient_medhx` varchar(1000) NOT NULL,
+  `patient_bp` varchar(500) NOT NULL,
+  `D_OD_SPH` varchar(500) NOT NULL,
+  `D_OD_CYL` varchar(500) NOT NULL,
+  `D_OD_AXIS` varchar(500) NOT NULL,
+  `D_OD_VA` varchar(500) NOT NULL,
+  `D_OD_ADD` varchar(500) NOT NULL,
+  `D_OS_SPH` varchar(500) NOT NULL,
+  `D_OS_CYL` varchar(500) NOT NULL,
+  `D_OS_AXIS` varchar(500) NOT NULL,
+  `D_OS_VA` varchar(500) NOT NULL,
+  `D_OS_ADD` varchar(500) NOT NULL,
+  `I_SPH` varchar(500) NOT NULL,
+  `I_CYL` varchar(500) NOT NULL,
+  `I_AXIS` varchar(500) NOT NULL,
+  `I_PD` varchar(500) NOT NULL,
+  `I_ADD` varchar(500) NOT NULL,
+  `doctor` varchar(500) NOT NULL,
+  `add_date` date NOT NULL,
+  `status` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `patient_distancerx`
+--
+
+INSERT INTO `patient_distancerx` (`patient_no`, `patient_id`, `type`, `patient_name`, `patient_bday`, `patient_contact`, `patient_email`, `patient_address`, `patient_medhx`, `patient_bp`, `D_OD_SPH`, `D_OD_CYL`, `D_OD_AXIS`, `D_OD_VA`, `D_OD_ADD`, `D_OS_SPH`, `D_OS_CYL`, `D_OS_AXIS`, `D_OS_VA`, `D_OS_ADD`, `I_SPH`, `I_CYL`, `I_AXIS`, `I_PD`, `I_ADD`, `doctor`, `add_date`, `status`) VALUES
+(1, '62306a189cd49', 'Distance', 'Altarejos, Tricia joy Magora', '2001-06-02', '09267736621', 'trishaaltarejos02001@gmail.com', 'Blk 1 lot 7 kalayaan b. Batasan hills Quezon city', 'test1', '75/100', '+1.2', '+1.2', '+1.2', '+1.2', '+1.2', '+1.2', '+1.2', '+1.2', '+1.2', '+1.2', '+1.2', '+1.2', '+1.2', '+1.2', '+1.2', 'Dr. Reese Vincent   Deborbon    ', '2022-03-15', 'Walk-in'),
+(2, '6224e8434ad52', 'Contact Lens', 'test, test test', '1997-03-01', '09267736628', 'testemail@gmail.com', 'Quezon City', 'test', '75/100', '2', '2', '22', '2', '22', '2', '22', '2', '2', '2', '2', '22', '2', '2', '2', 'Dr. Raymart       Gahopo       ', '2022-03-15', 'Walk-in'),
+(3, '6224e8434ad52', 'Distance', '', '1997-03-01', '09267736628', 'testemail@gmail.com', 'Quezon City', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'Dr. Raymart       Gahopo       ', '2022-03-15', 'Remove'),
+(4, '6224e8434ad52', 'Distance', 'test, test test', '1997-03-01', '09267736628', 'testemail@gmail.com', 'Quezon City', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'Dr. Raymart       Gahopo       ', '2022-03-15', 'Remove'),
+(5, '6224e8434ad52', 'Distance', 'test, test test', '2022-03-01', '09267736628', 'testemail@gmail.com', 'Quezon City', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'Dr. Raymart       Gahopo       ', '2022-03-15', 'Remove');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `patient_records`
+-- Table structure for table `patient_history`
 --
 
-CREATE TABLE `patient_records` (
-  `ID` int(200) NOT NULL,
-  `pat_last` varchar(500) NOT NULL,
-  `pat_first` varchar(500) NOT NULL,
-  `pat_middle` varchar(500) NOT NULL,
-  `pat_age` int(100) NOT NULL,
-  `pat_sex` varchar(500) NOT NULL,
-  `pat_address` varchar(500) NOT NULL,
-  `pat_medhx` varchar(500) NOT NULL,
-  `pat_date` datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6),
-  `old_od` text NOT NULL,
-  `old_os` text NOT NULL,
-  `old_od_add` text NOT NULL,
-  `old_os_add` text NOT NULL,
-  `distance_od_sph` text NOT NULL,
-  `distance_os_sph` text NOT NULL,
-  `distance_od_cyl` text NOT NULL,
-  `distance_os_cyl` text NOT NULL,
-  `distance_od_axis` text NOT NULL,
-  `distance_os_axis` text NOT NULL,
-  `distance_od_va` varchar(500) NOT NULL,
-  `distance_os_va` varchar(500) NOT NULL,
-  `distance_od_add` varchar(500) NOT NULL,
-  `distance_os_add` varchar(500) NOT NULL,
-  `lense_od_sph` varchar(500) NOT NULL,
-  `lendse_os_sph` varchar(500) NOT NULL,
-  `lense_od_cyl` varchar(500) NOT NULL,
-  `lense_os_cyl` varchar(500) NOT NULL,
-  `lense_od_axis` varchar(500) NOT NULL,
-  `lense_os_axis` varchar(500) NOT NULL,
-  `lense_mono_od` varchar(500) NOT NULL,
-  `lense_pd_os` varchar(500) NOT NULL,
-  `reading_od_sph` varchar(500) NOT NULL,
-  `reading_os_sph` varchar(500) NOT NULL,
-  `reading_od_cyl` varchar(500) NOT NULL,
-  `reading_os_cyl` varchar(500) NOT NULL,
-  `reading_od_axis` varchar(500) NOT NULL,
-  `reading_os_axis` varchar(500) NOT NULL,
-  `reading_seght_od` varchar(500) NOT NULL,
-  `reading_seght_os` varchar(500) NOT NULL,
-  `bp` varchar(500) NOT NULL,
-  `Isihara.cyl` varchar(500) NOT NULL,
-  `Isihara.axis` varchar(500) NOT NULL,
-  `Isihara.pd` varchar(500) NOT NULL,
-  `contact` text NOT NULL
+CREATE TABLE `patient_history` (
+  `patient_no` int(255) NOT NULL,
+  `patient_id` varchar(500) NOT NULL,
+  `type` varchar(200) NOT NULL,
+  `patient_name` varchar(500) NOT NULL,
+  `patient_bday` date NOT NULL,
+  `patient_contact` varchar(500) NOT NULL,
+  `patient_email` varchar(500) NOT NULL,
+  `patient_address` varchar(500) NOT NULL,
+  `patient_medhx` varchar(1000) NOT NULL,
+  `patient_bp` varchar(500) NOT NULL,
+  `D_OD_SPH` varchar(500) NOT NULL,
+  `D_OD_CYL` varchar(500) NOT NULL,
+  `D_OD_AXIS` varchar(500) NOT NULL,
+  `D_OD_VA` varchar(500) NOT NULL,
+  `D_OD_ADD` varchar(500) NOT NULL,
+  `D_OS_SPH` varchar(500) NOT NULL,
+  `D_OS_CYL` varchar(500) NOT NULL,
+  `D_OS_AXIS` varchar(500) NOT NULL,
+  `D_OS_VA` varchar(500) NOT NULL,
+  `D_OS_ADD` varchar(500) NOT NULL,
+  `I_SPH` varchar(500) NOT NULL,
+  `I_CYL` varchar(500) NOT NULL,
+  `I_AXIS` varchar(500) NOT NULL,
+  `I_PD` varchar(500) NOT NULL,
+  `I_ADD` varchar(500) NOT NULL,
+  `doctor` varchar(500) NOT NULL,
+  `date_up` date NOT NULL,
+  `status` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `patient_history`
+--
+
+INSERT INTO `patient_history` (`patient_no`, `patient_id`, `type`, `patient_name`, `patient_bday`, `patient_contact`, `patient_email`, `patient_address`, `patient_medhx`, `patient_bp`, `D_OD_SPH`, `D_OD_CYL`, `D_OD_AXIS`, `D_OD_VA`, `D_OD_ADD`, `D_OS_SPH`, `D_OS_CYL`, `D_OS_AXIS`, `D_OS_VA`, `D_OS_ADD`, `I_SPH`, `I_CYL`, `I_AXIS`, `I_PD`, `I_ADD`, `doctor`, `date_up`, `status`) VALUES
+(1, '62306a189cd49', 'Distance', 'Altarejos, Tricia joy Magora', '2000-06-02', '09267736628', 'trishaaltarejos0200@gmail.com', 'Blk 1 lot 7 kalayaan b. Batasan hills Quezon city', 'test', '75/100', '+1.25', '+1.25', '+1.25', '+1.25', '+1.25', '+1.25', '+1.25', '+1.25', '+1.25', '+1.25', '+1.25', '+1.25', '+1.25', '+1.25', '+1.25', 'Dr. Raymart       Gahopo       ', '2022-03-15', 'History'),
+(2, '6224e8434ad52', 'Reading', 'test, test test', '1997-03-01', '09267736628', 'testemail@gmail.com', 'Quezon City', 'test', '75/100', '1', '1', '11', '1', '11', '1', '11', '1', '11', '1', '1', '11', '1', '1', '1', 'Dr. Reese Vincent   Deborbon    ', '2022-03-15', 'History'),
+(3, '6224e8434ad52', 'Distance', 'test, test test', '2022-03-01', '09267736628', 'testemail@gmail.com', 'Quezon City', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'Dr. Raymart       Gahopo       ', '2022-03-15', 'Remove'),
+(4, '6224e8434ad52', 'Distance', 'test, test test', '2022-03-01', '09267736628', 'testemail@gmail.com', 'Quezon City', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'Dr. Raymart       Gahopo       ', '2022-03-15', 'Remove'),
+(5, '6224e8434ad52', 'Distance', 'test, test test', '2022-03-01', '09267736628', 'testemail@gmail.com', 'Quezon City', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'Dr. Raymart       Gahopo       ', '2022-03-15', 'Remove'),
+(6, '6224e8434ad52', 'Contact Lens', 'test, test test', '1997-03-01', '09267736628', 'testemail@gmail.com', 'Quezon City', 'test', '75/100', '2', '2', '22', '2', '22', '2', '22', '2', '2', '2', '2', '22', '2', '2', '2', 'Dr. Raymart       Gahopo       ', '2022-03-15', 'History');
 
 -- --------------------------------------------------------
 
@@ -488,7 +478,8 @@ CREATE TABLE `users_account` (
 INSERT INTO `users_account` (`users_id`, `users_username`, `users_password`, `users_lastname`, `users_firstname`, `users_middlename`, `users_contact`, `users_email`, `users_roles`) VALUES
 (1, 'admin123', 'sample123', 'Gahopo       ', 'Raymart       ', 'Tomagan       ', '09075647938', 'raymart.gahopo@gmail.com ', 'Doctor'),
 (3, 'reese', 'sample', 'Deborbon    ', 'Reese Vincent   ', 'Tabaosares    ', '09072635472', 'marl.umbao@gmail.com ', 'Sales Staff'),
-(4, 'Jona', '1234', 'Sugabo  ', 'Jona  ', 'Bringino  ', '09154919806', 'sugabojonalyn@gmail.com ', 'Doctor');
+(4, 'Jona', '1234', 'Sugabo  ', 'Jona  ', 'Bringino  ', '09154919806', 'sugabojonalyn@gmail.com ', 'Doctor'),
+(5, 'raymart', 'RNLpass', 'Gahopo', 'Raymart', 'Tomagan', '09123455678', 'raymart.gahopo@gmail.com', 'Doctor');
 
 -- --------------------------------------------------------
 
@@ -514,7 +505,8 @@ INSERT INTO `users_logs` (`logs_id`, `logs_username`, `logs_activity`, `logs_dat
 (3, 'admin123', 'Login', '2022-03-14 03:15:57', 'Doctor'),
 (4, 'admin123', 'Login', '2022-03-14 03:16:19', 'Doctor'),
 (5, 'admin123', 'Login', '2022-03-14 03:19:43', 'Doctor'),
-(6, 'Doctor', 'Logout', '2022-03-14 03:20:31', 'Doctor');
+(6, 'Doctor', 'Logout', '2022-03-14 03:20:31', 'Doctor'),
+(7, 'raymart', 'Login', '2022-03-15 07:26:14', 'Doctor');
 
 --
 -- Indexes for dumped tables
@@ -575,16 +567,16 @@ ALTER TABLE `loginlogs`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `patients_history`
+-- Indexes for table `patient_distancerx`
 --
-ALTER TABLE `patients_history`
-  ADD PRIMARY KEY (`ID`);
+ALTER TABLE `patient_distancerx`
+  ADD PRIMARY KEY (`patient_no`);
 
 --
--- Indexes for table `patient_records`
+-- Indexes for table `patient_history`
 --
-ALTER TABLE `patient_records`
-  ADD PRIMARY KEY (`ID`);
+ALTER TABLE `patient_history`
+  ADD PRIMARY KEY (`patient_no`);
 
 --
 -- Indexes for table `product`
@@ -630,7 +622,7 @@ ALTER TABLE `client_inquiries`
 -- AUTO_INCREMENT for table `client_logs`
 --
 ALTER TABLE `client_logs`
-  MODIFY `log_id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `log_id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT for table `client_user_info`
@@ -657,16 +649,16 @@ ALTER TABLE `loginlogs`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `patients_history`
+-- AUTO_INCREMENT for table `patient_distancerx`
 --
-ALTER TABLE `patients_history`
-  MODIFY `ID` int(200) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `patient_distancerx`
+  MODIFY `patient_no` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT for table `patient_records`
+-- AUTO_INCREMENT for table `patient_history`
 --
-ALTER TABLE `patient_records`
-  MODIFY `ID` int(200) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `patient_history`
+  MODIFY `patient_no` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `product`
@@ -684,13 +676,13 @@ ALTER TABLE `supplier`
 -- AUTO_INCREMENT for table `users_account`
 --
 ALTER TABLE `users_account`
-  MODIFY `users_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `users_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `users_logs`
 --
 ALTER TABLE `users_logs`
-  MODIFY `logs_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `logs_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
