@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 07, 2022 at 08:04 AM
+-- Generation Time: Mar 15, 2022 at 12:15 PM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.1.27
 
@@ -30,10 +30,12 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `appointment` (
   `app_id` int(11) NOT NULL,
+  `app_user` varchar(255) NOT NULL,
   `app_name` varchar(255) NOT NULL,
   `app_email` varchar(150) NOT NULL,
   `app_contact` varchar(150) NOT NULL,
   `app_date` date NOT NULL,
+  `app_time` varchar(255) NOT NULL,
   `app_purpose` varchar(255) NOT NULL,
   `app_remarks` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -42,12 +44,55 @@ CREATE TABLE `appointment` (
 -- Dumping data for table `appointment`
 --
 
-INSERT INTO `appointment` (`app_id`, `app_name`, `app_email`, `app_contact`, `app_date`, `app_purpose`, `app_remarks`) VALUES
-(1, 'Danver Omlang', 'danverjhon@gmail.com', '09560492266', '2021-11-10', 'Appointment test', ''),
-(3, 'Danver Omlang', 'danverjhon@gmail.com', '09560492266', '2021-12-27', 'Appointment test 1', 'ONGOING'),
-(6, 'Raymart Gahopo', 'raymart.gahopo@gmail.com', '09075647938', '2021-12-01', 'Check Up', 'ONGOING'),
-(28, 'Marl Umbao', 'marl.umbao@gmail.com', '09123456789', '2021-12-16', 'Check Up', 'ONGOING'),
-(171, 'sample', 'sample@gmail.com', '09123455678', '2021-12-18', 'tulog', 'ONGOING');
+INSERT INTO `appointment` (`app_id`, `app_user`, `app_name`, `app_email`, `app_contact`, `app_date`, `app_time`, `app_purpose`, `app_remarks`) VALUES
+(1, '', 'Danver Omlang', 'danverjhon@gmail.com', '09560492266', '2021-11-10', '', 'Appointment test', ''),
+(3, '', 'Danver Omlang', 'danverjhon@gmail.com', '09560492266', '2021-12-27', '', 'Appointment test 1', 'FINISH'),
+(6, '', 'Raymart Gahopo', 'raymart.gahopo@gmail.com', '09075647938', '2021-12-01', '', 'Check Up', 'FINISH'),
+(172, '', 'Danver Omlang', 'danverjhon@gmail.com', '09757298152', '2022-03-11', '12:02', 'Check ups', 'FINISH'),
+(174, '', 'Danver Omlang', 'danverjhon@gmail.com', '0977879789', '2022-03-23', '01:52', 'Check ups', 'ONGOING'),
+(175, '', 'Mark Anthony Asa', 'danverjhon@gmail.com', '09757298152', '2022-03-24', '01:52', 'Check ups', 'ONGOING'),
+(178, 'Danver', 'Mark Anthony Asa', 'danverjhon@gmail.com', '09757298152', '2022-03-26', '14:50', 'Check ups', 'ONGOING'),
+(179, 'Danver', 'Mark Anthony Asa', 'edmar.ramos623@gmail.com', '0977879789', '2022-03-18', '14:54', 'Hide', 'ONGOING'),
+(180, 'Danver', 'Mark Anthony Asa', 'danverjhon@gmail.com', '09757298152', '0000-00-00', '', 'Check ups', 'ONGOING'),
+(185, 'jona12', 'Jona Sugabo', 'zjhyn16@gmail.com', '09154919806', '2022-03-12', '14:00', 'Eye Check Up', 'ONGOING'),
+(186, 'jojo', 'Jojo', 'zjhyn16@gmail.com', '09154919806', '2022-03-25', '14:30', 'Inquire lg', 'PENDING'),
+(187, 'jojo', 'Jojo', 'zjhyn16@gmail.com', '09154919806', '2022-03-25', '14:30', 'Inquire lg', 'ONGOING'),
+(188, 'raymart', 'Raymart Gahopo', 'raymart.gahopo@gmail.com', '09075647938', '2022-03-15', '12:00', 'Check Up', 'PENDING'),
+(189, 'raymart', 'Raymart Gahopo', 'raymart.gahopo@gmail.com', '09075647938', '2022-03-15', '12:00', 'Dine in', 'PENDING'),
+(190, 'raymart', 'Raymart Gahopo', 'raymart.gahopo@gmail.com', '09075647938', '2022-03-14', '13:00', 'Check Up', 'ONGOING');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `appointment_history`
+--
+
+CREATE TABLE `appointment_history` (
+  `app_id` int(11) NOT NULL,
+  `app_name` varchar(255) DEFAULT NULL,
+  `app_email` varchar(150) DEFAULT NULL,
+  `app_contact` varchar(150) DEFAULT NULL,
+  `app_date` varchar(255) DEFAULT NULL,
+  `app_time` varchar(255) DEFAULT NULL,
+  `app_purpose` varchar(255) DEFAULT NULL,
+  `app_remarks` varchar(255) DEFAULT NULL,
+  `app_DateTime` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `appointment_history`
+--
+
+INSERT INTO `appointment_history` (`app_id`, `app_name`, `app_email`, `app_contact`, `app_date`, `app_time`, `app_purpose`, `app_remarks`, `app_DateTime`) VALUES
+(1, 'Danver Omlang', 'danverjhon@gmail.com', '09560492266', '2021-11-10', '00:00:00', 'Appointment test', 'FINISH', '13-03-22 10:05:51'),
+(3, 'Danver Omlang', 'danverjhon@gmail.com', '09560492266', '2021-12-27', '00:00:00', 'Appointment test 1', 'FINISH', '13-03-22 10:37 pm'),
+(28, 'Marl Umbao', 'marl.umbao@gmail.com', '09123456789', '2021-12-16', '', 'Check Up', 'FINISH', '13-03-22 11:23 pm'),
+(171, 'sample', 'sample@gmail.com', '09123455678', '2021-12-18', '', 'tulog', 'DENIED', '13-03-22 11:24 pm'),
+(173, 'Mark Anthony Asa', 'edmar.ramos623@gmail.com', '0977879789', '2022-03-25', '13:51', 'Check ups', 'DENIED', '13-03-22 11:25 pm'),
+(181, 'Mark Anthony Asa', 'danverjhon@gmail.com', '09757298152', '2022-03-26', '22:37', 'Check ups', 'DENIED', '13-03-22 11:50 pm'),
+(182, 'Danver Omlang', 'danverjhon@gmail.com', '09757298152', '2022-03-26', '22:36', 'Check ups', 'DENIED', '13-03-22 11:50 pm'),
+(183, 'Danver Omlang', 'edmar.ramos623@gmail.com', '09757298152', '2022-03-11', '22:35', 'Check ups', 'DENIED', '14-03-22 12:11 am'),
+(184, 'Raymart', 'raymart.gahopo@gmail.com', '09075647938', '2022-03-11', '10:55', 'Check Up', 'DENIED', '14-03-22 9:07 am');
 
 -- --------------------------------------------------------
 
@@ -81,8 +126,8 @@ CREATE TABLE `client_logs` (
   `log_userid` varchar(100) NOT NULL,
   `log_username` varchar(100) NOT NULL,
   `log_activity` varchar(100) NOT NULL,
-  `log_date` varchar(100) NOT NULL,
-  `log_time` varchar(100) NOT NULL
+  `log_date` date NOT NULL,
+  `log_time` time NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -90,15 +135,52 @@ CREATE TABLE `client_logs` (
 --
 
 INSERT INTO `client_logs` (`log_id`, `log_userid`, `log_username`, `log_activity`, `log_date`, `log_time`) VALUES
-(1, '6224e8434ad52', 'testname', 'signup', '03-06-2022', '05:58:43pm'),
-(2, '6224e8afe639a', 'testname', 'signup', '03-06-2022', '06:00:31pm'),
-(3, '6224e931181ae', 'marl1', 'signup', '03-06-2022', '06:02:41pm'),
-(4, '', 'admin', 'Login', '03-06-2022', '06:03:09pm'),
-(5, '', 'admin', 'Login', '03-06-2022', '06:13:00pm'),
-(6, '62259131b6d58', 'mart123', 'signup', '03-07-2022', '05:59:29am'),
-(7, '62259ad092521', 'mart123', 'signup', '03-07-2022', '06:40:32am'),
-(8, '62259bc7e2263', 'admin2', 'signup', '03-07-2022', '06:44:39am'),
-(9, '62259bd359b4b', 'mart123', 'signup', '03-07-2022', '06:44:51am');
+(1, '6224e8434ad52', 'testname', 'signup', '0000-00-00', '00:00:00'),
+(2, '6224e8afe639a', 'testname', 'signup', '0000-00-00', '00:00:00'),
+(3, '6224e931181ae', 'marl1', 'signup', '0000-00-00', '00:00:00'),
+(4, '', 'admin', 'Login', '0000-00-00', '00:00:00'),
+(5, '', 'admin', 'Login', '0000-00-00', '00:00:00'),
+(6, '62259131b6d58', 'mart123', 'signup', '0000-00-00', '00:00:00'),
+(7, '62259ad092521', 'mart123', 'signup', '0000-00-00', '00:00:00'),
+(8, '62259bc7e2263', 'admin2', 'signup', '0000-00-00', '00:00:00'),
+(9, '62259bd359b4b', 'mart123', 'signup', '0000-00-00', '00:00:00'),
+(10, '6225cbbf69e33', 'sample', 'signup', '0000-00-00', '00:00:00'),
+(11, '', 'sample', 'Login', '0000-00-00', '00:00:00'),
+(12, '6225d7ed0e8b2', 'gahopo', 'signup', '0000-00-00', '00:00:00'),
+(13, '6227627424074', 'raymart', 'signup', '0000-00-00', '00:00:00'),
+(14, '', 'raymart', 'Login', '0000-00-00', '00:00:00'),
+(15, '', 'raymart', 'Login', '0000-00-00', '00:00:00'),
+(16, '', 'raymart', 'Login', '0000-00-00', '00:00:00'),
+(17, '', 'raymart', 'Login', '0000-00-00', '00:00:00'),
+(18, '', 'raymart', 'Login', '0000-00-00', '00:00:00'),
+(19, '', 'raymart', 'Login', '0000-00-00', '00:00:00'),
+(20, '', 'raymart', 'Login', '0000-00-00', '00:00:00'),
+(21, '', 'raymart', 'Login', '0000-00-00', '00:00:00'),
+(22, '', 'raymart', 'Login', '0000-00-00', '00:00:00'),
+(23, '', 'raymart', 'Login', '0000-00-00', '00:00:00'),
+(24, '', 'raymart', 'Login', '0000-00-00', '05:00:18'),
+(25, '', 'raymart', 'Login', '2022-08-03', '05:01:09'),
+(26, '', 'raymart', 'Login', '2022-08-03', '00:00:00'),
+(27, '', 'raymart', 'Login', '2022-09-03', '05:37:10'),
+(28, '', 'raymart', 'Login', '2022-09-03', '05:56:56'),
+(29, '', 'raymart', 'Login', '2022-09-03', '06:14:16'),
+(30, '', 'raymart', 'Login', '2022-09-03', '06:16:34'),
+(31, '', 'raymart', 'Login', '2022-09-03', '06:17:32'),
+(32, '', 'raymart', 'Login', '2022-09-03', '06:18:09'),
+(33, '', 'raymart', 'Login', '0000-00-00', '06:39:51'),
+(34, '', 'raymart', 'Login', '0000-00-00', '06:49:04'),
+(35, '', 'raymart', 'Login', '0000-00-00', '11:49:35'),
+(36, '', 'raymart', 'Login', '0000-00-00', '04:42:59'),
+(37, '', 'raymart', 'Login', '0000-00-00', '03:54:42'),
+(38, '622a1b9b15daf', 'jona12', 'signup', '0000-00-00', '04:39:07'),
+(39, '', 'jona12', 'Login', '0000-00-00', '04:39:16'),
+(40, '', 'jona12', 'Login', '0000-00-00', '04:51:48'),
+(41, '', 'jona12', 'Login', '0000-00-00', '01:16:58'),
+(42, '622c92b29cc63', 'jojo', 'signup', '0000-00-00', '01:31:46'),
+(43, '', 'jojo', 'Login', '0000-00-00', '01:33:15'),
+(44, '', 'raymart', 'Login', '0000-00-00', '05:17:30'),
+(45, '', 'raymart', 'Login', '0000-00-00', '05:50:43'),
+(46, '', 'raymart', 'Login', '0000-00-00', '09:02:06');
 
 -- --------------------------------------------------------
 
@@ -122,7 +204,10 @@ INSERT INTO `client_user` (`client_id`, `client_username`, `client_password`, `c
 ('6224d0ce6050e', 'marl', '34175d1c1a904c5b9c8029f76dd9f742', ''),
 ('6224e8434ad52', 'testname', '098f6bcd4621d373cade4e832627b4f6', ''),
 ('6224e8afe639a', 'testname', '098f6bcd4621d373cade4e832627b4f6', ''),
-('6224e931181ae', 'marl1', '34175d1c1a904c5b9c8029f76dd9f742', '');
+('6224e931181ae', 'marl1', '34175d1c1a904c5b9c8029f76dd9f742', ''),
+('6227627424074', 'raymart', 'd734b6666edc4e351a617b74525c762f', ''),
+('622a1b9b15daf', 'jona12', '827ccb0eea8a706c4c34a16891f84e7b', ''),
+('622c92b29cc63', 'jojo', '827ccb0eea8a706c4c34a16891f84e7b', '');
 
 -- --------------------------------------------------------
 
@@ -151,7 +236,10 @@ INSERT INTO `client_user_info` (`client_info_id`, `client_id`, `client_fname`, `
 (1, '6224d0ce6050e', '', '', '', '', 0, '', 'marl@gmail.com', ''),
 (2, '6224e8434ad52', '', '', '', '', 0, '', 'testemail@gmail.com', ''),
 (3, '6224e8afe639a', '', '', '', '', 0, '', 'testemail@gmail.com', ''),
-(4, '6224e931181ae', '', '', '', '', 0, '', 'marl@gmail.com', '');
+(4, '6224e931181ae', '', '', '', '', 0, '', 'marl@gmail.com', ''),
+(5, '6227627424074', '', '', '', '', 0, '', 'raymart.gahopo@gmail.com', ''),
+(6, '622a1b9b15daf', '', '', '', '', 0, '', 'zjhyn16@gmail.com', ''),
+(7, '622c92b29cc63', '', '', '', '', 0, '', 'zjhyn16@gmail.com', '');
 
 -- --------------------------------------------------------
 
@@ -192,13 +280,11 @@ CREATE TABLE `feedback` (
 --
 
 INSERT INTO `feedback` (`feed_id`, `feed_subj`, `feed_comments`, `feedbackdate`) VALUES
-(1, 'no website sessions', 'session must be on the website $_SESSION[\'data\'];', '2022-03-06 19:33:48'),
-(2, 'website folder', 'the website folder is messy please organized the folders and create a parent and child pages', '2022-03-06 20:22:07'),
-(3, 'the design is good', 'your website is good in design but the codes must be lessen', '2022-03-06 20:23:01'),
 (4, 'pogi', 'ka', '2022-03-06 21:22:06'),
 (5, 'Services', 'Their service is good and they approach the customer well.', '2022-03-07 10:39:36'),
 (6, 'Product', 'Their product is well package and affordable price.', '2022-03-07 10:41:26'),
-(7, 'Services', 'They give so much professionalism and care to the customers.', '2022-03-07 10:44:21');
+(7, 'Services', 'They give so much professionalism and care to the customers.', '2022-03-07 10:44:21'),
+(8, 'Inquiry for Contact ', 'Hello, may contact lens po ba kayong may grado. Thank you!', '2022-03-12 20:36:30');
 
 -- --------------------------------------------------------
 
@@ -338,20 +424,97 @@ CREATE TABLE `product` (
   `profit` int(255) NOT NULL,
   `supplier` varchar(255) NOT NULL,
   `qty` int(100) NOT NULL,
-  `image` longblob
+  `image` text NOT NULL,
+  `remarks` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `product`
 --
 
-INSERT INTO `product` (`pro_id`, `brand`, `model`, `category`, `dateofarrival`, `expdate`, `sellingprice`, `origprice`, `profit`, `supplier`, `qty`, `image`) VALUES
-(5, 'robert', 'robert', 'Lens', '2021-12-15', '2021-12-22', 1000, 1200, 200, 'Supplier', 3, NULL),
-(7, 'EO', 'sample', 'Frame', '2021-12-17', '2021-12-24', 500, 800, 300, 'Supplier', -8, NULL),
-(13, 'Logitech', 'z300', 'Frame', '2000-01-12', '2020-07-15', 2000, 1300, 700, 'Roberto Boy Paos', 500, NULL),
-(27, 'testing', 'tested', 'Frame', '2021-12-29', '2022-01-28', 2000, 100, 1900, 'Roberto Boy Paos', 123, 0x464b445737374a5849416b4f4469592e6a706567),
-(39, 'DOta', 'QOP', 'Frame', '2022-02-03', '2022-02-26', 2000, 100, 1900, 'sample', 12, 0x313634353130363533375f313738323531392e6a7067),
-(40, 'Tenz Glasses', 'akmjdawnidnwo', 'Frame', '2019-08-08', '2022-02-28', 1000, 100, 900, 'sample', 23, 0x313634353235323832355f313738323531392e6a7067);
+INSERT INTO `product` (`pro_id`, `brand`, `model`, `category`, `dateofarrival`, `expdate`, `sellingprice`, `origprice`, `profit`, `supplier`, `qty`, `image`, `remarks`) VALUES
+(21, 'RNL', 'YORK', 'Reading Glasses', '2022-03-11', '2022-06-15', 155, 125, 30, 'Supplier', 50, '1646933692_sample1.png', 'Circle Frame'),
+(22, 'RNL', 'Didj', 'Reading Glasses', '2022-03-05', '0000-00-00', 199, 150, 49, 'Supplier', 25, 'sample2.png', 'Original Frame'),
+(35, 'RNL', 'Soft Pro', 'Contact Lens Solution', '2022-03-10', '2025-03-10', 220, 200, 20, 'Supplier', 10, '1646923191_contactlense.jpg', 'Sample Remarks'),
+(36, 'RNL', 'Boots', 'Accessories', '2022-03-10', '0000-00-00', 199, 150, 49, 'Supplier', 5, '1646924183_accessories.jpg', 'Blue&White'),
+(37, 'RNL', 'VitaliciaGlass', 'Contact Lenses', '2022-03-12', '2023-07-20', 800, 1699, -899, 'Supplier', 1234, '1647089778_it.jpg', 'naspam');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `supplier`
+--
+
+CREATE TABLE `supplier` (
+  `supp_id` int(255) NOT NULL,
+  `supp_cname` varchar(255) CHARACTER SET latin1 NOT NULL,
+  `supp_contactperson` varchar(255) CHARACTER SET latin1 NOT NULL,
+  `supp_contact` varchar(255) CHARACTER SET latin1 NOT NULL,
+  `supp_email` varchar(255) CHARACTER SET latin1 NOT NULL,
+  `supp_desc` varchar(255) CHARACTER SET latin1 NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `supplier`
+--
+
+INSERT INTO `supplier` (`supp_id`, `supp_cname`, `supp_contactperson`, `supp_contact`, `supp_email`, `supp_desc`) VALUES
+(1, 'TREBOR ', 'ROBERT ', '09128362732', 'john.robert.vitalicia@gmail.com ', 'drug dealer'),
+(4, 'EO', 'Raymart', '09075647938', 'raymart.gahopo@gmail.com', 'Sample'),
+(5, 'EA ', 'Gahopo  ', '09075647938', 'raymart.gahopo@gmail.com ', 'Sample');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users_account`
+--
+
+CREATE TABLE `users_account` (
+  `users_id` int(11) NOT NULL,
+  `users_username` varchar(255) NOT NULL,
+  `users_password` varchar(255) NOT NULL,
+  `users_lastname` varchar(255) NOT NULL,
+  `users_firstname` varchar(255) NOT NULL,
+  `users_middlename` varchar(255) NOT NULL,
+  `users_contact` varchar(255) NOT NULL,
+  `users_email` varchar(255) NOT NULL,
+  `users_roles` varchar(250) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `users_account`
+--
+
+INSERT INTO `users_account` (`users_id`, `users_username`, `users_password`, `users_lastname`, `users_firstname`, `users_middlename`, `users_contact`, `users_email`, `users_roles`) VALUES
+(1, 'admin123', 'sample123', 'Gahopo       ', 'Raymart       ', 'Tomagan       ', '09075647938', 'raymart.gahopo@gmail.com ', 'Doctor'),
+(3, 'reese', 'sample', 'Deborbon    ', 'Reese Vincent   ', 'Tabaosares    ', '09072635472', 'marl.umbao@gmail.com ', 'Sales Staff'),
+(4, 'Jona', '1234', 'Sugabo  ', 'Jona  ', 'Bringino  ', '09154919806', 'sugabojonalyn@gmail.com ', 'Doctor');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users_logs`
+--
+
+CREATE TABLE `users_logs` (
+  `logs_id` int(11) NOT NULL,
+  `logs_username` varchar(255) NOT NULL,
+  `logs_activity` varchar(255) NOT NULL,
+  `logs_datentime` datetime NOT NULL,
+  `logs_roles` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `users_logs`
+--
+
+INSERT INTO `users_logs` (`logs_id`, `logs_username`, `logs_activity`, `logs_datentime`, `logs_roles`) VALUES
+(1, 'admin123', 'Login', '2022-03-14 03:13:42', 'Doctor'),
+(2, 'admin123', 'Login', '2022-03-14 03:13:57', 'Doctor'),
+(3, 'admin123', 'Login', '2022-03-14 03:15:57', 'Doctor'),
+(4, 'admin123', 'Login', '2022-03-14 03:16:19', 'Doctor'),
+(5, 'admin123', 'Login', '2022-03-14 03:19:43', 'Doctor'),
+(6, 'Doctor', 'Logout', '2022-03-14 03:20:31', 'Doctor');
 
 --
 -- Indexes for dumped tables
@@ -361,6 +524,12 @@ INSERT INTO `product` (`pro_id`, `brand`, `model`, `category`, `dateofarrival`, 
 -- Indexes for table `appointment`
 --
 ALTER TABLE `appointment`
+  ADD PRIMARY KEY (`app_id`);
+
+--
+-- Indexes for table `appointment_history`
+--
+ALTER TABLE `appointment_history`
   ADD PRIMARY KEY (`app_id`);
 
 --
@@ -424,6 +593,24 @@ ALTER TABLE `product`
   ADD PRIMARY KEY (`pro_id`);
 
 --
+-- Indexes for table `supplier`
+--
+ALTER TABLE `supplier`
+  ADD PRIMARY KEY (`supp_id`);
+
+--
+-- Indexes for table `users_account`
+--
+ALTER TABLE `users_account`
+  ADD PRIMARY KEY (`users_id`);
+
+--
+-- Indexes for table `users_logs`
+--
+ALTER TABLE `users_logs`
+  ADD PRIMARY KEY (`logs_id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -431,7 +618,7 @@ ALTER TABLE `product`
 -- AUTO_INCREMENT for table `appointment`
 --
 ALTER TABLE `appointment`
-  MODIFY `app_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=172;
+  MODIFY `app_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=191;
 
 --
 -- AUTO_INCREMENT for table `client_inquiries`
@@ -443,13 +630,13 @@ ALTER TABLE `client_inquiries`
 -- AUTO_INCREMENT for table `client_logs`
 --
 ALTER TABLE `client_logs`
-  MODIFY `log_id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `log_id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- AUTO_INCREMENT for table `client_user_info`
 --
 ALTER TABLE `client_user_info`
-  MODIFY `client_info_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `client_info_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `contact`
@@ -461,13 +648,13 @@ ALTER TABLE `contact`
 -- AUTO_INCREMENT for table `feedback`
 --
 ALTER TABLE `feedback`
-  MODIFY `feed_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `feed_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `loginlogs`
 --
 ALTER TABLE `loginlogs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `patients_history`
@@ -485,7 +672,25 @@ ALTER TABLE `patient_records`
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `pro_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `pro_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+
+--
+-- AUTO_INCREMENT for table `supplier`
+--
+ALTER TABLE `supplier`
+  MODIFY `supp_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `users_account`
+--
+ALTER TABLE `users_account`
+  MODIFY `users_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `users_logs`
+--
+ALTER TABLE `users_logs`
+  MODIFY `logs_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
