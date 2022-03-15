@@ -1,6 +1,7 @@
 <?php 
 include("../conn.php");
 
+
 // Set the new timezone
 date_default_timezone_set('Asia/Manila');
 $date = date('d-m-y g:i a');
@@ -9,6 +10,8 @@ if (isset($_GET['id'])) {
 	$app_id=$_GET['id'];
 	$queryaccept = "UPDATE `appointment` SET app_remarks = 'ONGOING' WHERE app_id='$app_id'";
 			mysqli_query($conn, $queryaccept);
+
+		
 }
 if (isset($_GET['id1'])) {
 	$app_id=$_GET['id1'];
@@ -18,6 +21,7 @@ if (isset($_GET['id1'])) {
 		$queryaccept .= "UPDATE appointment_history set app_DateTime = '$date' where app_id = '$app_id';";
 		$queryaccept .= "DELETE from appointment where app_id = '$app_id'";
 		mysqli_multi_query($conn, $queryaccept);
+		header( "refresh:0; url=dashboard.php" );
 
 }
 if (isset($_GET['id2'])) {
@@ -26,7 +30,8 @@ if (isset($_GET['id2'])) {
 		$queryaccept .= "INSERT into appointment_history (app_id, app_name, app_email, app_contact, app_date, app_time, app_purpose, app_remarks) SELECT app_id, app_name, app_email, app_contact, app_date, app_time, app_purpose, app_remarks from appointment where app_id = '$app_id';";
 		$queryaccept .= "UPDATE appointment_history set app_DateTime = '$date' where app_id = '$app_id';";
 		$queryaccept .= "DELETE from appointment where app_id = '$app_id'";
-			mysqli_multi_query($conn, $queryaccept);			
+			mysqli_multi_query($conn, $queryaccept);	
+			header( "refresh:0; url=dashboard.php" );		
 }
 if (isset($_GET['id3'])) {
 	$app_id=$_GET['id3'];
@@ -34,7 +39,8 @@ if (isset($_GET['id3'])) {
 		$queryaccept .= "INSERT into appointment_history (app_id, app_name, app_email, app_contact, app_date, app_time, app_purpose, app_remarks) SELECT app_id, app_name, app_email, app_contact, app_date, app_time, app_purpose, app_remarks from appointment where app_id = '$app_id';";
 		$queryaccept .= "UPDATE appointment_history set app_DateTime = '$date' where app_id = '$app_id';";
 		$queryaccept .= "DELETE from appointment where app_id = '$app_id'";
-			mysqli_multi_query($conn, $queryaccept);			
+			mysqli_multi_query($conn, $queryaccept);	
+			header( "refresh:0; url=dashboard.php" );		
 
 }
 ?>
