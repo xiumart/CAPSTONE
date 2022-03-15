@@ -1,3 +1,14 @@
+<?php
+error_reporting(0);
+include("../conn.php");
+$patt=$_GET['id'];
+if (isset($_GET['id'])) {
+	// code...
+
+$query = "UPDATE `patient_distancerx` SET `status`='Remove' WHERE `patient_no`='$patt'";
+	mysqli_query($conn, $query);
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,7 +45,7 @@
 
 	<!-- SIDEBAR -->
 	<section id="sidebar">
-		<a href="patient-record.php" class="brand">
+		<a href="#" class="brand">
 			<img src="images\logo.png" alt="" width="60px;">
 			<span class="text" style="text-shadow:0.5px 0px #000;">RNL Vision Care</span>
 		</a>
@@ -66,7 +77,7 @@
 			<li>
 				<a href="product.php">
 					<i class='bx bxs-shopping-bag-alt' ></i>
-					<span class="text">Product Inventory</span>
+					<span class="text">Product</span>
 				</a>
 			</li>
 			<li>
@@ -90,7 +101,7 @@
 		</ul>
 		<ul class="side-menu">
 			<li>
-				<a href="logout.php" class="logout">
+				<a href="#" class="logout">
 					<i class='bx bxs-log-out-circle' ></i>
 					<span class="text">Logout</span>
 				</a>
@@ -151,36 +162,102 @@
 						<i class='bx bx-search' ></i>
 						<i class='bx bx-filter' ></i>
 					</div>
+					<style type="text/css">
+							th{
+								cursor: pointer;
+							}
+}
+						</style>
 					<table class="table">
      <thead>
      	<tr>
-     	 <th>Name</th>
-     	 <th>Email</th>
-     	 <th>Contact No.</th>
-     	 <th>Address</th>
-		 <th>Age</th>
-		 <th>Action</th>
+     	<th class="th-sm">Patient Id</th>
+     	 <th class="th-sm">Name</th>
+     	 <th class="th-sm">Email</th>
+     	 <th class="th-sm">Contact No.</th>
+     	 <th class="th-sm">Address</th>
+		 <th class="th-sm">Age</th>
+		 <th class="th-sm">Action</th>
      	</tr>
-     </thead>
-     <tbody>
-     	  <tr>
-     	  	  <td data-label="Name">Marliardo Umbao</td>
-     	  	  <td data-label="Email">marl@gmail.com</td>
-     	  	  <td data-label="Contact">09481231233</td>
-     	  	  <td data-label="Address">Sauyo Rd., Quezon City</td>
-			  <td data-label="Age">18</td>
-			  <td data-label="Action"><a href="patient-view.php"><button class="btn-view">View</button></a><button class="btn-rem">Remove</button></td>
-     	  </tr>
-     </tbody>
-   </table>
-				</div>
 
-				
-				
-			</div>
-			
-			<div class="table-data">
-	
+     </thead>
+     <script type="text/javascript">
+							const getCellValue = (tr, idx) => tr.children[idx].innerText || tr.children[idx].textContent;
+
+const comparer = (idx, asc) => (a, b) => ((v1, v2) => 
+    v1 !== '' && v2 !== '' && !isNaN(v1) && !isNaN(v2) ? v1 - v2 : v1.toString().localeCompare(v2)
+    )(getCellValue(asc ? a : b, idx), getCellValue(asc ? b : a, idx));
+
+// do the work...
+document.querySelectorAll('th').forEach(th => th.addEventListener('click', (() => {
+    const table = th.closest('table');
+
+    Array.from(table.querySelectorAll('tr:nth-child(n+2)'))
+        .sort(comparer(Array.from(th.parentNode.children).indexOf(th), this.asc = !this.asc))
+        .forEach(tr => table.appendChild(tr) );
+})));
+						</script>
+     <tbody>
+     	<tr></tr>
+     	
+          	<?php
+          	error_reporting(0);
+     	$limit=25;
+        //$cat=$_POST['all'];
+        $page=isset($_GET['page']) ? $_GET['page']:1;
+        $start=($page-1)*$limit;
+     	$sql2 =$conn->query("SELECT count(patient_no) AS id FROM `patient_distancerx`");
+        $sql1 = "SELECT year(now())-year(`patient_bday`) AS age,`patient_no`,`patient_id`,`patient_name`,`patient_email`,`patient_contact`,`patient_address`  FROM `patient_distancerx` WHERE `status`='Walk-in' OR `status`='Appointment'  LIMIT $start, $limit ";
+        $result2 = $sql2->fetch_all(MYSQLI_ASSOC);
+                $total=$result2[0]['id'];
+                $pages=ceil($total/$limit);
+                $prev=$page-1;
+                $next=$page+1;
+     	  $result1 = $conn->query($sql1);  
+  			if($result1->num_rows > 0){
+  				while($row = $result1 -> fetch_assoc()){
+
+
+     	?>
+     
+     	  <tr>
+     	  	<td data-label="Patient Id"><?php echo $row['patient_id'];?></td>
+     	  	  <td data-label="Name"><?php echo $row['patient_name'];?></td>
+     	  	  <td data-label="Email"><?php echo $row['patient_email'];?></td>
+     	  	  <td data-label="Contact"><?php echo $row['patient_contact'];?></td>
+     	  	  <td data-label="Address"><?php echo $row['patient_address'];?></td>
+			  <td data-label="Age"><?php echo $row['age'];?></td>
+			  <td data-label="Action"><a href="patient-view.php?id=<?php echo $row['patient_no'];?>"><button class="btn-view">View</button></a><a href="?id=<?php echo $row['patient_no'];?>"><button class="btn-rem" >Remove</button></a></td>
+
+     	  </tr>
+     
+      	 <?php
+     	}}
+
+     	?>
+     	
+     	<?php
+$id=$_GET['id'];
+
+$sql2 = "SELECT * FROM `patient_distancerx` WHERE `patient_no`='$id'";
+ $result2 = $conn->query($sql2);  
+  			if($result2->num_rows > 0){
+  				while($row = $result2 -> fetch_assoc()){
+  					$name=$row['patient_name'];
+  					$pat_id=$row['patient_id'];
+  				}}
+  					?>
+  		<form method="post">
+     	<input type="text" name="idd" value="<?php echo $pat_id;?>" hidden>
+    </form>
+     	</tbody>
+   </table>
+   <a class="page" id="pre" href="patient-record.php?page=<?=$prev; ?>">< Prev</a>
+    	  <?php  for($i=1; $i <=$pages ; $i++): ?>
+    <a class="page" href="patient-record.php?page=<?=$i; ?>"><?=$i; ?></a>
+                      <?php endfor; ?>
+    <a class="page" id="pnext" href="patient-record.php?page=<?=$next; ?>">Next ></a>
+				</div>
 
 				
 				

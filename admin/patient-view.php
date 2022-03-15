@@ -66,7 +66,7 @@
 			<li>
 				<a href="product.php">
 					<i class='bx bxs-shopping-bag-alt' ></i>
-					<span class="text">Product Inventory</span>
+					<span class="text">Product</span>
 				</a>
 			</li>
 			<li>
@@ -88,16 +88,14 @@
 				</a>
 			</li>
 		</ul>
-
 		<ul class="side-menu">
 			<li>
-				<a href="logout.php" class="logout">
+				<a href="#" class="logout">
 					<i class='bx bxs-log-out-circle' ></i>
 					<span class="text">Logout</span>
 				</a>
 			</li>
 		</ul>
-
 	</section>
 	<!-- SIDEBAR -->
 
@@ -134,40 +132,77 @@
 					<h1>View Patient Record</h1>
 					<ul class="breadcrumb">
 						<li>
-							<a class="active" href="patient-record.php">Back</a>
+							<a href="patient-record.php">View Patient Record</a>
 						</li>
 						<li><i class='bx bx-chevron-right' ></i></li>
 						<li>
-							<a href="patient-record.php">View Patient Record</a>
+							<a class="active" href="patient-record.php">Back</a>
 						</li>
 					</ul>
 				</div>
 			
 			</div>
+<?php
+error_reporting(0);
+include("../conn.php");
+$id=$_GET['id'];
+$rm=$_GET['rm'];
+if (isset($_GET['id'])) {
+	// code...
+
+$query = "UPDATE `patient_history` SET `status`='Remove' WHERE `patient_no`='$rm'";
+	mysqli_query($conn, $query);
+}
+$sql1 = "SELECT * FROM `patient_distancerx` WHERE `patient_no`='$id'";
+ $result1 = $conn->query($sql1);  
+  			if($result1->num_rows > 0){
+  				while($row = $result1 -> fetch_assoc()){
+  					$name=$row['patient_name'];
+  					$pat_id=$row['patient_id'];
+  				}}
+  					?>
 
 			<div class="table-data">
 				<div class="order">
 					<div class="head">
-						<h3>MARLIARDO UMBAO</h3><br>
-						<a href="patient-update.php"><button class="btn-addpt" style="cursor: pointer;"> Update Basic Info.</button></a>
+						<h3 style="text-transform: uppercase;"><?php echo $name;?></h3><br>
+						<form method="post">
+						<input type="text" name="patid" value="<?php echo $pat_id;?>" hidden>
+						</form>
+						<a href="patient-update.php?id=<?php echo $id;?>"><button class="btn-addpt" style="cursor: pointer;"> Update Basic Info.</button></a>
 					</div>
 					<h4>Check-up History</h4>
 					<table class="table">
      <thead>
      	<tr>
      	 <th>Check-up id</th>
-     	 <th>Date and Time</th>
+     	 <th>Date</th>
      	 <th>Check-up by</th>
 		 <th>Action</th>
      	</tr>
      </thead>
      <tbody>
+     	<?php
+$sql1 = "SELECT * FROM `patient_history` WHERE `patient_id`='$pat_id' AND `status` LIKE 'History'";
+ $result1 = $conn->query($sql1);  
+  			if($result1->num_rows > 0){
+  				while($row = $result1 -> fetch_assoc()){
+  					$chk_id=$row['patient_no'];
+  					$date=$row['date_up'];
+  					$doctor=$row['doctor'];
+     	?>
      	  <tr>
-     	  	  <td data-label="Checkid"></td>
-     	  	  <td data-label="DateTime"></td>
-     	  	  <td data-label="Checkby"></td>
-			  <td data-label="Action"><a href="patient-updcheckk.php"><button class="btn-view">View</button></a><button class="btn-rem">Remove</button></td>
+     	  	  <td data-label="Checkid"><?php echo $chk_id;?></td>
+     	  	  <td data-label="Date"><?php echo $date;?></td>
+     	  	  <td data-label="Checkby"><?php echo $doctor;?></td>
+			  <td data-label="Action"><a href="patient_viewing.php?user=<?php echo $_GET['id'];?>&id=<?php echo $chk_id;?>"><button class="btn-view">View</button></a><a href="patient-view.php?id=<?php echo $_GET['id']; ?>&rm=<?php echo $chk_id; ?>"><button class="btn-rem">Remove</button></a></td>
+
      	  </tr>
+     	  <?php
+
+  				}}
+
+?>
      </tbody>
    </table>
 				</div>
