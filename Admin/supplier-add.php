@@ -249,7 +249,7 @@
 							<label for="contact">Contact Number</label>
 						</div>
 						<div class="col-75">
-							<input type="tel" id="contact" name="contact" placeholder="Enter contact number" required="">
+							<input type="tel" id="contact" name="contact" pattern="[0-9]{4}[0-9]{3}[0-9]{4}" placeholder="Enter contact number" required="">
 						</div>
 						</div>
 						<div class="row">

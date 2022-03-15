@@ -1,3 +1,43 @@
+<?php
+
+
+
+include("../conn.php");
+
+
+$eid= $_GET['supp_id'];
+
+if (isset($_REQUEST['btnsubmit'])) {
+		//something was posted
+		$cname = $_REQUEST['cname'];
+		$conperson = $_REQUEST['conperson'];
+		$desc = $_REQUEST['description'];
+		$email = $_REQUEST['email'];
+		$contact = $_REQUEST['contact'];
+
+
+    
+			$sql = mysqli_query($conn,"UPDATE supplier SET 
+				`supp_cname`='$cname ' , 
+				`supp_contactperson`='$conperson ' , 
+				`supp_desc`='$desc' , 
+				`supp_email`='$email ',  
+				`supp_contact`='$contact' 
+				WHERE `supp_id` = '$eid'");
+        
+			if($sql){
+				echo "<script>alert('You have successfully updated the record.');</script>";
+				echo "<script>document.location='supplier.php';</script>";
+				
+			}
+			else{
+				echo "<script>alert('something went wrong!!!')</script>";
+			}
+
+	
+		}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -223,30 +263,28 @@
 <div class="table-data">
 			<div class="order">
 			
-				<form action="#">
+				<form action="" method="post">
+				<?php 
+			  		$eid= $_GET['supp_id'];
+			  		$sql=mysqli_query($conn, "SELECT * from supplier WHERE supp_id='$eid'");
+			  		while($row=mysqli_fetch_array($sql)){
+			  	?>
 				<div class="row">
-						<div class="row">
-						<div class="col-25">
-							<label for="conperson">Contact Person</label>
-						</div>
-						<div class="col-75">
-							<input type="text" id="conperson" name="conperson" placeholder="Enter contact person" required="">
-						</div>
-						</div>
-						<div class="row">
-						<div class="col-25">
-							<label for="fname">First Name</label>
-						</div>
-						<div class="col-75">
-							<input type="text" id="fname" name="fname" placeholder="Enter first name" required="">
-						</div>
-						</div>
 						<div class="row">
 						<div class="col-25">
 							<label for="cname">Company Name</label>
 						</div>
 						<div class="col-75">
-							<input type="text" id="cname" name="cname" placeholder="Enter company name" required="">
+							<input type="text" id="cname" name="cname" placeholder="Enter last name" required="" value= "<?php echo $row['supp_id'];?>"hidden>
+							<input type="text" id="cname" name="cname" placeholder="Enter company name" required="" value= "<?php echo $row['supp_cname'];?>">
+						</div>
+						</div>
+						<div class="row">
+						<div class="col-25">
+							<label for="conperson">Contact Person</label>
+						</div>
+						<div class="col-75">
+							<input type="text" id="conperson" name="conperson" placeholder="Enter contact person" required="" value= "<?php echo $row['supp_contactperson'];?>">
 						</div>
 						</div>
 						<div class="row">
@@ -254,7 +292,7 @@
 							<label for="contact">Contact Number</label>
 						</div>
 						<div class="col-75">
-							<input type="tel" id="contact" name="contact" placeholder="Enter contact number" required="">
+							<input type="tel" id="contact" name="contact" pattern="[0-9]{4}[0-9]{3}[0-9]{4}" placeholder="Enter contact number" required="" value= "<?php echo $row['supp_contact'];?>">
 						</div>
 						</div>
 						<div class="row">
@@ -262,7 +300,7 @@
 							<label for="email">Email</label>
 						</div>
 						<div class="col-75">
-							<input type="email" id="email" name="email" placeholder="Enter email" required="">
+							<input type="email" id="email" name="email" placeholder="Enter email" required="" value= "<?php echo $row['supp_email'];?>">
 						</div>
 						</div>
 						<div class="row">
@@ -270,16 +308,19 @@
 							<label for="description">Description</label>
 						</div>
 						<div class="col-75">
-							<input type="text" id="description" name="description" placeholder="Enter description" required="">
+							<input type="text" id="description" name="description" placeholder="Enter description" required="" value= "<?php echo $row['supp_desc'];?>">
 						</div>
 						</div>
 						<center>
 						<div class="row">
-						<input type="submit" value="UPDATE"></center>
+						<input type="submit" name="btnsubmit" value="UPDATE"></center>
 						</div>
 						</form>
 			</div>
 	    </div>
+		<?php
+              }
+            ?>
 			<div class="table-data">
 			</div>
 		</main>

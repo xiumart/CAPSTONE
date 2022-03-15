@@ -167,7 +167,6 @@ if (isset($_GET['id'])) {
 			<table class="table">
      <thead>
       <tr>
-    <tr>
       <th>Lastname</th>
       <th>Firstname</th>
       <th>Middlename</th>
@@ -180,54 +179,46 @@ if (isset($_GET['id'])) {
      </thead>
      <tbody>
 	 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "capstone";
+       $conn = mysqli_connect("localhost", "root", "","capstone");
+       if ($conn-> connect_error) { 
+        die("Connection Failed.". $conn-> connection_error);
+       }
+	$limit=5;
+	// $cat=$_POST['all'];
+	$page=isset($_GET['page']) ? $_GET['page']:1;
+	$start=($page-1)*$limit;
+	$sql2 =$conn->query("SELECT count(users_id) AS id FROM `users_account`");
+    $sql = "SELECT * from users_account LIMIT $start, $limit";
+	$result2 = $sql2->fetch_all(MYSQLI_ASSOC);
+            $total=$result2[0]['id'];
+            $pages=ceil($total/$limit);
+            $prev=$page-1;
+            $next=$page+1;
+    $result = $conn-> query($sql);
 
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-// Check connection
-if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
-}
-$limit=5;
-$cat=$_POST['all'];
-$page=isset($_GET['page']) ? $_GET['page']:1;
-$start=($page-1)*$limit;
-$sql2 =$conn->query("SELECT count(users_id) AS id FROM `users_account`");
-$sql = "SELECT * FROM users_account LIMIT $start, $limit ";
-$result2 = $sql2->fetch_all(MYSQLI_ASSOC);
-                $total=$result2[0]['id'];
-                $pages=ceil($total/$limit);
-                $prev=$page-1;
-                $next=$page+1;
-$result = $conn->query($sql);
-
-if ($result->num_rows > 0) {
-//   echo "<table><tr><th>ID</th><th>Name</th></tr>";
-  // output data of each row
-  while($row = $result->fetch_assoc()) {
-    echo 
-	"<tr><td>".$row["users_lastname"].
-	"</td><td>".$row["users_firstname"].
-	"</td><td>".$row["users_middlename"].
-	"</td><td>".$row["users_username"].
-	"</td><td>".$row["users_contact"].
-	"</td><td>".$row["users_email"].
-	"</td><td>".$row["users_roles"].
-	"</td><td>
-	<form method='post' action='user-update.php?users_id=".$row["users_id"]."'>"?>
-	<button class="btn-upd" style="cursor: pointer;">UPDATE</button></form>
-  	<?php echo "<form method='post' action='?id=".$row["users_id"]."'>" ?>
-	  <button class="btn-rem" style="cursor: pointer;" onclick="return confirm('Are you sure?')">DELETE</button>
-  </form><?php "</tr>";
-  }
-  echo "</table>";
-} else {
-  echo "0 results";
-}
-$conn->close();
+      if ($result-> num_rows > 0) {
+        while ($row = $result-> fetch_assoc()){
+         echo "<tr><td>". $row["users_lastname"]. 
+		 "</td><td>". $row["users_firstname"]. 
+		 "</td><td>". $row["users_middlename"]. 
+		 "</td><td>". $row["users_username"].
+		 "</td><td>". $row["users_contact"].
+		 "</td><td>". $row["users_email"].
+		 "</td><td>". $row["users_roles"].
+		 "</td><td>
+		 <form method='post' action='user-update.php?users_id=".$row["users_id"]."'>"?>
+		 <button class="btn-upd" style="cursor: pointer;">Update</button></form></td>
+		   <td><?php echo "<form method='post' action='?id=".$row["users_id"]."'>" ?>
+		   <button class="btn-rem" style="cursor: pointer;" onclick="return confirm('Are you sure?')">Remove</button>
+	   </form></td><?php "</tr>";
+      }
+      echo "</table>";
+      }
+      else {
+        echo "0 result";
+      }
+      $conn-> close();
+      
 ?>
      </tbody>
 

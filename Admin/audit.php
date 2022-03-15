@@ -13,17 +13,31 @@
 </head>
 <style>
 	button {
-		background-color:#00c2cb;
-		float:right;
-		font-size:15px;
-		border:none;
-		color: white;
-		padding: 10px;
-		cursor:pointer;
-		border-radius:10px;
+		background-color: #00c2cb;
+		padding: 12px;
+		border: none;
+		margin: 3px;
+		border-radius: 10px;
+		cursor: pointer;
 	}
 
-	.btn-print:hover { background-color: #00a2a3;}
+	.btn-upd:hover { background-color: #4CAF50;}
+	.btn-rem:hover { background-color: red;}
+	.btn-print:hover { background-color:#00b2b3;}
+	.btn-addp:hover { background-color: #e5eaf0}
+
+	.btn-print {
+		margin-top: 20px;
+		float: right;
+		width: 15%;
+	}
+	.page{
+		background-color: #00c2cb;
+		padding: 12px;
+		border: none;
+		border-radius: 10%;
+	}
+	.page:hover { background-color:#00b2b3;}
 </style>
 <body>
 
@@ -138,15 +152,14 @@
 				</div>
 			
 			</div>
-
+			<!-- <div class="head">
+			<a href="javascript:Clickheretoprint()">
+				<button class="btn-print"><i class='bx bxs-printer' ></i> Print Audit Logs</button></a><br>
+					</div> -->
 			
 			<div class="table-data">
 			<div class="order">
-					<div class="head">
-					<a href="d-appointment-history.php"><button class="btn-print"><i class='bx bxs-printer' ></i> Print Audit Logs</button></a>
-						<i class='bx bx-search' ></i>
-						<i class='bx bx-filter' ></i>
-					</div>
+					
 					<table class="table">
      <thead>
      	<tr>
@@ -162,16 +175,26 @@
        if ($conn-> connect_error) { 
         die("Connection Failed.". $conn-> connection_error);
        }
-       $sql = "SELECT * from users_logs";
-      $result = $conn-> query($sql);
+	$limit=5;
+	// $cat=$_POST['all'];
+	$page=isset($_GET['page']) ? $_GET['page']:1;
+	$start=($page-1)*$limit;
+	$sql2 =$conn->query("SELECT count(logs_id) AS id FROM `users_logs`");
+    $sql = "SELECT * from users_logs LIMIT $start, $limit";
+	$result2 = $sql2->fetch_all(MYSQLI_ASSOC);
+            $total=$result2[0]['id'];
+            $pages=ceil($total/$limit);
+            $prev=$page-1;
+            $next=$page+1;
+    $result = $conn-> query($sql);
 
       if ($result-> num_rows > 0) {
         while ($row = $result-> fetch_assoc()){
-         echo "</tr><td>". $row["logs_username"]. 
+         echo "<tr><td>". $row["logs_username"]. 
 		 "</td><td>". $row["logs_activity"]. 
 		 "</td><td>". $row["logs_datentime"]. 
 		 "</td><td>". $row["logs_roles"].
-		 "</td><tr>";
+		 "</td></tr>";
       }
       echo "</table>";
       }
@@ -185,27 +208,26 @@
      </tbody>
 	 
    </table>
-
+   <br>
+  	<?php
+  	if ($_GET['page']==1) {
+  		
+  	}
+  	elseif ($_GET['page']==1) {
+  		# code...
+  	}
+  	?>
+   <a class="page" id="pre" href="audit.php?page=<?=$prev; ?>">< Prev</a>
+    	  <?php  for($i=1; $i <=$pages ; $i++): ?>
+    <a class="page" href="audit.php?page=<?=$i; ?>"><?=$i; ?></a>
+                      <?php endfor; ?>
+    <a class="page" id="pnext" href="audit.php?page=<?=$next; ?>">Next ></a>
 				</div>
-
-				
-				
-			</div>
-			
+				</div>
+				</div>
 			<div class="table-data">
 
 				</div>
-
-				
-				
-			</div>
-			
-			<div class="table-data">
-	
-
-				
-				
-			</div>
 		</main>
 		<!-- MAIN -->
 	</section>

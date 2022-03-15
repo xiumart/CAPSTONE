@@ -1,3 +1,12 @@
+<?php
+error_reporting(0);
+include("../conn.php");
+if (isset($_GET['id'])) {
+	$supp_id=$_GET['id'];
+	$query = "DELETE FROM `supplier` WHERE supp_id='$supp_id'";
+			mysqli_query($conn, $query);
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,7 +21,7 @@
 	<title>RNL Vision Care | Admin</title>
 </head>
 <style>
-	button {
+		button {
 		background-color: #00c2cb;
 		padding: 12px;
 		border: none;
@@ -22,14 +31,21 @@
 
 	.btn-upd:hover { background-color: #4CAF50;}
 	.btn-rem:hover { background-color: red;}
-	.btn-addpt:hover { background-color: #00a2a3;}
-	.btn-print:hover {background-color: #00a2a3;}
+	.btn-print:hover { background-color:#00a2a3;}
+	.btn-addpt:hover { background-color: #00a2a3}
 	.btn-addpt {float:right; margin-bottom: 20px;}
 	.btn-print {
 		margin-top: 20px;
 		float: right;
 		width: 10%;
 	}
+	.page{
+		background-color: #00c2cb;
+		padding: 12px;
+		border: none;
+		border-radius: 10%;
+	}
+	.page:hover { background-color:#00b2b3;}
 </style>
 <body>
 
@@ -144,7 +160,11 @@
 				</div>
 			
 			</div>
-
+<style>
+	#content main .table-data .order table th {
+		text-align: center;
+	}
+	</style>
 			<a href="supplier-add.php"><button class="btn-addpt" style="cursor: pointer;"> + Add Supplier</button></a>
 			<div class="table-data">
 				<div class="order">
@@ -152,7 +172,7 @@
      <thead>
      	<tr>
 		 
-     	 <th>Company name</th>
+     	 <th>Company Name</th>
 		 <th>Contact Person</th>
      	 <th>Contact No.</th>
      	 <th>Email</th>
@@ -162,58 +182,66 @@
      </thead>
      <tbody>
 	 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "capstone";
+       $conn = mysqli_connect("localhost", "root", "","capstone");
+       if ($conn-> connect_error) { 
+        die("Connection Failed.". $conn-> connection_error);
+       }
+	$limit=5;
+	// $cat=$_POST['all'];
+	$page=isset($_GET['page']) ? $_GET['page']:1;
+	$start=($page-1)*$limit;
+	$sql2 =$conn->query("SELECT count(supp_id) AS id FROM `supplier`");
+    $sql = "SELECT * from supplier LIMIT $start, $limit";
+	$result2 = $sql2->fetch_all(MYSQLI_ASSOC);
+            $total=$result2[0]['id'];
+            $pages=ceil($total/$limit);
+            $prev=$page-1;
+            $next=$page+1;
+    $result = $conn-> query($sql);
 
-// Create connection
-$mysqli = new mysqli($servername, $username, $password, $dbname);
-// Check connection
-if ($mysqli->connect_error) {
-  die("Connection failed: " . $mysqli->connect_error);
-}
-$result = mysqli_query($mysqli, "SELECT * FROM supplier ORDER by supplier_id")
-
+      if ($result-> num_rows > 0) {
+        while ($row = $result-> fetch_assoc()){
+         echo "<tr><td>". $row["supp_cname"]. 
+		 "</td><td>". $row["supp_contactperson"]. 
+		 "</td><td>". $row["supp_contact"]. 
+		 "</td><td>". $row["supp_email"].
+		 "</td><td>". $row["supp_desc"].
+		 "</td><td>
+		 <form method='post' action='supplier-update.php?supp_id=".$row["supp_id"]."'>"?>
+		 <button class="btn-upd" style="cursor: pointer;">Update</button></form></td>
+		   <td><?php echo "<form method='post' action='?id=".$row["supp_id"]."'>" ?>
+		   <button class="btn-rem" style="cursor: pointer;" onclick="return confirm('Are you sure?')">Remove</button>
+	   </form></td><?php "</tr>";
+      }
+      echo "</table>";
+      }
+      else {
+        echo "0 result";
+      }
+      $conn-> close();
+      
 ?>
-     	   
-		   	 <?php
-				while($res = mysqli_fetch_array($result)){
-
-				
-				
-				echo "<tr>";
-				echo "<td>".$res['cname']."</td>";
-				echo "<td>".$res['lname']."</td>";
-				echo "<td>".$res['contact']."</td>";
-				echo "<td>".$res['email']."</td>";
-				echo "<td>".$res['description']."</td>";
-				echo "<td><a href=\"supplier-update.php?supplier_id=$res[supplier_id]\"><button class="btn-upd" style="cursor: pointer;">Update</button></a>
-				<button class="btn-rem" style="cursor: pointer;">Remove</button></td>";
-				}
-				?>
-				<!--
-     	  	  <td data-label="Company Name"></td>
-			  <td data-label="Contact Person"></td>
-			  <td data-label="Contact No."></td>
-			  <td data-label="Email"></td>
-			  <td data-label="Description"></td>
-			  
-			  <td data-label="Action">
-			  <a href="supplier-update.php"><button class="btn-upd" style="cursor: pointer;">Update</button></a>
-			<button class="btn-rem" style="cursor: pointer;">Remove</button></td>
-			-->
-     	  
-
-     	  
+	
      </tbody>
+	 
    </table>
-   <a href="#"><button class="btn-print" style="cursor: pointer;"><i class='bx bxs-printer' ></i> Print </button></a>
+   <br>
+  	<?php
+  	if ($_GET['page']==1) {
+  		
+  	}
+  	elseif ($_GET['page']==1) {
+  		# code...
+  	}
+  	?>
+   <a class="page" id="pre" href="supplier.php?page=<?=$prev; ?>">< Prev</a>
+    	  <?php  for($i=1; $i <=$pages ; $i++): ?>
+    <a class="page" href="supplier.php?page=<?=$i; ?>"><?=$i; ?></a>
+                      <?php endfor; ?>
+    <a class="page" id="pnext" href="supplier.php?page=<?=$next; ?>">Next ></a>
 				</div>
-
-				
-				
-			</div>
+				</div>
+				</div>
 			
 			<div class="table-data">
 	

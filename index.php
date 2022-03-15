@@ -266,7 +266,7 @@ error_reporting(0);
           <p class="my-2">Phone : <a href="tel:(+63)998 218 1412">(+63)998 218 1412</a></p>
           <p>Email : <a href="mailto:rnlvisioncare@gmail.com">rnlvisioncare@gmail.com</a></p>
           <div class="main-social-footer-29 mt-4">
-            <a href="#facebook" class="facebook"><span class="fa fa-facebook"></span></a>
+            <a href="https://www.facebook.com/RNL-Vision-Care-Center-Optical-Clinic-110677344428412" class="facebook"><span class="fa fa-facebook"></span></a>
           </div>
         </div>
         <div class="col-lg-3 col-md-6 col-sm-5 col-6 footer-list-29 footer-2 mt-sm-0 mt-5">

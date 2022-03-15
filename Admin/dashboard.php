@@ -227,7 +227,7 @@ if (isset($_GET['id3'])) {
 			</ul>
 
 			<div><br>
-				<a href="d-appointment-history.php"><button class="btn-apph">Appointment History</button></a>
+				<a href="d-appointment-history.php"><button class="btn-apph" style="cursor: pointer;">Appointment History</button></a>
 			</div><br>
 			<div class="table-data">
 				<div class="order">
@@ -267,7 +267,8 @@ if (isset($_GET['id3'])) {
      	  	  <td data-label="Date"><?php echo $row['app_date'];?></td>
 			  <td data-label="Time"><?php echo $row['app_time'];?></td>
 			  <td data-label="Purpose"><?php echo $row['app_purpose'];?></td>
-			  <td data-label="Action"><a href="?id3=<?php echo $row['app_id'];?>"><button class="btn-rem">Denied</button></a><a href="?id=<?php echo $row['app_id'];?>"><button class="btn-upd">Accept</button></a></td>
+			  <td data-label="Action"><a href="?id3=<?php echo $row['app_id'];?>"><button class="btn-rem" style="cursor: pointer;">Denied</button></a>
+			  <a href="?id=<?php echo $row['app_id'];?>"><button class="btn-upd" style="cursor: pointer;">Accept</button></a></td>
      	  </tr>
 
      	<?php  } ?>
@@ -302,15 +303,10 @@ if (isset($_GET['id3'])) {
      <tbody>
 
      	  <tr>
-
-
      	  	  <?php 
 
      	  		$query5 = mysqli_query($conn, "Select * from appointment where app_remarks = 'ONGOING'");
      	  		while($row1 = $query5 -> fetch_assoc()){
-
-
-
 
      	  ?>
      	  	  <td data-label="Name"><?php echo $row1['app_name'];?></td>
@@ -319,7 +315,8 @@ if (isset($_GET['id3'])) {
      	  	  <td data-label="Date"><?php echo $row1['app_date'];?></td>
 			  <td data-label="Time"><?php echo $row1['app_time'];?></td>
 			  <td data-label="Purpose"><?php echo $row1['app_purpose'];?></td>
-			  <td data-label="Action"><a href="?id2=<?php echo $row1['app_id'];?>"><button class="btn-rem">Cancel</button><a href="?id1=<?php echo $row1['app_id'];?>"><button class="btn-upd">Finish</button></td>
+			  <td data-label="Action"><a href="?id2=<?php echo $row1['app_id'];?>"><button class="btn-rem" style="cursor: pointer;">Cancel</button>
+			  <a href="?id1=<?php echo $row1['app_id'];?>"><button class="btn-upd" style="cursor: pointer;">Finish</button></td>
 
 
      	  </tr>

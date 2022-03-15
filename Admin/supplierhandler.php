@@ -20,7 +20,7 @@ $email = $_POST['email'];
 $description = $_POST['description'];
        
 
-        $sql = "insert into supplier (cname,lname,contact,email,description) values ('$cname','$lname','$contact','$email','$description')";
+        $sql = "insert into supplier (supp_cname, supp_contactperson, supp_contact, supp_email, supp_desc) values ('$cname','$lname','$contact','$email','$description')";
           
         if(mysqli_query($con, $sql)){
             echo '<script language="javascript">';
