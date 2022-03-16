@@ -153,9 +153,9 @@ error_reporting(0);
           <div class="row">
             <div id="prd-header" style="margin-bottom:50px;">
               <label>Price:</label>
-              <select name="" id="price-sort">
-                <option value="">Lowest to Highest</option>
-                <option value="">Highest to Lowest</option>
+              <select name='sort' id="price-sort">
+                <option value='ASC'>Lowest to Highest</option>
+                <option value='DESC'>Highest to Lowest</option>
               </select>
 
               <label>Sort by:</label>
@@ -165,6 +165,7 @@ error_reporting(0);
                 <option value="">Newest</option>
               </select>
             </div>
+            
               <!--prod-->
               <?php
               $limit=9;
@@ -187,6 +188,23 @@ error_reporting(0);
                  $sql2 =$conn->query("SELECT count(pro_id) AS id FROM `product` WHERE `category`='$cat'");
                    $sql1 = "SELECT * FROM `product`WHERE `category`='$cat' LIMIT $limit ";
                }
+               elseif ($_POST['all']=='Eye wear') {
+                $sql2 =$conn->query("SELECT count(pro_id) AS id FROM `product` WHERE `category`='$cat'");
+                  $sql1 = "SELECT * FROM `product`WHERE `category`='$cat' LIMIT $limit ";
+              }
+              elseif ($_POST['all']=='Eyewear for kids') {
+                $sql2 =$conn->query("SELECT count(pro_id) AS id FROM `product` WHERE `category`='$cat'");
+                  $sql1 = "SELECT * FROM `product`WHERE `category`='$cat' LIMIT $limit ";
+              }
+              elseif ($_POST['all']=='Sun Wear') {
+                $sql2 =$conn->query("SELECT count(pro_id) AS id FROM `product` WHERE `category`='$cat'");
+                  $sql1 = "SELECT * FROM `product`WHERE `category`='$cat' LIMIT $limit ";
+              }
+              elseif ($_POST['all']=='Seen Wear') {
+                $sql2 =$conn->query("SELECT count(pro_id) AS id FROM `product` WHERE `category`='$cat'");
+                  $sql1 = "SELECT * FROM `product`WHERE `category`='$cat' LIMIT $limit ";
+              }
+              
                else{
                 $sql2 =$conn->query("SELECT count(pro_id) AS id FROM `product`");
                     $sql1 = "SELECT * FROM `product` LIMIT $start, $limit ";
