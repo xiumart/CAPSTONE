@@ -342,7 +342,7 @@ if($picture_type=="image/jpeg" || $picture_type=="image/jpg" || $picture_type=="
 							border-radius: 4px;
 							" >
 						</div>
-						<img src="#" id="output" alt="" style="width: 30%; height: 30%">
+						<img src="" id="output" alt="" style="width: 30%; height: 30%">
 							<!--Image Viewer-->
 								<script>
 									var loadFile = function(event) {

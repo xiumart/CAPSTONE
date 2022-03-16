@@ -110,7 +110,7 @@ error_reporting(0);
           <div>
             <aside class="side-area product-side side-shadow mt-5">
               <div class="side-title">
-                <h4>Product Categories</h4>
+                <h4>Product Categories</h4><br>
 
               </div>
               <div class="side-content">
@@ -131,6 +131,18 @@ error_reporting(0);
                   <li>
                     <input type="submit" name="all" value="Accessories">
                   </li>
+                  <li>
+                    <input type="submit" name="all" value="Eye wear">
+                  </li>
+                  <li>
+                    <input type="submit" name="all" value="Eyewear for kids">
+                  </li>
+                  <li>
+                    <input type="submit" name="all" value="Sun Wear">
+                  </li>
+                  <li>
+                    <input type="submit" name="all" value="Seen Wear">
+                  </li>
                 </ul>
                 </form>
               </div>
@@ -139,6 +151,20 @@ error_reporting(0);
         </div>
         <div class="col-lg-9">
           <div class="row">
+            <div id="prd-header" style="margin-bottom:50px;">
+              <label>Price:</label>
+              <select name="" id="price-sort">
+                <option value="">Lowest to Highest</option>
+                <option value="">Highest to Lowest</option>
+              </select>
+
+              <label>Sort by:</label>
+              <select name="" id="sort-by">
+                <option value="">Default</option>
+                <option value="">Best Selling</option>
+                <option value="">Newest</option>
+              </select>
+            </div>
               <!--prod-->
               <?php
               $limit=9;
@@ -182,9 +208,9 @@ error_reporting(0);
             <div class="col-lg-4 col-sm-6">
               <div class="product-cate">
                 <div>
-                  <img src="admin/images/product_img/<?php echo $row['image'];?>" alt="<?php echo $row['image'];?>" style="width: 100%; height: 100%;" >
+                  <img src="admin/images/product_img/<?php echo $row['image'];?>" alt="<?php echo $row['image'];?>" style="width: 200px; height: 200px;" >
                   <div class="product-des">
-                    <h5><?php echo $row['brand'];?>&nbsp<?php echo $row['model'];?>&nbsp<?php echo $row['category'];?></h5>
+                    <h5><?php echo $row['brand'];?><br><?php echo $row['model'];?>&nbsp<?php echo $row['category'];?></h5>
                     <p>₱<?php echo $row['sellingprice'];?>.00</p>
                   </div>
                 </div>
@@ -261,9 +287,6 @@ error_reporting(0);
           <p>Email : <a href="mailto:rnlvisioncare@gmail.com">rnlvisioncare@gmail.com</a></p>
           <div class="main-social-footer-29 mt-4">
             <a href="#facebook" class="facebook"><span class="fa fa-facebook"></span></a>
-            <a href="#twitter" class="twitter"><span class="fa fa-twitter"></span></a>
-            <a href="#instagram" class="instagram"><span class="fa fa-instagram"></span></a>
-            <a href="#linkedin" class="linkedin"><span class="fa fa-linkedin"></span></a>
           </div>
         </div>
         <div class="col-lg-3 col-md-6 col-sm-5 col-6 footer-list-29 footer-2 mt-sm-0 mt-5">
@@ -272,7 +295,7 @@ error_reporting(0);
             <h6 class="footer-title-29">RNL Vision Care</h6>
             <li><a href="about.php">About company</a></li>
             <li><a href="product.php">Product</a></li>
-            <li><a href="contact.php">Get in touch</a></li>
+            <li><a href="contact.php">Contact Us</a></li>
           </ul>
         </div>
         

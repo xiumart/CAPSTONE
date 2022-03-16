@@ -12329,3 +12329,40 @@ span.plus {
 /* /contact1 */
 
 /*# sourceMappingURL=style-starter.css.map */
+
+#prd-header {
+  background-color: #00c2cb;
+  width: 100%;
+  padding: 2px;
+  vertical-align: middle;
+}
+
+
+label, select {
+  float: left;
+  margin: 10px;
+  color: #000;
+  font-size: 15px;
+}
+
+select {
+  border: 1px solid;
+  border-radius: 5px;
+  padding: 2px;
+  background-color: transparent;
+}
+
+select:hover {
+  color: #121725;
+}
+
+input[type="submit"] {
+  background-color: transparent;
+  border: none;
+  margin: 3px;
+  color: #fff
+}
+
+input[type="submit"]:hover {
+  color: #00c2cb;
+}

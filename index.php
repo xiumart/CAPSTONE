@@ -110,6 +110,7 @@
             <h5 class="title-small text-center mb-1">See our product</h5>
             <h3 class="title-big text-center mb-sm-5 mb-4">Featured <span>Product</span></h3>
             <div class="row">
+              
 <?php
 include "conn.php";
 error_reporting(0);
@@ -124,7 +125,7 @@ error_reporting(0);
                     <div class="card">
                         <div class="card-header p-0 position-relative">
                             <a href="#course-single" class="zoom d-block">
-                              <img src="admin/images/product_img/<?php echo $row['image'];?>" alt="<?php echo $row['image'];?>" class="card-img-bottom d-block" >
+                              <img src="admin/images/product_img/<?php echo $row['image'];?>" alt="<?php echo $row['image'];?>" class="card-img-bottom d-block" style="width:100%; height:300px;" >
                               
                             </a>
                            

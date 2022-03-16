@@ -206,7 +206,7 @@ if (isset($_POST['signup']))
 
   $result = mysqli_query($conn, $query_signup);
 
-  $query_signup1 = "INSERT INTO client_user_info (client_id, client_contact,client_email) VALUES ('$client_id','$contact','$email')" ;
+  $query_signup1 = "INSERT INTO client_user_info (client_id, client_contact,client_email) VALUES ('$client_id','$contactno','$email')" ;
 
   $result1 = mysqli_query($conn, $query_signup1);
 

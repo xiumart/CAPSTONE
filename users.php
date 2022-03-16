@@ -89,14 +89,14 @@ session_start();
 
 </style>
           <div class="admin flex">
-            <img src="assets\images\a1.jpg" alt="">
+  
             <!-- <div class="text flex"> -->
             <div class="dropdown">
   <button class="dropbtn" style="background-color: #01969e;">
     <?php 
 include('conn.php');
 if($_SESSION["login_user"]) {?>
-<label style="cursor:pointer;">Hello, <?php echo $_SESSION['login_user'];  ?>&nbsp;</label></button>
+<label style="cursor:pointer; text-transform:uppercase;">Hello, <?php echo $_SESSION['login_user']; ?> !</label></button>
   <div class="dropdown-content">
     <a href="users-profile.php">Edit Profile</a>
     <a href="users-changepassword.php">Change Password</a>
@@ -138,7 +138,7 @@ $user=$_SESSION['login_user'];
 
             </ul>
           </nav>
-          <label class="fa fa-bars" onclick="menutoggle()"></label>
+          <label class="fa fa-bars" onclick="menutoggle()" style="margin-left:320px; top: 15px;background-color: #00a2ab;color:white;"></label>
         </div>
       </div>
     </section>
