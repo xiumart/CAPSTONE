@@ -28,6 +28,10 @@
 	.btn-addpt:hover { background-color: #00b2b3;}
 
 	.btn-addpt {float:right; margin-bottom: 20px;}
+
+	.checkidd{
+		margin-top: 4.5%;
+	}
 </style>
 <body>
    
@@ -193,7 +197,7 @@ $sql1 = "SELECT * FROM `patient_history` WHERE `patient_id`='$pat_id' AND `statu
   					$doctor=$row['doctor'];
      	?>
      	  <tr>
-     	  	  <td data-label="Checkid"><?php echo $chk_id;?></td>
+     	  	  <td data-label="Checkid" class="checkidd"><?php echo $chk_id;?></td>
      	  	  <td data-label="Date"><?php echo $date;?></td>
      	  	  <td data-label="Checkby"><?php echo $doctor;?></td>
 			  <td data-label="Action"><a href="patient_viewing.php?user=<?php echo $_GET['id'];?>&id=<?php echo $chk_id;?>"><button class="btn-view">View</button></a><a href="patient-view.php?id=<?php echo $_GET['id']; ?>&rm=<?php echo $chk_id; ?>"><button class="btn-rem">Remove</button></a></td>

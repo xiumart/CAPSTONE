@@ -39,6 +39,11 @@ $query = "UPDATE `patient_distancerx` SET `status`='Remove' WHERE `patient_no`='
 	.btn-addpt:hover { background-color: #00b2b3;}
 
 	.btn-addpt {float:right; margin-bottom: 20px;}
+	
+	.patientss{
+		margin-top: 25%;
+	}
+
 </style>
 <body>
    
@@ -221,7 +226,7 @@ document.querySelectorAll('th').forEach(th => th.addEventListener('click', (() =
      	?>
      
      	  <tr>
-     	  	<td data-label="Patient Id"><?php echo $row['patient_id'];?></td>
+     	  	<td data-label="Patient Id" class="patientss"><?php echo $row['patient_id'];?></td>
      	  	  <td data-label="Name"><?php echo $row['patient_name'];?></td>
      	  	  <td data-label="Email"><?php echo $row['patient_email'];?></td>
      	  	  <td data-label="Contact"><?php echo $row['patient_contact'];?></td>

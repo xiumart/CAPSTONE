@@ -18,6 +18,14 @@ include("../conn.php");
 	<link rel="shorcut icon" type="img/png" href="images\logo.png">
 	<title>RNL Vision Care | Admin</title>
 </head>
+<style>
+	.namee{
+		text-align: left;
+		margin-top: 10%;
+		margin-left: -5%;
+	}
+	</style>
+
 <body>
 
 
@@ -161,7 +169,7 @@ include("../conn.php");
      	  		$query4 = mysqli_query($conn, "Select * from appointment_history");
      	  		while($row = $query4 -> fetch_assoc()){
 ?>
-     	  	  <td data-label="Name"><?php echo $row['app_name'];?></td>
+     	  	  <td data-label="Name" class="namee"><?php echo $row['app_name'];?></td>
      	  	  <td data-label="Email"><?php echo $row['app_email'];?></td>
      	  	  <td data-label="Contact"><?php echo $row['app_contact'];?></td>
      	  	  <td data-label="Date"><?php echo $row['app_date'];?></td>

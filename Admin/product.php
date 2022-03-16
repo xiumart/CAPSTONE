@@ -47,6 +47,10 @@ if (isset($_GET['id'])) {
 		border-radius: 10%;
 	}
 	.page:hover { background-color:#00b2b3;}
+
+	.brandd{
+		margin-top: 8%;
+	}
 </style>
 <body>
 
@@ -203,7 +207,7 @@ if (isset($_GET['id'])) {
   				while($row = $result1 -> fetch_assoc()){ 
      	?>
      	  <tr>
-     	  	  <td data-label="Brand"><?php echo $row['brand'];?></td>
+     	  	  <td data-label="Brand" class="brandd"><?php echo $row['brand'];?></td>
      	  	  <td data-label="Model"><?php echo $row['model'];?></td>
      	  	  <td data-label="Category"><?php echo $row['category'];?></td>
      	  	  <td data-label="Orig."><?php echo $row['origprice'];?></td>
