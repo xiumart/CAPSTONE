@@ -135,7 +135,8 @@ if (isset($_GET['id'])) {
 					<button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
 				</div>
 			</form>
-
+			<div id="digital-clock"></div>
+			<script src="time.js"></script>
 			<input type="checkbox" id="switch-mode" hidden>
 			<label for="switch-mode" class="switch-mode"></label>
 			<a href="#" class="notification">
@@ -166,11 +167,10 @@ if (isset($_GET['id'])) {
 			
 			</div>
 
-			
+			<a href="product-add.php"><button class="btn-addp" style="float:right; margin-bottom:10px;">+ Add Product </button></a>
 			<div class="table-data">
 			<div class="order">
 					<div class="head">
-					<a href="product-add.php"><button class="btn-addp">+ Add Product </button></a>
 						<i class='bx bx-search' ></i>
 						<i class='bx bx-filter' ></i>
 					</div>
@@ -207,7 +207,7 @@ if (isset($_GET['id'])) {
   				while($row = $result1 -> fetch_assoc()){ 
      	?>
      	  <tr>
-     	  	  <td data-label="Brand" class="brandd"><?php echo $row['brand'];?></td>
+     	  	  <td data-label="Brand" class="brandd"><p><?php echo $row['brand'];?></p></td>
      	  	  <td data-label="Model"><?php echo $row['model'];?></td>
      	  	  <td data-label="Category"><?php echo $row['category'];?></td>
      	  	  <td data-label="Orig."><?php echo $row['origprice'];?></td>

@@ -161,7 +161,8 @@ if (isset($_REQUEST['btnsubmit'])) {
           <button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
         </div>
       </form>
-
+      <div id="digital-clock"></div>
+      <script src="time.js"></script>
       <input type="checkbox" id="switch-mode" hidden>
       <label for="switch-mode" class="switch-mode"></label>
       <a href="#" class="notification">

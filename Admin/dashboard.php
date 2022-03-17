@@ -164,6 +164,8 @@ if (isset($_GET['id3'])) {
 					<button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
 				</div>
 			</form>
+			<div id="digital-clock"></div>
+			<script src="time.js"></script>
 
 			<input type="checkbox" id="switch-mode" hidden>
 			<label for="switch-mode" class="switch-mode"></label>
@@ -271,7 +273,7 @@ if (isset($_GET['id3'])) {
 
 
      	  ?>
-     	  	  <td data-label="Name" class="namee"><?php echo $row['app_name'];?></td>
+     	  	  <td data-label="Name" class="brandd"><p><?php echo $row['app_name'];?></p></td>
      	  	  <td data-label="Email"><?php echo $row['app_email'];?></td>
      	  	  <td data-label="Contact"><?php echo $row['app_contact'];?></td>
      	  	  <td data-label="Date"><?php echo $row['app_date'];?></td>
@@ -319,7 +321,7 @@ if (isset($_GET['id3'])) {
      	  		while($row1 = $query5 -> fetch_assoc()){
 
      	  ?>
-     	  	  <td data-label="Name" class="namee"><?php echo $row1['app_name'];?></td>
+     	  	  <td data-label="Name" class="brandd"><p><?php echo $row1['app_name'];?></p></td>
      	  	  <td data-label="Email"><?php echo $row1['app_email'];?></td>
      	  	  <td data-label="Contact"><?php echo $row1['app_contact'];?></td>
      	  	  <td data-label="Date"><?php echo $row1['app_date'];?></td>

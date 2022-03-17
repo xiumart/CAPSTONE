@@ -122,7 +122,8 @@
 					<button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
 				</div>
 			</form>
-
+			<div id="digital-clock"></div>
+			<script src="time.js"></script>
 			<input type="checkbox" id="switch-mode" hidden>
 			<label for="switch-mode" class="switch-mode"></label>
 			<a href="#" class="notification">
@@ -190,10 +191,10 @@
 
       if ($result-> num_rows > 0) {
         while ($row = $result-> fetch_assoc()){
-         echo "<tr><td>". $row["logs_username"]. 
-		 "</td><td>". $row["logs_activity"]. 
-		 "</td><td>". $row["logs_datentime"]. 
-		 "</td><td>". $row["logs_roles"].
+         echo "<tr><td data-label='Username' class='brandd'><p>". $row["logs_username"]. 
+		 "</p></td><td data-label='Activity'>". $row["logs_activity"]. 
+		 "</td><td data-label='Date and Time'>". $row["logs_datentime"]. 
+		 "</td><td data-label='Role'>". $row["logs_roles"].
 		 "</td></tr>";
       }
       echo "</table>";
