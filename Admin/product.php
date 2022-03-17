@@ -171,7 +171,10 @@ if (isset($_GET['id'])) {
 			<div class="table-data">
 			<div class="order">
 					<div class="head">
-						<i class='bx bx-search' ></i>
+						<form method="post">
+						<input type="text" name="txtsearch" id="txtsearch" placeholder="Search by Category/Id" style="padding: 12px;border: 1px solid #ccc;border-radius: 4px;font-family: var(poppins);">
+						<button  id="btnsearch" name="btnsearch" class="page"><i class='bx bx-search' ></i></button>
+						</form>
 						<i class='bx bx-filter' ></i>
 					</div>
 <div id="printing">
@@ -179,6 +182,7 @@ if (isset($_GET['id'])) {
 
      <thead>
      	<tr>
+     	<th>Id</th>
      	 <th>Brand Name</th>
      	 <th>Model</th>
      	 <th>Category</th>
@@ -195,8 +199,14 @@ if (isset($_GET['id'])) {
         $cat=$_POST['all'];
         $page=isset($_GET['page']) ? $_GET['page']:1;
         $start=($page-1)*$limit;
+        $search=$_POST['txtsearch'];
      	$sql2 =$conn->query("SELECT count(pro_id) AS id FROM `product`");
-        $sql1 = "SELECT * FROM `product` LIMIT $start, $limit ";
+     	if (isset($_POST['btnsearch'])) {
+        $sql1 = "SELECT * FROM `product` WHERE `category` LIKE '%$search%' OR `pro_id` LIKE'%$search%'  LIMIT $start, $limit ";
+        	}
+        else{
+        		$sql1 = "SELECT * FROM `product` LIMIT $start, $limit ";
+        	}
         $result2 = $sql2->fetch_all(MYSQLI_ASSOC);
                 $total=$result2[0]['id'];
                 $pages=ceil($total/$limit);
@@ -205,16 +215,20 @@ if (isset($_GET['id'])) {
      	  $result1 = $conn->query($sql1);  
   			if($result1->num_rows > 0){
   				while($row = $result1 -> fetch_assoc()){ 
+
      	?>
+     	
+
      	  <tr>
-     	  	  <td data-label="Brand" class="brandd"><p><?php echo $row['brand'];?></p></td>
-     	  	  <td data-label="Model"><?php echo $row['model'];?></td>
-     	  	  <td data-label="Category"><?php echo $row['category'];?></td>
-     	  	  <td data-label="Orig."><?php echo $row['origprice'];?></td>
-			  <td data-label="Selling"><?php echo $row['sellingprice'];?></td>
-			  <td data-label="Expire"><?php echo $row['expdate'];?></td>
-			  <td data-label="Qty"><?php echo $row['qty'];?></td>
-			  <td data-label="Action"><a href="product-update.php?id=<?php echo $row['pro_id'];?>"><button class="btn-upd">Update</button></a><a href="?id=<?php echo $row['pro_id'];?>"><button class="btn-rem" name="btnremove">Remove</button></a></td>
+     	  	<td data-label="Id"><?php echo $row['pro_id'];?></td>
+     	  	<td data-label="Brand"><?php echo $row['brand'];?></td>
+     	  	<td data-label="Model"><?php echo $row['model'];?></td>
+     	  	<td data-label="Category"><?php echo $row['category'];?></td>
+     	  	<td data-label="Orig."><?php echo $row['origprice'];?></td>
+			  	<td data-label="Selling"><?php echo $row['sellingprice'];?></td>
+			  	<td data-label="Expire"><?php echo $row['expdate'];?></td>
+			  	<td data-label="Qty" id="qq"><?php echo $row['qty'];?></td>
+			  	<td data-label="Action"><a href="product-update.php?id=<?php echo $row['pro_id'];?>"><button class="btn-upd">Update</button></a><a href="?id=<?php echo $row['pro_id'];?>"><button class="btn-rem" name="btnremove">Remove</button></a></td>
      	  </tr>
     
      	 <?php
@@ -222,20 +236,13 @@ if (isset($_GET['id'])) {
 
      	?>
 
+
      </tbody>
 
    </table>
 </div>
    <!--page-->
   	<br>
-  	<?php
-  	if ($_GET['page']==1) {
-  		
-  	}
-  	elseif ($_GET['page']==1) {
-  		# code...
-  	}
-  	?>
    <a class="page" id="pre" href="product.php?page=<?=$prev; ?>">< Prev</a>
     	  <?php  for($i=1; $i <=$pages ; $i++): ?>
     <a class="page" href="product.php?page=<?=$i; ?>"><?=$i; ?></a>
