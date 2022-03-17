@@ -269,8 +269,8 @@ if($picture_type=="image/jpeg" || $picture_type=="image/jpg" || $picture_type=="
 							<option value="Eyewear for Adults">Eyewear for Adults</option>
 							<option value="Eyewear for Kids">Eyewear for Kids</option>
 							<option value="Seen Wear">Seen Wear</option>
-							<option value="Sun Wear or Sunglasses">Sun Wear/Sunglasses</option>
-							</select>
+							<option value="Sunglasses">Sunglasses</option>
+							</select> 
 						</div>
 						</div>
 						<div class="row">
@@ -368,5 +368,7 @@ if($picture_type=="image/jpeg" || $picture_type=="image/jpg" || $picture_type=="
 	
 
 	<script src="script.js"></script>
+
+	
 </body>
 </html>

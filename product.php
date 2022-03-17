@@ -120,28 +120,22 @@ error_reporting(0);
                     <input type="submit" name="all" value="ALL">
                   </li>
                   <li>
-                    <input type="submit" name="all" value="Contact Lenses">
-                  </li>
-                  <li>
-                    <input type="submit" name="all" value="Contact Lens Solution">
-                  </li>
-                  <li>
-                    <input type="submit" name="all" value="Reading Glasses">
-                  </li>
-                  <li>
                     <input type="submit" name="all" value="Accessories">
                   </li>
                   <li>
-                    <input type="submit" name="all" value="Eye wear">
+                    <input type="submit" name="all" value="Contact Lenses">
                   </li>
                   <li>
-                    <input type="submit" name="all" value="Eyewear for kids">
+                    <input type="submit" name="all" value="Eyewear for Adults">
                   </li>
                   <li>
-                    <input type="submit" name="all" value="Sun Wear">
+                    <input type="submit" name="all" value="Eyewear for Kids">
                   </li>
                   <li>
                     <input type="submit" name="all" value="Seen Wear">
+                  </li>
+                  <li>
+                    <input type="submit" name="all" value="Sunglasses">
                   </li>
                 </ul>
                 </form>
@@ -172,7 +166,7 @@ error_reporting(0);
               $cat=$_POST['all'];
               $page=isset($_GET['page']) ? $_GET['page']:1;
                $start=($page-1)*$limit;
-               if ($_POST['all']=='Reading Glasses') {
+               if ($_POST['all']=='Accessories') {
                $sql2 =$conn->query("SELECT count(pro_id) AS id FROM `product` WHERE `category`='$cat'");
                    $sql1 = "SELECT * FROM `product`WHERE `category`='$cat' LIMIT $limit ";
                }
@@ -180,27 +174,19 @@ error_reporting(0);
                  $sql2 =$conn->query("SELECT count(pro_id) AS id FROM `product` WHERE `category`='$cat'");
                    $sql1 = "SELECT * FROM `product`WHERE `category`='$cat' LIMIT $limit ";
                }
-               elseif ($_POST['all']=='Contact Lens Solution') {
+               elseif ($_POST['all']=='Eyewear for Adults') {
                  $sql2 =$conn->query("SELECT count(pro_id) AS id FROM `product` WHERE `category`='$cat'");
                    $sql1 = "SELECT * FROM `product`WHERE `category`='$cat' LIMIT $limit ";
                }
-               elseif ($_POST['all']=='Accessories') {
+               elseif ($_POST['all']=='Eyewear for Kids') {
                  $sql2 =$conn->query("SELECT count(pro_id) AS id FROM `product` WHERE `category`='$cat'");
                    $sql1 = "SELECT * FROM `product`WHERE `category`='$cat' LIMIT $limit ";
                }
-               elseif ($_POST['all']=='Eye wear') {
+               elseif ($_POST['all']=='Seen Wear') {
                 $sql2 =$conn->query("SELECT count(pro_id) AS id FROM `product` WHERE `category`='$cat'");
                   $sql1 = "SELECT * FROM `product`WHERE `category`='$cat' LIMIT $limit ";
               }
-              elseif ($_POST['all']=='Eyewear for kids') {
-                $sql2 =$conn->query("SELECT count(pro_id) AS id FROM `product` WHERE `category`='$cat'");
-                  $sql1 = "SELECT * FROM `product`WHERE `category`='$cat' LIMIT $limit ";
-              }
-              elseif ($_POST['all']=='Sun Wear') {
-                $sql2 =$conn->query("SELECT count(pro_id) AS id FROM `product` WHERE `category`='$cat'");
-                  $sql1 = "SELECT * FROM `product`WHERE `category`='$cat' LIMIT $limit ";
-              }
-              elseif ($_POST['all']=='Seen Wear') {
+              elseif ($_POST['all']=='Sunglasses') {
                 $sql2 =$conn->query("SELECT count(pro_id) AS id FROM `product` WHERE `category`='$cat'");
                   $sql1 = "SELECT * FROM `product`WHERE `category`='$cat' LIMIT $limit ";
               }

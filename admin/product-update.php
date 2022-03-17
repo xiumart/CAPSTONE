@@ -299,14 +299,15 @@ else{
 						<div class="col-75">
 							<select id="category" name="category">
 							<option disabled="" selected="">Select your option..</option>
-							<option value="Contact Lens Solution" 
+							<option value="Accessories" 
 							<?php
-							if ($row['category']=="Contact Lens Solution") {
+							if ($row['category']=="Accessories") {
 								echo "selected";
 							}
 							?>	
 
-							>Contact Lens Solution</option>
+							>Accessories</option>
+
 							<option value="Contact Lenses"
 							<?php
 							if ($row['category']=="Contact Lenses") {
@@ -314,21 +315,40 @@ else{
 							}
 							?>	
 							>Contact Lenses</option>
-							<option value="Reading Glasses"
+
+							<option value="Eyewear for Adults"
 							<?php
-							if ($row['category']=="Reading Glasses") {
+							if ($row['category']=="Eyewear for Adults") {
 								echo "selected";
 							}
 							?>	
-							>Reading Glasses</option>
-							<option value="Accessories"
+							>Eyewear for Adults</option>
+
+							<option value="Eyewear for Kids"
 							<?php
-							if ($row['category']=="Accessories") {
+							if ($row['category']=="Eyewear for Kids") {
 								echo "selected";
 							}
 							?>	
-							>Accessories</option>
+							>Eyewear for Kids</option>
+
+							<option value="Seen Wear"
+							<?php
+							if ($row['category']=="Seen Wear") {
+								echo "selected";
+							}
+							?>	
+							>Seen Wear</option>
+
+							<option value="Sunglasses"
+							<?php
+							if ($row['category']=="Sunglasses") {
+								echo "selected";
+							}
+							?>	
+							>Sunglasses</option>
 							</select>
+							
 						</div>
 						</div>
 						<div class="row">
