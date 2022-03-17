@@ -73,8 +73,8 @@ session_start();
 }
 
 .dropdown-content a:hover {
-	background-color: #00c2cb;
-	
+  background-color: #00c2cb;
+  
 }
 
 .dropdown:hover .dropdown-content {
@@ -172,7 +172,7 @@ $user=$_SESSION['login_user'];
 
 
   <section class="table">
-    <div class="container">
+    <div class="container" id="result">
 
       <h3>Check-up History</h3>
 
@@ -180,9 +180,9 @@ $user=$_SESSION['login_user'];
         <thead>
           <tr>
             <th>Check-up Id</th>
-            <th>Date and Time </th>
+            <th>Date</th>
             <th>Check-up by<th>
-            <th>View Details</th>
+            <th>Action</th>
           </tr>
         </thead>
 
@@ -195,14 +195,14 @@ $user=$_SESSION['login_user'];
        <input type="text" name="bam" value="<?php echo $row['client_id']; ?>" hidden>
         <?php 
         $id=$row['client_id'];
-       $sql1 = "SELECT * FROM `patient_distancerx` WHERE `patient_id`='$id'";
+       $sql1 = "SELECT * FROM `patient_history` WHERE `patient_id`='$id'";
       $result = $conn->query($sql1);
       if($result->num_rows > 0){
       while($row = $result -> fetch_assoc()){
        ?>
        <tbody>
          <tr>
-           <td>gh</td><td>gh</td><td>gh</td><td>gh</td>
+           <td><?php echo $row['patient_no']; ?></td><td><?php echo $row['date_up']; ?></td><td><?php echo $row['doctor']; ?></td><td></td><td><a href="#"><button class="btn-view" style="cursor:pointer;">View</button></a></td>
             <?php
           }}
       else{
@@ -230,7 +230,6 @@ $user=$_SESSION['login_user'];
       </div>
     </div>
   </section>
-
 
   <footer>
     <div class="container flex1">
