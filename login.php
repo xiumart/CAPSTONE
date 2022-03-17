@@ -23,6 +23,7 @@ if(isset($_POST['login'])){
     $time = date("h:i:sa");
     $activity1 = 'Login';
     $_SESSION['login_user']= $username;
+
     // Coding for login
     $res=mysqli_query($conn,"select * from client_user where client_username='$username' and client_password='$password'");
     if(mysqli_num_rows($res)){ 

@@ -145,9 +145,7 @@ if (isset($_GET['id'])) {
 				<i class='bx bxs-bell' ></i>
 				<span class="num">8</span>
 			</a>
-			<a href="#" class="profile">
-				<img src="img/people.png">
-			</a>
+			<!-- DROP DOWN NG EDIT PROFILE AND CHANGE PASS OK-->
 		</nav>
 		<!-- NAVBAR -->
 
