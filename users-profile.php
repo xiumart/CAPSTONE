@@ -199,7 +199,7 @@ $user=$_SESSION['login_user'];
 
 
         <h3>First Name </h3>
-        <input type="text" name="client_fname" value="<?php echo $row['client_fname'];?>"style="font-size: 18px;border: 2px solid #ccc; width: 55%; padding: 10px; margin: 10px auto; border-radius: 5px;" >
+        <input type="text" name="client_fname"  value="<?php echo $row['client_fname'];?>"style="font-size: 18px;border: 2px solid #ccc; width: 55%; padding: 10px; margin: 10px auto; border-radius: 5px;" >
 
         <h3>Middle Name </h3>
         <input type="text" name="client_mname" value="<?php echo $row['client_mname'];?>" style="font-size: 18px;border: 2px solid #ccc; width: 55%; padding: 10px; margin: 10px auto; border-radius: 5px;" >
@@ -217,7 +217,7 @@ $user=$_SESSION['login_user'];
         <input type="text" name="client_address" value="<?php echo $row['client_address'];?>" style="font-size: 18px;border: 2px solid #ccc; width: 55%; padding: 10px; margin: 10px auto; border-radius: 5px;" >
 
         <h3>Contact No.</h3>
-        <input type="tel" name="client_contact" value="<?php echo $row['client_contact'];?>" pattern="[0-9]{4}[0-9]{3}[0-9]{4}" style="font-size: 18px;border: 2px solid #ccc; width: 55%; padding: 10px; margin: 10px auto; border-radius: 5px;" >
+        <input type="tel" name="client_contact" maxlength="11" value="<?php echo $row['client_contact'];?>" pattern="[0-9]{4}[0-9]{3}[0-9]{4}" style="font-size: 18px;border: 2px solid #ccc; width: 55%; padding: 10px; margin: 10px auto; border-radius: 5px;" >
 
         <h3>Email</h3>
         <input type="email" name="client_email" value="<?php echo $row['client_email'];?>" style="font-size: 18px;border: 2px solid #ccc; width: 55%; padding: 10px; margin: 10px auto; border-radius: 5px;" >

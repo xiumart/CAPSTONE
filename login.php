@@ -94,7 +94,7 @@ function getIpAddr(){
 
             <div class="input-field">
               <i class="fas fa-user"></i>
-              <input type="text" placeholder="Username" name="username" required="required" />
+              <input type="text" placeholder="Username" name="username" required="required" autocomplete="off"/>
             </div>
             <div class="input-field">
               <i class="fas fa-lock"></i>
