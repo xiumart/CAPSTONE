@@ -263,10 +263,12 @@ if($picture_type=="image/jpeg" || $picture_type=="image/jpg" || $picture_type=="
 						<div class="col-75">
 							<select id="category" name="category">
 							<option disabled="" selected="">Select your option..</option>
-							<option value="Contact Lens Solution">Contact Lens Solution</option>
-							<option value="Contact Lenses">Contact Lenses</option>
-							<option value="Reading Glasses">Reading Glasses</option>
 							<option value="Accessories">Accessories</option>
+							<option value="Contact Lenses">Contact Lenses</option>
+							<option value="Eyewear for Adults">Eyewear for Adults</option>
+							<option value="Eyewear for Kids">Eyewear for Kids</option>
+							<option value="Seen Wear">Seen Wear</option>
+							<option value="Sun Wear or Sunglasses">Sun Wear/Sunglasses</option>
 							</select>
 						</div>
 						</div>
