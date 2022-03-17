@@ -456,7 +456,7 @@ body {
 #content main .table-data > div {
 	border-radius: 20px;
 	background: var(--light);
-	padding: 24px;
+	padding: 14px;
 	overflow-x: auto;
 }
 #content main .table-data .head {
@@ -663,7 +663,7 @@ body {
 	}
 	.table td{
 		text-align: right;
-		padding-left: 50%;
+		padding-left: 20%;
 		text-align: right;
 		position: relative;
 	}
@@ -672,9 +672,20 @@ body {
 		position: absolute;
 		left:0;
 		width: 50%;
-		padding-left:15px;
+		padding-left:12px;
 		font-size:15px;
 		font-weight: bold;
 		text-align: left;
 	}
+	.brandd p {
+		text-align: right;
+		padding-left: 75%;
+		text-align: right;
+		position: relative;
+	}
+
+}
+
+iframe {
+	color: var(--dark);
 }

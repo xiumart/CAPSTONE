@@ -136,7 +136,8 @@
 					<button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
 				</div>
 			</form>
-
+			<div id="digital-clock"></div>
+			<script src="time.js"></script>
 			<input type="checkbox" id="switch-mode" hidden>
 			<label for="switch-mode" class="switch-mode"></label>
 			<a href="#" class="notification">
@@ -192,14 +193,14 @@
 						</thead>
 						<tbody>
 							<tr>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
+								<td data-label="Product name" class="brandd"><p></p></td>
+								<td data-label="Generic name"></td>
+								<td data-label="Category"></td>
+								<td data-label="Price"></td>
+								<td data-label="Qty"></td>
+								<td data-label="Amount"></td>
+								<td data-label="Profit"></td>
+								<td data-label="Total"></td>
 								<td><button type="button" class="btn-t">Cancel</button></td>
 							</tr>
 						</tbody>

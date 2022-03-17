@@ -115,7 +115,8 @@
 					<button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
 				</div>
 			</form>
-
+			<div id="digital-clock"></div>
+			<script src="time.js"></script>
 			<input type="checkbox" id="switch-mode" hidden>
 			<label for="switch-mode" class="switch-mode"></label>
 			<a href="#" class="notification">
@@ -167,7 +168,7 @@
      </thead>
      <tbody>
      	  <tr>
-     	  	  <td data-label="Transacid">T-12445</td>
+     	  	  <td data-label="Transacid" class="brandd"><p>T-12445</p></td>
      	  	  <td data-label="Date">03/10/2022</td>
 			  <td data-label="Time">11:00pm</td>
      	  	  <td data-label="Customer">Marliardo Umbao</td>

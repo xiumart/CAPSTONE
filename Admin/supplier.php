@@ -130,8 +130,9 @@ if (isset($_GET['id'])) {
 					<button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
 				</div>
 			</form>
-
+			<div id="digital-clock"></div>
 			<input type="checkbox" id="switch-mode" hidden>
+			<script src="time.js"></script>
 			<label for="switch-mode" class="switch-mode"></label>
 			<a href="#" class="notification">
 				<i class='bx bxs-bell' ></i>
