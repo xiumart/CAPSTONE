@@ -200,7 +200,7 @@ $user=$_SESSION['login_user'];
                         </div>
 
                         <div class="text-right">
-                            <button type="submit" class="btn btn-primary btn-style mt-4">Set Appointment</button>
+                            <button type="submit" class="btn btn-primary btn-style mt-4" style="cursor: pointer;">Set Appointment</button>
                         </div>
                     </form>
                 </div>

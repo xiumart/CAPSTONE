@@ -195,7 +195,7 @@ $user=$_SESSION['login_user'];
        <input type="text" name="bam" value="<?php echo $row['client_id']; ?>" hidden>
         <?php 
         $id=$row['client_id'];
-       $sql1 = "SELECT * FROM `patient_records` WHERE `ID`='$id'";
+       $sql1 = "SELECT * FROM `patient_distancerx` WHERE `patient_id`='$id'";
       $result = $conn->query($sql1);
       if($result->num_rows > 0){
       while($row = $result -> fetch_assoc()){

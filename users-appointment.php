@@ -178,19 +178,29 @@ $user=$_SESSION['login_user'];
 
       <h3>Appoinments</h3>
       <div class="text-right" style="float:right;margin-bottom:14px;">
-        <a href="users-appointment-set.php"><button type="submit" class="btn btn-primary btn-style mt-4">Set an Appointment</button></a>
+        <a href="users-appointment-set.php"><button type="submit" class="btn btn-primary btn-style mt-4" style="cursor:pointer;">Set an Appointment</button></a>
 
       </div>
       <table>
         <thead>
           <tr>
             <th>Appointment Id</th>
-            <th>Date and Time </th>
+            <th>Date</th>
+            <th>Time</th>
             <th>Purpose<th>
-            <th>Action</th>
             <th>Status</th>
+            <th>Action</th>
           </tr>
         </thead>
+        <?php
+error_reporting(0);
+include("../conn.php");
+if (isset($_GET['id'])) {
+	$app_id=$_GET['id'];
+	$query = "DELETE FROM `appointment` WHERE app_id='$app_id'";
+			mysqli_query($conn, $query);
+}
+?>
         <?php
     $con=mysqli_connect("localhost","root","","capstone");
     // Check connection
@@ -199,13 +209,18 @@ $user=$_SESSION['login_user'];
       echo "Failed to connect to MySQL: " . mysqli_connect_error();
       }
 
-    $result = mysqli_query($con,"SELECT DISTINCT app_id, app_date, app_time, app_purpose FROM appointment, client_user where appointment.app_user = client_user.client_username");
+    $result = mysqli_query($con,"SELECT DISTINCT app_id, app_date, app_time, app_purpose, app_remarks FROM appointment, client_user where appointment.app_user = client_user.client_username");
 
     while($row = mysqli_fetch_array($result))
       {
       echo "<tr><td>". $row['app_id'] . "</td>";
-      echo "<td>" . $row['app_date'] . " " . $row['app_time'] . "</td>";
-      echo "<td>" . $row['app_purpose'] ."</td> </tr>";
+      echo "<td>" . $row['app_date'] . "</td>";
+      echo "<td>" . $row['app_time'] . "</td>";
+      echo "<td>" . $row['app_purpose'] ."</td>";
+      echo "<td>" . $row['app_remarks'] ."</td>";
+      echo "<td><form method='post' action='?id=".$row["app_id"]."'>"?>
+      <button class="btn-upd" style="cursor: pointer;" onclick="return confirm('Are you sure you want to cancel your appointment?')">Cancel</button></form>
+      <?php "</td></tr>";
       }
 
     mysqli_close($con);
