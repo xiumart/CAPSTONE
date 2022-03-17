@@ -5,7 +5,7 @@
 include("../conn.php");
 
 
-$eid= $_GET['supp_id'];
+$eid= $_GET['id'];
 
 if (isset($_REQUEST['btnsubmit'])) {
 		//something was posted
@@ -266,7 +266,8 @@ if (isset($_REQUEST['btnsubmit'])) {
 			
 				<form action="" method="post">
 				<?php 
-			  		$eid= $_GET['supp_id'];
+				
+			  		$eid= $_GET['id'];
 			  		$sql=mysqli_query($conn, "SELECT * from supplier WHERE supp_id='$eid'");
 			  		while($row=mysqli_fetch_array($sql)){
 			  	?>
