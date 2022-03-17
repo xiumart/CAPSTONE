@@ -51,6 +51,8 @@ if (isset($_GET['id'])) {
 	.brandd{
 		margin-top: 8%;
 	}
+
+	.namee{margin-top: 20%;}
 </style>
 <body>
 
@@ -220,7 +222,7 @@ if (isset($_GET['id'])) {
      	
 
      	  <tr>
-     	  	<td data-label="Id"><?php echo $row['pro_id'];?></td>
+     	  	<td data-label="Id" class="namee"><?php echo $row['pro_id'];?></td>
      	  	<td data-label="Brand"><?php echo $row['brand'];?></td>
      	  	<td data-label="Model"><?php echo $row['model'];?></td>
      	  	<td data-label="Category"><?php echo $row['category'];?></td>

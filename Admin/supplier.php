@@ -46,6 +46,8 @@ if (isset($_GET['id'])) {
 		border-radius: 10%;
 	}
 	.page:hover { background-color:#00b2b3;}
+
+	.namee{margin-top: 5%;}
 </style>
 <body>
 
@@ -167,8 +169,13 @@ if (isset($_GET['id'])) {
 	}
 	</style>
 			<a href="supplier-add.php"><button class="btn-addpt" style="cursor: pointer;"> + Add Supplier</button></a>
+		
 			<div class="table-data">
 				<div class="order">
+				<form method="post">
+						<input type="text" name="txtsearch" id="txtsearch" placeholder="Search by Company Name or Person Name" style="padding: 12px;border: 1px solid #ccc;border-radius: 4px;font-family: var(poppins);">
+						<button  id="btnsearch" name="btnsearch" class="page"><i class='bx bx-search' ></i></button>
+						</form></br>
 					<table class="table">
      <thead>
      	<tr>
@@ -182,46 +189,47 @@ if (isset($_GET['id'])) {
      	</tr>
      </thead>
      <tbody>
+	 
 	 <?php
-       $conn = mysqli_connect("localhost", "root", "","capstone");
-       if ($conn-> connect_error) { 
-        die("Connection Failed.". $conn-> connection_error);
-       }
-	$limit=5;
-	// $cat=$_POST['all'];
-	$page=isset($_GET['page']) ? $_GET['page']:1;
-	$start=($page-1)*$limit;
-	$sql2 =$conn->query("SELECT count(supp_id) AS id FROM `supplier`");
-    $sql = "SELECT * from supplier LIMIT $start, $limit";
-	$result2 = $sql2->fetch_all(MYSQLI_ASSOC);
-            $total=$result2[0]['id'];
-            $pages=ceil($total/$limit);
-            $prev=$page-1;
-            $next=$page+1;
-    $result = $conn-> query($sql);
+     	$limit=25;
+        $cat=$_POST['all'];
+        $page=isset($_GET['page']) ? $_GET['page']:1;
+        $start=($page-1)*$limit;
+        $search=$_POST['txtsearch'];
+     	$sql2 =$conn->query("SELECT count(supp_id) AS id FROM `supplier`");
+     	if (isset($_POST['btnsearch'])) {
+        $sql1 = "SELECT * FROM `supplier` WHERE `supp_cname` LIKE '%$search%' OR `supp_contactperson` LIKE'%$search%'  LIMIT $start, $limit ";
+        	}
+        else{
+        		$sql1 = "SELECT * FROM `supplier` LIMIT $start, $limit ";
+        	}
+        $result2 = $sql2->fetch_all(MYSQLI_ASSOC);
+                $total=$result2[0]['id'];
+                $pages=ceil($total/$limit);
+                $prev=$page-1;
+                $next=$page+1;
+     	  $result1 = $conn->query($sql1);  
+  			if($result1->num_rows > 0){
+  				while($row = $result1 -> fetch_assoc()){ 
 
-      if ($result-> num_rows > 0) {
-        while ($row = $result-> fetch_assoc()){
-         echo "<tr><td>". $row["supp_cname"]. 
-		 "</td><td>". $row["supp_contactperson"]. 
-		 "</td><td>". $row["supp_contact"]. 
-		 "</td><td>". $row["supp_email"].
-		 "</td><td>". $row["supp_desc"].
-		 "</td><td>
-		 <form method='post' action='supplier-update.php?supp_id=".$row["supp_id"]."'>"?>
-		 <button class="btn-upd" style="cursor: pointer;">Update</button></form></td>
-		   <td><?php echo "<form method='post' action='?id=".$row["supp_id"]."'>" ?>
-		   <button class="btn-rem" style="cursor: pointer;" onclick="return confirm('Are you sure?')">Remove</button>
-	   </form></td><?php "</tr>";
-      }
-      echo "</table>";
-      }
-      else {
-        echo "0 result";
-      }
-      $conn-> close();
-      
-?>
+     	?>
+     	
+
+     	  <tr>
+     	  	
+     	  	<td data-label="Company Name" class="namee"><?php echo $row['supp_cname'];?></td>
+     	  	<td data-label="Contact Person"><?php echo $row['supp_contactperson'];?></td>
+     	  	<td data-label="Contact No."><?php echo $row['supp_contact'];?></td>
+     	  	<td data-label="Email"><?php echo $row['supp_email'];?></td>
+			<td data-label="Description"><?php echo $row['supp_desc'];?></td>
+			<td data-label="Action"><a href="supplier-update.php?id=<?php echo $row['supp_id'];?>"><button class="btn-upd">Update</button></a><a href="?id=<?php echo $row['supp_id'];?>"><button class="btn-rem" name="btnremove">Remove</button></a></td>
+     	  </tr>
+    
+     	 <?php
+     	}}
+
+     	?>
+
 	
      </tbody>
 	 

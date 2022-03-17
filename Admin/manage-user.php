@@ -46,6 +46,8 @@ if (isset($_GET['id'])) {
 		border-radius: 10%;
 	}
 	.page:hover { background-color:#00b2b3;}
+
+	.namee{margin-top: 33%;}
 </style>
 <body>
 
@@ -161,8 +163,12 @@ if (isset($_GET['id'])) {
 				</div>
 			
 			</div>
-
+			<form method="post">
+						<input type="text" name="txtsearch" id="txtsearch" placeholder="Search by Company Name or Person Name" style="padding: 12px;border: 1px solid #ccc;border-radius: 4px;font-family: var(poppins);">
+						<button  id="btnsearch" name="btnsearch" class="page"><i class='bx bx-search' ></i></button>
+						</form>
 			<a href="user-add.php"><button class="btn-addpt"style="cursor: pointer;"> + Add User</button>
+			
 			<div class="table-data">
 			<div class="order">
 			<table class="table">
@@ -180,47 +186,46 @@ if (isset($_GET['id'])) {
      </thead>
      <tbody>
 	 <?php
-       $conn = mysqli_connect("localhost", "root", "","capstone");
-       if ($conn-> connect_error) { 
-        die("Connection Failed.". $conn-> connection_error);
-       }
-	$limit=5;
-	// $cat=$_POST['all'];
-	$page=isset($_GET['page']) ? $_GET['page']:1;
-	$start=($page-1)*$limit;
-	$sql2 =$conn->query("SELECT count(users_id) AS id FROM `users_account`");
-    $sql = "SELECT * from users_account LIMIT $start, $limit";
-	$result2 = $sql2->fetch_all(MYSQLI_ASSOC);
-            $total=$result2[0]['id'];
-            $pages=ceil($total/$limit);
-            $prev=$page-1;
-            $next=$page+1;
-    $result = $conn-> query($sql);
+     	$limit=25;
+        $cat=$_POST['all'];
+        $page=isset($_GET['page']) ? $_GET['page']:1;
+        $start=($page-1)*$limit;
+        $search=$_POST['txtsearch'];
+     	$sql2 =$conn->query("SELECT count(users_id) AS id FROM `users_account`");
+     	if (isset($_POST['btnsearch'])) {
+        $sql1 = "SELECT * FROM `users_account` WHERE `users_lastname` LIKE '%$search%' OR `users_username` LIKE'%$search%'  LIMIT $start, $limit ";
+        	}
+        else{
+        		$sql1 = "SELECT * FROM `users_account` LIMIT $start, $limit ";
+        	}
+        $result2 = $sql2->fetch_all(MYSQLI_ASSOC);
+                $total=$result2[0]['id'];
+                $pages=ceil($total/$limit);
+                $prev=$page-1;
+                $next=$page+1;
+     	  $result1 = $conn->query($sql1);  
+  			if($result1->num_rows > 0){
+  				while($row = $result1 -> fetch_assoc()){ 
 
-      if ($result-> num_rows > 0) {
-        while ($row = $result-> fetch_assoc()){
-         echo "<tr><td>". $row["users_lastname"]. 
-		 "</td><td>". $row["users_firstname"]. 
-		 "</td><td>". $row["users_middlename"]. 
-		 "</td><td>". $row["users_username"].
-		 "</td><td>". $row["users_contact"].
-		 "</td><td>". $row["users_email"].
-		 "</td><td>". $row["users_roles"].
-		 "</td><td>
-		 <form method='post' action='user-update.php?users_id=".$row["users_id"]."'>"?>
-		 <button class="btn-upd" style="cursor: pointer;">Update</button></form></td>
-		   <td><?php echo "<form method='post' action='?id=".$row["users_id"]."'>" ?>
-		   <button class="btn-rem" style="cursor: pointer;" onclick="return confirm('Are you sure?')">Remove</button>
-	   </form></td><?php "</tr>";
-      }
-      echo "</table>";
-      }
-      else {
-        echo "0 result";
-      }
-      $conn-> close();
-      
-?>
+     	?>
+     	
+
+     	  <tr>
+     	  	
+     	  	<td data-label="Lastname" class="namee"><?php echo $row['users_lastname'];?></td>
+     	  	<td data-label="Firstname"><?php echo $row['users_firstname'];?></td>
+     	  	<td data-label="Middlename"><?php echo $row['users_middlename'];?></td>
+     	  	<td data-label="Username"><?php echo $row['users_username'];?></td>
+			<td data-label="Contact Number"><?php echo $row['users_contact'];?></td>
+			<td data-label="Email"><?php echo $row['users_email'];?></td>
+			<td data-label="Position"><?php echo $row['users_roles'];?></td>
+			<td data-label="Action"><a href="user-update.php?id=<?php echo $row['users_id'];?>"><button class="btn-upd">Update</button></a><a href="?id=<?php echo $row['users_id'];?>"><button class="btn-rem" name="btnremove">Remove</button></a></td>
+     	  </tr>
+    
+     	 <?php
+     	}}
+
+     	?>
      </tbody>
 
    </table>

@@ -519,7 +519,7 @@ elseif (($_POST['med'])=="Reading") {
 							<label for="contact">Contact No.</label>
 						</div>
 						<div class="col-75">
-							<input type="tel" id="contact" name="contact" pattern="[0-9]{4}[0-9]{3}[0-9]{4}" placeholder="Enter contact no.." value="<?php echo $contact;?>" required>
+							<input type="tel" id="contact" name="contact" maxlength="11" pattern="[0-9]{4}[0-9]{3}[0-9]{4}" placeholder="Enter contact no.." value="<?php echo $contact;?>" required>
 						</div>
 						</div>
 						<div class="row">
