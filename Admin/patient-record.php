@@ -216,15 +216,9 @@ document.querySelectorAll('th').forEach(th => th.addEventListener('click', (() =
         //$cat=$_POST['all'];
         $page=isset($_GET['page']) ? $_GET['page']:1;
         $start=($page-1)*$limit;
-		$search=$_POST['txtsearch'];
      	$sql2 =$conn->query("SELECT count(patient_no) AS id FROM `patient_distancerx`");
-		 if (isset($_POST['btnsearch'])) {
-			$sql1= "SELECT * FROM `patient_distancerx` WHERE `patient_id` LIKE '%$search%' OR `patient_name` LIKE'%$search%'  LIMIT $start, $limit ";
-				}
-			else{
-					$sql1 = "SELECT * FROM `patient_distancerx` LIMIT $start, $limit ";
-				}
-       
+        $sql1 = "SELECT year(now())-year(`patient_bday`) AS age,`patient_no`,`patient_id`,`patient_name`,`patient_email`,`patient_contact`,`patient_address`  FROM `patient_distancerx` WHERE `status`='Walk-in' OR `status`='Appointment'  LIMIT $start, $limit ";
+        $result2 = $sql2->fetch_all(MYSQLI_ASSOC);
                 $total=$result2[0]['id'];
                 $pages=ceil($total/$limit);
                 $prev=$page-1;
