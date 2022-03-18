@@ -123,8 +123,16 @@ include("../conn.php");
 			<a href="#" class="notification">
 				<i class='bx bxs-bell' ></i>
 				<span class="num">8</span>
+				
 			</a>
 			<!-- DROP DOWN NG EDIT PROFILE AND CHANGE PASS OK-->
+			<div class="dropdown1">
+			<img src="img\user.png" alt="" width="40px" class="userlogo">
+				<div class="dropdown-content1">
+					<a href="#">Change Password</a>
+					<a href="#" style="color:red;">Logout</a>
+				</div>
+			</div>
 		</nav>
 		<!-- NAVBAR -->
 
