@@ -162,7 +162,7 @@ $query = "UPDATE `patient_distancerx` SET `status`='Remove' WHERE `patient_no`='
 			<div class="table-data">
 				<div class="order">
 				<form method="post">
-						<input type="text" name="txtsearch" id="txtsearch" placeholder="Search by Patients ID or Name" style="padding: 12px;border: 1px solid #ccc;border-radius: 4px;font-family: var(poppins);">
+						<input type="text" name="txtsearch" id="txtsearch" placeholder="Search by Patients ID or Name" autocomplete="off" style="padding: 12px;border: 1px solid #ccc;border-radius: 4px;font-family: var(poppins);">
 						<button  id="btnsearch" name="btnsearch" class="page"><i class='bx bx-search' ></i></button>
 						</form></br>
 					<div class="head">

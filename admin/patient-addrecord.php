@@ -485,7 +485,7 @@ elseif (($_POST['med'])=="Reading") {
 						</div>
 						<div class="col-75">
 							<input type="text" name="pat_id" value="<?php echo $id1; ?>" hidden>
-							<input type="text" id="firstname" name="firstname" placeholder="Enter first name.." value="<?php echo $fname;?>" required>
+							<input type="text" id="firstname" name="firstname" placeholder="Enter first name.." autocomplete="off" value="<?php echo $fname;?>" required>
 						</div>
 						</div>
 						<div class="row">
@@ -493,7 +493,7 @@ elseif (($_POST['med'])=="Reading") {
 							<label for="middlename">Middle Name</label>
 						</div>
 						<div class="col-75">
-							<input type="text" id="middlename" name="middlename" placeholder="Enter middle name.." value="<?php echo $mname;?>">
+							<input type="text" id="middlename" name="middlename" placeholder="Enter middle name.." autocomplete="off" value="<?php echo $mname;?>">
 						</div>
 						</div>
 						<div class="row">
@@ -501,7 +501,7 @@ elseif (($_POST['med'])=="Reading") {
 							<label for="lastname">Last Name</label>
 						</div>
 						<div class="col-75">
-							<input type="text" id="lastname" name="lastname" placeholder="Enter last name.." value="<?php echo $lname;?>" required>
+							<input type="text" id="lastname" name="lastname" placeholder="Enter last name.." autocomplete="off" value="<?php echo $lname;?>" required>
 						</div>
 						</div>
 						<div class="row">
@@ -517,7 +517,7 @@ elseif (($_POST['med'])=="Reading") {
 							<label for="contact">Contact No.</label>
 						</div>
 						<div class="col-75">
-							<input type="tel" id="contact" name="contact" maxlength="11" pattern="[0-9]{4}[0-9]{3}[0-9]{4}" placeholder="Enter contact no.." value="<?php echo $contact;?>" required>
+							<input type="tel" id="contact" name="contact" maxlength="11" pattern="[0-9]{4}[0-9]{3}[0-9]{4}" placeholder="Enter contact no.." autocomplete="off" value="<?php echo $contact;?>" required>
 						</div>
 						</div>
 						<div class="row">
@@ -525,7 +525,7 @@ elseif (($_POST['med'])=="Reading") {
 							<label for="email">Email</label>
 						</div>
 						<div class="col-75">
-							<input type="email" id="email" name="email" placeholder="Enter email.." value="<?php echo $email;?>">
+							<input type="email" id="email" name="email" placeholder="Enter email.." autocomplete="off" value="<?php echo $email;?>">
 						</div>
 						</div>
 						<div class="row">
@@ -533,7 +533,7 @@ elseif (($_POST['med'])=="Reading") {
 							<label for="address">Address</label>
 						</div>
 						<div class="col-75">
-							<input type="text" id="address" name="address" placeholder="Enter address.." value="<?php echo $address;?>" required>
+							<input type="text" id="address" name="address" placeholder="Enter address.." autocomplete="off" value="<?php echo $address;?>" required>
 						</div>
 						</div>
 						<div class="row">

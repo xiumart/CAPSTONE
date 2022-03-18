@@ -171,7 +171,7 @@ if (isset($_GET['id'])) {
 			<div class="table-data">
 				<div class="order">
 				<form method="post">
-						<input type="text" name="txtsearch" id="txtsearch" placeholder="Search by Company Name or Person Name" style="padding: 12px;border: 1px solid #ccc;border-radius: 4px;font-family: var(poppins);">
+						<input type="text" name="txtsearch" id="txtsearch" placeholder="Search by Company Name or Person Name" autocomplete="off" style="padding: 12px;border: 1px solid #ccc;border-radius: 4px;font-family: var(poppins);">
 						<button  id="btnsearch" name="btnsearch" class="page"><i class='bx bx-search' ></i></button>
 						</form></br>
 					<table class="table">

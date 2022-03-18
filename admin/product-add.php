@@ -244,7 +244,7 @@ if($picture_type=="image/jpeg" || $picture_type=="image/jpg" || $picture_type=="
 							<label for="brand">Brand Name</label>
 						</div>
 						<div class="col-75">
-							<input type="text" id="brand" name="brand" placeholder="Enter brand name..">
+							<input type="text" id="brand" name="brand" placeholder="Enter brand name.." autocomplete="off">
 						</div>
 						</div>
 						<div class="row">
@@ -252,7 +252,7 @@ if($picture_type=="image/jpeg" || $picture_type=="image/jpg" || $picture_type=="
 							<label for="model">Model</label>
 						</div>
 						<div class="col-75">
-							<input type="text" id="model" name="model" placeholder="Enter model name..">
+							<input type="text" id="model" name="model" placeholder="Enter model name.." autocomplete="off">
 						</div>
 						</div>
 						<div class="row">
@@ -276,7 +276,7 @@ if($picture_type=="image/jpeg" || $picture_type=="image/jpg" || $picture_type=="
 							<label for="dtarrival">Date of Arrival</label>
 						</div>
 						<div class="col-75">
-							<input type="date" id="dtarrival" name="dtarrival" placeholder="Enter Arrival Date.." style="width: 100%;padding: 12px;border: 1px solid #ccc;border-radius: 4px;">
+							<input type="date" id="dtarrival" name="dtarrival" placeholder="Enter Arrival Date.." autocomplete="off" style="width: 100%;padding: 12px;border: 1px solid #ccc;border-radius: 4px;">
 						</div>
 						</div>
 						<div class="row">
@@ -284,15 +284,15 @@ if($picture_type=="image/jpeg" || $picture_type=="image/jpg" || $picture_type=="
 							<label for="expdate">Expiration Date</label>
 						</div>
 						<div class="col-75">
-							<input type="date" id="expdate" name="expdate" placeholder="Enter Expiration date.." style="width: 100%;padding: 12px;border: 1px solid #ccc;border-radius: 4px;">
-						</div>
+							<input type="date" id="expdate" name="expdate" placeholder="Enter Expiration date.." autocomplete="off" style="width: 100%;padding: 12px;border: 1px solid #ccc;border-radius: 4px;">
+						</div> 
 						</div>
 						<div class="row">
 						<div class="col-25">
 							<label for="lname">Original Price</label>
 						</div>
 						<div class="col-75">
-							<input type="number" id="origp" name="orig" placeholder="Enter original price.." style="width: 100%;padding: 12px;border: 1px solid #ccc;border-radius: 4px;">
+							<input type="number" id="origp" name="orig" placeholder="Enter original price.." autocomplete="off" style="width: 100%;padding: 12px;border: 1px solid #ccc;border-radius: 4px;">
 						</div>
 						</div>
 						<div class="row">
@@ -300,7 +300,7 @@ if($picture_type=="image/jpeg" || $picture_type=="image/jpg" || $picture_type=="
 							<label for="sell">Selling Price</label>
 						</div>
 						<div class="col-75">
-							<input type="number" id="sell" name="sell" placeholder="Enter selling price.." style="width: 100%;padding: 12px;border: 1px solid #ccc;border-radius: 4px;">
+							<input type="number" id="sell" name="sell" placeholder="Enter selling price.." autocomplete="off" style="width: 100%;padding: 12px;border: 1px solid #ccc;border-radius: 4px;">
 						</div>
 						</div>
 						<div class="row">
@@ -321,7 +321,7 @@ if($picture_type=="image/jpeg" || $picture_type=="image/jpg" || $picture_type=="
 							<label for="qty">Qty</label>
 						</div>
 						<div class="col-75">
-							<input type="number" id="qty" name="qty" placeholder="Enter quantity.." style="width: 100%;padding: 12px;border: 1px solid #ccc;border-radius: 4px;">
+							<input type="number" id="qty" name="qty" placeholder="Enter quantity.." autocomplete="off" style="width: 100%;padding: 12px;border: 1px solid #ccc;border-radius: 4px;">
 						</div>
 						</div>
 						<div class="row">
@@ -329,7 +329,7 @@ if($picture_type=="image/jpeg" || $picture_type=="image/jpg" || $picture_type=="
 							<label for="subject">Remarks</label>
 						</div>
 						<div class="col-75">
-							<textarea id="remarks" name="remarks" placeholder="Write something.." style="height:200px"></textarea>
+							<textarea id="remarks" name="remarks" placeholder="Write something.." autocomplete="off" style="height:200px"></textarea>
 						</div>
 						</div>
 						<div class="col-25">

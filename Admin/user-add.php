@@ -134,7 +134,7 @@
 				<div class="left">
 					<h1>Add User</h1>
 					<ul class="breadcrumb">
-						<li>
+						<li> autocomplete="off"
 							<a class="active" href="manage-user.php">Back</a>
 						</li>
 						<li><i class='bx bx-chevron-right' ></i></li>
@@ -240,7 +240,7 @@
 							<label for="lname">Last Name</label>
 						</div>
 						<div class="col-75">
-							<input type="text" id="lname" name="lname" placeholder="Enter last name" required="">
+							<input type="text" id="lname" name="lname" placeholder="Enter last name" required="" autocomplete="off">
 						</div>
 						</div>
 						<div class="row">
@@ -248,7 +248,7 @@
 							<label for="fname">First Name</label>
 						</div>
 						<div class="col-75">
-							<input type="text" id="fname" name="fname" placeholder="Enter first name" required="">
+							<input type="text" id="fname" name="fname" placeholder="Enter first name" required="" autocomplete="off">
 						</div>
 						</div>
 						<div class="row">
@@ -256,7 +256,7 @@
 							<label for="mname">Middle Name</label>
 						</div>
 						<div class="col-75">
-							<input type="text" id="mname" name="mname" placeholder="Enter middle name" required="">
+							<input type="text" id="mname" name="mname" placeholder="Enter middle name" required="" autocomplete="off">
 						</div>
 						</div>
 						<div class="row">
@@ -264,7 +264,7 @@
 							<label for="uname">Username</label>
 						</div>
 						<div class="col-75">
-							<input type="text" id="uname" name="uname" placeholder="Enter username" required="">
+							<input type="text" id="uname" name="uname" placeholder="Enter username" required="" autocomplete="off">
 						</div>
 						</div>
 						<!-- <div class="row">
@@ -280,7 +280,7 @@
 							<label for="contact">Contact Number</label>
 						</div>
 						<div class="col-75">
-							<input type="tel" id="contact" name="contact" maxlength="11"pattern="[0-9]{4}[0-9]{3}[0-9]{4}" placeholder="Enter contact number" required="">
+							<input type="tel" id="contact" name="contact" maxlength="11"pattern="[0-9]{4}[0-9]{3}[0-9]{4}" placeholder="Enter contact number" required="" autocomplete="off">
 						</div>
 						</div>
 						<div class="row">
@@ -288,7 +288,7 @@
 							<label for="email">Email</label>
 						</div>
 						<div class="col-75">
-							<input type="email" id="email" name="email" placeholder="Enter email" required="">
+							<input type="email" id="email" name="email" placeholder="Enter email" required="" autocomplete="off">
 						</div>
 						</div>
 						<div class="row">

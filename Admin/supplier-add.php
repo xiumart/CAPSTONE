@@ -232,7 +232,7 @@
 							<label for="cname">Company Name</label>
 						</div>
 						<div class="col-75">
-							<input type="text" id="cname" name="cname" placeholder="Enter company name" required="">
+							<input type="text" id="cname" name="cname" placeholder="Enter company name" required="" autocomplete="off">
 						</div>
 						</div>
 						<div class="row">
@@ -240,7 +240,7 @@
 							<label for="conperson">Contact Person</label>
 						</div>
 						<div class="col-75">
-							<input type="text" id="lname" name="lname" placeholder="Enter contact person" required="">
+							<input type="text" id="lname" name="lname" placeholder="Enter contact person" required="" autocomplete="off">
 						</div>
 						</div>
 						<div class="row">
@@ -248,7 +248,7 @@
 							<label for="contact">Contact Number</label>
 						</div>
 						<div class="col-75">
-							<input type="tel" id="contact" name="contact" maxlength="11" pattern="[0-9]{4}[0-9]{3}[0-9]{4}" placeholder="Enter contact number" required="">
+							<input type="tel" id="contact" name="contact" maxlength="11" pattern="[0-9]{4}[0-9]{3}[0-9]{4}" placeholder="Enter contact number" required="" autocomplete="off">
 						</div>
 						</div>
 						<div class="row">
@@ -256,7 +256,7 @@
 							<label for="email">Email</label>
 						</div>
 						<div class="col-75">
-							<input type="email" id="email" name="email" placeholder="Enter email" required="">
+							<input type="email" id="email" name="email" placeholder="Enter email" required="" autocomplete="off">
 						</div>
 						</div>
 						<div class="row">
@@ -264,7 +264,7 @@
 							<label for="description">Description</label>
 						</div>
 						<div class="col-75">
-							<input type="text" id="description" name="description" placeholder="Enter description" required="">
+							<input type="text" id="description" name="description" placeholder="Enter description" required="" autocomplete="off">
 						</div>
 						</div>
 						<center>

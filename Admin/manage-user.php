@@ -2,8 +2,8 @@
 error_reporting(0);
 include("../conn.php");
 if (isset($_GET['id'])) {
-	$users_id=$_GET['id'];
-	$query = "DELETE FROM `users_account` WHERE users_id='$users_id'";
+	$supp_id=$_GET['id'];
+	$query = "DELETE FROM `supplier` WHERE supp_id='$supp_id'";
 			mysqli_query($conn, $query);
 }
 ?>
@@ -47,14 +47,14 @@ if (isset($_GET['id'])) {
 	}
 	.page:hover { background-color:#00b2b3;}
 
-	.namee{margin-top: 33%;}
+	.namee{margin-top: 5%;}
 </style>
 <body>
 
 
 	<!-- SIDEBAR -->
 	<section id="sidebar">
-		<a href="manage-user.php" class="brand">
+		<a href="supplier.php" class="brand">
 			<img src="images\logo.png" alt="" width="60px;">
 			<span class="text" style="text-shadow:0.5px 0px #000;">RNL Vision Care</span>
 		</a>
@@ -95,6 +95,7 @@ if (isset($_GET['id'])) {
 					<span class="text">Supplier</span>
 				</a>
 			</li>
+
 			<li class="active">
 				<a href="manage-user.php">
 					<i class='bx bxs-group' ></i>
@@ -133,8 +134,8 @@ if (isset($_GET['id'])) {
 				</div>
 			</form>
 			<div id="digital-clock"></div>
-			<script src="time.js"></script>
 			<input type="checkbox" id="switch-mode" hidden>
+			<script src="time.js"></script>
 			<label for="switch-mode" class="switch-mode"></label>
 			<a href="#" class="notification">
 				<i class='bx bxs-bell' ></i>
@@ -161,18 +162,24 @@ if (isset($_GET['id'])) {
 				</div>
 			
 			</div>
-			<form method="post">
-						<input type="text" name="txtsearch" id="txtsearch" placeholder="Search by Company Name or Person Name" style="padding: 12px;border: 1px solid #ccc;border-radius: 4px;font-family: var(poppins);">
-						<button  id="btnsearch" name="btnsearch" class="page"><i class='bx bx-search' ></i></button>
-						</form>
-			<a href="user-add.php"><button class="btn-addpt"style="cursor: pointer;"> + Add User</button>
-			
+<style>
+	#content main .table-data .order table th {
+		text-align: center;
+	}
+	</style>
+			<a href="user-add.php"><button class="btn-addpt" style="cursor: pointer;"> + Add User</button></a>
+		
 			<div class="table-data">
-			<div class="order">
-			<table class="table">
+				<div class="order">
+				<form method="post">
+						<input type="text" name="txtsearch" id="txtsearch" placeholder="Search by Lastname" autocomplete="off" style="padding: 12px;border: 1px solid #ccc;border-radius: 4px;font-family: var(poppins);">
+						<button  id="btnsearch" name="btnsearch" class="page"><i class='bx bx-search' ></i></button>
+						</form></br>
+					<table class="table">
      <thead>
-      <tr>
-      <th>Lastname</th>
+     	<tr>
+		 
+		 <th>Lastname</th>
       <th>Firstname</th>
       <th>Middlename</th>
       <th>Username</th>
@@ -180,9 +187,10 @@ if (isset($_GET['id'])) {
       <th>Email</th>
       <th>Position</th>
       <th>Action</th>
-      </tr>
+     	</tr>
      </thead>
      <tbody>
+	 
 	 <?php
      	$limit=25;
         $cat=$_POST['all'];
@@ -249,10 +257,14 @@ if (isset($_GET['id'])) {
 			
 			<div class="table-data">
 	
+				
+				
 			</div>
 		</main>
 		<!-- MAIN -->
 	</section>
+
+	
 	<!-- CONTENT -->
 	
 
