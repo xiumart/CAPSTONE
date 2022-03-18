@@ -168,7 +168,7 @@ if (isset($_REQUEST['btnsubmit'])) {
 			<img src="img\user.png" alt="" width="40px" class="userlogo">
 				<div class="dropdown-content1">
 					<a href="#" id="myBtn">Change Password</a>
-					<a href="#" style="color:red;">Logout</a>
+					<a href="logout.php" style="color:red;">Logout</a>
 				</div>
 			</div>
 			<!-- Modal -->
