@@ -134,10 +134,26 @@
 			<div class="dropdown1">
 			<img src="img\user.png" alt="" width="40px" class="userlogo">
 				<div class="dropdown-content1">
-					<a href="#">Change Password</a>
+					<a href="#" id="myBtn">Change Password</a>
 					<a href="#" style="color:red;">Logout</a>
 				</div>
 			</div>
+				<!-- Modal -->
+				<div id="myModal" class="modal">
+				<div class="modal-content">
+				<span class="close">&times;</span>
+				<h3>CHANGE PASSWORD</h3>
+				<br><hr><br>
+				<h4>OLD PASSWORD</h4>
+				<input type="text" class="oldpw">
+				<h4>NEW PASSWORD</h4>
+				<input type="text" class="newpw">
+				<h4>CONFIRM PASSWORD</h4>
+				<input type="text" class="conpw">
+				<input type="button" value="Submit" class="cpBtn"><br><br><br><br>
+				</div>
+			</div>
+			<script src="js\modal.js"></script>
 		</nav>
 		<!-- NAVBAR -->
 
