@@ -186,9 +186,10 @@ $user=$_SESSION['login_user'];
             <th>Appointment Id</th>
             <th>Date</th>
             <th>Time</th>
-            <th>Purpose<th>
+            <th>Purpose</th>
             <th>Status</th>
             <th>Action</th>
+          
           </tr>
         </thead>
         <?php
