@@ -179,14 +179,28 @@ if (isset($_POST['signup']))
 {
 
  require 'conn.php';
+
+
+ $query2 = mysqli_query($conn, "SELECT COUNT(*) as total from client_user_info;");
+ while($result2=mysqli_fetch_array($query2)){
+
+   $cidfirst = date("y");
+   $cidsec = date("m");
+   $client_ids = "RNL-W".$cidfirst.$cidsec.$result2['total'];
+   
+           }		
     $username = $_POST['username'];
     $contactno = $_POST['contactno'];
     $email = $_POST['email'];
     $password = md5($_POST['password']);
-    $client_id = uniqid();
     $date = date("m-d-Y");
     $time = date("h:i:sa");
     $activity = 'signup';
+
+
+
+
+
 
     if(!preg_match("/^[0-9]*$/",$contactno)){
           echo '<script language="javascript">';
@@ -203,15 +217,15 @@ if (isset($_POST['signup']))
   }
   
 
-  $query_signup = "INSERT INTO client_user (client_id,client_username,client_password) VALUES ('$client_id','$username','$password')" ;
+  $query_signup = "INSERT INTO client_user (client_id,client_username,client_password) VALUES ('$client_ids','$username','$password')" ;
 
   $result = mysqli_query($conn, $query_signup);
 
-  $query_signup1 = "INSERT INTO client_user_info (client_id, client_contact,client_email) VALUES ('$client_id','$contactno','$email')" ;
+  $query_signup1 = "INSERT INTO client_user_info (client_id, client_contact,client_email) VALUES ('$client_ids','$contactno','$email')" ;
 
   $result1 = mysqli_query($conn, $query_signup1);
 
-  $query_signup2 = "INSERT INTO client_logs (log_userid, log_username, log_activity, log_date, log_time) VALUES ('$client_id','$username','$activity','$date','$time')" ;
+  $query_signup2 = "INSERT INTO client_logs (log_userid, log_username, log_activity, log_date, log_time) VALUES ('$client_ids','$username','$activity','$date','$time')" ;
 
   $result2 = mysqli_query($conn, $query_signup2);
   
