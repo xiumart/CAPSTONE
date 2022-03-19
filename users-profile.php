@@ -197,7 +197,7 @@ $user=$_SESSION['login_user'];
       while($row = $result -> fetch_assoc()){
        ?>
 
-
+        <h3>RNL-ID: <b><?php echo $row['client_id'];?></b></h3><br>
         <h3>First Name </h3>
         <input type="text" name="client_fname"  value="<?php echo $row['client_fname'];?>"style="font-size: 18px;border: 2px solid #ccc; width: 55%; padding: 10px; margin: 10px auto; border-radius: 5px;" >
 
@@ -208,7 +208,7 @@ $user=$_SESSION['login_user'];
         <input type="text" name="client_lname" value="<?php echo $row['client_lname'];?>" style="font-size: 18px;border: 2px solid #ccc; width: 55%; padding: 10px; margin: 10px auto; border-radius: 5px;" >
 
         <h3>Birthday </h3>
-        <input type="date" name="client_bday" value="<?php echo $row['client_bday'];?>" style="font-size: 18px;border: 2px solid #ccc; width: 55%; padding: 10px; margin: 10px auto; border-radius: 5px;" >
+        <input type="date" name="client_bday" value="<?php echo date('Y-m-d',strtotime($row["client_bday"]));?>" style="font-size: 18px;border: 2px solid #ccc; width: 55%; padding: 10px; margin: 10px auto; border-radius: 5px;" >
 
         <h3>Age </h3>
         <input type="number" name="client_age" value="<?php echo $row['client_age'];?>" style="font-size: 18px;border: 2px solid #ccc; width: 55%; padding: 10px; margin: 10px auto; border-radius: 5px;" >

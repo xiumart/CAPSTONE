@@ -116,7 +116,7 @@ Author URL: http://w3layouts.com
                             <span class="fa fa-map-marker text-primary"></span>
                         </div>
                         <div class="cont-right">
-                            <h6>Our head office address</h6>
+                            <h6>Our address</h6>
                             <p class="pr-lg-5">Stall #13 2nd floor Inno Block Mall Zabarte Road Cor Camarin-Susano Road, North Caloocan City</p>
                         </div>
                     </div>
