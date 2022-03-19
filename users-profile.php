@@ -20,7 +20,7 @@ session_start();
     <section class="head">
       <div class="container flex1">
         <div class="left flex1">
-          <div class="logo">
+        <a href="users.php"><img src="assets\images\logo.png" alt="" style="position:absolute;width:80px;top:-1%;left:5%;pointer:cursor;"></a>          <div class="logo">
             <h3><a href="users.php" style="color:white;">RNL Vision Care</a></h3>
           </div>
 
@@ -97,11 +97,11 @@ button:hover{
     <?php 
 include('conn.php');
 if($_SESSION["login_user"]) {?>
-<label style="cursor: pointer; text-transform: uppercase;">hello, <?php echo $_SESSION['login_user'];?> !</label></button>
+<label style="cursor: pointer; text-transform: uppercase;">hello, <?php echo $_SESSION['login_user'];?> <i class="fa fa-angle-down"></i> </label></button>
   <div class="dropdown-content">
     <a href="users-profile.php">Edit Profile</a>
     <a href="users-changepassword.php">Change Password</a>
-    <a href="logout.php">Logout</a>
+    <a href="logout.php" style="color:red;">Logout</a>
     <?php
 }else echo "<h1>Please login first .</h1>";
 $user=$_SESSION['login_user'];
@@ -145,7 +145,6 @@ $user=$_SESSION['login_user'];
     </section>
 -->
   </header>
-
   <script>
     var menuitem = document.getElementById("menuitem");
     menuitem.style.maxHeight = "0px";
@@ -162,8 +161,8 @@ $user=$_SESSION['login_user'];
       var header = document.querySelector("header");
       header.classList.toggle("sticky", window.scrollY > 50);
     })
-  </script>
-
+  </script><div style="margin:50px;"></div>
+  
   <section class="home">
   
   </section>
@@ -176,7 +175,7 @@ $user=$_SESSION['login_user'];
   <section class="table">
     <div class="container">
        <!-- Page Content -->
-
+       <a href="users.php" style="float:right;font-size:17px;color:#1545CB;">Back</a>
         <div class="row">
             <div class="col-lg-12 text-center">
              <form name="chngpwd" action="users-profile.php" method="post" onSubmit="return valid();">

@@ -22,6 +22,7 @@ $call = $_SESSION["login_user"];
     <section class="head">
       <div class="container flex1">
         <div class="left flex1">
+        <a href="users.php"><img src="assets\images\logo.png" alt="" style="position:absolute;width:80px;top:-1%;left:5%;pointer:cursor;"></a>
           <div class="logo">
             <a href="users.php" style="color: white;"><h3>RNL Vision Care</h3></a>
           </div>
@@ -96,11 +97,11 @@ $call = $_SESSION["login_user"];
     <?php 
 include('conn.php');
 if($_SESSION["login_user"]) {?>
-<label style="cursor:pointer; text-transform:uppercase;">Hello, <?php echo $_SESSION['login_user'];  ?>&nbsp;</label>!</button>
+<label style="cursor:pointer; text-transform:uppercase;">Hello, <?php echo $_SESSION['login_user'];  ?><i class="fa fa-angle-down"></i> </label></button>
   <div class="dropdown-content">
     <a href="users-profile.php">Edit Profile</a>
     <a href="users-changepassword.php">Change Password</a>
-    <a href="logout.php">Logout</a>
+    <a href="logout.php" style="color:red;">Logout</a>
     <?php
 }else echo "<h1>Please login first .</h1>";
 $user=$_SESSION['login_user'];

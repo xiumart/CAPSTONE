@@ -48,6 +48,7 @@ $qwe = $_SESSION['login_user'];
     <section class="head">
       <div class="container flex1">
         <div class="left flex1">
+        <a href="users.php"><img src="assets\images\logo.png" alt="" style="position:absolute;width:80px;top:-1%;left:5%;pointer:cursor;"></a>
           <div class="logo">
             <h3><a href="users.php" style="color: white;">RNL Vision Care</a></h3>
           </div>
@@ -130,11 +131,11 @@ input[type="password"]{
     <?php 
 if($_SESSION["login_user"]) {
   $qwe = $_SESSION['login_user'];?>
-<label style="cursor:pointer; text-transform: uppercase">Hello, <?php echo $_SESSION['login_user'];?> !</label></button>
+<label style="cursor:pointer; text-transform: uppercase">Hello, <?php echo $_SESSION['login_user'];?> <i class="fa fa-angle-down"></i> </label></button>
   <div class="dropdown-content">
     <a href="users-profile.php">Edit Profile</a>
     <a href="users-changepassword.php">Change Password</a>
-    <a href="logout.php">Logout</a>
+    <a href="logout.php" style="color:red;">Logout</a>
     <?php
 }else echo "<h1>Please login first .</h1>";
 $user=$_SESSION['login_user'];
@@ -147,16 +148,16 @@ $user=$_SESSION['login_user'];
         </div>
       </div>
     </section>
-  </header>
+  </header><div style="margin:50px;"></div>
   <section class="table">
     <div class="container">
-
+    <a href="users.php" style="float:right;font-size:17px;color:#1545CB;">Back</a>
       <h1>Change your Password</h1>
       <?php if(isset($_GET['error'])) { ?>
         <p class="erorr"><?php echo $_GET['error']; ?> </p>
       <?php } ?>
       <!-- Page Content -->
-
+      
         <div class="row">
             <div class="col-lg-12 text-center">
              <form name="chngpwd" action="" method="post" onSubmit="return valid();">
