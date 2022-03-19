@@ -120,11 +120,17 @@ include("../conn.php");
 			<script src="time.js"></script>
 			<input type="checkbox" id="switch-mode" hidden>
 			<label for="switch-mode" class="switch-mode"></label>
+			<div class="dropdown2">
 			<a href="#" class="notification">
 				<i class='bx bxs-bell' ></i>
 				<span class="num">8</span>
-				
 			</a>
+				<div class="dropdown-content2">
+					<h4 id="textnotif">Notification</h4><br><hr>
+					<a href="#" id="" style="color:black;"><h6>Inquiry:</h6> How can i set an appointment?</a><hr color="wheat">
+					<a href="see-all-notification.php" id="colnotif">See all notification..</a>
+				</div>
+			</div>
 			<!-- DROP DOWN NG EDIT PROFILE AND CHANGE PASS OK-->
 			<div class="dropdown1">
 			<img src="img\user.png" alt="" width="40px" class="userlogo">
@@ -148,7 +154,7 @@ include("../conn.php");
 				<input type="button" value="Submit" class="cpBtn"><br><br><br><br>
 				</div>
 			</div>
-			<script src="js\modal.js"></script>
+			<script src="js\modal.js"></script>  
 		</nav>
 		<!-- NAVBAR -->
 

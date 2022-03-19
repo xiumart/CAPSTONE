@@ -161,14 +161,14 @@
 		<main>
 			<div class="head-title">
 				<div class="left">
-					<h1>Sales Report</h1>
+					<h1>Notifications</h1>
 					<ul class="breadcrumb">
 						<li>
-							<a href="sales-report.php">Sales Report</a>
+							<a href="see-all-notification.php">Notification</a>
 						</li>
 						<li><i class='bx bx-chevron-right' ></i></li>
 						<li>
-							<a class="active" href="sales-report.php">Home</a>
+							<a class="active" href="dashboard.php">Home</a>
 						</li>
 					</ul>
 				</div>
@@ -182,46 +182,20 @@
 						<i class='bx bx-filter' ></i>
 						
 					</div>
-					<table class="table">
-     <thead>
-     	<tr>
-     	 <th>Transac. ID</th>
-     	 <th>Date</th>
-     	 <th>Time</th>
-     	 <th>Customer Name</th>
-		 <th>Invoice No.</th>
-		 <th>Profit</th>
-		 <th>Total Amount</th>
-     	</tr>
-     </thead>
-     <tbody>
-     	  <tr>
-     	  	  <td data-label="Transacid" class="brandd"><p>T-12445</p></td>
-     	  	  <td data-label="Date">03/10/2022</td>
-			  <td data-label="Time">11:00pm</td>
-     	  	  <td data-label="Customer">Marliardo Umbao</td>
-     	  	  <td data-label="Invoice">OR1231312321</td>
-			  <td data-label="Profit">1500</td>
-			  <td data-label="Total">200</td>
-			  
-     	  </tr>
+				
 
-     	  
-     </tbody>
-   </table>
-   <a href=""><button class="btn-print"><i class='bx bxs-printer' ></i> Print </button></a>
-				</div>
+		<div id="notif-body">
+		<h4>Inquiry : </h5>
+		<h5>From: marliardoumbao2@gmail.com</h6>
+		<p>How can I set an appoinment?</p>
+		<hr>
+		<br>
+		<h4>Product : </h5>
+		<h5>From: System</h6>
+		<p>RNL Eyeglass is out of stock</p>
+		<hr>
+		</div>
 
-				
-				
-			</div>
-			
-			<div class="table-data">
-	
-
-				
-				
-			</div>
 		</main>
 		<!-- MAIN -->
 	</section>
