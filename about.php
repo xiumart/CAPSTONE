@@ -47,7 +47,7 @@
             <a class="nav-link" href="about.php">About</a>
           </li>
           <li class="nav-item @@courses__active">
-            <a class="nav-link" href="product.php">Product</a>
+            <a class="nav-link" href="product.php?prod=ALL">Product</a>
           </li>
           <li class="nav-item @@contact__active">
             <a class="nav-link" href="contact.php">Contact</a>
