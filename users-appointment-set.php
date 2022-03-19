@@ -201,8 +201,8 @@ $user=$_SESSION['login_user'];
                                 <div class="twice-two">
                                   <input type="date" class="form-control" name="Date" id="w3lSender" placeholder="Date" required="1" min="2022-01-01" step="1">
                                     <select id="w3lSender" class="form-control" name="Time" required="1">
-                                      <option value="AM">AM</option>
-                                      <option value="PM">PM</option>
+                                      <option value="AM">8:00 AM to 12:00 NN</option>
+                                      <option value="PM">1:00 PM to 5:00 PM</option>
                                     </select>
                             <input type ="hidden" class ="form-control" name='App_User' value='<?php echo $call; ?>'>
 
