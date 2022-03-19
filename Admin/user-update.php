@@ -51,6 +51,7 @@ if (isset($_REQUEST['btnsubmit'])) {
 
   <!-- Boxicons -->
   <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
   <!-- My CSS -->
   <link rel="stylesheet" href="css\sys_style.css">
   <link rel="shorcut icon" type="img/png" href="images\logo.png">
@@ -302,6 +303,10 @@ if (isset($_REQUEST['btnsubmit'])) {
     margin-top: 0;
   }
   }
+  form i {
+    margin-left: -30px;
+    cursor: pointer;
+}
 </style>
 
               <div class="table-data">
@@ -351,8 +356,10 @@ if (isset($_REQUEST['btnsubmit'])) {
                             <label for="cpass">Change Password</label>
                         </div>
                         <div class="col-75">
-                            <input type="password" id="cpass" name="cpass" placeholder="Enter new password" value= "<?php echo $row['users_password'];?>">
-                        </div>
+                        
+                            <input type="password" name="cpass" placeholder="Enter new password" id="password" value= "<?php echo $row['users_password'];?>">
+                            <i class="bi bi-eye-slash" id="togglePassword"></i>
+                          </div>
                         </div>
                         
                         <div class="row">
@@ -406,5 +413,25 @@ if (isset($_REQUEST['btnsubmit'])) {
   
 
   <script src="script.js"></script>
+  <!-- show password -->
+  <script>
+        const togglePassword = document.querySelector("#togglePassword");
+        const password = document.querySelector("#password");
+
+        togglePassword.addEventListener("click", function () {
+            // toggle the type attribute
+            const type = password.getAttribute("type") === "password" ? "text" : "password";
+            password.setAttribute("type", type);
+            
+            // toggle the icon
+            this.classList.toggle("bi-eye");
+        });
+
+        // prevent form submit
+        const form = document.querySelector("form");
+        form.addEventListener('signup', function (e) {
+            e.preventDefault();
+        });
+    </script>
 </body>
 </html>

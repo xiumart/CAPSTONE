@@ -72,6 +72,7 @@ function getIpAddr(){
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
     <script
       src="https://kit.fontawesome.com/64d58efce2.js"
       crossorigin="anonymous"
@@ -79,6 +80,7 @@ function getIpAddr(){
     <link rel="stylesheet" href="assets/css/style.css" />
      <style type="text/css">
       #result{color:red;}
+      
      </style>
     <title>RNL Vision Care
     </title>
@@ -98,8 +100,8 @@ function getIpAddr(){
               <input type="text" placeholder="Username" name="username" required="required" autocomplete="off"/>
             </div>
             <div class="input-field">
-              <i class="fas fa-lock"></i>
-              <input type="password" placeholder="Password" name="password" required="required" />
+              <i class="bi bi-eye-slash" id="togglePassword"></i>
+              <input type="password" placeholder="Password" name="password" id = "password" required="required" />
             </div>
 
             <button class="btn btn-primary" name='login' <?php echo $msg1; ?>>Login</button>
@@ -124,15 +126,36 @@ function getIpAddr(){
               <input type="email" placeholder="Email" name = "email" required autocomplete="off" />
             </div>
             <div class="input-field">
-              <i class="fas fa-lock"></i>
-              <input type="password" placeholder="Password" name = "password" required />
+            <i class="bi bi-eye-slash" id="togglePassword"></i>
+              <input type="password" placeholder="Password" name = "password" id = "password" required />
+              
             </div>
             <input type="submit" class="btn" value="Sign up" name = 'signup'/>
             
           </form>
         </div>
       </div>
+      <!-- show password -->
+      <script>
+        const togglePassword = document.querySelector("#togglePassword");
+        const password = document.querySelector("#password");
 
+        togglePassword.addEventListener("click", function () {
+            // toggle the type attribute
+            const type = password.getAttribute("type") === "password" ? "text" : "password";
+            password.setAttribute("type", type);
+            
+            // toggle the icon
+            this.classList.toggle("bi-eye");
+        });
+
+        // prevent form submit
+        const form = document.querySelector("form");
+        form.addEventListener('signup', function (e) {
+            e.preventDefault();
+        });
+    </script>
+    
       <div class="panels-container">
         <div class="panel left-panel">
           <div class="content">
@@ -196,9 +219,13 @@ if (isset($_POST['signup']))
     $date = date("m-d-Y");
     $time = date("h:i:sa");
     $activity = 'signup';
+    $uppercase = preg_match('@[A-Z]@', $password);
+    $lowercase = preg_match('@[a-z]@', $password);
+    $number    = preg_match('@[0-9]@', $password);
 
     $query= mysqli_query($conn,"SELECT * FROM client_user_info WHERE client_email= '$email'");
-    $query1= mysqli_query($conn,"SELECT * FROM client_user WHERE client_username= '$username'");
+    $query1= mysqli_query($conn,"SELECT * FROM client_user WHERE client_username= '$username', client_password='$password'");
+
     if(mysqli_num_rows ($query)>0)
     {
       echo '<script language="javascript">';
@@ -209,6 +236,12 @@ exit();
     }else if(mysqli_num_rows ($query1)>0) {
       echo '<script language="javascript">';
       echo 'alert("Username already exist!");';
+      echo 'window.location="login.php";';
+      echo '</script>';
+exit();
+    }else if(!$uppercase || !$lowercase || !$number || strlen($password) < 8) {
+      echo '<script language="javascript">';
+      echo 'alert("Must contain at least 8 characters and should include one number and one upper case letter!");';
       echo 'window.location="login.php";';
       echo '</script>';
 exit();

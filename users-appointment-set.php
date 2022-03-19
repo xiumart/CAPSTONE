@@ -177,10 +177,10 @@ $user=$_SESSION['login_user'];
                              <h3>Appointment User</h3>
                             <input type="text" name="AppUser" value="<?php echo $call;?>" id="w3lSubject" autocomplete="off" required="">
                              <h3>Name</h3>
-                            <input type="text" class="form-control" name="Name" id="w3lSubject"
+                            <input type="text " class="form-control" name="Name" id="w3lSubject"
                                  required="">
                              <h3>Contact No.</h3>
-                            <input type="text" class="form-control" maxlength="11" pattern="[0-9]{4}[0-9]{3}[0-9]{4}" name="Contact" id="w3lSubject"
+                            <input type="tel" class="form-control" maxlength="11" pattern="[0-9]{4}[0-9]{3}[0-9]{4}" name="Contact" id="w3lSubject"
                                  autocomplete="off" required="">
                                 <h3>Email</h3>
                             <input type="email" class="form-control" name="Email" autocomplete="off" id="w3lSubject"
@@ -200,7 +200,7 @@ $user=$_SESSION['login_user'];
                                 <h3>Date and Time</h3>
                                 <div class="twice-two">
                                   <input type="date" class="form-control" name="Date" id="w3lSender" placeholder="Date" required="1" min="2022-01-01" step="1">
-                                    <select id="w3lSender" class="form-control" name="Time" required="1">
+                                    <select id="w3lSender" class="form-control" name="Time" required="1" style="border-radius: 8px; font-size: 16px;">
                                       <option value="AM">8:00 AM to 12:00 NN</option>
                                       <option value="PM">1:00 PM to 5:00 PM</option>
                                     </select>
