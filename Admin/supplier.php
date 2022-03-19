@@ -202,7 +202,7 @@ if (isset($_GET['id'])) {
 				<div class="order">
 				<form method="post">
 						<input type="text" name="txtsearch" id="txtsearch" placeholder="Search by Company Name or Person Name" autocomplete="off" style="padding: 12px;border: 1px solid #ccc;border-radius: 4px;font-family: var(poppins);">
-						<button  id="btnsearch" name="btnsearch" class="page"><i class='bx bx-search' ></i></button>
+						<button  id="btnsearch" name="btnsearch" class="page" style="cursor: pointer;"><i class='bx bx-search' ></i></button>
 						</form></br>
 					<table class="table">
      <thead>
@@ -250,7 +250,7 @@ if (isset($_GET['id'])) {
      	  	<td data-label="Contact No."><?php echo $row['supp_contact'];?></td>
      	  	<td data-label="Email"><?php echo $row['supp_email'];?></td>
 			<td data-label="Description"><?php echo $row['supp_desc'];?></td>
-			<td data-label="Action"><a href="supplier-update.php?id=<?php echo $row['supp_id'];?>"><button class="btn-upd">Update</button></a><a href="?id=<?php echo $row['supp_id'];?>"><button class="btn-rem" name="btnremove">Remove</button></a></td>
+			<td data-label="Action"><a href="supplier-update.php?id=<?php echo $row['supp_id'];?>"><button class="btn-upd" style="cursor: pointer;">Update</button></a><a href="?id=<?php echo $row['supp_id'];?>"><button class="btn-rem" name="btnremove" style="cursor: pointer;">Remove</button></a></td>
      	  </tr>
     
      	 <?php

@@ -200,8 +200,8 @@
 			<div class="table-data">
 				
 				<div class="order">
-					<input type="text" class="cust">
-					<select name="" id="" class="sel">
+					<input type="text" class="cust" style="cursor: pointer;">
+					<select name="" id="" class="sel" style="cursor: pointer;">
 
 					</select>
 					<input type="number" class="num"><br><br>
@@ -229,7 +229,7 @@
 								<td data-label="Amount"></td>
 								<td data-label="Profit"></td>
 								<td data-label="Total"></td>
-								<td><button type="button" class="btn-t">Cancel</button></td>
+								<td><button type="button" class="btn-t" style="cursor: pointer;">Cancel</button></td>
 							</tr>
 						</tbody>
 
@@ -237,7 +237,7 @@
 					</div>
 				</table>
 				<div><br><br>
-				<button type="button" class="btn-p">PAY</button></td>
+				<button type="button" class="btn-p" style="cursor: pointer;">PAY</button></td>
 			</div>
 
 		</main>

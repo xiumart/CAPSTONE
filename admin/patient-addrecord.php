@@ -539,7 +539,7 @@ elseif (($_POST['med'])=="Reading") {
 							<label for="bday">Birthdate</label>
 						</div>
 						<div class="col-75">
-							<input type="date" id="bday" name="bday" placeholder="" value="<?php echo $bday;?>" required>
+							<input type="date" id="bday" name="bday" placeholder="" value="<?php echo $bday;?>" required="" min="1925-01-01" step="">
 						</div>
 						</div>
 						<div class="row">

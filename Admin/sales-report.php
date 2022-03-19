@@ -209,7 +209,7 @@
      	  
      </tbody>
    </table>
-   <a href=""><button class="btn-print"><i class='bx bxs-printer' ></i> Print </button></a>
+   <a href=""><button class="btn-print" style="cursor: pointer;"><i class='bx bxs-printer' ></i> Print </button></a>
 				</div>
 
 				

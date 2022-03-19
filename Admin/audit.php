@@ -40,6 +40,7 @@
 	.page:hover { background-color:#00b2b3;}
 
 	.namee{margin-top: 5%;}
+
 </style>
 <body>
 
@@ -196,7 +197,7 @@
      <thead>
      	<tr>
 		 
-		<th>Username</th>
+			<th>Username</th>
       <th>Activity</th>
       <th>Date & Time</th>
       <th>Role</th>

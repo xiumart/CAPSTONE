@@ -165,11 +165,11 @@ include("../conn.php");
 					<h1>Medical Certificate</h1>
 					<ul class="breadcrumb">
 						<li>
-							<a href="patient-record.php">Preview Medical Certificate</a>
+							<a class="active" href="patient-view.php?id=<?php echo $_GET['id']; ?>">Back</a>
 						</li>
 						<li><i class='bx bx-chevron-right' ></i></li>
 						<li>
-							<a class="active" href="patient-view.php?id=<?php echo $_GET['id']; ?>">Back</a>
+							<a href="patient-record.php">Preview Medical Certificate</a>
 						</li>
 					</ul>
 				</div>

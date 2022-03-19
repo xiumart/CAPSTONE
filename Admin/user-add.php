@@ -164,7 +164,7 @@
 				<div class="left">
 					<h1>Add User</h1>
 					<ul class="breadcrumb">
-						<li> autocomplete="off"
+						<li>
 							<a class="active" href="manage-user.php">Back</a>
 						</li>
 						<li><i class='bx bx-chevron-right' ></i></li>
@@ -297,14 +297,6 @@
 							<input type="text" id="uname" name="uname" placeholder="Enter username" required="" autocomplete="off">
 						</div>
 						</div>
-						<!-- <div class="row">
-						<div class="col-25">
-							<label for="password">Password</label>
-						</div>
-						<div class="col-75">
-							<input type="password" id="password" name="password" placeholder="Enter password" required="">
-						</div>
-						</div> -->
 						<div class="row">
 						<div class="col-25">
 							<label for="contact">Contact Number</label>
