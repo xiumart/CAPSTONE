@@ -23,7 +23,7 @@ $call = $_SESSION["login_user"];
       <div class="container flex1">
         <div class="left flex1">
           <div class="logo">
-            <h3>RNL Vision Care</h3>
+            <a href="users.php" style="color: white;"><h3>RNL Vision Care</h3></a>
           </div>
 
           <div class="search flex">
@@ -198,11 +198,11 @@ $user=$_SESSION['login_user'];
                               </select>
                                 <h3>Date and Time</h3>
                                 <div class="twice-two">
-
-                            <input type="date" class="form-control" name="Time" id="w3lName" placeholder="Date"
-                                required="1">
-                            <input type="time" class="form-control" name="Date" id="w3lSender" placeholder="Time"
-                                required="1">
+                                  <input type="date" class="form-control" name="Date" id="w3lSender" placeholder="Date" required="1" min="2022-01-01" step="1">
+                                    <select id="w3lSender" class="form-control" name="Time" required="1">
+                                      <option value="AM">AM</option>
+                                      <option value="PM">PM</option>
+                                    </select>
                             <input type ="hidden" class ="form-control" name='App_User' value='<?php echo $call; ?>'>
 
                         </div>  
