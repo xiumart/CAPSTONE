@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,24 +13,23 @@
 	<title>RNL Vision Care | Admin</title>
 </head>
 <style>
-	button {
+		button {
 		background-color: #00c2cb;
 		padding: 12px;
 		border: none;
 		margin: 3px;
-		border-radius: 10px;
-		cursor: pointer;
+		border-radius: 10%;
 	}
 
 	.btn-upd:hover { background-color: #4CAF50;}
 	.btn-rem:hover { background-color: red;}
-	.btn-print:hover { background-color:#00b2b3;}
-	.btn-addp:hover { background-color: #e5eaf0}
-
+	.btn-print:hover { background-color:#00a2a3;}
+	.btn-addpt:hover { background-color: #00a2a3}
+	.btn-addpt {float:right; margin-bottom: 20px;}
 	.btn-print {
 		margin-top: 20px;
 		float: right;
-		width: 15%;
+		width: 10%;
 	}
 	.page{
 		background-color: #00c2cb;
@@ -38,15 +38,17 @@
 		border-radius: 10%;
 	}
 	.page:hover { background-color:#00b2b3;}
+
+	.namee{margin-top: 5%;}
 </style>
 <body>
 
 
 	<!-- SIDEBAR -->
 	<section id="sidebar">
-		<a href="audit.php" class="brand">
+		<a href="supplier.php" class="brand">
 			<img src="images\logo.png" alt="" width="60px;">
-			<span class="text"  style="text-shadow:0.5px 0px #000;">RNL Vision Care</span>
+			<span class="text" style="text-shadow:0.5px 0px #000;">RNL Vision Care</span>
 		</a>
 		<ul class="side-menu top">
 			<li>
@@ -85,6 +87,7 @@
 					<span class="text">Supplier</span>
 				</a>
 			</li>
+
 			<li>
 				<a href="manage-user.php">
 					<i class='bx bxs-group' ></i>
@@ -123,8 +126,8 @@
 				</div>
 			</form>
 			<div id="digital-clock"></div>
-			<script src="time.js"></script>
 			<input type="checkbox" id="switch-mode" hidden>
+			<script src="time.js"></script>
 			<label for="switch-mode" class="switch-mode"></label>
 			<div class="dropdown2">
 			<a href="#" class="notification">
@@ -137,22 +140,16 @@
 					<a href="see-all-notification.php" id="colnotif">See all notification..</a>
 				</div>
 			</div>
-			<div class="dropdown-content2">
-					<h4 id="textnotif">Notification</h4><br><hr>
-					<a href="#" id="" style="color:black;"><h6>Inquiry:</h6> How can i set an appointment?</a><hr color="wheat">
-					<a href="see-all-notification.php" id="colnotif">See all notification..</a>
-				</div>
-			</div>
 			<!-- DROP DOWN NG EDIT PROFILE AND CHANGE PASS OK-->
 			<div class="dropdown1">
 			<img src="img\user.png" alt="" width="40px" class="userlogo">
 				<div class="dropdown-content1">
 					<a href="#" id="myBtn">Change Password</a>
-					<a href="#" style="color:red;">Logout</a>
+					<a href="logout.php" style="color:red;">Logout</a>
 				</div>
 			</div>
-				<!-- Modal -->
-				<div id="myModal" class="modal">
+			<!-- Modal -->
+			<div id="myModal" class="modal">
 				<div class="modal-content">
 				<span class="close">&times;</span>
 				<h3>CHANGE PASSWORD</h3>
@@ -174,10 +171,10 @@
 		<main>
 			<div class="head-title">
 				<div class="left">
-					<h1>Audit Logs</h1>
+					<h1>Audit Trail</h1>
 					<ul class="breadcrumb">
 						<li>
-							<a href="audit.php">Audit Logs</a>
+							<a href="audit.php">Audit Trail</a>
 						</li>
 						<li><i class='bx bx-chevron-right' ></i></li>
 						<li>
@@ -187,31 +184,32 @@
 				</div>
 			
 			</div>
-			<!-- <div class="head">
-			<a href="javascript:Clickheretoprint()">
-				<button class="btn-print"><i class='bx bxs-printer' ></i> Print Audit Logs</button></a><br>
-					</div> -->
-			
+<style>
+	#content main .table-data .order table th {
+		text-align: center;
+	}
+	</style>
+		
 			<div class="table-data">
-			<div class="order">
-					
+				<div class="order">
 					<table class="table">
      <thead>
      	<tr>
-     	 <th>Username</th>
-     	 <th>Activiy</th>
-     	 <th>Date & Time</th>
-     	 <th>Role</th>
+		 
+		<th>Username</th>
+      <th>Activity</th>
+      <th>Date & Time</th>
+      <th>Role</th>
      	</tr>
      </thead>
      <tbody>
+	 
 	 <?php
        $conn = mysqli_connect("localhost", "root", "","capstone");
        if ($conn-> connect_error) { 
         die("Connection Failed.". $conn-> connection_error);
        }
-	$limit=5;
-	// $cat=$_POST['all'];
+	$limit=10;
 	$page=isset($_GET['page']) ? $_GET['page']:1;
 	$start=($page-1)*$limit;
 	$sql2 =$conn->query("SELECT count(logs_id) AS id FROM `users_logs`");
@@ -225,47 +223,44 @@
 
       if ($result-> num_rows > 0) {
         while ($row = $result-> fetch_assoc()){
-         echo "<tr><td data-label='Username' class='brandd'><p>". $row["logs_username"]. 
-		 "</p></td><td data-label='Activity'>". $row["logs_activity"]. 
-		 "</td><td data-label='Date and Time'>". $row["logs_datentime"]. 
-		 "</td><td data-label='Role'>". $row["logs_roles"].
-		 "</td></tr>";
-      }
-      echo "</table>";
-      }
-      else {
-        echo "0 result";
-      }
-      $conn-> close();
-      
 ?>
-	
+     	
+
+		 <tr>
+     	  	
+     	  	<td data-label="Username"><?php echo $row['logs_username'];?></td>
+     	  	<td data-label="Activity"><?php echo $row['logs_activity'];?></td>
+     	  	<td data-label="Date&Time"><?php echo $row['logs_datentime'];?></td>
+     	  	<td data-label="Roles"><?php echo $row['logs_roles'];?></td>
+     	  </tr>
+    
+     	 <?php
+     	}}
+
+     	?>
      </tbody>
-	 
-   </table>
-   <br>
-  	<?php
-  	if ($_GET['page']==1) {
-  		
-  	}
-  	elseif ($_GET['page']==1) {
-  		# code...
-  	}
-  	?>
+   </table>	
+
+   <!--page-->
+  	<br>
    <a class="page" id="pre" href="audit.php?page=<?=$prev; ?>">< Prev</a>
     	  <?php  for($i=1; $i <=$pages ; $i++): ?>
     <a class="page" href="audit.php?page=<?=$i; ?>"><?=$i; ?></a>
                       <?php endfor; ?>
-    <a class="page" id="pnext" href="audit.php?page=<?=$next; ?>">Next ></a>
-				</div>
-				</div>
-				</div>
+    <a class="page" id="pnext" href="audit.php?page=<?=$next; ?>">Next ></a>	
+			</div>
+		  </div>
+			
 			<div class="table-data">
-
-				</div>
+	
+				
+				
+			</div>
 		</main>
 		<!-- MAIN -->
 	</section>
+
+	
 	<!-- CONTENT -->
 	
 
