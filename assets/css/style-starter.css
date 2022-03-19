@@ -12366,3 +12366,11 @@ input[type="submit"] {
 input[type="submit"]:hover {
   color: #00c2cb;
 }
+
+.list li input[type="submit"] {
+  color: var(--heading-color);
+}
+
+.list li input[type="submit"]:hover {
+  color: #00c2cb;
+}

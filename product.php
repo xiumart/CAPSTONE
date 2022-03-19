@@ -212,10 +212,10 @@ error_reporting(0);
             <div class="col-lg-4 col-sm-6">
               <div class="product-cate">
                 <div>
-                  <img src="admin/images/product_img/<?php echo $row['image'];?>" alt="<?php echo $row['image'];?>" style="width: 200px; height: 200px;" >
+                  <img src="admin/images/product_img/<?php echo $row['image'];?>" alt="<?php echo $row['image'];?>" style="width: 200px; height: 200px;margin-bottom:10px;border:solid 1px #00c2cb;box-shadow:1px 1px 3px grey;" >
                   <div class="product-des">
-                    <h5><?php echo $row['brand'];?><br><?php echo $row['model'];?>&nbsp<?php echo $row['category'];?></h5>
-                    <p>₱<?php echo $row['sellingprice'];?>.00</p>
+                    <h6><?php echo $row['brand'];?><br><?php echo $row['model'];?>&nbsp <br>(<?php echo $row['category'];?>)</h6>
+                    <p>₱<?php echo $row['sellingprice'];?>.00</p><br>
                   </div>
                 </div>
               </div>
