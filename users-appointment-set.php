@@ -1,5 +1,6 @@
 <?php
 session_start();
+include "conn.php";
 $call = $_SESSION["login_user"];
 ?>
 <!DOCTYPE html>
@@ -22,7 +23,7 @@ $call = $_SESSION["login_user"];
       <div class="container flex1">
         <div class="left flex1">
           <div class="logo">
-            <h3>RNL Vision Care</h3>
+            <a href="users.php" style="color: white;"><h3>RNL Vision Care</h3></a>
           </div>
 
           <div class="search flex">
@@ -173,26 +174,35 @@ $user=$_SESSION['login_user'];
                     <form action="appointmenthandler.php" method="post">
                         <div class="twice">
                              <h3>Appointment User</h3>
-                            <input type="text" name="AppUser" value="<?php echo $call;?>" id="w3lSubject" placeholder="Subject" required="">
+                            <input type="text" name="AppUser" value="<?php echo $call;?>" id="w3lSubject" autocomplete="off" required="">
                              <h3>Name</h3>
                             <input type="text" class="form-control" name="Name" id="w3lSubject"
-                                placeholder="Subject" required="">
+                                 required="">
                              <h3>Contact No.</h3>
                             <input type="text" class="form-control" maxlength="11" pattern="[0-9]{4}[0-9]{3}[0-9]{4}" name="Contact" id="w3lSubject"
-                                placeholder="Subject" required="">
+                                 autocomplete="off" required="">
                                 <h3>Email</h3>
-                            <input type="text" class="form-control" name="Email" id="w3lSubject"
-                                placeholder="Subject" required="">
+                            <input type="email" class="form-control" name="Email" autocomplete="off" id="w3lSubject"
+                                 required="" disabled>
                                 <h3>Purpose</h3>
-                            <input type="text" class="form-control" name="Purpose" id="w3lSubject"
-                                placeholder="Subject" required="">
+                            <select class="form-control" name="Purpose" id="w3lSubject"
+                                placeholder="Subject" required="" style="width: 40%; padding: 10px; border-radius: 8px; font-size: 16px;">
+                                <option>Check Up</option>
+                                <option>Eye Exams</option>
+                                <option>Vision Tests</option>
+                                <option>Vision Therapy</option>
+                                <option>Eyeglasses and Contact Lenses</option>
+                                <option>Dry Eye and Glaucoma</option>
+                                <option>Adjust and Repair Glasses, Frames</option>
+                                
+                              </select>
                                 <h3>Date and Time</h3>
                                 <div class="twice-two">
-
-                            <input type="time" class="form-control" name="Time" id="w3lName" placeholder="Date"
-                                required="1">
-                            <input type="date" class="form-control" name="Date" id="w3lSender" placeholder="Time"
-                                required="1">
+                                  <input type="date" class="form-control" name="Date" id="w3lSender" placeholder="Date" required="1" min="2022-01-01" step="1">
+                                    <select id="w3lSender" class="form-control" name="Time" required="1">
+                                      <option value="AM">AM</option>
+                                      <option value="PM">PM</option>
+                                    </select>
                             <input type ="hidden" class ="form-control" name='App_User' value='<?php echo $call; ?>'>
 
                         </div>  

@@ -112,16 +112,16 @@ function getIpAddr(){
             <h2 class="title">REGISTER HERE ! </h2>
             <div class="input-field">
               <i class="fas fa-user"></i>
-              <input type="text" placeholder="Username" name = "username" required />
+              <input type="text" placeholder="Username" name = "username" autocomplete="off" required />
             </div>
             <div class="input-field">
               <i class="fas fa-phone"></i>
-              <input type="tel" pattern="[0-9]{4}[0-9]{3}[0-9]{4}" placeholder="Contact No." name = "contactno" required />
+              <input type="tel" pattern="[0-9]{4}[0-9]{3}[0-9]{4}" placeholder="Contact No." name = "contactno" autocomplete="off" required />
             </div>
             
             <div class="input-field">
               <i class="fas fa-envelope"></i>
-              <input type="email" placeholder="Email" name = "email" required />
+              <input type="email" placeholder="Email" name = "email" required autocomplete="off" />
             </div>
             <div class="input-field">
               <i class="fas fa-lock"></i>
@@ -197,24 +197,22 @@ if (isset($_POST['signup']))
     $time = date("h:i:sa");
     $activity = 'signup';
 
-
-
-
-
-
-    if(!preg_match("/^[0-9]*$/",$contactno)){
-          echo '<script language="javascript">';
-	        echo 'alert("Invalid Contact Number!");';
-	        echo 'window.location="login.php";';
-	        echo '</script>';
-    exit();
-    } else if(strlen($password) < 6){
-          echo '<script language="javascript">';
-	        echo 'alert("Password must contain atleast 6 characters!");';
-	        echo 'window.location="login.php";';
-	        echo '</script>';
-    exit();
-  }
+    $query= mysqli_query($conn,"SELECT * FROM client_user_info WHERE client_email= '$email'");
+    $query1= mysqli_query($conn,"SELECT * FROM client_user WHERE client_username= '$username'");
+    if(mysqli_num_rows ($query)>0)
+    {
+      echo '<script language="javascript">';
+      echo 'alert("Email already exist!");';
+      echo 'window.location="login.php";';
+      echo '</script>';
+exit();
+    }else if(mysqli_num_rows ($query1)>0) {
+      echo '<script language="javascript">';
+      echo 'alert("Username already exist!");';
+      echo 'window.location="login.php";';
+      echo '</script>';
+exit();
+    }else {
   
 
   $query_signup = "INSERT INTO client_user (client_id,client_username,client_password) VALUES ('$client_ids','$username','$password')" ;
@@ -240,7 +238,7 @@ if (isset($_POST['signup']))
   mysqli_close($conn);
 
 }
-
+}
 
 ?>
 

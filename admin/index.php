@@ -31,10 +31,10 @@ session_start();
 			<form action="loginhandler.php" method="post">
 				<ul>
 					<li>
-						<input type="text" class="text" name="users_username" value="Email Address" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email Address';}" ><a class=" icon user"></a>
+						<input type="text" class="text" name="users_username" value="Email Address" autocomplete="off" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email Address';}" ><a class=" icon user"></a>
 					</li>
 					 <li>
-						<input type="password" name="users_password" value="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}"><a class=" icon lock"></a>
+						<input type="password" name="users_password" value="Password" autocomplete="off" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}"><a class=" icon lock"></a>
 					</li>
 				</ul>
 			<div class="submit">

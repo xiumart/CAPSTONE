@@ -2,8 +2,8 @@
 error_reporting(0);
 include("../conn.php");
 if (isset($_GET['id'])) {
-	$supp_id=$_GET['id'];
-	$query = "DELETE FROM `supplier` WHERE supp_id='$supp_id'";
+	$users_id=$_GET['id'];
+	$query = "DELETE FROM `users_account` WHERE users_id='$users_id'";
 			mysqli_query($conn, $query);
 }
 ?>
