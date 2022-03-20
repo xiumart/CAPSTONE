@@ -1,5 +1,5 @@
 <?php
-session_start();
+include ('session.php');
 include "conn.php";
 $call = $_SESSION["login_user"];
 ?>

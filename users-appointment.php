@@ -1,5 +1,5 @@
 <?php
-session_start();
+include ('session.php');
 $con = mysqli_connect("localhost","root","","capstone");
 $sql = "SELECT DISTINCT app_id, app_date, app_time, app_purpose  FROM appointment,client_user where appointment.app_user = client_user.client_username";
 $result = mysqli_query($con, $sql) or die( mysqli_error($con));
