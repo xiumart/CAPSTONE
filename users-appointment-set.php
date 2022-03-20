@@ -22,8 +22,8 @@ $call = $_SESSION["login_user"];
     <section class="head">
       <div class="container flex1">
         <div class="left flex1">
-        <a href="users.php"><img src="assets\images\logo.png" alt="" style="position:absolute;width:80px;top:-1%;left:5%;pointer:cursor;"></a>
           <div class="logo">
+          <a href="users.php"><img src="assets\images\logo.png" alt="" style="position:fixed;width:80px;top:-3%;left:5%;pointer:cursor;" id="icnlogo"></a>
             <a href="users.php" style="color: white;"><h3>RNL Vision Care</h3></a>
           </div>
 
@@ -139,7 +139,7 @@ $user=$_SESSION['login_user'];
 
             </ul>
           </nav>
-          <label class="fa fa-bars" onclick="menutoggle()"></label>
+          <label class="fa fa-bars" onclick="menutoggle()" style="margin-left:11%; top: 16%;background-color: transparent;color:white;border:none;"></label>
         </div>
       </div>
     </section>
@@ -174,8 +174,7 @@ $user=$_SESSION['login_user'];
       <div class="map-content-9">
                     <form action="appointmenthandler.php" method="post">
                         <div class="twice">
-                             <h3>Appointment User</h3>
-                            <input type="text" name="AppUser" value="<?php echo $call;?>" id="w3lSubject" autocomplete="off" required="">
+                             <h3 style="text-transform:uppercase;">Appointment User : <input type="text" name="AppUser" value="<?php echo $call;?>" id="w3lSubject" disabled style="border:none;width:500px;font-weight:bold;"></h3><br>
                              <h3>Name</h3>
                             <input type="text " class="form-control" name="Name" id="w3lSubject"
                                  required="">
@@ -184,7 +183,7 @@ $user=$_SESSION['login_user'];
                                  autocomplete="off" required="">
                                 <h3>Email</h3>
                             <input type="email" class="form-control" name="Email" autocomplete="off" id="w3lSubject"
-                                 required="" disabled>
+                                 required="">
                                 <h3>Purpose</h3>
                             <select class="form-control" name="Purpose" id="w3lSubject"
                                 placeholder="Subject" required="" style="width: 40%; padding: 10px; border-radius: 8px; font-size: 16px;">
@@ -198,15 +197,15 @@ $user=$_SESSION['login_user'];
                                 
                               </select>
                                 <h3>Date and Time</h3>
-                                <div class="twice-two">
-                                  <input type="date" class="form-control" name="Date" id="w3lSender" placeholder="Date" required="1" min="2022-01-01" step="1">
-                                    <select id="w3lSender" class="form-control" name="Time" required="1" style="border-radius: 8px; font-size: 16px;">
-                                      <option value="AM">8:00 AM to 12:00 NN</option>
-                                      <option value="PM">1:00 PM to 5:00 PM</option>
+                                
+                                  <input type="date" class="form-control" name="Date" id="w3lSender" placeholder="Date" required="1" min="<?= date('Y-m-d'); ?>" step="1" style="width:300px;margin-bottom:20px;">
+                                    <select id="w3lSender" class="form-control" name="Time" required="1" style="width: 300px; padding: 10px; border-radius: 8px; font-size: 16px;">
+                                      <option value="8:00 AM to 12:00 NN">8:00 AM to 12:00 NN</option>
+                                      <option value="1:00 PM to 5:00 PM">1:00 PM to 5:00 PM</option>
                                     </select>
                             <input type ="hidden" class ="form-control" name='App_User' value='<?php echo $call; ?>'>
-
-                        </div>  
+                              
+                        
                         </div>
 
                         <div class="text-right">
@@ -229,4 +228,14 @@ $user=$_SESSION['login_user'];
   <!-- chart js-->
 </body>
 
+<style>
+ @media only screen and (max-width:768px) {
+    #icnlogo {
+    display: none;
+  }
+  #w3lSender {
+  }
+  }
+
+</style>
 </html>

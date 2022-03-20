@@ -20,8 +20,8 @@ session_start();
     <section class="head">
       <div class="container flex1">
         <div class="left flex1">
-        <a href="users.php"><img src="assets\images\logo.png" alt="" style="position:absolute;width:80px;top:-1%;left:5%;pointer:cursor;"></a>
           <div class="logo">
+          <a href="users.php"><img src="assets\images\logo.png" alt="" style="position:absolute;width:80px;top:-3%;left:5%;pointer:cursor;" id="icnlogo"></a>
             <h3><a href="users.php" style="color: white;">RNL Vision Care</a></h3>
           </div>
 
@@ -137,7 +137,7 @@ $user=$_SESSION['login_user'];
 
             </ul>
           </nav>
-          <label class="fa fa-bars" onclick="menutoggle()"></label>
+          <label class="fa fa-bars" onclick="menutoggle()" style="margin-left:11%; top: 16%;background-color: transparent;color:white;border:none;"></label>
         </div>
       </div>
     </section>
@@ -179,6 +179,20 @@ $user=$_SESSION['login_user'];
                         <h3>Message</h3>
                         <textarea name="w3lMessage" class="form-control" id="w3lMessage" placeholder="Message"
                             required=""></textarea>
+                        <div class="rate">
+                          <h4>Please Rate Us! : </h4>
+                          <input type="radio" id="star5" name="rate" value="5" />
+                          <label for="star5" title="Than you balik ka ha!">5 stars</label>
+                          <input type="radio" id="star4" name="rate" value="4" />
+                          <label for="star4" title="Thank you!">4 stars</label>
+                          <input type="radio" id="star3" name="rate" value="3" />
+                          <label for="star3" title="ano pa iimprove namin?">3 stars</label>
+                          <input type="radio" id="star2" name="rate" value="2" />
+                          <label for="star2" title="Hala bakit? :<">2 stars</label>
+                          <input type="radio" id="star1" name="rate" value="1" />
+                          <label for="star1" title="saan kame nagkulang? :<">1 star</label>
+                        </div><br><br><br><br><br>
+                      
                         <div class="text-right">
                             <button type="submit" class="btn btn-primary btn-style mt-4" style="cursor:pointer;"
                             onclick="return confirm('Are you sure')">Send Message</button>
@@ -200,4 +214,46 @@ $user=$_SESSION['login_user'];
   <!-- chart js-->
 </body>
 
+<style>
+ @media only screen and (max-width:768px) {
+    #icnlogo {
+    display: none;
+  }
+  }
+.rate {
+    float: left;
+    height: 46px;
+    padding: 0 10px;
+}
+.rate:not(:checked) > input {
+    position:absolute;
+    top:-9999px;
+}
+.rate:not(:checked) > label {
+    float:right;
+    width:1em;
+    overflow:hidden;
+    white-space:nowrap;
+    cursor:pointer;
+    font-size:30px;
+    color:#ccc;
+}
+.rate:not(:checked) > label:before {
+    content: '★ ';
+}
+.rate > input:checked ~ label {
+    color: #ffc700;    
+}
+.rate:not(:checked) > label:hover,
+.rate:not(:checked) > label:hover ~ label {
+    color: #deb217;  
+}
+.rate > input:checked + label:hover,
+.rate > input:checked + label:hover ~ label,
+.rate > input:checked ~ label:hover,
+.rate > input:checked ~ label:hover ~ label,
+.rate > label:hover ~ input:checked ~ label {
+    color: #c59b08;
+}
+</style>
 </html>

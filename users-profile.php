@@ -20,7 +20,8 @@ session_start();
     <section class="head">
       <div class="container flex1">
         <div class="left flex1">
-        <a href="users.php"><img src="assets\images\logo.png" alt="" style="position:absolute;width:80px;top:-1%;left:5%;pointer:cursor;"></a>          <div class="logo">
+        <div class="logo">
+        <a href="users.php"><img src="assets\images\logo.png" alt="" style="position:fixed;width:80px;top:-3%;left:5%;pointer:cursor;" id="icnlogo"></a>
             <h3><a href="users.php" style="color:white;">RNL Vision Care</a></h3>
           </div>
 
@@ -110,7 +111,7 @@ $user=$_SESSION['login_user'];
 </div>  
             </div>
     </section>
-<!--
+
     <section class="menu">
       <div class="container">
         <div class="navbar">
@@ -139,11 +140,10 @@ $user=$_SESSION['login_user'];
 
             </ul>
           </nav>
-          <label class="fa fa-bars" onclick="menutoggle()"></label>
+          <label class="fa fa-bars" onclick="menutoggle()" style="margin-left:11%; top: 16%;background-color: transparent;color:white;border:none;"></label>
         </div>
       </div>
     </section>
--->
   </header>
   <script>
     var menuitem = document.getElementById("menuitem");
@@ -207,10 +207,10 @@ $user=$_SESSION['login_user'];
         <input type="text" name="client_lname" value="<?php echo $row['client_lname'];?>" style="font-size: 18px;border: 2px solid #ccc; width: 55%; padding: 10px; margin: 10px auto; border-radius: 5px;" >
 
         <h3>Birthday </h3>
-        <input type="date" name="client_bday" value="<?php echo date('Y-m-d',strtotime($row["client_bday"]));?>" style="font-size: 18px;border: 2px solid #ccc; width: 55%; padding: 10px; margin: 10px auto; border-radius: 5px;" >
+        <input type="date" name="client_bday" value="<?php echo date('Y-m-d',strtotime($row["client_bday"]));?>" max="<?= date('Y-m-d'); ?>" style="font-size: 18px;border: 2px solid #ccc; width: 55%; padding: 10px; margin: 10px auto; border-radius: 5px;" >
 
         <h3>Age </h3>
-        <input type="number" name="client_age" value="<?php echo $row['client_age'];?>" style="font-size: 18px;border: 2px solid #ccc; width: 55%; padding: 10px; margin: 10px auto; border-radius: 5px;" >
+        <input type="number" name="client_age" value="<?php echo $row['client_age'];?>" disabled style="font-size: 18px;border: 2px solid #ccc; width: 55%; padding: 10px; margin: 10px auto; border-radius: 5px;" >
 
         <h3>Address </h3>
         <input type="text" name="client_address" value="<?php echo $row['client_address'];?>" style="font-size: 18px;border: 2px solid #ccc; width: 55%; padding: 10px; margin: 10px auto; border-radius: 5px;" >
@@ -255,12 +255,18 @@ if (isset($_REQUEST['update'])) {
 		$firstname = $_REQUEST['client_fname'];
 		$lastname = $_REQUEST['client_lname'];
 		$middlename = $_REQUEST['client_mname'];
-    $age = $_REQUEST['client_age'];
+  
     $bday = $_REQUEST['client_bday'];
 		$email = $_REQUEST['client_email'];
 		$contact = $_REQUEST['client_contact'];
     $address = $_REQUEST['client_address'];
 
+
+$currentDate = date("d-m-Y");
+
+$age1 = date_diff(date_create($bday), date_create($currentDate));
+
+$age2 = $age1->format("%y");
 
     
 			$sql = mysqli_query($conn,"UPDATE client_user_info SET 
@@ -268,7 +274,7 @@ if (isset($_REQUEST['update'])) {
 				`client_lname`='$lastname ' , 
 				`client_mname`='$middlename' , 
 				`client_bday`='$bday ',  
-				`client_age`='$age',
+				`client_age`='$age2',
         `client_contact`='$contact', 
         `client_email`='$email',
         `client_address`='$address'
@@ -300,4 +306,12 @@ if (isset($_REQUEST['update'])) {
   <!-- chart js-->
 </body>
 
+<style>
+ @media only screen and (max-width:768px) {
+    #icnlogo {
+    display: none;
+  }
+  }
+  
+</style>
 </html>

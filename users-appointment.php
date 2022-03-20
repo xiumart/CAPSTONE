@@ -23,8 +23,9 @@ $result = mysqli_query($con, $sql) or die( mysqli_error($con));
     <section class="head">
       <div class="container flex1">
         <div class="left flex1">
-        <a href="users.php"><img src="assets\images\logo.png" alt="" style="position:absolute;width:80px;top:-1%;left:5%;pointer:cursor;"></a>
+        
           <div class="logo">
+          <a href="users.php"><img src="assets\images\logo.png" alt="" style="position:fixed;width:80px;top:-3%;left:5%;pointer:cursor;" id="icnlogo"></a>
             <h3><a href="users.php" style="color: white;">RNL Vision Care</a></h3>
           </div>
 
@@ -140,7 +141,7 @@ $user=$_SESSION['login_user'];
 
             </ul>
           </nav>
-          <label class="fa fa-bars" onclick="menutoggle()"></label>
+          <label class="fa fa-bars" onclick="menutoggle()" style="margin-left:11%; top: 16%;background-color: transparent;color:white;border:none;"></label>
         </div>
       </div>
     </section>
@@ -184,7 +185,7 @@ $user=$_SESSION['login_user'];
       <table>
         <thead>
           <tr>
-            <th>Appointment Id</th>
+            <th>ID</th>
             <th>Date</th>
             <th>Time</th>
             <th>Purpose</th>
@@ -259,5 +260,12 @@ if (isset($_GET['id'])) {
   <script src="script.js" charset="utf-8"></script>
   <!-- chart js-->
 </body>
+<style>
+ @media only screen and (max-width:768px) {
+    #icnlogo {
+    display: none;
+  }
+  }
 
+</style>
 </html>

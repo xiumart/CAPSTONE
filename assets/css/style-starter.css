@@ -2316,6 +2316,7 @@ input[type="button"].btn-block {
   .dropdown-menu-md-left {
     right: auto;
     left: 0; }
+    
   .dropdown-menu-md-right {
     right: 0;
     left: auto; } }

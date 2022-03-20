@@ -585,6 +585,7 @@ body {
 
 
 @media screen and (max-width: 576px) {
+
 	#content nav form .form-input input {
 		display: none;
 	}
@@ -647,9 +648,14 @@ body {
 
 
 
+
 /*responsive*/
 
 @media(max-width: 700px){
+
+	#icnlogo {
+		display: none;
+	}
 	.table thead{
 		display: none;
 	}
@@ -833,3 +839,4 @@ body {
   #notif-body{
 	  padding: 10px;
   }
+

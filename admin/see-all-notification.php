@@ -60,7 +60,7 @@
 					<span class="text">Point of Sale</span>
 				</a>
 			</li>
-			<li class="active">
+			<li>
 				<a href="sales-report.php">
 					<i class='bx bxs-download' ></i>
 					<span class="text">Sales Report</span>
