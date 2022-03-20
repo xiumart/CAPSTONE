@@ -17,7 +17,6 @@ if(isset($_POST['login'])){
     $msg="To many failed login attempts. Please login after 45 sec";
   }else{
     //Getting Post Values
-
     $username=$_POST['username'];
     $password=md5($_POST['password']);
     $date = date("m-d-Y");
@@ -73,7 +72,6 @@ function getIpAddr(){
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
     <script
       src="https://kit.fontawesome.com/64d58efce2.js"
       crossorigin="anonymous"
@@ -81,7 +79,6 @@ function getIpAddr(){
     <link rel="stylesheet" href="assets/css/style.css" />
      <style type="text/css">
       #result{color:red;}
-      
      </style>
     <title>RNL Vision Care
     </title>
@@ -101,11 +98,13 @@ function getIpAddr(){
               <input type="text" placeholder="Username" name="username" required="required" autocomplete="off"/>
             </div>
             <div class="input-field">
-              <i class="bi bi-eye-slash" id="togglePassword"></i>
-              <input type="password" placeholder="Password" name="password" id = "password" required="required" />
+              <i class="fas fa-lock"></i>
+              <input type="password" placeholder="Password" name="password" required="required" />
             </div>
 
             <button class="btn btn-primary" name='login' <?php echo $msg1; ?>>Login</button>
+            <a href = "forgotpassword.php">Forgot Password</a>
+
             
            <div id="result"><?php echo $msg; ?></div>
 
@@ -115,11 +114,11 @@ function getIpAddr(){
             <h2 class="title">REGISTER HERE ! </h2>
             <div class="input-field">
               <i class="fas fa-user"></i>
-              <input type="text" placeholder="Username" minlength="6" name = "username" autocomplete="off" required />
+              <input type="text" placeholder="Username" name = "username" autocomplete="off" required />
             </div>
             <div class="input-field">
               <i class="fas fa-phone"></i>
-              <input type="tel" pattern="[0-9]{4}[0-9]{3}[0-9]{4}" maxlenght = "11" placeholder="Contact No." name = "contactno" autocomplete="off" required />
+              <input type="tel" pattern="[0-9]{4}[0-9]{3}[0-9]{4}" placeholder="Contact No." name = "contactno" autocomplete="off" required />
             </div>
             
             <div class="input-field">
@@ -127,36 +126,15 @@ function getIpAddr(){
               <input type="email" placeholder="Email" name = "email" required autocomplete="off" />
             </div>
             <div class="input-field">
-            <i class="bi bi-eye-slash" id="togglePassword"></i>
-              <input type="password" placeholder="Password" minlength="6" name = "password" id = "password" required />
-              
+              <i class="fas fa-lock"></i>
+              <input type="password" placeholder="Password" name = "password" required />
             </div>
             <input type="submit" class="btn" value="Sign up" name = 'signup'/>
             
           </form>
         </div>
       </div>
-      <!-- show password -->
-      <script>
-        const togglePassword = document.querySelector("#togglePassword");
-        const password = document.querySelector("#password");
 
-        togglePassword.addEventListener("click", function () {
-            // toggle the type attribute
-            const type = password.getAttribute("type") === "password" ? "text" : "password";
-            password.setAttribute("type", type);
-            
-            // toggle the icon
-            this.classList.toggle("bi-eye");
-        });
-
-        // prevent form submit
-        const form = document.querySelector("form");
-        form.addEventListener('signup', function (e) {
-            e.preventDefault();
-        });
-    </script>
-    
       <div class="panels-container">
         <div class="panel left-panel">
           <div class="content">
@@ -212,7 +190,7 @@ if (isset($_POST['signup']))
    $cidsec = date("m");
    $client_ids = "RNL-W".$cidfirst.$cidsec.$result2['total'];
    
-           }		
+           }    
     $username = $_POST['username'];
     $contactno = $_POST['contactno'];
     $email = $_POST['email'];
@@ -222,8 +200,7 @@ if (isset($_POST['signup']))
     $activity = 'signup';
 
     $query= mysqli_query($conn,"SELECT * FROM client_user_info WHERE client_email= '$email'");
-    $query1= mysqli_query($conn,"SELECT * FROM client_user WHERE client_username= '$username', client_password='$password'");
-
+    $query1= mysqli_query($conn,"SELECT * FROM client_user WHERE client_username= '$username'");
     if(mysqli_num_rows ($query)>0)
     {
       echo '<script language="javascript">';
