@@ -1,6 +1,7 @@
 <?php
 error_reporting(0);
 include("../conn.php");
+include("session.php");
 if (isset($_POST['btnsubmit'])) {
 	$doctor=$_POST['doctor'];
 	$fname=$_POST['firstname'];

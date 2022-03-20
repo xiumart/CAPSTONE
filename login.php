@@ -17,6 +17,7 @@ if(isset($_POST['login'])){
     $msg="To many failed login attempts. Please login after 45 sec";
   }else{
     //Getting Post Values
+
     $username=$_POST['username'];
     $password=md5($_POST['password']);
     $date = date("m-d-Y");
@@ -114,11 +115,11 @@ function getIpAddr(){
             <h2 class="title">REGISTER HERE ! </h2>
             <div class="input-field">
               <i class="fas fa-user"></i>
-              <input type="text" placeholder="Username" name = "username" autocomplete="off" required />
+              <input type="text" placeholder="Username" minlength="6" name = "username" autocomplete="off" required />
             </div>
             <div class="input-field">
               <i class="fas fa-phone"></i>
-              <input type="tel" pattern="[0-9]{4}[0-9]{3}[0-9]{4}" placeholder="Contact No." name = "contactno" autocomplete="off" required />
+              <input type="tel" pattern="[0-9]{4}[0-9]{3}[0-9]{4}" maxlenght = "11" placeholder="Contact No." name = "contactno" autocomplete="off" required />
             </div>
             
             <div class="input-field">
@@ -127,7 +128,7 @@ function getIpAddr(){
             </div>
             <div class="input-field">
             <i class="bi bi-eye-slash" id="togglePassword"></i>
-              <input type="password" placeholder="Password" name = "password" id = "password" required />
+              <input type="password" placeholder="Password" minlength="6" name = "password" id = "password" required />
               
             </div>
             <input type="submit" class="btn" value="Sign up" name = 'signup'/>
@@ -219,9 +220,6 @@ if (isset($_POST['signup']))
     $date = date("m-d-Y");
     $time = date("h:i:sa");
     $activity = 'signup';
-    $uppercase = preg_match('@[A-Z]@', $password);
-    $lowercase = preg_match('@[a-z]@', $password);
-    $number    = preg_match('@[0-9]@', $password);
 
     $query= mysqli_query($conn,"SELECT * FROM client_user_info WHERE client_email= '$email'");
     $query1= mysqli_query($conn,"SELECT * FROM client_user WHERE client_username= '$username', client_password='$password'");
@@ -236,12 +234,6 @@ exit();
     }else if(mysqli_num_rows ($query1)>0) {
       echo '<script language="javascript">';
       echo 'alert("Username already exist!");';
-      echo 'window.location="login.php";';
-      echo '</script>';
-exit();
-    }else if(!$uppercase || !$lowercase || !$number || strlen($password) < 8) {
-      echo '<script language="javascript">';
-      echo 'alert("Must contain at least 8 characters and should include one number and one upper case letter!");';
       echo 'window.location="login.php";';
       echo '</script>';
 exit();

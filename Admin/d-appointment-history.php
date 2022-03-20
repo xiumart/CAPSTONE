@@ -2,7 +2,7 @@
 <?php
 
 include("../conn.php");
-
+include("session.php");
 ?>
 
 <!DOCTYPE html>

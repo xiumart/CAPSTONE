@@ -1,3 +1,6 @@
+<?php
+include("session.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -294,7 +297,7 @@
 							<label for="uname">Username</label>
 						</div>
 						<div class="col-75">
-							<input type="text" id="uname" name="uname" placeholder="Enter username" required="" autocomplete="off">
+							<input type="text" id="uname" name="uname" minlenght="6" placeholder="Enter username" required="" autocomplete="off">
 						</div>
 						</div>
 						<div class="row">
@@ -302,7 +305,7 @@
 							<label for="contact">Contact Number</label>
 						</div>
 						<div class="col-75">
-							<input type="tel" id="contact" name="contact" maxlength="11"pattern="[0-9]{4}[0-9]{3}[0-9]{4}" placeholder="Enter contact number" required="" autocomplete="off">
+							<input type="tel" id="contact" name="contact" maxlength="11" pattern="[0-9]{4}[0-9]{3}[0-9]{4}" placeholder="Enter contact number" required="" autocomplete="off">
 						</div>
 						</div>
 						<div class="row">

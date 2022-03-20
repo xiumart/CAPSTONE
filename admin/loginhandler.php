@@ -14,6 +14,7 @@ if (isset($_POST['users_username']) && isset($_POST['users_password'])) {
 
 	$uname = validate($_POST['users_username']);
 	$pass = validate($_POST['users_password']);
+	$_SESSION['login_user']= $uname;
 
 	if (empty($uname)) {
 		header("Location: index.php?error=Email is required");

@@ -1,6 +1,6 @@
 <?php 
 include("../conn.php");
-
+include("session.php");
 
 // Set the new timezone
 date_default_timezone_set('Asia/Manila');

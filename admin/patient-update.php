@@ -1,5 +1,6 @@
 <?php
 include("../conn.php");
+include("session.php");
 $id=$_GET['id'];
 if (isset($_POST['btnsubmit'])) {
 	$fname=$_POST['firstname'];

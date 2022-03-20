@@ -1,6 +1,7 @@
 <?php
 error_reporting(0);
 include("../conn.php");
+include("session.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">

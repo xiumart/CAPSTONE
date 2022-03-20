@@ -1,9 +1,6 @@
 <?php
-
-
-
 include("../conn.php");
-
+include("session.php");
 
 $eid= $_GET['id'];
 
@@ -348,7 +345,7 @@ if (isset($_REQUEST['btnsubmit'])) {
                             <label for="uname">Username</label>
                         </div>
                         <div class="col-75">
-                            <input type="text" id="uname" name="uname" placeholder="Enter middle name" required="" value= "<?php echo $row['users_username'];?>">
+                            <input type="text" id="uname" name="uname" placeholder="Enter middle name" minlenght="6" required="" value= "<?php echo $row['users_username'];?>">
                         </div>
                         </div>
                         <div class="row">
@@ -357,7 +354,7 @@ if (isset($_REQUEST['btnsubmit'])) {
                         </div>
                         <div class="col-75">
                         
-                            <input type="password" name="cpass" placeholder="Enter new password" id="password" value= "<?php echo $row['users_password'];?>">
+                            <input type="password" name="cpass" placeholder="Enter new password" minlenght="6" id="password" value= "<?php echo $row['users_password'];?>">
                             <i class="bi bi-eye-slash" id="togglePassword"></i>
                           </div>
                         </div>
@@ -367,7 +364,7 @@ if (isset($_REQUEST['btnsubmit'])) {
                             <label for="contact">Contact Number</label>
                         </div>
                         <div class="col-75">
-                            <input type="tel" id="contact" name="contact" pattern="[0-9]{4}[0-9]{3}[0-9]{4}" placeholder="Enter contact number" required="" value= "<?php echo $row['users_contact'];?>">
+                            <input type="tel" id="contact" name="contact" pattern="[0-9]{4}[0-9]{3}[0-9]{4}" maxlenght = "11" placeholder="Enter contact number" required="" value= "<?php echo $row['users_contact'];?>">
                         </div>
                         </div>
                         <div class="row">

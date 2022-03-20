@@ -1,6 +1,7 @@
 <?php
 error_reporting(0);
 include("../conn.php");
+include("session.php");
 if (isset($_GET['id'])) {
 	$users_id=$_GET['id'];
 	$query = "DELETE FROM `users_account` WHERE users_id='$users_id'";

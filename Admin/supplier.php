@@ -1,6 +1,7 @@
 <?php
 error_reporting(0);
 include("../conn.php");
+include("session.php");
 if (isset($_GET['id'])) {
 	$supp_id=$_GET['id'];
 	$query = "DELETE FROM `supplier` WHERE supp_id='$supp_id'";
