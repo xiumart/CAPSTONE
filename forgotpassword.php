@@ -72,7 +72,7 @@ require 'PHPMailer/src/Exception.php';
 $mail = new PHPMailer();;
 $mail->Host = "tls://smtp.gmail.com";
 $mail->isSMTP();
-$mail->SMTPDebug = 1;
+//$mail->SMTPDebug = 1;
 $mail->SMTPAuth = true;
 $mail->Username = "rnlvisioncare@gmail.com";
 $mail->Password = "RNLVISIONCARE";

@@ -14,6 +14,8 @@
     <!-- google fonts -->
     <link href="//fonts.googleapis.com/css?family=Nunito:400,700&display=swap" rel="stylesheet">
     <link href="//fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
     
     <!-- Template CSS -->
     <link rel="stylesheet" href="assets/css/style-starter.css">
@@ -85,10 +87,10 @@
 <section class="w3l-breadcrumb">
     <div class="breadcrumb-bg breadcrumb-bg-about py-5">
         <div class="container pt-lg-5 pt-3 p-lg-4 pb-3">
-            <h2 class="title mt-5 pt-lg-5 pt-sm-3">About Company</h2>
+            <h2 class="title mt-5 pt-lg-5 pt-sm-3">Forgot Password</h2>
             <ul class="breadcrumbs-custom-path pb-sm-5 pb-4 mt-2 text-center mb-5">
                 <li><a href="index.php">Home</a></li>
-                <li class="active"> / About us </li>
+                <li class="active"> / Forgot Password </li>
             </ul>
         </div>
     </div>
@@ -103,7 +105,26 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-4 col-md-6 col-sm-12">
-                
+            <section class="step-wizard">
+                <ul class="step-wizard-list">
+                    <li class="step-wizard-item">
+                        <span class="progress-count">1</span>
+                        <span class="progress-label">Enter your Email</span>
+                    </li>
+                    <li class="step-wizard-item current-item">
+                        <span class="progress-count">2</span>
+                        <span class="progress-label">Change your password</span>
+                    </li>
+                    <li class="step-wizard-item">
+                        <span class="progress-count">3</span>
+                        <span class="progress-label">Login</span>
+                    </li>
+                    <li class="step-wizard-item">
+                        <span class="progress-count">4</span>
+                        <span class="progress-label">Success</span>
+                    </li>
+                </ul>
+            </section>
             </div>
             <div class="col-lg-4 col-md-6 col-sm-12 mt-md-0 mt-4">
                
@@ -117,103 +138,11 @@
 <section class="w3l-aboutblock1 py-5" id="about">
     <div class="container py-lg-5 py-md-4 py-2">
         <div class="row">
-            <div class="col-lg-6 align-self"><br><br>
-                <span class="title-small mb-2">About Us</span>
-                <h3 class="title-big mx-0">Welcome to RNL Vision Care</h3>
-                <p class="mt-lg-4 mt-3">RNL Vision Care Center Optical Clinic is currently located at Almar in Camarin Caloocan City.
-
-                  It was established by Dr. Nanette Lalic on February 2021.
-                  
-                  
-                  </p>
-                <p class="mt-3 mb-lg-5">Trusted for our reliable eye care services, product variety, value pricing and services excellence,
-                  
-                  RNL Vision's patrons have enjoyed the company’s popular fashion eye care products like sunglasses,
-                  
-                  prescription frames, contact lenses, reading glasses and contact lens solutions with every visit they
-                  
-                  make in our stores..</p>
-            </div>
-            <div class="col-lg-6 left-wthree-img mt-lg-0 mt-sm-5 mt-4">
-                <img src="assets/images/about.jpg" alt="" class="img-fluid radius-image">
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- stats -->
-<section class="w3l-stats py-5" id="stats">
-    <div class="gallery-inner container py-lg-5 py-md-4">
-        <h3 class="title-big text-center mb-5">Our Progress</h3>
-        <center>
-          <?php 
-            $query = mysqli_query($conn, "SELECT COUNT(*) as total from patient_distancerx;");
-            while($result=mysqli_fetch_array($query)){
             
-                      			
-          
-          ?>
-        <div class="row stats-con">
-            <div class="col-md-3 col-6 stats_info counter_grid">
-              
-                <p class="counter"><?php echo $result['total'];}?> </p>
-                
-                <h3>Accommodated Patient</h3>
-            </div>
-            <div class="col-md-3 col-6 stats_info counter_grid1">
-            <?php 
-							$query3 = mysqli_query($conn, "SELECT COUNT(*) as total from appointment_history where app_remarks = 'FINISH';");
-									while($result3=mysqli_fetch_array($query3)){
-											
-						  ?>
-                <p class="counter"><?php echo $result3['total'];}?></p>
-          
-                <h3>Finished Appointments</h3>
-            </div>
-            <div class="col-md-3 col-6 stats_info counter_grid mt-md-0 mt-4">
-                <p class="counter">1310</p>
-             
-                <h3>Total of Product Sales</h3>
-            </div>
-            <div class="col-md-3 col-6 stats_info counter_grid mt-md-0 mt-4">
-                <p class="counter">130</p>
-             
-                <h3>Total of Good Reviews</h3>
-            </div>
-          </center>
         </div>
     </div>
 </section>
-<!-- //stats -->
 
-<!-- footer -->
-<section class="w3l-footer-29-main">
-  <div class="footer-29 py-5">
-    <div class="container py-md-4">
-      <div class="row footer-top-29">
-        <div class="col-lg-4 col-md-6 col-sm-7 footer-list-29 footer-1 pr-lg-5">
-          <h6 class="footer-title-29">Contact Info </h6>
-          <p>Address : Stall #13 2nd floor Inno Block Mall Zabarte Road Cor Camarin-Susano Road, North Caloocan City</p>
-          <p class="my-2">Phone : <a href="tel:(+63)998 218 1412">(+63)998 218 1412</a></p>
-          <p>Email : <a href="mailto:rnlvisioncare@gmail.com">rnlvisioncare@gmail.com</a></p>
-          <div class="main-social-footer-29 mt-4">
-            <a href="#facebook" class="facebook"><span class="fa fa-facebook"></span></a>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-6 col-sm-5 col-6 footer-list-29 footer-2 mt-sm-0 mt-5">
-
-          <ul>
-            <h6 class="footer-title-29">RNL Vision Care</h6>
-            <li><a href="about.php">About company</a></li>
-            <li><a href="product.php">Product</a></li>
-            <li><a href="contact.php">Contact Us</a></li>
-          </ul>
-        </div>
-        
-       
-      </div>
-    </div>
-  </div>
   <!-- copyright -->
   <section class="w3l-copyright text-center">
     <div class="container">
@@ -368,5 +297,130 @@
 
 
 </body>
+<style>
+  :root {
+  --blue: #007bff;
+  --indigo: #6610f2;
+  --purple: #6f42c1;
+  --pink: #e83e8c;
+  --red: #00c2cb;
+  --orange: #fd7e14;
+  --yellow: #ffc107;
+  --green: #28a745;
+  --teal: #20c997;
+  --cyan: #17a2b8;
+  --white: #fff;
+  --gray: #6c757d;
+  --gray-dark: #343a40;
+  --primary: #00c2cb;
+  --secondary: #1545CB;
+  --success: #28a745;
+  --info: #17a2b8;
+  --warning: #ffc107;
+  --danger: #00c2cb;
+  --light: #f8f9fa;
+  --dark: #343a40; 
+}
+  .step-wizard {
+    height: 1000px;
+    width: 10%;
+    display: flex; 
+}
+.step-wizard-list{
+    background: transparent;
+    color: var(--font-color);
+    list-style-type: none;
+    border-radius: 10px;
+    display: flex;
+    padding: 20px 10px;
+    position: relative;
+    z-index: 10;
+}
+
+.step-wizard-item{
+    padding: 0 20px;
+    flex-basis: 0;
+    -webkit-box-flex: 1;
+    -ms-flex-positive:1;
+    flex-grow: 1;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    min-width: 170px;
+    position: relative;
+}
+.step-wizard-item + .step-wizard-item:after{
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 19px;
+    background: #21d4fd;
+    width: 100%;
+    height: 2px;
+    transform: translateX(-50%);
+    z-index: -10;
+}
+.progress-count{
+    height: 40px;
+    width:40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-weight: 600;
+    margin: 0 auto;
+    position: relative;
+    z-index:10;
+    color: transparent;
+}
+.progress-count:after{
+    content: "";
+    height: 40px;
+    width: 40px;
+    background: #21d4fd;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    z-index: -10;
+}
+.progress-count:before{
+    content: "";
+    height: 10px;
+    width: 20px;
+    border-left: 3px solid #fff;
+    border-bottom: 3px solid #fff;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -60%) rotate(-45deg);
+    transform-origin: center center;
+}
+.progress-label{
+    font-size: 14px;
+    font-weight: 600;
+    margin-top: 10px;
+}
+.current-item .progress-count:before,
+.current-item ~ .step-wizard-item .progress-count:before{
+    display: none;
+}
+.current-item ~ .step-wizard-item .progress-count:after{
+    height:10px;
+    width:10px;
+}
+.current-item ~ .step-wizard-item .progress-label{
+    opacity: 0.5;
+}
+.current-item .progress-count:after{
+    background: var(--bg-color);
+    border: 2px solid #21d4fd;
+}
+.current-item .progress-count{
+    color: #21d4fd;
+}
+</style>
 
 </html>
