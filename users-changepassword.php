@@ -1,6 +1,7 @@
 <?php
 include ('session.php');
 $qwe = $_SESSION['login_user'];
+
 ?>
 
 <!DOCTYPE html>
@@ -15,8 +16,9 @@ $qwe = $_SESSION['login_user'];
   <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
   <script src="script.js" charset="utf-8"></script>
   <link rel="shorcut icon" type="img/png" href="assets\images\logo.png">
+  
 
-  <script type="text/javascript">
+  <!-- <script type="text/javascript">
     function valid(){
       if(document.chngpwd.opwd.value==""){
         alert("Old Password Field is Empty !!");
@@ -40,7 +42,7 @@ $qwe = $_SESSION['login_user'];
       }
         return true;
 }
-</script>
+</script> -->
 </head>
 
 <body>
@@ -154,25 +156,26 @@ $user=$_SESSION['login_user'];
     <div class="container">
     <a href="users.php" style="float:right;font-size:17px;color:#1545CB;">Back</a>
       <h1>Change your Password</h1>
-      <?php if(isset($_GET['error'])) { ?>
-        <p class="erorr"><?php echo $_GET['error']; ?> </p>
-      <?php } ?>
       <!-- Page Content -->
       
         <div class="row">
             <div class="col-lg-12 text-center">
-             <form name="chngpwd" action="" method="post" onSubmit="return valid();">
+          
+             <form action="changepasshandler.php" method="post" onSubmit="return valid();">
       <table align="center">
         <br>
         <h3>Old Password</h3>
-        <input type="password" name="opwd" id="opwd">
+        <i class="bi bi-eye-slash" id="togglePassword"></i>
+        <input type="password" name="currentPassword"><span id="currentPassword" class="required"></span>
 
         <h3>New Password</h3>
-        <input type="password" name="npwd" id="npwd">
+        <i class="bi bi-eye-slash" id="togglePassword"></i>
+        <input type="password" name="newPassword"><span id="newPassword" class="required"></span>
 
 
         <h3>Confirm New Password</h3>
-        <input type="password" name="cpwd" id="cpwd">
+        <i class="bi bi-eye-slash" id="togglePassword"></i>
+        <input type="password" name="confirmPassword"><span id="confirmPassword" class="required"></span>
 
         <td><button type="submit" name="submit" style="font-size: 120%; cursor: pointer;">Change Password </button></td>
      
@@ -213,44 +216,7 @@ $user=$_SESSION['login_user'];
 </style>
 </html>
 
-<?php 
-include('conn.php');
 
-  if(isset($_POST['submit'])){
-    
-    //get POST data
-    $old = $_POST['opwd'];
-    $new = $_POST['npwd'];
-    $retype = $_POST['cpwd'];
-
-    $sql = "SELECT * FROM client_user WHERE client_username = '$qwe'";
-    $query = $conn->query($sql);
-    $row = $query->fetch_assoc();
-
-    //check if old password is correct
-   if($old == md5($row['client_password']))
-
-   {
-      echo '<script>alert("MATCHED!!!")</script>';
-        //update the new password
-       /*$sql = "UPDATE client_user SET client_password = '$new' WHERE client_username = '$qwe'";
-        if($conn->query($sql)){
-          echo '<script>alert("Password Changed")</script>';
-        }
-        else{
-          echo '<script>alert("Password not Changed")</script>';
-        }*/
-      }else{
-        echo '<script>alert("Password not matched")</script>';
-      }
-    }
-
-    
-      
-  
-
-
-?>
 
 
 
