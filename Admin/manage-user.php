@@ -256,7 +256,8 @@ if (isset($_GET['id'])) {
 			<td data-label="Contact Number"><?php echo $row['users_contact'];?></td>
 			<td data-label="Email"><?php echo $row['users_email'];?></td>
 			<td data-label="Position"><?php echo $row['users_roles'];?></td>
-			<td data-label="Action"><a href="user-update.php?id=<?php echo $row['users_id'];?>"><button class="btn-upd" style="cursor: pointer;">Update</button></a><a href="?id=<?php echo $row['users_id'];?>"><button class="btn-rem" name="btnremove" style="cursor: pointer;">Remove</button></a></td>
+			<td data-label="Action"><a href="user-update.php?id=<?php echo $row['users_id'];?>"><button class="btn-upd" style="cursor: pointer;">Update</button></a>
+			<a href="?id=<?php echo $row['users_id'];?>"><button class="btn-rem" name="btnremove" style="cursor: pointer;" onclick="return confirm('Are you sure you want to cancel your appointment?')">Remove</button></a></td>
      	  </tr>
     
      	 <?php
