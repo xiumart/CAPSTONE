@@ -19,7 +19,7 @@ if ($con->connect_error) {
         $username = $_REQUEST['uname'];
         $email = $_REQUEST['email'];
         $contact = $_REQUEST['contact'];
-        $password = "RNLpass";
+        $password = md5("RNLpass");
         $position = $_REQUEST['position'];
        
 
