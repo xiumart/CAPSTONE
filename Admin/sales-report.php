@@ -178,30 +178,6 @@ include("session.php");
 			
 			</div>
 
-			<div class="col-div-3">
-			<div class="box">
-				<p>67<br/><span>Customers</span></p>
-				<i class="fa fa-users box-icon"></i>
-			</div>
-		</div>
-		<div class="col-div-3">
-			<div class="box">
-				<p>88<br/><span>Projects</span></p>
-				<i class="fa fa-list box-icon"></i>
-			</div>
-		</div>
-		<div class="col-div-3">
-			<div class="box">
-				<p>99<br/><span>Orders</span></p>
-				<i class="fa fa-shopping-bag box-icon"></i>
-			</div>
-		</div>
-		<div class="col-div-3">
-			<div class="box">
-				<p>78<br/><span>Tasks</span></p>
-				<i class="fa fa-tasks box-icon"></i>
-			</div>
-		</div>
 			<div class="table-data">
 				<div class="order">
 					<div class="head">
