@@ -1,9 +1,7 @@
 <?php
 
-
-
 include("../conn.php");
-
+include ('../admin/session.php');
 
 $eid= $_GET['id'];
 

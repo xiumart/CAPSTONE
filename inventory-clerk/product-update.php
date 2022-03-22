@@ -1,6 +1,7 @@
 <?php
 error_reporting(0);
 include("../conn.php");
+include ('../admin/session.php');
 if (isset($_POST['btncancel'])) {
 			header("Location: product.php");
 		}

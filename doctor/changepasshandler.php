@@ -1,5 +1,5 @@
 <?php
- include ('session.php');
+ include ('../admin/session.php');
  $usersid = $_SESSION['users_id'];
 
 if (isset($_POST['submit']))

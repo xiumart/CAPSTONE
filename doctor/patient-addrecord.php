@@ -1,6 +1,7 @@
 <?php
 error_reporting(0);
 include("../conn.php");
+include ('../admin/session.php');
 if (isset($_POST['btnsubmit'])) {
 	$doctor=$_POST['doctor'];
 	$fname=$_POST['firstname'];
@@ -199,7 +200,7 @@ elseif (($_POST['med'])=="Reading") {
 		</ul>
 		<ul class="side-menu">
 			<li>
-				<a href="#" class="logout">
+				<a href="logout.php" class="logout">
 					<i class='bx bxs-log-out-circle' ></i>
 					<span class="text">Logout</span>
 				</a>

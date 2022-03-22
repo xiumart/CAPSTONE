@@ -1,6 +1,7 @@
 <?php
 error_reporting(0);
 include("../conn.php");
+include ('../admin/session.php');
 if (isset($_GET['id'])) {
 	$pro_id1=$_GET['id'];
 	$query = "DELETE FROM `product` WHERE pro_id='$pro_id1'";

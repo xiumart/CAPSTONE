@@ -1,6 +1,7 @@
 <?php
 error_reporting(0);
 include("../conn.php");
+include ('../admin/session.php');
 $patt=$_GET['id'];
 if (isset($_GET['id'])) {
 	// code...
@@ -70,7 +71,7 @@ $query = "UPDATE `patient_distancerx` SET `status`='Remove' WHERE `patient_no`='
 		</ul>
 		<ul class="side-menu">
 			<li>
-				<a href="#" class="logout">
+				<a href="logout.php" class="logout">
 					<i class='bx bxs-log-out-circle' ></i>
 					<span class="text">Logout</span>
 				</a>
