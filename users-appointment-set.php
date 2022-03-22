@@ -166,7 +166,11 @@ $user=$_SESSION['login_user'];
   <section class="home">
   
   </section>
-
+  <?php 
+			  		$clientid= $_SESSION['client_id'];
+			  		$query=mysqli_query($conn, "SELECT * from client_user_info WHERE client_id='$clientid'");
+			  		while($row=mysqli_fetch_array($query)){
+			  	?>
   <section class="table">
     <div class="container">
 
@@ -180,10 +184,10 @@ $user=$_SESSION['login_user'];
                                  required="">
                              <h3>Contact No.</h3>
                             <input type="tel" class="form-control" maxlength="11" pattern="[0-9]{4}[0-9]{3}[0-9]{4}" name="Contact" id="w3lSubject"
-                                 autocomplete="off" required="">
+                                 autocomplete="off" required="" value= "<?php echo $row['client_contact'];?>" disabled>
                                 <h3>Email</h3>
                             <input type="email" class="form-control" name="Email" autocomplete="off" id="w3lSubject"
-                                 required="">
+                                 required="" value= "<?php echo $row['client_email'];?>" disabled>
                                 <h3>Purpose</h3>
                             <select class="form-control" name="Purpose" id="w3lSubject"
                                 placeholder="Subject" required="" style="width: 40%; padding: 10px; border-radius: 8px; font-size: 16px;">
@@ -214,6 +218,9 @@ $user=$_SESSION['login_user'];
                     </form>
                 </div>
   </section>
+  <?php
+            }
+  ?>
 
 
   <footer>
