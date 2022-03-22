@@ -101,7 +101,7 @@ function getIpAddr(){
               <input type="text" placeholder="Username" name="username" required="required" autocomplete="off"/>
             </div>
             <div class="input-field">
-              <i class="bi bi-eye-slash" id="togglePassword"></i>
+              <i class="bi bi-eye-slash" id="togglePassword" style="cursor: pointer;"></i>
               <input type="password" placeholder="Password" name="password" id = "password" required="required" />
             </div>
 
@@ -128,7 +128,7 @@ function getIpAddr(){
               <input type="email" placeholder="Email" name = "email" required autocomplete="off" />
             </div>
             <div class="input-field">
-            <i class="bi bi-eye-slash" id="togglePassword"></i>
+            <i class="bi bi-eye-slash" id="togglePassword" style="cursor: pointer;"></i>
               <input type="password" placeholder="Password" minlength="6" name = "password" id = "password" required />
               
             </div>
