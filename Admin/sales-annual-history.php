@@ -169,57 +169,19 @@ include("session.php");
 					<h1>Sales Report</h1>
 					<ul class="breadcrumb">
 						<li>
-							<a href="sales-report.php">Sales Report</a>
+							<a  class="active" href="sales-report.php">Back</a>
 						</li>
 						<li><i class='bx bx-chevron-right' ></i></li>
 						<li>
-							<a class="active" href="dashboard.php">Home</a>
+							<a href="sales-report.php">Sales Annual Report</a>
 						</li>
 					</ul>
 				</div>
 				
 			
 			</div>
-			<ul class="box-info">
-				<li>
-					
-					<span class="text">
-						<h3><?php 
-							$query = mysqli_query($conn, "SELECT COUNT(*) as total from appointment where app_remarks = 'PENDING';");
-									while($result=mysqli_fetch_array($query)){
-										echo "₱ ".$result['total'];
-						  							}			
-						  ?></h3>
-						<p>Sales Revenue</p>
-					</span>
-				</li>
-				
-				<li>
-					
-					<span class="text">
-						<p>Daily Sales &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp : ₱</p>
-						<p>Weekly Sales &nbsp&nbsp : ₱</p>
-						<p>Monthly Sales &nbsp : ₱</p>
-					</span>
-				</li>
-				
-				
-				<li>
-					
-					<span class="text">
-						<h3><?php 
-							$query3 = mysqli_query($conn, "SELECT COUNT(*) as total from appointment_history where app_remarks = 'FINISH';");
-									while($result3=mysqli_fetch_array($query3)){
-										echo "₱ ".$result3['total'];
-						  							}			
-						  ?></h3>
-						<p>Total Profit</p>
-					</span>
-				</li>
-				
 			
-			</ul><br>
-			<a href="sales-annual-history.php"><button class="btn-addpt" style="cursor: pointer;"> Annual Sales History</button></a>
+		
 			<div class="table-data">
 				<div class="order">
 					<div class="head">
@@ -231,24 +193,20 @@ include("session.php");
 					<table class="table">
      <thead>
      	<tr>
-     	 <th>Transac. ID</th>
-     	 <th>Date</th>
-     	 <th>Time</th>
-     	 <th>Customer Name</th>
-		 <th>Invoice No.</th>
-		 <th>Profit</th>
-		 <th>Total Amount</th>
+     	 <th>ID</th>
+     	 <th>Year</th>
+     	 <th>Total Sales Revenue</th>
+     	 <th>Total Profit</th>
      	</tr>
      </thead>
      <tbody>
      	  <tr>
-     	  	  <td data-label="Transacid" class="brandd"><p>T-12445</p></td>
-     	  	  <td data-label="Date">03/10/2022</td>
-			  <td data-label="Time">11:00pm</td>
-     	  	  <td data-label="Customer">Marliardo Umbao</td>
-     	  	  <td data-label="Invoice">OR1231312321</td>
-			  <td data-label="Profit">1500</td>
-			  <td data-label="Total">200</td>
+     	  	  <td data-label="ID"><p></p></td>
+     	  	  <td data-label="Year"></td>
+			  <td data-label="Total Sales Revenue"></td>
+     	  	  <td data-label="Total Profit"></td>
+  
+			 
 			  
      	  </tr>
 
