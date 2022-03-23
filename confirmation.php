@@ -31,19 +31,22 @@ error_reporting(0);
               $username=$_POST['username'];
       if (isset($_POST['login'])) {
               $query1= mysqli_query($conn,"SELECT * FROM client_user_info WHERE client_lname= '$username'");
+
     if(mysqli_num_rows ($query1)>0)
     {
       echo $username;
       if ($_POST['username']==$username) {
           echo '<script language="javascript">';
-      echo 'alert("You can now login to your account.");';
-      echo 'window.location="login.php";';
-      echo '</script>';
-
+          echo 'alert("You can now login to your account.");';
+          echo 'window.location="login.php";';
+          echo '</script>';
+      }
+      
       }
       else{
-        echo '<script>alert("Wrong Confirmation Code")</script>';
-      }
+      echo '<script language="javascript">';
+      echo 'alert("Confirmation Code is incorrect");';
+      echo '</script>';
       }
 
 
