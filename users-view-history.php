@@ -1,5 +1,4 @@
 <?php
-
 include ('session.php');
 ?>
 <!DOCTYPE html>
@@ -7,7 +6,6 @@ include ('session.php');
 <html lang="en" dir="ltr">
 
 <head>
-  <title>Home | RNL Vision Care</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
   <link rel="stylesheet" href="assets\css\user-style.css">
@@ -22,10 +20,9 @@ include ('session.php');
     <section class="head">
       <div class="container flex1">
         <div class="left flex1">
-       
-          <div class="logo">
-          <a href="users.php"><img src="assets\images\logo.png" alt="" style="position:fixed;width:80px;top:-3%;left:5%;pointer:cursor;" id="icnlogo"></a>
-            <h3><a href="users.php" style="color: white;">RNL Vision Care</a></h3>
+        <div class="logo">
+        <a href="users.php"><img src="assets\images\logo.png" alt="" style="position:fixed;width:80px;top:-3%;left:5%;pointer:cursor;" id="icnlogo"></a>
+            <h3><a href="users.php" style="color:white;">RNL Vision Care</a></h3>
           </div>
 
           <div class="search flex">
@@ -88,18 +85,20 @@ include ('session.php');
 .dropdown:hover .dropbtn {
   background-color: #2881e0;
   border-radius: 8px;
-} 
+}
 
+button:hover{
+  background-color: #00c2cb;
+}
 </style>
           <div class="admin flex">
-  
             <!-- <div class="text flex"> -->
             <div class="dropdown">
   <button class="dropbtn" style="background-color: #01969e;">
     <?php 
 include('conn.php');
 if($_SESSION["login_user"]) {?>
-<label style="cursor:pointer; text-transform:uppercase;">Hello, <?php echo $_SESSION['login_user']; ?> <i class="fa fa-angle-down"></i> </label></button>
+<label style="cursor: pointer; text-transform: uppercase;">hello, <?php echo $_SESSION['login_user'];?> <i class="fa fa-angle-down"></i> </label></button>
   <div class="dropdown-content">
     <a href="users-profile.php">Edit Profile</a>
     <a href="users-changepassword.php">Change Password</a>
@@ -119,7 +118,7 @@ $user=$_SESSION['login_user'];
           <nav>
             <ul id="menuitem">
               <li>
-                <a href="users.php"style="color:#1545CB;">
+                <a href="users.php">
                   <i class="fa fa-medkit"></i>
                   <h5>Check-ups</h5>
                 </a>
@@ -146,7 +145,6 @@ $user=$_SESSION['login_user'];
       </div>
     </section>
   </header>
-
   <script>
     var menuitem = document.getElementById("menuitem");
     menuitem.style.maxHeight = "0px";
@@ -163,8 +161,8 @@ $user=$_SESSION['login_user'];
       var header = document.querySelector("header");
       header.classList.toggle("sticky", window.scrollY > 50);
     })
-  </script>
-
+  </script><div style="margin:50px;"></div>
+  
   <section class="home">
   
   </section>
@@ -175,69 +173,69 @@ $user=$_SESSION['login_user'];
 
 
   <section class="table">
-    <div class="container" id="result">
-
-      <h3>Check-up History</h3>
-
-      <table>
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Date</th>
-            <th>Check-up by<th>
-            <th>Action</th>
-          </tr>
-        </thead>
-
-       <?php 
-       $sql1 = "SELECT * FROM `client_user` WHERE `client_username`='$user'";
-      $result = $conn->query($sql1);
-      if($result->num_rows > 0){
-      while($row = $result -> fetch_assoc()){
-       ?>
-       <input type="text" name="bam" value="<?php echo $row['client_id']; ?>" hidden>
-        <?php 
-        $id=$row['client_id'];
-       $sql1 = "SELECT * FROM `patient_history` WHERE `patient_id`='$id'";
-      $result = $conn->query($sql1);
-      if($result->num_rows > 0){
-      while($row = $result -> fetch_assoc()){
-       ?>
-       <tbody>
-         <tr>
-           <td><?php echo $row['patient_no']; ?></td><td><?php echo $row['date_up']; ?></td><td><?php echo $row['doctor']; ?></td><td></td><td><a href="#"><button class="btn-view" style="cursor:pointer;">View</button></a></td>
-            <?php
-          }}
-      else{
-        echo "NO RECORDS";
-      }
-         ?>
-         <td></td>
-         <td></td>
-         <td></td>
-         <td></td>
-         <td> <a href="users-view-history.php"><button class="btn-upd" style="cursor: pointer;">View</button></a></td>
-         </tr>
-       </tbody>
-        <?php
-     
-      }}
-      ?>
-      </table>
-      
-
-      
-      <div class="pagination">
-        <ul>
-          <li><i class="fas fa-chevron-left"></i> </li>
-          <li class="active">1</li>
-          <li>2</li>
-          <li>3</li>
-          <li><i class="fas fa-chevron-right"></i> </li>
-        </ul>
-      </div>
+    <div class="container">
+       <!-- Page Content -->
+       <a href="users.php" style="float:right;font-size:17px;color:#1545CB;">Back</a>
+        <div class="row">
+            
+        </div>
+        <!-- /.row -->  
     </div>
   </section>
+
+  <?php
+
+
+
+include("conn.php");
+
+
+
+
+if (isset($_REQUEST['update'])) {
+		//something was posted
+    $id = $_REQUEST['bam'];
+		$firstname = $_REQUEST['client_fname'];
+		$lastname = $_REQUEST['client_lname'];
+		$middlename = $_REQUEST['client_mname'];
+  
+    $bday = $_REQUEST['client_bday'];
+		$email = $_REQUEST['client_email'];
+		$contact = $_REQUEST['client_contact'];
+    $address = $_REQUEST['client_address'];
+
+
+$currentDate = date("d-m-Y");
+
+$age1 = date_diff(date_create($bday), date_create($currentDate));
+
+$age2 = $age1->format("%y");
+
+    
+			$sql = mysqli_query($conn,"UPDATE client_user_info SET 
+				`client_fname`='$firstname ' , 
+				`client_lname`='$lastname ' , 
+				`client_mname`='$middlename' , 
+				`client_bday`='$bday ',  
+				`client_age`='$age2',
+        `client_contact`='$contact', 
+        `client_email`='$email',
+        `client_address`='$address'
+				WHERE `client_id` = '$id'");
+        
+			if($sql){
+				echo "<script>alert('You have successfully updated the record.');</script>";
+				echo "<script>document.location='users-profile.php';</script>";
+				
+			}
+			else{
+				echo "<script>alert('something went wrong!!!')</script>";
+			}
+
+	
+		}
+
+?>
 
   <footer>
     <div class="container flex1">
@@ -250,13 +248,13 @@ $user=$_SESSION['login_user'];
   <script src="script.js" charset="utf-8"></script>
   <!-- chart js-->
 </body>
+
 <style>
  @media only screen and (max-width:768px) {
     #icnlogo {
     display: none;
   }
   }
-
+  
 </style>
-
 </html>
