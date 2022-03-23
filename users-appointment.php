@@ -211,8 +211,8 @@ if (isset($_GET['id'])) {
       echo "Failed to connect to MySQL: " . mysqli_connect_error();
       }
 
-    $result = mysqli_query($con,"SELECT DISTINCT app_id, app_date, app_time, app_purpose, app_remarks FROM appointment, client_user where appointment.app_user = client_user.client_username");
-
+    $result = mysqli_query($con,"SELECT * FROM appointment where app_user = '$user_check'");
+      
     while($row = mysqli_fetch_array($result))
       {
       echo "<tr><td>". $row['app_id'] . "</td>";
