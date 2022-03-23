@@ -1,5 +1,4 @@
-<?php
-
+  <?php
 include ('session.php');
 ?>
 <!DOCTYPE html>
@@ -7,7 +6,6 @@ include ('session.php');
 <html lang="en" dir="ltr">
 
 <head>
-  <title>Home | RNL Vision Care</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
   <link rel="stylesheet" href="assets\css\user-style.css">
@@ -22,10 +20,9 @@ include ('session.php');
     <section class="head">
       <div class="container flex1">
         <div class="left flex1">
-       
-          <div class="logo">
-          <a href="users.php"><img src="assets\images\logo.png" alt="" style="position:fixed;width:80px;top:-3%;left:5%;pointer:cursor;" id="icnlogo"></a>
-            <h3><a href="users.php" style="color: white;">RNL Vision Care</a></h3>
+        <div class="logo">
+        <a href="users.php"><img src="assets\images\logo.png" alt="" style="position:fixed;width:80px;top:-3%;left:5%;pointer:cursor;" id="icnlogo"></a>
+            <h3><a href="users.php" style="color:white;">RNL Vision Care</a></h3>
           </div>
 
           <div class="search flex">
@@ -88,18 +85,20 @@ include ('session.php');
 .dropdown:hover .dropbtn {
   background-color: #2881e0;
   border-radius: 8px;
-} 
+}
 
+button:hover{
+  background-color: #00c2cb;
+}
 </style>
           <div class="admin flex">
-  
             <!-- <div class="text flex"> -->
             <div class="dropdown">
   <button class="dropbtn" style="background-color: #01969e;">
     <?php 
 include('conn.php');
 if($_SESSION["login_user"]) {?>
-<label style="cursor:pointer; text-transform:uppercase;">Hello, <?php echo $_SESSION['login_user']; ?> <i class="fa fa-angle-down"></i> </label></button>
+<label style="cursor: pointer; text-transform: uppercase;">hello, <?php echo $_SESSION['login_user'];?> <i class="fa fa-angle-down"></i> </label></button>
   <div class="dropdown-content">
     <a href="users-profile.php">Edit Profile</a>
     <a href="users-changepassword.php">Change Password</a>
@@ -119,7 +118,7 @@ $user=$_SESSION['login_user'];
           <nav>
             <ul id="menuitem">
               <li>
-                <a href="users.php"style="color:#1545CB;">
+                <a href="users.php">
                   <i class="fa fa-medkit"></i>
                   <h5>Check-ups</h5>
                 </a>
@@ -146,7 +145,6 @@ $user=$_SESSION['login_user'];
       </div>
     </section>
   </header>
-
   <script>
     var menuitem = document.getElementById("menuitem");
     menuitem.style.maxHeight = "0px";
@@ -163,8 +161,8 @@ $user=$_SESSION['login_user'];
       var header = document.querySelector("header");
       header.classList.toggle("sticky", window.scrollY > 50);
     })
-  </script>
-
+  </script><div style="margin:50px;"></div>
+  
   <section class="home">
   
   </section>
@@ -175,69 +173,573 @@ $user=$_SESSION['login_user'];
 
 
   <section class="table">
-    <div class="container" id="result">
+    <div class="container">
+       <!-- Page Content -->
+       <a href="users.php" style="float:right;font-size:17px;color:#1545CB;">Back</a>
+        <div class="row">
+            <?php 
+              error_reporting(0);
+$id=$_GET['id'];
+$sql1 = "SELECT * FROM `patient_history` WHERE `patient_no`='$id'";
+ $result1 = $conn->query($sql1);  
+        if($result1->num_rows > 0){
+          while($row = $result1 -> fetch_assoc()){
+            $pat_id=$row['patient_id'];
+            $type=$row['type'];
+            $name=$row['patient_name'];
+            $bday=$row['patient_bday'];
+            $contact=$row['patient_contact'];
+            $email=$row['patient_email'];
+            $address=$row['patient_address'];
+            $medhx=$row['patient_medhx'];
+            $bp=$row['patient_bp'];
 
-      <h3>Check-up History</h3>
+            $D_OD_SPH=$row['D_OD_SPH'];
+            $D_OD_CYL=$row['D_OD_CYL'];
+            $D_OD_AXIS=$row['D_OD_AXIS'];
+            $D_OD_VA=$row['D_OD_VA'];
+            $D_OD_ADD=$row['D_OD_ADD'];
 
-      <table>
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Date</th>
-            <th>Check-up by<th>
-            <th>Action</th>
-          </tr>
-        </thead>
+            $D_OS_SPH=$row['D_OS_SPH'];
+            $D_OS_CYL=$row['D_OS_CYL'];
+            $D_OS_AXIS=$row['D_OS_AXIS'];
+            $D_OS_VA=$row['D_OS_VA'];
+            $D_OS_ADD=$row['D_OS_ADD'];
 
-       <?php 
-       $sql1 = "SELECT * FROM `client_user` WHERE `client_username`='$user'";
-      $result = $conn->query($sql1);
-      if($result->num_rows > 0){
-      while($row = $result -> fetch_assoc()){
-       ?>
-       <input type="text" name="bam" value="<?php echo $row['client_id']; ?>" hidden>
-        <?php 
-        $id=$row['client_id'];
-       $sql1 = "SELECT * FROM `patient_history` WHERE `patient_id`='$id'";
-      $result = $conn->query($sql1);
-      if($result->num_rows > 0){
-      while($row = $result -> fetch_assoc()){
-       ?>
-       <tbody>
-         <tr>
-           <td><?php echo $row['patient_no']; ?></td><td><?php echo $row['date_up']; ?></td><td><?php echo $row['doctor']; ?></td><td></td><td><a href="#"><button class="btn-view" style="cursor:pointer;">View</button></a></td>
-            <?php
+            $I_SPH=$row['I_SPH'];
+            $I_CYL=$row['I_CYL'];
+            $I_AXIS=$row['I_AXIS'];
+            $I_PD=$row['I_PD'];
+            $I_ADD=$row['I_ADD'];
+
+            $dc=$row['doctor'];
+
+            
           }}
-      else{
-        echo "NO RECORDS";
-      }
-         ?>
-         <td></td>
-         <td></td>
-         <td></td>
-         <td></td>
-         <td> <a href="users-view-history.php"><button class="btn-upd" style="cursor: pointer;">View</button></a></td>
-         </tr>
-       </tbody>
-        <?php
-     
-      }}
-      ?>
-      </table>
-      
+            ?>
+            <h3 style="text-transform: uppercase;"><?php echo $name;?></h3>
 
-      
-      <div class="pagination">
-        <ul>
-          <li><i class="fas fa-chevron-left"></i> </li>
-          <li class="active">1</li>
-          <li>2</li>
-          <li>3</li>
-          <li><i class="fas fa-chevron-right"></i> </li>
-        </ul>
-      </div>
+              <div class="row">
+            <div class="col-25">
+              <label for="firstname">Doctor</label>
+            </div>
+            <div class="col-75">
+              <select>
+                <option><?php echo $dc;?></option>
+              </select>
+            </div>
+            </div>
+
+            <div class="row">
+            <div class="col-75">
+              <input type="text" name="pat_id" value="<?php echo $id1; ?>" hidden>
+              <input type="text" id="firstname" name="firstname" placeholder="Enter first name.." value="<?php echo $name;?>" hidden>
+            </div>
+            </div>
+
+            <div class="row">
+            <div class="col-25">
+              <label for="bday">Birthdate</label>
+            </div>
+            <div class="col-75">
+              <input type="date" id="bday" name="bday" value="<?php echo $bday;?>" readonly>
+            </div>
+            </div>
+
+            <div class="row">
+            <div class="col-25">
+              <label for="contact">Contact No.</label>
+            </div>
+            <div class="col-75">
+              <input type="tel" id="contact" name="contact"  placeholder="Enter contact no.." value="<?php echo $contact;?>" readonly>
+            </div>
+            </div>
+
+            <div class="row">
+            <div class="col-25">
+              <label for="email">Email</label>
+            </div>
+            <div class="col-75">
+              <input type="email" id="email" name="email" placeholder="Enter email.." value="<?php echo $email;?>" readonly>
+            </div>
+            </div>
+
+            <div class="row">
+            <div class="col-25">
+              <label for="address">Address</label>
+            </div>
+            <div class="col-75">
+              <input type="text" id="address" name="address" placeholder="Enter address.." value="<?php echo $address;?>" readonly>
+            </div>
+            </div>
+
+            <div class="row">
+            <div class="col-25">
+              <label for="address">Medical Hx</label>
+            </div>
+            <div class="col-75">
+              <textarea name="medhx" placeholder="Enter medical history" id="pat" readonly><?php echo $medhx;?></textarea>
+            </div>
+            </div>
+
+            <div class="row">
+            <div class="col-25">
+              <label for="address">B.P.</label>
+            </div>
+            <div class="col-75">
+              <input type="text" name="bp" placeholder="Enter blood pressure.." id="bp" value="<?php echo $bp;?>" readonly>
+            </div>
+            </div>
+
+            <div class="row">
+            <div class="col-25">
+            </div>
+            <style type="text/css">
+              #divdis{
+                display: none;
+              }
+              #divcl{
+                display: none;
+              }
+              #divread{
+                display: none;
+              }
+            </style>
+            <div class="col-75">
+              <input type="radio" name="med" value="Distance" id="chkdis"  <?php 
+                if ($type=="Distance") {
+                  echo "checked";
+                }
+                ?> readonly> DISTANCE
+                
+               <?php 
+                if ($type=="Distance") {
+                  echo "<style type='text/css'>
+                  #divdis{
+                    display: block;
+                      }
+                  #divcl{
+                    display: none;
+                      }
+                  #divread{
+                    display: none;
+                      }
+              
+                  </style>";
+
+                }
+              ?>
+
+              <input type="radio" name="med" value="Contact Lens" id="chkcl"  <?php 
+                if ($type=="Contact Lens") {
+                  echo "checked";
+                }
+                ?> readonly> CONTACT LENS
+                <?php 
+                if ($type=="Contact Lens") {
+                  echo "<style type='text/css'>
+                  #divcl{
+                    display: block;
+                      }
+                  #divread{
+                    display: none;
+                      }
+                  #divdis{
+                    display: none;
+                      }
+              
+                  </style>";
+                }
+              ?>
+              <input type="radio" name="med" value="Reading" id="chkread" 
+              <?php 
+                if ($type=="Reading") {
+                  echo "checked";
+                }
+                ?> readonly> READING
+                <?php 
+                if ($type=="Reading") {
+                  echo "<style type='text/css'>
+                  #divcl{
+                    display: none;
+                      }
+                  #divread{
+                    display: block;
+                      }
+                  #divdis{
+                    display: none;
+                      }
+              
+                  </style>";
+                }
+              ?>
+            </div>
+            </div>
+            <!--script-->
+            <script type="text/javascript">
+                function myFunction2() {
+               // Get the checkbox
+               var checkBox = document.getElementById("chkdis");
+               // Get the output text
+                var text = document.getElementById("divdis");
+                var text1 = document.getElementById("divcl");
+                var text2 = document.getElementById("divread");
+
+               // If the checkbox is checked, display the output text
+               if (checkBox.checked == true){
+                document.getElementById('d1').value = '';
+                document.getElementById('d2').value = '';
+                document.getElementById('d3').value = '';
+                document.getElementById('d4').value = '';
+                document.getElementById('d5').value = '';
+                document.getElementById('d6').value = '';
+                document.getElementById('d7').value = '';
+                document.getElementById('d8').value = '';
+                document.getElementById('d9').value = '';
+                document.getElementById('d10').value = '';
+
+                document.getElementById('cl1').value = '';
+                document.getElementById('cl2').value = '';
+                document.getElementById('cl3').value = '';
+                document.getElementById('cl4').value = '';
+                document.getElementById('cl5').value = '';
+                document.getElementById('cl6').value = '';
+                document.getElementById('cl7').value = '';
+                document.getElementById('cl8').value = '';
+                document.getElementById('cl9').value = '';
+                document.getElementById('cl10').value = '';
+
+                document.getElementById('r1').value = '';
+                document.getElementById('r2').value = '';
+                document.getElementById('r3').value = '';
+                document.getElementById('r4').value = '';
+                document.getElementById('r5').value = '';
+                document.getElementById('r6').value = '';
+                document.getElementById('r7').value = '';
+                document.getElementById('r8').value = '';
+                document.getElementById('r9').value = '';
+                document.getElementById('r10').value = '';
+
+                  text.style.display = "block";
+                  text1.style.display = "none";
+                  text2.style.display = "none";
+                } 
+                else{
+                  text.style.display = "none";
+                }
+              }
+              function myFunction3() {
+               // Get the checkbox
+               var checkBox = document.getElementById("chkcl");
+               // Get the output text
+                var text = document.getElementById("divcl");
+                var text1 = document.getElementById("divdis");
+                var text2 = document.getElementById("divread");
+
+               // If the checkbox is checked, display the output text
+               if (checkBox.checked == true){
+                document.getElementById('d1').value = '';
+                document.getElementById('d2').value = '';
+                document.getElementById('d3').value = '';
+                document.getElementById('d4').value = '';
+                document.getElementById('d5').value = '';
+                document.getElementById('d6').value = '';
+                document.getElementById('d7').value = '';
+                document.getElementById('d8').value = '';
+                document.getElementById('d9').value = '';
+                document.getElementById('d10').value = '';
+
+                document.getElementById('cl1').value = '';
+                document.getElementById('cl2').value = '';
+                document.getElementById('cl3').value = '';
+                document.getElementById('cl4').value = '';
+                document.getElementById('cl5').value = '';
+                document.getElementById('cl6').value = '';
+                document.getElementById('cl7').value = '';
+                document.getElementById('cl8').value = '';
+                document.getElementById('cl9').value = '';
+                document.getElementById('cl10').value = '';
+
+                document.getElementById('r1').value = '';
+                document.getElementById('r2').value = '';
+                document.getElementById('r3').value = '';
+                document.getElementById('r4').value = '';
+                document.getElementById('r5').value = '';
+                document.getElementById('r6').value = '';
+                document.getElementById('r7').value = '';
+                document.getElementById('r8').value = '';
+                document.getElementById('r9').value = '';
+                document.getElementById('r10').value = '';
+                  text.style.display = "block";
+                  text1.style.display = "none";
+                  text2.style.display = "none";
+                } 
+                else{
+                  text.style.display = "none";
+                }
+              }
+              function myFunction4() {
+               // Get the checkbox
+               var checkBox = document.getElementById("chkread");
+               // Get the output text
+                var text = document.getElementById("divread");
+                var text1 = document.getElementById("divcl");
+                var text2 = document.getElementById("divdis");
+               // If the checkbox is checked, display the output text
+               if (checkBox.checked == true){
+                document.getElementById('d1').value = '';
+                document.getElementById('d2').value = '';
+                document.getElementById('d3').value = '';
+                document.getElementById('d4').value = '';
+                document.getElementById('d5').value = '';
+                document.getElementById('d6').value = '';
+                document.getElementById('d7').value = '';
+                document.getElementById('d8').value = '';
+                document.getElementById('d9').value = '';
+                document.getElementById('d10').value = '';
+
+                document.getElementById('cl1').value = '';
+                document.getElementById('cl2').value = '';
+                document.getElementById('cl3').value = '';
+                document.getElementById('cl4').value = '';
+                document.getElementById('cl5').value = '';
+                document.getElementById('cl6').value = '';
+                document.getElementById('cl7').value = '';
+                document.getElementById('cl8').value = '';
+                document.getElementById('cl9').value = '';
+                document.getElementById('cl10').value = '';
+
+                document.getElementById('r1').value = '';
+                document.getElementById('r2').value = '';
+                document.getElementById('r3').value = '';
+                document.getElementById('r4').value = '';
+                document.getElementById('r5').value = '';
+                document.getElementById('r6').value = '';
+                document.getElementById('r7').value = '';
+                document.getElementById('r8').value = '';
+                document.getElementById('r9').value = '';
+                document.getElementById('r10').value = '';
+                  text.style.display = "block";
+                  text1.style.display = "none";
+                  text2.style.display = "none";
+                } 
+                else{
+                  text.style.display = "none";
+                }
+              }
+              </script>
+            <!--end of script-->
+            <!--table for distance-->
+            <div id="divdis">
+            <div class="row">
+            <div class="col-25">
+              <label for="address">NEW RX</label>
+            </div>
+            <div class="col-75">
+              <table>
+                <thead>
+                <tr>
+                  <th colspan="3">&nbsp</th>
+                  <th>SPH</th>
+                          <th>CYL</th>
+                          <th>AXIS</th>
+                          <th>VA</th>
+                          <th>ADD</th>
+                </tr>
+                <tr>
+                  <th rowspan="2"></th>
+                  <td rowspan="2">DISTANCE RX</td>
+                  <td>OD</td>
+                  <td><input type="text" name="new_D_OD_SPH" placeholder="Sphere" id="d1" value="<?php echo $D_OD_SPH;?>" readonly></td>
+                          <td><input type="text" name="new_D_OD_CYL" placeholder="Cylinder" id="d2" value="<?php echo $D_OD_CYL;?>" readonly></td>
+                        <td><input type="text" name="new_D_OD_AXIS" placeholder="Axis" id="d3" value="<?php echo $D_OD_AXIS;?>" readonly></td>
+                          <td><input type="text" name="new_D_OD_VA" placeholder="VA" id="d4" value="<?php echo $D_OD_VA;?>" readonly></td>
+                          <td><input type="text"name="new_D_OD_ADD" placeholder="ADD" id="d5" value="<?php echo $D_OD_ADD;?>" readonly></td>
+                </tr>
+                <tr>
+                  <td>OS</td>
+                  <td><input type="text" name="new_D_OS_SPH" placeholder="Sphere" id="d6" value="<?php echo $D_OS_SPH;?>" readonly></td>
+
+                         <td><input type="text" name="new_D_OS_CYL" placeholder="Cylinder" id="d7" value="<?php echo $D_OS_CYL;?>" readonly></td>
+
+                         <td><input type="text" name="new_D_OS_AXIS" placeholder="Axis" id="d8" value="<?php echo $D_OS_AXIS;?>" readonly></td>
+
+                         <td><input type="text" name="new_D_OS_VA" placeholder="VA" id="d9" value="<?php echo $D_OS_VA;?>" readonly></td>
+
+                         <td><input type="text" name="new_D_OS_ADD" placeholder="ADD" id="d10" value="<?php echo $D_OS_ADD;?>" readonly></td>
+                </tr>
+              </thead>
+              </table>
+            </div>
+            </div>
+            </div>
+            <!--table for contact lens-->
+            <div id="divcl">
+            <div class="row">
+            <div class="col-25">
+              <label for="address">NEW RX</label>
+            </div>
+            <div class="col-75">
+              <table>
+                <thead>
+                <tr>
+                  <th colspan="3">&nbsp</th>
+                  <th>SPH</th>
+                          <th>CYL</th>
+                          <th>AXIS</th>
+                          <th>VA</th>
+                          <th>ADD</th>
+                </tr>
+                <tr>
+                  <th rowspan="2"></th>
+                  <td rowspan="2">CONTACT LENS RX</td>
+                  <td>OD</td>
+                  <td><input type="text" name="new_CL_OD_SPH" placeholder="Sphere" id="cl1" value="<?php echo $D_OD_SPH;?>" readonly></td>
+                          <td><input type="text" name="new_CL_OD_CYL" placeholder="Cylinder" id="cl2" value="<?php echo $D_OD_CYL;?>" readonly></td>
+                          <td><input type="text" name="new_CL_OD_AXIS" placeholder="Axis" id="cl3" value="<?php echo $D_OD_AXIS;?>" readonly></td>
+                        <td><input type="text" name="new_CL_MONO"placeholder="MONO" id="cl4" value="<?php echo $D_OD_VA;?>" readonly></td>
+                        <td><input type="text" name="new_CL_MONO_OD" placeholder="ADD" id="cl5" value="<?php echo $D_OD_ADD;?>" readonly></td>
+                </tr>
+                <tr>
+                  <td>OS</td>
+                  <td><input type="text"  name="new_CL_OS_SPH" placeholder="Sphere" id="cl6" value="<?php echo $D_OS_SPH;?>" readonly></td>
+                          <td><input type="text"  name="new_CL_OS_CYL" placeholder="Cylinder" id="cl7" value="<?php echo $D_OS_CYL;?>" readonly></td>
+                          <td><input type="text"  name="new_CL_OS_AXIS" placeholder="Axis" id="cl8" value="<?php echo $D_OS_AXIS;?>" readonly></td>
+                          <td><input type="text" name="new_CL_PD" placeholder="PD" id="cl9" value="<?php echo $D_OS_VA;?>" readonly></td>
+                        <td><input type="text" name="new_CL_PD_OS"  placeholder="ADD" id="cl10" value="<?php echo $D_OS_ADD;?>" readonly></td>
+                </tr>
+              </thead>
+              </table>
+            </div>
+            </div>
+            </div>
+            <!--table for reading-->
+            <div id="divread">
+            <div class="row">
+            <div class="col-25">
+              <label for="address">NEW RX</label>
+            </div>
+            <div class="col-75">
+              <table>
+                <thead>
+                <tr>
+                  <th colspan="3">&nbsp</th>
+                  <th>SPH</th>
+                          <th>CYL</th>
+                          <th>AXIS</th>
+                          <th>VA</th>
+                          <th>ADD</th>
+                </tr>
+                <tr>
+                  <th rowspan="2"></th>
+                  <td rowspan="2">READING RX</td>
+                  <td>OD</td>
+                  <td><input type="text" name="new_R_OD_SPH" placeholder="Sphere" id="r1" value="<?php echo $D_OD_SPH;?>" readonly></td>
+                        <td><input type="text" name="new_R_OD_CYL" placeholder="Cylinder" id="r2" value="<?php echo $D_OD_CYL;?>" readonly></td>
+                          <td><input type="text" name="new_R_OD_AXIS" placeholder="Axis" id="r3" value="<?php echo $D_OD_AXIS;?>" readonly></td>
+                          <td><input type="text" name="new_R_SEGHT" placeholder="SEG HT" id="r4" value="<?php echo $D_OD_VA;?>" readonly></td>
+                          <td><input type="text" name="new_R_SEGHT_OD" placeholder="ADD" id="r5" value="<?php echo $D_OD_ADD;?>" readonly></td>
+                </tr>
+                <tr>
+                  <td>OS</td>
+                  <td><input type="text" name="new_R_OS_SPH" placeholder="Sphere" id="r6" value="<?php echo $D_OS_SPH;?>" readonly></td>
+                          <td><input type="text" name="new_R_OS_CYL" placeholder="Cylinder" id="r7" value="<?php echo $D_OS_CYL;?>" readonly></td>
+                          <td><input type="text" name="new_R_OS_AXIS" placeholder="Axis" id="r8" value="<?php echo $D_OS_AXIS;?>" readonly></td>
+                        <td><input type="text" name="new_R_VERHT" placeholder="VER HT" id="r9" value="<?php echo $D_OS_VA;?>" readonly></td>
+                          <td><input type="text" name="new_R_VERHT_OS" placeholder="ADD" id="r10" value="<?php echo $D_OS_ADD;?>" readonly></td>
+                </tr>
+              </thead>
+              </table>
+            </div>
+            </div>
+            </div>
+            <!--table for isihara-->
+            <div id="ishi">
+            <div class="row">
+            <div class="col-25">
+              <label for="address">Ishihara</label>
+            </div>
+            <div class="col-75">
+              <table>
+                <thead>
+                <tr>
+                  <th>SPH</th>
+                          <th>CYL</th>
+                          <th>AXIS</th>
+                          <th>VA</th>
+                          <th>ADD</th>
+                </tr>
+                <tr>
+                  <td ><input type="text" name="ishihara_SPH" placeholder="Sphere" value="<?php echo $I_SPH;?>" readonly></td>
+                  <td ><input type="text" name="ishihara_CYL" placeholder="Cylinder" value="<?php echo $I_CYL;?>" readonly></td>
+                        <td ><input type="text" name="ishihara_AXIS" placeholder="Axis" value="<?php echo $I_AXIS;?>"></td>
+                        <td><input type="text" name="ishihara_PD" placeholder="P.D." value="<?php echo $I_PD;?>" readonly></td>
+                        <td><input type="text" name="ishihara_PD_ADD" placeholder="ADD" value="<?php echo $I_ADD;?>" readonly></td>
+                </tr>
+              </thead>
+              </table>
+            </div>
+            </div>
+            </div>
+
+        </div>
+        <!-- /.row -->  
     </div>
   </section>
+
+  <?php
+
+
+
+include("conn.php");
+
+
+
+
+if (isset($_REQUEST['update'])) {
+    //something was posted
+    $id = $_REQUEST['bam'];
+    $firstname = $_REQUEST['client_fname'];
+    $lastname = $_REQUEST['client_lname'];
+    $middlename = $_REQUEST['client_mname'];
+  
+    $bday = $_REQUEST['client_bday'];
+    $email = $_REQUEST['client_email'];
+    $contact = $_REQUEST['client_contact'];
+    $address = $_REQUEST['client_address'];
+
+
+$currentDate = date("d-m-Y");
+
+$age1 = date_diff(date_create($bday), date_create($currentDate));
+
+$age2 = $age1->format("%y");
+
+    
+      $sql = mysqli_query($conn,"UPDATE client_user_info SET 
+        `client_fname`='$firstname ' , 
+        `client_lname`='$lastname ' , 
+        `client_mname`='$middlename' , 
+        `client_bday`='$bday ',  
+        `client_age`='$age2',
+        `client_contact`='$contact', 
+        `client_email`='$email',
+        `client_address`='$address'
+        WHERE `client_id` = '$id'");
+        
+      if($sql){
+        echo "<script>alert('You have successfully updated the record.');</script>";
+        echo "<script>document.location='users-profile.php';</script>";
+        
+      }
+      else{
+        echo "<script>alert('something went wrong!!!')</script>";
+      }
+
+  
+    }
+
+?>
 
   <footer>
     <div class="container flex1">
@@ -250,13 +752,13 @@ $user=$_SESSION['login_user'];
   <script src="script.js" charset="utf-8"></script>
   <!-- chart js-->
 </body>
+
 <style>
  @media only screen and (max-width:768px) {
     #icnlogo {
     display: none;
   }
   }
-
+  
 </style>
-
 </html>
