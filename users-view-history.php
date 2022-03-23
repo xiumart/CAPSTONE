@@ -177,7 +177,8 @@ $user=$_SESSION['login_user'];
        <!-- Page Content -->
        <a href="users.php" style="float:right;font-size:17px;color:#1545CB;">Back</a>
         <div class="row">
-            
+            <h1>View History</h1><br>
+            <h3>Patient Name:</h3>
         </div>
         <!-- /.row -->  
     </div>
