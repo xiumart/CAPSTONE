@@ -15,10 +15,11 @@ if ($con->connect_error) {
 
         $fsubject =  $_REQUEST['w3lSubject'];
         $fcomment = $_REQUEST['w3lMessage'];
+        $rate = $_REQUEST['rate'];
 
        
 
-           $sql = "INSERT INTO feedback (feed_subj,feed_comments) VALUES ('$fsubject','$fcomment')";
+           $sql = "INSERT INTO feedback (feed_subj, feed_comments, feed_rate) VALUES ('$fsubject','$fcomment','$rate')";
           
         if(mysqli_query($con, $sql)){
             echo '<script language="javascript">';

@@ -178,16 +178,16 @@ $user=$_SESSION['login_user'];
       <div class="map-content-9">
                     <form action="appointmenthandler.php" method="post">
                         <div class="twice">
-                             <h3 style="text-transform:uppercase;">Appointment User : <input type="text" name="AppUser" value="<?php echo $call;?>" id="w3lSubject" style="border:none;width:500px;font-weight:bold;"></h3><br>
+                             <h3 style="text-transform:uppercase;">Appointment User : <input type="text" name="AppUser" value="<?php echo $call;?>" id="w3lSubject" readonly style="border:none;width:500px;font-weight:bold;"></h3><br>
                              <h3>Name</h3>
                             <input type="text " class="form-control" name="Name" id="w3lSubject"
                                  required="">
                              <h3>Contact No.</h3>
                             <input type="tel" class="form-control" maxlength="11" pattern="[0-9]{4}[0-9]{3}[0-9]{4}" name="Contact" id="w3lSubject"
-                                 autocomplete="off" required="" value= "<?php echo $row['client_contact'];?>" >
+                                 autocomplete="off" required="" value= "<?php echo $row['client_contact'];?>" readonly>
                                 <h3>Email</h3>
                             <input type="email" class="form-control" name="Email" autocomplete="off" id="w3lSubject"
-                                 required="" value= "<?php echo $row['client_email'];?>">
+                                 required="" value= "<?php echo $row['client_email'];?>" readonly>
                                 <h3>Purpose</h3>
                             <select class="form-control" name="Purpose" id="w3lSubject"
                                 placeholder="Subject" required="" style="width: 40%; padding: 10px; border-radius: 8px; font-size: 16px;">

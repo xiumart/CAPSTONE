@@ -59,7 +59,7 @@ if (isset($_GET['id3'])) {
 	<!-- My CSS -->
 	<link rel="stylesheet" href="css\sys_style.css">
 	<link rel="shorcut icon" type="img/png" href="images\logo.png">
-	<title>RNL Vision Care | Admin</title>
+	<title>RNL Vision Care | Inventory Clerk</title>
 </head>
 <style>
 	.btn-upd, .btn-rem, .btn-apph {

@@ -1,4 +1,6 @@
-
+<?php
+session_start();
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -221,6 +223,7 @@ error_reporting(0);
             <div class="testimonial-width">
                 <div id="owl-demo1" class="owl-two owl-carousel owl-theme">
                 <?php
+                $call = $_SESSION["login_user"];
               require_once("db/feedback/feedbackdisplay.php");
               while($row = mysqli_fetch_assoc($query)){
             ?>
@@ -235,8 +238,8 @@ error_reporting(0);
                                             alt="client-img">
                                     </div>
                                     <div class="peopl align-self">
-                                        <h3><?php echo $row['feed_subj'];?></h3>
-                                        <p class="indentity"><?php echo $row['feedbackdate'];?></p>
+                                        <h3><?php echo $call;?></h3>
+                                        <p class="indentity"><?php echo $row['feed_subj'];?></p>
                                     </div>
                                 </div>
                             </div>
