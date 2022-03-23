@@ -229,10 +229,8 @@ $sql1 = "SELECT `patient_no`, `patient_id`, `type`, `patient_name`, `patient_bda
 					<br>
 					<p>To whom it may concern,</p><br>
 					<center>
-					<p>This is to certify that <b><u style="text-transform: uppercase;"><?php echo $row['patient_name']; ?></u></b>, <b><u style="text-transform: uppercase;"><?php echo $row['age']; ?></u></b> year old has undergone visual examination and the diagnosis as follows.</p><br>
-					<input type="checkbox" name=""> Emmetropia&nbsp&nbsp&nbsp&nbsp&nbsp <input type="checkbox" name=""> Hyperopia<br>
-					<input type="checkbox" name=""> Myopia &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input type="checkbox" name=""> Presbyopia<br>
-					<input type="checkbox" name=""> Astigmatism<br><br>
+					<p>This is to certify that <b><u style="text-transform: uppercase;"><?php echo $row['patient_name']; ?></u></b>, <b><u style="text-transform: uppercase;"><?php echo $row['age']; ?></u></b> year old has undergone visual examination.</p><br>
+					
 					</center>
 					<p>The following findings was taken.</p><br><br>
 				
