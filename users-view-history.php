@@ -218,14 +218,14 @@ $sql1 = "SELECT * FROM `patient_history` WHERE `patient_no`='$id'";
           }}
             ?>
             <h3 style="text-transform: uppercase;"><?php echo $name;?></h3>
-
+            <br>
               <div class="row">
             <div class="col-25">
               <label for="firstname">Doctor</label>
             </div>
             <div class="col-75">
-              <select>
-                <option><?php echo $dc;?></option>
+              <select style="font-size: 15px;border: 2px solid #ccc; width: 55%; padding: 8px; margin: 10px auto; border-radius: 5px;">
+                <option ><?php echo $dc;?></option>
               </select>
             </div>
             </div>
@@ -242,7 +242,7 @@ $sql1 = "SELECT * FROM `patient_history` WHERE `patient_no`='$id'";
               <label for="bday">Birthdate</label>
             </div>
             <div class="col-75">
-              <input type="date" id="bday" name="bday" value="<?php echo $bday;?>" readonly>
+              <input type="date" id="bday" name="bday" value="<?php echo $bday;?>" style="font-size: 15px;border: 2px solid #ccc; width: 55%; padding: 8px; margin: 10px auto; border-radius: 5px;"readonly>
             </div>
             </div>
 
@@ -251,7 +251,7 @@ $sql1 = "SELECT * FROM `patient_history` WHERE `patient_no`='$id'";
               <label for="contact">Contact No.</label>
             </div>
             <div class="col-75">
-              <input type="tel" id="contact" name="contact"  placeholder="Enter contact no.." value="<?php echo $contact;?>" readonly>
+              <input type="tel" id="contact" name="contact"  placeholder="Enter contact no.." value="<?php echo $contact;?>" style="font-size: 15px;border: 2px solid #ccc; width: 55%; padding: 8px; margin: 10px auto; border-radius: 5px;" readonly>
             </div>
             </div>
 
@@ -260,7 +260,7 @@ $sql1 = "SELECT * FROM `patient_history` WHERE `patient_no`='$id'";
               <label for="email">Email</label>
             </div>
             <div class="col-75">
-              <input type="email" id="email" name="email" placeholder="Enter email.." value="<?php echo $email;?>" readonly>
+              <input type="email" id="email" name="email" placeholder="Enter email.." value="<?php echo $email;?>" style="font-size: 15px;border: 2px solid #ccc; width: 55%; padding: 8px; margin: 10px auto; border-radius: 5px;"readonly>
             </div>
             </div>
 
@@ -269,7 +269,7 @@ $sql1 = "SELECT * FROM `patient_history` WHERE `patient_no`='$id'";
               <label for="address">Address</label>
             </div>
             <div class="col-75">
-              <input type="text" id="address" name="address" placeholder="Enter address.." value="<?php echo $address;?>" readonly>
+              <input type="text" id="address" name="address" placeholder="Enter address.." value="<?php echo $address;?>" style="font-size: 15px;border: 2px solid #ccc; width: 55%; padding: 8px; margin: 10px auto; border-radius: 5px;" readonly>
             </div>
             </div>
 
@@ -278,7 +278,7 @@ $sql1 = "SELECT * FROM `patient_history` WHERE `patient_no`='$id'";
               <label for="address">Medical Hx</label>
             </div>
             <div class="col-75">
-              <textarea name="medhx" placeholder="Enter medical history" id="pat" readonly><?php echo $medhx;?></textarea>
+              <textarea name="medhx" placeholder="Enter medical history" id="pat" style="font-size: 15px;border: 2px solid #ccc; width: 55%; padding: 8px; margin: 10px auto; border-radius: 5px;"readonly><?php echo $medhx;?> </textarea>
             </div>
             </div>
 
@@ -287,7 +287,7 @@ $sql1 = "SELECT * FROM `patient_history` WHERE `patient_no`='$id'";
               <label for="address">B.P.</label>
             </div>
             <div class="col-75">
-              <input type="text" name="bp" placeholder="Enter blood pressure.." id="bp" value="<?php echo $bp;?>" readonly>
+              <input type="text" name="bp" placeholder="Enter blood pressure.." id="bp" value="<?php echo $bp;?>" style="font-size: 15px;border: 2px solid #ccc; width: 55%; padding: 8px; margin: 10px auto; border-radius: 5px;" readonly>
             </div>
             </div>
 
@@ -550,23 +550,23 @@ $sql1 = "SELECT * FROM `patient_history` WHERE `patient_no`='$id'";
                   <th rowspan="2"></th>
                   <td rowspan="2">DISTANCE RX</td>
                   <td>OD</td>
-                  <td><input type="text" name="new_D_OD_SPH" placeholder="Sphere" id="d1" value="<?php echo $D_OD_SPH;?>" readonly></td>
-                          <td><input type="text" name="new_D_OD_CYL" placeholder="Cylinder" id="d2" value="<?php echo $D_OD_CYL;?>" readonly></td>
-                        <td><input type="text" name="new_D_OD_AXIS" placeholder="Axis" id="d3" value="<?php echo $D_OD_AXIS;?>" readonly></td>
-                          <td><input type="text" name="new_D_OD_VA" placeholder="VA" id="d4" value="<?php echo $D_OD_VA;?>" readonly></td>
-                          <td><input type="text"name="new_D_OD_ADD" placeholder="ADD" id="d5" value="<?php echo $D_OD_ADD;?>" readonly></td>
+                  <td><input type="text" name="new_D_OD_SPH" placeholder="Sphere" id="d1" value="<?php echo $D_OD_SPH;?>" style="font-size: 15px;border: 2px solid #ccc; width: 100%; padding: 8px; margin: 10px auto; border-radius: 5px;"readonly></td>
+                          <td><input type="text" name="new_D_OD_CYL" placeholder="Cylinder" id="d2" value="<?php echo $D_OD_CYL;?>" style="font-size: 15px;border: 2px solid #ccc; width: 100%; padding: 8px; margin: 10px auto; border-radius: 5px;"readonly></td>
+                        <td><input type="text" name="new_D_OD_AXIS" placeholder="Axis" id="d3" value="<?php echo $D_OD_AXIS;?>" style="font-size: 15px;border: 2px solid #ccc; width: 100%; padding: 8px; margin: 10px auto; border-radius: 5px;"readonly></td>
+                          <td><input type="text" name="new_D_OD_VA" placeholder="VA" id="d4" value="<?php echo $D_OD_VA;?>" style="font-size: 15px;border: 2px solid #ccc; width: 100%; padding: 8px; margin: 10px auto; border-radius: 5px;"readonly></td>
+                          <td><input type="text"name="new_D_OD_ADD" placeholder="ADD" id="d5" value="<?php echo $D_OD_ADD;?>" style="font-size: 15px;border: 2px solid #ccc; width: 100%; padding: 8px; margin: 10px auto; border-radius: 5px;" readonly></td>
                 </tr>
                 <tr>
                   <td>OS</td>
-                  <td><input type="text" name="new_D_OS_SPH" placeholder="Sphere" id="d6" value="<?php echo $D_OS_SPH;?>" readonly></td>
+                  <td><input type="text" name="new_D_OS_SPH" placeholder="Sphere" id="d6" value="<?php echo $D_OS_SPH;?>" style="font-size: 15px;border: 2px solid #ccc; width: 100%; padding: 8px; margin: 10px auto; border-radius: 5px;"readonly></td>
 
-                         <td><input type="text" name="new_D_OS_CYL" placeholder="Cylinder" id="d7" value="<?php echo $D_OS_CYL;?>" readonly></td>
+                         <td><input type="text" name="new_D_OS_CYL" placeholder="Cylinder" id="d7" value="<?php echo $D_OS_CYL;?>" style="font-size: 15px;border: 2px solid #ccc; width: 100%; padding: 8px; margin: 10px auto; border-radius: 5px;"readonly></td>
 
-                         <td><input type="text" name="new_D_OS_AXIS" placeholder="Axis" id="d8" value="<?php echo $D_OS_AXIS;?>" readonly></td>
+                         <td><input type="text" name="new_D_OS_AXIS" placeholder="Axis" id="d8" value="<?php echo $D_OS_AXIS;?>" style="font-size: 15px;border: 2px solid #ccc; width: 100%; padding: 8px; margin: 10px auto; border-radius: 5px;"readonly></td>
 
-                         <td><input type="text" name="new_D_OS_VA" placeholder="VA" id="d9" value="<?php echo $D_OS_VA;?>" readonly></td>
+                         <td><input type="text" name="new_D_OS_VA" placeholder="VA" id="d9" value="<?php echo $D_OS_VA;?>"style="font-size: 15px;border: 2px solid #ccc; width: 100%; padding: 8px; margin: 10px auto; border-radius: 5px;" readonly></td>
 
-                         <td><input type="text" name="new_D_OS_ADD" placeholder="ADD" id="d10" value="<?php echo $D_OS_ADD;?>" readonly></td>
+                         <td><input type="text" name="new_D_OS_ADD" placeholder="ADD" id="d10" value="<?php echo $D_OS_ADD;?>" style="font-size: 15px;border: 2px solid #ccc; width: 100%; padding: 8px; margin: 10px auto; border-radius: 5px;"readonly></td>
                 </tr>
               </thead>
               </table>
@@ -594,11 +594,11 @@ $sql1 = "SELECT * FROM `patient_history` WHERE `patient_no`='$id'";
                   <th rowspan="2"></th>
                   <td rowspan="2">CONTACT LENS RX</td>
                   <td>OD</td>
-                  <td><input type="text" name="new_CL_OD_SPH" placeholder="Sphere" id="cl1" value="<?php echo $D_OD_SPH;?>" readonly></td>
-                          <td><input type="text" name="new_CL_OD_CYL" placeholder="Cylinder" id="cl2" value="<?php echo $D_OD_CYL;?>" readonly></td>
-                          <td><input type="text" name="new_CL_OD_AXIS" placeholder="Axis" id="cl3" value="<?php echo $D_OD_AXIS;?>" readonly></td>
-                        <td><input type="text" name="new_CL_MONO"placeholder="MONO" id="cl4" value="<?php echo $D_OD_VA;?>" readonly></td>
-                        <td><input type="text" name="new_CL_MONO_OD" placeholder="ADD" id="cl5" value="<?php echo $D_OD_ADD;?>" readonly></td>
+                  <td><input type="text" name="new_CL_OD_SPH" placeholder="Sphere" id="cl1" value="<?php echo $D_OD_SPH;?>" style="font-size: 15px;border: 2px solid #ccc; width: 100%; padding: 8px; margin: 10px auto; border-radius: 5px;" readonly></td>
+                          <td><input type="text" name="new_CL_OD_CYL" placeholder="Cylinder" id="cl2" value="<?php echo $D_OD_CYL;?>" style="font-size: 15px;border: 2px solid #ccc; width: 100%; padding: 8px; margin: 10px auto; border-radius: 5px;"readonly></td>
+                          <td><input type="text" name="new_CL_OD_AXIS" placeholder="Axis" id="cl3" value="<?php echo $D_OD_AXIS;?>" style="font-size: 15px;border: 2px solid #ccc; width: 100%; padding: 8px; margin: 10px auto; border-radius: 5px;"readonly></td>
+                        <td><input type="text" name="new_CL_MONO"placeholder="MONO" id="cl4" value="<?php echo $D_OD_VA;?>" style="font-size: 15px;border: 2px solid #ccc; width: 100%; padding: 8px; margin: 10px auto; border-radius: 5px;"readonly></td>
+                        <td><input type="text" name="new_CL_MONO_OD" placeholder="ADD" id="cl5" value="<?php echo $D_OD_ADD;?>" style="font-size: 15px;border: 2px solid #ccc; width: 100%; padding: 8px; margin: 10px auto; border-radius: 5px;"readonly></td>
                 </tr>
                 <tr>
                   <td>OS</td>
@@ -670,11 +670,11 @@ $sql1 = "SELECT * FROM `patient_history` WHERE `patient_no`='$id'";
                           <th>ADD</th>
                 </tr>
                 <tr>
-                  <td ><input type="text" name="ishihara_SPH" placeholder="Sphere" value="<?php echo $I_SPH;?>" readonly></td>
-                  <td ><input type="text" name="ishihara_CYL" placeholder="Cylinder" value="<?php echo $I_CYL;?>" readonly></td>
-                        <td ><input type="text" name="ishihara_AXIS" placeholder="Axis" value="<?php echo $I_AXIS;?>"></td>
-                        <td><input type="text" name="ishihara_PD" placeholder="P.D." value="<?php echo $I_PD;?>" readonly></td>
-                        <td><input type="text" name="ishihara_PD_ADD" placeholder="ADD" value="<?php echo $I_ADD;?>" readonly></td>
+                  <td ><input type="text" name="ishihara_SPH" placeholder="Sphere" value="<?php echo $I_SPH;?>" style="font-size: 15px;border: 2px solid #ccc; width: 55%; padding: 8px; margin: 10px auto; border-radius: 5px;"readonly></td>
+                  <td ><input type="text" name="ishihara_CYL" placeholder="Cylinder" value="<?php echo $I_CYL;?>" style="font-size: 15px;border: 2px solid #ccc; width: 55%; padding: 8px; margin: 10px auto; border-radius: 5px;"readonly></td>
+                        <td ><input type="text" name="ishihara_AXIS" placeholder="Axis" value="<?php echo $I_AXIS;?>" style="font-size: 15px;border: 2px solid #ccc; width: 55%; padding: 8px; margin: 10px auto; border-radius: 5px;"></td>
+                        <td><input type="text" name="ishihara_PD" placeholder="P.D." value="<?php echo $I_PD;?>"style="font-size: 15px;border: 2px solid #ccc; width: 55%; padding: 8px; margin: 10px auto; border-radius: 5px;" readonly></td>
+                        <td><input type="text" name="ishihara_PD_ADD" placeholder="ADD" value="<?php echo $I_ADD;?>" style="font-size: 15px;border: 2px solid #ccc; width: 55%; padding: 8px; margin: 10px auto; border-radius: 5px;"readonly></td>
                 </tr>
               </thead>
               </table>
