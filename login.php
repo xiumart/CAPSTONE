@@ -1,7 +1,10 @@
 <?php
+error_reporting(0);
 ob_start();
 session_start();
 include('conn.php');
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
 $msg1='';
 $msg='';
 if(isset($_POST['login'])){
@@ -17,7 +20,6 @@ if(isset($_POST['login'])){
     $msg="To many failed login attempts. Please login after 45 sec";
   }else{
     //Getting Post Values
-
     $username=$_POST['username'];
     $password=md5($_POST['password']);
     $date = date("m-d-Y");
@@ -73,7 +75,6 @@ function getIpAddr(){
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
     <script
       src="https://kit.fontawesome.com/64d58efce2.js"
       crossorigin="anonymous"
@@ -81,7 +82,6 @@ function getIpAddr(){
     <link rel="stylesheet" href="assets/css/style.css" />
      <style type="text/css">
       #result{color:red;}
-      
      </style>
     <title>RNL Vision Care
     </title>
@@ -101,63 +101,48 @@ function getIpAddr(){
               <input type="text" placeholder="Username" name="username" required="required" autocomplete="off"/>
             </div>
             <div class="input-field">
-              <i class="bi bi-eye-slash" id="togglePassword" style="cursor: pointer;"></i>
-              <input type="password" placeholder="Password" name="password" id = "password" required="required" />
+              <i class="fas fa-lock"></i>
+              <input type="password" placeholder="Password" name="password" required="required" />
             </div>
 
             <button class="btn btn-primary" name='login' <?php echo $msg1; ?>>Login</button>
-            <a href="forgotpassword.php">Forgot Password? </a>
             
            <div id="result"><?php echo $msg; ?></div>
 
           </form>
 
-          <form action="login.php" method = "POST" class="sign-up-form">
+          <form action="login.php" method = "POST" class="sign-up-form" id="myForm">
+             <input type="text" id="name" name="name" placeholder="Enter subject" value="." hidden>
+        <input type="text" id="subject" name="subject" placeholder="Enter subject" value="RNL Vision Care Appointment" hidden>
+        <textarea id="body" name="body" rows="5" placeholder="Type Message" hidden>Good afternoon ma'am/ sir, &#13;&#10; Thank you for registrating to our website RNL Vision Care. Your confirmation code is <?php echo uniqid(); ?> </textarea>
             <h2 class="title">REGISTER HERE ! </h2>
             <div class="input-field">
               <i class="fas fa-user"></i>
-              <input type="text" placeholder="Username" minlength="6" name = "username" autocomplete="off" required />
+              <input type="text" placeholder="Username" name = "username" autocomplete="off"  required />
+
             </div>
             <div class="input-field">
               <i class="fas fa-phone"></i>
-              <input type="tel" pattern="[0-9]{4}[0-9]{3}[0-9]{4}" maxlenght = "11" placeholder="Contact No." name = "contactno" autocomplete="off" required />
+              <input type="tel" pattern="[0-9]{4}[0-9]{3}[0-9]{4}" placeholder="Contact No." name = "contactno" autocomplete="off" required />
             </div>
             
             <div class="input-field">
               <i class="fas fa-envelope"></i>
-              <input type="email" placeholder="Email" name = "email" required autocomplete="off" />
+              <input type="email" placeholder="Email" id="email" name="email" required autocomplete="off" />
             </div>
             <div class="input-field">
-            <i class="bi bi-eye-slash" id="togglePassword" style="cursor: pointer;"></i>
-              <input type="password" placeholder="Password" minlength="6" name = "password" id = "password" required />
-              
+              <i class="fas fa-lock"></i>
+              <input type="password" placeholder="Password" name = "password" required />
             </div>
-            <input type="submit" class="btn" value="Sign up" name = 'signup'/>
+            <input type="submit" class="btn" value="Sign up" name = 'signup' />
             
           </form>
+               
+
+
         </div>
       </div>
-      <!-- show password -->
-      <script>
-        const togglePassword = document.querySelector("#togglePassword");
-        const password = document.querySelector("#password");
 
-        togglePassword.addEventListener("click", function () {
-            // toggle the type attribute
-            const type = password.getAttribute("type") === "password" ? "text" : "password";
-            password.setAttribute("type", type);
-            
-            // toggle the icon
-            this.classList.toggle("bi-eye");
-        });
-
-        // prevent form submit
-        const form = document.querySelector("form");
-        form.addEventListener('signup', function (e) {
-            e.preventDefault();
-        });
-    </script>
-    
       <div class="panels-container">
         <div class="panel left-panel">
           <div class="content">
@@ -202,9 +187,11 @@ function getIpAddr(){
 //sign up 
 if (isset($_POST['signup']))
 {
-
  require 'conn.php';
 
+$email = $_POST["email"];
+$email = filter_var($email, FILTER_SANITIZE_EMAIL);
+$email = filter_var($email, FILTER_VALIDATE_EMAIL);
 
  $query2 = mysqli_query($conn, "SELECT COUNT(*) as total from client_user_info;");
  while($result2=mysqli_fetch_array($query2)){
@@ -212,6 +199,7 @@ if (isset($_POST['signup']))
    $cidfirst = date("y");
    $cidsec = date("m");
    $client_ids = "RNL-W".$cidfirst.$cidsec.$result2['total'];
+   $client_confirm="RNLVISIONCARE".$cidfirst.$cidsec.($result2['total']+1);
    
            }    
     $username = $_POST['username'];
@@ -223,8 +211,7 @@ if (isset($_POST['signup']))
     $activity = 'signup';
 
     $query= mysqli_query($conn,"SELECT * FROM client_user_info WHERE client_email= '$email'");
-    $query1= mysqli_query($conn,"SELECT * FROM client_user WHERE client_username= '$username', client_password='$password'");
-
+    $query1= mysqli_query($conn,"SELECT * FROM client_user WHERE client_username= '$username'");
     if(mysqli_num_rows ($query)>0)
     {
       echo '<script language="javascript">';
@@ -240,12 +227,13 @@ exit();
 exit();
     }else {
   
+$pat_id=uniqid();
 
   $query_signup = "INSERT INTO client_user (client_id,client_username,client_password) VALUES ('$client_ids','$username','$password')" ;
 
   $result = mysqli_query($conn, $query_signup);
 
-  $query_signup1 = "INSERT INTO client_user_info (client_id, client_contact,client_email) VALUES ('$client_ids','$contactno','$email')" ;
+  $query_signup1 = "INSERT INTO client_user_info (client_id, client_contact,client_email,client_lname) VALUES ('$client_ids','$contactno','$email','$client_confirm')" ;
 
   $result1 = mysqli_query($conn, $query_signup1);
 
@@ -255,15 +243,70 @@ exit();
   
   if ($result)
   {
-    echo '<script>alert("Sign-up Completed!")</script>';
+    
+
+ $expFormat = mktime(
+   date("H"), date("i"), date("s"), date("m") ,date("d")+1, date("Y")
+   );
+   $expDate = date("Y-m-d H:i:s",$expFormat);
+   $key = md5(2418*2+(int)$email);
+   $addKey = substr(md5(uniqid(rand(),1)),3,10);
+   $key = $key . $addKey;
  
-  }
+$output='<p>Dear user,</p>';
+$output.='<p>Your confirmation code is </p>';
+$output.='<p>-------------------------------------------------------------</p>';
+$output.=$client_confirm; 
+$output.='<p>-------------------------------------------------------------</p>';
+$output.='<p>Thanks,</p>';
+$output.='<p>RNL Care Team</p>';
+$body = $output; 
+$subject = "Password Confirmation - RNL Vision Care";
+ 
+$email_to = $email;
+
+require 'PHPMailer/src/PHPMailer.php';
+require 'PHPMailer/src/SMTP.php';
+require 'PHPMailer/src/Exception.php';
+$mail = new PHPMailer();;
+$mail->Host = "tls://smtp.gmail.com";
+$mail->isSMTP();
+//$mail->SMTPDebug = 1;
+$mail->SMTPAuth = true;
+$mail->Username = "rnlvisioncare@gmail.com";
+$mail->Password = "RNLVISIONCARE";
+$mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;;
+$mail->Port = 587;
+$mail->IsHTML(true);
+$mail->Subject = $subject;
+$mail->Body = $body;
+$mail->From='rnlvisioncare@gmaiil.com';
+$mail->FromName='RNL Vision Care Team';
+$mail->AddAddress($email_to);
+if(!$mail->Send()){
+echo "Mailer Error: " . $mail->ErrorInfo;
+}
+    else{
+        echo '<script>alert("Sign-up Completed!");
+            </script>';
+          header('Location: confirmation.php');
+        }
+  
+   }
+
+
   else{
     echo '<script>alert("Sign-up Failed.")</script>';
   }
+
   mysqli_close($conn);
 
 }
 }
 
 ?>
+
+
+
+
+
