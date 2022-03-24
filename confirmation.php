@@ -30,12 +30,15 @@ include('conn.php');
 error_reporting(0);
               $username=$_POST['username'];
       if (isset($_POST['login'])) {
-              $query1= mysqli_query($conn,"SELECT * FROM client_user_info WHERE client_lname= '$username'");
+              $query1= mysqli_query($conn,"SELECT * FROM client_user WHERE confirm= '$username'");
 
     if(mysqli_num_rows ($query1)>0)
     {
       echo $username;
       if ($_POST['username']==$username) {
+        $sql = mysqli_query($conn,"UPDATE client_user SET `confirm`=''
+        WHERE `confirm` = '$username'");
+
           echo '<script language="javascript">';
           echo 'alert("You can now login to your account.");';
           echo 'window.location="login.php";';

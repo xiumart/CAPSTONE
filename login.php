@@ -28,7 +28,9 @@ if(isset($_POST['login'])){
     $_SESSION['login_user']= $username;
 
     // Coding for login
-    $res=mysqli_query($conn,"select * from client_user where client_username='$username' and client_password='$password'");
+
+    $res=mysqli_query($conn,"select * from client_user where client_username='$username' and client_password='$password' and confirm=''");
+
     if(mysqli_num_rows($res)){ 
       $_SESSION['IS_LOGIN']='yes';
       mysqli_query($conn,"delete from loginlogs where IpAddress='$ip_address'");
@@ -38,7 +40,12 @@ if(isset($_POST['login'])){
       $result3 = mysqli_query($conn, $query_signup3);
      echo "<script>window.location.href='users.php?$username';</script>";
 
-    }else{
+
+
+    }
+
+
+    else{
       $total_count++;
       $rem_attm=3-$total_count;
       if($rem_attm==0){
@@ -229,11 +236,11 @@ exit();
   
 $pat_id=uniqid();
 
-  $query_signup = "INSERT INTO client_user (client_id,client_username,client_password) VALUES ('$client_ids','$username','$password')" ;
+  $query_signup = "INSERT INTO client_user (client_id,client_username,client_password,confirm) VALUES ('$client_ids','$username','$password','$pat_id')" ;
 
   $result = mysqli_query($conn, $query_signup);
 
-  $query_signup1 = "INSERT INTO client_user_info (client_id, client_contact,client_email,client_lname) VALUES ('$client_ids','$contactno','$email','$client_confirm')" ;
+  $query_signup1 = "INSERT INTO client_user_info (client_id, client_contact,client_email) VALUES ('$client_ids','$contactno','$email')" ;
 
   $result1 = mysqli_query($conn, $query_signup1);
 
@@ -256,7 +263,7 @@ $pat_id=uniqid();
 $output='<p>Dear user,</p>';
 $output.='<p>Your confirmation code is </p>';
 $output.='<p>-------------------------------------------------------------</p>';
-$output.=$client_confirm; 
+$output.=$pat_id; 
 $output.='<p>-------------------------------------------------------------</p>';
 $output.='<p>Thanks,</p>';
 $output.='<p>RNL Care Team</p>';
@@ -287,9 +294,10 @@ if(!$mail->Send()){
 echo "Mailer Error: " . $mail->ErrorInfo;
 }
     else{
-        echo '<script>alert("Sign-up Completed!");
-            </script>';
-          header('Location: confirmation.php');
+         echo '<script language="javascript">';
+          echo 'alert("Sign-up Completed.");';
+          echo 'window.location="confirmation.php";';
+          echo '</script>';
         }
   
    }
