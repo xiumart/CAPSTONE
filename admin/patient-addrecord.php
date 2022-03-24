@@ -57,6 +57,9 @@ if (isset($_POST['btnsubmit'])) {
 	$ishihara_PD=$_POST['ishihara_PD'];
 	$ishihara_PD_ADD=$_POST['ishihara_PD_ADD'];
 
+	$recom=$_POST['recom'];
+	$appt=$_POST['appt'];
+
 	$chkwalk=$_POST['chkwalk'];
 	if ($_POST['pat_id']!="") {
 		$pat_id=$_POST['pat_id'];
@@ -67,15 +70,15 @@ if (isset($_POST['btnsubmit'])) {
 	}
 	$type=$_POST['med'];
 if (($_POST['med'])=="Distance") {
-	$query = "INSERT INTO `patient_distancerx`(`patient_id`, `patient_name`, `patient_bday`, `patient_contact`, `patient_email`, `patient_address`, `patient_medhx`, `patient_bp`, `D_OD_SPH`, `D_OD_CYL`, `D_OD_AXIS`, `D_OD_VA`, `D_OD_ADD`, `D_OS_SPH`, `D_OS_CYL`, `D_OS_AXIS`, `D_OS_VA`, `D_OS_ADD`, `I_SPH`, `I_CYL`, `I_AXIS`, `I_PD`, `I_ADD`, `status`, `type`, `doctor`,`add_date`) VALUES ('$pat_id','$full','$bday','$contact','$email','$address','$medhx','$bp','$new_D_OD_SPH','$new_D_OD_CYL','$new_D_OD_AXIS','$new_D_OD_VA','$new_D_OD_ADD','$new_D_OS_SPH','$new_D_OS_CYL','$new_D_OS_AXIS','$new_D_OS_VA','$new_D_OS_ADD','$ishihara_SPH','$ishihara_CYL','$ishihara_AXIS','$ishihara_PD','$ishihara_PD_ADD','$chkwalk','$type','$doctor',now())";
+	$query = "INSERT INTO `patient_distancerx`(`patient_id`, `patient_name`, `patient_bday`, `patient_contact`, `patient_email`, `patient_address`, `patient_medhx`, `patient_bp`, `D_OD_SPH`, `D_OD_CYL`, `D_OD_AXIS`, `D_OD_VA`, `D_OD_ADD`, `D_OS_SPH`, `D_OS_CYL`, `D_OS_AXIS`, `D_OS_VA`, `D_OS_ADD`, `I_SPH`, `I_CYL`, `I_AXIS`, `I_PD`, `I_ADD`, `status`, `type`, `doctor`,`add_date`,`recommendation`,`appointment`) VALUES ('$pat_id','$full','$bday','$contact','$email','$address','$medhx','$bp','$new_D_OD_SPH','$new_D_OD_CYL','$new_D_OD_AXIS','$new_D_OD_VA','$new_D_OD_ADD','$new_D_OS_SPH','$new_D_OS_CYL','$new_D_OS_AXIS','$new_D_OS_VA','$new_D_OS_ADD','$ishihara_SPH','$ishihara_CYL','$ishihara_AXIS','$ishihara_PD','$ishihara_PD_ADD','$chkwalk','$type','$doctor',now(),'$recom','$appt')";
 	
 }
 elseif (($_POST['med'])=="Contact Lens") {
-	$query = "INSERT INTO `patient_distancerx`(`patient_id`, `type`, `patient_name`, `patient_bday`, `patient_contact`, `patient_email`, `patient_address`, `patient_medhx`, `patient_bp`,`D_OD_SPH`, `D_OD_CYL`, `D_OD_AXIS`, `D_OD_VA`, `D_OD_ADD`, `D_OS_SPH`, `D_OS_CYL`, `D_OS_AXIS`, `D_OS_VA`, `D_OS_ADD`, `I_SPH`, `I_CYL`, `I_AXIS`, `I_PD`, `I_ADD`, `status`,`doctor`,`add_date`) VALUES ('$pat_id','$type','$full','$bday','$contact','$email','$address','$medhx','$bp','$new_CL_OD_SPH','$new_CL_OD_CYL','$new_CL_OD_AXIS','$new_CL_OD_VA','$new_CL_OD_ADD','$new_CL_OS_SPH','$new_CL_OS_CYL','$new_CL_OS_AXIS','$new_CL_OS_VA','$new_CL_OS_ADD','$ishihara_SPH','$ishihara_CYL','$ishihara_AXIS','$ishihara_PD','$ishihara_PD_ADD','$chkwalk','$doctor',now())";
+	$query = "INSERT INTO `patient_distancerx`(`patient_id`, `type`, `patient_name`, `patient_bday`, `patient_contact`, `patient_email`, `patient_address`, `patient_medhx`, `patient_bp`,`D_OD_SPH`, `D_OD_CYL`, `D_OD_AXIS`, `D_OD_VA`, `D_OD_ADD`, `D_OS_SPH`, `D_OS_CYL`, `D_OS_AXIS`, `D_OS_VA`, `D_OS_ADD`, `I_SPH`, `I_CYL`, `I_AXIS`, `I_PD`, `I_ADD`, `status`,`doctor`,`add_date`,`recommendation`,`appointment`) VALUES ('$pat_id','$type','$full','$bday','$contact','$email','$address','$medhx','$bp','$new_CL_OD_SPH','$new_CL_OD_CYL','$new_CL_OD_AXIS','$new_CL_OD_VA','$new_CL_OD_ADD','$new_CL_OS_SPH','$new_CL_OS_CYL','$new_CL_OS_AXIS','$new_CL_OS_VA','$new_CL_OS_ADD','$ishihara_SPH','$ishihara_CYL','$ishihara_AXIS','$ishihara_PD','$ishihara_PD_ADD','$chkwalk','$doctor',now(),'$recom','$appt')";
 	
 }
 elseif (($_POST['med'])=="Reading") {
-	$query = "INSERT INTO `patient_distancerx`(`patient_id`, `patient_name`, `patient_bday`, `patient_contact`, `patient_email`, `patient_address`, `patient_medhx`, `patient_bp`, `D_OD_SPH`, `D_OD_CYL`, `D_OD_AXIS`, `D_OD_VA`, `D_OD_ADD`, `D_OS_SPH`, `D_OS_CYL`, `D_OS_AXIS`, `D_OS_VA`, `D_OS_ADD`, `I_SPH`, `I_CYL`, `I_AXIS`, `I_PD`, `I_ADD`, `status`, `type`,`doctor`,`add_date`) VALUES ('$pat_id','$full','$bday','$contact','$email','$address','$medhx','$bp','$new_R_OD_SPH','$new_R_OD_CYL','$new_R_OD_AXIS','$new_R_OD_VA','$new_R_OD_ADD','$new_R_OS_SPH','$new_R_OS_CYL','$new_R_OS_AXIS','$new_R_OS_VA','$new_R_OS_ADD','$ishihara_SPH','$ishihara_CYL','$ishihara_AXIS','$ishihara_PD','$ishihara_PD_ADD','$chkwalk','$type','$doctor',now())";
+	$query = "INSERT INTO `patient_distancerx`(`patient_id`, `patient_name`, `patient_bday`, `patient_contact`, `patient_email`, `patient_address`, `patient_medhx`, `patient_bp`, `D_OD_SPH`, `D_OD_CYL`, `D_OD_AXIS`, `D_OD_VA`, `D_OD_ADD`, `D_OS_SPH`, `D_OS_CYL`, `D_OS_AXIS`, `D_OS_VA`, `D_OS_ADD`, `I_SPH`, `I_CYL`, `I_AXIS`, `I_PD`, `I_ADD`, `status`, `type`,`doctor`,`add_date`,`recommendation`,`appointment`) VALUES ('$pat_id','$full','$bday','$contact','$email','$address','$medhx','$bp','$new_R_OD_SPH','$new_R_OD_CYL','$new_R_OD_AXIS','$new_R_OD_VA','$new_R_OD_ADD','$new_R_OS_SPH','$new_R_OS_CYL','$new_R_OS_AXIS','$new_R_OS_VA','$new_R_OS_ADD','$ishihara_SPH','$ishihara_CYL','$ishihara_AXIS','$ishihara_PD','$ishihara_PD_ADD','$chkwalk','$type','$doctor',now(),'$recom','$appt')";
 	
 }
 		mysqli_query($conn, $query);	
@@ -723,7 +726,7 @@ elseif (($_POST['med'])=="Reading") {
 									<td><input type="text"  name="new_CL_OS_SPH" placeholder="Sphere"></td>
               						<td><input type="text"  name="new_CL_OS_CYL" placeholder="Cylinder"></td>
               						<td><input type="text"  name="new_CL_OS_AXIS" placeholder="Axis"></td>
-              						<td><input type="text" name="new_CL_PD" placeholder="PD"></td>
+              						<td><input type="text" name="new_CL_PD" placeholder="PD" readonly></td>
  						            <td><input type="text" name="new_CL_PD_OS"  placeholder="ADD"></td>
 								</tr>
 							</thead>
@@ -799,10 +802,22 @@ elseif (($_POST['med'])=="Reading") {
 						</div>
 						</div>
 						</div>
-						<?php
-						//}}
-						
-						?>
+						<div class="row">
+							<div class="col-25">
+							<label for="address">Recommendation</label>
+							</div>
+							<div class="col-75">
+								<textarea placeholder="Please type some recommendation...." name="recom"></textarea>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-25">
+							<label for="address">Next Appointment</label>
+							</div>
+							<div class="col-75">
+								<input type="date" name="appt">
+							</div>
+						</div>
 						<div class="row">
 						<input type="submit" value="Add Patient" name="btnsubmit" id="btnadd">
 						</div>

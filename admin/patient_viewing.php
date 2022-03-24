@@ -280,6 +280,8 @@ $sql1 = "SELECT * FROM `patient_history` WHERE `patient_no`='$id'";
   					$I_ADD=$row['I_ADD'];
 
   					$dc=$row['doctor'];
+  					$recommendation=$row['recommendation'];
+  					$appointment=$row['appointment'];
 
   					
   				}}
@@ -741,6 +743,22 @@ $sql1 = "SELECT * FROM `patient_history` WHERE `patient_no`='$id'";
 							</table>
 						</div>
 						</div>
+						</div>
+						<div class="row">
+							<div class="col-25">
+							<label for="address">Recommendation</label>
+							</div>
+							<div class="col-75">
+								<textarea placeholder="Please type some recommendation...." name="recom"><?php echo $recommendation;?></textarea>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-25">
+							<label for="address">Next Appointment</label>
+							</div>
+							<div class="col-75">
+								<input type="date" name="appt" value="<?php echo $appointment;?>">
+							</div>
 						</div>
 
 
