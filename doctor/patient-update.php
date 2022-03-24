@@ -1,6 +1,6 @@
 <?php
 include("../conn.php");
-include ('../admin/session.php');
+include("../admin/session.php");
 $id=$_GET['id'];
 if (isset($_POST['btnsubmit'])) {
 	$fname=$_POST['firstname'];
@@ -80,35 +80,40 @@ if (isset($_POST['btnsubmit'])) {
 	$hid23=$_POST['hid23'];
 	$hid24=$_POST['hid24'];
 	$hid25=$_POST['hid25'];
+	$hid26=$_POST['hid26'];
+	$hid27=$_POST['hid27'];
 	$doctor=$_POST['doctor'];
+
+	$recom=$_POST['recom'];
+	$appt=$_POST['appt'];
 	
 if ($type=="Distance") {
 
 	// code...
-	$query = "UPDATE `patient_distancerx` SET `type`='$type',`patient_name`='$fname',`patient_bday`='$bday',`patient_contact`='$contact',`patient_email`='$email',`patient_address`='$address',`patient_medhx`='$medhx',`patient_bp`='$bp',`D_OD_SPH`='$new_D_OD_SPH',`D_OD_CYL`='$new_D_OD_CYL',`D_OD_AXIS`='$new_D_OD_AXIS',`D_OD_VA`='$new_D_OD_VA',`D_OD_ADD`='$new_D_OD_ADD',`D_OS_SPH`='$new_D_OS_SPH',`D_OS_CYL`='$new_D_OS_CYL',`D_OS_AXIS`='$new_D_OS_AXIS',`D_OS_VA`='$new_D_OS_VA',`D_OS_ADD`='$new_D_OS_ADD',`I_SPH`='$ishihara_SPH',`I_CYL`='$ishihara_CYL',`I_AXIS`='$ishihara_AXIS',`I_PD`='$ishihara_PD',`I_ADD`='$ishihara_PD_ADD',`doctor`='$doctor'  WHERE `patient_no`='$id'";
+	$query = "UPDATE `patient_distancerx` SET `type`='$type',`patient_name`='$fname',`patient_bday`='$bday',`patient_contact`='$contact',`patient_email`='$email',`patient_address`='$address',`patient_medhx`='$medhx',`patient_bp`='$bp',`D_OD_SPH`='$new_D_OD_SPH',`D_OD_CYL`='$new_D_OD_CYL',`D_OD_AXIS`='$new_D_OD_AXIS',`D_OD_VA`='$new_D_OD_VA',`D_OD_ADD`='$new_D_OD_ADD',`D_OS_SPH`='$new_D_OS_SPH',`D_OS_CYL`='$new_D_OS_CYL',`D_OS_AXIS`='$new_D_OS_AXIS',`D_OS_VA`='$new_D_OS_VA',`D_OS_ADD`='$new_D_OS_ADD',`I_SPH`='$ishihara_SPH',`I_CYL`='$ishihara_CYL',`I_AXIS`='$ishihara_AXIS',`I_PD`='$ishihara_PD',`I_ADD`='$ishihara_PD_ADD',`doctor`='$doctor', `recommendation`='$recom', `appointment`='$appt' WHERE `patient_no`='$id'";
 		//history
 	
 }	
 elseif ($type=="Contact Lens") {
 
-	$query = "UPDATE `patient_distancerx` SET `type`='$type',`patient_name`='$fname',`patient_bday`='$bday',`patient_contact`='$contact',`patient_email`='$email',`patient_address`='$address',`patient_medhx`='$medhx',`patient_bp`='$bp',`D_OD_SPH`='$new_CL_OD_SPH',`D_OD_CYL`='$new_CL_OD_CYL',`D_OD_AXIS`='$new_CL_OD_AXIS',`D_OD_VA`='$new_CL_OD_VA',`D_OD_ADD`='$new_CL_OD_ADD',`D_OS_SPH`='$new_CL_OS_SPH',`D_OS_CYL`='$new_CL_OS_CYL',`D_OS_AXIS`='$new_CL_OS_AXIS',`D_OS_VA`='$new_CL_OS_VA',`D_OS_ADD`='$new_CL_OS_ADD',`I_SPH`='$ishihara_SPH',`I_CYL`='$ishihara_CYL',`I_AXIS`='$ishihara_AXIS',`I_PD`='$ishihara_PD',`I_ADD`='$ishihara_PD_ADD',`doctor`='$doctor' WHERE `patient_no`='$id'";
+	$query = "UPDATE `patient_distancerx` SET `type`='$type',`patient_name`='$fname',`patient_bday`='$bday',`patient_contact`='$contact',`patient_email`='$email',`patient_address`='$address',`patient_medhx`='$medhx',`patient_bp`='$bp',`D_OD_SPH`='$new_CL_OD_SPH',`D_OD_CYL`='$new_CL_OD_CYL',`D_OD_AXIS`='$new_CL_OD_AXIS',`D_OD_VA`='$new_CL_OD_VA',`D_OD_ADD`='$new_CL_OD_ADD',`D_OS_SPH`='$new_CL_OS_SPH',`D_OS_CYL`='$new_CL_OS_CYL',`D_OS_AXIS`='$new_CL_OS_AXIS',`D_OS_VA`='$new_CL_OS_VA',`D_OS_ADD`='$new_CL_OS_ADD',`I_SPH`='$ishihara_SPH',`I_CYL`='$ishihara_CYL',`I_AXIS`='$ishihara_AXIS',`I_PD`='$ishihara_PD',`I_ADD`='$ishihara_PD_ADD',`doctor`='$doctor', `recommendation`='$recom', `appointment`='$appt' WHERE `patient_no`='$id'";
 		//history
 	
 }
 elseif ($type=="Reading") {
 	// code...
-	$query = "UPDATE `patient_distancerx` SET `type`='$type',`patient_name`='$fname',`patient_bday`='$bday',`patient_contact`='$contact',`patient_email`='$email',`patient_address`='$address',`patient_medhx`='$medhx',`patient_bp`='$bp',`D_OD_SPH`='$new_R_OD_SPH',`D_OD_CYL`='$new_R_OD_CYL',`D_OD_AXIS`='$new_R_OD_AXIS',`D_OD_VA`='$new_R_OD_VA',`D_OD_ADD`='$new_R_OD_ADD',`D_OS_SPH`='$new_R_OS_SPH',`D_OS_CYL`='$new_R_OS_CYL',`D_OS_AXIS`='$new_R_OS_AXIS',`D_OS_VA`='$new_R_OS_VA',`D_OS_ADD`='$new_R_OS_ADD',`I_SPH`='$ishihara_SPH',`I_CYL`='$ishihara_CYL',`I_AXIS`='$ishihara_AXIS',`I_PD`='$ishihara_PD',`I_ADD`='$ishihara_PD_ADD',`doctor`='$doctor' WHERE `patient_no`='$id'";
+	$query = "UPDATE `patient_distancerx` SET `type`='$type',`patient_name`='$fname',`patient_bday`='$bday',`patient_contact`='$contact',`patient_email`='$email',`patient_address`='$address',`patient_medhx`='$medhx',`patient_bp`='$bp',`D_OD_SPH`='$new_R_OD_SPH',`D_OD_CYL`='$new_R_OD_CYL',`D_OD_AXIS`='$new_R_OD_AXIS',`D_OD_VA`='$new_R_OD_VA',`D_OD_ADD`='$new_R_OD_ADD',`D_OS_SPH`='$new_R_OS_SPH',`D_OS_CYL`='$new_R_OS_CYL',`D_OS_AXIS`='$new_R_OS_AXIS',`D_OS_VA`='$new_R_OS_VA',`D_OS_ADD`='$new_R_OS_ADD',`I_SPH`='$ishihara_SPH',`I_CYL`='$ishihara_CYL',`I_AXIS`='$ishihara_AXIS',`I_PD`='$ishihara_PD',`I_ADD`='$ishihara_PD_ADD',`doctor`='$doctor', `recommendation`='$recom', `appointment`='$appt' WHERE `patient_no`='$id'";
 	//history
 	
 }
 else{
-	$query = "UPDATE `patient_distancerx` SET `type`='$type',`patient_name`='$fname',`patient_bday`='$bday',`patient_contact`='$contact',`patient_email`='$email',`patient_address`='$address',`patient_medhx`='$medhx',`patient_bp`='$bp',`D_OD_SPH`='$new_D_OD_SPH',`D_OD_CYL`='$new_D_OD_CYL',`D_OD_AXIS`='$new_D_OD_AXIS',`D_OD_VA`='$new_D_OD_VA',`D_OD_ADD`='$new_D_OD_ADD',`D_OS_SPH`='$new_D_OS_SPH',`D_OS_CYL`='$new_D_OS_CYL',`D_OS_AXIS`='$new_D_OS_AXIS',`D_OS_VA`='$new_D_OS_VA',`D_OS_ADD`='$new_D_OS_ADD',`I_SPH`='$ishihara_SPH',`I_CYL`='$ishihara_CYL',`I_AXIS`='$ishihara_AXIS',`I_PD`='$ishihara_PD',`I_ADD`='$ishihara_PD_ADD',`doctor`='$doctor' WHERE `patient_no`='$id'";
+	$query = "UPDATE `patient_distancerx` SET `type`='$type',`patient_name`='$fname',`patient_bday`='$bday',`patient_contact`='$contact',`patient_email`='$email',`patient_address`='$address',`patient_medhx`='$medhx',`patient_bp`='$bp',`D_OD_SPH`='$new_D_OD_SPH',`D_OD_CYL`='$new_D_OD_CYL',`D_OD_AXIS`='$new_D_OD_AXIS',`D_OD_VA`='$new_D_OD_VA',`D_OD_ADD`='$new_D_OD_ADD',`D_OS_SPH`='$new_D_OS_SPH',`D_OS_CYL`='$new_D_OS_CYL',`D_OS_AXIS`='$new_D_OS_AXIS',`D_OS_VA`='$new_D_OS_VA',`D_OS_ADD`='$new_D_OS_ADD',`I_SPH`='$ishihara_SPH',`I_CYL`='$ishihara_CYL',`I_AXIS`='$ishihara_AXIS',`I_PD`='$ishihara_PD',`I_ADD`='$ishihara_PD_ADD',`doctor`='$doctor', `recommendation`='$recom', `appointment`='$appt' WHERE `patient_no`='$id'";
 		//history
 	
 
 }
 
-	$query1 = "INSERT INTO `patient_history`(`patient_id`, `type`, `patient_name`, `patient_bday`, `patient_contact`, `patient_email`, `patient_address`, `patient_medhx`, `patient_bp`, `D_OD_SPH`, `D_OD_CYL`, `D_OD_AXIS`, `D_OD_VA`, `D_OD_ADD`, `D_OS_SPH`, `D_OS_CYL`, `D_OS_AXIS`, `D_OS_VA`, `D_OS_ADD`, `I_SPH`, `I_CYL`, `I_AXIS`, `I_PD`, `I_ADD`, `date_up`, `status`,`doctor`) VALUES ('$hid24','$hid8','$hid1','$hid2','$hid3','$hid4','$hid5','$hid6','$hid7','$hid9','$hid10','$hid11','$hid12','$hid13','$hid14','$hid15','$hid16','$hid17','$hid18','$hid19','$hid20','$hid21','$hid22','$hid23',now(),'History','$hid25')";
+	$query1 = "INSERT INTO `patient_history`(`patient_id`, `type`, `patient_name`, `patient_bday`, `patient_contact`, `patient_email`, `patient_address`, `patient_medhx`, `patient_bp`, `D_OD_SPH`, `D_OD_CYL`, `D_OD_AXIS`, `D_OD_VA`, `D_OD_ADD`, `D_OS_SPH`, `D_OS_CYL`, `D_OS_AXIS`, `D_OS_VA`, `D_OS_ADD`, `I_SPH`, `I_CYL`, `I_AXIS`, `I_PD`, `I_ADD`, `date_up`, `status`,`doctor`,`recommendation`,`appointment`) VALUES ('$hid24','$hid8','$hid1','$hid2','$hid3','$hid4','$hid5','$hid6','$hid7','$hid9','$hid10','$hid11','$hid12','$hid13','$hid14','$hid15','$hid16','$hid17','$hid18','$hid19','$hid20','$hid21','$hid22','$hid23',now(),'History','$hid25','$hid26','$hid27')";
 
 	mysqli_query($conn, $query);
 	mysqli_query($conn, $query1);
@@ -126,7 +131,7 @@ else{
 	<!-- My CSS -->
 	<link rel="stylesheet" href="css\sys_style.css">
 	<link rel="shorcut icon" type="img/png" href="images\logo.png">
-	<title>RNL Vision Care | Doctor</title>
+	<title>RNL Vision Care | Admin</title>
 	<style>
 	input[type=text], input[type=date], input[type=tel], input[type=email], select, textarea {
   		width: 100%;
@@ -232,7 +237,7 @@ else{
 		</ul>
 		<ul class="side-menu">
 			<li>
-				<a href="logout.php" class="logout">
+				<a href="#" class="logout">
 					<i class='bx bxs-log-out-circle' ></i>
 					<span class="text">Logout</span>
 				</a>
@@ -356,6 +361,8 @@ $sql1 = "SELECT * FROM `patient_distancerx` WHERE `patient_no`='$id'";
   					$I_ADD=$row['I_ADD'];
 
   					$dc=$row['doctor'];
+  					$recommendation=$row['recommendation'];
+  					$appointment=$row['appointment'];
 
   					
   				}}
@@ -831,6 +838,22 @@ $sql1 = "SELECT * FROM `patient_distancerx` WHERE `patient_no`='$id'";
 						</div>
 						</div>
 						</div>
+						<div class="row">
+							<div class="col-25">
+							<label for="address">Recommendation</label>
+							</div>
+							<div class="col-75">
+								<textarea placeholder="Please type some recommendation...." name="recom"><?php echo $recommendation;?></textarea>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-25">
+							<label for="address">Next Appointment</label>
+							</div>
+							<div class="col-75">
+								<input type="date" name="appt" value="<?php echo $appointment;?>">
+							</div>
+						</div>
 
 
 						<div class="row">
@@ -864,6 +887,8 @@ $sql1 = "SELECT * FROM `patient_distancerx` WHERE `patient_no`='$id'";
 	<input type="text" name="hid23" value="<?php echo $I_ADD;?>" hidden>
 	<input type="text" name="hid24" value="<?php echo $pat_id;?>" hidden>
 	<input type="text" name="hid25" value="<?php echo $dc;?>" hidden>
+		<input type="text" name="hid26" value="<?php echo $recommendation;?>" hidden>
+	<input type="text" name="hid27" value="<?php echo $appointment;?>" hidden>
 				</form>
 			</div>
 	    </div>	

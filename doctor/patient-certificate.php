@@ -1,7 +1,7 @@
 <?php
 error_reporting(0);
 include("../conn.php");
-include ('../admin/session.php');
+include("../admin/session.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,7 +14,7 @@ include ('../admin/session.php');
 	<!-- My CSS -->
 	<link rel="stylesheet" href="css\sys_style.css">
 	<link rel="shorcut icon" type="img/png" href="images\logo.png">
-	<title>RNL Vision Care | Doctor</title>
+	<title>RNL Vision Care | Admin</title>
 </head>
 <style>
 	button {
@@ -59,7 +59,7 @@ include ('../admin/session.php');
 		</ul>
 		<ul class="side-menu">
 			<li>
-				<a href="logout.php" class="logout">
+				<a href="#" class="logout">
 					<i class='bx bxs-log-out-circle' ></i>
 					<span class="text">Logout</span>
 				</a>
@@ -170,7 +170,7 @@ function Clickheretoprint()
 					<?php
 					$pat_id=$_GET['id'];
 					
-$sql1 = "SELECT `patient_no`, `patient_id`, `type`, `patient_name`, `patient_bday`, `patient_contact`, `patient_email`, `patient_address`, `patient_medhx`, `patient_bp`, `D_OD_SPH`, `D_OD_CYL`, `D_OD_AXIS`, `D_OD_VA`, `D_OD_ADD`, `D_OS_SPH`, `D_OS_CYL`, `D_OS_AXIS`, `D_OS_VA`, `D_OS_ADD`, `I_PD`,year(now())-year(`patient_bday`) AS age,`doctor` FROM `patient_distancerx` WHERE `patient_no`='$pat_id'";
+$sql1 = "SELECT `patient_no`, `patient_id`, `type`, `patient_name`, `patient_bday`, `patient_contact`, `patient_email`, `patient_address`, `patient_medhx`, `patient_bp`, `D_OD_SPH`, `D_OD_CYL`, `D_OD_AXIS`, `D_OD_VA`, `D_OD_ADD`, `D_OS_SPH`, `D_OS_CYL`, `D_OS_AXIS`, `D_OS_VA`, `D_OS_ADD`, `I_PD`,year(now())-year(`patient_bday`) AS age,`doctor`,`recommendation`,`appointment` FROM `patient_distancerx` WHERE `patient_no`='$pat_id'";
  $result1 = $conn->query($sql1);  
   			if($result1->num_rows > 0){
   				while($row = $result1 -> fetch_assoc()){
@@ -193,10 +193,8 @@ $sql1 = "SELECT `patient_no`, `patient_id`, `type`, `patient_name`, `patient_bda
 					<br>
 					<p>To whom it may concern,</p><br>
 					<center>
-					<p>This is to certify that <b><u style="text-transform: uppercase;"><?php echo $row['patient_name']; ?></u></b>, <b><u style="text-transform: uppercase;"><?php echo $row['age']; ?></u></b> year old has undergone visual examination and the diagnosis as follows.</p><br>
-					<input type="checkbox" name=""> Emmetropia&nbsp&nbsp&nbsp&nbsp&nbsp <input type="checkbox" name=""> Hyperopia<br>
-					<input type="checkbox" name=""> Myopia &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input type="checkbox" name=""> Presbyopia<br>
-					<input type="checkbox" name=""> Astigmatism<br><br>
+					<p>This is to certify that <b><u style="text-transform: uppercase;"><?php echo $row['patient_name']; ?></u></b>, <b><u style="text-transform: uppercase;"><?php echo $row['age']; ?></u></b> year old has undergone visual examination.</p><br>
+					
 					</center>
 					<p>The following findings was taken.</p><br><br>
 				
@@ -217,32 +215,33 @@ $sql1 = "SELECT `patient_no`, `patient_id`, `type`, `patient_name`, `patient_bda
   padding: 10px 20px;">AXIS</th>
 							<th style=" border: 1px solid black;
   padding: 10px 20px;">VA</th>
+  						<th style=" border: 1px solid black;
+  padding: 10px 20px;">ADD</th>
 						
 						<tr><td style=" border: 1px solid black;
   padding: 10px 20px;">OD</td><td style=" border: 1px solid black;
   padding: 10px 20px;"><?php echo $row['D_OD_SPH']; ?></td><td style=" border: 1px solid black;
   padding: 10px 20px;"><?php echo $row['D_OD_CYL']; ?></td><td style=" border: 1px solid black;
   padding: 10px 20px;"><?php echo $row['D_OD_AXIS']; ?></td><td style=" border: 1px solid black;
-  padding: 10px 20px;"><?php echo $row['D_OD_VA']; ?></td></tr>
+  padding: 10px 20px;"><?php echo $row['D_OD_VA']; ?></td><td style=" border: 1px solid black;
+  padding: 10px 20px;"><?php echo $row['D_OD_ADD']; ?></td></tr>
 						<tr><td style=" border: 1px solid black;
   padding: 10px 20px;">OS</td><td style=" border: 1px solid black;
   padding: 10px 20px;"><?php echo $row['D_OS_SPH']; ?></td><td style=" border: 1px solid black;
   padding: 10px 20px;"><?php echo $row['D_OS_CYL']; ?></td><td style=" border: 1px solid black;
   padding: 10px 20px;"><?php echo $row['D_OS_AXIS']; ?></td><td style=" border: 1px solid black;
-  padding: 10px 20px;"><?php echo $row['D_OS_VA']; ?></td></tr>
+  padding: 10px 20px;"><?php echo $row['D_OS_VA']; ?></td><td style=" border: 1px solid black;
+  padding: 10px 20px;"><?php echo $row['D_OS_ADD']; ?></td></tr>
 						<tr><td style=" border: 1px solid black;
-  padding: 10px 20px;">ADD</td><td style=" border: 1px solid black;
-  padding: 10px 20px;"><?php echo $row['D_OD_ADD']; ?></td><td style=" border: 1px solid black;
   padding: 10px 20px;">PD</td><td style=" border: 1px solid black;
-  padding: 10px 20px;"><?php echo $row['I_PD']; ?></td><td style=" border: 1px solid black;
-  padding: 10px 20px;"></td></tr>
+  padding: 10px 20px;"><?php echo $row['I_PD']; ?></td></tr>
 						</thead>
 					</table><br>
 
-					<p>RECOMMENDATION:______________________________________________________________</p>
-					<p>NEXT APPOINTMENT:______________________________________________________________</p>
+					<p>RECOMMENDATION:_________<b><u><?php echo $row['recommendation']; ?>.</u></b>__________________</p>
+					<p>NEXT APPOINTMENT:___________________________<b><u><?php echo $row['appointment']; ?>.</u></b>______________________________</p>
 					<center><p>This certificate was issued for whatever purpose that may serve him/her.</p></center><br>
-					<p style="text-align: right;"><u><b><?php echo $row['doctor']; ?></b></u></p>
+					<p style="text-align: right;">__<u><b><?php echo $row['doctor']; ?></b></u>__</p>
 					<p style="text-align: right;">OPTOMETRIST&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</p>
 					<p style="text-align: right;">PRC License#_________&nbsp&nbsp</p>
 					<?php

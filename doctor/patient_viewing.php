@@ -1,5 +1,5 @@
 <?php
-include ('../admin/session.php');
+include("../admin/session.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -12,7 +12,7 @@ include ('../admin/session.php');
 	<!-- My CSS -->
 	<link rel="stylesheet" href="css\sys_style.css">
 	<link rel="shorcut icon" type="img/png" href="images\logo.png">
-	<title>RNL Vision Care | Doctor</title>
+	<title>RNL Vision Care | Admin</title>
 	<style>
 	input[type=text], input[type=date], input[type=tel], input[type=email], select, textarea {
   		width: 100%;
@@ -244,6 +244,8 @@ $sql1 = "SELECT * FROM `patient_history` WHERE `patient_no`='$id'";
   					$I_ADD=$row['I_ADD'];
 
   					$dc=$row['doctor'];
+  					$recommendation=$row['recommendation'];
+  					$appointment=$row['appointment'];
 
   					
   				}}
@@ -705,6 +707,22 @@ $sql1 = "SELECT * FROM `patient_history` WHERE `patient_no`='$id'";
 							</table>
 						</div>
 						</div>
+						</div>
+						<div class="row">
+							<div class="col-25">
+							<label for="address">Recommendation</label>
+							</div>
+							<div class="col-75">
+								<textarea placeholder="Please type some recommendation...." name="recom"><?php echo $recommendation;?></textarea>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-25">
+							<label for="address">Next Appointment</label>
+							</div>
+							<div class="col-75">
+								<input type="date" name="appt" value="<?php echo $appointment;?>">
+							</div>
 						</div>
 
 
