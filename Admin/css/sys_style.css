@@ -577,9 +577,6 @@ body {
 	#content nav .nav-link {
 		display: none;
 	}
-	#digital-clock {
-		font-size: 1px;
-	}
 }
 
 
@@ -632,22 +629,7 @@ body {
 		min-width: 420px;
 	}
 }
-	.table{
-	width: 100%;
-	border-collapse: collapse;
-}
-
-.table td,.table th{
-  padding:12px 15px;
-  text-align: center;
-  font-size:16px;
-}
-
-.table th{
-	background-color: #00c2cb;
-	color:#ffffff;
-	border-radius: 1px;
-}
+	
 
 
 
@@ -659,33 +641,7 @@ body {
 	#icnlogo {
 		display: none;
 	}
-	.table thead{
-		display: none;
-	}
 
-	.table, .table tbody, .table tr, .table td{
-		display: block;
-		width: 100%;
-	}
-	.table tr{
-		margin-bottom:15px;
-	}
-	.table td{
-		text-align: right;
-		padding-left: 20%;
-		text-align: right;
-		position: relative;
-	}
-	.table td::before{
-		content: attr(data-label);
-		position: absolute;
-		left:0;
-		width: 50%;
-		padding-left:12px;
-		font-size:15px;
-		font-weight: bold;
-		text-align: left;
-	}
 	.brandd p {
 		text-align: right;
 		padding-left: 75%;
