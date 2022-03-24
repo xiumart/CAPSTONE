@@ -157,7 +157,7 @@ include("session.php");
 		<main>
 			<div class="head-title">
 				<div class="left">
-					<h1>Dashboard</h1>
+					<h1>Appointment History</h1>
 					<ul class="breadcrumb">
 						<li>
 							<a class="active" href="dashboard.php">Back</a>
@@ -172,18 +172,13 @@ include("session.php");
 			</div>
 
 			
-			<div class="table-data">
-				<div class="order">
-					<div class="head">
-						<h3>Appointment History</h3>
-						<i class='bx bx-search' ></i>
-						<i class='bx bx-filter' ></i>
-					</div>
-					<table class="table">
+			<div>
+			
+					<table>
+					<caption></caption>
      <thead>
      	<tr>
      	 <th>Name</th>
-     	 <th>Email</th>
      	 <th>Contact No.</th>
      	 <th>Date</th>
 		 <th>Time</th>
@@ -200,8 +195,7 @@ include("session.php");
      	  		$query4 = mysqli_query($conn, "Select * from appointment_history");
      	  		while($row = $query4 -> fetch_assoc()){
 ?>
-     	  	  <td data-label="Name" class="namee"><?php echo $row['app_name'];?></td>
-     	  	  <td data-label="Email"><?php echo $row['app_email'];?></td>
+     	  	  <td data-label="Name"><?php echo $row['app_name'];?></td>
      	  	  <td data-label="Contact"><?php echo $row['app_contact'];?></td>
      	  	  <td data-label="Date"><?php echo $row['app_date'];?></td>
 			  <td data-label="Time"><?php echo $row['app_time'];?></td>
@@ -221,12 +215,7 @@ include("session.php");
 				
 			</div>
 			
-			<div class="table-data">
-	
-
-				
-				
-			</div>
+			
 		</main>
 		<!-- MAIN -->
 	</section>
@@ -235,4 +224,86 @@ include("session.php");
 
 	<script src="script.js"></script>
 </body>
+<style>table {
+  border: 1px solid #ccc;
+  border-collapse: collapse;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  table-layout: fixed;
+}
+
+table caption {
+  font-size: 1.5em;
+  background-color: #00c2cb;
+  margin-top:20px;
+  padding:19px;	
+}
+
+table tr {
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+  padding: .35em;
+}
+
+table th,
+table td {
+  padding: .625em;
+  text-align: center;
+}
+
+table th {
+  font-size: .85em;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+@media screen and (max-width: 600px) {
+  table {
+    border: 0;
+  }
+
+  table caption {
+    font-size: 1.3em;
+  }
+  
+  table thead {
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+  
+  table tr {
+    border-bottom: 3px solid #ddd;
+    display: block;
+    margin-bottom: .625em;
+  }
+  
+  table td {
+    border-bottom: 1px solid #ddd;
+    display: block;
+    font-size: .8em;
+    text-align: right;
+  }
+  
+  table td::before {
+    /*
+    * aria-label has no advantage, it won't be read inside a table
+    content: attr(aria-label);
+    */
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  
+  table td:last-child {
+    border-bottom: 0;
+  }
+}</style>
 </html>

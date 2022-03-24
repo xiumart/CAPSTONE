@@ -285,44 +285,57 @@ if (isset($_GET['id3'])) {
 			<div><br>
 				<a href="d-appointment-history.php"><button class="btn-apph" style="cursor: pointer;">Appointment History</button></a>
 			</div><br>
-		
-			<!-- TABLE PENDING -->
 			<div>
-				<table>
-						<caption>REQUEST APPOINTMENT</caption>
-						<thead>
-						<tr>						
-							<th scope="col">Name</th>
-							<th scope="col">Contact No.</th>
-							<th scope="col">Date</th>
-							<th scope="col">Time</th>
-							<th scope="col">Purpose</th>
-							<th scope="col">Action</th>
-						</tr>
-						</thead>
-						<tbody>
-							<tr>
-							<tr>
-							<?php 
-								$query5 = mysqli_query($conn, "Select * from appointment where app_remarks = 'PENDING'");
-								while($row1 = $query5 -> fetch_assoc()){
-							?>
-							<td data-label="Name"><?php echo $row1['app_name'];?></td>
-							<td data-label="Contact No."><?php echo $row1['app_contact'];?></td>
-							<td data-label="Date"><?php echo $row1['app_date'];?></td>
-							<td data-label="Time"><?php echo $row1['app_time'];?></td>
-							<td data-label="Purpose"><?php echo $row1['app_purpose'];?></td>
-							<td data-label="Action"><a href="?id3=<?php echo $row['app_id'];?>"><button class="btn-c" style="cursor: pointer;width:100px;pad">DENIED</button>
-							<a href="?id=<?php echo $row['app_id'];?>"><button class="btn-f" style="cursor: pointer;width:100px;">ACCEPT</button></td>
-							</tr>
-							<?php } ?>
-						</tbody>
-					</table>
-			</div><br><br>
+			
+					<table>
+					<caption>Pending Appointment</caption>
+     <thead>
+     	<tr>
+     	<th scope="col">Name</th>
+		<th scope="col">Contact No.</th>
+		<th scope="col">Date</th>
+		<th scope="col">Time</th>
+		<th scope="col">Purpose</th>
+		<th scope="col">Action</th>
+     	</tr>
+		 
+     </thead>
+     <tbody>
+     	  	<tr>
+
+
+     	  		<?php 
+
+     	  		$query4 = mysqli_query($conn, "Select * from appointment where app_remarks = 'PENDING'");
+     	  		while($row = $query4 -> fetch_assoc()){
+
+
+
+
+     	  ?>
+     	  	  <td data-label="Name" ><p><?php echo $row['app_name'];?></p></td>
+     	  	  <td data-label="Contact No."><?php echo $row['app_contact'];?></td>
+     	  	  <td data-label="Date"><?php echo $row['app_date'];?></td>
+			  <td data-label="Time"><?php echo $row['app_time'];?></td>
+			  <td data-label="Purpose"><?php echo $row['app_purpose'];?></td>
+			  <td data-label="Action"><a href="?id3=<?php echo $row['app_id'];?>"><button class="btn-c" style="cursor: pointer;width:100px;">Denied</button></a>
+			  <a href="?id=<?php echo $row['app_id'];?>"><button class="btn-f" style="cursor: pointer;width:100px;">Accept</button></a></td>
+     	  </tr>
+
+     	<?php  } ?>
+
+     </tbody>
+   </table>
+			
+
+				
+				
+			</div>
+			
 			<!-- TABLE ONGOING -->
 			<div>
 				<table>
-						<caption>ONGOING APPOINTMENT</caption>
+						<caption>Ongoing Appointment</caption>
 						<thead>
 						<tr>						
 							<th scope="col">Name</th>
@@ -345,12 +358,13 @@ if (isset($_GET['id3'])) {
 							<td data-label="Date"><?php echo $row1['app_date'];?></td>
 							<td data-label="Time"><?php echo $row1['app_time'];?></td>
 							<td data-label="Purpose"><?php echo $row1['app_purpose'];?></td>
-							<td data-label="Action"><a href="?id2=<?php echo $row1['app_id'];?>"><button class="btn-c" style="cursor: pointer;width:100px;pad">CANCEL</button>
-			  				<a href="?id1=<?php echo $row1['app_id'];?>"><button class="btn-f" style="cursor: pointer;width:100px;">FINISH</button></td>
+							<td data-label="Action"><a href="?id2=<?php echo $row1['app_id'];?>"><button class="btn-c" style="cursor: pointer;width:100px;pad">Cancel</button>
+			  				<a href="?id1=<?php echo $row1['app_id'];?>"><button class="btn-f" style="cursor: pointer;width:100px;">Finish</button></td>
 							</tr>
 							<?php } ?>
 						</tbody>
 					</table>
+
 			</div>
 		</main>
 		<!-- MAIN -->
@@ -361,7 +375,7 @@ if (isset($_GET['id3'])) {
 	<script src="script.js"></script>
 </body>
 <style>table {
-  border: 2px solid #ccc;
+  border: 1px solid #ccc;
   border-collapse: collapse;
   margin: 0;
   padding: 0;
@@ -370,10 +384,9 @@ if (isset($_GET['id3'])) {
 }
 
 table caption {
-  margin-top:20px;
   font-size: 1.5em;
-  background-color:#00c2cb;
-  padding:2px;
+  background-color: #00c2cb;
+  margin-top:20px;	
 }
 
 table tr {
