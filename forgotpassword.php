@@ -8,6 +8,7 @@ if(isset($_POST["email"]) && (!empty($_POST["email"]))){
 $email = $_POST["email"];
 $email = filter_var($email, FILTER_SANITIZE_EMAIL);
 $email = filter_var($email, FILTER_VALIDATE_EMAIL);
+$error = "";
 
 if (!$email) {
    $error ="<p>Invalid email address please type a valid email address!</p>";
@@ -40,7 +41,7 @@ if (!$email) {
    $addKey = substr(md5(uniqid(rand(),1)),3,10);
    $key = $key . $addKey;
 // Insert Temp Table
-mysqli_query($conn,
+   mysqli_query($conn,
 "INSERT INTO `password_reset_temp` (`email`, `key`, `expDate`)
 VALUES ('".$email."', '".$key."', '".$expDate."');");
  
