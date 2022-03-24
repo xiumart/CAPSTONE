@@ -1,4 +1,8 @@
 <?php
+session_start(); 
+include "../conn.php";
+include "logs_conn.php";
+date_default_timezone_set('Asia/Manila');
 $sname= "localhost";
 $uname= "root";
 $password = "";
@@ -27,6 +31,7 @@ if ($con->connect_error) {
             '$first','$middle','$username','$email', '$contact', '$password', '$position')";
           
         if(mysqli_query($con, $sql)){
+            users_logs($_SESSION['users_username'], "Added User", date("Y-m-d h:i:sa"), $_SESSION['users_roles']);
             echo '<script language="javascript">';
 	        echo 'alert("User added successfully!");';
 	        echo 'window.location="manage-user.php";';

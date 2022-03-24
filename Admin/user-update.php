@@ -1,7 +1,8 @@
 <?php
 include("../conn.php");
 include("session.php");
-
+include "logs_conn.php";
+date_default_timezone_set('Asia/Manila');
 $eid= $_GET['id'];
 
 if (isset($_REQUEST['btnsubmit'])) {
@@ -28,6 +29,7 @@ if (isset($_REQUEST['btnsubmit'])) {
 				WHERE `users_id` = '$eid'");
         
 			if($sql){
+        users_logs($_SESSION['users_username'], "Updated User", date("Y-m-d h:i:sa"), $_SESSION['users_roles']);
 				echo "<script>alert('You have successfully updated the record.');</script>";
 				echo "<script>document.location='manage-user.php';</script>";
 				

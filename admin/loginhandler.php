@@ -30,13 +30,20 @@ if (isset($_POST['users_username']) && isset($_POST['users_password'])) {
 
 		if (mysqli_num_rows($result) === 1) {
 			$row = mysqli_fetch_assoc($result);
-            if ($row['users_username'] === $uname && $row['users_password'] === $pass && $row['users_roles'] === "Doctor") {
+            if ($row['users_username'] === $uname && $row['users_password'] === $pass && $row['users_roles'] === "Admin") {
             	$_SESSION['users_username'] = $row['users_username'];
                 $_SESSION['users_roles'] = $row['users_roles'];
             	$_SESSION['users_id'] = $row['users_id'];
                 users_logs($_SESSION['users_username'], "Login", date("Y-m-d h:i:sa"), $_SESSION['users_roles']);
-            	header("Location: ../doctor/dashboard.php");
+            	header("Location: dashboard.php");
 		        exit();
+            }else if ($row['users_username'] === $uname && $row['users_password'] === $pass && $row['users_roles'] === "Doctor") {
+                $_SESSION['users_username'] = $row['users_username'];
+                $_SESSION['users_roles'] = $row['user_roles'];
+            	$_SESSION['users_id'] = $row['users_id'];
+                users_logs($_SESSION['users_username'], "Login", date("Y-m-d h:i:sa"), $_SESSION['users_roles']);
+            	header("Location: ../doctor/dashboard.php");
+                exit();
             }else if ($row['users_username'] === $uname && $row['users_password'] === $pass && $row['users_roles'] === "Sales Staff") {
                 $_SESSION['users_username'] = $row['users_username'];
                 $_SESSION['users_roles'] = $row['users_roles'];
@@ -50,13 +57,6 @@ if (isset($_POST['users_username']) && isset($_POST['users_password'])) {
             	$_SESSION['users_id'] = $row['users_id'];
                 users_logs($_SESSION['users_username'], "Login", date("Y-m-d h:i:sa"), $_SESSION['users_roles']);
             	header("Location: ../inventory-clerk/dashboard.php");
-                exit();
-            }else if ($row['users_username'] === $uname && $row['users_password'] === $pass && $row['users_roles'] === "Admin") {
-                $_SESSION['users_username'] = $row['users_username'];
-                $_SESSION['users_roles'] = $row['user_roles'];
-            	$_SESSION['users_id'] = $row['users_id'];
-                users_logs($_SESSION['users_username'], "Login", date("Y-m-d h:i:sa"), $_SESSION['users_roles']);
-            	header("Location: dashboard.php");
                 exit();
             }else{
 				header("Location: index.php?error=Incorrect Email or Password");
