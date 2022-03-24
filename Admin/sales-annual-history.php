@@ -193,24 +193,32 @@ include("session.php");
 					<table class="table">
      <thead>
      	<tr>
-     	 <th>ID</th>
      	 <th>Year</th>
      	 <th>Total Sales Revenue</th>
      	 <th>Total Profit</th>
      	</tr>
      </thead>
      <tbody>
-     	  <tr>
-     	  	  <td data-label="ID"><p></p></td>
-     	  	  <td data-label="Year"></td>
-			  <td data-label="Total Sales Revenue"></td>
-     	  	  <td data-label="Total Profit"></td>
-  
-			 
-			  
-     	  </tr>
+	 <?php
+	 $con=mysqli_connect("localhost","root","","capstone");
+    // Check connection
+    if (mysqli_connect_errno())
+      {
+      echo "Failed to connect to MySQL: " . mysqli_connect_error();
+      }
 
-     	  
+    $result = mysqli_query($con,"SELECT year(Date) as TotalDate ,SUM(TotalAmount) as sum_total, SUM(Profit) as sum_profit FROM sales_report;");
+      
+    while($row = mysqli_fetch_array($result))
+      {
+      echo "<tr><td>". $row['TotalDate'] . "</td>";
+      echo "<td>" . $row['sum_total'] . "</td>";
+      echo "<td>" . $row['sum_profit'] . "</td>";?>
+      <?php echo "</td></tr>";
+      }
+
+    mysqli_close($con);
+    ?>
      </tbody>
    </table>
    <a href=""><button class="btn-print" style="cursor: pointer;"><i class='bx bxs-printer' ></i> Print </button></a>
