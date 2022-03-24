@@ -62,18 +62,26 @@ if (isset($_GET['id3'])) {
 	<title>RNL Vision Care | Admin</title>
 </head>
 <style>
-	.btn-upd, .btn-rem, .btn-apph {
+.btn-apph {
 		background-color: #00c2cb;
-		padding: 12px;
+		padding: 15px;
 		border: none;
 		border-radius: 10%;
 		float: right;
 		margin-left: 10px;
+
 		
 	}
+	.btn-f, .btn-c {
+		background-color: #00c2cb;
+		border: none;
+		border-radius: 10%;
+		margin-left: 10px;
+		padding:2px;
+	}
 
-	.btn-upd:hover { background-color: #4CAF50;}
-	.btn-rem:hover { background-color: red;}
+	.btn-f:hover { background-color: #4CAF50;}
+	.btn-c:hover { background-color: red;}
 	.btn-apph:hover { background-color: #00a2a3;}
 
 	.namee{
@@ -277,106 +285,72 @@ if (isset($_GET['id3'])) {
 			<div><br>
 				<a href="d-appointment-history.php"><button class="btn-apph" style="cursor: pointer;">Appointment History</button></a>
 			</div><br>
-			<div class="table-data">
-				<div class="order">
-					<div class="head">
-						<h3>Request Appointment</h3>
-						<i class='bx bx-search' ></i>
-						<i class='bx bx-filter' ></i>
-					</div>
-					<table class="table">
-     <thead>
-     	<tr>
-     	 <th>Name</th>
-     	 <th>Email</th>
-     	 <th>Contact No.</th>
-     	 <th>Date</th>
-		 <th>Time</th>
-		 <th>Purpose</th>
-		 <th>Action</th>
-     	</tr>
-     </thead>
-     <tbody>
-     	  	<tr>
-
-
-     	  		<?php 
-
-     	  		$query4 = mysqli_query($conn, "Select * from appointment where app_remarks = 'PENDING'");
-     	  		while($row = $query4 -> fetch_assoc()){
-
-
-
-
-     	  ?>
-     	  	  <td data-label="Name" class="brandd"><p><?php echo $row['app_name'];?></p></td>
-     	  	  <td data-label="Email"><?php echo $row['app_email'];?></td>
-     	  	  <td data-label="Contact"><?php echo $row['app_contact'];?></td>
-     	  	  <td data-label="Date"><?php echo $row['app_date'];?></td>
-			  <td data-label="Time"><?php echo $row['app_time'];?></td>
-			  <td data-label="Purpose"><?php echo $row['app_purpose'];?></td>
-			  <td data-label="Action"><a href="?id3=<?php echo $row['app_id'];?>"><button class="btn-rem" style="cursor: pointer;">Denied</button></a>
-			  <a href="?id=<?php echo $row['app_id'];?>"><button class="btn-upd" style="cursor: pointer;">Accept</button></a></td>
-     	  </tr>
-
-     	<?php  } ?>
-
-     </tbody>
-   </table>
-				</div>
-
-				
-				
-			</div>
-			
-			<div class="table-data">
-				<div class="order">
-					<div class="head">
-						<h3>Ongoing Appointment</h3>
-						<i class='bx bx-search' ></i>
-						<i class='bx bx-filter' ></i>
-					</div>
-					<table class="table">
-     <thead>
-     	<tr>
-     	 <th>Name</th>
-     	 <th>Email</th>
-     	 <th>Contact No.</th>
-     	 <th>Date</th>
-		 <th>Time</th>
-		 <th>Purpose</th>
-		 <th>Action</th>
-     	</tr>
-     </thead>
-     <tbody>
-
-     	  <tr>
-     	  	  <?php 
-
-     	  		$query5 = mysqli_query($conn, "Select * from appointment where app_remarks = 'ONGOING'");
-     	  		while($row1 = $query5 -> fetch_assoc()){
-
-     	  ?>
-     	  	  <td data-label="Name" class="brandd"><p><?php echo $row1['app_name'];?></p></td>
-     	  	  <td data-label="Email"><?php echo $row1['app_email'];?></td>
-     	  	  <td data-label="Contact"><?php echo $row1['app_contact'];?></td>
-     	  	  <td data-label="Date"><?php echo $row1['app_date'];?></td>
-			  <td data-label="Time"><?php echo $row1['app_time'];?></td>
-			  <td data-label="Purpose"><?php echo $row1['app_purpose'];?></td>
-			  <td data-label="Action"><a href="?id2=<?php echo $row1['app_id'];?>"><button class="btn-rem" style="cursor: pointer;">Cancel</button>
-			  <a href="?id1=<?php echo $row1['app_id'];?>"><button class="btn-upd" style="cursor: pointer;">Finish</button></td>
-
-
-     	  </tr>
-
-     	<?php } ?>
-     </tbody>
-   </table>
-
-				</div>
-
-				
-				
+		
+			<!-- TABLE PENDING -->
+			<div>
+				<table>
+						<caption>REQUEST APPOINTMENT</caption>
+						<thead>
+						<tr>						
+							<th scope="col">Name</th>
+							<th scope="col">Contact No.</th>
+							<th scope="col">Date</th>
+							<th scope="col">Time</th>
+							<th scope="col">Purpose</th>
+							<th scope="col">Action</th>
+						</tr>
+						</thead>
+						<tbody>
+							<tr>
+							<tr>
+							<?php 
+								$query5 = mysqli_query($conn, "Select * from appointment where app_remarks = 'PENDING'");
+								while($row1 = $query5 -> fetch_assoc()){
+							?>
+							<td data-label="Name"><?php echo $row1['app_name'];?></td>
+							<td data-label="Contact No."><?php echo $row1['app_contact'];?></td>
+							<td data-label="Date"><?php echo $row1['app_date'];?></td>
+							<td data-label="Time"><?php echo $row1['app_time'];?></td>
+							<td data-label="Purpose"><?php echo $row1['app_purpose'];?></td>
+							<td data-label="Action"><a href="?id3=<?php echo $row['app_id'];?>"><button class="btn-c" style="cursor: pointer;width:100px;pad">DENIED</button>
+							<a href="?id=<?php echo $row['app_id'];?>"><button class="btn-f" style="cursor: pointer;width:100px;">ACCEPT</button></td>
+							</tr>
+							<?php } ?>
+						</tbody>
+					</table>
+			</div><br><br>
+			<!-- TABLE ONGOING -->
+			<div>
+				<table>
+						<caption>ONGOING APPOINTMENT</caption>
+						<thead>
+						<tr>						
+							<th scope="col">Name</th>
+							<th scope="col">Contact No.</th>
+							<th scope="col">Date</th>
+							<th scope="col">Time</th>
+							<th scope="col">Purpose</th>
+							<th scope="col">Action</th>
+						</tr>
+						</thead>
+						<tbody>
+							<tr>
+							<tr>
+							<?php 
+								$query5 = mysqli_query($conn, "Select * from appointment where app_remarks = 'ONGOING'");
+								while($row1 = $query5 -> fetch_assoc()){
+							?>
+							<td data-label="Name"><?php echo $row1['app_name'];?></td>
+							<td data-label="Contact No."><?php echo $row1['app_contact'];?></td>
+							<td data-label="Date"><?php echo $row1['app_date'];?></td>
+							<td data-label="Time"><?php echo $row1['app_time'];?></td>
+							<td data-label="Purpose"><?php echo $row1['app_purpose'];?></td>
+							<td data-label="Action"><a href="?id2=<?php echo $row1['app_id'];?>"><button class="btn-c" style="cursor: pointer;width:100px;pad">CANCEL</button>
+			  				<a href="?id1=<?php echo $row1['app_id'];?>"><button class="btn-f" style="cursor: pointer;width:100px;">FINISH</button></td>
+							</tr>
+							<?php } ?>
+						</tbody>
+					</table>
 			</div>
 		</main>
 		<!-- MAIN -->
@@ -386,4 +360,86 @@ if (isset($_GET['id3'])) {
 
 	<script src="script.js"></script>
 </body>
+<style>table {
+  border: 2px solid #ccc;
+  border-collapse: collapse;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  table-layout: fixed;
+}
+
+table caption {
+  margin-top:20px;
+  font-size: 1.5em;
+  background-color:#00c2cb;
+  padding:2px;
+}
+
+table tr {
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+  padding: .35em;
+}
+
+table th,
+table td {
+  padding: .625em;
+  text-align: center;
+}
+
+table th {
+  font-size: .85em;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+@media screen and (max-width: 600px) {
+  table {
+    border: 0;
+  }
+
+  table caption {
+    font-size: 1.3em;
+  }
+  
+  table thead {
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+  
+  table tr {
+    border-bottom: 3px solid #ddd;
+    display: block;
+    margin-bottom: .625em;
+  }
+  
+  table td {
+    border-bottom: 1px solid #ddd;
+    display: block;
+    font-size: .8em;
+    text-align: right;
+  }
+  
+  table td::before {
+    /*
+    * aria-label has no advantage, it won't be read inside a table
+    content: attr(aria-label);
+    */
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  
+  table td:last-child {
+    border-bottom: 0;
+  }
+}</style>
 </html>

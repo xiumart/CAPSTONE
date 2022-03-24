@@ -253,7 +253,7 @@ if (isset($_GET['id'])) {
      	
 
      	  <tr>
-     	  	<td data-label="Id" class="namee"><?php echo $row['pro_id'];?></td>
+     	  	<td data-label="Id" class="brandd"><p><?php echo $row['pro_id'];?></p></td>
      	  	<td data-label="Brand"><?php echo $row['brand'];?></td>
      	  	<td data-label="Model"><?php echo $row['model'];?></td>
      	  	<td data-label="Category"><?php echo $row['category'];?></td>
