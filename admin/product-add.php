@@ -1,5 +1,8 @@
 <?php
 include("session.php");
+include("../conn.php");
+$query = "SELECT `supp_cname` FROM supplier";
+$result = $conn->query($query);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -296,13 +299,18 @@ if($picture_type=="image/jpeg" || $picture_type=="image/jpg" || $picture_type=="
 						</div>
 						<div class="col-75">
 							<select id="category" name="category">
-							<option disabled="" selected="">Select your option..</option>
-							<option value="Accessories">Accessories</option>
-							<option value="Contact Lenses">Contact Lenses</option>
-							<option value="Eyewear for Adults">Eyewear for Adults</option>
-							<option value="Eyewear for Kids">Eyewear for Kids</option>
-							<option value="Seen Wear">Seen Wear</option>
-							<option value="Sunglasses">Sunglasses</option>
+							<option>Select Supplier</option>
+							
+							<?php 
+							if($result->num_rows > 0){ 
+								while($row = $result->fetch_assoc()){  
+									echo '<option value="'.$row['supp_cname'].'">'.$row['supp_cname'].'</option>'; 
+								} 
+							}else{ 
+								echo '<option value="">Country not available</option>'; 
+							} 
+							
+							?>
 							</select> 
 						</div>
 						</div>
@@ -345,9 +353,17 @@ if($picture_type=="image/jpeg" || $picture_type=="image/jpg" || $picture_type=="
 						<div class="col-75">
 							<select id="supplier" name="supplier">
 							<option disabled="" selected="">Select your option..</option>
-							<option value="Supplier">Supplier </option>
-							<option value=""></option>
-							<option value=""></option>
+							<?php
+							 
+							 if ($result->num_rows > 0) {
+							 while ($row = $result->fetch_assoc()) {
+							 echo '<option value="'.$row['id'].'">'.$row['country_name'].'</option>';
+							 }
+							 }else{
+							 echo '<option value="">Country not available</option>';
+							 }
+							 ?>
+							?>
 							</select>
 						</div>
 						</div>
