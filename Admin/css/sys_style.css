@@ -577,6 +577,9 @@ body {
 	#content nav .nav-link {
 		display: none;
 	}
+	#digital-clock {
+		font-size: 1px;
+	}
 }
 
 
