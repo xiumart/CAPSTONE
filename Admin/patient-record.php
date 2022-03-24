@@ -196,56 +196,30 @@ $query = "UPDATE `patient_distancerx` SET `status`='Remove' WHERE `patient_no`='
 			</div>
 
 			<a href="patient-addrecord.php"><button class="btn-addpt" style="cursor: pointer;"> + Add Patient</button></a>
-			<div class="table-data">
-				<div class="order">
+
+			<!-- TABLE ONGOING -->
+			<div>
 				<form method="post">
 						<input type="text" name="txtsearch" id="txtsearch" placeholder="Search by Patients ID or Name" autocomplete="off" style="padding: 12px;border: 1px solid #ccc;border-radius: 4px;font-family: var(poppins);">
 						<button  id="btnsearch" name="btnsearch" class="page"><i class='bx bx-search' ></i></button>
-						</form></br>
-					<div class="head">
-						<h3>List of Patient</h3>
-						<i class='bx bx-search' ></i>
-						<i class='bx bx-filter' ></i>
-					</div>
-					<style type="text/css">
-							th{
-								cursor: pointer;
-							}
-}
-						</style>
-					<table class="table">
-     <thead>
-     	<tr>
-     	<th class="th-sm">Patient Id</th>
-     	 <th class="th-sm">Name</th>
-     	 <th class="th-sm">Email</th>
-     	 <th class="th-sm">Contact No.</th>
-     	 <th class="th-sm">Address</th>
-		 <th class="th-sm">Age</th>
-		 <th class="th-sm">Action</th>
-     	</tr>
-
-     </thead>
-     <script type="text/javascript">
-							const getCellValue = (tr, idx) => tr.children[idx].innerText || tr.children[idx].textContent;
-
-const comparer = (idx, asc) => (a, b) => ((v1, v2) => 
-    v1 !== '' && v2 !== '' && !isNaN(v1) && !isNaN(v2) ? v1 - v2 : v1.toString().localeCompare(v2)
-    )(getCellValue(asc ? a : b, idx), getCellValue(asc ? b : a, idx));
-
-// do the work...
-document.querySelectorAll('th').forEach(th => th.addEventListener('click', (() => {
-    const table = th.closest('table');
-
-    Array.from(table.querySelectorAll('tr:nth-child(n+2)'))
-        .sort(comparer(Array.from(th.parentNode.children).indexOf(th), this.asc = !this.asc))
-        .forEach(tr => table.appendChild(tr) );
-})));
-						</script>
-     <tbody>
-     	<tr></tr>
-     	
-          	<?php
+						</form>
+				<table>
+						<caption>LIST OF PATIENT</caption>
+						<thead>
+						<tr>						
+							<th scope="col">Patient ID</th>
+							<th scope="col">Name</th>
+							<th scope="col">Email</th>
+							<th scope="col">Contact No.</th>
+							<th scope="col">Address</th>
+							<th scope="col">Age</th>
+							<th scope="col">Action</th>
+						</tr>
+				
+						</thead>
+						<tbody>
+							<tr>
+							<?php
           	error_reporting(0);
      	$limit=25;
         //$cat=$_POST['all'];
@@ -264,26 +238,18 @@ document.querySelectorAll('th').forEach(th => th.addEventListener('click', (() =
 
 
      	?>
-     
-     	  <tr>
-     	  	<td data-label="Patient Id" class="brandd"><p><?php echo $row['patient_id'];?></p></td>
-     	  	  <td data-label="Name"><?php echo $row['patient_name'];?></td>
-     	  	  <td data-label="Email"><?php echo $row['patient_email'];?></td>
-     	  	  <td data-label="Contact"><?php echo $row['patient_contact'];?></td>
-     	  	  <td data-label="Address"><?php echo $row['patient_address'];?></td>
-			  <td data-label="Age"><?php echo $row['age'];?></td>
-			  <td data-label="Action"><a href="patient-view.php?id=<?php echo $row['patient_no'];?>"><button class="btn-view">View</button></a><a href="?id=<?php echo $row['patient_no'];?>"><button class="btn-rem" >Remove</button></a></td>
-
-     	  </tr>
-     
-      	 <?php
+							<td data-label="Patient ID"><?php echo $row['patient_id'];?></td>
+							<td data-label="Name"><?php echo $row['patient_name'];?></td>
+							<td data-label="Email"><?php echo $row['patient_email'];?></td>
+							<td data-label="Contact No."><?php echo $row['patient_contact'];?></td>
+							<td data-label="Address"><?php echo $row['patient_address'];?></td>
+							<td data-label="Age"><?php echo $row['age'];?></td>
+							<td data-label="Action"><a href="?id=<?php echo $row['patient_no'];?>"><button class="btn-c" style="cursor: pointer;width:100px;pad">REMOVE</button>
+			  				<a href="patient-view.php?id=<?php echo $row['patient_no'];?>"><button class="btn-f" style="cursor: pointer;width:100px;">VIEW</button></td>
+							</tr>
+							<?php
      	}}
-
-     	?>
-     	
-     	<?php
-$id=$_GET['id'];
-
+     	$id=$_GET['id'];
 $sql2 = "SELECT * FROM `patient_distancerx` WHERE `patient_no`='$id'";
  $result2 = $conn->query($sql2);  
   			if($result2->num_rows > 0){
@@ -291,64 +257,40 @@ $sql2 = "SELECT * FROM `patient_distancerx` WHERE `patient_no`='$id'";
   					$name=$row['patient_name'];
   					$pat_id=$row['patient_id'];
   				}}
-  					?>
-  		<form method="post">
+
+     	?>
+     	<form method="post">
      	<input type="text" name="idd" value="<?php echo $pat_id;?>" hidden>
     </form>
-     	</tbody>
-   </table>
-   <a class="page" id="pre" href="patient-record.php?page=<?=$prev; ?>">< Prev</a>
+						</tbody>
+					</table>
+			</div>
+			<a class="page" id="pre" href="patient-record.php?page=<?=$prev; ?>">< Prev</a>
     	  <?php  for($i=1; $i <=$pages ; $i++): ?>
     <a class="page" href="patient-record.php?page=<?=$i; ?>"><?=$i; ?></a>
                       <?php endfor; ?>
     <a class="page" id="pnext" href="patient-record.php?page=<?=$next; ?>">Next ></a>
-				</div>
-
-				
-				
-			</div>
-			<!-- TABLE ONGOING -->
-			<div>
-				<table>
-						<caption>LIST OF PATIENT</caption>
-						<thead>
-						<tr>						
-							<th scope="col">Patient ID</th>
-							<th scope="col">Name</th>
-							<th scope="col">Email</th>
-							<th scope="col">Contact No.</th>
-							<th scope="col">Address</th>
-							<th scope="col">Age</th>
-							<th scope="col">Action</th>
-						</tr>
-						</thead>
-						<tbody>
-							<tr>
-							<tr>
-							<?php 
-								$query5 = mysqli_query($conn, "Select * from appointment where app_remarks = 'ONGOING'");
-								while($row1 = $query5 -> fetch_assoc()){
-							?>
-							<td data-label="Patient ID"><?php echo $row1['app_name'];?></td>
-							<td data-label="Name"><?php echo $row1['app_contact'];?></td>
-							<td data-label="Email"><?php echo $row1['app_date'];?></td>
-							<td data-label="Contact No."><?php echo $row1['app_time'];?></td>
-							<td data-label="Address"><?php echo $row1['app_purpose'];?></td>
-							<td data-label="Age"><?php echo $row1['app_purpose'];?></td>
-							<td data-label="Action"><a href="?id2=<?php echo $row1['app_id'];?>"><button class="btn-c" style="cursor: pointer;width:100px;pad">REMOVE</button>
-			  				<a href="?id1=<?php echo $row1['app_id'];?>"><button class="btn-f" style="cursor: pointer;width:100px;">VIEW</button></td>
-							</tr>
-							<?php } ?>
-						</tbody>
-					</table>
-			</div>
-			
 		</main>
 		<!-- MAIN -->
 	</section>
 	<!-- CONTENT -->
 	
+ <script type="text/javascript">
+							const getCellValue = (tr, idx) => tr.children[idx].innerText || tr.children[idx].textContent;
 
+const comparer = (idx, asc) => (a, b) => ((v1, v2) => 
+    v1 !== '' && v2 !== '' && !isNaN(v1) && !isNaN(v2) ? v1 - v2 : v1.toString().localeCompare(v2)
+    )(getCellValue(asc ? a : b, idx), getCellValue(asc ? b : a, idx));
+
+// do the work...
+document.querySelectorAll('th').forEach(th => th.addEventListener('click', (() => {
+    const table = th.closest('table');
+
+    Array.from(table.querySelectorAll('tr:nth-child(n+2)'))
+        .sort(comparer(Array.from(th.parentNode.children).indexOf(th), this.asc = !this.asc))
+        .forEach(tr => table.appendChild(tr) );
+})));
+						</script>
 	<script src="script.js"></script>
 </body>
 <style>
