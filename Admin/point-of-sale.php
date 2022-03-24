@@ -1,5 +1,24 @@
 <?php
 include("session.php");
+function createRandomPassword() {
+	$chars = "003232303232023232023456789";
+	srand((double)microtime()*1000000);
+	$i = 0;
+	$pass = '' ;
+	while ($i <= 7) {
+
+		$num = rand() % 33;
+
+		$tmp = substr($chars, $num, 1);
+
+		$pass = $pass . $tmp;
+
+		$i++;
+
+	}
+	return $pass;
+}
+$finalcode='RS-'.createRandomPassword();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,6 +32,17 @@ include("session.php");
 	<link rel="stylesheet" href="css\sys_style.css">
 	<link rel="shorcut icon" type="img/png" href="images\logo.png">
 	<title>RNL Vision Care | Admin</title>
+	<link href="src/facebox.css" media="screen" rel="stylesheet" type="text/css" />
+	<script src="src/jquery.js" type="text/javascript"></script>
+<script src="src/facebox.js" type="text/javascript"></script>
+<script type="text/javascript">
+  jQuery(document).ready(function($) {
+    $('a[rel*=facebox]').facebox({
+      loadingImage : 'src/loading.gif',
+      closeImage   : 'src/closelabel.png'
+    })
+  })
+</script>
 </head>
 <style>
 	.btn-t {
@@ -35,6 +65,17 @@ include("session.php");
 
 	.btn-p:hover {
 		background-color: #4CAF50;
+		color: black;
+	}
+	.btn-a {
+		background-color: #00c2cb;
+		border-radius: 5px;
+		border:none;
+		padding: 12px 20px;
+	}
+
+	.btn-a:hover {
+		background-color: lightslategray;
 		color: black;
 	}
 
@@ -61,7 +102,7 @@ include("session.php");
 
 	<!-- SIDEBAR -->
 	<section id="sidebar">
-		<a href="point-of-sale.php" class="brand">
+		<a href="point-of-sale.php?id=cash&invoice=<?php echo $finalcode ?>" class="brand">
 			<img src="images\logo.png" alt="" width="60px;">
 			<span class="text" style="text-shadow:0.5px 0px #000;">RNL Vision Care</span>
 		</a>
@@ -79,7 +120,7 @@ include("session.php");
 				</a>
 			</li>
 			<li class="active">
-				<a href="point-of-sale.php">
+				<a href="point-of-sale.php?id=cash&invoice=<?php echo $finalcode ?>">
 					<i class='bx bxs-cart' ></i>
 					<span class="text">Point of Sale</span>
 				</a>
@@ -146,36 +187,11 @@ include("session.php");
 			<div class="dropdown2">
 			<a href="#" class="notification">
 				<i class='bx bxs-bell' ></i>
-				<span class="num">
-				<?php 
-				$query = mysqli_query($conn, "SELECT COUNT(*) as total from client_inquiries WHERE inquiries_status = '2'");
-					while($result=mysqli_fetch_array($query)){
-					echo $result['total']; 
-				}			
-				?>
-						  </span>			  
+				<span class="num">8</span>
 			</a>
-			<?php
-
-			if (isset($_GET['id'])) {
-			$users_id=$_GET['id'];
-			$query = "UPDATE `client_inquiries` SET inquiries_status = '1'  WHERE inquiries_id = '$users_id'";
-			mysqli_query($conn, $query);
-			header( "refresh:0; url=dashboard.php" );
-			}
-			?>
-			
 				<div class="dropdown-content2">
 					<h4 id="textnotif">Notification</h4><br><hr>
-					<?php   
-			   require_once("../db/notification/notifdisplay.php");
-              while($row = mysqli_fetch_assoc($query)){
-				  
-            ?>
-					<h4>Inquiry:</h4><p><?php echo $row['inquiries_message']; ?></p><a href="?id=<?php echo $row['inquiries_id'];?>"><button class="btn-remove" name="btnremove" style="cursor: pointer;">Clear</button></a><hr color="wheat">
-					<?php
-			  }
-			  ?>
+					<a href="#" id="" style="color:black;"><h6>Inquiry:</h6> How can i set an appointment?</a><hr color="wheat">
 					<a href="see-all-notification.php" id="colnotif">See all notification..</a>
 				</div>
 			</div>
@@ -230,12 +246,33 @@ include("session.php");
 			<div class="table-data">
 				
 				<div class="order">
-					<input type="text" class="cust" style="cursor: pointer;">
-					<select name="" id="" class="sel" style="cursor: pointer;">
+				<form action="incoming.php" method="post">
 
+					<input type="hidden" name="pt" value="cash" />
+					<input type="hidden" name="invoice" value="<?php echo $_GET['invoice']; ?>" />
+					<input type="text" class="cust">
+					<input type="number" name="discount" hidden>
+					<input type="hidden" name="date" value="<?php echo date("m/d/y"); ?>" />
+					<select name="product" id="" class="sel" style="cursor: pointer;" required>
+						<option value="0">Select product...</option>
+						<?php 
+						include("connect.php");
+						$result=$db->prepare("SELECT * FROM product");
+						$result->bindParam(':userid', $res);
+						$result->execute();
+						for($i=0; $row = $result->fetch(); $i++){
+						?>
+						<option value="<?php echo $row['pro_id'];?>"><?php echo $row['model']; ?> - <?php echo $row['brand']; ?> - <?php echo $row['category']; ?> | Expires at: <?php echo $row['expdate']; ?></option>
+						<?php
+						} 
+						?>
 					</select>
-					<input type="number" class="num"><br><br>
-					<table class="table">
+					<input type="number" class="num" name="qty" value="1" min="1" autocomplete="off" required>
+					
+					<input type="submit" name="btnadd" value="+ Add" class="btn-a" style="cursor:pointer;">
+				</form>
+					<br><br>
+					<table class="table" id="resultTable" data-responsive="table">
 						<thead>
 							<tr>
 							<th>Product Name</th>
@@ -245,29 +282,103 @@ include("session.php");
 							<th>Qty</th>
 							<th>Amount</th>
 							<th>Profit</th>
-							<th>Total</th>
 							<th>Action</th>
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
-								<td data-label="Product name" class="brandd"><p></p></td>
-								<td data-label="Generic name"></td>
-								<td data-label="Category"></td>
-								<td data-label="Price"></td>
-								<td data-label="Qty"></td>
-								<td data-label="Amount"></td>
-								<td data-label="Profit"></td>
-								<td data-label="Total"></td>
-								<td><button type="button" class="btn-t" style="cursor: pointer;">Cancel</button></td>
+							<?php
+							$id=$_GET['invoice'];
+							$result12 = $db->prepare("SELECT * FROM sales_order WHERE order_no= :userid");
+							$result12->bindParam(':userid', $id);
+							$result12->execute();
+							for($i=1; $row = $result12->fetch(); $i++){
+							?>
+							<tr class="record">
+								<input type="text" value="<?php echo $row['product']; ?>" hidden>
+								<td data-label="Product name" class="brandd"><?php echo $row['model']; ?></td>
+								<td data-label="Generic name"><?php echo $row['brand']; ?></td>
+								<td data-label="Category"><?php echo $row['category']; ?></td>
+								<td data-label="Price">
+									<?php
+										$ppp=$row['price'];
+										echo formatMoney($ppp, true);
+									?></td>
+								<td data-label="Qty"><?php echo $row['qty']; ?></td>
+								<td data-label="Amount">
+									<?php
+										$dfdf=$row['amount'];
+										echo formatMoney($dfdf, true);
+									?></td>
+								<td data-label="Profit">
+									<?php
+										$profit=$row['profit'];
+										echo formatMoney($profit, true);
+									?></td>
+									<td width="90"><a href="delete.php?id=<?php echo $row['order_no']; ?>&invoice=<?php echo $_GET['invoice']; ?>&dle=<?php echo $_POST['pt']; ?>&qty=<?php echo $row['qty'];?>&code=<?php echo $row['product'];?>"><button class="btn-t"><i class="icon icon-remove"></i> Cancel </button></a></td>
 							</tr>
+								<?php
+								}
+								?>
+							<tr>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<th> Total Amount: </th>
+									<th> Total Profit: </th>
+									<td></td>
+							</tr>
+							<tr>
+								<th colspan="5">Total:</th>
+								<td>
+									<?php
+									function formatMoney($number, $fractional=false) {
+										if ($fractional) {
+											$number = sprintf('%.2f', $number);
+										}
+										while (true) {
+											$replaced = preg_replace('/(-?\d+)(\d\d\d)/', '$1,$2', $number);
+											if ($replaced != $number) {
+												$number = $replaced;
+											} else {
+												break;
+											}
+										}
+										return $number;
+									}
+									$sdsd=$_GET['invoice'];
+									$resultas = $db->prepare("SELECT sum(amount) FROM sales_order WHERE order_no= :a");
+									$resultas->bindParam(':a', $sdsd);
+									$resultas->execute();
+									for($i=0; $rowas = $resultas->fetch(); $i++){
+									$fgfg=$rowas['sum(amount)'];
+									echo formatMoney($fgfg, true);
+									}
+									?>
+								</td>
+								<td colspan="1">
+								<?php 
+								$resulta = $db->prepare("SELECT sum(profit) FROM sales_order WHERE order_no= :a");
+								$resulta->bindParam(':a', $sdsd);
+								$resulta->execute();
+								for($i=0; $qwe = $resulta->fetch(); $i++){
+								$asd=$qwe['sum(profit)'];
+								echo formatMoney($asd, true);
+								}
+								?>
+		
+				</td>
+							</tr>
+
 						</tbody>
 
 					</div>
 					</div>
 				</table>
 				<div><br><br>
-				<button type="button" class="btn-p" style="cursor: pointer;">PAY</button></td>
+					<a rel="facebox" href="checkout.php?pt=<?php echo $_GET['id']?>&invoice=<?php echo $_GET['invoice']?>&total=<?php echo $fgfg ?>&totalprof=<?php echo $asd ?>"><button class="btn-p"><i class="icon icon-save icon-large"></i> PAY</button></a>
+					<div class="clearfix"></div>
 			</div>
 
 		</main>
