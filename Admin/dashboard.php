@@ -77,7 +77,7 @@ if (isset($_GET['id3'])) {
 		border: none;
 		border-radius: 10%;
 		margin-left: 10px;
-		padding:2px;
+		padding:4px;
 	}
 
 	.btn-f:hover { background-color: #4CAF50;}

@@ -201,13 +201,12 @@ if (isset($_GET['id'])) {
 	</style>
 			<a href="supplier-add.php"><button class="btn-addpt" style="cursor: pointer;"> + Add Supplier</button></a>
 		
-			<div class="table-data">
-				<div class="order">
+			
 				<form method="post">
 						<input type="text" name="txtsearch" id="txtsearch" placeholder="Search by Company Name or Person Name" autocomplete="off" style="padding: 12px;border: 1px solid #ccc;border-radius: 4px;font-family: var(poppins);">
 						<button  id="btnsearch" name="btnsearch" class="page" style="cursor: pointer;"><i class='bx bx-search' ></i></button>
 						</form></br>
-					<table class="table">
+					<table>
      <thead>
      	<tr>
 		 
@@ -215,7 +214,6 @@ if (isset($_GET['id'])) {
 		 <th>Contact Person</th>
      	 <th>Contact No.</th>
      	 <th>Email</th>
-		 <th>Description</th>
 		 <th>Action</th>
      	</tr>
      </thead>
@@ -252,9 +250,8 @@ if (isset($_GET['id'])) {
      	  	<td data-label="Contact Person"><?php echo $row['supp_contactperson'];?></td>
      	  	<td data-label="Contact No."><?php echo $row['supp_contact'];?></td>
      	  	<td data-label="Email"><?php echo $row['supp_email'];?></td>
-			<td data-label="Description"><?php echo $row['supp_desc'];?></td>
-			<td data-label="Action"><a href="supplier-update.php?id=<?php echo $row['supp_id'];?>"><button class="btn-upd" style="cursor: pointer;">Update</button></a>
-			<a href="?id=<?php echo $row['supp_id'];?>"><button class="btn-rem" name="btnremove" style="cursor: pointer;" onclick="return confirm('Are you sure you want to cancel your appointment?')">Remove</button></a></td>
+			<td data-label="Action"><a href="supplier-update.php?id=<?php echo $row['supp_id'];?>"><button class="btn-f" style="cursor: pointer;width:90px;">Update</button></a><br>
+			<a href="?id=<?php echo $row['supp_id'];?>"><button class="btn-c" name="btnremove" style="cursor: pointer;width:90px;" onclick="return confirm('Are you sure you want to cancel your appointment?')">Remove</button></a></td>
      	  </tr>
     
      	 <?php
@@ -281,14 +278,9 @@ if (isset($_GET['id'])) {
                       <?php endfor; ?>
     <a class="page" id="pnext" href="supplier.php?page=<?=$next; ?>">Next ></a>
 				</div>
-				</div>
-				</div>
 			
-			<div class="table-data">
-	
-				
-				
-			</div>
+			
+			
 		</main>
 		<!-- MAIN -->
 	</section>
@@ -299,4 +291,97 @@ if (isset($_GET['id'])) {
 
 	<script src="script.js"></script>
 </body>
+<style>
+		.btn-f, .btn-c {
+		background-color: #00c2cb;
+		border: none;
+		border-radius: 10%;
+		margin-left: 10px;
+		padding:4px;
+	}
+
+	.btn-f:hover { background-color: #4CAF50;}
+	.btn-c:hover { background-color: red;}
+	table {
+  border: 1px solid #ccc;
+  border-collapse: collapse;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  table-layout: fixed;
+}
+
+table caption {
+  font-size: 1.5em;
+  background-color: #00c2cb;
+  margin-top:20px;	
+}
+
+table tr {
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+  padding: .35em;
+}
+
+table th,
+table td {
+  padding: .625em;
+  text-align: center;
+}
+
+table th {
+  font-size: .85em;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+@media screen and (max-width: 600px) {
+  table {
+    border: 0;
+  }
+
+  table caption {
+    font-size: 1.3em;
+  }
+  
+  table thead {
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+  
+  table tr {
+    border-bottom: 3px solid #ddd;
+    display: block;
+    margin-bottom: .625em;
+  }
+  
+  table td {
+    border-bottom: 1px solid #ddd;
+    display: block;
+    font-size: .8em;
+    text-align: right;
+  }
+  
+  table td::before {
+    /*
+    * aria-label has no advantage, it won't be read inside a table
+    content: attr(aria-label);
+    */
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  
+  table td:last-child {
+    border-bottom: 0;
+  }
+}
+</style>
 </html>

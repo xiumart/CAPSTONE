@@ -774,4 +774,5 @@ $sql1 = "SELECT * FROM `patient_history` WHERE `patient_no`='$id'";
 
 	<script src="script.js"></script>
 </body>
+
 </html>
