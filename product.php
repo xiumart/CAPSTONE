@@ -155,11 +155,11 @@ error_reporting(0);
               </select>
               
               </form>
-              <a href="?sort=New&prod=<?php echo $_GET['prod']; ?>" style="color:#000;"><button>Newest</button></a>
-              <a href="?sort=Old&prod=<?php echo $_GET['prod']; ?>" style="color:#000"><button>Oldest</button></a>
-              <a href="?sort=default&prod=<?php echo $_GET['prod']; ?>" style="color:#000"><button>Default</button></a>
+              <a href="?sort=New&prod=<?php echo $_GET['prod']; ?>" id="newest" style="color:#000;"><button>Newest</button></a>
+              <a href="?sort=Old&prod=<?php echo $_GET['prod']; ?>" id="oldest" style="color:#000"><button>Oldest</button></a>
+              <a href="?sort=default&prod=<?php echo $_GET['prod']; ?>" id="default" style="color:#000"><button>Default</button></a>
             </div>
-            
+           
               <!--prod-->
               <?php
               $limit=9;

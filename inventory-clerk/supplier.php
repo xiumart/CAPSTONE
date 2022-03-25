@@ -24,7 +24,7 @@ if (isset($_GET['id'])) {
 	<!-- My CSS -->
 	<link rel="stylesheet" href="css\sys_style.css">
 	<link rel="shorcut icon" type="img/png" href="images\logo.png">
-	<title>RNL Vision Care | Admin</title>
+	<title>RNL Vision Care | Inventory Clerk</title>
 </head>
 <style>
 		button {

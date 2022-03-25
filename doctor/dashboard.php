@@ -1,7 +1,7 @@
 <?php 
 include("../conn.php");
 include("session.php");
-
+include ("logs_conn.php");
 // Set the new timezone
 date_default_timezone_set('Asia/Manila');
 $date = date('d-m-y g:i a');
@@ -59,7 +59,7 @@ if (isset($_GET['id3'])) {
 	<!-- My CSS -->
 	<link rel="stylesheet" href="css\sys_style.css">
 	<link rel="shorcut icon" type="img/png" href="images\logo.png">
-	<title>RNL Vision Care | Admin</title>
+	<title>RNL Vision Care | Doctor</title>
 </head>
 <style>
 .btn-apph {
