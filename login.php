@@ -131,7 +131,7 @@ function getIpAddr(){
             </div>
             <div class="input-field">
               <i class="fas fa-phone"></i>
-              <input type="tel" pattern="[0-9]{4}[0-9]{3}[0-9]{4}" placeholder="Contact No." name = "contactno" autocomplete="off" required />
+              <input type="tel" pattern="[0-9]{4}[0-9]{3}[0-9]{4}" placeholder="Contact No." name = "contactno" autocomplete="off" maxlength="11" required />
             </div>
             
             <div class="input-field">

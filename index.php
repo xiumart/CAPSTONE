@@ -227,9 +227,9 @@ error_reporting(0);
               require_once("db/feedback/feedbackdisplay.php");
               while($row = mysqli_fetch_assoc($query)){
             ?>
-              <div class="item">
+              <div class="item" >
                         <div class="testimonial-content">
-                            <div class="testimonial">
+                            <div class="testimonial" style="height:250px;">
                                 <blockquote>
                                     <q><?php echo $row['feed_comments'];?></q>
                                 </blockquote>

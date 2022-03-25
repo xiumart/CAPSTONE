@@ -218,10 +218,9 @@ $user=$_SESSION['login_user'];
                                       <option value="02:30 PM">02:30 PM</option>
                                       <option value="03:00 PM">03:00 PM</option>
                                     </select>
-                                    <div>
-                                      <h1>Available Time</h1>
-                                      <p></p>
-                                    </div>
+                                   
+    
+                                    
                             <input type ="hidden" class ="form-control" name='App_User' value='<?php echo $call; ?>'>
                               
                         

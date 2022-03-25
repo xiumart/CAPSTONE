@@ -127,7 +127,7 @@ $finalcode='RS-'.createRandomPassword();
 			</li>
 			<li>
 				<a href="sales-report.php">
-					<i class='bx bxs-download' ></i>
+					<i class='bx bxs-chart' ></i>
 					<span class="text">Sales Report</span>
 				</a>
 			</li>
@@ -153,6 +153,12 @@ $finalcode='RS-'.createRandomPassword();
 				<a href="audit.php">
 					<i class='bx bxs-book' ></i>
 					<span class="text">Audit Logs</span>
+				</a>
+			</li>
+			<li>
+				<a href="archive.php">
+					<i class='bx bxs-download' ></i>
+					<span class="text">Back-up and Restore</span>
 				</a>
 			</li>
 		</ul>
