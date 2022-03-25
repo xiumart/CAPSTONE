@@ -71,18 +71,18 @@ require 'PHPMailer/src/PHPMailer.php';
 require 'PHPMailer/src/SMTP.php';
 require 'PHPMailer/src/Exception.php';
 $mail = new PHPMailer();;
-$mail->Host = "tls://smtp.gmail.com";
+$mail->Host = "smtp.gmail.com";
 $mail->isSMTP();
 //$mail->SMTPDebug = 1;
 $mail->SMTPAuth = true;
-$mail->Username = "rnlvisioncare@gmail.com";
-$mail->Password = "RNLVISIONCARE";
+$mail->Username = "rnlvisioncareteam@gmail.com";
+$mail->Password = "RNL12345678";
 $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;;
 $mail->Port = 587;
 $mail->IsHTML(true);
 $mail->Subject = $subject;
 $mail->Body = $body;
-$mail->From='rnlvisioncare@gmaiil.com';
+$mail->From='rnlvisioncareteam@gmaiil.com';
 $mail->FromName='RNL Vision Care Team';
 
 
