@@ -2,9 +2,12 @@
 error_reporting(0);
 include("../conn.php");
 include("session.php");
+include "logs_conn.php";
+date_default_timezone_set('Asia/Manila');
 if (isset($_GET['id'])) {
 	$supp_id=$_GET['id'];
 	$query = "DELETE FROM `supplier` WHERE supp_id='$supp_id'";
+	users_logs($_SESSION['users_username'], "Remove Supplier", date("Y-m-d h:i:sa"), $_SESSION['users_roles']);
 			mysqli_query($conn, $query);
 			echo "<script>alert('You have successfully remove the record.');</script>";
 			echo "<script>document.location='supplier.php';</script>";
@@ -277,7 +280,7 @@ if (isset($_GET['id'])) {
      	  	<td data-label="Contact No."><?php echo $row['supp_contact'];?></td>
 			<td data-label="Description"><?php echo $row['supp_desc'];?></td>
 			<td data-label="Action"><a href="supplier-update.php?id=<?php echo $row['supp_id'];?>"><button class="btn-f" style="cursor: pointer;">Update</button></a>
-			<a href="?id=<?php echo $row['supp_id'];?>"><button class="btn-c" name="btnremove" style="cursor: pointer;" onclick="return confirm('Are you sure you want to cancel your appointment?')">Remove</button></a></td>
+			<a href="?id=<?php echo $row['supp_id'];?>"><button class="btn-c" name="btnremove" style="cursor: pointer;" onclick="return confirm('Are you sure you want to remove this supplier?')">Remove</button></a></td>
      	  </tr>
     
      	 <?php

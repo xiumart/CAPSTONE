@@ -127,7 +127,7 @@ $user=$_SESSION['login_user'];
               <li>
                 <a href="users-appointment.php">
                   <i class="fa fa-calendar"></i>
-                  <h5>Appoinments</h5>
+                  <h5>Appointments</h5>
                   
                 </a>
               </li>
@@ -170,7 +170,32 @@ $user=$_SESSION['login_user'];
   </section>
 
 
+  <div class="alert">
+  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+  <center><strong>Update your profile!</strong> Click your username and go to edit profile.
+  </div>
+  <style>
+.alert {
+  padding: 10px;
+  background-color: #f44336;
+  color: white;
+}
 
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 15px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.closebtn:hover {
+  color: black;
+}
+</style>
   
 
 
@@ -178,7 +203,7 @@ $user=$_SESSION['login_user'];
     <div class="container" id="result">
 
       <h3>Check-up History</h3>
-
+      
       <table>
         <thead>
           <tr>

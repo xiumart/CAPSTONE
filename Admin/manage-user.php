@@ -7,8 +7,10 @@ date_default_timezone_set('Asia/Manila');
 if (isset($_GET['id'])) {
 	$users_id=$_GET['id'];
 	$query = "DELETE FROM `users_account` WHERE users_id='$users_id'";
-	users_logs($_SESSION['users_username'], "Deleted User", date("Y-m-d h:i:sa"), $_SESSION['users_roles']);
+	users_logs($_SESSION['users_username'], "Remove User", date("Y-m-d h:i:sa"), $_SESSION['users_roles']);
 			mysqli_query($conn, $query);
+			echo "<script>alert('You have successfully remove the record.');</script>";
+			echo "<script>document.location='supplier.php';</script>";
 }
 ?>
 <!DOCTYPE html>
@@ -240,7 +242,6 @@ if (isset($_GET['id'])) {
 		 
 		 <th>Lastname</th>
       <th>Firstname</th>
-      <th>Middlename</th>
       <th>Username</th>
       <th>Contact Number</th>
       <th>Position</th>
@@ -278,12 +279,11 @@ if (isset($_GET['id'])) {
      	  	
      	  	<td data-label="Lastname" class="namee"><?php echo $row['users_lastname'];?></td>
      	  	<td data-label="Firstname"><?php echo $row['users_firstname'];?></td>
-     	  	<td data-label="Middlename"><?php echo $row['users_middlename'];?></td>
      	  	<td data-label="Username"><?php echo $row['users_username'];?></td>
 			<td data-label="Contact Number"><?php echo $row['users_contact'];?></td>
 			<td data-label="Position"><?php echo $row['users_roles'];?></td>
 			<td data-label="Action"><a href="user-update.php?id=<?php echo $row['users_id'];?>"><button class="btn-f" style="cursor: pointer;">Update</button></a>
-			<a href="?id=<?php echo $row['users_id'];?>"><button class="btn-c" name="btnremove" style="cursor: pointer;" onclick="return confirm('Are you sure you want to delete this user?')">Remove</button></a></td>
+			<a href="?id=<?php echo $row['users_id'];?>"><button class="btn-c" name="btnremove" style="cursor: pointer;" onclick="return confirm('Are you sure you want to remove this user?')">Remove</button></a></td>
      	  </tr>
     
      	 <?php
