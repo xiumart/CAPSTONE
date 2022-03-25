@@ -1,13 +1,11 @@
 <?php
 include('conn.php');
-if (isset($_GET["key"]) && isset($_GET["email"]) && isset($_GET["action"]) 
-&& ($_GET["action"]=="reset") && !isset($_POST["action"])){
-  $key = $_GET["key"];
+if (isset($_GET["email"])){
   $email = $_GET["email"];
   $curDate = date("Y-m-d H:i:s");
+  $error = "";  
   $query = mysqli_query($conn,
-  "SELECT * FROM `password_reset_temp` WHERE `key`='".$key."' and `email`='".$email."';"
-  );
+  "SELECT * FROM password_reset_temp WHERE email='$email'");
   $row = mysqli_num_rows($query);
   if ($row=="0"){
   $error .= '<h2>Invalid Link</h2>
@@ -16,13 +14,12 @@ from the email, or you have already used the key in which case it is
 deactivated.</p>
 <p><a href="https://www.allphptricks.com/forgot-password/index.php">
 Click here</a> to reset password.</p>';
+echo "<script>alert('link invalid')</script>";
+header('refresh:0;url=forgotpassword.php');
  }else{
   $row = mysqli_fetch_assoc($query);
   $expDate = $row['expDate'];
   if ($expDate >= $curDate){
-  ?>
-
-<?php
 }else{
 $error .= "<h2>Link Expired</h2>
 <p>The link is expired. You are trying to use the expired link which 
@@ -32,36 +29,10 @@ as valid only 24 hours (1 days after request).<br /><br /></p>";
 if($error!=""){
   echo "<div class='error'>".$error."</div><br />";
   } 
-} // isset email key validate end
- 
- 
-if(isset($_POST["email"]) && isset($_POST["action"]) &&
- ($_POST["action"]=="update")){
-$error="";
-$pass1 = mysqli_real_escape_string($conn,$_POST["pass1"]);
-$pass2 = mysqli_real_escape_string($conn,$_POST["pass2"]);
-$email = $_POST["email"];
-$id = mysqli_query($conn, "SELECT client_id from client_user_info WHERE client_email = '$email'");
-$curDate = date("Y-m-d H:i:s");
-if ($pass1!=$pass2){
-$error = "<p>Password do not match, both password should be same.<br /><br /></p>";
-  }
-  if($error!=""){
-echo "<div class='error'>".$error."</div><br />";
-}else{
-$pass1 = md5($pass1);
-
-mysqli_query($conn,
-"UPDATE client_user set client_password = '$pass1' where client_id = '$id'");
-
-mysqli_query($conn,"DELETE FROM `password_reset_temp` WHERE `email`='".$email."'");
- 
-echo '<div class="error"><p>conngratulations! Your password has been updated successfully.</p>
-<p><a href="localhost/CAPSTONE/login.php">
-Click here</a> to Login.</p></div><br />';
-   } 
 }
+
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -71,7 +42,7 @@ Click here</a> to Login.</p></div><br />';
 <meta name="viewport" conntent="width=device-width, initial-scale=1">
 <meta http-equiv="conntent-Type" conntent="text/html; charset=utf-8" />
 <meta name="keywords" conntent="Course Registration Form Responsive Widget,Login form widgets, Sign up Web forms , Login signup Responsive web form,Flat Pricing table,Flat Drop downs,Registration Forms,News letter Forms,Elements" />
-<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+<script type="application/x-javascript"> ntListener("load", function() { setTimeout(hideURLbar, 0); }, false);
 function hideURLbar(){ window.scrollTo(0,1); } </script>
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 <!-- Meta tag Keywords -->
@@ -82,8 +53,6 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!-- web-fonts -->
 <link href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
 <!-- //web-fonts --> 
-</head>
-<body>
     <!-- banner --> 
     <div class="video">
 
@@ -91,7 +60,7 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
                     <div class="w3ls-agileinfo">
                     </div>
                     <div class="bg-agile">
-                             <a for="show" class="close-btn fas fa-times" title="close" href="index.html"></a>
+                             <a for="show" class="close-btn fas fa-times" title="close" href="login.php"></a>
                         <h2>Change Password </h2>
                         <div class="login-form">
                             <form action="" method="post">
@@ -101,7 +70,7 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 
                                 </div>
                                 <input type="hidden" name="email" value="<?php echo $email;?>"/>
-                                <button type="submit" value="Reset Password">Submit</button>
+                                <button type="submit" name="submit" value="Reset Password">Submit</button>
                             </form>
 
                         </div>
@@ -112,4 +81,34 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
                 </div>
         </div>
 </body>
-</html> 
+</html>
+
+ <?php
+include('conn.php');
+if(isset($_POST['submit'])){
+$pass1 = $_POST["pass1"];
+$pass2 = $_POST["pass2"];
+$email = $_POST["email"];
+$curDate = date("Y-m-d H:i:s");
+
+if($pass1!=$pass2){
+
+    echo "<script>alert('not the same password')</script>";
+   
+}else{
+    
+    $sql ="SELECT * from client_user_info where client_email = '$email'";
+    $result = mysqli_query($conn, $sql);
+    while ($bow = mysqli_fetch_row($result)){
+        $id = $bow[1];
+
+    $pass1 = md5($pass1);
+    mysqli_query($conn, "UPDATE client_user set client_password = '$pass1' where client_id = '$id'");
+    mysqli_query($conn,"DELETE FROM password_reset_temp WHERE email ='$email'");
+    echo "<script>alert('Password Updated')</script>";
+    header('refresh:0;url=login.php');
+}
+
+}
+}
+    ?>

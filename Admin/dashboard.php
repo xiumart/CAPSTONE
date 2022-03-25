@@ -77,13 +77,19 @@ if (isset($_GET['id3'])) {
 		border: none;
 		border-radius: 10%;
 		margin-left: 10px;
-		padding:2px;
+		padding:4px;
 	}
-
+	.btn-remove {
+		background-color: #00c2cb;
+		border: none;
+		border-radius: 10%;
+		margin-left: 90%;
+		padding:4px;
+	}
 	.btn-f:hover { background-color: #4CAF50;}
 	.btn-c:hover { background-color: red;}
 	.btn-apph:hover { background-color: #00a2a3;}
-
+	.btn-remove:hover { background-color: red;}
 	.namee{
 		margin-top: 4.5%;
 	}
@@ -182,11 +188,36 @@ if (isset($_GET['id3'])) {
 			<div class="dropdown2">
 			<a href="#" class="notification">
 				<i class='bx bxs-bell' ></i>
-				<span class="num">8</span>
+				<span class="num">
+				<?php 
+				$query = mysqli_query($conn, "SELECT COUNT(*) as total from client_inquiries WHERE inquiries_status = '2'");
+					while($result=mysqli_fetch_array($query)){
+					echo $result['total']; 
+				}			
+				?>
+						  </span>			  
 			</a>
+			<?php
+
+			if (isset($_GET['id'])) {
+			$users_id=$_GET['id'];
+			$query = "UPDATE `client_inquiries` SET inquiries_status = '1'  WHERE inquiries_id = '$users_id'";
+			mysqli_query($conn, $query);
+			header( "refresh:0; url=dashboard.php" );
+			}
+			?>
+			
 				<div class="dropdown-content2">
 					<h4 id="textnotif">Notification</h4><br><hr>
-					<a href="#" id="" style="color:black;"><h6>Inquiry:</h6> How can i set an appointment?</a><hr color="wheat">
+					<?php   
+			   require_once("../db/notification/notifdisplay.php");
+              while($row = mysqli_fetch_assoc($query)){
+				  
+            ?>
+					<h4>Inquiry:</h4><p><?php echo $row['inquiries_message']; ?></p><a href="?id=<?php echo $row['inquiries_id'];?>"><button class="btn-remove" name="btnremove" style="cursor: pointer;">Clear</button></a><hr color="wheat">
+					<?php
+			  }
+			  ?>
 					<a href="see-all-notification.php" id="colnotif">See all notification..</a>
 				</div>
 			</div>
@@ -386,7 +417,7 @@ if (isset($_GET['id3'])) {
 table caption {
   font-size: 1.5em;
   background-color: #00c2cb;
-  margin-top:20px;	
+  margin-top:50px;	
 }
 
 table tr {
@@ -405,6 +436,7 @@ table th {
   font-size: .85em;
   letter-spacing: .1em;
   text-transform: uppercase;
+  background-color: #9dd1d4;
 }
 
 @media screen and (max-width: 600px) {

@@ -5,6 +5,7 @@ include("session.php");
 if (isset($_GET['id'])) {
 	$supp_id=$_GET['id'];
 	$query = "DELETE FROM `supplier` WHERE supp_id='$supp_id'";
+	users_logs($_SESSION['users_username'], "Deleted Supplier", date("Y-m-d h:i:sa"), $_SESSION['users_roles']);
 			mysqli_query($conn, $query);
 }
 ?>
@@ -140,11 +141,36 @@ if (isset($_GET['id'])) {
 			<div class="dropdown2">
 			<a href="#" class="notification">
 				<i class='bx bxs-bell' ></i>
-				<span class="num">8</span>
+				<span class="num">
+				<?php 
+				$query = mysqli_query($conn, "SELECT COUNT(*) as total from client_inquiries WHERE inquiries_status = '2'");
+					while($result=mysqli_fetch_array($query)){
+					echo $result['total']; 
+				}			
+				?>
+						  </span>			  
 			</a>
+			<?php
+
+			if (isset($_GET['id'])) {
+			$users_id=$_GET['id'];
+			$query = "UPDATE `client_inquiries` SET inquiries_status = '1'  WHERE inquiries_id = '$users_id'";
+			mysqli_query($conn, $query);
+			header( "refresh:0; url=dashboard.php" );
+			}
+			?>
+			
 				<div class="dropdown-content2">
 					<h4 id="textnotif">Notification</h4><br><hr>
-					<a href="#" id="" style="color:black;"><h6>Inquiry:</h6> How can i set an appointment?</a><hr color="wheat">
+					<?php   
+			   require_once("../db/notification/notifdisplay.php");
+              while($row = mysqli_fetch_assoc($query)){
+				  
+            ?>
+					<h4>Inquiry:</h4><p><?php echo $row['inquiries_message']; ?></p><a href="?id=<?php echo $row['inquiries_id'];?>"><button class="btn-remove" name="btnremove" style="cursor: pointer;">Clear</button></a><hr color="wheat">
+					<?php
+			  }
+			  ?>
 					<a href="see-all-notification.php" id="colnotif">See all notification..</a>
 				</div>
 			</div>
@@ -201,20 +227,17 @@ if (isset($_GET['id'])) {
 	</style>
 			<a href="supplier-add.php"><button class="btn-addpt" style="cursor: pointer;"> + Add Supplier</button></a>
 		
-			<div class="table-data">
-				<div class="order">
 				<form method="post">
 						<input type="text" name="txtsearch" id="txtsearch" placeholder="Search by Company Name or Person Name" autocomplete="off" style="padding: 12px;border: 1px solid #ccc;border-radius: 4px;font-family: var(poppins);">
 						<button  id="btnsearch" name="btnsearch" class="page" style="cursor: pointer;"><i class='bx bx-search' ></i></button>
 						</form></br>
-					<table class="table">
+					<table>
      <thead>
      	<tr>
 		 
      	 <th>Company Name</th>
 		 <th>Contact Person</th>
      	 <th>Contact No.</th>
-     	 <th>Email</th>
 		 <th>Description</th>
 		 <th>Action</th>
      	</tr>
@@ -251,10 +274,9 @@ if (isset($_GET['id'])) {
      	  	<td data-label="Company Name" class="namee"><?php echo $row['supp_cname'];?></td>
      	  	<td data-label="Contact Person"><?php echo $row['supp_contactperson'];?></td>
      	  	<td data-label="Contact No."><?php echo $row['supp_contact'];?></td>
-     	  	<td data-label="Email"><?php echo $row['supp_email'];?></td>
 			<td data-label="Description"><?php echo $row['supp_desc'];?></td>
-			<td data-label="Action"><a href="supplier-update.php?id=<?php echo $row['supp_id'];?>"><button class="btn-upd" style="cursor: pointer;">Update</button></a>
-			<a href="?id=<?php echo $row['supp_id'];?>"><button class="btn-rem" name="btnremove" style="cursor: pointer;" onclick="return confirm('Are you sure you want to cancel your appointment?')">Remove</button></a></td>
+			<td data-label="Action"><a href="supplier-update.php?id=<?php echo $row['supp_id'];?>"><button class="btn-f" style="cursor: pointer;">Update</button></a>
+			<a href="?id=<?php echo $row['supp_id'];?>"><button class="btn-c" name="btnremove" style="cursor: pointer;" onclick="return confirm('Are you sure you want to cancel your appointment?')">Remove</button></a></td>
      	  </tr>
     
      	 <?php
@@ -299,4 +321,98 @@ if (isset($_GET['id'])) {
 
 	<script src="script.js"></script>
 </body>
+<style>
+		.btn-f, .btn-c {
+		background-color: #00c2cb;
+		border: none;
+		border-radius: 10%;
+		margin-left: 10px;
+		padding:4px;
+	}
+
+	.btn-f:hover { background-color: #4CAF50;}
+	.btn-c:hover { background-color: red;}
+	table {
+  border: 1px solid #ccc;
+  border-collapse: collapse;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  table-layout: fixed;
+}
+
+table caption {
+  font-size: 1.5em;
+  background-color: #00c2cb;
+  margin-top:20px;	
+}
+
+table tr {
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+  padding: .35em;
+}
+
+table th,
+table td {
+  padding: .625em;
+  text-align: center;
+}
+
+table th {
+  font-size: .85em;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  background-color: #9dd1d4;
+}
+
+@media screen and (max-width: 600px) {
+  table {
+    border: 0;
+  }
+
+  table caption {
+    font-size: 1.3em;
+  }
+  
+  table thead {
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+  
+  table tr {
+    border-bottom: 3px solid #ddd;
+    display: block;
+    margin-bottom: .625em;
+  }
+  
+  table td {
+    border-bottom: 1px solid #ddd;
+    display: block;
+    font-size: .8em;
+    text-align: right;
+  }
+  
+  table td::before {
+    /*
+    * aria-label has no advantage, it won't be read inside a table
+    content: attr(aria-label);
+    */
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  
+  table td:last-child {
+    border-bottom: 0;
+  }
+}
+</style>
 </html>
