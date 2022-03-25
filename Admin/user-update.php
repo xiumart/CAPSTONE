@@ -386,7 +386,7 @@ if (isset($_REQUEST['btnsubmit'])) {
                         </div>
                         <div class="col-75">
                         
-                            <input type="password" name="cpass" placeholder="Enter new password" minlenght="6" id="password" value= "<?php echo $row['users_password'];?>">
+                            <input type="password" name="cpass" placeholder="Enter new password" minlenght="6" id="password" value= "<?php echo md5($row['users_password']);?>">
                             <i class="bi bi-eye-slash" id="togglePassword"></i>
                           </div>
                         </div>
