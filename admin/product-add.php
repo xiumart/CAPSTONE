@@ -325,7 +325,7 @@ if($picture_type=="image/jpeg" || $picture_type=="image/jpg" || $picture_type=="
 						</div>
 						<div class="col-75">
 							<select id="category" name="category">
-							<option>Select Supplier</option>
+							<option disabled="" selected="">Select your option..</option>
 							
 							<?php 
 							if($result1->num_rows > 0){ 

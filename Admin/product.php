@@ -228,15 +228,17 @@ if (isset($_GET['id'])) {
 			</div>
 
 			<a href="product-add.php"><button class="btn-addp" style="float:right; margin-bottom:10px;">+ Add Product </button></a>
-			
+			<form method="post">
+						<input type="text" name="txtsearch" id="txtsearch" placeholder="Search by Model/Category.." autocomplete="off" style="padding: 12px;border: 1px solid #ccc;border-radius: 4px;font-family: var(poppins); width: 50%;">
+						<button  id="btnsearch" name="btnsearch" class="page" style="cursor: pointer;"><i class='bx bx-search' ></i></button>
+			</form>
 <div id="printing">
 					<table>
 <caption>List of Product</caption>
      <thead>
      	<tr>
-     	<th>Id</th>
+     		<th>Model</th>
      	 <th>Brand</th>
-     	 <th>Model</th>
      	 <th>Category</th>
      	 <th>Orig. Price</th>
 		 <th>Selling Price</th>
@@ -252,12 +254,15 @@ if (isset($_GET['id'])) {
         $page=isset($_GET['page']) ? $_GET['page']:1;
         $start=($page-1)*$limit;
         $search=$_POST['txtsearch'];
-     	$sql2 =$conn->query("SELECT count(pro_id) AS id FROM `product`");
+     	
      	if (isset($_POST['btnsearch'])) {
-        $sql1 = "SELECT * FROM `product` WHERE `category` LIKE '%$search%' OR `pro_id` LIKE'%$search%'  LIMIT $start, $limit ";
+        $sql1 = "SELECT * FROM `product` WHERE `category` LIKE '%$search%' OR `model` LIKE '%$search%'";
+        $sql2 =$conn->query("SELECT count(pro_id) AS id,`category`,`model` FROM `product` WHERE `category` LIKE '%$search%' OR `model` LIKE '%$search%'");
+
         	}
         else{
         		$sql1 = "SELECT * FROM `product` LIMIT $start, $limit ";
+        		$sql2 =$conn->query("SELECT count(pro_id) AS id FROM `product`");
         	}
         $result2 = $sql2->fetch_all(MYSQLI_ASSOC);
                 $total=$result2[0]['id'];
@@ -267,26 +272,45 @@ if (isset($_GET['id'])) {
      	  $result1 = $conn->query($sql1);  
   			if($result1->num_rows > 0){
   				while($row = $result1 -> fetch_assoc()){ 
+  					$qty=$row['qty'];
 
      	?>
+     		
      	
 
+
      	  <tr>
-     	  	<td data-label="Id" class="brandd"><p><?php echo $row['pro_id'];?></p></td>
-     	  	<td data-label="Brand"><?php echo $row['brand'];?></td>
      	  	<td data-label="Model"><?php echo $row['model'];?></td>
+     	  	<td data-label="Brand"><?php echo $row['brand'];?></td>
      	  	<td data-label="Category"><?php echo $row['category'];?></td>
      	  	<td data-label="Orig."><?php echo $row['origprice'];?></td>
 			  	<td data-label="Selling"><?php echo $row['sellingprice'];?></td>
 			  	<td data-label="Expire"><?php echo $row['expdate'];?></td>
-			  	<td data-label="Qty" id="qq"><?php echo $row['qty'];?></td>
-			  	<td data-label="Action"><a href="product-update.php?id=<?php echo $row['pro_id'];?>"><button class="btn-upd">Update</button></a><a href="?id=<?php echo $row['pro_id'];?>"><button class="btn-rem" name="btnremove">Remove</button></a></td>
+			  	<td data-label="Qty" id="qq"><?php echo $row['qty'];
+
+							if ($qty<=10) {
+								
+						echo "<br><b><p style='color:red;'>CRITICAL</p></b>";
+							}
+							else
+							{
+								echo "";}
+
+							 
+
+
+
+			  ?>
+			  	
+			  </td>
+			  	<td data-label="Action" id="butones"><a href="product-update.php?id=<?php echo $row['pro_id'];?>"><button class="btn-upd">Update</button></a><a href="?id=<?php echo $row['pro_id'];?>"><button class="btn-rem" name="btnremove">Remove</button></a></td>
      	  </tr>
     
      	 <?php
-     	}}
+     }}
 
      	?>
+     
 
 
      </tbody>
@@ -311,6 +335,7 @@ if (isset($_GET['id'])) {
 <script language="javascript">
 function Clickheretoprint()
 { 
+	
   var disp_setting="toolbar=yes,location=no,directories=yes,menubar=yes,"; 
       disp_setting+="scrollbars=yes,width=1000, height=1000, left=100, top=25"; 
   var content_vlue = document.getElementById("printing").innerHTML; 
@@ -321,6 +346,7 @@ function Clickheretoprint()
    docprint.document.write(content_vlue); 
    docprint.document.close(); 
    docprint.focus(); 
+   
 }
 </script>
 					

@@ -1,5 +1,5 @@
 <?php
-error_reporting(0);
+//error_reporting(0);
 include("../conn.php");
 include("session.php");
 include "logs_conn.php";
@@ -329,6 +329,19 @@ else{
  				$result1 = $conn->query($sql1);  
 				if($result1->num_rows > 0){
   				while($row = $result1 -> fetch_assoc()){
+  					$brand =$row['brand'];
+  					$model =$row['model'];
+  					$category =$row['category'];
+					$origprice =$row['origprice'];
+					$sellingprice =$row['sellingprice'];
+					$qty =$row['qty'];
+					$remarks =$row['remarks'];
+					$image =$row['image'];
+					$supp1 =$row['supplier'];
+
+
+  				}}
+  					
 				?>
 			
 				<form method="post" enctype="multipart/form-data">
@@ -338,7 +351,7 @@ else{
 							<label for="brand">Brand Name</label>
 						</div>
 						<div class="col-75">
-							<input type="text" id="brand" name="brand" placeholder="Enter brand name.." value="<?php echo $row['brand'];?>">
+							<input type="text" id="brand" name="brand" placeholder="Enter brand name.." value="<?php echo $brand;?>">
 						</div>
 						</div>
 						<div class="row">
@@ -346,7 +359,7 @@ else{
 							<label for="model">Model</label>
 						</div>
 						<div class="col-75">
-							<input type="text" id="model" name="model" placeholder="Enter model name.." value="<?php echo $row['model'];?>">
+							<input type="text" id="model" name="model" placeholder="Enter model name.." value="<?php echo $model;?>">
 						</div>
 						</div>
 						<div class="row">
@@ -358,7 +371,7 @@ else{
 							<option disabled="" selected="">Select your option..</option>
 							<option value="Accessories" 
 							<?php
-							if ($row['category']=="Accessories") {
+							if ($category=="Accessories") {
 								echo "selected";
 							}
 							?>	
@@ -367,7 +380,7 @@ else{
 
 							<option value="Contact Lenses"
 							<?php
-							if ($row['category']=="Contact Lenses") {
+							if ($category=="Contact Lenses") {
 								echo "selected";
 							}
 							?>	
@@ -375,7 +388,7 @@ else{
 
 							<option value="Eyewear for Adults"
 							<?php
-							if ($row['category']=="Eyewear for Adults") {
+							if ($category=="Eyewear for Adults") {
 								echo "selected";
 							}
 							?>	
@@ -383,7 +396,7 @@ else{
 
 							<option value="Eyewear for Kids"
 							<?php
-							if ($row['category']=="Eyewear for Kids") {
+							if ($category=="Eyewear for Kids") {
 								echo "selected";
 							}
 							?>	
@@ -391,7 +404,7 @@ else{
 
 							<option value="Seen Wear"
 							<?php
-							if ($row['category']=="Seen Wear") {
+							if ($category=="Seen Wear") {
 								echo "selected";
 							}
 							?>	
@@ -399,7 +412,7 @@ else{
 
 							<option value="Sunglasses"
 							<?php
-							if ($row['category']=="Sunglasses") {
+							if ($category=="Sunglasses") {
 								echo "selected";
 							}
 							?>	
@@ -408,6 +421,13 @@ else{
 							
 						</div>
 						</div>
+						<?php 
+						$id=$_GET['id'];
+						$sql3 = "SELECT * FROM `product` WHERE `pro_id`= '$id'";
+ 						$result3 = $conn->query($sql3);  
+						if($result3->num_rows > 0){
+  						while($row = $result3 -> fetch_assoc()){
+						?>
 						<div class="row">
 						<div class="col-25">
 							<label for="dtarrival">Date of Arrival</label>
@@ -429,42 +449,58 @@ else{
 							<label for="lname">Original Price</label>
 						</div>
 						<div class="col-75">
-							<input type="number" id="origp" name="orig" placeholder="Enter original price.." style="width: 100%;padding: 12px;border: 1px solid #ccc;border-radius: 4px;" value="<?php echo $row['origprice'];?>">
+							<input type="number" id="origp" name="orig" placeholder="Enter original price.." style="width: 100%;padding: 12px;border: 1px solid #ccc;border-radius: 4px;" value="<?php echo $origprice;?>">
 						</div>
 						</div>
+					<?php }} ?>	
 						<div class="row">
 						<div class="col-25">
 							<label for="sell">Selling Price</label>
 						</div>
 						<div class="col-75">
-							<input type="number" id="sell" name="sell" placeholder="Enter selling price.." style="width: 100%;padding: 12px;border: 1px solid #ccc;border-radius: 4px;" value="<?php echo $row['sellingprice'];?>">
+							<input type="number" id="sell" name="sell" placeholder="Enter selling price.." style="width: 100%;padding: 12px;border: 1px solid #ccc;border-radius: 4px;" value="<?php echo $sellingprice;?>">
 						</div>
 						</div>
+						
 						<div class="row">
 						<div class="col-25">
 							<label for="supplier">Supplier</label>
 						</div>
 						<div class="col-75">
 							<select id="supplier" name="supplier">
-							<option disabled="" selected="">Select your option..</option>
-							<option value="Supplier"
+								
+							<option disabled="" >Select your option..</option>
+							<?php 
+						$sql9 = "SELECT * FROM `supplier`";
+ 						$result9 = $conn->query($sql9);  
+						if($result9->num_rows > 0){
+  						while($row = $result9 -> fetch_assoc()){
+
+  						$supp=$row['supp_cname'];
+  						
+						?>
+							<option value="<?php echo $supp; ?>"
 							<?php
-							if ($row['supplier']=="Supplier") {
+							if ($supp==$supp1) {
 								echo "selected";
 							}
+							
 							?>	
-							>Supplier </option>
-							<option value=""></option>
-							<option value=""></option>
+							><?php echo $supp; ?> </option>
+							<?php 
+					}}
+						?>
 							</select>
 						</div>
 						</div>
+
 						<div class="row">
 						<div class="col-25">
 							<label for="qty">Qty</label>
 						</div>
 						<div class="col-75">
-							<input type="number" id="qty" name="qty" placeholder="Enter quantity.." style="width: 100%;padding: 12px;border: 1px solid #ccc;border-radius: 4px;" value="<?php echo $row['qty'];?>">
+							<input type="number" id="qty" name="qty"  placeholder="Enter quantity.." style="width: 100%;padding: 12px;border: 1px solid #ccc;border-radius: 4px;" value="<?php echo $qty;?>">
+
 						</div>
 						</div>
 						<div class="row">
@@ -472,7 +508,7 @@ else{
 							<label for="subject">Remarks</label>
 						</div>
 						<div class="col-75">
-							<textarea id="remarks" name="remarks" placeholder="Write something.." style="height:200px"><?php echo $row['remarks'];?></textarea>
+							<textarea id="remarks" name="remarks" placeholder="Write something.." style="height:200px"><?php echo $remarks;?></textarea>
 						</div>
 						</div>
 						<div class="col-25">
@@ -499,11 +535,11 @@ else{
   							padding: 8px;
 							border: 1px solid #ccc;
 							border-radius: 4px;display: none;
-							" value="<?php echo $row['image'];?>">
+							" value="<?php echo $image;?>">
 							
 						</div>
-						<input type="text" name="hidpic" value="<?php echo $row['image'];?>" hidden>
-						<img src="images/product_img/<?php echo $row['image'];?>" id="output" alt="" style="width: 30%; height: 30%">
+						<input type="text" name="hidpic" value="<?php echo $image;?>" hidden>
+						<img src="images/product_img/<?php echo $image;?>" id="output" alt="" style="width: 30%; height: 30%">
 							<!--Image Viewer-->
 								<script>
 									var loadFile = function(event) {
@@ -519,7 +555,7 @@ else{
 						</div>
 				</form>
 			<?php
-		}}
+		//}}
 			?>
 			</div>
 	    </div>	
