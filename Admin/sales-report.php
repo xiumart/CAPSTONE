@@ -127,11 +127,11 @@ include("session.php");
 				<i class='bx bxs-bell' ></i>
 				<span class="num">
 				<?php 
-				$query = mysqli_query($conn, "SELECT COUNT(*) as total from client_inquiries WHERE inquiries_status = '2'");
-					while($result=mysqli_fetch_array($query)){
-					echo $result['total']; 
-				}			
-				?>
+			//	$query = mysqli_query($conn, "SELECT COUNT(*) as total from client_inquiries WHERE inquiries_status = '2'");
+			//		while($result=mysqli_fetch_array($query)){
+	      	//		echo $result['total']; 
+			//	}			
+			//	?>
 						  </span>			  
 			</a>
 			<?php

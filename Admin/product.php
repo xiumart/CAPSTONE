@@ -282,7 +282,7 @@ if (isset($_GET['id'])) {
 			  	<td data-label="Selling"><?php echo $row['sellingprice'];?></td>
 			  	<td data-label="Expire"><?php echo $row['expdate'];?></td>
 			  	<td data-label="Qty" id="qq"><?php echo $row['qty'];?></td>
-			  	<td data-label="Action"><a href="product-update.php?id=<?php echo $row['pro_id'];?>"><button class="btn-upd">Update</button></a><a href="?id=<?php echo $row['pro_id'];?>"><button class="btn-rem" name="btnremove" onclick="return confirm('Are you sure you want to remove this product?)">Remove</button></a></td>
+			  	<td data-label="Action"><a href="product-update.php?id=<?php echo $row['pro_id'];?>"><button class="btn-upd">Update</button></a><a href="?id=<?php echo $row['pro_id'];?>"><button class="btn-rem" name="btnremove">Remove</button></a></td>
      	  </tr>
     
      	 <?php
