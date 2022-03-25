@@ -102,7 +102,7 @@ if (isset($_GET['id3'])) {
 	<section id="sidebar">
 		<a href="dashboard.php" class="brand">
 		<img src="images\logo.png" alt="" width="60px;">
-			<span class="text" style="text-shadow:0.5px 0px #000;">RNL Vision Care</span>
+			<span class="text" style="text-shadow:0.5px 0px #000;color:#423e44;">RNL Vision Care</span>
 		</a>
 		<ul class="side-menu top">
 			<li class="active">
@@ -160,6 +160,14 @@ if (isset($_GET['id3'])) {
 				</a>
 			</li>
 		</ul>
+		<ul class="side-menu">
+			<li>
+				<a href="logout.php" class="logout">
+					<i class='bx bxs-log-out-circle' ></i>
+					<span class="text">Logout</span>
+				</a>
+			</li>
+		</ul>
 	</section>
 	<!-- SIDEBAR -->
 
@@ -179,8 +187,7 @@ if (isset($_GET['id3'])) {
 			<div id="digital-clock"></div>
 			<script src="time.js"></script>
 
-			<input type="checkbox" id="switch-mode" hidden>
-			<label for="switch-mode" class="switch-mode"></label>
+		
 		
 			
 			<div class="dropdown2">

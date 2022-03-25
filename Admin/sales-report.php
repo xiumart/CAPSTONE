@@ -70,7 +70,7 @@ include("../conn.php");
 			</li>
 			<li class="active">
 				<a href="sales-report.php">
-					<i class='bx bxs-download' ></i>
+					<i class='bx bxs-chart' ></i>
 					<span class="text">Sales Report</span>
 				</a>
 			</li>
@@ -96,6 +96,12 @@ include("../conn.php");
 				<a href="audit.php">
 					<i class='bx bxs-book' ></i>
 					<span class="text">Audit Logs</span>
+				</a>
+			</li>
+			<li>
+				<a href="archive.php">
+					<i class='bx bxs-download' ></i>
+					<span class="text">Back-up and Restore</span>
 				</a>
 			</li>
 		</ul>
@@ -125,8 +131,7 @@ include("../conn.php");
 			</form>
 			<div id="digital-clock"></div>
 			<script src="time.js"></script>
-			<input type="checkbox" id="switch-mode" hidden>
-			<label for="switch-mode" class="switch-mode"></label>
+			
 			<div class="dropdown2">
 			<a href="#" class="notification">
 				<i class='bx bxs-bell' ></i>
@@ -283,15 +288,11 @@ include("../conn.php");
 			
 			</ul><br>
 			<a href="sales-annual-history.php"><button class="btn-addpt" style="cursor: pointer;"> Annual Sales History</button></a>
-			<div class="table-data">
-				<div class="order">
-					<div class="head">
-						<h3></h3>
-						<i class='bx bx-search' ></i>
-						<i class='bx bx-filter' ></i>
-						
-					</div>
-					<table class="table">
+			<div>
+				<div>
+					
+					<table>
+						<caption>Recent Transaction</caption>
      <thead>
      	<tr>
      	 <th>Transac. ID</th>
@@ -315,12 +316,12 @@ include("../conn.php");
       
     while($row = mysqli_fetch_array($result))
       {
-      echo "<tr><td>". $row['order_no'] . "</td>";
-      echo "<td>" . $row['date'] . "</td>";
-      echo "<td>" . $row['name'] ."</td>";
-	  echo "<td>" .$row['profit']."</td>";
-	  echo "<td>" .$row['amount']."</td>";
-      echo "<td><form method='post' action='?id=".$row["id"]."'>"?>
+      echo "<tr><td data-label='Transac. ID'>". $row['order_no'] . "</td>";
+      echo "<td data-label='Date'>" . $row['date'] . "</td>";
+      echo "<td data-label='Customer name'>" . $row['name'] ."</td>";
+	  echo "<td data-label='Profit'>" .$row['profit']."</td>";
+	  echo "<td data-label='Amount'>" .$row['amount']."</td>";
+      echo "<td data-label='Transac. ID'><form method='post' action='?id=".$row["transaction_id"]."'>"?>
       <button class="btn-upd" style="cursor: pointer;" onclick="return confirm('Are you sure you want to cancel your appointment?')">Remove</button></form>
       <?php "</td></tr>";
       }
@@ -351,4 +352,86 @@ include("../conn.php");
 
 	<script src="script.js"></script>
 </body>
+<style>table {
+  border: 1px solid #ccc;
+  border-collapse: collapse;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  table-layout: fixed;
+}
+
+table caption {
+  font-size: 1.5em;
+  background-color: #00c2cb;
+  margin-top:50px;	
+}
+
+table tr {
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+  padding: .35em;
+}
+
+table th,
+table td {
+  padding: .625em;
+  text-align: center;
+}
+
+table th {
+  font-size: .85em;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  background-color: #9dd1d4;
+}
+
+@media screen and (max-width: 600px) {
+  table {
+    border: 0;
+  }
+
+  table caption {
+    font-size: 1.3em;
+  }
+  
+  table thead {
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+  
+  table tr {
+    border-bottom: 3px solid #ddd;
+    display: block;
+    margin-bottom: .625em;
+  }
+  
+  table td {
+    border-bottom: 1px solid #ddd;
+    display: block;
+    font-size: .8em;
+    text-align: right;
+  }
+  
+  table td::before {
+    /*
+    * aria-label has no advantage, it won't be read inside a table
+    content: attr(aria-label);
+    */
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  
+  table td:last-child {
+    border-bottom: 0;
+  }
+}</style>
 </html>

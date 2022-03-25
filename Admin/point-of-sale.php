@@ -127,7 +127,7 @@ $finalcode='RS-'.createRandomPassword();
 			</li>
 			<li>
 				<a href="sales-report.php">
-					<i class='bx bxs-download' ></i>
+					<i class='bx bxs-chart' ></i>
 					<span class="text">Sales Report</span>
 				</a>
 			</li>
@@ -155,7 +155,14 @@ $finalcode='RS-'.createRandomPassword();
 					<span class="text">Audit Logs</span>
 				</a>
 			</li>
-		</ul>
+		
+		<li>
+				<a href="archive.php">
+					<i class='bx bxs-download' ></i>
+					<span class="text">Back-up and Restore</span>
+				</a>
+			</li>
+			</ul>
 		<ul class="side-menu">
 			<li>
 				<a href="logout.php" class="logout">
@@ -182,8 +189,7 @@ $finalcode='RS-'.createRandomPassword();
 			</form>
 			<div id="digital-clock"></div>
 			<script src="time.js"></script>
-			<input type="checkbox" id="switch-mode" hidden>
-			<label for="switch-mode" class="switch-mode"></label>
+			
 			<div class="dropdown2">
 			<a href="#" class="notification">
 				<i class='bx bxs-bell' ></i>
