@@ -235,7 +235,7 @@ exit();
 exit();
     }else {
   
-$pat_id=uniqid();
+$pat_id=rand(123451,981345);
 
   $query_signup = "INSERT INTO client_user (client_id,client_username,client_password,confirm) VALUES ('$client_ids','$username','$password','$pat_id')" ;
 
