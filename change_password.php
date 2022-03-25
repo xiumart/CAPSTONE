@@ -7,7 +7,7 @@ if (isset($_GET["email"])){
   $query = mysqli_query($conn,
   "SELECT * FROM password_reset_temp WHERE email='$email'");
   $row = mysqli_num_rows($query);
-  if ($row=="0"){
+  if ($row==""){
   $error .= '<h2>Invalid Link</h2>
 <p>The link is invalid/expired. Either you did not copy the correct link
 from the email, or you have already used the key in which case it is 
