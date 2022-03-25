@@ -2,7 +2,9 @@
 include("session.php");
 include("../conn.php");
 $query = "SELECT `supp_cname` FROM supplier";
+$query1 = "SELECT `brand` FROM products";
 $result = $conn->query($query);
+$result1 = $conn->query($query);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -320,19 +322,19 @@ if($picture_type=="image/jpeg" || $picture_type=="image/jpg" || $picture_type=="
 						</div>
 						<div class="row">
 						<div class="col-25">
-							<label for="category">Category</label>
+							<label for="category">Supplier</label>
 						</div>
 						<div class="col-75">
 							<select id="category" name="category">
 							<option>Select Supplier</option>
 							
 							<?php 
-							if($result->num_rows > 0){ 
-								while($row = $result->fetch_assoc()){  
+							if($result1->num_rows > 0){ 
+								while($row = $result1->fetch_assoc()){  
 									echo '<option value="'.$row['supp_cname'].'">'.$row['supp_cname'].'</option>'; 
 								} 
 							}else{ 
-								echo '<option value="">Country not available</option>'; 
+								echo '<option value="">Category not available</option>'; 
 							} 
 							
 							?>
@@ -373,22 +375,17 @@ if($picture_type=="image/jpeg" || $picture_type=="image/jpg" || $picture_type=="
 						</div>
 						<div class="row">
 						<div class="col-25">
-							<label for="supplier">Supplier</label>
+							<label for="supplier">Category</label>
 						</div>
 						<div class="col-75">
 							<select id="supplier" name="supplier">
 							<option disabled="" selected="">Select your option..</option>
-							<?php
-							 
-							 if ($result->num_rows > 0) {
-							 while ($row = $result->fetch_assoc()) {
-							 echo '<option value="'.$row['id'].'">'.$row['country_name'].'</option>';
-							 }
-							 }else{
-							 echo '<option value="">Country not available</option>';
-							 }
-							 ?>
-							?>
+							<option value="Accessories">Accessories</option>
+							<option value="Contact Lenses">Contact Lenses</option>
+							<option value="Eyewear for Adults">Eyewear for Adults</option>
+							<option value="Eyewear for Kids">Eyewear for Kids</option>
+							<option value="Seen Wear">Seen Wear</option>
+							<option value="Sunglasses">Sunglasses</option>>
 							</select>
 						</div>
 						</div>

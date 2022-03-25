@@ -113,7 +113,7 @@ function getIpAddr(){
             </div>
 
             <button class="btn btn-primary" name='login' <?php echo $msg1; ?>>Login</button>
-            <a href="forgotpassword.php">Forgot Password? </a>
+            <a href="forgot-password.php" style="color:white;">Forgot Password? </a>
             
            <div id="result"><?php echo $msg; ?></div>
 

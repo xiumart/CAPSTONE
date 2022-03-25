@@ -338,10 +338,10 @@ if (isset($_REQUEST['btnsubmit'])) {
                         </div>
                         <div class="row">
                         <div class="col-25">
-                            <label for="mname">Middle Name</label>
+                            <label for="mname">Middle Name (optional)</label>
                         </div>
                         <div class="col-75">
-                            <input type="text" id="mname" name="mname" placeholder="Enter middle name" required="" value= "<?php echo $row['users_middlename'];?>">
+                            <input type="text" id="mname" name="mname" placeholder="Enter middle name" value= "<?php echo $row['users_middlename'];?>">
                         </div>
                         </div>
                         <div class="row">

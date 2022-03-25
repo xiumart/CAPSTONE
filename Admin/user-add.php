@@ -316,7 +316,7 @@ include("session.php");
 							<label for="mname">Middle Name</label>
 						</div>
 						<div class="col-75">
-							<input type="text" id="mname" name="mname" placeholder="Enter middle name" required="" autocomplete="off">
+							<input type="text" id="mname" name="mname" placeholder="Enter middle name"  autocomplete="off">
 						</div>
 						</div>
 						<div class="row">
