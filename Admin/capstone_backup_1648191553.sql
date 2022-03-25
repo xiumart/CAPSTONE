@@ -1135,6 +1135,58 @@ INSERT INTO supplier VALUES("5","EA ","Gahopo  ","09075647938","raymart.gahopo@g
 
 
 
+CREATE TABLE `tbl_contact` (
+  `id` int(11) NOT NULL,
+  `first_name` varchar(255) NOT NULL,
+  `last_name` varchar(255) NOT NULL,
+  `address` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `phone` varchar(20) NOT NULL,
+  `date_of_birth` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+INSERT INTO tbl_contact VALUES("1","Peter","Parker","Queens","peter@parker.com","4455664455","1990-04-10");
+INSERT INTO tbl_contact VALUES("2","Barry","Allen","Florida","barry@allen.com","2211335566","1983-02-02");
+INSERT INTO tbl_contact VALUES("3","Bruce","Banner","Newyork","bruce@banner.com","7788995566","1987-04-14");
+INSERT INTO tbl_contact VALUES("4","Bruce","Wayne","Gotham","bruce@wayne.com","8877887744","1991-11-15");
+INSERT INTO tbl_contact VALUES("5","Harvy","Dent","Newyork","harvy@dent.com","9988774445","1990-10-01");
+INSERT INTO tbl_contact VALUES("6","Tony","Stark","Texas","tony@stark.com","8899886655","1984-10-05");
+INSERT INTO tbl_contact VALUES("7","Nick","Fury","Olympia","nick@fury.com","9966554488","1980-01-25");
+INSERT INTO tbl_contact VALUES("8","John","Mclane","orlando","john@maclay.com","7744114411","2000-11-15");
+INSERT INTO tbl_contact VALUES("9","Howard","Roark","Newyork","howard@roark.com","8745554413","2011-11-15");
+INSERT INTO tbl_contact VALUES("10","Peter","Keating","Texas","peter@keating.com","9089094445","2013-11-15");
+INSERT INTO tbl_contact VALUES("11","Dominique","Francon","Gotham","dominique@francon.com","9890124418","2011-01-01");
+INSERT INTO tbl_contact VALUES("12","Ellsworth","Toohey","Texas","ellsworth@toohey.com","7678123331","1990-10-01");
+INSERT INTO tbl_contact VALUES("13","Catherine","Halsey","Olympia","catherine@halsey.com","8990453211","1990-02-02");
+INSERT INTO tbl_contact VALUES("1","Peter","Parker","Queens","peter@parker.com","4455664455","1990-04-10");
+INSERT INTO tbl_contact VALUES("2","Barry","Allen","Florida","barry@allen.com","2211335566","1983-02-02");
+INSERT INTO tbl_contact VALUES("3","Bruce","Banner","Newyork","bruce@banner.com","7788995566","1987-04-14");
+INSERT INTO tbl_contact VALUES("4","Bruce","Wayne","Gotham","bruce@wayne.com","8877887744","1991-11-15");
+INSERT INTO tbl_contact VALUES("5","Harvy","Dent","Newyork","harvy@dent.com","9988774445","1990-10-01");
+INSERT INTO tbl_contact VALUES("6","Tony","Stark","Texas","tony@stark.com","8899886655","1984-10-05");
+INSERT INTO tbl_contact VALUES("7","Nick","Fury","Olympia","nick@fury.com","9966554488","1980-01-25");
+INSERT INTO tbl_contact VALUES("8","John","Mclane","orlando","john@maclay.com","7744114411","2000-11-15");
+INSERT INTO tbl_contact VALUES("9","Howard","Roark","Newyork","howard@roark.com","8745554413","2011-11-15");
+INSERT INTO tbl_contact VALUES("10","Peter","Keating","Texas","peter@keating.com","9089094445","2013-11-15");
+INSERT INTO tbl_contact VALUES("11","Dominique","Francon","Gotham","dominique@francon.com","9890124418","2011-01-01");
+INSERT INTO tbl_contact VALUES("12","Ellsworth","Toohey","Texas","ellsworth@toohey.com","7678123331","1990-10-01");
+INSERT INTO tbl_contact VALUES("13","Catherine","Halsey","Olympia","catherine@halsey.com","8990453211","1990-02-02");
+INSERT INTO tbl_contact VALUES("1","Peter","Parker","Queens","peter@parker.com","4455664455","1990-04-10");
+INSERT INTO tbl_contact VALUES("2","Barry","Allen","Florida","barry@allen.com","2211335566","1983-02-02");
+INSERT INTO tbl_contact VALUES("3","Bruce","Banner","Newyork","bruce@banner.com","7788995566","1987-04-14");
+INSERT INTO tbl_contact VALUES("4","Bruce","Wayne","Gotham","bruce@wayne.com","8877887744","1991-11-15");
+INSERT INTO tbl_contact VALUES("5","Harvy","Dent","Newyork","harvy@dent.com","9988774445","1990-10-01");
+INSERT INTO tbl_contact VALUES("6","Tony","Stark","Texas","tony@stark.com","8899886655","1984-10-05");
+INSERT INTO tbl_contact VALUES("7","Nick","Fury","Olympia","nick@fury.com","9966554488","1980-01-25");
+INSERT INTO tbl_contact VALUES("8","John","Mclane","orlando","john@maclay.com","7744114411","2000-11-15");
+INSERT INTO tbl_contact VALUES("9","Howard","Roark","Newyork","howard@roark.com","8745554413","2011-11-15");
+INSERT INTO tbl_contact VALUES("10","Peter","Keating","Texas","peter@keating.com","9089094445","2013-11-15");
+INSERT INTO tbl_contact VALUES("11","Dominique","Francon","Gotham","dominique@francon.com","9890124418","2011-01-01");
+INSERT INTO tbl_contact VALUES("12","Ellsworth","Toohey","Texas","ellsworth@toohey.com","7678123331","1990-10-01");
+INSERT INTO tbl_contact VALUES("13","Catherine","Halsey","Olympia","catherine@halsey.com","8990453211","1990-02-02");
+
+
+
 CREATE TABLE `users_account` (
   `users_id` int(11) NOT NULL AUTO_INCREMENT,
   `users_username` varchar(255) NOT NULL,
@@ -1163,7 +1215,7 @@ CREATE TABLE `users_logs` (
   `logs_datentime` datetime NOT NULL,
   `logs_roles` varchar(255) NOT NULL,
   PRIMARY KEY (`logs_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
 
 INSERT INTO users_logs VALUES("1","admin123","Login","2022-03-14 03:13:42","Doctor");
 INSERT INTO users_logs VALUES("2","admin123","Login","2022-03-14 03:13:57","Doctor");
@@ -1178,4 +1230,9 @@ INSERT INTO users_logs VALUES("10","robert123","Logout","2022-03-24 12:29:47","D
 INSERT INTO users_logs VALUES("11","jona123","Login","2022-03-24 12:31:06","Sales Staff");
 INSERT INTO users_logs VALUES("12","jona123","Logout","2022-03-24 01:00:16","Sales Staff");
 INSERT INTO users_logs VALUES("13","jona123","Login","2022-03-24 01:01:18","Sales Staff");
+INSERT INTO users_logs VALUES("14","raymart123","Login","2022-03-25 08:43:05","Admin");
+INSERT INTO users_logs VALUES("15","jona123","Login","2022-03-25 08:45:46","Sales Staff");
+INSERT INTO users_logs VALUES("16","jona123","Logout","2022-03-25 08:47:05","Sales Staff");
+INSERT INTO users_logs VALUES("17","raymart123","Login","2022-03-25 08:47:19","Admin");
+INSERT INTO users_logs VALUES("18","raymart123","Login","2022-03-25 10:32:50","Admin");
 
