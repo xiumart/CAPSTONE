@@ -127,7 +127,7 @@ $user=$_SESSION['login_user'];
               <li>
                 <a href="users-appointment.php" style="color:#1545CB;">
                   <i class="fa fa-calendar"></i>
-                  <h5>Appoinments</h5>
+                  <h5>Appointments</h5>
                   
                 </a>
               </li>

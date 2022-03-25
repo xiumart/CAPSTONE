@@ -385,6 +385,7 @@ if (isset($_REQUEST['btnsubmit'])) {
                         </div>
                         <div class="col-75">
                             <select id="position" name="position">
+                            <option value="Admin">Admin</option>
                             <option value="Doctor">Doctor</option>
                             <option value="Sales Staff">Sales Staff</option>
                             <option value="Inventory Clerk">Inventory Clerk</option>

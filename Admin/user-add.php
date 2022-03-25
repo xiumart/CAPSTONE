@@ -141,7 +141,6 @@ include("session.php");
 			$users_id=$_GET['id'];
 			$query = "UPDATE `client_inquiries` SET inquiries_status = '1'  WHERE inquiries_id = '$users_id'";
 			mysqli_query($conn, $query);
-			header( "refresh:0; url=dashboard.php" );
 			}
 			?>
 			
@@ -349,7 +348,7 @@ include("session.php");
 						</div>
 						<div class="col-75">
 							<select id="position" name="position">
-							<option value="Admin" hidden></option>
+							<option value="Admin">Admin</option>
 							<option value="Doctor">Doctor</option>
 							<option value="Sales Staff">Sales Staff</option>
       						<option value="Inventory Clerk">Inventory Clerk</option>

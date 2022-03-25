@@ -178,16 +178,16 @@ $user=$_SESSION['login_user'];
       <div class="map-content-9">
                     <form action="appointmenthandler.php" method="post">
                         <div class="twice">
-                             <h3 style="text-transform:uppercase;">Appointment User : <input type="text" name="AppUser" value="<?php echo $call;?>" id="w3lSubject" readonly style="border:none;width:500px;font-weight:bold;"></h3><br>
+                             <h3 style="text-transform:uppercase;">Appointment User : <input type="text" name="AppUser" value="<?php echo $call;?>" id="w3lSubject" style="border:none;width:500px;font-weight:bold;"></h3><br>
                              <h3>Name</h3>
                             <input type="text " class="form-control" name="Name" id="w3lSubject"
                                  required="">
                              <h3>Contact No.</h3>
                             <input type="tel" class="form-control" maxlength="11" pattern="[0-9]{4}[0-9]{3}[0-9]{4}" name="Contact" id="w3lSubject"
-                                 autocomplete="off" required="" value= "<?php echo $row['client_contact'];?>" readonly>
+                                 autocomplete="off" required="" value= "<?php echo $row['client_contact'];?>" >
                                 <h3>Email</h3>
                             <input type="email" class="form-control" name="Email" autocomplete="off" id="w3lSubject"
-                                 required="" value= "<?php echo $row['client_email'];?>" readonly>
+                                 required="" value= "<?php echo $row['client_email'];?>">
                                 <h3>Purpose</h3>
                             <select class="form-control" name="Purpose" id="w3lSubject"
                                 placeholder="Subject" required="" style="width: 40%; padding: 10px; border-radius: 8px; font-size: 16px;">
@@ -204,9 +204,24 @@ $user=$_SESSION['login_user'];
                                 
                                   <input type="date" class="form-control" name="Date" id="w3lSender" placeholder="Date" required="1" min="<?= date('Y-m-d'); ?>" step="1" style="width:300px;margin-bottom:20px;">
                                     <select id="w3lSender" class="form-control" name="Time" required="1" style="width: 300px; padding: 10px; border-radius: 8px; font-size: 16px;">
-                                      <option value="8:00 AM to 12:00 NN">8:00 AM to 12:00 NN</option>
-                                      <option value="1:00 PM to 5:00 PM">1:00 PM to 5:00 PM</option>
+                                      <option value="08:00 AM">08:00 AM</option>
+                                      <option value="08:30 AM">08:30 AM</option>
+                                      <option value="09:00 AM">09:00 AM</option>
+                                      <option value="09:30 AM">09:30 AM</option>
+                                      <option value="10:00 AM">10:00 AM</option>
+                                      <option value="10:30 AM">10:30 AM</option>
+                                      <option value="11:00 AM">11:00 AM</option>
+                                      <option value="11:30 AM">11:30 AM</option>
+                                      <option value="01:00 PM">01:00 PM</option>
+                                      <option value="01:30 PM">01:30 PM</option>
+                                      <option value="02:00 PM">02:00 PM</option>
+                                      <option value="02:30 PM">02:30 PM</option>
+                                      <option value="03:00 PM">03:00 PM</option>
                                     </select>
+                                    <div>
+                                      <h1>Available Time</h1>
+                                      <p></p>
+                                    </div>
                             <input type ="hidden" class ="form-control" name='App_User' value='<?php echo $call; ?>'>
                               
                         

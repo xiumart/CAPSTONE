@@ -2,6 +2,8 @@
 error_reporting(0);
 include("../conn.php");
 include("session.php");
+include "logs_conn.php";
+date_default_timezone_set('Asia/Manila');
 if (isset($_POST['btncancel'])) {
 			header("Location: product.php");
 		}
@@ -38,8 +40,10 @@ if($picture_type=="image/jpeg" || $picture_type=="image/jpg" || $picture_type=="
 			//save to database
 			//$user_id = random_num(20);
 			$query = "UPDATE `product` SET `brand`='$brandname',`model`='$model',`category`='$category',`dateofarrival`='$dateofarrival',`expdate`='$expirationdate',`sellingprice`='$sellingprice',`origprice`='$originalprice',`profit`='$profit',`supplier`='$supplier',`qty`='$qty',`image`='$pic_name',`remarks`='$remarks'WHERE `pro_id`='$pro_id1'";
+			users_logs($_SESSION['users_username'], "Updated Product", date("Y-m-d h:i:sa"), $_SESSION['users_roles']);
 			mysqli_query($conn, $query);
-
+			echo "<script>alert('You have successfully updated the record.');</script>";
+			echo "<script>document.location='product.php';</script>";
 			header("Location: product.php");
 			die;
 		
@@ -47,8 +51,10 @@ if($picture_type=="image/jpeg" || $picture_type=="image/jpg" || $picture_type=="
 else{
 	$pic_name=$_POST['hidpic'];
 	$query = "UPDATE `product` SET `brand`='$brandname',`model`='$model',`category`='$category',`dateofarrival`='$dateofarrival',`expdate`='$expirationdate',`sellingprice`='$sellingprice',`origprice`='$originalprice',`profit`='$profit',`supplier`='$supplier',`qty`='$qty',`image`='$pic_name',`remarks`='$remarks'WHERE `pro_id`='$pro_id1'";
+			users_logs($_SESSION['users_username'], "Updated Product", date("Y-m-d h:i:sa"), $_SESSION['users_roles']);
 			mysqli_query($conn, $query);
-
+			echo "<script>alert('You have successfully updated the record.');</script>";
+			echo "<script>document.location='product.php';</script>";
 			header("Location: product.php");
 			die;
 }
@@ -254,7 +260,6 @@ else{
 			$users_id=$_GET['id'];
 			$query = "UPDATE `client_inquiries` SET inquiries_status = '1'  WHERE inquiries_id = '$users_id'";
 			mysqli_query($conn, $query);
-			header( "refresh:0; url=dashboard.php" );
 			}
 			?>
 			

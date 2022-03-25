@@ -2,10 +2,15 @@
 error_reporting(0);
 include("../conn.php");
 include("session.php");
+include "logs_conn.php";
+date_default_timezone_set('Asia/Manila');
 if (isset($_GET['id'])) {
 	$pro_id1=$_GET['id'];
 	$query = "DELETE FROM `product` WHERE pro_id='$pro_id1'";
+	users_logs($_SESSION['users_username'], "Remove Product", date("Y-m-d h:i:sa"), $_SESSION['users_roles']);
 			mysqli_query($conn, $query);
+			echo "<script>alert('You have successfully remove the record.');</script>";
+			echo "<script>document.location='product.php';</script>";
 }
 ?>
 <!DOCTYPE html>
@@ -160,7 +165,6 @@ if (isset($_GET['id'])) {
 			$users_id=$_GET['id'];
 			$query = "UPDATE `client_inquiries` SET inquiries_status = '1'  WHERE inquiries_id = '$users_id'";
 			mysqli_query($conn, $query);
-			header( "refresh:0; url=dashboard.php" );
 			}
 			?>
 			
@@ -278,7 +282,7 @@ if (isset($_GET['id'])) {
 			  	<td data-label="Selling"><?php echo $row['sellingprice'];?></td>
 			  	<td data-label="Expire"><?php echo $row['expdate'];?></td>
 			  	<td data-label="Qty" id="qq"><?php echo $row['qty'];?></td>
-			  	<td data-label="Action"><a href="product-update.php?id=<?php echo $row['pro_id'];?>"><button class="btn-upd">Update</button></a><a href="?id=<?php echo $row['pro_id'];?>"><button class="btn-rem" name="btnremove">Remove</button></a></td>
+			  	<td data-label="Action"><a href="product-update.php?id=<?php echo $row['pro_id'];?>"><button class="btn-upd">Update</button></a><a href="?id=<?php echo $row['pro_id'];?>"><button class="btn-rem" name="btnremove" onclick="return confirm('Are you sure you want to remove this product?)">Remove</button></a></td>
      	  </tr>
     
      	 <?php

@@ -1,7 +1,8 @@
 <?php
 include("../conn.php");
 include("session.php");
-
+include "logs_conn.php";
+date_default_timezone_set('Asia/Manila');
 $eid= $_GET['id'];
 
 if (isset($_REQUEST['btnsubmit'])) {
@@ -23,7 +24,7 @@ if (isset($_REQUEST['btnsubmit'])) {
 				WHERE `supp_id` = '$eid'");
         
 			if($sql){
-	
+				users_logs($_SESSION['users_username'], "Updated Supplier", date("Y-m-d h:i:sa"), $_SESSION['users_roles']);
 				echo "<script>alert('You have successfully updated the record.');</script>";
 				echo "<script>document.location='supplier.php';</script>";
 				
@@ -160,11 +161,35 @@ if (isset($_REQUEST['btnsubmit'])) {
 			<div class="dropdown2">
 			<a href="#" class="notification">
 				<i class='bx bxs-bell' ></i>
-				<span class="num">8</span>
+				<span class="num">
+				<?php 
+				$query = mysqli_query($conn, "SELECT COUNT(*) as total from client_inquiries WHERE inquiries_status = '2'");
+					while($result=mysqli_fetch_array($query)){
+					echo $result['total']; 
+				}			
+				?>
+						  </span>			  
 			</a>
+			<?php
+
+			if (isset($_GET['id'])) {
+			$users_id=$_GET['id'];
+			$query = "UPDATE `client_inquiries` SET inquiries_status = '1'  WHERE inquiries_id = '$users_id'";
+			mysqli_query($conn, $query);
+			}
+			?>
+			
 				<div class="dropdown-content2">
 					<h4 id="textnotif">Notification</h4><br><hr>
-					<a href="#" id="" style="color:black;"><h6>Inquiry:</h6> How can i set an appointment?</a><hr color="wheat">
+					<?php   
+			   require_once("../db/notification/notifdisplay.php");
+              while($row = mysqli_fetch_assoc($query)){
+				  
+            ?>
+					<h4>Inquiry:</h4><p><?php echo $row['inquiries_message']; ?></p><a href="?id=<?php echo $row['inquiries_id'];?>"><button class="btn-remove" name="btnremove" style="cursor: pointer;">Clear</button></a><hr color="wheat">
+					<?php
+			  }
+			  ?>
 					<a href="see-all-notification.php" id="colnotif">See all notification..</a>
 				</div>
 			</div>

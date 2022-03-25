@@ -187,7 +187,6 @@ $result1 = $conn->query($query);
 			$users_id=$_GET['id'];
 			$query = "UPDATE `client_inquiries` SET inquiries_status = '1'  WHERE inquiries_id = '$users_id'";
 			mysqli_query($conn, $query);
-			header( "refresh:0; url=dashboard.php" );
 			}
 			?>
 			
@@ -267,7 +266,7 @@ if($picture_type=="image/jpeg" || $picture_type=="image/jpg" || $picture_type=="
 	
 			//save to database
 			//$user_id = random_num(20);
-			$query = "insert into product (brand,model,category,dateofarrival,expdate,sellingprice,origprice,profit,supplier,qty,image,remarks) values ('$brandname','$model','$category','$dateofarrival','$expirationdate','$sellingprice','$originalprice','$profit','$supplier','$qty','$pic_name','$remarks')";
+			$query = "INSERT INTO product (brand,model,category,dateofarrival,expdate,sellingprice,origprice,profit,supplier,qty,image,remarks) values ('$brandname','$model','$category','$dateofarrival','$expirationdate','$sellingprice','$originalprice','$profit','$supplier','$qty','$pic_name','$remarks')";
 			mysqli_query($conn, $query);
 
 			header("Location: product.php");
