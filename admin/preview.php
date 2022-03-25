@@ -150,7 +150,7 @@ $finalcode='RS-'.createRandomPassword();
 				?>
 				</td>
 				<td>
-				<?
+				<?php
 				$dfdf=$row['amount'];
 				echo formatMoney($dfdf, true);
 				?>
