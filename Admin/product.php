@@ -264,7 +264,7 @@ if (isset($_GET['id'])) {
         $search=$_POST['txtsearch'];
      	
      	if (isset($_POST['btnsearch'])) {
-        $sql1 = "SELECT * FROM `product` WHERE `category` LIKE '%$search%' OR `model` LIKE '%$search%' LIMIT $start, $limit";
+        $sql1 = "SELECT * FROM `product` WHERE `category` LIKE '%$search%' OR `model` LIKE '%$search%'";
         $sql2 =$conn->query("SELECT count(pro_id) AS id,`category`,`model` FROM `product` WHERE `category` LIKE '%$search%' OR `model` LIKE '%$search%'");
 
         	}
