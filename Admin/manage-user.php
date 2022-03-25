@@ -10,7 +10,7 @@ if (isset($_GET['id'])) {
 	users_logs($_SESSION['users_username'], "Remove User", date("Y-m-d h:i:sa"), $_SESSION['users_roles']);
 			mysqli_query($conn, $query);
 			echo "<script>alert('You have successfully remove the record.');</script>";
-			echo "<script>document.location='supplier.php';</script>";
+			echo "<script>document.location='manage-user.php';</script>";
 }
 ?>
 <!DOCTYPE html>
@@ -161,7 +161,6 @@ if (isset($_GET['id'])) {
 			$users_id=$_GET['id'];
 			$query = "UPDATE `client_inquiries` SET inquiries_status = '1'  WHERE inquiries_id = '$users_id'";
 			mysqli_query($conn, $query);
-			header( "refresh:0; url=dashboard.php" );
 			}
 			?>
 			
