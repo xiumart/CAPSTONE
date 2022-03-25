@@ -97,7 +97,7 @@ background-repeat:no-repeat;
 <form action="savesales.php" method="post">
 <div id="ac">
 <center><h4><i class="icon icon-money icon-large"></i> Cash</h4></center><hr>
-<input type="hidden" name="date" value="<?php echo date("m/d/y"); ?>" />
+<input type="hidden" name="date" value="<?php echo date("Y-m-d"); ?>" />
 <input type="hidden" name="invoice" value="<?php echo $_GET['invoice']; ?>" />
 <input type="hidden" name="amount" value="<?php echo $_GET['total']; ?>" />
 <input type="hidden" name="ptype" value="<?php echo $_GET['pt']; ?>" />

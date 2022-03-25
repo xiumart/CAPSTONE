@@ -127,7 +127,7 @@ $finalcode='RS-'.createRandomPassword();
 			</li>
 			<li>
 				<a href="sales-report.php">
-					<i class='bx bxs-chart' ></i>
+					<i class='bx bxs-download' ></i>
 					<span class="text">Sales Report</span>
 				</a>
 			</li>
@@ -153,12 +153,6 @@ $finalcode='RS-'.createRandomPassword();
 				<a href="audit.php">
 					<i class='bx bxs-book' ></i>
 					<span class="text">Audit Logs</span>
-				</a>
-			</li>
-			<li>
-				<a href="archive.php">
-					<i class='bx bxs-download' ></i>
-					<span class="text">Back-up and Restore</span>
 				</a>
 			</li>
 		</ul>
@@ -258,7 +252,7 @@ $finalcode='RS-'.createRandomPassword();
 					<input type="hidden" name="invoice" value="<?php echo $_GET['invoice']; ?>" />
 					<input type="text" class="cust">
 					<input type="number" name="discount" hidden>
-					<input type="hidden" name="date" value="<?php echo date("m/d/y"); ?>" />
+					<input type="hidden" name="date" value="<?php echo date("Y-m-d"); ?>" />
 					<select name="product" id="" class="sel" style="cursor: pointer;" required>
 						<option value="0">Select product...</option>
 						<?php 

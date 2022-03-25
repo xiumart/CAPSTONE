@@ -1,5 +1,10 @@
 <?php
 include("session.php");
+include("../conn.php");
+ if (isset($_GET['id'])) {
+			$users_id=$_GET['id'];
+			$query123 = mysqli_query($conn, "UPDATE `sales` SET type = 'Remove'  WHERE id = '$users_id'");
+			}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -65,7 +70,7 @@ include("session.php");
 			</li>
 			<li class="active">
 				<a href="sales-report.php">
-					<i class='bx bxs-chart' ></i>
+					<i class='bx bxs-download' ></i>
 					<span class="text">Sales Report</span>
 				</a>
 			</li>
@@ -91,12 +96,6 @@ include("session.php");
 				<a href="audit.php">
 					<i class='bx bxs-book' ></i>
 					<span class="text">Audit Logs</span>
-				</a>
-			</li>
-			<li>
-				<a href="archive.php">
-					<i class='bx bxs-download' ></i>
-					<span class="text">Back-up and Restore</span>
 				</a>
 			</li>
 		</ul>
@@ -131,35 +130,11 @@ include("session.php");
 			<div class="dropdown2">
 			<a href="#" class="notification">
 				<i class='bx bxs-bell' ></i>
-				<span class="num">
-				<?php 
-			//	$query = mysqli_query($conn, "SELECT COUNT(*) as total from client_inquiries WHERE inquiries_status = '2'");
-			//		while($result=mysqli_fetch_array($query)){
-	      	//		echo $result['total']; 
-			//	}			
-			//	?>
-						  </span>			  
+				<span class="num">8</span>
 			</a>
-			<?php
-
-			if (isset($_GET['id'])) {
-			$users_id=$_GET['id'];
-			$query = "UPDATE `client_inquiries` SET inquiries_status = '1'  WHERE inquiries_id = '$users_id'";
-			mysqli_query($conn, $query);
-			}
-			?>
-			
 				<div class="dropdown-content2">
 					<h4 id="textnotif">Notification</h4><br><hr>
-					<?php   
-			   require_once("../db/notification/notifdisplay.php");
-              while($row = mysqli_fetch_assoc($query)){
-				  
-            ?>
-					<h4>Inquiry:</h4><p><?php echo $row['inquiries_message']; ?></p><a href="?id=<?php echo $row['inquiries_id'];?>"><button class="btn-remove" name="btnremove" style="cursor: pointer;">Clear</button></a><hr color="wheat">
-					<?php
-			  }
-			  ?>
+					<a href="#" id="" style="color:black;"><h6>Inquiry:</h6> How can i set an appointment?</a><hr color="wheat">
 					<a href="see-all-notification.php" id="colnotif">See all notification..</a>
 				</div>
 			</div>
@@ -214,48 +189,94 @@ include("session.php");
 				<li>
 					
 					<span class="text">
-						<h3><?php 
-							include("../conn.php");
-							$sql="SELECT SUM(TotalAmount) as sum_score FROM sales;";
+						<p>Daily Profit: <?php 
+							$sql="SELECT SUM(amount) as sum_score FROM sales where date = CURRENT_DATE;";
 							$result = mysqli_query($conn,$sql);
-							while ($row = mysqli_fetch_assoc($result)){ echo $row['sum_score'];}
+							while ($row = mysqli_fetch_assoc($result)){ echo '₱'.$row['sum_score'];}
+							
+							mysqli_close($conn);
+						  										
+						  ?></p>
+						   <p>Weekly Profit: <?php 
+						  include("../conn.php");
+
+						  $monday = strtotime("last monday");
+						$monday = date('w', $monday)==date('w') ? $monday+7*86400 : $monday;
+						$sunday = strtotime(date("Y-m-d",$monday)." +6 days");
+						$this_week_sd = date("Y-m-d",$monday);
+						$this_week_ed = date("Y-m-d",$sunday);
+							$sql="SELECT SUM(amount) as sum_score FROM sales where date BETWEEN '$this_week_sd'  AND '$this_week_ed'";
+							$result = mysqli_query($conn,$sql);
+							while ($row = mysqli_fetch_assoc($result)){ echo '₱'.$row['sum_score'];}
+							
+							mysqli_close($conn);
+						  										
+						  ?></p>
+						   <p>Monthly Profit: <?php 
+						  include("../conn.php");
+							$sql="SELECT MONTH(date)AS Month, SUM(amount) AS total FROM sales WHERE MONTH(date) = MONTH(CURRENT_DATE()) GROUP BY MONTH(date), YEAR(date)";
+							$result = mysqli_query($conn,$sql);
+							while ($row = mysqli_fetch_assoc($result)){ echo '₱'.$row['total'];}
+							
+							mysqli_close($conn);
+						  										
+						  ?></p>
+						<h3>Sales Revenue: <?php 
+							include("../conn.php");
+							$sql="SELECT SUM(amount) as sum_score FROM sales;";
+							$result = mysqli_query($conn,$sql);
+							while ($row = mysqli_fetch_assoc($result)){ echo '₱'.$row['sum_score'];}
 							
 							mysqli_close($conn);
 						  										
 						  ?></h3>
-						<p>Sales Revenue</p>
 					</span>
 				</li>
 				
 				<li>
 					
 					<span class="text">
-						<h3><?php include("../conn.php");
-							$sql="SELECT SUM(Profit) as sum_score FROM sales where date = CURRENT_DATE;";
+						  <p>Daily Profit: <?php include("../conn.php");
+							$sql="SELECT SUM(profit) as sum_score FROM sales where date = CURRENT_DATE;";
 							$result = mysqli_query($conn,$sql);
-							while ($row = mysqli_fetch_assoc($result)){ echo $row['sum_score'];}
+							while ($row = mysqli_fetch_assoc($result)){ echo '₱'.$row['sum_score'];}
 							
 							mysqli_close($conn);
 						  										
-						  ?></h3>
-						  <p>Daily Sales</p>
-					</span>
-				</li>
-				
-				
-				<li>
-					
-					<span class="text">
-						<h3><?php 
+						  ?></p>
+						  <p>Weekly Profit: <?php 
+						  include("../conn.php");
+
+						  $monday = strtotime("last monday");
+						$monday = date('w', $monday)==date('w') ? $monday+7*86400 : $monday;
+						$sunday = strtotime(date("Y-m-d",$monday)." +6 days");
+						$this_week_sd = date("Y-m-d",$monday);
+						$this_week_ed = date("Y-m-d",$sunday);
+							$sql="SELECT SUM(profit) as sum_score FROM sales where date BETWEEN '$this_week_sd'  AND '$this_week_ed'";
+							$result = mysqli_query($conn,$sql);
+							while ($row = mysqli_fetch_assoc($result)){ echo '₱'.$row['sum_score'];}
+							
+							mysqli_close($conn);
+						  										
+						  ?></p>
+						  <p>Monthly Profit: <?php 
+						  include("../conn.php");
+							$sql="SELECT MONTH(date)AS Month, SUM(profit) AS total FROM sales WHERE MONTH(date) = MONTH(CURRENT_DATE()) GROUP BY MONTH(date), YEAR(date)";
+							$result = mysqli_query($conn,$sql);
+							while ($row = mysqli_fetch_assoc($result)){ echo '₱'.$row['total'];}
+							
+							mysqli_close($conn);
+						  										
+						  ?></p>
+						  <h3>Total Profit: <?php 
 							include("../conn.php");
-							$sql="SELECT SUM(Profit) as sum_score FROM sales;";
+							$sql="SELECT SUM(profit) as sum_score FROM sales;";
 							$result = mysqli_query($conn,$sql);
-							while ($row = mysqli_fetch_assoc($result)){ echo $row['sum_score'];}
+							while ($row = mysqli_fetch_assoc($result)){ echo '₱'.$row['sum_score'];}
 							
 							mysqli_close($conn);
 						  										
 						  ?></h3>
-						<p>Total Profit</p>
 					</span>
 				</li>
 				
@@ -275,16 +296,14 @@ include("session.php");
      	<tr>
      	 <th>Transac. ID</th>
      	 <th>Date</th>
-     	 <th>Time</th>
      	 <th>Customer Name</th>
-		 <th>Invoice No.</th>
 		 <th>Profit</th>
 		 <th>Total Amount</th>
 		 <th>Action</th>
      	</tr>
      </thead>
      <tbody>
-		 <?php
+     	   <?php
 	 $con=mysqli_connect("localhost","root","","capstone");
     // Check connection
     if (mysqli_connect_errno())
@@ -292,23 +311,22 @@ include("session.php");
       echo "Failed to connect to MySQL: " . mysqli_connect_error();
       }
 
-    $result = mysqli_query($con,"SELECT * FROM sales_report");
+    $result = mysqli_query($con,"SELECT * FROM sales WHERE `type`='cash'");
       
     while($row = mysqli_fetch_array($result))
       {
-      echo "<tr><td>". $row['Transact_ID'] . "</td>";
-      echo "<td>" . $row['Date'] . "</td>";
-      echo "<td>" . $row['Time'] . "</td>";
-      echo "<td>" . $row['Customer Name'] ."</td>";
-      echo "<td>" . $row['Invoice No.'] ."</td>";
-	  echo "<td>" .$row['Profit']."</td>";
-	  echo "<td>" .$row['TotalAmount']."</td>";
-      echo "<td><form method='post' action='?id=".$row["Transact_ID"]."'>"?>
-      <button class="btn-upd" style="cursor: pointer;" onclick="return confirm('Are you sure you want to cancel your appointment?')">Cancel</button></form>
+      echo "<tr><td>". $row['order_no'] . "</td>";
+      echo "<td>" . $row['date'] . "</td>";
+      echo "<td>" . $row['name'] ."</td>";
+	  echo "<td>" .$row['profit']."</td>";
+	  echo "<td>" .$row['amount']."</td>";
+      echo "<td><form method='post' action='?id=".$row["id"]."'>"?>
+      <button class="btn-upd" style="cursor: pointer;" onclick="return confirm('Are you sure you want to cancel your appointment?')">Remove</button></form>
       <?php "</td></tr>";
       }
 
-    mysqli_close($con);
+   
+ 
     ?>
      </tbody>
    </table>

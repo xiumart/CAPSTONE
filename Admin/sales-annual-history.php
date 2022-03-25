@@ -65,7 +65,7 @@ include("session.php");
 			</li>
 			<li class="active">
 				<a href="sales-report.php">
-					<i class='bx bxs-chart' ></i>
+					<i class='bx bxs-download' ></i>
 					<span class="text">Sales Report</span>
 				</a>
 			</li>
@@ -91,12 +91,6 @@ include("session.php");
 				<a href="audit.php">
 					<i class='bx bxs-book' ></i>
 					<span class="text">Audit Logs</span>
-				</a>
-			</li>
-			<li>
-				<a href="archive.php">
-					<i class='bx bxs-download' ></i>
-					<span class="text">Back-up and Restore</span>
 				</a>
 			</li>
 		</ul>
@@ -131,36 +125,11 @@ include("session.php");
 			<div class="dropdown2">
 			<a href="#" class="notification">
 				<i class='bx bxs-bell' ></i>
-				<span class="num">
-				<?php 
-				$query = mysqli_query($conn, "SELECT COUNT(*) as total from client_inquiries WHERE inquiries_status = '2'");
-					while($result=mysqli_fetch_array($query)){
-					echo $result['total']; 
-				}			
-				?>
-						  </span>			  
+				<span class="num">8</span>
 			</a>
-			<?php
-
-			if (isset($_GET['id'])) {
-			$users_id=$_GET['id'];
-			$query = "UPDATE `client_inquiries` SET inquiries_status = '1'  WHERE inquiries_id = '$users_id'";
-			mysqli_query($conn, $query);
-			header( "refresh:0; url=dashboard.php" );
-			}
-			?>
-			
 				<div class="dropdown-content2">
 					<h4 id="textnotif">Notification</h4><br><hr>
-					<?php   
-			   require_once("../db/notification/notifdisplay.php");
-              while($row = mysqli_fetch_assoc($query)){
-				  
-            ?>
-					<h4>Inquiry:</h4><p><?php echo $row['inquiries_message']; ?></p><a href="?id=<?php echo $row['inquiries_id'];?>"><button class="btn-remove" name="btnremove" style="cursor: pointer;">Clear</button></a><hr color="wheat">
-					<?php
-			  }
-			  ?>
+					<a href="#" id="" style="color:black;"><h6>Inquiry:</h6> How can i set an appointment?</a><hr color="wheat">
 					<a href="see-all-notification.php" id="colnotif">See all notification..</a>
 				</div>
 			</div>
@@ -230,7 +199,7 @@ include("session.php");
      	</tr>
      </thead>
      <tbody>
-	 <?php
+     		 <?php
 	 $con=mysqli_connect("localhost","root","","capstone");
     // Check connection
     if (mysqli_connect_errno())
@@ -238,18 +207,21 @@ include("session.php");
       echo "Failed to connect to MySQL: " . mysqli_connect_error();
       }
 
-    $result = mysqli_query($con,"SELECT year(Date) as TotalDate ,SUM(TotalAmount) as sum_total, SUM(Profit) as sum_profit FROM sales_report;");
+     	  
+    $result = mysqli_query($con,"SELECT Year(date)AS Year, SUM(profit) AS profit, SUM(amount) AS amount FROM sales GROUP BY YEAR(date)");
       
     while($row = mysqli_fetch_array($result))
       {
-      echo "<tr><td>". $row['TotalDate'] . "</td>";
-      echo "<td>" . $row['sum_total'] . "</td>";
-      echo "<td>" . $row['sum_profit'] . "</td>";?>
+      echo "<tr><td>". $row['Year'] . "</td>";
+      echo "<td>" . $row['amount'] . "</td>";
+      echo "<td>" . $row['profit'] . "</td>";?>
       <?php echo "</td></tr>";
       }
 
     mysqli_close($con);
     ?>
+
+     	  
      </tbody>
    </table>
    <a href=""><button class="btn-print" style="cursor: pointer;"><i class='bx bxs-printer' ></i> Print </button></a>
