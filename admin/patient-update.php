@@ -280,6 +280,14 @@ else{
 				</a>
 			</li>
 		</ul>
+		<ul class="side-menu">
+			<li>
+				<a href="logout.php" class="logout">
+					<i class='bx bxs-log-out-circle' ></i>
+					<span class="text">Logout</span>
+				</a>
+			</li>
+		</ul>
 	</section>
 	<!-- SIDEBAR -->
 
@@ -297,9 +305,9 @@ else{
 				</div>
 			</form>
 			<div id="digital-clock"></div>
-			<input type="checkbox" id="switch-mode" hidden>
+			
 			<script src="time.js"></script>
-			<label for="switch-mode" class="switch-mode"></label>
+			
 			<div class="dropdown2">
 			<a href="#" class="notification">
 				<i class='bx bxs-bell' ></i>

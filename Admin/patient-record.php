@@ -119,6 +119,14 @@ users_logs($_SESSION['users_username'], "Remove Patient", date("Y-m-d h:i:sa"), 
 				</a>
 			</li>
 		</ul>
+		<ul class="side-menu">
+			<li>
+				<a href="logout.php" class="logout">
+					<i class='bx bxs-log-out-circle' ></i>
+					<span class="text">Logout</span>
+				</a>
+			</li>
+		</ul>
 	</section>
 	<!-- SIDEBAR -->
 
@@ -137,7 +145,7 @@ users_logs($_SESSION['users_username'], "Remove Patient", date("Y-m-d h:i:sa"), 
 			</form>
 			<div id="digital-clock"></div>
 			<script src="time.js"></script>
-			<input type="checkbox" id="switch-mode" hidden>
+		
 			<div class="dropdown2">
 			<a href="#" class="notification">
 				<i class='bx bxs-bell' ></i>

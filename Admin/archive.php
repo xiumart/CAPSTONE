@@ -121,6 +121,14 @@ include("session.php");
 				</a>
 			</li>
 		</ul>
+		<ul class="side-menu">
+			<li>
+				<a href="logout.php" class="logout">
+					<i class='bx bxs-log-out-circle' ></i>
+					<span class="text">Logout</span>
+				</a>
+			</li>
+		</ul>
 	</section>
 	<!-- SIDEBAR -->
 
@@ -139,8 +147,8 @@ include("session.php");
 			</form>
 			<div id="digital-clock"></div>
 			<script src="time.js"></script>
-			<input type="checkbox" id="switch-mode" hidden>
-			<label for="switch-mode" class="switch-mode"></label>
+		
+			
 			<div class="dropdown2">
 			<a href="#" class="notification">
 				<i class='bx bxs-bell' ></i>
@@ -210,7 +218,7 @@ include("session.php");
 		<main>
 			<div class="head-title">
 				<div class="left">
-					<h1>Archive and Backup</h1>
+					<h1>Back-up and Restore</h1>
 					<ul class="breadcrumb">
 						<li>
 							<a href="archive.php">Archive</a>
@@ -225,21 +233,44 @@ include("session.php");
 			</div>
 		
 			
-			<div class="table-data">
+			<div>
 				
-				<div class="order">
-					<table class="table">
+				<div>
+					<table>
 						<thead>
 							<tr>
-							<th>Backup</th>
+							<th></th>
 							<th>Action</th>
 							</tr>
 						</thead>
 						<tbody>
 							<tr>
-								<td><image src="../assets/images/favpng_database-icon.png"></td>
-								<td><a href="dlsql.php"><button type="button" class="btn-t" style="cursor: pointer;">Download Database</button></a></td>
-													
+								<td>Export database</td>
+								<td><a href="dlsql.php"><button type="button" class="btn-action" style="cursor: pointer;">Download Database</button></a></td>					
+							</tr>
+							<tr>
+							<td>Import database</td>
+							<td><?php
+if (! empty($response)) {
+    ?>
+<div class="response <?php echo $response["type"]; ?>">
+<?php echo nl2br($response["message"]); ?>
+</div>
+<?php
+}
+?>
+    <form method="post" action="" enctype="multipart/form-data"
+        id="frm-restore">
+        <div class="form-row">
+
+            
+                <input type="file" name="backup_file" class="input-file" />
+            
+        
+            <input type="submit" name="restore" value="Restore"
+                class="btn-action" />
+        </div>
+    </form></td>
 							</tr>
 						</tbody>
 
@@ -263,19 +294,14 @@ include("session.php");
 <style>
 
 
-#frm-restore {
-	background: #9dd1d4;
-	padding: 20px;
-	border-radius: 2px;
-	border: #a3d7e0 1px solid;
-}
+
 
 .form-row {
 	margin-bottom: 20px;
 }
 
 .input-file {
-	background: #9dd1d4;
+
 	padding: 10px;
 	margin-top: 5px;
 	border-radius: 2px;
@@ -305,34 +331,9 @@ include("session.php");
     border: #bee2d6 1px solid;
 }
 </style>
-</head>
-<body>
-    <h2>Import Data in Database</h2>
-<?php
-if (! empty($response)) {
-    ?>
-<div class="response <?php echo $response["type"]; ?>">
-<?php echo nl2br($response["message"]); ?>
-</div>
-<?php
-}
-?>
-    <form method="post" action="" enctype="multipart/form-data"
-        id="frm-restore">
-        <div class="form-row">
-            <div>Choose Backup File</div>
-            <div>
-                <input type="file" name="backup_file" class="input-file" />
-            </div>
-        </div>
-        <div>
-            <input type="submit" name="restore" value="Restore"
-                class="btn-action" />
-        </div>
-    </form>
-				<div><br><br>
-				
-			</div>
+
+
+ 
 
 		
 		</main>
@@ -405,4 +406,88 @@ function restoreMysqlDB($filePath, $conn)
 ?>
 	<script src="script.js"></script>
 </body>
+<style>
+table {
+  border: 1px solid #ccc;
+  border-collapse: collapse;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  table-layout: fixed;
+}
+
+table caption {
+  font-size: 1.5em;
+  background-color: #00c2cb;
+  margin-top:50px;	
+}
+
+table tr {
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+  padding: .35em;
+}
+
+table th,
+table td {
+  padding: .625em;
+  text-align: center;
+}
+
+table th {
+  font-size: .85em;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  background-color: #9dd1d4;
+}
+
+@media screen and (max-width: 600px) {
+  table {
+    border: 0;
+  }
+
+  table caption {
+    font-size: 1.3em;
+  }
+  
+  table thead {
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+  
+  table tr {
+    border-bottom: 3px solid #ddd;
+    display: block;
+    margin-bottom: .625em;
+  }
+  
+  table td {
+    border-bottom: 1px solid #ddd;
+    display: block;
+    font-size: .8em;
+    text-align: right;
+  }
+  
+  table td::before {
+    /*
+    * aria-label has no advantage, it won't be read inside a table
+    content: attr(aria-label);
+    */
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  
+  table td:last-child {
+    border-bottom: 0;
+  }
+}</style>
+</style>
 </html>
