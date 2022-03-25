@@ -1,7 +1,112 @@
-<?php 
-  include('conn.php');
+<?php
+include('conn.php');
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
 
+
+if(isset($_POST["email"]) && (!empty($_POST["email"]))){
+$email = $_POST["email"];
+$email = filter_var($email, FILTER_SANITIZE_EMAIL);
+$email = filter_var($email, FILTER_VALIDATE_EMAIL);
+$error = "";
+
+if (!$email) {
+   $error ="Invalid email address please type a valid email address!";
+   echo "<script>alert('$error')</script>";
+   }else{
+
+   $sel_query = "SELECT * FROM client_user_info WHERE client_email='".$email."'";
+   $results = mysqli_query($conn, $sel_query);
+   $row = mysqli_num_rows($results);
+
+   
+
+
+   if ($row=="0"){
+   $error = "No user is registered with this email address!";
+   echo "<script>alert('$error')</script>";
+   }
+ }
+  
+
+  
+   if($error!=""){
+   echo "<div class='error'>".$error."";
+   }else{
+   $expFormat = mktime(
+   date("H"), date("i"), date("s"), date("m") ,date("d")+1, date("Y")
+   );
+   $expDate = date("Y-m-d H:i:s",$expFormat);
+   $key = md5(2418*2+(int)$email);
+   $addKey = substr(md5(uniqid(rand(),1)),3,10);
+   $key = $key . $addKey;
+// Insert Temp Table
+   mysqli_query($conn,
+"INSERT INTO `password_reset_temp` (`email`, `key`, `expDate`)
+VALUES ('".$email."', '".$key."', '".$expDate."');");
+ 
+$output='<p>Dear user,</p>';
+$output.='<p>Please click on the following link to reset your password.</p>';
+$output.='<p>-------------------------------------------------------------</p>';
+$output.='<p><a href="localhost/CAPSTONE/change_password.php?
+key='.$key.'&email='.$email.'&action=reset" target="_blank">
+localhost/CAPSTONE/change_password.php
+?key='.$key.'&email='.$email.'&action=reset</a></p>'; 
+$output.='<p>-------------------------------------------------------------</p>';
+$output.='<p>Please be sure to copy the entire link into your browser.
+The link will expire after 1 day for security reason.</p>';
+$output.='<p>If you did not request this forgotten password email, no action 
+is needed, your password will not be reset. However, you may want to log into 
+your account and change your security password as someone may have guessed it.</p>';   
+$output.='<p>Thanks,</p>';
+$output.='<p>RNL Care Team</p>';
+$body = $output; 
+$subject = "Password Recovery - RNL Vision Care";
+ 
+$email_to = $email;
+
+
+
+require 'PHPMailer/src/PHPMailer.php';
+require 'PHPMailer/src/SMTP.php';
+require 'PHPMailer/src/Exception.php';
+$mail = new PHPMailer();;
+$mail->Host = "tls://smtp.gmail.com";
+$mail->isSMTP();
+//$mail->SMTPDebug = 1;
+$mail->SMTPAuth = true;
+$mail->Username = "rnlvisioncare@gmail.com";
+$mail->Password = "RNLVISIONCARE";
+$mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;;
+$mail->Port = 587;
+$mail->IsHTML(true);
+$mail->Subject = $subject;
+$mail->Body = $body;
+$mail->From='rnlvisioncare@gmaiil.com';
+$mail->FromName='RNL Vision Care Team';
+
+
+
+
+
+$mail->AddAddress($email_to);
+if(!$mail->Send()){
+echo "Mailer Error: " . $mail->ErrorInfo;
+}else{
+  $error = "An email has been sent to you with instructions on how to reset your password.";
+  echo "<script>alert('$error')</script>";
+ }
+   }
+}else{
+  
 ?>
+
+
+
+
+<?php
+} ?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -87,10 +192,9 @@
 <section class="w3l-breadcrumb">
     <div class="breadcrumb-bg breadcrumb-bg-about py-5">
         <div class="container pt-lg-5 pt-3 p-lg-4 pb-3">
-            <h2 class="title mt-5 pt-lg-5 pt-sm-3">Forgot Password</h2>
+            
             <ul class="breadcrumbs-custom-path pb-sm-5 pb-4 mt-2 text-center mb-5">
-                <li><a href="index.php">Home</a></li>
-                <li class="active"> / Forgot Password </li>
+               
             </ul>
         </div>
     </div>
@@ -105,30 +209,38 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-4 col-md-6 col-sm-12">
-            <section class="step-wizard">
-                <ul class="step-wizard-list">
-                    <li class="step-wizard-item">
-                        <span class="progress-count">1</span>
-                        <span class="progress-label">Enter your Email</span>
-                    </li>
-                    <li class="step-wizard-item current-item">
-                        <span class="progress-count">2</span>
-                        <span class="progress-label">Change your password</span>
-                    </li>
-                    <li class="step-wizard-item">
-                        <span class="progress-count">3</span>
-                        <span class="progress-label">Login</span>
-                    </li>
-                    <li class="step-wizard-item">
-                        <span class="progress-count">4</span>
-                        <span class="progress-label">Success</span>
-                    </li>
-                </ul>
-            </section>
+         
             </div>
             <div class="col-lg-4 col-md-6 col-sm-12 mt-md-0 mt-4">
-               
+            <h5>ENTER YOU EMAIL</h5>
+            <p></p>
+            <form action="#" method="post" name="reset">
+            <input type="email" name="email" placeholder="username@email.com" />
+            <button type="submit" value="Reset Password"/>Send</button>
+            </form>
             </div>
+            <style>
+              h5 {
+                margin:5px;
+                margin-top:70px;
+              }
+              input[type="email"] {
+                border:1px solid #00c2cb;
+                padding:2px;
+                margin:5px;
+                width:100%;
+              }
+              button {
+                width:100%;
+                padding:2px;
+                margin:5px;
+                background-color: #00c2cb;
+                color: white;
+              }
+              p {
+                margin:5px;
+              }
+            </style>
             <div class="col-lg-4 col-md-6 col-sm-12 mt-lg-0 mt-4">
                
             </div>

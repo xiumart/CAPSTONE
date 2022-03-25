@@ -5,8 +5,9 @@ include("session.php");
 if (isset($_GET['id'])) {
 	$supp_id=$_GET['id'];
 	$query = "DELETE FROM `supplier` WHERE supp_id='$supp_id'";
-	users_logs($_SESSION['users_username'], "Deleted Supplier", date("Y-m-d h:i:sa"), $_SESSION['users_roles']);
 			mysqli_query($conn, $query);
+			echo "<script>alert('You have successfully remove the record.');</script>";
+			echo "<script>document.location='supplier.php';</script>";
 }
 ?>
 <!DOCTYPE html>

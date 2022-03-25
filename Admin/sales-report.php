@@ -211,7 +211,7 @@ include("session.php");
 					<span class="text">
 						<h3><?php 
 							include("../conn.php");
-							$sql="SELECT SUM(TotalAmount) as sum_score FROM sales_report;";
+							$sql="SELECT SUM(TotalAmount) as sum_score FROM sales;";
 							$result = mysqli_query($conn,$sql);
 							while ($row = mysqli_fetch_assoc($result)){ echo $row['sum_score'];}
 							
@@ -226,7 +226,7 @@ include("session.php");
 					
 					<span class="text">
 						<h3><?php include("../conn.php");
-							$sql="SELECT SUM(Profit) as sum_score FROM sales_report where date = CURRENT_DATE;";
+							$sql="SELECT SUM(Profit) as sum_score FROM sales where date = CURRENT_DATE;";
 							$result = mysqli_query($conn,$sql);
 							while ($row = mysqli_fetch_assoc($result)){ echo $row['sum_score'];}
 							
@@ -243,7 +243,7 @@ include("session.php");
 					<span class="text">
 						<h3><?php 
 							include("../conn.php");
-							$sql="SELECT SUM(Profit) as sum_score FROM sales_report;";
+							$sql="SELECT SUM(Profit) as sum_score FROM sales;";
 							$result = mysqli_query($conn,$sql);
 							while ($row = mysqli_fetch_assoc($result)){ echo $row['sum_score'];}
 							

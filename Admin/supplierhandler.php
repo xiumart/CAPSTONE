@@ -23,7 +23,7 @@ $description = $_POST['description'];
         $sql = "insert into supplier (supp_cname, supp_contactperson, supp_contact, supp_email, supp_desc) values ('$cname','$lname','$contact','$email','$description')";
           
         if(mysqli_query($con, $sql)){
-            users_logs($_SESSION['users_username'], "Added Supplier", date("Y-m-d h:i:sa"), $_SESSION['users_roles']);
+         
             echo '<script language="javascript">';
 	        echo 'alert("Supplier added successfully!");';
 	        echo 'window.location="supplier.php";';
