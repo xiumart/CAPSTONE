@@ -78,6 +78,12 @@ $result1 = $conn->query($query);
 		margin-top: 0;
 	}
 	}
+	#sidebar .side-menu.top li.active a {
+	color: blue;
+}
+#sidebar .side-menu.top li a:hover {
+	color: blue;
+}
 </style>
 </head>
 <body>
@@ -87,7 +93,7 @@ $result1 = $conn->query($query);
 	<section id="sidebar">
 		<a href="#" class="brand">
 			<img src="images\logo.png" alt="" width="60px;">
-			<span class="text" style="text-shadow:0.5px 0px #000;">RNL Vision Care</span>
+			<span class="text" style="text-shadow:0.5px 0px #000; color: black;">RNL Vision Care</span>
 		</a>
 		<ul class="side-menu top">
 			<li class="active">
@@ -114,10 +120,6 @@ $result1 = $conn->query($query);
 		<nav>
 			<i class='bx bx-menu' ></i>
 			<form action="#">
-				<div class="form-input">
-					<input type="search" placeholder="Search...">
-					<button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
-				</div>
 			</form>
 			<div id="digital-clock"></div>
 			<script src="time.js"></script>

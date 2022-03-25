@@ -1,5 +1,10 @@
 <?php
-include ('../admin/session.php');
+include("../admin/session.php");
+include("../conn.php");
+ if (isset($_GET['id'])) {
+			$users_id=$_GET['id'];
+			$query123 = mysqli_query($conn, "UPDATE `sales` SET type = 'Remove'  WHERE id = '$users_id'");
+			}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -12,7 +17,7 @@ include ('../admin/session.php');
 	<!-- My CSS -->
 	<link rel="stylesheet" href="css\sys_style.css">
 	<link rel="shorcut icon" type="img/png" href="images\logo.png">
-	<title>RNL Vision Care | Sales Staff</title>
+	<title>RNL Vision Care | Admin</title>
 </head>
 <style>
 	button {
@@ -34,6 +39,12 @@ include ('../admin/session.php');
 		float: right;
 		width: 10%;
 	}
+	#sidebar .side-menu.top li.active a {
+	color: blue;
+}
+#sidebar .side-menu.top li a:hover {
+	color: blue;
+}
 </style>
 <body>
 
@@ -42,15 +53,9 @@ include ('../admin/session.php');
 	<section id="sidebar">
 		<a href="sales-report.php" class="brand">
 			<img src="images\logo.png" alt="" width="60px;">
-			<span class="text" style="text-shadow:0.5px 0px #000;">RNL Vision Care</span>
+			<span class="text" style="text-shadow:0.5px 0px #000; color: black;">RNL Vision Care</span>
 		</a>
 		<ul class="side-menu top">
-			<li>
-				<a href="dashboard.php">
-					<i class='bx bxs-dashboard' ></i>
-					<span class="text">Dashboard</span>
-				</a>
-			</li>
 			<li>
 				<a href="point-of-sale.php">
 					<i class='bx bxs-cart' ></i>
@@ -59,16 +64,8 @@ include ('../admin/session.php');
 			</li>
 			<li class="active">
 				<a href="sales-report.php">
-					<i class='bx bxs-download' ></i>
+					<i class='bx bxs-chart' ></i>
 					<span class="text">Sales Report</span>
-				</a>
-			</li>
-		</ul>
-		<ul class="side-menu">
-			<li>
-				<a href="logout.php" class="logout">
-					<i class='bx bxs-log-out-circle' ></i>
-					<span class="text">Logout</span>
 				</a>
 			</li>
 		</ul>
@@ -83,26 +80,10 @@ include ('../admin/session.php');
 		<nav>
 			<i class='bx bx-menu' ></i>
 			<form action="#">
-				<div class="form-input">
-					<input type="search" placeholder="Search...">
-					<button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
-				</div>
+
 			</form>
 			<div id="digital-clock"></div>
 			<script src="time.js"></script>
-			<input type="checkbox" id="switch-mode" hidden>
-			<label for="switch-mode" class="switch-mode"></label>
-			<div class="dropdown2">
-			<a href="#" class="notification">
-				<i class='bx bxs-bell' ></i>
-				<span class="num">8</span>
-			</a>
-				<div class="dropdown-content2">
-					<h4 id="textnotif">Notification</h4><br><hr>
-					<a href="#" id="" style="color:black;"><h6>Inquiry:</h6> How can i set an appointment?</a><hr color="wheat">
-					<a href="see-all-notification.php" id="colnotif">See all notification..</a>
-				</div>
-			</div>
 			<!-- DROP DOWN NG EDIT PROFILE AND CHANGE PASS OK-->
 			<div class="dropdown1">
 			<img src="img\user.png" alt="" width="40px" class="userlogo">
@@ -143,45 +124,152 @@ include ('../admin/session.php');
 						</li>
 						<li><i class='bx bx-chevron-right' ></i></li>
 						<li>
-							<a class="active" href="sales-report.php">Home</a>
+							<a class="active" href="dashboard.php">Home</a>
 						</li>
 					</ul>
 				</div>
+				
 			
 			</div>
-			<div class="table-data">
-				<div class="order">
-					<div class="head">
-						<h3></h3>
-						<i class='bx bx-search' ></i>
-						<i class='bx bx-filter' ></i>
-						
-					</div>
-					<table class="table">
+			<ul class="box-info">
+				<li>
+					
+					<span class="text">
+						<p>Daily Profit: <?php 
+							$sql="SELECT SUM(amount) as sum_score FROM sales where date = CURRENT_DATE;";
+							$result = mysqli_query($conn,$sql);
+							while ($row = mysqli_fetch_assoc($result)){ echo '₱'.$row['sum_score'];}
+							
+							mysqli_close($conn);
+						  										
+						  ?></p>
+						   <p>Weekly Profit: <?php 
+						  include("../conn.php");
+
+						  $monday = strtotime("last monday");
+						$monday = date('w', $monday)==date('w') ? $monday+7*86400 : $monday;
+						$sunday = strtotime(date("Y-m-d",$monday)." +6 days");
+						$this_week_sd = date("Y-m-d",$monday);
+						$this_week_ed = date("Y-m-d",$sunday);
+							$sql="SELECT SUM(amount) as sum_score FROM sales where date BETWEEN '$this_week_sd'  AND '$this_week_ed'";
+							$result = mysqli_query($conn,$sql);
+							while ($row = mysqli_fetch_assoc($result)){ echo '₱'.$row['sum_score'];}
+							
+							mysqli_close($conn);
+						  										
+						  ?></p>
+						   <p>Monthly Profit: <?php 
+						  include("../conn.php");
+							$sql="SELECT MONTH(date)AS Month, SUM(amount) AS total FROM sales WHERE MONTH(date) = MONTH(CURRENT_DATE()) GROUP BY MONTH(date), YEAR(date)";
+							$result = mysqli_query($conn,$sql);
+							while ($row = mysqli_fetch_assoc($result)){ echo '₱'.$row['total'];}
+							
+							mysqli_close($conn);
+						  										
+						  ?></p>
+						<h3>Sales Revenue: <?php 
+							include("../conn.php");
+							$sql="SELECT SUM(amount) as sum_score FROM sales;";
+							$result = mysqli_query($conn,$sql);
+							while ($row = mysqli_fetch_assoc($result)){ echo '₱'.$row['sum_score'];}
+							
+							mysqli_close($conn);
+						  										
+						  ?></h3>
+					</span>
+				</li>
+				
+				<li>
+					
+					<span class="text">
+						  <p>Daily Profit: <?php include("../conn.php");
+							$sql="SELECT SUM(profit) as sum_score FROM sales where date = CURRENT_DATE;";
+							$result = mysqli_query($conn,$sql);
+							while ($row = mysqli_fetch_assoc($result)){ echo '₱'.$row['sum_score'];}
+							
+							mysqli_close($conn);
+						  										
+						  ?></p>
+						  <p>Weekly Profit: <?php 
+						  include("../conn.php");
+
+						  $monday = strtotime("last monday");
+						$monday = date('w', $monday)==date('w') ? $monday+7*86400 : $monday;
+						$sunday = strtotime(date("Y-m-d",$monday)." +6 days");
+						$this_week_sd = date("Y-m-d",$monday);
+						$this_week_ed = date("Y-m-d",$sunday);
+							$sql="SELECT SUM(profit) as sum_score FROM sales where date BETWEEN '$this_week_sd'  AND '$this_week_ed'";
+							$result = mysqli_query($conn,$sql);
+							while ($row = mysqli_fetch_assoc($result)){ echo '₱'.$row['sum_score'];}
+							
+							mysqli_close($conn);
+						  										
+						  ?></p>
+						  <p>Monthly Profit: <?php 
+						  include("../conn.php");
+							$sql="SELECT MONTH(date)AS Month, SUM(profit) AS total FROM sales WHERE MONTH(date) = MONTH(CURRENT_DATE()) GROUP BY MONTH(date), YEAR(date)";
+							$result = mysqli_query($conn,$sql);
+							while ($row = mysqli_fetch_assoc($result)){ echo '₱'.$row['total'];}
+							
+							mysqli_close($conn);
+						  										
+						  ?></p>
+						  <h3>Total Profit: <?php 
+							include("../conn.php");
+							$sql="SELECT SUM(profit) as sum_score FROM sales;";
+							$result = mysqli_query($conn,$sql);
+							while ($row = mysqli_fetch_assoc($result)){ echo '₱'.$row['sum_score'];}
+							
+							mysqli_close($conn);
+						  										
+						  ?></h3>
+					</span>
+				</li>
+				
+			
+			</ul><br>
+			<a href="sales-annual-history.php"><button class="btn-addpt" style="cursor: pointer;"> Annual Sales History</button></a>
+			<div>
+				<div>
+					
+					<table>
+						<caption>Recent Transaction</caption>
      <thead>
      	<tr>
      	 <th>Transac. ID</th>
      	 <th>Date</th>
-     	 <th>Time</th>
      	 <th>Customer Name</th>
-		 <th>Invoice No.</th>
 		 <th>Profit</th>
 		 <th>Total Amount</th>
+		 <th>Action</th>
      	</tr>
      </thead>
      <tbody>
-     	  <tr>
-     	  	  <td data-label="Transacid" class="brandd"><p>T-12445</p></td>
-     	  	  <td data-label="Date">03/10/2022</td>
-			  <td data-label="Time">11:00pm</td>
-     	  	  <td data-label="Customer">Marliardo Umbao</td>
-     	  	  <td data-label="Invoice">OR1231312321</td>
-			  <td data-label="Profit">1500</td>
-			  <td data-label="Total">200</td>
-			  
-     	  </tr>
+     	   <?php
+	 $con=mysqli_connect("localhost","root","","capstone");
+    // Check connection
+    if (mysqli_connect_errno())
+      {
+      echo "Failed to connect to MySQL: " . mysqli_connect_error();
+      }
 
-     	  
+    $result = mysqli_query($con,"SELECT * FROM sales WHERE `type`='cash'");
+      
+    while($row = mysqli_fetch_array($result))
+      {
+      echo "<tr><td data-label='Transac. ID'>". $row['order_no'] . "</td>";
+      echo "<td data-label='Date'>" . $row['date'] . "</td>";
+      echo "<td data-label='Customer name'>" . $row['name'] ."</td>";
+	  echo "<td data-label='Profit'>" .$row['profit']."</td>";
+	  echo "<td data-label='Amount'>" .$row['amount']."</td>";
+      echo "<td data-label='Transac. ID'><form method='post' action='?id=".$row["transaction_id"]."'>"?>
+      <button class="btn-upd" style="cursor: pointer;" onclick="return confirm('Are you sure you want to cancel your appointment?')">Remove</button></form>
+      <?php "</td></tr>";
+      }
+
+   
+ 
+    ?>
      </tbody>
    </table>
    <a href=""><button class="btn-print" style="cursor: pointer;"><i class='bx bxs-printer' ></i> Print </button></a>
@@ -205,4 +293,86 @@ include ('../admin/session.php');
 
 	<script src="script.js"></script>
 </body>
+<style>table {
+  border: 1px solid #ccc;
+  border-collapse: collapse;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  table-layout: fixed;
+}
+
+table caption {
+  font-size: 1.5em;
+  background-color: #00c2cb;
+  margin-top:50px;	
+}
+
+table tr {
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+  padding: .35em;
+}
+
+table th,
+table td {
+  padding: .625em;
+  text-align: center;
+}
+
+table th {
+  font-size: .85em;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  background-color: #9dd1d4;
+}
+
+@media screen and (max-width: 600px) {
+  table {
+    border: 0;
+  }
+
+  table caption {
+    font-size: 1.3em;
+  }
+  
+  table thead {
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+  
+  table tr {
+    border-bottom: 3px solid #ddd;
+    display: block;
+    margin-bottom: .625em;
+  }
+  
+  table td {
+    border-bottom: 1px solid #ddd;
+    display: block;
+    font-size: .8em;
+    text-align: right;
+  }
+  
+  table td::before {
+    /*
+    * aria-label has no advantage, it won't be read inside a table
+    content: attr(aria-label);
+    */
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  
+  table td:last-child {
+    border-bottom: 0;
+  }
+}</style>
 </html>

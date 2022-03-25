@@ -102,7 +102,7 @@ if (isset($_GET['id3'])) {
 	<section id="sidebar">
 		<a href="dashboard.php" class="brand">
 		<img src="images\logo.png" alt="" width="60px;">
-			<span class="text" style="text-shadow:0.5px 0px #000;">RNL Vision Care</span>
+			<span class="text" style="text-shadow:0.5px 0px #000; color: black">RNL Vision Care</span>
 		</a>
 		<ul class="side-menu top">
 			<li class="active">
@@ -129,10 +129,7 @@ if (isset($_GET['id3'])) {
 		<nav>
 			<i class='bx bx-menu' ></i>
 			<form action="#">
-				<div class="form-input">
-					<input type="search" placeholder="Search...">
-					<button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
-				</div>
+
 			</form>
 			<div id="digital-clock"></div>
 			<script src="time.js"></script>
@@ -187,18 +184,7 @@ if (isset($_GET['id3'])) {
 			</div>
 
 			<ul class="box-info">
-				<li>
-					<i class='bx bxs-calendar-plus' ></i>
-					<span class="text">
-						<h3><?php 
-							$query = mysqli_query($conn, "SELECT COUNT(*) as total from appointment where app_remarks = 'PENDING';");
-									while($result=mysqli_fetch_array($query)){
-										echo $result['total'];
-						  							}			
-						  ?></h3>
-						<p>Total Request Appointment</p>
-					</span>
-				</li>
+				
 				<li>
 					<i class='bx bxs-calendar' ></i>
 					<span class="text">
@@ -226,6 +212,9 @@ if (isset($_GET['id3'])) {
 					</span>
 				</li>
 			</ul>
+			<div><br>
+				<a href="d-appointment-history.php"><button class="btn-apph" style="cursor: pointer;">Appointment History</button></a>
+			</div>
 			<div>
 
 			</div>

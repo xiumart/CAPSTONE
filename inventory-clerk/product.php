@@ -39,7 +39,7 @@ if (isset($_GET['id'])) {
 	.btn-upd:hover { background-color: #4CAF50;}
 	.btn-rem:hover { background-color: red;}
 	.btn-print:hover { background-color:#00b2b3;}
-	.btn-addp:hover { background-color: #e5eaf0}
+	.btn-addp:hover { background-color: #00b2b3}
 
 	.btn-print {
 		margin-top: 20px;
@@ -59,6 +59,12 @@ if (isset($_GET['id'])) {
 	}
 
 	.namee{margin-top: 20%;}
+	#sidebar .side-menu.top li.active a {
+	color: blue;
+}
+#sidebar .side-menu.top li a:hover {
+	color: blue;
+}
 </style>
 <body>
 
@@ -67,7 +73,7 @@ if (isset($_GET['id'])) {
 	<section id="sidebar">
 		<a href="product.php" class="brand">
 			<img src="images\logo.png" alt="" width="60px;">
-			<span class="text" style="text-shadow:0.5px 0px #000;">RNL Vision Care</span>
+			<span class="text" style="text-shadow:0.5px 0px #000; color: black;">RNL Vision Care</span>
 		</a>
 		<ul class="side-menu top">
 			<li class="active">
@@ -94,10 +100,7 @@ if (isset($_GET['id'])) {
 		<nav>
 			<i class='bx bx-menu' ></i>
 			<form action="#">
-				<div class="form-input">
-					<input type="search" placeholder="Search...">
-					<button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
-				</div>
+				
 			</form>
 			<div id="digital-clock"></div>
 			<script src="time.js"></script>

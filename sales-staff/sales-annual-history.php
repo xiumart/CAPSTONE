@@ -1,3 +1,6 @@
+<?php
+include("../admin/session.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,6 +34,12 @@
 		float: right;
 		width: 10%;
 	}
+	#sidebar .side-menu.top li.active a {
+	color: blue;
+}
+#sidebar .side-menu.top li a:hover {
+	color: blue;
+}
 </style>
 <body>
 
@@ -39,21 +48,9 @@
 	<section id="sidebar">
 		<a href="sales-report.php" class="brand">
 			<img src="images\logo.png" alt="" width="60px;">
-			<span class="text" style="text-shadow:0.5px 0px #000;">RNL Vision Care</span>
+			<span class="text" style="text-shadow:0.5px 0px #000; color: black;">RNL Vision Care</span>
 		</a>
 		<ul class="side-menu top">
-			<li>
-				<a href="dashboard.php">
-					<i class='bx bxs-dashboard' ></i>
-					<span class="text">Dashboard</span>
-				</a>
-			</li>
-			<li>
-				<a href="patient-record.php">
-					<i class='bx bxs-user' ></i>
-					<span class="text">Patient Record</span>
-				</a>
-			</li>
 			<li>
 				<a href="point-of-sale.php">
 					<i class='bx bxs-cart' ></i>
@@ -64,38 +61,6 @@
 				<a href="sales-report.php">
 					<i class='bx bxs-download' ></i>
 					<span class="text">Sales Report</span>
-				</a>
-			</li>
-			<li>
-				<a href="product.php">
-					<i class='bx bxs-shopping-bag-alt' ></i>
-					<span class="text">Product Inventory</span>
-				</a>
-			</li>
-			<li>
-				<a href="supplier.php">
-					<i class='bx bxs-truck' ></i>
-					<span class="text">Supplier</span>
-				</a>
-			</li>
-			<li>
-				<a href="manage-user.php">
-					<i class='bx bxs-group' ></i>
-					<span class="text">Manage User</span>
-				</a>
-			</li>
-			<li>
-				<a href="audit.php">
-					<i class='bx bxs-book' ></i>
-					<span class="text">Audit Logs</span>
-				</a>
-			</li>
-		</ul>
-		<ul class="side-menu">
-			<li>
-				<a href="logout.php" class="logout">
-					<i class='bx bxs-log-out-circle' ></i>
-					<span class="text">Logout</span>
 				</a>
 			</li>
 		</ul>
@@ -110,25 +75,10 @@
 		<nav>
 			<i class='bx bx-menu' ></i>
 			<form action="#">
-				<div class="form-input">
-					<input type="search" placeholder="Search...">
-					<button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
-				</div>
+
 			</form>
 			<div id="digital-clock"></div>
 			<script src="time.js"></script>
-			<input type="checkbox" id="switch-mode" hidden>
-			<label for="switch-mode" class="switch-mode"></label>
-			<div class="dropdown2">
-			<a href="#" class="notification">
-				<i class='bx bxs-bell' ></i>
-				<span class="num">8</span>
-			</a>
-				<div class="dropdown-content2">
-					<h4 id="textnotif">Notification</h4><br><hr>
-					<a href="#" id="" style="color:black;"><h6>Inquiry:</h6> How can i set an appointment?</a><hr color="wheat">
-					<a href="see-all-notification.php" id="colnotif">See all notification..</a>
-				</div>
 			</div>
 			<!-- DROP DOWN NG EDIT PROFILE AND CHANGE PASS OK-->
 			<div class="dropdown1">
@@ -141,18 +91,20 @@
 			<!-- Modal -->
 			<div id="myModal" class="modal">
 				<div class="modal-content">
+				<form action="changepasshandler.php" method="POST">
 				<span class="close">&times;</span>
 				<h3>CHANGE PASSWORD</h3>
 				<br><hr><br>
 				<h4>OLD PASSWORD</h4>
-				<input type="text" class="oldpw">
+				<input type="password" name="currentPassword" class="oldpw">
 				<h4>NEW PASSWORD</h4>
-				<input type="text" class="newpw">
+				<input type="password" minlenght="6" name="newPassword" class="newpw">
 				<h4>CONFIRM PASSWORD</h4>
-				<input type="text" class="conpw">
-				<input type="button" value="Submit" class="cpBtn"><br><br><br><br>
+				<input type="password" minlenght="6" name="confirmPassword" class="conpw">
+				<button type="submit" value="Submit" name="submit" class="cpBtn">Submit</button><br><br><br><br>
 				</div>
 			</div>
+</form>
 			<script src="js\modal.js"></script>
 		</nav>
 		<!-- NAVBAR -->
@@ -161,19 +113,22 @@
 		<main>
 			<div class="head-title">
 				<div class="left">
-					<h1>Notifications</h1>
+					<h1>Sales Report</h1>
 					<ul class="breadcrumb">
 						<li>
-							<a href="see-all-notification.php">Notification</a>
+							<a  class="active" href="sales-report.php">Back</a>
 						</li>
 						<li><i class='bx bx-chevron-right' ></i></li>
 						<li>
-							<a class="active" href="dashboard.php">Home</a>
+							<a href="sales-report.php">Sales Annual Report</a>
 						</li>
 					</ul>
 				</div>
+				
 			
 			</div>
+			
+		
 			<div class="table-data">
 				<div class="order">
 					<div class="head">
@@ -182,20 +137,53 @@
 						<i class='bx bx-filter' ></i>
 						
 					</div>
+					<table class="table">
+     <thead>
+     	<tr>
+     	 <th>Year</th>
+     	 <th>Total Sales Revenue</th>
+     	 <th>Total Profit</th>
+     	</tr>
+     </thead>
+     <tbody>
+     		 <?php
+	 $con=mysqli_connect("localhost","root","","capstone");
+    // Check connection
+    if (mysqli_connect_errno())
+      {
+      echo "Failed to connect to MySQL: " . mysqli_connect_error();
+      }
+
+     	  
+    $result = mysqli_query($con,"SELECT Year(date)AS Year, SUM(profit) AS profit, SUM(amount) AS amount FROM sales GROUP BY YEAR(date)");
+      
+    while($row = mysqli_fetch_array($result))
+      {
+      echo "<tr><td>". $row['Year'] . "</td>";
+      echo "<td>" . $row['amount'] . "</td>";
+      echo "<td>" . $row['profit'] . "</td>";?>
+      <?php echo "</td></tr>";
+      }
+
+    mysqli_close($con);
+    ?>
+
+     	  
+     </tbody>
+   </table>
+   <a href=""><button class="btn-print" style="cursor: pointer;"><i class='bx bxs-printer' ></i> Print </button></a>
+				</div>
+
 				
+				
+			</div>
+			
+			<div class="table-data">
+	
 
-		<div id="notif-body">
-		<h4>Inquiry : </h5>
-		<h5>From: marliardoumbao2@gmail.com</h6>
-		<p>How can I set an appoinment?</p>
-		<hr>
-		<br>
-		<h4>Product : </h5>
-		<h5>From: System</h6>
-		<p>RNL Eyeglass is out of stock</p>
-		<hr>
-		</div>
-
+				
+				
+			</div>
 		</main>
 		<!-- MAIN -->
 	</section>

@@ -41,7 +41,7 @@ include("../admin/session.php");
 	<section id="sidebar">
 		<a href="#" class="brand">
 			<img src="images\logo.png" alt="" width="60px;">
-			<span class="text" style="text-shadow:0.5px 0px #000;">RNL Vision Care</span>
+			<span class="text" style="text-shadow:0.5px 0px #000; color: black">RNL Vision Care</span>
 		</a>
 		<ul class="side-menu top">
 			<li>
@@ -68,10 +68,7 @@ include("../admin/session.php");
 		<nav>
 			<i class='bx bx-menu' ></i>
 			<form action="#">
-				<div class="form-input">
-					<input type="search" placeholder="Search...">
-					<button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
-				</div>
+
 			</form>
 			<div id="digital-clock"></div>
 			<script src="time.js"></script>

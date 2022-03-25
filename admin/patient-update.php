@@ -222,7 +222,7 @@ else{
 	<section id="sidebar">
 		<a href="#" class="brand">
 			<img src="images\logo.png" alt="" width="60px;">
-			<span class="text" style="text-shadow:0.5px 0px #000;">RNL Vision Care</span>
+			<span class="text" style="text-shadow:0.5px 0px #000; color: black;">RNL Vision Care</span>
 		</a>
 		<ul class="side-menu top">
 			<li>
@@ -280,14 +280,6 @@ else{
 				</a>
 			</li>
 		</ul>
-		<ul class="side-menu">
-			<li>
-				<a href="logout.php" class="logout">
-					<i class='bx bxs-log-out-circle' ></i>
-					<span class="text">Logout</span>
-				</a>
-			</li>
-		</ul>
 	</section>
 	<!-- SIDEBAR -->
 
@@ -299,10 +291,7 @@ else{
 		<nav>
 			<i class='bx bx-menu' ></i>
 			<form action="#">
-				<div class="form-input">
-					<input type="search" placeholder="Search...">
-					<button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
-				</div>
+
 			</form>
 			<div id="digital-clock"></div>
 			
@@ -337,7 +326,10 @@ else{
               while($row = mysqli_fetch_assoc($query)){
 				  
             ?>
-					<h4>Inquiry:</h4><p><?php echo $row['inquiries_message']; ?></p><a href="?id=<?php echo $row['inquiries_id'];?>"><button class="btn-remove" name="btnremove" style="cursor: pointer;">Clear</button></a><hr color="wheat">
+			<table>
+				<tr>
+					<th><h4>Inquiry:</h4></th><p><td><?php echo $row['inquiries_message']; ?></p></td><td><a href="?id=<?php echo $row['inquiries_id'];?>"><button class="btn-remove" name="btnremove" style="cursor: pointer;">Clear</button></a></td><hr color="wheat">
+			  </table>
 					<?php
 			  }
 			  ?>
@@ -970,4 +962,119 @@ $sql1 = "SELECT * FROM `patient_distancerx` WHERE `patient_no`='$id'";
 
 	<script src="script.js"></script>
 </body>
+<style>
+	.btn-apph {
+		background-color: #00c2cb;
+		padding: 15px;
+		border: none;
+		border-radius: 10%;
+		float: right;
+		margin-left: 10px;
+
+		
+	}
+	.btn-f, .btn-c {
+		background-color: #00c2cb;
+		border: none;
+		border-radius: 10%;
+		margin-left: 10px;
+		padding:4px;
+	}
+	.btn-remove {
+		background-color: #00c2cb;
+		border: none;
+		border-radius: 10%;
+		margin-left: 60%;
+		padding:8px;
+	}
+	.btn-f:hover { background-color: #4CAF50;}
+	.btn-c:hover { background-color: red;}
+	.btn-apph:hover { background-color: #00a2a3;}
+	.btn-remove:hover { background-color: red;}
+	.namee{
+		margin-top: 4.5%;
+	}
+	table {
+  border: 1px solid #ccc;
+  border-collapse: collapse;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  table-layout: fixed;
+}
+
+table caption {
+  font-size: 1.5em;
+  background-color: #00c2cb;
+  margin-top:20px;	
+}
+
+table tr {
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+  padding: .35em;
+}
+
+table th,
+table td {
+  padding: .625em;
+  text-align: center;
+}
+
+table th {
+  font-size: .85em;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  background-color: #9dd1d4;
+}
+
+@media screen and (max-width: 600px) {
+  table {
+    border: 0;
+  }
+
+  table caption {
+    font-size: 1.3em;
+  }
+  
+  table thead {
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+  
+  table tr {
+    border-bottom: 3px solid #ddd;
+    display: block;
+    margin-bottom: .625em;
+  }
+  
+  table td {
+    border-bottom: 1px solid #ddd;
+    display: block;
+    font-size: .8em;
+    text-align: right;
+  }
+  
+  table td::before {
+    /*
+    * aria-label has no advantage, it won't be read inside a table
+    content: attr(aria-label);
+    */
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  
+  table td:last-child {
+    border-bottom: 0;
+  }
+}
+</style>
 </html>

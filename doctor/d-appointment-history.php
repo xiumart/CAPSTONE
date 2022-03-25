@@ -1,7 +1,8 @@
-<?php
-include ('../admin/session.php');
-include("../conn.php");
 
+<?php
+
+include("../conn.php");
+include("session.php");
 ?>
 
 <!DOCTYPE html>
@@ -15,7 +16,7 @@ include("../conn.php");
 	<!-- My CSS -->
 	<link rel="stylesheet" href="css\sys_style.css">
 	<link rel="shorcut icon" type="img/png" href="images\logo.png">
-	<title>RNL Vision Care | Doctor</title>
+	<title>RNL Vision Care | Admin</title>
 </head>
 <style>
 	.namee{
@@ -23,6 +24,38 @@ include("../conn.php");
 		margin-top: 10%;
 		margin-left: -5%;
 	}
+	.btn-apph {
+		background-color: #00c2cb;
+		padding: 15px;
+		border: none;
+		border-radius: 10%;
+		float: right;
+		margin-left: 10px;
+
+		
+	}
+	.btn-f, .btn-c {
+		background-color: #00c2cb;
+		border: none;
+		border-radius: 10%;
+		margin-left: 10px;
+		padding:4px;
+	}
+	.btn-remove {
+		background-color: #00c2cb;
+		border: none;
+		border-radius: 10%;
+		margin-left: 60%;
+		padding:8px;
+	}
+	.btn-f:hover { background-color: #4CAF50;}
+	.btn-c:hover { background-color: red;}
+	.btn-apph:hover { background-color: #00a2a3;}
+	.btn-remove:hover { background-color: red;}
+	.namee{
+		margin-top: 4.5%;
+	}
+
 	</style>
 
 <body>
@@ -32,7 +65,7 @@ include("../conn.php");
 	<section id="sidebar">
 		<a href="#" class="brand">
 			<img src="images\logo.png" alt="" width="60px;">
-			<span class="text"  style="text-shadow:0.5px 0px #000;">RNL Vision Care</span>
+			<span class="text"  style="text-shadow:0.5px 0px #000; color: black;">RNL Vision Care</span>
 		</a>
 		<ul class="side-menu top">
 			<li class="active">
@@ -45,14 +78,6 @@ include("../conn.php");
 				<a href="patient-record.php">
 					<i class='bx bxs-user' ></i>
 					<span class="text">Patient Record</span>
-				</a>
-			</li>		
-		</ul>
-		<ul class="side-menu">
-			<li>
-				<a href="logout.php" class="logout">
-					<i class='bx bxs-log-out-circle' ></i>
-					<span class="text">Logout</span>
 				</a>
 			</li>
 		</ul>
@@ -67,32 +92,17 @@ include("../conn.php");
 		<nav>
 			<i class='bx bx-menu' ></i>
 			<form action="#">
-				<div class="form-input">
-					<input type="search" placeholder="Search...">
-					<button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
-				</div>
+
 			</form>
 			<div id="digital-clock"></div>
 			<script src="time.js"></script>
-			<input type="checkbox" id="switch-mode" hidden>
-			<label for="switch-mode" class="switch-mode"></label>
-			<div class="dropdown2">
-			<a href="#" class="notification">
-				<i class='bx bxs-bell' ></i>
-				<span class="num">8</span>
-			</a>
-				<div class="dropdown-content2">
-					<h4 id="textnotif">Notification</h4><br><hr>
-					<a href="#" id="" style="color:black;"><h6>Inquiry:</h6> How can i set an appointment?</a><hr color="wheat">
-					<a href="see-all-notification.php" id="colnotif">See all notification..</a>
-				</div>
-			</div>
+
 			<!-- DROP DOWN NG EDIT PROFILE AND CHANGE PASS OK-->
 			<div class="dropdown1">
 			<img src="img\user.png" alt="" width="40px" class="userlogo">
 				<div class="dropdown-content1">
 					<a href="#changepass" id="myBtn">Change Password</a>
-					<a href="logout.php" style="color:red;">Logout</a>
+					<a href="#" style="color:red;">Logout</a>
 				</div>
 			</div>
 				<!-- Modal -->
@@ -120,7 +130,7 @@ include("../conn.php");
 		<main>
 			<div class="head-title">
 				<div class="left">
-					<h1>Dashboard</h1>
+					<h1>Appointment History</h1>
 					<ul class="breadcrumb">
 						<li>
 							<a class="active" href="dashboard.php">Back</a>
@@ -135,18 +145,13 @@ include("../conn.php");
 			</div>
 
 			
-			<div class="table-data">
-				<div class="order">
-					<div class="head">
-						<h3>Appointment History</h3>
-						<i class='bx bx-search' ></i>
-						<i class='bx bx-filter' ></i>
-					</div>
-					<table class="table">
+			<div>
+			
+					<table>
+					<caption>Finish Appointment</caption>
      <thead>
      	<tr>
      	 <th>Name</th>
-     	 <th>Email</th>
      	 <th>Contact No.</th>
      	 <th>Date</th>
 		 <th>Time</th>
@@ -163,8 +168,7 @@ include("../conn.php");
      	  		$query4 = mysqli_query($conn, "Select * from appointment_history");
      	  		while($row = $query4 -> fetch_assoc()){
 ?>
-     	  	  <td data-label="Name" class="namee"><?php echo $row['app_name'];?></td>
-     	  	  <td data-label="Email"><?php echo $row['app_email'];?></td>
+     	  	  <td data-label="Name"><?php echo $row['app_name'];?></td>
      	  	  <td data-label="Contact"><?php echo $row['app_contact'];?></td>
      	  	  <td data-label="Date"><?php echo $row['app_date'];?></td>
 			  <td data-label="Time"><?php echo $row['app_time'];?></td>
@@ -184,12 +188,7 @@ include("../conn.php");
 				
 			</div>
 			
-			<div class="table-data">
-	
-
-				
-				
-			</div>
+			
 		</main>
 		<!-- MAIN -->
 	</section>
@@ -198,4 +197,87 @@ include("../conn.php");
 
 	<script src="script.js"></script>
 </body>
+<style>table {
+  border: 1px solid #ccc;
+  border-collapse: collapse;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  table-layout: fixed;
+}
+
+table caption {
+  font-size: 1.5em;
+  background-color: #00c2cb;
+  margin-top:20px;
+  padding:19px;	
+}
+
+table tr {
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+  padding: .35em;
+}
+
+table th,
+table td {
+  padding: .625em;
+  text-align: center;
+}
+
+table th {
+  font-size: .85em;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  background-color: #9dd1d4;
+}
+
+@media screen and (max-width: 600px) {
+  table {
+    border: 0;
+  }
+
+  table caption {
+    font-size: 1.3em;
+  }
+  
+  table thead {
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+  
+  table tr {
+    border-bottom: 3px solid #ddd;
+    display: block;
+    margin-bottom: .625em;
+  }
+  
+  table td {
+    border-bottom: 1px solid #ddd;
+    display: block;
+    font-size: .8em;
+    text-align: right;
+  }
+  
+  table td::before {
+    /*
+    * aria-label has no advantage, it won't be read inside a table
+    content: attr(aria-label);
+    */
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  
+  table td:last-child {
+    border-bottom: 0;
+  }
+}</style>
 </html>

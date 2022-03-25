@@ -62,7 +62,7 @@ if (isset($_GET['id'])) {
 	<section id="sidebar">
 		<a href="supplier.php" class="brand">
 			<img src="images\logo.png" alt="" width="60px;">
-			<span class="text" style="text-shadow:0.5px 0px #000;">RNL Vision Care</span>
+			<span class="text" style="text-shadow:0.5px 0px #000; color: black;">RNL Vision Care</span>
 		</a>
 		<ul class="side-menu top">
 			<li>
@@ -120,14 +120,6 @@ if (isset($_GET['id'])) {
 				</a>
 			</li>	
 		</ul>
-		<ul class="side-menu">
-			<li>
-				<a href="logout.php" class="logout">
-					<i class='bx bxs-log-out-circle' ></i>
-					<span class="text">Logout</span>
-				</a>
-			</li>
-		</ul>
 	</section>
 	<!-- SIDEBAR -->
 
@@ -139,10 +131,7 @@ if (isset($_GET['id'])) {
 		<nav>
 			<i class='bx bx-menu' ></i>
 			<form action="#">
-				<div class="form-input">
-					<input type="search" placeholder="Search...">
-					<button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
-				</div>
+
 			</form>
 			<div id="digital-clock"></div>
 		
@@ -166,6 +155,7 @@ if (isset($_GET['id'])) {
 			$users_id=$_GET['id'];
 			$query = "UPDATE `client_inquiries` SET inquiries_status = '1'  WHERE inquiries_id = '$users_id'";
 			mysqli_query($conn, $query);
+			header( "refresh:0; url=supplier.php" );
 			}
 			?>
 			
@@ -176,7 +166,10 @@ if (isset($_GET['id'])) {
               while($row = mysqli_fetch_assoc($query)){
 				  
             ?>
-					<h4>Inquiry:</h4><p><?php echo $row['inquiries_message']; ?></p><a href="?id=<?php echo $row['inquiries_id'];?>"><button class="btn-remove" name="btnremove" style="cursor: pointer;">Clear</button></a><hr color="wheat">
+			<table>
+				<tr>
+					<th><h4>Inquiry:</h4></th><p><td><?php echo $row['inquiries_message']; ?></p></td><td><a href="?id=<?php echo $row['inquiries_id'];?>"><button class="btn-remove" name="btnremove" style="cursor: pointer;">Clear</button></a></td><hr color="wheat">
+			  </table>
 					<?php
 			  }
 			  ?>

@@ -8,7 +8,7 @@ $date = date('d-m-y g:i a');
 
 if (isset($_GET['id'])) {
 	$app_id=$_GET['id'];
-	$queryaccept = "UPDATE `appointment` SET app_remarks = 'ONGOING' WHERE app_id='$app_id'";
+	$queryaccept = "UPDATE `appointment` SET app_remarks = 'Approve' WHERE app_id='$app_id'";
 			mysqli_query($conn, $queryaccept);
 
 		
@@ -83,8 +83,8 @@ if (isset($_GET['id3'])) {
 		background-color: #00c2cb;
 		border: none;
 		border-radius: 10%;
-		margin-left: 90%;
-		padding:4px;
+		margin-left: 60%;
+		padding:8px;
 	}
 	.btn-f:hover { background-color: #4CAF50;}
 	.btn-c:hover { background-color: red;}
@@ -102,7 +102,7 @@ if (isset($_GET['id3'])) {
 	<section id="sidebar">
 		<a href="dashboard.php" class="brand">
 		<img src="images\logo.png" alt="" width="60px;">
-			<span class="text" style="text-shadow:0.5px 0px #000;color:#423e44;">RNL Vision Care</span>
+			<span class="text" style="text-shadow:0.5px 0px #000;color:#423e44; color: black;">RNL Vision Care</span>
 		</a>
 		<ul class="side-menu top">
 			<li class="active">
@@ -160,14 +160,6 @@ if (isset($_GET['id3'])) {
 				</a>
 			</li>
 		</ul>
-		<ul class="side-menu">
-			<li>
-				<a href="logout.php" class="logout">
-					<i class='bx bxs-log-out-circle' ></i>
-					<span class="text">Logout</span>
-				</a>
-			</li>
-		</ul>
 	</section>
 	<!-- SIDEBAR -->
 
@@ -179,17 +171,11 @@ if (isset($_GET['id3'])) {
 		<nav>
 			<i class='bx bx-menu' ></i>
 			<form action="#">
-				<div class="form-input">
-					<input type="search" placeholder="Search...">
-					<button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
-				</div>
+
 			</form>
 			<div id="digital-clock"></div>
 			<script src="time.js"></script>
-
-		
-		
-			
+	
 			<div class="dropdown2">
 			<a href="#" class="notification">
 				<i class='bx bxs-bell' ></i>
@@ -219,7 +205,10 @@ if (isset($_GET['id3'])) {
               while($row = mysqli_fetch_assoc($query)){
 				  
             ?>
-					<h4>Inquiry:</h4><p><?php echo $row['inquiries_message']; ?></p><a href="?id=<?php echo $row['inquiries_id'];?>"><button class="btn-remove" name="btnremove" style="cursor: pointer;">Clear</button></a><hr color="wheat">
+			<table>
+				<tr>
+					<th><h4>Inquiry:</h4></th><p><td><?php echo $row['inquiries_message']; ?></p></td><td><a href="?id=<?php echo $row['inquiries_id'];?>"><button class="btn-remove" name="btnremove" style="cursor: pointer;">Clear</button></a></td><hr color="wheat">
+			  </table>
 					<?php
 			  }
 			  ?>
@@ -386,7 +375,7 @@ if (isset($_GET['id3'])) {
 							<tr>
 							<tr>
 							<?php 
-								$query5 = mysqli_query($conn, "Select * from appointment where app_remarks = 'ONGOING'");
+								$query5 = mysqli_query($conn, "Select * from appointment where app_remarks = 'Approve'");
 								while($row1 = $query5 -> fetch_assoc()){
 							?>
 							<td data-label="Name"><?php echo $row1['app_name'];?></td>
