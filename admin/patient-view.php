@@ -1,5 +1,7 @@
 <?php
 include("session.php");
+include "logs_conn.php";
+date_default_timezone_set('Asia/Manila');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -101,14 +103,6 @@ include("session.php");
 				</a>
 			</li>
 		</ul>
-		<ul class="side-menu">
-			<li>
-				<a href="#" class="logout">
-					<i class='bx bxs-log-out-circle' ></i>
-					<span class="text">Logout</span>
-				</a>
-			</li>
-		</ul>
 	</section>
 	<!-- SIDEBAR -->
 
@@ -132,11 +126,36 @@ include("session.php");
 			<div class="dropdown2">
 			<a href="#" class="notification">
 				<i class='bx bxs-bell' ></i>
-				<span class="num">8</span>
+				<span class="num">
+				<?php 
+				$query = mysqli_query($conn, "SELECT COUNT(*) as total from client_inquiries WHERE inquiries_status = '2'");
+					while($result=mysqli_fetch_array($query)){
+					echo $result['total']; 
+				}			
+				?>
+						  </span>			  
 			</a>
+			<?php
+
+			if (isset($_GET['id'])) {
+			$users_id=$_GET['id'];
+			$query = "UPDATE `client_inquiries` SET inquiries_status = '1'  WHERE inquiries_id = '$users_id'";
+			mysqli_query($conn, $query);
+			
+			}
+			?>
+			
 				<div class="dropdown-content2">
 					<h4 id="textnotif">Notification</h4><br><hr>
-					<a href="#" id="" style="color:black;"><h6>Inquiry:</h6> How can i set an appointment?</a><hr color="wheat">
+					<?php   
+			   require_once("../db/notification/notifdisplay.php");
+              while($row = mysqli_fetch_assoc($query)){
+				  
+            ?>
+					<h4>Inquiry:</h4><p><?php echo $row['inquiries_message']; ?></p><a href="?id=<?php echo $row['inquiries_id'];?>"><button class="btn-remove" name="btnremove" style="cursor: pointer;">Clear</button></a><hr color="wheat">
+					<?php
+			  }
+			  ?>
 					<a href="see-all-notification.php" id="colnotif">See all notification..</a>
 				</div>
 			</div>
@@ -195,6 +214,7 @@ if (isset($_GET['id'])) {
 	// code...
 
 $query = "UPDATE `patient_history` SET `status`='Remove' WHERE `patient_no`='$rm'";
+
 	mysqli_query($conn, $query);
 }
 $sql1 = "SELECT * FROM `patient_distancerx` WHERE `patient_no`='$id'";
@@ -242,7 +262,7 @@ $sql1 = "SELECT * FROM `patient_history` WHERE `patient_id`='$pat_id' AND `statu
      	  	  <td data-label="Checkid"><?php echo $chk_id;?></td>
      	  	  <td data-label="Date"><?php echo $date;?></td>
      	  	  <td data-label="Checkby"><?php echo $doctor;?></td>
-			  <td data-label="Action"><a href="patient_viewing.php?user=<?php echo $_GET['id'];?>&id=<?php echo $chk_id;?>"><button class="btn-f"  style="cursor: pointer;width:100px;">View</button></a><a href="patient-view.php?id=<?php echo $_GET['id']; ?>&rm=<?php echo $chk_id; ?>"><button class="btn-c"  style="cursor: pointer;width:100px;">Remove</button></a></td>
+			  <td data-label="Action"><a href="patient_viewing.php?user=<?php echo $_GET['id'];?>&id=<?php echo $chk_id;?>"><button class="btn-f"  style="cursor: pointer;width:100px;">View</button></a><a href="patient-view.php?id=<?php echo $_GET['id']; ?>&rm=<?php echo $chk_id; ?>"><button class="btn-c"  style="cursor: pointer;width:100px;" onclick="return confirm('Are you sure you want to remove this user?')">Remove</button></a></td>
 
      	  </tr>
      	  <?php

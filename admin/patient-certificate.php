@@ -99,14 +99,6 @@ include("session.php");
 				</a>
 			</li>
 		</ul>
-		<ul class="side-menu">
-			<li>
-				<a href="#" class="logout">
-					<i class='bx bxs-log-out-circle' ></i>
-					<span class="text">Logout</span>
-				</a>
-			</li>
-		</ul>
 	</section>
 	<!-- SIDEBAR -->
 
@@ -145,7 +137,7 @@ include("session.php");
 			$users_id=$_GET['id'];
 			$query = "UPDATE `client_inquiries` SET inquiries_status = '1'  WHERE inquiries_id = '$users_id'";
 			mysqli_query($conn, $query);
-			header( "refresh:0; url=dashboard.php" );
+
 			}
 			?>
 			

@@ -1,6 +1,8 @@
 <?php
 include("session.php");
 include("../conn.php");
+include "logs_conn.php";
+date_default_timezone_set('Asia/Manila');
 $query = "SELECT `supp_cname` FROM supplier";
 $query1 = "SELECT `brand` FROM products";
 $result = $conn->query($query);
@@ -145,16 +147,6 @@ $result1 = $conn->query($query);
 				</a>
 			</li>
 		</ul>
-
-		<ul class="side-menu">
-			<li>
-				<a href="logout.php" class="logout">
-					<i class='bx bxs-log-out-circle' ></i>
-					<span class="text">Logout</span>
-				</a>
-			</li>
-		</ul>
-
 	</section>
 	<!-- SIDEBAR -->
 
@@ -273,8 +265,10 @@ if($picture_type=="image/jpeg" || $picture_type=="image/jpg" || $picture_type=="
 			//save to database
 			//$user_id = random_num(20);
 			$query = "INSERT INTO product (brand,model,category,dateofarrival,expdate,sellingprice,origprice,profit,supplier,qty,image,remarks) values ('$brandname','$model','$category','$dateofarrival','$expirationdate','$sellingprice','$originalprice','$profit','$supplier','$qty','$pic_name','$remarks')";
+			users_logs($_SESSION['users_username'], "Added Product", date("Y-m-d h:i:sa"), $_SESSION['users_roles']);
 			mysqli_query($conn, $query);
-
+			echo "<script>alert('You have successfully add the record.');</script>";
+			echo "<script>document.location='product.php';</script>";
 			header("Location: product.php");
 			die;
 		

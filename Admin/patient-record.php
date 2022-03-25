@@ -2,11 +2,14 @@
 error_reporting(0);
 include("../conn.php");
 include("session.php");
+include "logs_conn.php";
+date_default_timezone_set('Asia/Manila');
 $patt=$_GET['id'];
 if (isset($_GET['id'])) {
 	// code...
 
 $query = "UPDATE `patient_distancerx` SET `status`='Remove' WHERE `patient_no`='$patt'";
+users_logs($_SESSION['users_username'], "Remove Patient", date("Y-m-d h:i:sa"), $_SESSION['users_roles']);
 	mysqli_query($conn, $query);
 }
 ?>
@@ -113,14 +116,6 @@ $query = "UPDATE `patient_distancerx` SET `status`='Remove' WHERE `patient_no`='
 				<a href="archive.php">
 					<i class='bx bxs-download' ></i>
 					<span class="text">Back-up and Restore</span>
-				</a>
-			</li>
-		</ul>
-		<ul class="side-menu">
-			<li>
-				<a href="#" class="logout">
-					<i class='bx bxs-log-out-circle' ></i>
-					<span class="text">Logout</span>
 				</a>
 			</li>
 		</ul>
@@ -272,7 +267,7 @@ $query = "UPDATE `patient_distancerx` SET `status`='Remove' WHERE `patient_no`='
 							<td data-label="Contact No."><?php echo $row['patient_contact'];?></td>
 							<td data-label="Address"><?php echo $row['patient_address'];?></td>
 							<td data-label="Age"><?php echo $row['age'];?></td>
-							<td data-label="Action"><a href="?id=<?php echo $row['patient_no'];?>"><button class="btn-c" style="cursor: pointer;width:100px;pad">REMOVE</button>
+							<td data-label="Action"><a href="?id=<?php echo $row['patient_no'];?>"><button class="btn-c" style="cursor: pointer;width:100px;pad" onclick="return confirm('Are you sure you want to remove this patient?')">REMOVE</button>
 			  				<a href="patient-view.php?id=<?php echo $row['patient_no'];?>"><button class="btn-f" style="cursor: pointer;width:100px;">VIEW</button></td>
 							</tr>
 							<?php

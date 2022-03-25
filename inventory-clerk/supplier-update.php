@@ -1,8 +1,8 @@
 <?php
-
 include("../conn.php");
-include ('../admin/session.php');
-
+include("../admin/session.php");
+include "logs_conn.php";
+date_default_timezone_set('Asia/Manila');
 $eid= $_GET['id'];
 
 if (isset($_REQUEST['btnsubmit'])) {
@@ -24,6 +24,7 @@ if (isset($_REQUEST['btnsubmit'])) {
 				WHERE `supp_id` = '$eid'");
         
 			if($sql){
+				users_logs($_SESSION['users_username'], "Updated Supplier", date("Y-m-d h:i:sa"), $_SESSION['users_roles']);
 				echo "<script>alert('You have successfully updated the record.');</script>";
 				echo "<script>document.location='supplier.php';</script>";
 				
@@ -47,7 +48,7 @@ if (isset($_REQUEST['btnsubmit'])) {
 	<!-- My CSS -->
 	<link rel="stylesheet" href="css\sys_style.css">
 	<link rel="shorcut icon" type="img/png" href="images\logo.png">
-	<title>RNL Vision Care | Inventory Clerk</title>
+	<title>RNL Vision Care | Admin</title>
 </head>
 <style>
 	button {
@@ -80,12 +81,6 @@ if (isset($_REQUEST['btnsubmit'])) {
 		</a>
 		<ul class="side-menu top">
 			<li>
-				<a href="dashboard.php">
-					<i class='bx bxs-dashboard' ></i>
-					<span class="text">Dashboard</span>
-				</a>
-			</li>
-			<li>
 				<a href="product.php">
 					<i class='bx bxs-shopping-bag-alt' ></i>
 					<span class="text">Product Inventory</span>
@@ -95,15 +90,6 @@ if (isset($_REQUEST['btnsubmit'])) {
 				<a href="supplier.php">
 					<i class='bx bxs-truck' ></i>
 					<span class="text">Supplier</span>
-				</a>
-			</li>
-		</ul>
-
-		<ul class="side-menu">
-			<li>
-				<a href="logout.php" class="logout">
-					<i class='bx bxs-log-out-circle' ></i>
-					<span class="text">Logout</span>
 				</a>
 			</li>
 		</ul>
@@ -125,16 +111,38 @@ if (isset($_REQUEST['btnsubmit'])) {
 			</form>
 			<div id="digital-clock"></div>
 			<script src="time.js"></script>
-			<input type="checkbox" id="switch-mode" hidden>
-			<label for="switch-mode" class="switch-mode"></label>
 			<div class="dropdown2">
 			<a href="#" class="notification">
 				<i class='bx bxs-bell' ></i>
-				<span class="num">8</span>
+				<span class="num">
+				<?php 
+				$query = mysqli_query($conn, "SELECT COUNT(*) as total from client_inquiries WHERE inquiries_status = '2'");
+					while($result=mysqli_fetch_array($query)){
+					echo $result['total']; 
+				}			
+				?>
+						  </span>			  
 			</a>
+			<?php
+
+			if (isset($_GET['id'])) {
+			$users_id=$_GET['id'];
+			$query = "UPDATE `client_inquiries` SET inquiries_status = '1'  WHERE inquiries_id = '$users_id'";
+			mysqli_query($conn, $query);
+			}
+			?>
+			
 				<div class="dropdown-content2">
 					<h4 id="textnotif">Notification</h4><br><hr>
-					<a href="#" id="" style="color:black;"><h6>Inquiry:</h6> How can i set an appointment?</a><hr color="wheat">
+					<?php   
+			   require_once("../db/notification/notifdisplay.php");
+              while($row = mysqli_fetch_assoc($query)){
+				  
+            ?>
+					<h4>Inquiry:</h4><p><?php echo $row['inquiries_message']; ?></p><a href="?id=<?php echo $row['inquiries_id'];?>"><button class="btn-remove" name="btnremove" style="cursor: pointer;">Clear</button></a><hr color="wheat">
+					<?php
+			  }
+			  ?>
 					<a href="see-all-notification.php" id="colnotif">See all notification..</a>
 				</div>
 			</div>

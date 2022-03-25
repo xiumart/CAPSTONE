@@ -1,11 +1,16 @@
 <?php
 error_reporting(0);
 include("../conn.php");
-include ('../admin/session.php');
+include("../admin/session.php");
+include "../admin/logs_conn.php";
+date_default_timezone_set('Asia/Manila');
 if (isset($_GET['id'])) {
 	$pro_id1=$_GET['id'];
 	$query = "DELETE FROM `product` WHERE pro_id='$pro_id1'";
+	users_logs($_SESSION['users_username'], "Remove Product", date("Y-m-d h:i:sa"), $_SESSION['users_roles']);
 			mysqli_query($conn, $query);
+			echo "<script>alert('You have successfully remove the record.');</script>";
+			echo "<script>document.location='product.php';</script>";
 }
 ?>
 <!DOCTYPE html>
@@ -19,7 +24,7 @@ if (isset($_GET['id'])) {
 	<!-- My CSS -->
 	<link rel="stylesheet" href="css\sys_style.css">
 	<link rel="shorcut icon" type="img/png" href="images\logo.png">
-	<title>RNL Vision Care | Inventory Clerk</title>
+	<title>RNL Vision Care | Admin</title>
 </head>
 <style>
 	button {
@@ -65,12 +70,6 @@ if (isset($_GET['id'])) {
 			<span class="text" style="text-shadow:0.5px 0px #000;">RNL Vision Care</span>
 		</a>
 		<ul class="side-menu top">
-			<li>
-				<a href="dashboard.php">
-					<i class='bx bxs-dashboard' ></i>
-					<span class="text">Dashboard</span>
-				</a>
-			</li>
 			<li class="active">
 				<a href="product.php">
 					<i class='bx bxs-shopping-bag-alt' ></i>
@@ -81,14 +80,6 @@ if (isset($_GET['id'])) {
 				<a href="supplier.php">
 					<i class='bx bxs-truck' ></i>
 					<span class="text">Supplier</span>
-				</a>
-			</li>
-		</ul>
-		<ul class="side-menu">
-			<li>
-				<a href="logout.php" class="logout">
-					<i class='bx bxs-log-out-circle' ></i>
-					<span class="text">Logout</span>
 				</a>
 			</li>
 		</ul>
@@ -110,16 +101,38 @@ if (isset($_GET['id'])) {
 			</form>
 			<div id="digital-clock"></div>
 			<script src="time.js"></script>
-			<input type="checkbox" id="switch-mode" hidden>
-			<label for="switch-mode" class="switch-mode"></label>
 			<div class="dropdown2">
 			<a href="#" class="notification">
 				<i class='bx bxs-bell' ></i>
-				<span class="num">8</span>
+				<span class="num">
+				<?php 
+				$query = mysqli_query($conn, "SELECT COUNT(*) as total from client_inquiries WHERE inquiries_status = '2'");
+					while($result=mysqli_fetch_array($query)){
+					echo $result['total']; 
+				}			
+				?>
+						  </span>			  
 			</a>
+			<?php
+
+			if (isset($_GET['id'])) {
+			$users_id=$_GET['id'];
+			$query = "UPDATE `client_inquiries` SET inquiries_status = '1'  WHERE inquiries_id = '$users_id'";
+			mysqli_query($conn, $query);
+			}
+			?>
+			
 				<div class="dropdown-content2">
 					<h4 id="textnotif">Notification</h4><br><hr>
-					<a href="#" id="" style="color:black;"><h6>Inquiry:</h6> How can i set an appointment?</a><hr color="wheat">
+					<?php   
+			   require_once("../db/notification/notifdisplay.php");
+              while($row = mysqli_fetch_assoc($query)){
+				  
+            ?>
+					<h4>Inquiry:</h4><p><?php echo $row['inquiries_message']; ?></p><a href="?id=<?php echo $row['inquiries_id'];?>"><button class="btn-remove" name="btnremove" style="cursor: pointer;">Clear</button></a><hr color="wheat">
+					<?php
+			  }
+			  ?>
 					<a href="see-all-notification.php" id="colnotif">See all notification..</a>
 				</div>
 			</div>
@@ -167,29 +180,59 @@ if (isset($_GET['id'])) {
 						</li>
 					</ul>
 				</div>
-			
 			</div>
-
+			<ul class="box-info">
+				<li>
+					<i class='bx bxs-calendar-plus' ></i>
+					<span class="text">
+						<h3><?php 
+							$query = mysqli_query($conn, "SELECT COUNT(*) as total from appointment where app_remarks = 'PENDING';");
+									while($result=mysqli_fetch_array($query)){
+										echo $result['total'];
+						  							}			
+						  ?></h3>
+						<p>Total Request Appointment</p>
+					</span>
+				</li>
+				<li>
+					<i class='bx bxs-calendar' ></i>
+					<span class="text">
+						<h3>
+							<?php 
+							$query2 = mysqli_query($conn, "SELECT COUNT(*) as total from appointment where app_remarks = 'ONGOING';");
+									while($result2=mysqli_fetch_array($query2)){
+										echo $result2['total'];
+						  							}			
+						  ?>
+						  </h3>
+						<p>Total Ongoing Appointment</p>
+					</span>
+				</li>
+				<li>
+					<i class='bx bxs-calendar-check' ></i>
+					<span class="text">
+						<h3><?php 
+							$query3 = mysqli_query($conn, "SELECT COUNT(*) as total from appointment_history where app_remarks = 'FINISH';");
+									while($result3=mysqli_fetch_array($query3)){
+										echo $result3['total'];
+						  							}			
+						  ?></h3>
+						<p>Total Finish Appointment</p>
+					</span>
+				</li>
+			</ul><br>
 			<a href="product-add.php"><button class="btn-addp" style="float:right; margin-bottom:10px;">+ Add Product </button></a>
-			<div class="table-data">
-			<div class="order">
-					<div class="head">
-						<form method="post">
-						<input type="text" name="txtsearch" id="txtsearch" placeholder="Search by Category/Id" autocomplete="off" style="padding: 12px;border: 1px solid #ccc;border-radius: 4px;font-family: var(poppins);">
-						<button  id="btnsearch" name="btnsearch" class="page"><i class='bx bx-search' ></i></button>
-						</form>
-						<i class='bx bx-filter' ></i>
-					</div>
+			
 <div id="printing">
-					<table class="table">
-
+					<table>
+<caption>List of Product</caption>
      <thead>
      	<tr>
      	<th>Id</th>
-     	 <th>Brand Name</th>
+     	 <th>Brand</th>
      	 <th>Model</th>
      	 <th>Category</th>
-     	 <th>Original Price</th>
+     	 <th>Orig. Price</th>
 		 <th>Selling Price</th>
 		 <th>Exp. Date</th>
 		 <th>Qty.</th>
@@ -223,7 +266,7 @@ if (isset($_GET['id'])) {
      	
 
      	  <tr>
-     	  	<td data-label="Id" class="namee"><?php echo $row['pro_id'];?></td>
+     	  	<td data-label="Id" class="brandd"><p><?php echo $row['pro_id'];?></p></td>
      	  	<td data-label="Brand"><?php echo $row['brand'];?></td>
      	  	<td data-label="Model"><?php echo $row['model'];?></td>
      	  	<td data-label="Category"><?php echo $row['category'];?></td>
@@ -231,7 +274,7 @@ if (isset($_GET['id'])) {
 			  	<td data-label="Selling"><?php echo $row['sellingprice'];?></td>
 			  	<td data-label="Expire"><?php echo $row['expdate'];?></td>
 			  	<td data-label="Qty" id="qq"><?php echo $row['qty'];?></td>
-			  	<td data-label="Action"><a href="product-update.php?id=<?php echo $row['pro_id'];?>"><button class="btn-upd">Update</button></a><a href="?id=<?php echo $row['pro_id'];?>"><button class="btn-rem" name="btnremove">Remove</button></a></td>
+			  	<td data-label="Action"><a href="product-update.php?id=<?php echo $row['pro_id'];?>"><button class="btn-upd">Update</button></a><a href="?id=<?php echo $row['pro_id'];?>"><button class="btn-rem" name="btnremove" onclick="return confirm('Are you sure you want to remove this product?)">Remove</button></a></td>
      	  </tr>
     
      	 <?php
@@ -298,4 +341,86 @@ function Clickheretoprint()
 
 	
 </body>
+<style>table {
+  border: 1px solid #ccc;
+  border-collapse: collapse;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  table-layout: fixed;
+}
+
+table caption {
+  font-size: 1.5em;
+  background-color: #00c2cb;
+  margin-top:20px;	
+}
+
+table tr {
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+  padding: .35em;
+}
+
+table th,
+table td {
+  padding: .625em;
+  text-align: center;
+}
+
+table th {
+  font-size: .85em;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  background-color: #9dd1d4;
+}
+
+@media screen and (max-width: 600px) {
+  table {
+    border: 0;
+  }
+
+  table caption {
+    font-size: 1.3em;
+  }
+  
+  table thead {
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+  
+  table tr {
+    border-bottom: 3px solid #ddd;
+    display: block;
+    margin-bottom: .625em;
+  }
+  
+  table td {
+    border-bottom: 1px solid #ddd;
+    display: block;
+    font-size: .8em;
+    text-align: right;
+  }
+  
+  table td::before {
+    /*
+    * aria-label has no advantage, it won't be read inside a table
+    content: attr(aria-label);
+    */
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  
+  table td:last-child {
+    border-bottom: 0;
+  }
+}</style>
 </html>

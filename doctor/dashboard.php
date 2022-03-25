@@ -1,6 +1,6 @@
 <?php 
 include("../conn.php");
-include ('../admin/session.php');
+include("session.php");
 
 // Set the new timezone
 date_default_timezone_set('Asia/Manila');
@@ -59,23 +59,37 @@ if (isset($_GET['id3'])) {
 	<!-- My CSS -->
 	<link rel="stylesheet" href="css\sys_style.css">
 	<link rel="shorcut icon" type="img/png" href="images\logo.png">
-	<title>RNL Vision Care | Doctor</title>
+	<title>RNL Vision Care | Admin</title>
 </head>
 <style>
-	.btn-upd, .btn-rem, .btn-apph {
+.btn-apph {
 		background-color: #00c2cb;
-		padding: 12px;
+		padding: 15px;
 		border: none;
 		border-radius: 10%;
 		float: right;
 		margin-left: 10px;
+
 		
 	}
-
-	.btn-upd:hover { background-color: #4CAF50;}
-	.btn-rem:hover { background-color: red;}
+	.btn-f, .btn-c {
+		background-color: #00c2cb;
+		border: none;
+		border-radius: 10%;
+		margin-left: 10px;
+		padding:4px;
+	}
+	.btn-remove {
+		background-color: #00c2cb;
+		border: none;
+		border-radius: 10%;
+		margin-left: 90%;
+		padding:4px;
+	}
+	.btn-f:hover { background-color: #4CAF50;}
+	.btn-c:hover { background-color: red;}
 	.btn-apph:hover { background-color: #00a2a3;}
-
+	.btn-remove:hover { background-color: red;}
 	.namee{
 		margin-top: 4.5%;
 	}
@@ -87,7 +101,7 @@ if (isset($_GET['id3'])) {
 	<!-- SIDEBAR -->
 	<section id="sidebar">
 		<a href="dashboard.php" class="brand">
-			<img src="images\logo.png" alt="" width="60px;">
+		<img src="images\logo.png" alt="" width="60px;">
 			<span class="text" style="text-shadow:0.5px 0px #000;">RNL Vision Care</span>
 		</a>
 		<ul class="side-menu top">
@@ -101,14 +115,6 @@ if (isset($_GET['id3'])) {
 				<a href="patient-record.php">
 					<i class='bx bxs-user' ></i>
 					<span class="text">Patient Record</span>
-				</a>
-			</li>
-		</ul>
-		<ul class="side-menu">
-			<li>
-				<a href="logout.php" class="logout">
-					<i class='bx bxs-log-out-circle' ></i>
-					<span class="text">Logout</span>
 				</a>
 			</li>
 		</ul>
@@ -130,23 +136,6 @@ if (isset($_GET['id3'])) {
 			</form>
 			<div id="digital-clock"></div>
 			<script src="time.js"></script>
-
-			<input type="checkbox" id="switch-mode" hidden>
-			<label for="switch-mode" class="switch-mode"></label>
-		
-			
-			<div class="dropdown2">
-			<a href="#" class="notification">
-				<i class='bx bxs-bell' ></i>
-				<span class="num">8</span>
-			</a>
-				<div class="dropdown-content2">
-					<h4 id="textnotif">Notification</h4><br><hr>
-					<a href="#" id="" style="color:black;"><h6>Inquiry:</h6> How can i set an appointment?</a><hr color="wheat">
-					<a href="see-all-notification.php" id="colnotif">See all notification..</a>
-				</div>
-			</div>
-
 			<!-- DROP DOWN OF EDIT PROFILE AND CHANGE PASS OK-->
 			<div class="dropdown1">
 			<img src="img\user.png" alt="" width="40px" class="userlogo">
@@ -155,7 +144,9 @@ if (isset($_GET['id3'])) {
 					<a href="logout.php" style="color:red;">Logout</a>
 				</div>
 			</div>
+			
 			<!-- Modal -->
+			
 			<div id="myModal" class="modal">
 				<div class="modal-content">
 				<form action="changepasshandler.php" method="POST">
@@ -235,110 +226,43 @@ if (isset($_GET['id3'])) {
 					</span>
 				</li>
 			</ul>
+			<div>
 
-			<div><br>
-				<a href="d-appointment-history.php"><button class="btn-apph" style="cursor: pointer;">Appointment History</button></a>
-			</div><br>
-			<div class="table-data">
-				<div class="order">
-					<div class="head">
-						<h3>Request Appointment</h3>
-						<i class='bx bx-search' ></i>
-						<i class='bx bx-filter' ></i>
-					</div>
-					<table class="table">
-     <thead>
-     	<tr>
-     	 <th>Name</th>
-     	 <th>Email</th>
-     	 <th>Contact No.</th>
-     	 <th>Date</th>
-		 <th>Time</th>
-		 <th>Purpose</th>
-		 <th>Action</th>
-     	</tr>
-     </thead>
-     <tbody>
-     	  	<tr>
-
-
-     	  		<?php 
-
-     	  		$query4 = mysqli_query($conn, "Select * from appointment where app_remarks = 'PENDING'");
-     	  		while($row = $query4 -> fetch_assoc()){
-
-
-
-
-     	  ?>
-     	  	  <td data-label="Name" class="brandd"><p><?php echo $row['app_name'];?></p></td>
-     	  	  <td data-label="Email"><?php echo $row['app_email'];?></td>
-     	  	  <td data-label="Contact"><?php echo $row['app_contact'];?></td>
-     	  	  <td data-label="Date"><?php echo $row['app_date'];?></td>
-			  <td data-label="Time"><?php echo $row['app_time'];?></td>
-			  <td data-label="Purpose"><?php echo $row['app_purpose'];?></td>
-			  <td data-label="Action"><a href="?id3=<?php echo $row['app_id'];?>"><button class="btn-rem" style="cursor: pointer;">Denied</button></a>
-			  <a href="?id=<?php echo $row['app_id'];?>"><button class="btn-upd" style="cursor: pointer;">Accept</button></a></td>
-     	  </tr>
-
-     	<?php  } ?>
-
-     </tbody>
-   </table>
-				</div>
-
-				
-				
 			</div>
 			
-			<div class="table-data">
-				<div class="order">
-					<div class="head">
-						<h3>Ongoing Appointment</h3>
-						<i class='bx bx-search' ></i>
-						<i class='bx bx-filter' ></i>
-					</div>
-					<table class="table">
-     <thead>
-     	<tr>
-     	 <th>Name</th>
-     	 <th>Email</th>
-     	 <th>Contact No.</th>
-     	 <th>Date</th>
-		 <th>Time</th>
-		 <th>Purpose</th>
-		 <th>Action</th>
-     	</tr>
-     </thead>
-     <tbody>
+			<!-- TABLE ONGOING -->
+			<div>
+				<table>
+						<caption>Ongoing Appointment</caption>
+						<thead>
+						<tr>						
+							<th scope="col">Name</th>
+							<th scope="col">Contact No.</th>
+							<th scope="col">Date</th>
+							<th scope="col">Time</th>
+							<th scope="col">Purpose</th>
+							<th scope="col">Action</th>
+						</tr>
+						</thead>
+						<tbody>
+							<tr>
+							<tr>
+							<?php 
+								$query5 = mysqli_query($conn, "Select * from appointment where app_remarks = 'ONGOING'");
+								while($row1 = $query5 -> fetch_assoc()){
+							?>
+							<td data-label="Name"><?php echo $row1['app_name'];?></td>
+							<td data-label="Contact No."><?php echo $row1['app_contact'];?></td>
+							<td data-label="Date"><?php echo $row1['app_date'];?></td>
+							<td data-label="Time"><?php echo $row1['app_time'];?></td>
+							<td data-label="Purpose"><?php echo $row1['app_purpose'];?></td>
+							<td data-label="Action"><a href="?id2=<?php echo $row1['app_id'];?>"><button class="btn-c" style="cursor: pointer;width:100px;pad">Cancel</button>
+			  				<a href="?id1=<?php echo $row1['app_id'];?>"><button class="btn-f" style="cursor: pointer;width:100px;">Finish</button></td>
+							</tr>
+							<?php } ?>
+						</tbody>
+					</table>
 
-     	  <tr>
-     	  	  <?php 
-
-     	  		$query5 = mysqli_query($conn, "Select * from appointment where app_remarks = 'ONGOING'");
-     	  		while($row1 = $query5 -> fetch_assoc()){
-
-     	  ?>
-     	  	  <td data-label="Name" class="brandd"><p><?php echo $row1['app_name'];?></p></td>
-     	  	  <td data-label="Email"><?php echo $row1['app_email'];?></td>
-     	  	  <td data-label="Contact"><?php echo $row1['app_contact'];?></td>
-     	  	  <td data-label="Date"><?php echo $row1['app_date'];?></td>
-			  <td data-label="Time"><?php echo $row1['app_time'];?></td>
-			  <td data-label="Purpose"><?php echo $row1['app_purpose'];?></td>
-			  <td data-label="Action"><a href="?id2=<?php echo $row1['app_id'];?>"><button class="btn-rem" style="cursor: pointer;">Cancel</button>
-			  <a href="?id1=<?php echo $row1['app_id'];?>"><button class="btn-upd" style="cursor: pointer;">Finish</button></td>
-
-
-     	  </tr>
-
-     	<?php } ?>
-     </tbody>
-   </table>
-
-				</div>
-
-				
-				
 			</div>
 		</main>
 		<!-- MAIN -->
@@ -348,4 +272,86 @@ if (isset($_GET['id3'])) {
 
 	<script src="script.js"></script>
 </body>
+<style>table {
+  border: 1px solid #ccc;
+  border-collapse: collapse;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  table-layout: fixed;
+}
+
+table caption {
+  font-size: 1.5em;
+  background-color: #00c2cb;
+  margin-top:50px;	
+}
+
+table tr {
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+  padding: .35em;
+}
+
+table th,
+table td {
+  padding: .625em;
+  text-align: center;
+}
+
+table th {
+  font-size: .85em;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  background-color: #9dd1d4;
+}
+
+@media screen and (max-width: 600px) {
+  table {
+    border: 0;
+  }
+
+  table caption {
+    font-size: 1.3em;
+  }
+  
+  table thead {
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+  
+  table tr {
+    border-bottom: 3px solid #ddd;
+    display: block;
+    margin-bottom: .625em;
+  }
+  
+  table td {
+    border-bottom: 1px solid #ddd;
+    display: block;
+    font-size: .8em;
+    text-align: right;
+  }
+  
+  table td::before {
+    /*
+    * aria-label has no advantage, it won't be read inside a table
+    content: attr(aria-label);
+    */
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  
+  table td:last-child {
+    border-bottom: 0;
+  }
+}</style>
 </html>

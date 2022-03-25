@@ -1,5 +1,10 @@
 <?php
-include ('../admin/session.php');
+include("../admin/session.php");
+include("../conn.php");
+$query = "SELECT `supp_cname` FROM supplier";
+$query1 = "SELECT `brand` FROM products";
+$result = $conn->query($query);
+$result1 = $conn->query($query);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -12,7 +17,7 @@ include ('../admin/session.php');
 	<!-- My CSS -->
 	<link rel="stylesheet" href="css\sys_style.css">
 	<link rel="shorcut icon" type="img/png" href="images\logo.png">
-	<title>RNL Vision Care | Inventory Clerk</title>
+	<title>RNL Vision Care | Admin</title>
 	<style>
 	input[type=text], select, textarea {
   		width: 100%;
@@ -85,12 +90,6 @@ include ('../admin/session.php');
 			<span class="text" style="text-shadow:0.5px 0px #000;">RNL Vision Care</span>
 		</a>
 		<ul class="side-menu top">
-			<li>
-				<a href="dashboard.php">
-					<i class='bx bxs-dashboard' ></i>
-					<span class="text">Dashboard</span>
-				</a>
-			</li>
 			<li class="active">
 				<a href="product.php">
 					<i class='bx bxs-shopping-bag-alt' ></i>
@@ -104,16 +103,6 @@ include ('../admin/session.php');
 				</a>
 			</li>
 		</ul>
-
-		<ul class="side-menu">
-			<li>
-				<a href="logout.php" class="logout">
-					<i class='bx bxs-log-out-circle' ></i>
-					<span class="text">Logout</span>
-				</a>
-			</li>
-		</ul>
-
 	</section>
 	<!-- SIDEBAR -->
 
@@ -132,16 +121,38 @@ include ('../admin/session.php');
 			</form>
 			<div id="digital-clock"></div>
 			<script src="time.js"></script>
-			<input type="checkbox" id="switch-mode" hidden>
-			<label for="switch-mode" class="switch-mode"></label>
 			<div class="dropdown2">
 			<a href="#" class="notification">
 				<i class='bx bxs-bell' ></i>
-				<span class="num">8</span>
+				<span class="num">
+				<?php 
+				$query = mysqli_query($conn, "SELECT COUNT(*) as total from client_inquiries WHERE inquiries_status = '2'");
+					while($result=mysqli_fetch_array($query)){
+					echo $result['total']; 
+				}			
+				?>
+						  </span>			  
 			</a>
+			<?php
+
+			if (isset($_GET['id'])) {
+			$users_id=$_GET['id'];
+			$query = "UPDATE `client_inquiries` SET inquiries_status = '1'  WHERE inquiries_id = '$users_id'";
+			mysqli_query($conn, $query);
+			}
+			?>
+			
 				<div class="dropdown-content2">
 					<h4 id="textnotif">Notification</h4><br><hr>
-					<a href="#" id="" style="color:black;"><h6>Inquiry:</h6> How can i set an appointment?</a><hr color="wheat">
+					<?php   
+			   require_once("../db/notification/notifdisplay.php");
+              while($row = mysqli_fetch_assoc($query)){
+				  
+            ?>
+					<h4>Inquiry:</h4><p><?php echo $row['inquiries_message']; ?></p><a href="?id=<?php echo $row['inquiries_id'];?>"><button class="btn-remove" name="btnremove" style="cursor: pointer;">Clear</button></a><hr color="wheat">
+					<?php
+			  }
+			  ?>
 					<a href="see-all-notification.php" id="colnotif">See all notification..</a>
 				</div>
 			</div>
@@ -207,7 +218,7 @@ if($picture_type=="image/jpeg" || $picture_type=="image/jpg" || $picture_type=="
 	
 			//save to database
 			//$user_id = random_num(20);
-			$query = "insert into product (brand,model,category,dateofarrival,expdate,sellingprice,origprice,profit,supplier,qty,image,remarks) values ('$brandname','$model','$category','$dateofarrival','$expirationdate','$sellingprice','$originalprice','$profit','$supplier','$qty','$pic_name','$remarks')";
+			$query = "INSERT INTO product (brand,model,category,dateofarrival,expdate,sellingprice,origprice,profit,supplier,qty,image,remarks) values ('$brandname','$model','$category','$dateofarrival','$expirationdate','$sellingprice','$originalprice','$profit','$supplier','$qty','$pic_name','$remarks')";
 			mysqli_query($conn, $query);
 
 			header("Location: product.php");
@@ -262,17 +273,22 @@ if($picture_type=="image/jpeg" || $picture_type=="image/jpg" || $picture_type=="
 						</div>
 						<div class="row">
 						<div class="col-25">
-							<label for="category">Category</label>
+							<label for="category">Supplier</label>
 						</div>
 						<div class="col-75">
 							<select id="category" name="category">
-							<option disabled="" selected="">Select your option..</option>
-							<option value="Accessories">Accessories</option>
-							<option value="Contact Lenses">Contact Lenses</option>
-							<option value="Eyewear for Adults">Eyewear for Adults</option>
-							<option value="Eyewear for Kids">Eyewear for Kids</option>
-							<option value="Seen Wear">Seen Wear</option>
-							<option value="Sunglasses">Sunglasses</option>
+							<option>Select Supplier</option>
+							
+							<?php 
+							if($result1->num_rows > 0){ 
+								while($row = $result1->fetch_assoc()){  
+									echo '<option value="'.$row['supp_cname'].'">'.$row['supp_cname'].'</option>'; 
+								} 
+							}else{ 
+								echo '<option value="">Category not available</option>'; 
+							} 
+							
+							?>
 							</select> 
 						</div>
 						</div>
@@ -310,14 +326,17 @@ if($picture_type=="image/jpeg" || $picture_type=="image/jpg" || $picture_type=="
 						</div>
 						<div class="row">
 						<div class="col-25">
-							<label for="supplier">Supplier</label>
+							<label for="supplier">Category</label>
 						</div>
 						<div class="col-75">
 							<select id="supplier" name="supplier">
 							<option disabled="" selected="">Select your option..</option>
-							<option value="Supplier">Supplier </option>
-							<option value=""></option>
-							<option value=""></option>
+							<option value="Accessories">Accessories</option>
+							<option value="Contact Lenses">Contact Lenses</option>
+							<option value="Eyewear for Adults">Eyewear for Adults</option>
+							<option value="Eyewear for Kids">Eyewear for Kids</option>
+							<option value="Seen Wear">Seen Wear</option>
+							<option value="Sunglasses">Sunglasses</option>>
 							</select>
 						</div>
 						</div>

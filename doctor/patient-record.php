@@ -1,7 +1,7 @@
 <?php
 error_reporting(0);
 include("../conn.php");
-include ('../admin/session.php');
+include("../admin/session.php");
 $patt=$_GET['id'];
 if (isset($_GET['id'])) {
 	// code...
@@ -21,7 +21,7 @@ $query = "UPDATE `patient_distancerx` SET `status`='Remove' WHERE `patient_no`='
 	<!-- My CSS -->
 	<link rel="stylesheet" href="css\sys_style.css">
 	<link rel="shorcut icon" type="img/png" href="images\logo.png">
-	<title>RNL Vision Care | Doctor</title>
+	<title>RNL Vision Care | Admin</title>
 </head>
 <style>
 	button {
@@ -43,6 +43,11 @@ $query = "UPDATE `patient_distancerx` SET `status`='Remove' WHERE `patient_no`='
 	
 	.patientss{
 		margin-top: 25%;
+	}
+	@media(max-width: 700px){
+		.patientss{
+		float: right.;
+	}
 	}
 
 </style>
@@ -69,14 +74,6 @@ $query = "UPDATE `patient_distancerx` SET `status`='Remove' WHERE `patient_no`='
 				</a>
 			</li>
 		</ul>
-		<ul class="side-menu">
-			<li>
-				<a href="logout.php" class="logout">
-					<i class='bx bxs-log-out-circle' ></i>
-					<span class="text">Logout</span>
-				</a>
-			</li>
-		</ul>
 	</section>
 	<!-- SIDEBAR -->
 
@@ -95,18 +92,7 @@ $query = "UPDATE `patient_distancerx` SET `status`='Remove' WHERE `patient_no`='
 			</form>
 			<div id="digital-clock"></div>
 			<script src="time.js"></script>
-			<input type="checkbox" id="switch-mode" hidden>
-			<div class="dropdown2">
-			<a href="#" class="notification">
-				<i class='bx bxs-bell' ></i>
-				<span class="num">8</span>
-			</a>
-				<div class="dropdown-content2">
-					<h4 id="textnotif">Notification</h4><br><hr>
-					<a href="#" id="" style="color:black;"><h6>Inquiry:</h6> How can i set an appointment?</a><hr color="wheat">
-					<a href="see-all-notification.php" id="colnotif">See all notification..</a>
-				</div>
-			</div>
+		
 			<!-- DROP DOWN NG EDIT PROFILE AND CHANGE PASS OK-->
 			<div class="dropdown1">
 			<img src="img\user.png" alt="" width="40px" class="userlogo">
@@ -155,56 +141,29 @@ $query = "UPDATE `patient_distancerx` SET `status`='Remove' WHERE `patient_no`='
 			</div>
 
 			<a href="patient-addrecord.php"><button class="btn-addpt" style="cursor: pointer;"> + Add Patient</button></a>
-			<div class="table-data">
-				<div class="order">
+
+			<!-- TABLE ONGOING -->
+			<div>
 				<form method="post">
 						<input type="text" name="txtsearch" id="txtsearch" placeholder="Search by Patients ID or Name" autocomplete="off" style="padding: 12px;border: 1px solid #ccc;border-radius: 4px;font-family: var(poppins);">
 						<button  id="btnsearch" name="btnsearch" class="page"><i class='bx bx-search' ></i></button>
-						</form></br>
-					<div class="head">
-						<h3>List of Patient</h3>
-						<i class='bx bx-search' ></i>
-						<i class='bx bx-filter' ></i>
-					</div>
-					<style type="text/css">
-							th{
-								cursor: pointer;
-							}
-}
-						</style>
-					<table class="table">
-     <thead>
-     	<tr>
-     	<th class="th-sm">Patient Id</th>
-     	 <th class="th-sm">Name</th>
-     	 <th class="th-sm">Email</th>
-     	 <th class="th-sm">Contact No.</th>
-     	 <th class="th-sm">Address</th>
-		 <th class="th-sm">Age</th>
-		 <th class="th-sm">Action</th>
-     	</tr>
-
-     </thead>
-     <script type="text/javascript">
-							const getCellValue = (tr, idx) => tr.children[idx].innerText || tr.children[idx].textContent;
-
-const comparer = (idx, asc) => (a, b) => ((v1, v2) => 
-    v1 !== '' && v2 !== '' && !isNaN(v1) && !isNaN(v2) ? v1 - v2 : v1.toString().localeCompare(v2)
-    )(getCellValue(asc ? a : b, idx), getCellValue(asc ? b : a, idx));
-
-// do the work...
-document.querySelectorAll('th').forEach(th => th.addEventListener('click', (() => {
-    const table = th.closest('table');
-
-    Array.from(table.querySelectorAll('tr:nth-child(n+2)'))
-        .sort(comparer(Array.from(th.parentNode.children).indexOf(th), this.asc = !this.asc))
-        .forEach(tr => table.appendChild(tr) );
-})));
-						</script>
-     <tbody>
-     	<tr></tr>
-     	
-          	<?php
+						</form>
+				<table>
+						<caption>LIST OF PATIENT</caption>
+						<thead>
+						<tr>						
+							<th scope="col">Patient ID</th>
+							<th scope="col">Name</th>
+							<th scope="col">Contact No.</th>
+							<th scope="col">Address</th>
+							<th scope="col">Age</th>
+							<th scope="col">Action</th>
+						</tr>
+				
+						</thead>
+						<tbody>
+							<tr>
+							<?php
           	error_reporting(0);
      	$limit=25;
         //$cat=$_POST['all'];
@@ -223,26 +182,17 @@ document.querySelectorAll('th').forEach(th => th.addEventListener('click', (() =
 
 
      	?>
-     
-     	  <tr>
-     	  	<td data-label="Patient Id" class="patientss"><?php echo $row['patient_id'];?></td>
-     	  	  <td data-label="Name"><?php echo $row['patient_name'];?></td>
-     	  	  <td data-label="Email"><?php echo $row['patient_email'];?></td>
-     	  	  <td data-label="Contact"><?php echo $row['patient_contact'];?></td>
-     	  	  <td data-label="Address"><?php echo $row['patient_address'];?></td>
-			  <td data-label="Age"><?php echo $row['age'];?></td>
-			  <td data-label="Action"><a href="patient-view.php?id=<?php echo $row['patient_no'];?>"><button class="btn-view">View</button></a><a href="?id=<?php echo $row['patient_no'];?>"><button class="btn-rem" >Remove</button></a></td>
-
-     	  </tr>
-     
-      	 <?php
+							<td data-label="Patient ID"><?php echo $row['patient_id'];?></td>
+							<td data-label="Name"><?php echo $row['patient_name'];?></td>
+							<td data-label="Contact No."><?php echo $row['patient_contact'];?></td>
+							<td data-label="Address"><?php echo $row['patient_address'];?></td>
+							<td data-label="Age"><?php echo $row['age'];?></td>
+							<td data-label="Action"><a href="?id=<?php echo $row['patient_no'];?>"><button class="btn-c" style="cursor: pointer;width:100px;pad">REMOVE</button>
+			  				<a href="patient-view.php?id=<?php echo $row['patient_no'];?>"><button class="btn-f" style="cursor: pointer;width:100px;">VIEW</button></td>
+							</tr>
+							<?php
      	}}
-
-     	?>
-     	
-     	<?php
-$id=$_GET['id'];
-
+     	$id=$_GET['id'];
 $sql2 = "SELECT * FROM `patient_distancerx` WHERE `patient_no`='$id'";
  $result2 = $conn->query($sql2);  
   			if($result2->num_rows > 0){
@@ -250,28 +200,133 @@ $sql2 = "SELECT * FROM `patient_distancerx` WHERE `patient_no`='$id'";
   					$name=$row['patient_name'];
   					$pat_id=$row['patient_id'];
   				}}
-  					?>
-  		<form method="post">
+
+     	?>
+     	<form method="post">
      	<input type="text" name="idd" value="<?php echo $pat_id;?>" hidden>
     </form>
-     	</tbody>
-   </table>
-   <a class="page" id="pre" href="patient-record.php?page=<?=$prev; ?>">< Prev</a>
+						</tbody>
+					</table>
+			</div>
+			<a class="page" id="pre" href="patient-record.php?page=<?=$prev; ?>">< Prev</a>
     	  <?php  for($i=1; $i <=$pages ; $i++): ?>
     <a class="page" href="patient-record.php?page=<?=$i; ?>"><?=$i; ?></a>
                       <?php endfor; ?>
     <a class="page" id="pnext" href="patient-record.php?page=<?=$next; ?>">Next ></a>
-				</div>
-
-				
-				
-			</div>
 		</main>
 		<!-- MAIN -->
 	</section>
 	<!-- CONTENT -->
 	
+ <script type="text/javascript">
+							const getCellValue = (tr, idx) => tr.children[idx].innerText || tr.children[idx].textContent;
 
+const comparer = (idx, asc) => (a, b) => ((v1, v2) => 
+    v1 !== '' && v2 !== '' && !isNaN(v1) && !isNaN(v2) ? v1 - v2 : v1.toString().localeCompare(v2)
+    )(getCellValue(asc ? a : b, idx), getCellValue(asc ? b : a, idx));
+
+// do the work...
+document.querySelectorAll('th').forEach(th => th.addEventListener('click', (() => {
+    const table = th.closest('table');
+
+    Array.from(table.querySelectorAll('tr:nth-child(n+2)'))
+        .sort(comparer(Array.from(th.parentNode.children).indexOf(th), this.asc = !this.asc))
+        .forEach(tr => table.appendChild(tr) );
+})));
+						</script>
 	<script src="script.js"></script>
 </body>
+<style>
+.btn-f:hover { background-color: #4CAF50;}
+	.btn-c:hover { background-color: red;}
+.btn-f, .btn-c {
+		background-color: #00c2cb;
+		border: none;
+		border-radius: 10%;
+		margin-left: 10px;
+		padding:2px;
+	}
+table {
+  border: 2px solid #ccc;
+  border-collapse: collapse;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  table-layout: fixed;
+}
+
+table caption {
+  margin-top:20px;
+  font-size: 1.5em;
+  background-color:#00c2cb;
+  padding:2px;
+}
+
+table tr {
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+  padding: .35em;
+}
+
+table th,
+table td {
+  padding: .625em;
+  text-align: center;
+}
+
+table th {
+  font-size: .85em;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  background-color: #9dd1d4;
+}
+
+@media screen and (max-width: 600px) {
+  table {
+    border: 0;
+  }
+
+  table caption {
+    font-size: 1.3em;
+  }
+  
+  table thead {
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+  
+  table tr {
+    border-bottom: 3px solid #ddd;
+    display: block;
+    margin-bottom: .625em;
+  }
+  
+  table td {
+    border-bottom: 1px solid #ddd;
+    display: block;
+    font-size: .8em;
+    text-align: right;
+  }
+  
+  table td::before {
+    /*
+    * aria-label has no advantage, it won't be read inside a table
+    content: attr(aria-label);
+    */
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  
+  table td:last-child {
+    border-bottom: 0;
+  }
+}</style>
 </html>

@@ -128,13 +128,10 @@ if (isset($_REQUEST['btnsubmit'])) {
 					<span class="text">Audit Logs</span>
 				</a>
 			</li>
-		</ul>
-
-		<ul class="side-menu">
 			<li>
-				<a href="logout.php" class="logout">
-					<i class='bx bxs-log-out-circle' ></i>
-					<span class="text">Logout</span>
+				<a href="archive.php">
+					<i class='bx bxs-download' ></i>
+					<span class="text">Back-up and Restore</span>
 				</a>
 			</li>
 		</ul>

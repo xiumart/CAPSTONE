@@ -176,7 +176,11 @@
                 <h3>Total of Product Sales</h3>
             </div>
             <div class="col-md-3 col-6 stats_info counter_grid mt-md-0 mt-4">
-                <p class="counter">130</p>
+            <?php 
+							$query3 = mysqli_query($conn, "SELECT COUNT(*) as total from feedback where feed_rate = '5'");
+									while($result3=mysqli_fetch_array($query3)){		
+						  ?>
+                <p class="counter"><?php echo $result3['total'];}?></p>
              
                 <h3>Total of Good Reviews</h3>
             </div>

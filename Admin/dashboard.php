@@ -160,14 +160,6 @@ if (isset($_GET['id3'])) {
 				</a>
 			</li>
 		</ul>
-		<ul class="side-menu">
-			<li>
-				<a href="logout.php" class="logout">
-					<i class='bx bxs-log-out-circle' ></i>
-					<span class="text">Logout</span>
-				</a>
-			</li>
-		</ul>
 	</section>
 	<!-- SIDEBAR -->
 
@@ -321,7 +313,7 @@ if (isset($_GET['id3'])) {
 
 			<div><br>
 				<a href="d-appointment-history.php"><button class="btn-apph" style="cursor: pointer;">Appointment History</button></a>
-			</div><br>
+			</div>
 			<div>
 			
 					<table>
