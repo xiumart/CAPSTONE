@@ -52,6 +52,15 @@ users_logs($_SESSION['users_username'], "Remove Patient", date("Y-m-d h:i:sa"), 
 		float: right.;
 	}
 	}
+	.page{
+		background-color: #00c2cb;
+		padding: 12px;
+		border: none;
+		border-radius: 10%;
+		color:white;
+	}
+	.page:hover { background-color:#00b2b3;}
+
 
 </style>
 <body>
@@ -145,7 +154,6 @@ users_logs($_SESSION['users_username'], "Remove Patient", date("Y-m-d h:i:sa"), 
 			</form>
 			<div id="digital-clock"></div>
 			<script src="time.js"></script>
-		
 			<div class="dropdown2">
 			<a href="#" class="notification">
 				<i class='bx bxs-bell' ></i>
@@ -233,7 +241,7 @@ users_logs($_SESSION['users_username'], "Remove Patient", date("Y-m-d h:i:sa"), 
 			<!-- TABLE ONGOING -->
 			<div>
 				<form method="post">
-						<input type="text" name="txtsearch" id="txtsearch" placeholder="Search by Patients ID or Name" autocomplete="off" style="padding: 12px;border: 1px solid #ccc;border-radius: 4px;font-family: var(poppins);">
+						<input type="text" name="txtsearch" id="txtsearch" placeholder="Search by Patients ID/Name" autocomplete="off" style="padding: 12px;border: 1px solid #ccc;border-radius: 4px;font-family: var(poppins);width: 50%;">
 						<button  id="btnsearch" name="btnsearch" class="page"><i class='bx bx-search' ></i></button>
 						</form>
 				<table>
@@ -257,8 +265,22 @@ users_logs($_SESSION['users_username'], "Remove Patient", date("Y-m-d h:i:sa"), 
         //$cat=$_POST['all'];
         $page=isset($_GET['page']) ? $_GET['page']:1;
         $start=($page-1)*$limit;
+        $search=$_POST['txtsearch'];
+     	
+     	if (isset($_POST['btnsearch'])) {
+     		$sql2 =$conn->query("SELECT count(patient_no) AS id,`patient_id`,`patient_name` FROM `patient_distancerx` WHERE `patient_id` LIKE '%$search%' OR `patient_name` LIKE '%$search%' AND `status`!='Remove'");
+
+        $sql1 = "SELECT year(now())-year(`patient_bday`) AS age,`patient_no`,`patient_id`,`patient_name`,`patient_email`,`patient_contact`,`patient_address`  FROM `patient_distancerx` WHERE `patient_id` LIKE '%$search%' OR `patient_name` LIKE '%$search%' AND `status`!='Remove' LIMIT $start, $limit ";
+        if ($search=='') {
+        		$sql2 =$conn->query("SELECT count(patient_no) AS id FROM `patient_distancerx`");
+        $sql1 = "SELECT year(now())-year(`patient_bday`) AS age,`patient_no`,`patient_id`,`patient_name`,`patient_email`,`patient_contact`,`patient_address`  FROM `patient_distancerx` WHERE `status`!='Remove'  LIMIT $start, $limit ";
+        }
+     	}
+     	else{
      	$sql2 =$conn->query("SELECT count(patient_no) AS id FROM `patient_distancerx`");
-        $sql1 = "SELECT year(now())-year(`patient_bday`) AS age,`patient_no`,`patient_id`,`patient_name`,`patient_email`,`patient_contact`,`patient_address`  FROM `patient_distancerx` WHERE `status`='Walk-in' OR `status`='Appointment'  LIMIT $start, $limit ";
+        $sql1 = "SELECT year(now())-year(`patient_bday`) AS age,`patient_no`,`patient_id`,`patient_name`,`patient_email`,`patient_contact`,`patient_address`  FROM `patient_distancerx` WHERE `status`!='Remove'  LIMIT $start, $limit ";	
+     	}
+     	
         $result2 = $sql2->fetch_all(MYSQLI_ASSOC);
                 $total=$result2[0]['id'];
                 $pages=ceil($total/$limit);
@@ -295,7 +317,7 @@ $sql2 = "SELECT * FROM `patient_distancerx` WHERE `patient_no`='$id'";
     </form>
 						</tbody>
 					</table>
-			</div>
+			</div><br>
 			<a class="page" id="pre" href="patient-record.php?page=<?=$prev; ?>">< Prev</a>
     	  <?php  for($i=1; $i <=$pages ; $i++): ?>
     <a class="page" href="patient-record.php?page=<?=$i; ?>"><?=$i; ?></a>
