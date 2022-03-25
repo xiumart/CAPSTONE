@@ -165,7 +165,7 @@ include("session.php");
 
      	  		<?php 
 
-     	  		$query4 = mysqli_query($conn, "Select * from appointment_history");
+     	  		$query4 = mysqli_query($conn, "Select * from appointment_history WHERE app_DateTime <= now() ORDER BY app_DateTime DESC");
      	  		while($row = $query4 -> fetch_assoc()){
 ?>
      	  	  <td data-label="Name"><?php echo $row['app_name'];?></td>
