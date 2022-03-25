@@ -75,38 +75,6 @@ if (isset($_REQUEST['btnsubmit'])) {
     float: right;
     width: 10%;
   }
-  .btn-apph {
-		background-color: #00c2cb;
-		padding: 15px;
-		border: none;
-		border-radius: 10%;
-		float: right;
-		margin-left: 10px;
-
-		
-	}
-	.btn-f, .btn-c {
-		background-color: #00c2cb;
-		border: none;
-		border-radius: 10%;
-		margin-left: 10px;
-		padding:4px;
-	}
-	.btn-remove {
-		background-color: #00c2cb;
-		border: none;
-		border-radius: 10%;
-		margin-left: 60%;
-		padding:8px;
-	}
-	.btn-f:hover { background-color: #4CAF50;}
-	.btn-c:hover { background-color: red;}
-	.btn-apph:hover { background-color: #00a2a3;}
-	.btn-remove:hover { background-color: red;}
-	.namee{
-		margin-top: 4.5%;
-	}
-
 </style>
 <body>
 
@@ -115,7 +83,7 @@ if (isset($_REQUEST['btnsubmit'])) {
   <section id="sidebar">
     <a href="#" class="brand">
       <img src="images\logo.png" alt="" width="60px;">
-      <span class="text" style="text-shadow:0.5px 0px #000; color: black;">RNL Vision Care</span>
+      <span class="text" style="text-shadow:0.5px 0px #000;">RNL Vision Care</span>
     </a>
     <ul class="side-menu top">
       <li>
@@ -173,6 +141,14 @@ if (isset($_REQUEST['btnsubmit'])) {
 				</a>
 			</li>
     </ul>
+    <ul class="side-menu">
+			<li>
+				<a href="logout.php" class="logout">
+					<i class='bx bxs-log-out-circle' ></i>
+					<span class="text">Logout</span>
+				</a>
+			</li>
+		</ul>
   </section>
   <!-- SIDEBAR -->
 
@@ -184,7 +160,10 @@ if (isset($_REQUEST['btnsubmit'])) {
     <nav>
       <i class='bx bx-menu' ></i>
       <form action="#">
-
+        <div class="form-input">
+          <input type="search" placeholder="Search...">
+          <button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
+        </div>
       </form>
       <div id="digital-clock"></div>
       <script src="time.js"></script>
@@ -369,7 +348,6 @@ if (isset($_REQUEST['btnsubmit'])) {
 			  		$eid= $_GET['id'];
 			  		$sql=mysqli_query($conn, "SELECT * from users_account WHERE users_id='$eid'");
 			  		while($row=mysqli_fetch_array($sql)){
-            
 			  	?>
                 <div class="row">
                         <div class="row">
@@ -490,16 +468,37 @@ if (isset($_REQUEST['btnsubmit'])) {
     </script>
 </body>
 <style>
-		.btn-f, .btn-c {
+	.btn-apph {
+		background-color: #00c2cb;
+		padding: 15px;
+		border: none;
+		border-radius: 10%;
+		float: right;
+		margin-left: 10px;
+
+		
+	}
+	.btn-f, .btn-c {
 		background-color: #00c2cb;
 		border: none;
 		border-radius: 10%;
 		margin-left: 10px;
 		padding:4px;
 	}
-
+	.btn-remove {
+		background-color: #00c2cb;
+		border: none;
+		border-radius: 10%;
+		margin-left: 60%;
+		padding:8px;
+	}
 	.btn-f:hover { background-color: #4CAF50;}
 	.btn-c:hover { background-color: red;}
+	.btn-apph:hover { background-color: #00a2a3;}
+	.btn-remove:hover { background-color: red;}
+	.namee{
+		margin-top: 4.5%;
+	}
 	table {
   border: 1px solid #ccc;
   border-collapse: collapse;
