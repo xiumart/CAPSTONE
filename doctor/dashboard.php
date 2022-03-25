@@ -190,7 +190,7 @@ if (isset($_GET['id3'])) {
 					<span class="text">
 						<h3>
 							<?php 
-							$query2 = mysqli_query($conn, "SELECT COUNT(*) as total from appointment where app_remarks = 'ONGOING';");
+							$query2 = mysqli_query($conn, "SELECT COUNT(*) as total from appointment where app_remarks = 'Approve';");
 									while($result2=mysqli_fetch_array($query2)){
 										echo $result2['total'];
 						  							}			
@@ -237,7 +237,7 @@ if (isset($_GET['id3'])) {
 							<tr>
 							<tr>
 							<?php 
-								$query5 = mysqli_query($conn, "Select * from appointment where app_remarks = 'ONGOING'");
+								$query5 = mysqli_query($conn, "Select * from appointment where app_remarks = 'Approve'");
 								while($row1 = $query5 -> fetch_assoc()){
 							?>
 							<td data-label="Name"><?php echo $row1['app_name'];?></td>

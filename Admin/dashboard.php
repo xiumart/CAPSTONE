@@ -284,7 +284,7 @@ if (isset($_GET['id3'])) {
 					<span class="text">
 						<h3>
 							<?php 
-							$query2 = mysqli_query($conn, "SELECT COUNT(*) as total from appointment where app_remarks = 'ONGOING';");
+							$query2 = mysqli_query($conn, "SELECT COUNT(*) as total from appointment where app_remarks = 'Approve';");
 									while($result2=mysqli_fetch_array($query2)){
 										echo $result2['total'];
 						  							}			
