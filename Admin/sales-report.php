@@ -320,7 +320,7 @@ $finalcode='RS-'.createRandomPassword();
       echo "Failed to connect to MySQL: " . mysqli_connect_error();
       }
 
-    $result = mysqli_query($con,"SELECT * FROM sales WHERE `type`='cash'");
+    $result = mysqli_query($con,"SELECT * FROM sales WHERE `type`='cash' ORDER BY `date` DESC" );
       
     while($row = mysqli_fetch_array($result))
       {
@@ -329,7 +329,7 @@ $finalcode='RS-'.createRandomPassword();
       echo "<td data-label='Customer name'>" . $row['name'] ."</td>";
 	  echo "<td data-label='Profit'>" .$row['profit']."</td>";
 	  echo "<td data-label='Amount'>" .$row['amount']."</td>";
-      echo "<td data-label='Transac. ID'><form method='post' action='?id=".$row["transaction_id"]."'>"?>
+      echo "<td data-label='Transac. ID'><form method='post' action='?id=".$row["id"]."'>"?>
       <button class="btn-upd" style="cursor: pointer;" onclick="return confirm('Are you sure you want to cancel your appointment?')">Remove</button></form>
       <?php "</td></tr>";
       }

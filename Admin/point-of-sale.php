@@ -19,7 +19,7 @@ function createRandomPassword() {
 	return $pass;
 }
 $finalcode='RS-'.createRandomPassword();
-error_reporting(0);
+//error_reporting(0);
 ?>
 <!DOCTYPE html>
 <html lang="en">

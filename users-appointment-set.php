@@ -192,11 +192,7 @@ $user=$_SESSION['login_user'];
                             <select class="form-control" name="Purpose" id="w3lSubject"
                                 placeholder="Subject" required="" style="width: 40%; padding: 10px; border-radius: 8px; font-size: 16px;">
                                 <option>Check Up</option>
-                                <option>Eye Exams</option>
-                                <option>Vision Tests</option>
-                                <option>Vision Therapy</option>
-                                <option>Eyeglasses and Contact Lenses</option>
-                                <option>Dry Eye and Glaucoma</option>
+                                <option>Request Certification</option>
                                 <option>Adjust and Repair Glasses, Frames</option>
                                 
                               </select>

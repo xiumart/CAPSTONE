@@ -169,11 +169,28 @@ $user=$_SESSION['login_user'];
   
   </section>
 
+    <?php
+     $sql1 = "SELECT * FROM `client_user` WHERE `client_username`='$user'";
+     $result = $conn->query($sql1);
+     if($result->num_rows > 0){
+     while($row = $result -> fetch_assoc()){
+      
+      $client_id = $row['client_id'];
 
-  <div class="alert">
-  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
-  <center><strong>Update your profile!</strong> Click your username and go to edit profile.
-  </div>
+     }}
+
+    
+    $alertq = "SELECT NULL FROM client_user_info WHERE `client_id`='$client_id' ";
+    $alertqqq = $conn->query($alertq);
+    
+    if (empty($alertqqq)) {
+      echo "<div class='alert'>
+      <span class='closebtn' onclick='this.parentElement.style.display='none';'>&times;</span> 
+      <center><strong>Update your profile!</strong> Click your username and go to edit profile.
+      </div>";
+    }
+    ?>
+  
   <style>
 .alert {
   padding: 10px;
@@ -247,17 +264,7 @@ $user=$_SESSION['login_user'];
       </table>
       
 
-      
-      <div class="pagination">
-        <ul>
-          <li><i class="fas fa-chevron-left"></i> </li>
-          <li class="active">1</li>
-          <li>2</li>
-          <li>3</li>
-          <li><i class="fas fa-chevron-right"></i> </li>
-        </ul>
-      </div>
-    </div>
+     
   </section>
 
   <footer>

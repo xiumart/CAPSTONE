@@ -236,15 +236,7 @@ if (isset($_GET['id'])) {
         </tbody>
       </table>
 
-      <div class="pagination">
-        <ul>
-          <li><i class="fas fa-chevron-left"></i> </li>
-          <li class="active">1</li>
-          <li>2</li>
-          <li>3</li>
-          <li><i class="fas fa-chevron-right"></i> </li>
-        </ul>
-      </div>
+     
     </div>
   </section>
 
