@@ -3,6 +3,25 @@ include("../admin/session.php");
 include("../conn.php");
 include "logs_conn.php";
 date_default_timezone_set('Asia/Manila');
+function createRandomPassword() {
+	$chars = "003232303232023232023456789";
+	srand((double)microtime()*1000000);
+	$i = 0;
+	$pass = '' ;
+	while ($i <= 7) {
+
+		$num = rand() % 33;
+
+		$tmp = substr($chars, $num, 1);
+
+		$pass = $pass . $tmp;
+
+		$i++;
+
+	}
+	return $pass;
+}
+$finalcode='RS-'.createRandomPassword();
 $query = "SELECT `supp_cname` FROM supplier";
 $query1 = "SELECT `brand` FROM products";
 $result = $conn->query($query);
@@ -372,7 +391,8 @@ if($picture_type=="image/jpeg" || $picture_type=="image/jpg" || $picture_type=="
 							<option value="Eyewear for Adults">Eyewear for Adults</option>
 							<option value="Eyewear for Kids">Eyewear for Kids</option>
 							<option value="Seen Wear">Seen Wear</option>
-							<option value="Sunglasses">Sunglasses</option>>
+							<option value="Sunglasses">Sunglasses</option>
+							<option value="Services">Services</option>
 							</select>
 						</div>
 						</div>

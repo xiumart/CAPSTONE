@@ -3,6 +3,25 @@ include("../conn.php");
 include("../admin/session.php");
 include "logs_conn.php";
 date_default_timezone_set('Asia/Manila');
+function createRandomPassword() {
+	$chars = "003232303232023232023456789";
+	srand((double)microtime()*1000000);
+	$i = 0;
+	$pass = '' ;
+	while ($i <= 7) {
+
+		$num = rand() % 33;
+
+		$tmp = substr($chars, $num, 1);
+
+		$pass = $pass . $tmp;
+
+		$i++;
+
+	}
+	return $pass;
+}
+$finalcode='RS-'.createRandomPassword();
 $eid= $_GET['id'];
 
 if (isset($_REQUEST['btnsubmit'])) {
@@ -48,7 +67,7 @@ if (isset($_REQUEST['btnsubmit'])) {
 	<!-- My CSS -->
 	<link rel="stylesheet" href="css\sys_style.css">
 	<link rel="shorcut icon" type="img/png" href="images\logo.png">
-	<title>RNL Vision Care | Inventory Clerk</title>
+	<title>RNL Vision Care | Admin</title>
 </head>
 <style>
 	button {
@@ -69,12 +88,6 @@ if (isset($_REQUEST['btnsubmit'])) {
 		float: right;
 		width: 10%;
 	}
-	#sidebar .side-menu.top li.active a {
-	color: blue;
-}
-#sidebar .side-menu.top li a:hover {
-	color: blue;
-}
 </style>
 <body>
 
@@ -114,6 +127,7 @@ if (isset($_REQUEST['btnsubmit'])) {
 			</form>
 			<div id="digital-clock"></div>
 			<script src="time.js"></script>
+	
 			<div class="dropdown2">
 			<a href="#" class="notification">
 				<i class='bx bxs-bell' ></i>
@@ -132,6 +146,7 @@ if (isset($_REQUEST['btnsubmit'])) {
 			$users_id=$_GET['id'];
 			$query = "UPDATE `client_inquiries` SET inquiries_status = '1'  WHERE inquiries_id = '$users_id'";
 			mysqli_query($conn, $query);
+			
 			}
 			?>
 			
@@ -142,7 +157,10 @@ if (isset($_REQUEST['btnsubmit'])) {
               while($row = mysqli_fetch_assoc($query)){
 				  
             ?>
-					<h4>Inquiry:</h4><p><?php echo $row['inquiries_message']; ?></p><a href="?id=<?php echo $row['inquiries_id'];?>"><button class="btn-remove" name="btnremove" style="cursor: pointer;">Clear</button></a><hr color="wheat">
+			<table>
+				<tr>
+					<th><h4>Inquiry:</h4></th><p><td><?php echo $row['inquiries_message']; ?></p></td><td><a href="?id=<?php echo $row['inquiries_id'];?>"><button class="btn-remove" name="btnremove" style="cursor: pointer;">Clear</button></a></td><hr color="wheat">
+			  </table>
 					<?php
 			  }
 			  ?>
@@ -342,4 +360,98 @@ if (isset($_REQUEST['btnsubmit'])) {
 
 	<script src="script.js"></script>
 </body>
+<style>
+		.btn-f, .btn-c {
+		background-color: #00c2cb;
+		border: none;
+		border-radius: 10%;
+		margin-left: 10px;
+		padding:4px;
+	}
+
+	.btn-f:hover { background-color: #4CAF50;}
+	.btn-c:hover { background-color: red;}
+	table {
+  border: 1px solid #ccc;
+  border-collapse: collapse;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  table-layout: fixed;
+}
+
+table caption {
+  font-size: 1.5em;
+  background-color: #00c2cb;
+  margin-top:20px;	
+}
+
+table tr {
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+  padding: .35em;
+}
+
+table th,
+table td {
+  padding: .625em;
+  text-align: center;
+}
+
+table th {
+  font-size: .85em;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  background-color: #9dd1d4;
+}
+
+@media screen and (max-width: 600px) {
+  table {
+    border: 0;
+  }
+
+  table caption {
+    font-size: 1.3em;
+  }
+  
+  table thead {
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+  
+  table tr {
+    border-bottom: 3px solid #ddd;
+    display: block;
+    margin-bottom: .625em;
+  }
+  
+  table td {
+    border-bottom: 1px solid #ddd;
+    display: block;
+    font-size: .8em;
+    text-align: right;
+  }
+  
+  table td::before {
+    /*
+    * aria-label has no advantage, it won't be read inside a table
+    content: attr(aria-label);
+    */
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  
+  table td:last-child {
+    border-bottom: 0;
+  }
+}
+</style>
 </html>

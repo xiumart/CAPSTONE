@@ -3,6 +3,25 @@ include("../conn.php");
 include("../admin/session.php");
 include "logs_conn.php";
 date_default_timezone_set('Asia/Manila');
+function createRandomPassword() {
+	$chars = "003232303232023232023456789";
+	srand((double)microtime()*1000000);
+	$i = 0;
+	$pass = '' ;
+	while ($i <= 7) {
+
+		$num = rand() % 33;
+
+		$tmp = substr($chars, $num, 1);
+
+		$pass = $pass . $tmp;
+
+		$i++;
+
+	}
+	return $pass;
+}
+$finalcode='RS-'.createRandomPassword();
 $id=$_GET['id'];
 if (isset($_POST['btnsubmit'])) {
 	$fname=$_POST['firstname'];
@@ -119,6 +138,7 @@ else{
 	users_logs($_SESSION['users_username'], "Updated Patient", date("Y-m-d h:i:sa"), $_SESSION['users_roles']);
 	mysqli_query($conn, $query);
 	mysqli_query($conn, $query1);
+	echo "<script>alert('You have successfully updated the record.');</script>";
 		header("Location:patient-view.php?id=".$_GET['id']);
 }
 ?>
@@ -133,7 +153,7 @@ else{
 	<!-- My CSS -->
 	<link rel="stylesheet" href="css\sys_style.css">
 	<link rel="shorcut icon" type="img/png" href="images\logo.png">
-	<title>RNL Vision Care | Doctor</title>
+	<title>RNL Vision Care | Admin</title>
 	<style>
 	input[type=text], input[type=date], input[type=tel], input[type=email], select, textarea {
   		width: 100%;
@@ -221,7 +241,7 @@ else{
 	<section id="sidebar">
 		<a href="#" class="brand">
 			<img src="images\logo.png" alt="" width="60px;">
-			<span class="text" style="text-shadow:0.5px 0px #000; color: black">RNL Vision Care</span>
+			<span class="text" style="text-shadow:0.5px 0px #000; color: black;">RNL Vision Care</span>
 		</a>
 		<ul class="side-menu top">
 			<li>
@@ -251,7 +271,10 @@ else{
 
 			</form>
 			<div id="digital-clock"></div>
+			
 			<script src="time.js"></script>
+			
+			
 			<!-- DROP DOWN NG EDIT PROFILE AND CHANGE PASS OK-->
 			<div class="dropdown1">
 			<img src="img\user.png" alt="" width="40px" class="userlogo">
@@ -298,10 +321,30 @@ else{
 				</div>
 			
 			</div>
-
+			<a href="javascript:Clickheretoprint()">	<button class="btn-addp" style="float:right; width: 100px; cursor: pointer;"><i class='bx bxs-printer' ></i> Print </button></a>
+			<!--print-->
+<link href="css/bootstrap-responsive.css" rel="stylesheet">
+<link href="../style.css" media="screen" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="tcal.css" />
+<script type="text/javascript" src="tcal.js"></script>
+<script language="javascript">
+function Clickheretoprint()
+{ 
+  var disp_setting="toolbar=yes,location=no,directories=yes,menubar=yes,"; 
+      disp_setting+="scrollbars=yes,width=1000, height=1000, left=100, top=25"; 
+  var content_vlue = document.getElementById("order").innerHTML; 
+  
+  var docprint=window.open("","",disp_setting); 
+   docprint.document.open(); 
+   docprint.document.write('</head><body onLoad="self.print()" style="width: 700px; font-size:9px; font-family:arial; font-weight:normal;">');          
+   docprint.document.write(content_vlue); 
+   docprint.document.close(); 
+   docprint.focus(); 
+}
+</script>
 			
 		<div class="table-data">
-			<div class="order">
+			<div class="order" id="order">
 			
 				<form method="post">
 					<?php
@@ -878,4 +921,119 @@ $sql1 = "SELECT * FROM `patient_distancerx` WHERE `patient_no`='$id'";
 
 	<script src="script.js"></script>
 </body>
+<style>
+	.btn-apph {
+		background-color: #00c2cb;
+		padding: 15px;
+		border: none;
+		border-radius: 10%;
+		float: right;
+		margin-left: 10px;
+
+		
+	}
+	.btn-f, .btn-c {
+		background-color: #00c2cb;
+		border: none;
+		border-radius: 10%;
+		margin-left: 10px;
+		padding:4px;
+	}
+	.btn-remove {
+		background-color: #00c2cb;
+		border: none;
+		border-radius: 10%;
+		margin-left: 60%;
+		padding:8px;
+	}
+	.btn-f:hover { background-color: #4CAF50;}
+	.btn-c:hover { background-color: red;}
+	.btn-apph:hover { background-color: #00a2a3;}
+	.btn-remove:hover { background-color: red;}
+	.namee{
+		margin-top: 4.5%;
+	}
+	table {
+  border: 1px solid #ccc;
+  border-collapse: collapse;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  table-layout: fixed;
+}
+
+table caption {
+  font-size: 1.5em;
+  background-color: #00c2cb;
+  margin-top:20px;	
+}
+
+table tr {
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+  padding: .35em;
+}
+
+table th,
+table td {
+  padding: .625em;
+  text-align: center;
+}
+
+table th {
+  font-size: .85em;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  background-color: #9dd1d4;
+}
+
+@media screen and (max-width: 600px) {
+  table {
+    border: 0;
+  }
+
+  table caption {
+    font-size: 1.3em;
+  }
+  
+  table thead {
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+  
+  table tr {
+    border-bottom: 3px solid #ddd;
+    display: block;
+    margin-bottom: .625em;
+  }
+  
+  table td {
+    border-bottom: 1px solid #ddd;
+    display: block;
+    font-size: .8em;
+    text-align: right;
+  }
+  
+  table td::before {
+    /*
+    * aria-label has no advantage, it won't be read inside a table
+    content: attr(aria-label);
+    */
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  
+  table td:last-child {
+    border-bottom: 0;
+  }
+}
+</style>
 </html>

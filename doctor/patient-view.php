@@ -1,5 +1,26 @@
 <?php
 include("../admin/session.php");
+include "logs_conn.php";
+date_default_timezone_set('Asia/Manila');
+function createRandomPassword() {
+	$chars = "003232303232023232023456789";
+	srand((double)microtime()*1000000);
+	$i = 0;
+	$pass = '' ;
+	while ($i <= 7) {
+
+		$num = rand() % 33;
+
+		$tmp = substr($chars, $num, 1);
+
+		$pass = $pass . $tmp;
+
+		$i++;
+
+	}
+	return $pass;
+}
+$finalcode='RS-'.createRandomPassword();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -12,7 +33,7 @@ include("../admin/session.php");
 	<!-- My CSS -->
 	<link rel="stylesheet" href="css\sys_style.css">
 	<link rel="shorcut icon" type="img/png" href="images\logo.png">
-	<title>RNL Vision Care | Doctor</title>
+	<title>RNL Vision Care | Admin</title>
 </head>
 <style>
 	button {
@@ -35,6 +56,7 @@ include("../admin/session.php");
 	.checkidd{
 		margin-top: 4.5%;
 	}
+	
 </style>
 <body>
    
@@ -43,7 +65,7 @@ include("../admin/session.php");
 	<section id="sidebar">
 		<a href="#" class="brand">
 			<img src="images\logo.png" alt="" width="60px;">
-			<span class="text" style="text-shadow:0.5px 0px #000; color: black">RNL Vision Care</span>
+			<span class="text" style="text-shadow:0.5px 0px #000; color: black;">RNL Vision Care</span>
 		</a>
 		<ul class="side-menu top">
 			<li>
@@ -74,6 +96,7 @@ include("../admin/session.php");
 			</form>
 			<div id="digital-clock"></div>
 			<script src="time.js"></script>
+		
 			<!-- DROP DOWN NG EDIT PROFILE AND CHANGE PASS OK-->
 			<div class="dropdown1">
 			<img src="img\user.png" alt="" width="40px" class="userlogo">
@@ -129,6 +152,7 @@ if (isset($_GET['id'])) {
 	// code...
 
 $query = "UPDATE `patient_history` SET `status`='Remove' WHERE `patient_no`='$rm'";
+
 	mysqli_query($conn, $query);
 }
 $sql1 = "SELECT * FROM `patient_distancerx` WHERE `patient_no`='$id'";
@@ -176,7 +200,7 @@ $sql1 = "SELECT * FROM `patient_history` WHERE `patient_id`='$pat_id' AND `statu
      	  	  <td data-label="Checkid"><?php echo $chk_id;?></td>
      	  	  <td data-label="Date"><?php echo $date;?></td>
      	  	  <td data-label="Checkby"><?php echo $doctor;?></td>
-			  <td data-label="Action"><a href="patient_viewing.php?user=<?php echo $_GET['id'];?>&id=<?php echo $chk_id;?>"><button class="btn-f"  style="cursor: pointer;width:100px;">View</button></a><a href="patient-view.php?id=<?php echo $_GET['id']; ?>&rm=<?php echo $chk_id; ?>"><button class="btn-c"  style="cursor: pointer;width:100px;" onclick="return confirm('Are you sure you want to remove this record?)">Remove</button></a></td>
+			  <td data-label="Action"><a href="patient_viewing.php?user=<?php echo $_GET['id'];?>&id=<?php echo $chk_id;?>"><button class="btn-f"  style="cursor: pointer;width:100px;">View</button></a><a href="patient-view.php?id=<?php echo $_GET['id']; ?>&rm=<?php echo $chk_id; ?>"><button class="btn-c"  style="cursor: pointer;width:100px;" onclick="return confirm('Are you sure you want to remove this user?')">Remove</button></a></td>
 
      	  </tr>
      	  <?php
@@ -207,17 +231,38 @@ $sql1 = "SELECT * FROM `patient_history` WHERE `patient_id`='$pat_id' AND `statu
 	<script src="script.js"></script>
 </body>
 <style>
-		.btn-f, .btn-c {
+	.btn-apph {
+		background-color: #00c2cb;
+		padding: 15px;
+		border: none;
+		border-radius: 10%;
+		float: right;
+		margin-left: 10px;
+
+		
+	}
+	.btn-f, .btn-c {
 		background-color: #00c2cb;
 		border: none;
 		border-radius: 10%;
 		margin-left: 10px;
 		padding:4px;
 	}
-
+	.btn-remove {
+		background-color: #00c2cb;
+		border: none;
+		border-radius: 10%;
+		margin-left: 60%;
+		padding:8px;
+	}
 	.btn-f:hover { background-color: #4CAF50;}
 	.btn-c:hover { background-color: red;}
-table {
+	.btn-apph:hover { background-color: #00a2a3;}
+	.btn-remove:hover { background-color: red;}
+	.namee{
+		margin-top: 4.5%;
+	}
+	table {
   border: 1px solid #ccc;
   border-collapse: collapse;
   margin: 0;
@@ -229,8 +274,7 @@ table {
 table caption {
   font-size: 1.5em;
   background-color: #00c2cb;
-  margin-top:20px;
-  padding:19px;	
+  margin-top:20px;	
 }
 
 table tr {
@@ -249,6 +293,7 @@ table th {
   font-size: .85em;
   letter-spacing: .1em;
   text-transform: uppercase;
+  background-color: #9dd1d4;
 }
 
 @media screen and (max-width: 600px) {
@@ -298,5 +343,6 @@ table th {
   table td:last-child {
     border-bottom: 0;
   }
-}</style>
+}
+</style>
 </html>

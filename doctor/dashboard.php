@@ -1,14 +1,14 @@
 <?php 
 include("../conn.php");
 include("../admin/session.php");
-include ("logs_conn.php");
+
 // Set the new timezone
 date_default_timezone_set('Asia/Manila');
 $date = date('d-m-y g:i a');
 
 if (isset($_GET['id'])) {
 	$app_id=$_GET['id'];
-	$queryaccept = "UPDATE `appointment` SET app_remarks = 'ONGOING' WHERE app_id='$app_id'";
+	$queryaccept = "UPDATE `appointment` SET app_remarks = 'Approve' WHERE app_id='$app_id'";
 			mysqli_query($conn, $queryaccept);
 
 		
@@ -43,6 +43,25 @@ if (isset($_GET['id3'])) {
 			header( "refresh:0; url=dashboard.php" );		
 
 }
+function createRandomPassword() {
+	$chars = "003232303232023232023456789";
+	srand((double)microtime()*1000000);
+	$i = 0;
+	$pass = '' ;
+	while ($i <= 7) {
+
+		$num = rand() % 33;
+
+		$tmp = substr($chars, $num, 1);
+
+		$pass = $pass . $tmp;
+
+		$i++;
+
+	}
+	return $pass;
+}
+$finalcode='RS-'.createRandomPassword();
 ?>
 
 
@@ -59,7 +78,7 @@ if (isset($_GET['id3'])) {
 	<!-- My CSS -->
 	<link rel="stylesheet" href="css\sys_style.css">
 	<link rel="shorcut icon" type="img/png" href="images\logo.png">
-	<title>RNL Vision Care | Doctor</title>
+	<title>RNL Vision Care | Admin</title>
 </head>
 <style>
 .btn-apph {
@@ -83,8 +102,8 @@ if (isset($_GET['id3'])) {
 		background-color: #00c2cb;
 		border: none;
 		border-radius: 10%;
-		margin-left: 90%;
-		padding:4px;
+		margin-left: 60%;
+		padding:8px;
 	}
 	.btn-f:hover { background-color: #4CAF50;}
 	.btn-c:hover { background-color: red;}
@@ -102,7 +121,7 @@ if (isset($_GET['id3'])) {
 	<section id="sidebar">
 		<a href="dashboard.php" class="brand">
 		<img src="images\logo.png" alt="" width="60px;">
-			<span class="text" style="text-shadow:0.5px 0px #000; color: black">RNL Vision Care</span>
+			<span class="text" style="text-shadow:0.5px 0px #000;color:#423e44; color: black;">RNL Vision Care</span>
 		</a>
 		<ul class="side-menu top">
 			<li class="active">
@@ -133,6 +152,7 @@ if (isset($_GET['id3'])) {
 			</form>
 			<div id="digital-clock"></div>
 			<script src="time.js"></script>
+	
 			<!-- DROP DOWN OF EDIT PROFILE AND CHANGE PASS OK-->
 			<div class="dropdown1">
 			<img src="img\user.png" alt="" width="40px" class="userlogo">
@@ -184,7 +204,6 @@ if (isset($_GET['id3'])) {
 			</div>
 
 			<ul class="box-info">
-				
 				<li>
 					<i class='bx bxs-calendar' ></i>
 					<span class="text">
@@ -212,11 +231,12 @@ if (isset($_GET['id3'])) {
 					</span>
 				</li>
 			</ul>
+
 			<div><br>
 				<a href="d-appointment-history.php"><button class="btn-apph" style="cursor: pointer;">Appointment History</button></a>
 			</div>
 			<div>
-
+			
 			</div>
 			
 			<!-- TABLE ONGOING -->

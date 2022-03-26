@@ -1,5 +1,6 @@
 <?php
-include("../admin/session.php");
+include("../admin/session.php");  
+include("../conn.php");
 function createRandomPassword() {
 	$chars = "003232303232023232023456789";
 	srand((double)microtime()*1000000);
@@ -19,6 +20,12 @@ function createRandomPassword() {
 	return $pass;
 }
 $finalcode='RS-'.createRandomPassword();
+error_reporting(0);
+if (isset($_GET['id'])) {
+	$idd=$_GET['id'];
+	$query1 = "DELETE FROM `sales_order` WHERE `id`='$idd'";
+	mysqli_query($conn, $query1);
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -96,12 +103,16 @@ $finalcode='RS-'.createRandomPassword();
 		padding:5px;
 		font-size:20px;
 	}
-	#sidebar .side-menu.top li.active a {
-	color: blue;
-}
-#sidebar .side-menu.top li a:hover {
-	color: blue;
-}
+
+	.btn-remove {
+		background-color: #00c2cb;
+		border: none;
+		border-radius: 10%;
+		margin-left: 60%;
+		padding:8px;
+	}
+	.btn-remove:hover { background-color: red;}
+
 </style>
 <body>
 
@@ -141,6 +152,7 @@ $finalcode='RS-'.createRandomPassword();
 			</form>
 			<div id="digital-clock"></div>
 			<script src="time.js"></script>
+
 			<!-- DROP DOWN NG EDIT PROFILE AND CHANGE PASS OK-->
 			<div class="dropdown1">
 			<img src="img\user.png" alt="" width="40px" class="userlogo">
@@ -187,29 +199,84 @@ $finalcode='RS-'.createRandomPassword();
 				</div>
 			
 			</div>
-		
-			
+			<div>
+
 			<div class="table-data">
 				
 				<div class="order">
-				<form action="incoming.php" method="post">
+					<form id="my-form" method="post">
+							<select class="sel" name='categoryy' id="price-sort" onchange="location = this.value;">
+							<option disabled="" selected="">Select your category..</option>
+							<option value="?id=<?php echo $_GET['id']; ?>&invoice=<?php echo $_GET['invoice']; ?>&cat=Services"
+								<?php
+								if ($_GET['cat']=='Services') {
+									echo "selected";
+								}
+								 ?>>Services</option>
+							<option value="?id=<?php echo $_GET['id']; ?>&invoice=<?php echo $_GET['invoice']; ?>&cat=Accessories"
+								<?php
+								if ($_GET['cat']=='Accessories') {
+									echo "selected";
+								}
+								 ?>>Accessories</option>
+							<option value="?id=<?php echo $_GET['id']; ?>&invoice=<?php echo $_GET['invoice']; ?>&cat=Contact Lenses"
+								<?php
+								if ($_GET['cat']=='Contact Lenses') {
+									echo "selected";
+								}
+								 ?>>Contact Lenses</option>
+							<option value="?id=<?php echo $_GET['id']; ?>&invoice=<?php echo $_GET['invoice']; ?>&cat=Eyewear for Adults"
+								<?php
+								if ($_GET['cat']=='Eyewear for Adults') {
+									echo "selected";
+								}
+								 ?>>Eyewear for Adults</option>
+							<option value="?id=<?php echo $_GET['id']; ?>&invoice=<?php echo $_GET['invoice']; ?>&cat=Eyewear for Kids"
+								<?php
+								if ($_GET['cat']=='Eyewear for Kids') {
+									echo "selected";
+								}
+								 ?>>Eyewear for Kids</option>
+							<option value="?id=<?php echo $_GET['id']; ?>&invoice=<?php echo $_GET['invoice']; ?>&cat=Seen Wear"
+								<?php
+								if ($_GET['cat']=='Seen Wear') {
+									echo "selected";
+								}
+								 ?>>Seen Wear</option>
+							<option value="?id=<?php echo $_GET['id']; ?>&invoice=<?php echo $_GET['invoice']; ?>&cat=Sunglasses"
+								<?php
+								if ($_GET['cat']=='Sunglasses') {
+									echo "selected";
+								}
+								 ?>>Sunglasses</option>
+							</select>
+					</form>
+					
+				<form name='myForm' action="incoming.php" method="post">
+					
 
 					<input type="hidden" name="pt" value="cash" />
 					<input type="hidden" name="invoice" value="<?php echo $_GET['invoice']; ?>" />
-					<input type="text" class="cust">
 					<input type="number" name="discount" hidden>
 					<input type="hidden" name="date" value="<?php echo date("Y-m-d"); ?>" />
-					<select name="product" id="" class="sel" style="cursor: pointer;" required>
-						<option value="0">Select product...</option>
+					<select name="product" class="sel" style="cursor: pointer;" required>
+						<option disabled="" selected="">Select product/services...</option>
 						<?php 
-						include("../admin/connect.php");
-						$result=$db->prepare("SELECT * FROM product");
+						include("connect.php");
+						$cat=$_GET['cat'];
+						
+						if (isset($cat)) {
+						$result=$db->prepare("SELECT * FROM product WHERE category='$cat'");
+						}
+						else{
+							$result=$db->prepare("SELECT * FROM product");
+						}
 						$result->bindParam(':userid', $res);
 						$result->execute();
 						for($i=0; $row = $result->fetch(); $i++){
 						?>
 						<option value="<?php echo $row['pro_id'];?>"><?php echo $row['model']; ?> - <?php echo $row['brand']; ?> - <?php echo $row['category']; ?> | Expires at: <?php echo $row['expdate']; ?></option>
-						<?php
+											<?php
 						} 
 						?>
 					</select>
@@ -217,6 +284,7 @@ $finalcode='RS-'.createRandomPassword();
 					
 					<input type="submit" name="btnadd" value="+ Add" class="btn-a" style="cursor:pointer;">
 				</form>
+				
 					<br><br>
 					<table class="table" id="resultTable" data-responsive="table">
 						<thead>
@@ -227,7 +295,7 @@ $finalcode='RS-'.createRandomPassword();
 							<th>Price</th>
 							<th>Qty</th>
 							<th>Amount</th>
-							<th>Profit</th>
+							<th hidden>Profit</th>
 							<th>Action</th>
 							</tr>
 						</thead>
@@ -238,6 +306,7 @@ $finalcode='RS-'.createRandomPassword();
 							$result12->bindParam(':userid', $id);
 							$result12->execute();
 							for($i=1; $row = $result12->fetch(); $i++){
+								
 							?>
 							<tr class="record">
 								<input type="text" value="<?php echo $row['product']; ?>" hidden>
@@ -255,12 +324,12 @@ $finalcode='RS-'.createRandomPassword();
 										$dfdf=$row['amount'];
 										echo formatMoney($dfdf, true);
 									?></td>
-								<td data-label="Profit">
+								<td data-label="Profit" hidden>
 									<?php
 										$profit=$row['profit'];
 										echo formatMoney($profit, true);
 									?></td>
-									<td width="90"><a href="delete.php?id=<?php echo $row['order_no']; ?>&invoice=<?php echo $_GET['invoice']; ?>&dle=<?php echo $_POST['pt']; ?>&qty=<?php echo $row['qty'];?>&code=<?php echo $row['product'];?>"><button class="btn-t"><i class="icon icon-remove"></i> Cancel </button></a></td>
+									<td width="90"><a href="?id=<?php echo $row['id']; ?>&invoice=<?php echo $_GET['invoice']; ?>&dle=<?php echo $_POST['pt']; ?>&qty=<?php echo $row['qty'];?>&code=<?php echo $row['product'];?>"><button class="btn-t"><i class="icon icon-remove"></i> Cancel </button></a></td>
 							</tr>
 								<?php
 								}
@@ -272,7 +341,7 @@ $finalcode='RS-'.createRandomPassword();
 									<td></td>
 									<td></td>
 									<th> Total Amount: </th>
-									<th> Total Profit: </th>
+									<th hidden> Total Profit: </th>
 									<td></td>
 							</tr>
 							<tr>
@@ -303,7 +372,7 @@ $finalcode='RS-'.createRandomPassword();
 									}
 									?>
 								</td>
-								<td colspan="1">
+								<td colspan="1" hidden>
 								<?php 
 								$resulta = $db->prepare("SELECT sum(profit) FROM sales_order WHERE order_no= :a");
 								$resulta->bindParam(':a', $sdsd);
@@ -335,4 +404,86 @@ $finalcode='RS-'.createRandomPassword();
 
 	<script src="script.js"></script>
 </body>
+<style>table {
+  border: 1px solid #ccc;
+  border-collapse: collapse;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  table-layout: fixed;
+}
+
+table caption {
+  font-size: 1.5em;
+  background-color: #00c2cb;
+  margin-top:20px;	
+}
+
+table tr {
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+  padding: .35em;
+}
+
+table th,
+table td {
+  padding: .625em;
+  text-align: center;
+}
+
+table th {
+  font-size: .85em;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  background-color: #9dd1d4;
+}
+
+@media screen and (max-width: 600px) {
+  table {
+    border: 0;
+  }
+
+  table caption {
+    font-size: 1.3em;
+  }
+  
+  table thead {
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+  
+  table tr {
+    border-bottom: 3px solid #ddd;
+    display: block;
+    margin-bottom: .625em;
+  }
+  
+  table td {
+    border-bottom: 1px solid #ddd;
+    display: block;
+    font-size: .8em;
+    text-align: right;
+  }
+  
+  table td::before {
+    /*
+    * aria-label has no advantage, it won't be read inside a table
+    content: attr(aria-label);
+    */
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  
+  table td:last-child {
+    border-bottom: 0;
+  }
+}</style>
 </html>

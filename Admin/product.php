@@ -103,11 +103,10 @@ if (isset($_GET['id'])) {
 		margin-left: 60%;
 		padding:8px;
 	}
-	.btn-remove:hover { background-color: red;}
 	.btn-f:hover { background-color: #4CAF50;}
 	.btn-c:hover { background-color: red;}
 	.btn-apph:hover { background-color: #00a2a3;}
-	
+	.btn-remove:hover { background-color: red;}
 	.namee{
 		margin-top: 4.5%;
 	}
@@ -279,31 +278,7 @@ if (isset($_GET['id'])) {
 			
 			</div>
 
-			<a href="product-add.php"><button class="btn-addp" style="float:right;">+ Add Product </button></a>
-			<a href="javascript:Clickheretoprint()">
-   	<button class="btn-addp" style="float:right; width: 100px;"><i class='bx bxs-printer' ></i> Print </button></a>
-<!--print-->
-<link href="css/bootstrap-responsive.css" rel="stylesheet">
-<link href="../style.css" media="screen" rel="stylesheet" type="text/css" />
-<link rel="stylesheet" type="text/css" href="tcal.css" />
-<script type="text/javascript" src="tcal.js"></script>
-<script language="javascript">
-function Clickheretoprint()
-{ 
-	
-  var disp_setting="toolbar=yes,location=no,directories=yes,menubar=yes,"; 
-      disp_setting+="scrollbars=yes,width=1000, height=1000, left=100, top=25"; 
-  var content_vlue = document.getElementById("printing").innerHTML; 
-  
-  var docprint=window.open("","",disp_setting); 
-   docprint.document.open(); 
-   docprint.document.write('</head><body onLoad="self.print()" style="width: 700px; font-size:9px; font-family:arial; font-weight:normal;">');          
-   docprint.document.write(content_vlue); 
-   docprint.document.close(); 
-   docprint.focus(); 
-   
-}
-</script>
+			<a href="product-add.php"><button class="btn-addp" style="float:right; margin-bottom:10px;">+ Add Product </button></a>
 			<form method="post">
 						<input type="text" name="txtsearch" id="txtsearch" placeholder="Search by Model/Category.." autocomplete="off" style="padding: 12px;border: 1px solid #ccc;border-radius: 4px;font-family: var(poppins); width: 50%;">
 						<button  id="btnsearch" name="btnsearch" class="page" style="cursor: pointer;"><i class='bx bx-search' ></i></button>
@@ -332,8 +307,8 @@ function Clickheretoprint()
         $search=$_POST['txtsearch'];
      	
      	if (isset($_POST['btnsearch'])) {
-        $sql1 = "SELECT * FROM `product` WHERE `category` LIKE '%$search%' OR `model` LIKE '%$search%' OR `brand` LIKE '%$search%' OR `origprice` LIKE '%$search%' OR `sellingprice` LIKE '%$search%' OR `qty` LIKE '%$search%' LIMIT $start, $limit";
-        $sql2 =$conn->query("SELECT count(pro_id) AS id,`category`,`model`,`brand`,`origprice`,`sellingprice`,`qty` FROM `product` WHERE `category` LIKE '%$search%' OR `model` LIKE '%$search%' OR `brand` LIKE '%$search%' OR `origprice` LIKE '%$search%' OR `sellingprice` LIKE '%$search%' OR `qty` LIKE '%$search%'");
+        $sql1 = "SELECT * FROM `product` WHERE `category` LIKE '%$search%' OR `model` LIKE '%$search%' LIMIT $start, $limit";
+        $sql2 =$conn->query("SELECT count(pro_id) AS id,`category`,`model` FROM `product` WHERE `category` LIKE '%$search%' OR `model` LIKE '%$search%'");
 
         	}
         else{
@@ -401,7 +376,30 @@ function Clickheretoprint()
                       <?php endfor; ?>
     <a class="page" id="pnext" href="product.php?page=<?=$next; ?>">Next ></a>
 	
+	<a href="javascript:Clickheretoprint()">
+   	<button class="btn-print"><i class='bx bxs-printer' ></i> Print </button></a>
+<!--print-->
+<link href="css/bootstrap-responsive.css" rel="stylesheet">
+<link href="../style.css" media="screen" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="tcal.css" />
+<script type="text/javascript" src="tcal.js"></script>
+<script language="javascript">
+function Clickheretoprint()
+{ 
 	
+  var disp_setting="toolbar=yes,location=no,directories=yes,menubar=yes,"; 
+      disp_setting+="scrollbars=yes,width=1000, height=1000, left=100, top=25"; 
+  var content_vlue = document.getElementById("printing").innerHTML; 
+  
+  var docprint=window.open("","",disp_setting); 
+   docprint.document.open(); 
+   docprint.document.write('</head><body onLoad="self.print()" style="width: 700px; font-size:11px; font-family:arial; font-weight:normal;">');          
+   docprint.document.write(content_vlue); 
+   docprint.document.close(); 
+   docprint.focus(); 
+   
+}
+</script>
 					
 
 				</div>

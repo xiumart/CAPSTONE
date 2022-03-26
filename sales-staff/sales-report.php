@@ -1,6 +1,25 @@
 <?php
-include("../admin/session.php");
+include("session.php");
 include("../conn.php");
+function createRandomPassword() {
+	$chars = "003232303232023232023456789";
+	srand((double)microtime()*1000000);
+	$i = 0;
+	$pass = '' ;
+	while ($i <= 7) {
+
+		$num = rand() % 33;
+
+		$tmp = substr($chars, $num, 1);
+
+		$pass = $pass . $tmp;
+
+		$i++;
+
+	}
+	return $pass;
+}
+$finalcode='RS-'.createRandomPassword();
  if (isset($_GET['id'])) {
 			$users_id=$_GET['id'];
 			$query123 = mysqli_query($conn, "UPDATE `sales` SET type = 'Remove'  WHERE id = '$users_id'");
@@ -30,21 +49,56 @@ include("../conn.php");
 
 	.btn-upd:hover { background-color: #4CAF50;}
 	.btn-rem:hover { background-color: red;}
-	.btn-addpt:hover { background-color: #00b2b3;}
-	.btn-print:hover { background-color: #00b2b3}
-
+	.btn-print:hover { background-color:#00a2a3;}
+	.btn-addpt:hover { background-color: #00a2a3}
 	.btn-addpt {float:right; margin-bottom: 20px;}
 	.btn-print {
 		margin-top: 20px;
 		float: right;
 		width: 10%;
 	}
-	#sidebar .side-menu.top li.active a {
-	color: blue;
-}
-#sidebar .side-menu.top li a:hover {
-	color: blue;
-}
+	.page{
+		background-color: #00c2cb;
+		padding: 12px;
+		border: none;
+		border-radius: 10%;
+	}
+	.page:hover { background-color:#00b2b3;}
+
+	.namee{margin-top: 5%;}
+	.btn-apph {
+		background-color: #00c2cb;
+		padding: 15px;
+		border: none;
+		border-radius: 10%;
+		float: right;
+		margin-left: 10px;
+
+		
+	}
+	.btn-f, .btn-c {
+		background-color: #00c2cb;
+		border: none;
+		border-radius: 10%;
+		margin-left: 10px;
+		padding:4px;
+	}
+	.btn-remove {
+		background-color: #00c2cb;
+		border: none;
+		border-radius: 10%;
+		margin-left: 60%;
+		padding:8px;
+	}
+	.btn-remove:hover { background-color: red;}
+	.btn-f:hover { background-color: #4CAF50;}
+	.btn-c:hover { background-color: red;}
+	.btn-apph:hover { background-color: #00a2a3;}
+
+	.namee{
+		margin-top: 4.5%;
+	}
+
 </style>
 <body>
 
@@ -57,7 +111,7 @@ include("../conn.php");
 		</a>
 		<ul class="side-menu top">
 			<li>
-				<a href="point-of-sale.php">
+				<a href="point-of-sale.php?id=cash&invoice=<?php echo $finalcode ?>">
 					<i class='bx bxs-cart' ></i>
 					<span class="text">Point of Sale</span>
 				</a>
@@ -84,6 +138,7 @@ include("../conn.php");
 			</form>
 			<div id="digital-clock"></div>
 			<script src="time.js"></script>
+			
 			<!-- DROP DOWN NG EDIT PROFILE AND CHANGE PASS OK-->
 			<div class="dropdown1">
 			<img src="img\user.png" alt="" width="40px" class="userlogo">
@@ -151,7 +206,7 @@ include("../conn.php");
 						$sunday = strtotime(date("Y-m-d",$monday)." +6 days");
 						$this_week_sd = date("Y-m-d",$monday);
 						$this_week_ed = date("Y-m-d",$sunday);
-							$sql="SELECT SUM(amount) as sum_score FROM sales where date BETWEEN '$this_week_sd'  AND '$this_week_ed'";
+							$sql="SELECT SUM(amount) as sum_score FROM sales where date BETWEEN '$this_week_sd'  AND '$this_week_ed' AND `type`='cash' ";
 							$result = mysqli_query($conn,$sql);
 							while ($row = mysqli_fetch_assoc($result)){ echo '₱'.$row['sum_score'];}
 							
@@ -160,7 +215,7 @@ include("../conn.php");
 						  ?></p>
 						   <p>Monthly Profit: <?php 
 						  include("../conn.php");
-							$sql="SELECT MONTH(date)AS Month, SUM(amount) AS total FROM sales WHERE MONTH(date) = MONTH(CURRENT_DATE()) GROUP BY MONTH(date), YEAR(date)";
+							$sql="SELECT MONTH(date)AS Month, SUM(amount) AS total FROM sales WHERE MONTH(date) = MONTH(CURRENT_DATE())  AND `type`='cash' GROUP BY MONTH(date), YEAR(date)";
 							$result = mysqli_query($conn,$sql);
 							while ($row = mysqli_fetch_assoc($result)){ echo '₱'.$row['total'];}
 							
@@ -198,7 +253,7 @@ include("../conn.php");
 						$sunday = strtotime(date("Y-m-d",$monday)." +6 days");
 						$this_week_sd = date("Y-m-d",$monday);
 						$this_week_ed = date("Y-m-d",$sunday);
-							$sql="SELECT SUM(profit) as sum_score FROM sales where date BETWEEN '$this_week_sd'  AND '$this_week_ed'";
+							$sql="SELECT SUM(profit) as sum_score FROM sales where date BETWEEN '$this_week_sd'  AND '$this_week_ed'  AND `type`='cash'";
 							$result = mysqli_query($conn,$sql);
 							while ($row = mysqli_fetch_assoc($result)){ echo '₱'.$row['sum_score'];}
 							
@@ -207,7 +262,7 @@ include("../conn.php");
 						  ?></p>
 						  <p>Monthly Profit: <?php 
 						  include("../conn.php");
-							$sql="SELECT MONTH(date)AS Month, SUM(profit) AS total FROM sales WHERE MONTH(date) = MONTH(CURRENT_DATE()) GROUP BY MONTH(date), YEAR(date)";
+							$sql="SELECT MONTH(date)AS Month, SUM(profit) AS total FROM sales WHERE MONTH(date) = MONTH(CURRENT_DATE())  AND `type`='cash' GROUP BY MONTH(date), YEAR(date)";
 							$result = mysqli_query($conn,$sql);
 							while ($row = mysqli_fetch_assoc($result)){ echo '₱'.$row['total'];}
 							
@@ -229,9 +284,32 @@ include("../conn.php");
 			
 			</ul><br>
 			<a href="sales-annual-history.php"><button class="btn-addpt" style="cursor: pointer;"> Annual Sales History</button></a>
+			<a href="javascript:Clickheretoprint()">	<button class="btn-addp" style="float:right; width: 100px; cursor: pointer;"><i class='bx bxs-printer' ></i> Print </button></a>
+<!--print-->
+<link href="css/bootstrap-responsive.css" rel="stylesheet">
+<link href="../style.css" media="screen" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="tcal.css" />
+<script type="text/javascript" src="tcal.js"></script>
+<script language="javascript">
+function Clickheretoprint()
+{ 
+	
+  var disp_setting="toolbar=yes,location=no,directories=yes,menubar=yes,"; 
+      disp_setting+="scrollbars=yes,width=1000, height=1000, left=100, top=25"; 
+  var content_vlue = document.getElementById("printing").innerHTML; 
+  
+  var docprint=window.open("","",disp_setting); 
+   docprint.document.open(); 
+   docprint.document.write('</head><body onLoad="self.print()" style="width: 700px; font-size:9px; font-family:arial; font-weight:normal;">');          
+   docprint.document.write(content_vlue); 
+   docprint.document.close(); 
+   docprint.focus(); 
+   
+}
+</script>
 			<div>
 				<div>
-					
+				<div id="printing">
 					<table>
 						<caption>Recent Transaction</caption>
      <thead>
@@ -253,7 +331,7 @@ include("../conn.php");
       echo "Failed to connect to MySQL: " . mysqli_connect_error();
       }
 
-    $result = mysqli_query($con,"SELECT * FROM sales WHERE `type`='cash'");
+    $result = mysqli_query($con,"SELECT * FROM sales WHERE `type`='cash' ORDER BY `date` DESC" );
       
     while($row = mysqli_fetch_array($result))
       {
@@ -262,8 +340,8 @@ include("../conn.php");
       echo "<td data-label='Customer name'>" . $row['name'] ."</td>";
 	  echo "<td data-label='Profit'>" .$row['profit']."</td>";
 	  echo "<td data-label='Amount'>" .$row['amount']."</td>";
-      echo "<td data-label='Transac. ID'><form method='post' action='?id=".$row["transaction_id"]."'>"?>
-      <button class="btn-upd" style="cursor: pointer;" onclick="return confirm('Are you sure you want to cancel your appointment?')">Remove</button></form>
+      echo "<td data-label='Transac. ID'><form method='post' action='?id=".$row["id"]."'>"?>
+      <button class="btn-upd" style="cursor: pointer;" onclick="return confirm('Are you sure you want to remove this transacetion?')">Remove</button></form>
       <?php "</td></tr>";
       }
 

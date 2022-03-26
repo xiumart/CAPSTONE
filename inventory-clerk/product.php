@@ -2,8 +2,27 @@
 error_reporting(0);
 include("../conn.php");
 include("../admin/session.php");
-include "../admin/logs_conn.php";
+include "logs_conn.php";
 date_default_timezone_set('Asia/Manila');
+function createRandomPassword() {
+	$chars = "003232303232023232023456789";
+	srand((double)microtime()*1000000);
+	$i = 0;
+	$pass = '' ;
+	while ($i <= 7) {
+
+		$num = rand() % 33;
+
+		$tmp = substr($chars, $num, 1);
+
+		$pass = $pass . $tmp;
+
+		$i++;
+
+	}
+	return $pass;
+}
+$finalcode='RS-'.createRandomPassword();
 if (isset($_GET['id'])) {
 	$pro_id1=$_GET['id'];
 	$query = "DELETE FROM `product` WHERE pro_id='$pro_id1'";
@@ -24,7 +43,7 @@ if (isset($_GET['id'])) {
 	<!-- My CSS -->
 	<link rel="stylesheet" href="css\sys_style.css">
 	<link rel="shorcut icon" type="img/png" href="images\logo.png">
-	<title>RNL Vision Care | Inventory Clerk</title>
+	<title>RNL Vision Care | Admin</title>
 </head>
 <style>
 	button {
@@ -39,7 +58,7 @@ if (isset($_GET['id'])) {
 	.btn-upd:hover { background-color: #4CAF50;}
 	.btn-rem:hover { background-color: red;}
 	.btn-print:hover { background-color:#00b2b3;}
-	.btn-addp:hover { background-color: #00b2b3}
+	.btn-addp:hover { background-color: #00b2b3;}
 
 	.btn-print {
 		margin-top: 20px;
@@ -51,6 +70,7 @@ if (isset($_GET['id'])) {
 		padding: 12px;
 		border: none;
 		border-radius: 10%;
+		color:white;
 	}
 	.page:hover { background-color:#00b2b3;}
 
@@ -59,12 +79,38 @@ if (isset($_GET['id'])) {
 	}
 
 	.namee{margin-top: 20%;}
-	#sidebar .side-menu.top li.active a {
-	color: blue;
-}
-#sidebar .side-menu.top li a:hover {
-	color: blue;
-}
+	.btn-apph {
+		background-color: #00c2cb;
+		padding: 15px;
+		border: none;
+		border-radius: 10%;
+		float: right;
+		margin-left: 10px;
+
+		
+	}
+	.btn-f, .btn-c {
+		background-color: #00c2cb;
+		border: none;
+		border-radius: 10%;
+		margin-left: 10px;
+		padding:4px;
+	}
+	.btn-remove {
+		background-color: #00c2cb;
+		border: none;
+		border-radius: 10%;
+		margin-left: 60%;
+		padding:8px;
+	}
+	.btn-f:hover { background-color: #4CAF50;}
+	.btn-c:hover { background-color: red;}
+	.btn-apph:hover { background-color: #00a2a3;}
+	.btn-remove:hover { background-color: red;}
+	.namee{
+		margin-top: 4.5%;
+	}
+
 </style>
 <body>
 
@@ -100,7 +146,7 @@ if (isset($_GET['id'])) {
 		<nav>
 			<i class='bx bx-menu' ></i>
 			<form action="#">
-				
+
 			</form>
 			<div id="digital-clock"></div>
 			<script src="time.js"></script>
@@ -122,6 +168,7 @@ if (isset($_GET['id'])) {
 			$users_id=$_GET['id'];
 			$query = "UPDATE `client_inquiries` SET inquiries_status = '1'  WHERE inquiries_id = '$users_id'";
 			mysqli_query($conn, $query);
+			header( "refresh:0; url=product.php" );
 			}
 			?>
 			
@@ -132,7 +179,10 @@ if (isset($_GET['id'])) {
               while($row = mysqli_fetch_assoc($query)){
 				  
             ?>
-					<h4>Inquiry:</h4><p><?php echo $row['inquiries_message']; ?></p><a href="?id=<?php echo $row['inquiries_id'];?>"><button class="btn-remove" name="btnremove" style="cursor: pointer;">Clear</button></a><hr color="wheat">
+			<table>
+				<tr>
+					<th><h4>Inquiry:</h4></th><p><td><?php echo $row['inquiries_message']; ?></p></td><td><a href="?id=<?php echo $row['inquiries_id'];?>"><button class="btn-remove" name="btnremove" style="cursor: pointer;">Clear</button></a></td><hr color="wheat">
+			  </table>
 					<?php
 			  }
 			  ?>
@@ -183,57 +233,21 @@ if (isset($_GET['id'])) {
 						</li>
 					</ul>
 				</div>
-			</div>
-			<ul class="box-info">
-				<li>
-					<i class='bx bxs-calendar-plus' ></i>
-					<span class="text">
-						<h3><?php 
-							$query = mysqli_query($conn, "SELECT COUNT(*) as total from appointment where app_remarks = 'PENDING';");
-									while($result=mysqli_fetch_array($query)){
-										echo $result['total'];
-						  							}			
-						  ?></h3>
-						<p>Total Request Appointment</p>
-					</span>
-				</li>
-				<li>
-					<i class='bx bxs-calendar' ></i>
-					<span class="text">
-						<h3>
-							<?php 
-							$query2 = mysqli_query($conn, "SELECT COUNT(*) as total from appointment where app_remarks = 'ONGOING';");
-									while($result2=mysqli_fetch_array($query2)){
-										echo $result2['total'];
-						  							}			
-						  ?>
-						  </h3>
-						<p>Total Ongoing Appointment</p>
-					</span>
-				</li>
-				<li>
-					<i class='bx bxs-calendar-check' ></i>
-					<span class="text">
-						<h3><?php 
-							$query3 = mysqli_query($conn, "SELECT COUNT(*) as total from appointment_history where app_remarks = 'FINISH';");
-									while($result3=mysqli_fetch_array($query3)){
-										echo $result3['total'];
-						  							}			
-						  ?></h3>
-						<p>Total Finish Appointment</p>
-					</span>
-				</li>
-			</ul><br>
-			<a href="product-add.php"><button class="btn-addp" style="float:right; margin-bottom:10px;">+ Add Product </button></a>
 			
+			</div>
+
+			<a href="product-add.php"><button class="btn-addp" style="float:right; margin-bottom:10px;">+ Add Product </button></a>
+			<form method="post">
+						<input type="text" name="txtsearch" id="txtsearch" placeholder="Search by Model/Category.." autocomplete="off" style="padding: 12px;border: 1px solid #ccc;border-radius: 4px;font-family: var(poppins); width: 50%;">
+						<button  id="btnsearch" name="btnsearch" class="page" style="cursor: pointer;"><i class='bx bx-search' ></i></button>
+			</form>
 <div id="printing">
 					<table>
 <caption>List of Product</caption>
      <thead>
      	<tr>
-     	<th>Id</th>
+     		<th>Model</th>
      	 <th>Brand</th>
-     	 <th>Model</th>
      	 <th>Category</th>
      	 <th>Orig. Price</th>
 		 <th>Selling Price</th>
@@ -249,12 +263,15 @@ if (isset($_GET['id'])) {
         $page=isset($_GET['page']) ? $_GET['page']:1;
         $start=($page-1)*$limit;
         $search=$_POST['txtsearch'];
-     	$sql2 =$conn->query("SELECT count(pro_id) AS id FROM `product`");
+     	
      	if (isset($_POST['btnsearch'])) {
-        $sql1 = "SELECT * FROM `product` WHERE `category` LIKE '%$search%' OR `pro_id` LIKE'%$search%'  LIMIT $start, $limit ";
+        $sql1 = "SELECT * FROM `product` WHERE `category` LIKE '%$search%' OR `model` LIKE '%$search%' LIMIT $start, $limit";
+        $sql2 =$conn->query("SELECT count(pro_id) AS id,`category`,`model` FROM `product` WHERE `category` LIKE '%$search%' OR `model` LIKE '%$search%'");
+
         	}
         else{
         		$sql1 = "SELECT * FROM `product` LIMIT $start, $limit ";
+        		$sql2 =$conn->query("SELECT count(pro_id) AS id FROM `product`");
         	}
         $result2 = $sql2->fetch_all(MYSQLI_ASSOC);
                 $total=$result2[0]['id'];
@@ -264,26 +281,45 @@ if (isset($_GET['id'])) {
      	  $result1 = $conn->query($sql1);  
   			if($result1->num_rows > 0){
   				while($row = $result1 -> fetch_assoc()){ 
+  					$qty=$row['qty'];
 
      	?>
+     		
      	
 
+
      	  <tr>
-     	  	<td data-label="Id" class="brandd"><p><?php echo $row['pro_id'];?></p></td>
-     	  	<td data-label="Brand"><?php echo $row['brand'];?></td>
      	  	<td data-label="Model"><?php echo $row['model'];?></td>
+     	  	<td data-label="Brand"><?php echo $row['brand'];?></td>
      	  	<td data-label="Category"><?php echo $row['category'];?></td>
      	  	<td data-label="Orig."><?php echo $row['origprice'];?></td>
 			  	<td data-label="Selling"><?php echo $row['sellingprice'];?></td>
 			  	<td data-label="Expire"><?php echo $row['expdate'];?></td>
-			  	<td data-label="Qty" id="qq"><?php echo $row['qty'];?></td>
-			  	<td data-label="Action"><a href="product-update.php?id=<?php echo $row['pro_id'];?>"><button class="btn-upd">Update</button></a><a href="?id=<?php echo $row['pro_id'];?>"><button class="btn-rem" name="btnremove" onclick="return confirm('Are you sure you want to remove this product?)">Remove</button></a></td>
+			  	<td data-label="Qty" id="qq"><?php echo $row['qty'];
+
+							if ($qty<=10) {
+								
+						echo "<br><b><p style='color:red;'>CRITICAL</p></b>";
+							}
+							else
+							{
+								echo "";}
+
+							 
+
+
+
+			  ?>
+			  	
+			  </td>
+			  	<td data-label="Action" id="butones"><a href="product-update.php?id=<?php echo $row['pro_id'];?>"><button class="btn-upd">Update</button></a><form  method = "post" action ="?id=<?php echo $row['pro_id'];?>"><button class="btn-rem" name="btnrem" id="btnrem" onclick="return confirm('Are you sure you want to remove this product?')">Remove</button></form	></td>
      	  </tr>
     
      	 <?php
-     	}}
+     }}
 
      	?>
+     
 
 
      </tbody>
@@ -308,6 +344,7 @@ if (isset($_GET['id'])) {
 <script language="javascript">
 function Clickheretoprint()
 { 
+	
   var disp_setting="toolbar=yes,location=no,directories=yes,menubar=yes,"; 
       disp_setting+="scrollbars=yes,width=1000, height=1000, left=100, top=25"; 
   var content_vlue = document.getElementById("printing").innerHTML; 
@@ -318,6 +355,7 @@ function Clickheretoprint()
    docprint.document.write(content_vlue); 
    docprint.document.close(); 
    docprint.focus(); 
+   
 }
 </script>
 					

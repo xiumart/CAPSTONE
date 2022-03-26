@@ -49,15 +49,56 @@ $finalcode='RS-'.createRandomPassword();
 
 	.btn-upd:hover { background-color: #4CAF50;}
 	.btn-rem:hover { background-color: red;}
-	.btn-addpt:hover { background-color: #00b2b3;}
-	.btn-print:hover { background-color: #00b2b3}
-
+	.btn-print:hover { background-color:#00a2a3;}
+	.btn-addpt:hover { background-color: #00a2a3}
 	.btn-addpt {float:right; margin-bottom: 20px;}
 	.btn-print {
 		margin-top: 20px;
 		float: right;
 		width: 10%;
 	}
+	.page{
+		background-color: #00c2cb;
+		padding: 12px;
+		border: none;
+		border-radius: 10%;
+	}
+	.page:hover { background-color:#00b2b3;}
+
+	.namee{margin-top: 5%;}
+	.btn-apph {
+		background-color: #00c2cb;
+		padding: 15px;
+		border: none;
+		border-radius: 10%;
+		float: right;
+		margin-left: 10px;
+
+		
+	}
+	.btn-f, .btn-c {
+		background-color: #00c2cb;
+		border: none;
+		border-radius: 10%;
+		margin-left: 10px;
+		padding:4px;
+	}
+	.btn-remove {
+		background-color: #00c2cb;
+		border: none;
+		border-radius: 10%;
+		margin-left: 60%;
+		padding:8px;
+	}
+	.btn-remove:hover { background-color: red;}
+	.btn-f:hover { background-color: #4CAF50;}
+	.btn-c:hover { background-color: red;}
+	.btn-apph:hover { background-color: #00a2a3;}
+
+	.namee{
+		margin-top: 4.5%;
+	}
+
 </style>
 <body>
 
@@ -143,11 +184,39 @@ $finalcode='RS-'.createRandomPassword();
 			<div class="dropdown2">
 			<a href="#" class="notification">
 				<i class='bx bxs-bell' ></i>
-				<span class="num">8</span>
+				<span class="num">
+				<?php 
+				$query = mysqli_query($conn, "SELECT COUNT(*) as total from client_inquiries WHERE inquiries_status = '2'");
+					while($result=mysqli_fetch_array($query)){
+					echo $result['total']; 
+				}			
+				?>
+						  </span>			  
 			</a>
+			<?php
+
+			if (isset($_GET['id'])) {
+			$users_id=$_GET['id'];
+			$query = "UPDATE `client_inquiries` SET inquiries_status = '1'  WHERE inquiries_id = '$users_id'";
+			mysqli_query($conn, $query);
+			header( "refresh:0; url=sales-report.php" );
+			}
+			?>
+			
 				<div class="dropdown-content2">
 					<h4 id="textnotif">Notification</h4><br><hr>
-					<a href="#" id="" style="color:black;"><h6>Inquiry:</h6> How can i set an appointment?</a><hr color="wheat">
+					<?php   
+			   require_once("../db/notification/notifdisplay.php");
+              while($row = mysqli_fetch_assoc($query)){
+				  
+            ?>
+			<table>
+				<tr>
+					<th><h4>Inquiry:</h4></th><p><td><?php echo $row['inquiries_message']; ?></p></td><td><a href="?id=<?php echo $row['inquiries_id'];?>"><button class="btn-remove" name="btnremove" style="cursor: pointer;">Clear</button></a></td><hr color="wheat">
+			  </table>
+					<?php
+			  }
+			  ?>
 					<a href="see-all-notification.php" id="colnotif">See all notification..</a>
 				</div>
 			</div>
@@ -353,7 +422,7 @@ function Clickheretoprint()
 	  echo "<td data-label='Profit'>" .$row['profit']."</td>";
 	  echo "<td data-label='Amount'>" .$row['amount']."</td>";
       echo "<td data-label='Transac. ID'><form method='post' action='?id=".$row["id"]."'>"?>
-      <button class="btn-upd" style="cursor: pointer;" onclick="return confirm('Are you sure you want to cancel your appointment?')">Remove</button></form>
+      <button class="btn-upd" style="cursor: pointer;" onclick="return confirm('Are you sure you want to remove this transacetion?')">Remove</button></form>
       <?php "</td></tr>";
       }
 

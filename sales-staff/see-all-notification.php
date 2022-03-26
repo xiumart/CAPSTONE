@@ -1,24 +1,6 @@
 <?php
-include("session.php");
-function createRandomPassword() {
-	$chars = "003232303232023232023456789";
-	srand((double)microtime()*1000000);
-	$i = 0;
-	$pass = '' ;
-	while ($i <= 7) {
-
-		$num = rand() % 33;
-
-		$tmp = substr($chars, $num, 1);
-
-		$pass = $pass . $tmp;
-
-		$i++;
-
-	}
-	return $pass;
-}
-$finalcode='RS-'.createRandomPassword();
+session_start();
+include ("conn.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -44,23 +26,15 @@ $finalcode='RS-'.createRandomPassword();
 
 	.btn-upd:hover { background-color: #4CAF50;}
 	.btn-rem:hover { background-color: red;}
-	.btn-print:hover { background-color:#00a2a3;}
-	.btn-addpt:hover { background-color: #00a2a3}
+	.btn-addpt:hover { background-color: #00b2b3;}
+	.btn-print:hover { background-color: #00b2b3}
+
 	.btn-addpt {float:right; margin-bottom: 20px;}
 	.btn-print {
 		margin-top: 20px;
 		float: right;
 		width: 10%;
 	}
-	.page{
-		background-color: #00c2cb;
-		padding: 12px;
-		border: none;
-		border-radius: 10%;
-	}
-	.page:hover { background-color:#00b2b3;}
-
-	.namee{margin-top: 5%;}
 	.btn-apph {
 		background-color: #00c2cb;
 		padding: 15px;
@@ -85,11 +59,10 @@ $finalcode='RS-'.createRandomPassword();
 		margin-left: 60%;
 		padding:8px;
 	}
-	.btn-remove:hover { background-color: red;}
 	.btn-f:hover { background-color: #4CAF50;}
 	.btn-c:hover { background-color: red;}
 	.btn-apph:hover { background-color: #00a2a3;}
-
+	.btn-remove:hover { background-color: red;}
 	.namee{
 		margin-top: 4.5%;
 	}
@@ -118,12 +91,12 @@ $finalcode='RS-'.createRandomPassword();
 				</a>
 			</li>
 			<li>
-				<a href="point-of-sale.php?id=cash&invoice=<?php echo $finalcode ?>">
+				<a href="point-of-sale.php">
 					<i class='bx bxs-cart' ></i>
 					<span class="text">Point of Sale</span>
 				</a>
 			</li>
-			<li class="active">
+			<li>
 				<a href="sales-report.php">
 					<i class='bx bxs-download' ></i>
 					<span class="text">Sales Report</span>
@@ -169,7 +142,6 @@ $finalcode='RS-'.createRandomPassword();
 			</form>
 			<div id="digital-clock"></div>
 			<script src="time.js"></script>
-			
 			<div class="dropdown2">
 			<a href="#" class="notification">
 				<i class='bx bxs-bell' ></i>
@@ -188,7 +160,7 @@ $finalcode='RS-'.createRandomPassword();
 			$users_id=$_GET['id'];
 			$query = "UPDATE `client_inquiries` SET inquiries_status = '1'  WHERE inquiries_id = '$users_id'";
 			mysqli_query($conn, $query);
-			header( "refresh:0; url=sales-annual-history.php" );
+			header( "refresh:0; url=see-all-notification.php" );
 			}
 			?>
 			
@@ -220,20 +192,18 @@ $finalcode='RS-'.createRandomPassword();
 			<!-- Modal -->
 			<div id="myModal" class="modal">
 				<div class="modal-content">
-				<form action="changepasshandler.php" method="POST">
 				<span class="close">&times;</span>
 				<h3>CHANGE PASSWORD</h3>
 				<br><hr><br>
 				<h4>OLD PASSWORD</h4>
-				<input type="password" name="currentPassword" class="oldpw">
+				<input type="text" class="oldpw">
 				<h4>NEW PASSWORD</h4>
-				<input type="password" minlenght="6" name="newPassword" class="newpw">
+				<input type="text" class="newpw">
 				<h4>CONFIRM PASSWORD</h4>
-				<input type="password" minlenght="6" name="confirmPassword" class="conpw">
-				<button type="submit" value="Submit" name="submit" class="cpBtn">Submit</button><br><br><br><br>
+				<input type="text" class="conpw">
+				<input type="button" value="Submit" class="cpBtn"><br><br><br><br>
 				</div>
 			</div>
-</form>
 			<script src="js\modal.js"></script>
 		</nav>
 		<!-- NAVBAR -->
@@ -242,22 +212,19 @@ $finalcode='RS-'.createRandomPassword();
 		<main>
 			<div class="head-title">
 				<div class="left">
-					<h1>Sales Report</h1>
+					<h1>Notifications</h1>
 					<ul class="breadcrumb">
 						<li>
-							<a  class="active" href="sales-report.php">Back</a>
+							<a href="see-all-notification.php">Notification</a>
 						</li>
 						<li><i class='bx bx-chevron-right' ></i></li>
 						<li>
-							<a href="sales-report.php">Sales Annual Report</a>
+							<a class="active" href="dashboard.php">Home</a>
 						</li>
 					</ul>
 				</div>
-				
 			
 			</div>
-			
-		
 			<div class="table-data">
 				<div class="order">
 					<div class="head">
@@ -266,53 +233,23 @@ $finalcode='RS-'.createRandomPassword();
 						<i class='bx bx-filter' ></i>
 						
 					</div>
-					<table class="table">
-     <thead>
-     	<tr>
-     	 <th>Year</th>
-     	 <th>Total Sales Revenue</th>
-     	 <th>Total Profit</th>
-     	</tr>
-     </thead>
-     <tbody>
-     		 <?php
-	 $con=mysqli_connect("localhost","root","","capstone");
-    // Check connection
-    if (mysqli_connect_errno())
-      {
-      echo "Failed to connect to MySQL: " . mysqli_connect_error();
-      }
-
-     	  
-    $result = mysqli_query($con,"SELECT Year(date)AS Year, SUM(profit) AS profit, SUM(amount) AS amount FROM sales GROUP BY YEAR(date)");
-      
-    while($row = mysqli_fetch_array($result))
-      {
-      echo "<tr><td>". $row['Year'] . "</td>";
-      echo "<td>" . $row['amount'] . "</td>";
-      echo "<td>" . $row['profit'] . "</td>";?>
-      <?php echo "</td></tr>";
-      }
-
-    mysqli_close($con);
-    ?>
-
-     	  
-     </tbody>
-   </table>
-   <a href=""><button class="btn-print" style="cursor: pointer;"><i class='bx bxs-printer' ></i> Print </button></a>
-				</div>
-
 				
-				
-			</div>
-			
-			<div class="table-data">
-	
-
-				
-				
-			</div>
+					<?php   
+			   include("../db/notification/notifall.php");
+              while($row = mysqli_fetch_assoc($query)){
+            ?>		
+		<div id="notif-body">
+		
+		<h4>Inquiry : </h5>
+		<h5>From: <?php echo $row['inquiries_email'];?></h6>
+		<p><?php echo $row['inquiries_message'];?></p>
+		<hr>
+		<br>
+		
+		</div>
+		<?php
+			  }
+		?>
 		</main>
 		<!-- MAIN -->
 	</section>
@@ -321,4 +258,98 @@ $finalcode='RS-'.createRandomPassword();
 
 	<script src="script.js"></script>
 </body>
+<style>
+		.btn-f, .btn-c {
+		background-color: #00c2cb;
+		border: none;
+		border-radius: 10%;
+		margin-left: 10px;
+		padding:4px;
+	}
+
+	.btn-f:hover { background-color: #4CAF50;}
+	.btn-c:hover { background-color: red;}
+	table {
+  border: 1px solid #ccc;
+  border-collapse: collapse;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  table-layout: fixed;
+}
+
+table caption {
+  font-size: 1.5em;
+  background-color: #00c2cb;
+  margin-top:20px;	
+}
+
+table tr {
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+  padding: .35em;
+}
+
+table th,
+table td {
+  padding: .625em;
+  text-align: center;
+}
+
+table th {
+  font-size: .85em;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  background-color: #9dd1d4;
+}
+
+@media screen and (max-width: 600px) {
+  table {
+    border: 0;
+  }
+
+  table caption {
+    font-size: 1.3em;
+  }
+  
+  table thead {
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+  
+  table tr {
+    border-bottom: 3px solid #ddd;
+    display: block;
+    margin-bottom: .625em;
+  }
+  
+  table td {
+    border-bottom: 1px solid #ddd;
+    display: block;
+    font-size: .8em;
+    text-align: right;
+  }
+  
+  table td::before {
+    /*
+    * aria-label has no advantage, it won't be read inside a table
+    content: attr(aria-label);
+    */
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  
+  table td:last-child {
+    border-bottom: 0;
+  }
+}
+</style>
 </html>

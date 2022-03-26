@@ -4,6 +4,25 @@ include("../conn.php");
 include("../admin/session.php");
 include "logs_conn.php";
 date_default_timezone_set('Asia/Manila');
+function createRandomPassword() {
+	$chars = "003232303232023232023456789";
+	srand((double)microtime()*1000000);
+	$i = 0;
+	$pass = '' ;
+	while ($i <= 7) {
+
+		$num = rand() % 33;
+
+		$tmp = substr($chars, $num, 1);
+
+		$pass = $pass . $tmp;
+
+		$i++;
+
+	}
+	return $pass;
+}
+$finalcode='RS-'.createRandomPassword();
 if (isset($_GET['id'])) {
 	$supp_id=$_GET['id'];
 	$query = "DELETE FROM `supplier` WHERE supp_id='$supp_id'";
@@ -24,7 +43,7 @@ if (isset($_GET['id'])) {
 	<!-- My CSS -->
 	<link rel="stylesheet" href="css\sys_style.css">
 	<link rel="shorcut icon" type="img/png" href="images\logo.png">
-	<title>RNL Vision Care | Inventory Clerk</title>
+	<title>RNL Vision Care | Admin</title>
 </head>
 <style>
 		button {
@@ -54,12 +73,6 @@ if (isset($_GET['id'])) {
 	.page:hover { background-color:#00b2b3;}
 
 	.namee{margin-top: 5%;}
-	#sidebar .side-menu.top li.active a {
-	color: blue;
-}
-#sidebar .side-menu.top li a:hover {
-	color: blue;
-}
 </style>
 <body>
 
@@ -82,7 +95,7 @@ if (isset($_GET['id'])) {
 					<i class='bx bxs-truck' ></i>
 					<span class="text">Supplier</span>
 				</a>
-			</li>
+			</li>	
 		</ul>
 	</section>
 	<!-- SIDEBAR -->
@@ -98,7 +111,9 @@ if (isset($_GET['id'])) {
 
 			</form>
 			<div id="digital-clock"></div>
+		
 			<script src="time.js"></script>
+			
 			<div class="dropdown2">
 			<a href="#" class="notification">
 				<i class='bx bxs-bell' ></i>
@@ -117,6 +132,7 @@ if (isset($_GET['id'])) {
 			$users_id=$_GET['id'];
 			$query = "UPDATE `client_inquiries` SET inquiries_status = '1'  WHERE inquiries_id = '$users_id'";
 			mysqli_query($conn, $query);
+			header( "refresh:0; url=supplier.php" );
 			}
 			?>
 			
@@ -127,7 +143,10 @@ if (isset($_GET['id'])) {
               while($row = mysqli_fetch_assoc($query)){
 				  
             ?>
-					<h4>Inquiry:</h4><p><?php echo $row['inquiries_message']; ?></p><a href="?id=<?php echo $row['inquiries_id'];?>"><button class="btn-remove" name="btnremove" style="cursor: pointer;">Clear</button></a><hr color="wheat">
+			<table>
+				<tr>
+					<th><h4>Inquiry:</h4></th><p><td><?php echo $row['inquiries_message']; ?></p></td><td><a href="?id=<?php echo $row['inquiries_id'];?>"><button class="btn-remove" name="btnremove" style="cursor: pointer;">Clear</button></a></td><hr color="wheat">
+			  </table>
 					<?php
 			  }
 			  ?>
@@ -186,12 +205,35 @@ if (isset($_GET['id'])) {
 	}
 	</style>
 			<a href="supplier-add.php"><button class="btn-addpt" style="cursor: pointer;"> + Add Supplier</button></a>
-		
+			<a href="javascript:Clickheretoprint()">	<button class="btn-addp" style="float:right; width: 100px; cursor: pointer;"><i class='bx bxs-printer' ></i> Print </button></a>
+<!--print-->
+<link href="css/bootstrap-responsive.css" rel="stylesheet">
+<link href="../style.css" media="screen" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="tcal.css" />
+<script type="text/javascript" src="tcal.js"></script>
+<script language="javascript">
+function Clickheretoprint()
+{ 
+	
+  var disp_setting="toolbar=yes,location=no,directories=yes,menubar=yes,"; 
+      disp_setting+="scrollbars=yes,width=1000, height=1000, left=100, top=25"; 
+  var content_vlue = document.getElementById("printing").innerHTML; 
+  
+  var docprint=window.open("","",disp_setting); 
+   docprint.document.open(); 
+   docprint.document.write('</head><body onLoad="self.print()" style="width: 700px; font-size:9px; font-family:arial; font-weight:normal;">');          
+   docprint.document.write(content_vlue); 
+   docprint.document.close(); 
+   docprint.focus(); 
+   
+}
+</script>
 				<form method="post">
 						<input type="text" name="txtsearch" id="txtsearch" placeholder="Search by Company Name or Person Name" autocomplete="off" style="padding: 12px;border: 1px solid #ccc;border-radius: 4px;font-family: var(poppins);">
 						<button  id="btnsearch" name="btnsearch" class="page" style="cursor: pointer;"><i class='bx bx-search' ></i></button>
 						</form></br>
 					<table>
+					<div id='printing'>
      <thead>
      	<tr>
 		 
@@ -212,7 +254,7 @@ if (isset($_GET['id'])) {
         $search=$_POST['txtsearch'];
      	$sql2 =$conn->query("SELECT count(supp_id) AS id FROM `supplier`");
      	if (isset($_POST['btnsearch'])) {
-        $sql1 = "SELECT * FROM `supplier` WHERE `supp_cname` LIKE '%$search%' OR `supp_contactperson` LIKE'%$search%'  LIMIT $start, $limit ";
+        $sql1 = "SELECT * FROM `supplier` WHERE `supp_cname` LIKE '%$search%' OR `supp_contactperson` LIKE'%$search%' OR `supp_contact` LIKE'%$search%' OR `supp_desc` LIKE'%$search%' LIMIT $start, $limit ";
         	}
         else{
         		$sql1 = "SELECT * FROM `supplier` LIMIT $start, $limit ";
@@ -236,7 +278,7 @@ if (isset($_GET['id'])) {
      	  	<td data-label="Contact No."><?php echo $row['supp_contact'];?></td>
 			<td data-label="Description"><?php echo $row['supp_desc'];?></td>
 			<td data-label="Action"><a href="supplier-update.php?id=<?php echo $row['supp_id'];?>"><button class="btn-f" style="cursor: pointer;">Update</button></a>
-			<a href="?id=<?php echo $row['supp_id'];?>"><button class="btn-c" name="btnremove" style="cursor: pointer;" onclick="return confirm('Are you sure you want to remove this supplier?')">Remove</button></a></td>
+			<form method="POST" action="?id=<?php echo $row['supp_id'];?>"><button class="btn-c" name="btnrem" id="btnrem" style="cursor: pointer;" onclick="return confirm('Are you sure you want to remove this supplier?')">Remove</button></form></td>
      	  </tr>
     
      	 <?php
@@ -248,6 +290,7 @@ if (isset($_GET['id'])) {
      </tbody>
 	 
    </table>
+	</div>
    <br>
   	<?php
   	if ($_GET['page']==1) {

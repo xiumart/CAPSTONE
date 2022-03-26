@@ -1,4 +1,5 @@
 <?php
+error_reporting(0);
 session_start();
 include('../admin/connect.php');
 $a = $_POST['invoice'];
@@ -29,10 +30,16 @@ $fffffff=$asasa-$discount;
 $d=$fffffff*$c;
 $profit=$p*$c;
 // query
+if (empty($b)) {
+    echo "<script>alert('Please select product')
+    window.location.href='point-of-sale.php?id=$w&invoice=$a'</script>";
+    
+}
+else{
 $sql = "INSERT INTO sales_order (order_no,product,qty,amount,price,profit,model,brand,category,date) VALUES (:a,:b,:c,:d,:f,:h,:i,:j,:e,:k)";
 $q = $db->prepare($sql);
 $q->execute(array(':a'=>$a,':b'=>$b,':c'=>$c,':d'=>$d,':f'=>$asasa,':h'=>$profit,':i'=>$code,':j'=>$gen,':e'=>$name,':k'=>$date));
 header("location: point-of-sale.php?id=$w&invoice=$a");
-
+}
 
 ?>

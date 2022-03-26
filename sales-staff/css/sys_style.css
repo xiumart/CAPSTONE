@@ -17,7 +17,7 @@ li {
 :root {
 	--poppins: 'Poppins', sans-serif;
 	--lato: 'Lato', sans-serif;
-	--darkblue: blue;
+
 	--light: #9dd1d4;
 	--blue: #00c2cb;
 	--light-blue: #e5eaf0;
@@ -178,7 +178,7 @@ body {
 	overflow-x: hidden;
 }
 #sidebar .side-menu.top li.active a {
-	color: var(--blue);
+	color: blue;
 }
 #sidebar.hide .side-menu li a {
 	width: calc(48px - (4px * 2));
@@ -188,7 +188,7 @@ body {
 	color: var(--red);
 }
 #sidebar .side-menu.top li a:hover {
-	color: var(--blue);
+	color: blue;
 }
 #sidebar .side-menu li a .bx {
 	min-width: calc(60px  - ((4px + 6px) * 2));
@@ -585,6 +585,7 @@ body {
 
 
 @media screen and (max-width: 576px) {
+
 	#content nav form .form-input input {
 		display: none;
 	}
@@ -628,55 +629,19 @@ body {
 		min-width: 420px;
 	}
 }
-	.table{
-	width: 100%;
-	border-collapse: collapse;
-}
+	
 
-.table td,.table th{
-  padding:12px 15px;
-  text-align: center;
-  font-size:16px;
-}
-
-.table th{
-	background-color: #00c2cb;
-	color:#ffffff;
-	border-radius: 1px;
-}
 
 
 
 /*responsive*/
 
 @media(max-width: 700px){
-	.table thead{
+
+	#icnlogo {
 		display: none;
 	}
 
-	.table, .table tbody, .table tr, .table td{
-		display: block;
-		width: 100%;
-	}
-	.table tr{
-		margin-bottom:15px;
-	}
-	.table td{
-		text-align: right;
-		padding-left: 20%;
-		text-align: right;
-		position: relative;
-	}
-	.table td::before{
-		content: attr(data-label);
-		position: absolute;
-		left:0;
-		width: 50%;
-		padding-left:12px;
-		font-size:15px;
-		font-weight: bold;
-		text-align: left;
-	}
 	.brandd p {
 		text-align: right;
 		padding-left: 75%;
@@ -833,3 +798,4 @@ body {
   #notif-body{
 	  padding: 10px;
   }
+

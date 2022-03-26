@@ -1,5 +1,7 @@
 <?php
 include ('../admin/session.php');
+include "logs_conn.php";
+date_default_timezone_set('Asia/Manila');
  $usersid = $_SESSION['users_id'];
 
 if (isset($_POST['submit']))
@@ -17,7 +19,8 @@ if (isset($_POST['submit']))
 		if ($new_pass == $re_pass)
 			{
 			$update_pwd = mysqli_query($conn,"update users_account set users_password='$re_pass' where users_id='$usersid'");
-			echo "<script>alert('Update Sucessfully'); window.location='dashboard.php'</script>";
+			users_logs($_SESSION['users_username'], "Change Password", date("Y-m-d h:i:sa"), $_SESSION['users_roles']);
+			echo "<script>alert('Update Sucessfully'); window.location='product.php'</script>";
 			}
 		  else
 			{
@@ -26,7 +29,7 @@ if (isset($_POST['submit']))
 		}
 	  else
 		{
-		echo "<script>alert('Your old password is wrong'); window.location='dashboard.php'</script>";
+		echo "<script>alert('Your old password is wrong'); window.location='product.php'</script>";
         // echo $database_password, $old_pass;
 		}
 	}

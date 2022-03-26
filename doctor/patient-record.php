@@ -13,8 +13,26 @@ users_logs($_SESSION['users_username'], "Remove Patient", date("Y-m-d h:i:sa"), 
 	mysqli_query($conn, $query);
 	echo "<script>alert('You have successfully remove the record.');</script>";
 			echo "<script>document.location='patient-record.php';</script>";
-	die;
 }
+function createRandomPassword() {
+	$chars = "003232303232023232023456789";
+	srand((double)microtime()*1000000);
+	$i = 0;
+	$pass = '' ;
+	while ($i <= 7) {
+
+		$num = rand() % 33;
+
+		$tmp = substr($chars, $num, 1);
+
+		$pass = $pass . $tmp;
+
+		$i++;
+
+	}
+	return $pass;
+}
+$finalcode='RS-'.createRandomPassword();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -27,7 +45,7 @@ users_logs($_SESSION['users_username'], "Remove Patient", date("Y-m-d h:i:sa"), 
 	<!-- My CSS -->
 	<link rel="stylesheet" href="css\sys_style.css">
 	<link rel="shorcut icon" type="img/png" href="images\logo.png">
-	<title>RNL Vision Care | Doctor</title>
+	<title>RNL Vision Care | Admin</title>
 </head>
 <style>
 	button {
@@ -55,6 +73,46 @@ users_logs($_SESSION['users_username'], "Remove Patient", date("Y-m-d h:i:sa"), 
 		float: right.;
 	}
 	}
+	.page{
+		background-color: #00c2cb;
+		padding: 12px;
+		border: none;
+		border-radius: 10%;
+		color:white;
+	}
+	.page:hover { background-color:#00b2b3;}
+
+	.btn-apph {
+		background-color: #00c2cb;
+		padding: 15px;
+		border: none;
+		border-radius: 10%;
+		float: right;
+		margin-left: 10px;
+
+		
+	}
+	.btn-f, .btn-c {
+		background-color: #00c2cb;
+		border: none;
+		border-radius: 10%;
+		margin-left: 10px;
+		padding:4px;
+	}
+	.btn-remove {
+		background-color: #00c2cb;
+		border: none;
+		border-radius: 10%;
+		margin-left: 60%;
+		padding:8px;
+	}
+	.btn-f:hover { background-color: #4CAF50;}
+	.btn-c:hover { background-color: red;}
+	.btn-apph:hover { background-color: #00a2a3;}
+	.btn-remove:hover { background-color: red;}
+	.namee{
+		margin-top: 4.5%;
+	}
 
 </style>
 <body>
@@ -64,7 +122,7 @@ users_logs($_SESSION['users_username'], "Remove Patient", date("Y-m-d h:i:sa"), 
 	<section id="sidebar">
 		<a href="#" class="brand">
 			<img src="images\logo.png" alt="" width="60px;">
-			<span class="text" style="text-shadow:0.5px 0px #000; color: black">RNL Vision Care</span>
+			<span class="text" style="text-shadow:0.5px 0px #000; color: black;">RNL Vision Care</span>
 		</a>
 		<ul class="side-menu top">
 			<li>
@@ -95,7 +153,7 @@ users_logs($_SESSION['users_username'], "Remove Patient", date("Y-m-d h:i:sa"), 
 			</form>
 			<div id="digital-clock"></div>
 			<script src="time.js"></script>
-		
+			
 			<!-- DROP DOWN NG EDIT PROFILE AND CHANGE PASS OK-->
 			<div class="dropdown1">
 			<img src="img\user.png" alt="" width="40px" class="userlogo">
@@ -144,13 +202,38 @@ users_logs($_SESSION['users_username'], "Remove Patient", date("Y-m-d h:i:sa"), 
 			</div>
 
 			<a href="patient-addrecord.php"><button class="btn-addpt" style="cursor: pointer;"> + Add Patient</button></a>
+			<a href="javascript:Clickheretoprint()">	<button class="btn-addp" style="float:right; width: 100px; cursor: pointer;"><i class='bx bxs-printer' ></i> Print </button></a>
+<!--print-->
+<link href="css/bootstrap-responsive.css" rel="stylesheet">
+<link href="../style.css" media="screen" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="tcal.css" />
+<script type="text/javascript" src="tcal.js"></script>
+<script language="javascript">
+function Clickheretoprint()
+{ 
+	
+  var disp_setting="toolbar=yes,location=no,directories=yes,menubar=yes,"; 
+      disp_setting+="scrollbars=yes,width=1000, height=1000, left=100, top=25"; 
+  var content_vlue = document.getElementById("printing").innerHTML; 
+  
+  var docprint=window.open("","",disp_setting); 
+   docprint.document.open(); 
+   docprint.document.write('</head><body onLoad="self.print()" style="width: 700px; font-size:9px; font-family:arial; font-weight:normal;">');          
+   docprint.document.write(content_vlue); 
+   docprint.document.close(); 
+   docprint.focus(); 
+   
+}
+</script>
 
 			<!-- TABLE ONGOING -->
 			<div>
+				
 				<form method="post">
-						<input type="text" name="txtsearch" id="txtsearch" placeholder="Search by Patients ID or Name" autocomplete="off" style="padding: 12px;border: 1px solid #ccc;border-radius: 4px;font-family: var(poppins);">
+						<input type="text" name="txtsearch" id="txtsearch" placeholder="Search by Patients ID/Name" autocomplete="off" style="padding: 12px;border: 1px solid #ccc;border-radius: 4px;font-family: var(poppins);width: 50%;">
 						<button  id="btnsearch" name="btnsearch" class="page"><i class='bx bx-search' ></i></button>
 						</form>
+						<div id="printing">
 				<table>
 						<caption>LIST OF PATIENT</caption>
 						<thead>
@@ -172,8 +255,22 @@ users_logs($_SESSION['users_username'], "Remove Patient", date("Y-m-d h:i:sa"), 
         //$cat=$_POST['all'];
         $page=isset($_GET['page']) ? $_GET['page']:1;
         $start=($page-1)*$limit;
+        $search=$_POST['txtsearch'];
+     	
+     	if (isset($_POST['btnsearch'])) {
+     		$sql2 =$conn->query("SELECT count(patient_no) AS id,`patient_id`,`patient_name`,`patient_address`, `patient_contact` FROM `patient_distancerx` WHERE `patient_id` LIKE '%$search%' OR `patient_name` LIKE '%$search%' OR `patient_address` LIKE '%$search%' OR `patient_contact` LIKE '%$search%'  AND `status`!='Remove'");
+
+        $sql1 = "SELECT year(now())-year(`patient_bday`) AS age,`patient_no`,`patient_id`,`patient_name`,`patient_email`,`patient_contact`,`patient_address`  FROM `patient_distancerx` WHERE `patient_id` LIKE '%$search%' OR `patient_name` LIKE '%$search%' OR `patient_address` LIKE '%$search%' OR `patient_contact` LIKE '%$search%' AND `status`!='Remove' LIMIT $start, $limit ";
+        if ($search=='') {
+        		$sql2 =$conn->query("SELECT count(patient_no) AS id FROM `patient_distancerx`");
+        $sql1 = "SELECT year(now())-year(`patient_bday`) AS age,`patient_no`,`patient_id`,`patient_name`,`patient_email`,`patient_contact`,`patient_address`  FROM `patient_distancerx` WHERE `status`!='Remove'  LIMIT $start, $limit ";
+        }
+     	}
+     	else{
      	$sql2 =$conn->query("SELECT count(patient_no) AS id FROM `patient_distancerx`");
-        $sql1 = "SELECT year(now())-year(`patient_bday`) AS age,`patient_no`,`patient_id`,`patient_name`,`patient_email`,`patient_contact`,`patient_address`  FROM `patient_distancerx` WHERE `status`='Walk-in' OR `status`='Appointment'  LIMIT $start, $limit ";
+        $sql1 = "SELECT year(now())-year(`patient_bday`) AS age,`patient_no`,`patient_id`,`patient_name`,`patient_email`,`patient_contact`,`patient_address`  FROM `patient_distancerx` WHERE `status`!='Remove'  LIMIT $start, $limit ";	
+     	}
+     	
         $result2 = $sql2->fetch_all(MYSQLI_ASSOC);
                 $total=$result2[0]['id'];
                 $pages=ceil($total/$limit);
@@ -190,7 +287,7 @@ users_logs($_SESSION['users_username'], "Remove Patient", date("Y-m-d h:i:sa"), 
 							<td data-label="Contact No."><?php echo $row['patient_contact'];?></td>
 							<td data-label="Address"><?php echo $row['patient_address'];?></td>
 							<td data-label="Age"><?php echo $row['age'];?></td>
-							<td data-label="Action"><a href="?id=<?php echo $row['patient_no'];?>"><button class="btn-c" style="cursor: pointer;width:100px;pad">REMOVE</button>
+							<td data-label="Action"><a href="?id=<?php echo $row['patient_no'];?>"><button class="btn-c" style="cursor: pointer;width:100px;pad" onclick="return confirm('Are you sure you want to remove this patient?')">REMOVE</button>
 			  				<a href="patient-view.php?id=<?php echo $row['patient_no'];?>"><button class="btn-f" style="cursor: pointer;width:100px;">VIEW</button></td>
 							</tr>
 							<?php
@@ -210,7 +307,7 @@ $sql2 = "SELECT * FROM `patient_distancerx` WHERE `patient_no`='$id'";
     </form>
 						</tbody>
 					</table>
-			</div>
+			</div><br>
 			<a class="page" id="pre" href="patient-record.php?page=<?=$prev; ?>">< Prev</a>
     	  <?php  for($i=1; $i <=$pages ; $i++): ?>
     <a class="page" href="patient-record.php?page=<?=$i; ?>"><?=$i; ?></a>

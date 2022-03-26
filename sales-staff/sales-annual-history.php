@@ -1,5 +1,24 @@
 <?php
-include("../admin/session.php");
+include("session.php");
+function createRandomPassword() {
+	$chars = "003232303232023232023456789";
+	srand((double)microtime()*1000000);
+	$i = 0;
+	$pass = '' ;
+	while ($i <= 7) {
+
+		$num = rand() % 33;
+
+		$tmp = substr($chars, $num, 1);
+
+		$pass = $pass . $tmp;
+
+		$i++;
+
+	}
+	return $pass;
+}
+$finalcode='RS-'.createRandomPassword();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -25,21 +44,56 @@ include("../admin/session.php");
 
 	.btn-upd:hover { background-color: #4CAF50;}
 	.btn-rem:hover { background-color: red;}
-	.btn-addpt:hover { background-color: #00b2b3;}
-	.btn-print:hover { background-color: #00b2b3}
-
+	.btn-print:hover { background-color:#00a2a3;}
+	.btn-addpt:hover { background-color: #00a2a3}
 	.btn-addpt {float:right; margin-bottom: 20px;}
 	.btn-print {
 		margin-top: 20px;
 		float: right;
 		width: 10%;
 	}
-	#sidebar .side-menu.top li.active a {
-	color: blue;
-}
-#sidebar .side-menu.top li a:hover {
-	color: blue;
-}
+	.page{
+		background-color: #00c2cb;
+		padding: 12px;
+		border: none;
+		border-radius: 10%;
+	}
+	.page:hover { background-color:#00b2b3;}
+
+	.namee{margin-top: 5%;}
+	.btn-apph {
+		background-color: #00c2cb;
+		padding: 15px;
+		border: none;
+		border-radius: 10%;
+		float: right;
+		margin-left: 10px;
+
+		
+	}
+	.btn-f, .btn-c {
+		background-color: #00c2cb;
+		border: none;
+		border-radius: 10%;
+		margin-left: 10px;
+		padding:4px;
+	}
+	.btn-remove {
+		background-color: #00c2cb;
+		border: none;
+		border-radius: 10%;
+		margin-left: 60%;
+		padding:8px;
+	}
+	.btn-remove:hover { background-color: red;}
+	.btn-f:hover { background-color: #4CAF50;}
+	.btn-c:hover { background-color: red;}
+	.btn-apph:hover { background-color: #00a2a3;}
+
+	.namee{
+		margin-top: 4.5%;
+	}
+
 </style>
 <body>
 
@@ -52,7 +106,7 @@ include("../admin/session.php");
 		</a>
 		<ul class="side-menu top">
 			<li>
-				<a href="point-of-sale.php">
+				<a href="point-of-sale.php?id=cash&invoice=<?php echo $finalcode ?>">
 					<i class='bx bxs-cart' ></i>
 					<span class="text">Point of Sale</span>
 				</a>
@@ -63,6 +117,7 @@ include("../admin/session.php");
 					<span class="text">Sales Report</span>
 				</a>
 			</li>
+			<li>
 		</ul>
 	</section>
 	<!-- SIDEBAR -->
@@ -79,7 +134,7 @@ include("../admin/session.php");
 			</form>
 			<div id="digital-clock"></div>
 			<script src="time.js"></script>
-			</div>
+
 			<!-- DROP DOWN NG EDIT PROFILE AND CHANGE PASS OK-->
 			<div class="dropdown1">
 			<img src="img\user.png" alt="" width="40px" class="userlogo">

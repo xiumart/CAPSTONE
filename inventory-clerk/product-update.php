@@ -2,8 +2,27 @@
 error_reporting(0);
 include("../conn.php");
 include("../admin/session.php");
-include "../admin/logs_conn.php";
+include "logs_conn.php";
 date_default_timezone_set('Asia/Manila');
+function createRandomPassword() {
+	$chars = "003232303232023232023456789";
+	srand((double)microtime()*1000000);
+	$i = 0;
+	$pass = '' ;
+	while ($i <= 7) {
+
+		$num = rand() % 33;
+
+		$tmp = substr($chars, $num, 1);
+
+		$pass = $pass . $tmp;
+
+		$i++;
+
+	}
+	return $pass;
+}
+$finalcode='RS-'.createRandomPassword();
 if (isset($_POST['btncancel'])) {
 			header("Location: product.php");
 		}
@@ -72,7 +91,7 @@ else{
 	<!-- My CSS -->
 	<link rel="stylesheet" href="css\sys_style.css">
 	<link rel="shorcut icon" type="img/png" href="images\logo.png">
-	<title>RNL Vision Care | Inventory Clerk</title>
+	<title>RNL Vision Care | Admin</title>
 	<style>
 	input[type=text], select, textarea {
   		width: 100%;
@@ -148,12 +167,38 @@ else{
 	.btn-upd { background-color : #4CAF50}
 	.btn-can:hover { background-color:#FD7238; }
 	.btn-upd:hover { background-color:#00c2cb; }
-	#sidebar .side-menu.top li.active a {
-	color: blue;
-}
-#sidebar .side-menu.top li a:hover {
-	color: blue;
-}
+	.btn-apph {
+		background-color: #00c2cb;
+		padding: 15px;
+		border: none;
+		border-radius: 10%;
+		float: right;
+		margin-left: 10px;
+
+		
+	}
+	.btn-f, .btn-c {
+		background-color: #00c2cb;
+		border: none;
+		border-radius: 10%;
+		margin-left: 10px;
+		padding:4px;
+	}
+	.btn-remove {
+		background-color: #00c2cb;
+		border: none;
+		border-radius: 10%;
+		margin-left: 60%;
+		padding:8px;
+	}
+	.btn-f:hover { background-color: #4CAF50;}
+	.btn-c:hover { background-color: red;}
+	.btn-apph:hover { background-color: #00a2a3;}
+	.btn-remove:hover { background-color: red;}
+	.namee{
+		margin-top: 4.5%;
+	}
+
 </style>
 </head>
 <body>
@@ -177,6 +222,7 @@ else{
 					<i class='bx bxs-truck' ></i>
 					<span class="text">Supplier</span>
 				</a>
+			</li>
 		</ul>
 	</section>
 	<!-- SIDEBAR -->
@@ -211,6 +257,7 @@ else{
 			$users_id=$_GET['id'];
 			$query = "UPDATE `client_inquiries` SET inquiries_status = '1'  WHERE inquiries_id = '$users_id'";
 			mysqli_query($conn, $query);
+			
 			}
 			?>
 			
@@ -221,7 +268,10 @@ else{
               while($row = mysqli_fetch_assoc($query)){
 				  
             ?>
-					<h4>Inquiry:</h4><p><?php echo $row['inquiries_message']; ?></p><a href="?id=<?php echo $row['inquiries_id'];?>"><button class="btn-remove" name="btnremove" style="cursor: pointer;">Clear</button></a><hr color="wheat">
+			<table>
+				<tr>
+					<th><h4>Inquiry:</h4></th><p><td><?php echo $row['inquiries_message']; ?></p></td><td><a href="?id=<?php echo $row['inquiries_id'];?>"><button class="btn-remove" name="btnremove" style="cursor: pointer;">Clear</button></a></td><hr color="wheat">
+			  </table>
 					<?php
 			  }
 			  ?>
@@ -284,6 +334,19 @@ else{
  				$result1 = $conn->query($sql1);  
 				if($result1->num_rows > 0){
   				while($row = $result1 -> fetch_assoc()){
+  					$brand =$row['brand'];
+  					$model =$row['model'];
+  					$category =$row['category'];
+					$origprice =$row['origprice'];
+					$sellingprice =$row['sellingprice'];
+					$qty =$row['qty'];
+					$remarks =$row['remarks'];
+					$image =$row['image'];
+					$supp1 =$row['supplier'];
+
+
+  				}}
+  					
 				?>
 			
 				<form method="post" enctype="multipart/form-data">
@@ -293,7 +356,7 @@ else{
 							<label for="brand">Brand Name</label>
 						</div>
 						<div class="col-75">
-							<input type="text" id="brand" name="brand" placeholder="Enter brand name.." value="<?php echo $row['brand'];?>">
+							<input type="text" id="brand" name="brand" placeholder="Enter brand name.." value="<?php echo $brand;?>">
 						</div>
 						</div>
 						<div class="row">
@@ -301,7 +364,7 @@ else{
 							<label for="model">Model</label>
 						</div>
 						<div class="col-75">
-							<input type="text" id="model" name="model" placeholder="Enter model name.." value="<?php echo $row['model'];?>">
+							<input type="text" id="model" name="model" placeholder="Enter model name.." value="<?php echo $model;?>">
 						</div>
 						</div>
 						<div class="row">
@@ -313,7 +376,7 @@ else{
 							<option disabled="" selected="">Select your option..</option>
 							<option value="Accessories" 
 							<?php
-							if ($row['category']=="Accessories") {
+							if ($category=="Accessories") {
 								echo "selected";
 							}
 							?>	
@@ -322,7 +385,7 @@ else{
 
 							<option value="Contact Lenses"
 							<?php
-							if ($row['category']=="Contact Lenses") {
+							if ($category=="Contact Lenses") {
 								echo "selected";
 							}
 							?>	
@@ -330,7 +393,7 @@ else{
 
 							<option value="Eyewear for Adults"
 							<?php
-							if ($row['category']=="Eyewear for Adults") {
+							if ($category=="Eyewear for Adults") {
 								echo "selected";
 							}
 							?>	
@@ -338,7 +401,7 @@ else{
 
 							<option value="Eyewear for Kids"
 							<?php
-							if ($row['category']=="Eyewear for Kids") {
+							if ($category=="Eyewear for Kids") {
 								echo "selected";
 							}
 							?>	
@@ -346,7 +409,7 @@ else{
 
 							<option value="Seen Wear"
 							<?php
-							if ($row['category']=="Seen Wear") {
+							if ($category=="Seen Wear") {
 								echo "selected";
 							}
 							?>	
@@ -354,7 +417,7 @@ else{
 
 							<option value="Sunglasses"
 							<?php
-							if ($row['category']=="Sunglasses") {
+							if ($category=="Sunglasses") {
 								echo "selected";
 							}
 							?>	
@@ -363,6 +426,13 @@ else{
 							
 						</div>
 						</div>
+						<?php 
+						$id=$_GET['id'];
+						$sql3 = "SELECT * FROM `product` WHERE `pro_id`= '$id'";
+ 						$result3 = $conn->query($sql3);  
+						if($result3->num_rows > 0){
+  						while($row = $result3 -> fetch_assoc()){
+						?>
 						<div class="row">
 						<div class="col-25">
 							<label for="dtarrival">Date of Arrival</label>
@@ -384,42 +454,58 @@ else{
 							<label for="lname">Original Price</label>
 						</div>
 						<div class="col-75">
-							<input type="number" id="origp" name="orig" placeholder="Enter original price.." style="width: 100%;padding: 12px;border: 1px solid #ccc;border-radius: 4px;" value="<?php echo $row['origprice'];?>">
+							<input type="number" id="origp" name="orig" placeholder="Enter original price.." style="width: 100%;padding: 12px;border: 1px solid #ccc;border-radius: 4px;" value="<?php echo $origprice;?>">
 						</div>
 						</div>
+					<?php }} ?>	
 						<div class="row">
 						<div class="col-25">
 							<label for="sell">Selling Price</label>
 						</div>
 						<div class="col-75">
-							<input type="number" id="sell" name="sell" placeholder="Enter selling price.." style="width: 100%;padding: 12px;border: 1px solid #ccc;border-radius: 4px;" value="<?php echo $row['sellingprice'];?>">
+							<input type="number" id="sell" name="sell" placeholder="Enter selling price.." style="width: 100%;padding: 12px;border: 1px solid #ccc;border-radius: 4px;" value="<?php echo $sellingprice;?>">
 						</div>
 						</div>
+						
 						<div class="row">
 						<div class="col-25">
 							<label for="supplier">Supplier</label>
 						</div>
 						<div class="col-75">
 							<select id="supplier" name="supplier">
-							<option disabled="" selected="">Select your option..</option>
-							<option value="Supplier"
+								
+							<option disabled="" >Select your option..</option>
+							<?php 
+						$sql9 = "SELECT * FROM `supplier`";
+ 						$result9 = $conn->query($sql9);  
+						if($result9->num_rows > 0){
+  						while($row = $result9 -> fetch_assoc()){
+
+  						$supp=$row['supp_cname'];
+  						
+						?>
+							<option value="<?php echo $supp; ?>"
 							<?php
-							if ($row['supplier']=="Supplier") {
+							if ($supp==$supp1) {
 								echo "selected";
 							}
+							
 							?>	
-							>Supplier </option>
-							<option value=""></option>
-							<option value=""></option>
+							><?php echo $supp; ?> </option>
+							<?php 
+					}}
+						?>
 							</select>
 						</div>
 						</div>
+
 						<div class="row">
 						<div class="col-25">
 							<label for="qty">Qty</label>
 						</div>
 						<div class="col-75">
-							<input type="number" id="qty" name="qty" placeholder="Enter quantity.." style="width: 100%;padding: 12px;border: 1px solid #ccc;border-radius: 4px;" value="<?php echo $row['qty'];?>">
+							<input type="number" id="qty" name="qty"  placeholder="Enter quantity.." style="width: 100%;padding: 12px;border: 1px solid #ccc;border-radius: 4px;" value="<?php echo $qty;?>">
+
 						</div>
 						</div>
 						<div class="row">
@@ -427,7 +513,7 @@ else{
 							<label for="subject">Remarks</label>
 						</div>
 						<div class="col-75">
-							<textarea id="remarks" name="remarks" placeholder="Write something.." style="height:200px"><?php echo $row['remarks'];?></textarea>
+							<textarea id="remarks" name="remarks" placeholder="Write something.." style="height:200px"><?php echo $remarks;?></textarea>
 						</div>
 						</div>
 						<div class="col-25">
@@ -454,11 +540,11 @@ else{
   							padding: 8px;
 							border: 1px solid #ccc;
 							border-radius: 4px;display: none;
-							" value="<?php echo $row['image'];?>">
+							" value="<?php echo $image;?>">
 							
 						</div>
-						<input type="text" name="hidpic" value="<?php echo $row['image'];?>" hidden>
-						<img src="images/product_img/<?php echo $row['image'];?>" id="output" alt="" style="width: 30%; height: 30%">
+						<input type="text" name="hidpic" value="<?php echo $image;?>" hidden>
+						<img src="images/product_img/<?php echo $image;?>" id="output" alt="" style="width: 30%; height: 30%">
 							<!--Image Viewer-->
 								<script>
 									var loadFile = function(event) {
@@ -474,7 +560,7 @@ else{
 						</div>
 				</form>
 			<?php
-		}}
+		//}}
 			?>
 			</div>
 	    </div>	
@@ -486,4 +572,98 @@ else{
 
 	<script src="script.js"></script>
 </body>
+<style>
+		.btn-f, .btn-c {
+		background-color: #00c2cb;
+		border: none;
+		border-radius: 10%;
+		margin-left: 10px;
+		padding:4px;
+	}
+
+	.btn-f:hover { background-color: #4CAF50;}
+	.btn-c:hover { background-color: red;}
+	table {
+  border: 1px solid #ccc;
+  border-collapse: collapse;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  table-layout: fixed;
+}
+
+table caption {
+  font-size: 1.5em;
+  background-color: #00c2cb;
+  margin-top:20px;	
+}
+
+table tr {
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+  padding: .35em;
+}
+
+table th,
+table td {
+  padding: .625em;
+  text-align: center;
+}
+
+table th {
+  font-size: .85em;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  background-color: #9dd1d4;
+}
+
+@media screen and (max-width: 600px) {
+  table {
+    border: 0;
+  }
+
+  table caption {
+    font-size: 1.3em;
+  }
+  
+  table thead {
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+  
+  table tr {
+    border-bottom: 3px solid #ddd;
+    display: block;
+    margin-bottom: .625em;
+  }
+  
+  table td {
+    border-bottom: 1px solid #ddd;
+    display: block;
+    font-size: .8em;
+    text-align: right;
+  }
+  
+  table td::before {
+    /*
+    * aria-label has no advantage, it won't be read inside a table
+    content: attr(aria-label);
+    */
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  
+  table td:last-child {
+    border-bottom: 0;
+  }
+}
+</style>
 </html>
