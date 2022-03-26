@@ -1,9 +1,5 @@
 <?php
-error_reporting(0);
-include("../conn.php");
 include("session.php");
-include "logs_conn.php";
-date_default_timezone_set('Asia/Manila');
 function createRandomPassword() {
 	$chars = "003232303232023232023456789";
 	srand((double)microtime()*1000000);
@@ -23,14 +19,6 @@ function createRandomPassword() {
 	return $pass;
 }
 $finalcode='RS-'.createRandomPassword();
-if (isset($_GET['id'])) {
-	$users_id=$_GET['id'];
-	$query = "DELETE FROM `users_account` WHERE users_id='$users_id'";
-	users_logs($_SESSION['users_username'], "Remove User", date("Y-m-d h:i:sa"), $_SESSION['users_roles']);
-			mysqli_query($conn, $query);
-			echo "<script>alert('You have successfully remove the record.');</script>";
-			echo "<script>document.location='manage-user.php';</script>";
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -46,33 +34,46 @@ if (isset($_GET['id'])) {
 	<title>RNL Vision Care | Admin</title>
 </head>
 <style>
-		button {
+	.btn-t {
 		background-color: #00c2cb;
-		padding: 12px;
-		border: none;
-		margin: 3px;
-		border-radius: 10%;
+		border-radius: 5px;
+		border:none;
+		padding: 10px;
 	}
 
-	.btn-upd:hover { background-color: #4CAF50;}
-	.btn-rem:hover { background-color: red;}
-	.btn-print:hover { background-color:#00a2a3;}
-	.btn-addpt:hover { background-color: #00a2a3}
-	.btn-addpt {float:right; margin-bottom: 20px;}
-	.btn-print {
-		margin-top: 20px;
-		float: right;
-		width: 10%;
+	.btn-t:hover {
+		background-color: #4CAF50;
 	}
-	.page{
+	.btn-p {
 		background-color: #00c2cb;
-		padding: 12px;
-		border: none;
-		border-radius: 10%;
+		border-radius: 5px;
+		border:none;
+		padding: 10px;
+		width: 100%;
 	}
-	.page:hover { background-color:#00b2b3;}
 
-	.namee{margin-top: 5%;}
+	.btn-p:hover {
+		background-color: #4CAF50;
+		color: black;
+	}
+
+
+	.cust{
+		width: 320px;
+		padding:5px;
+		font-size:20px;
+	}
+
+	.sel {
+		width: 400px;
+		padding:5px;
+		font-size:20px;
+	}
+	.num {
+		width:100px;
+		padding:5px;
+		font-size:20px;
+	}
 	.btn-apph {
 		background-color: #00c2cb;
 		padding: 15px;
@@ -111,7 +112,7 @@ if (isset($_GET['id'])) {
 
 	<!-- SIDEBAR -->
 	<section id="sidebar">
-		<a href="supplier.php" class="brand">
+		<a href="point-of-sale.php" class="brand">
 			<img src="images\logo.png" alt="" width="60px;">
 			<span class="text" style="text-shadow:0.5px 0px #000; color: black;">RNL Vision Care</span>
 		</a>
@@ -152,8 +153,7 @@ if (isset($_GET['id'])) {
 					<span class="text">Supplier</span>
 				</a>
 			</li>
-
-			<li class="active">
+			<li>
 				<a href="manage-user.php">
 					<i class='bx bxs-group' ></i>
 					<span class="text">Manage User</span>
@@ -165,7 +165,7 @@ if (isset($_GET['id'])) {
 					<span class="text">Audit Logs</span>
 				</a>
 			</li>
-			<li>
+			<li class = "active">
 				<a href="archive.php">
 					<i class='bx bxs-download' ></i>
 					<span class="text">Back-up and Restore</span>
@@ -186,7 +186,6 @@ if (isset($_GET['id'])) {
 
 			</form>
 			<div id="digital-clock"></div>
-			
 			<script src="time.js"></script>
 			<div class="dropdown2">
 			<a href="#" class="notification">
@@ -206,7 +205,7 @@ if (isset($_GET['id'])) {
 			$users_id=$_GET['id'];
 			$query = "UPDATE `client_inquiries` SET inquiries_status = '1'  WHERE inquiries_id = '$users_id'";
 			mysqli_query($conn, $query);
-			header( "refresh:0; url=manage-user.php" );
+			header( "refresh:0; url=archive.php" );
 			}
 			?>
 			
@@ -260,31 +259,30 @@ if (isset($_GET['id'])) {
 		<main>
 			<div class="head-title">
 				<div class="left">
-					<h1>Manage User</h1>
+					<h1>Back-up and Restore</h1>
 					<ul class="breadcrumb">
 						<li>
-							<a href="manage-user.php">Manage User</a>
+							<a href="archive.php">Archive</a>
 						</li>
 						<li><i class='bx bx-chevron-right' ></i></li>
 						<li>
-							<a class="active" href="manage-user.php">Home</a>
+							<a  href="archive.php">Home</a>
+						</li>
+                        <li>
+							<a class="active" href="archive.php">Supplier Recycle Bin</a>
 						</li>
 					</ul>
 				</div>
 			
 			</div>
-<style>
-	#content main .table-data .order table th {
-		text-align: center;
-	}
-	</style>
-			<a href="user-add.php"><button class="btn-addpt" style="cursor: pointer;"> + Add User</button></a>
-
-				<form method="post">
-						<input type="text" name="txtsearch" id="txtsearch" placeholder="Search by Lastname" autocomplete="off" style="padding: 12px;border: 1px solid #ccc;border-radius: 4px;font-family: var(poppins);">
-						<button  id="btnsearch" name="btnsearch" class="page" style="cursor: pointer;"><i class='bx bx-search' ></i></button>
-						</form></br>
-					<table>
+		
+			
+			<div>
+				
+				<div>
+                
+<div id="printing">
+<table>
      <thead>
      	<tr>
 		 
@@ -300,16 +298,16 @@ if (isset($_GET['id'])) {
 	 
 	 <?php
      	$limit=25;
-        $cat=$_POST['all'];
+        
         $page=isset($_GET['page']) ? $_GET['page']:1;
         $start=($page-1)*$limit;
-        $search=$_POST['txtsearch'];
+        
      	$sql2 =$conn->query("SELECT count(users_id) AS id FROM `users_account`");
      	if (isset($_POST['btnsearch'])) {
-        $sql1 = "SELECT * FROM `users_account` WHERE `users_lastname` LIKE '%$search%' OR `users_username` LIKE'%$search%'  LIMIT $start, $limit ";
+        $sql1 = "SELECT * FROM `archive_users_account` WHERE `users_lastname` LIKE '%$search%' OR `users_username` LIKE'%$search%'  LIMIT $start, $limit ";
         	}
         else{
-        		$sql1 = "SELECT * FROM `users_account` LIMIT $start, $limit ";
+        		$sql1 = "SELECT * FROM `archive_users_account` LIMIT $start, $limit ";
         	}
         $result2 = $sql2->fetch_all(MYSQLI_ASSOC);
                 $total=$result2[0]['id'];
@@ -331,7 +329,7 @@ if (isset($_GET['id'])) {
 			<td data-label="Contact Number"><?php echo $row['users_contact'];?></td>
 			<td data-label="Position"><?php echo $row['users_roles'];?></td>
 			<td data-label="Action"><a href="user-update.php?id=<?php echo $row['users_id'];?>"><button class="btn-f" style="cursor: pointer;">Update</button></a>
-			<form method ="post"action="archive_manageuser.php?id=<?php echo $row['users_id'];?>"><button class="btn-c" name="btnrem" style="cursor: pointer;" onclick="return confirm('Are you sure you want to remove this user?')">Remove</button></form></td>
+			<form action="archive_manageuser.php?id=<?php echo $row['users_id'];?>"><button class="btn-c" name="btnremove" style="cursor: pointer;" onclick="return confirm('Are you sure you want to remove this user?')">Remove</button></form></td>
      	  </tr>
     
      	 <?php
@@ -341,53 +339,137 @@ if (isset($_GET['id'])) {
      </tbody>
 
    </table>
-   <br>
-  	<?php
-  	if ($_GET['page']==1) {
-  		
-  	}
-  	elseif ($_GET['page']==1) {
-  		# code...
-  	}
-  	?>
-   <a class="page" id="pre" href="manage-user.php?page=<?=$prev; ?>">< Prev</a>
-    	  <?php  for($i=1; $i <=$pages ; $i++): ?>
-    <a class="page" href="manage-user.php?page=<?=$i; ?>"><?=$i; ?></a>
-                      <?php endfor; ?>
-    <a class="page" id="pnext" href="manage-user.php?page=<?=$next; ?>">Next ></a>
-				</div>
-				
+				<div><br><br>
 				
 			</div>
-		  </div>
+
+		
+		</main>
+		<main>
 			
-			<div class="table-data">
-	
+		
+			
+			<!-- <div class="table-data">
 				
-				
-			</div>
+				<div class="order">
+				<title>MySQL database restore using PHP</title> -->
+<style>
+
+
+
+
+.form-row {
+	margin-bottom: 20px;
+}
+
+.input-file {
+
+	padding: 10px;
+	margin-top: 5px;
+	border-radius: 2px;
+}
+
+.btn-action {
+	background: #333;
+	border: 0;
+	padding: 10px 40px;
+	color: #FFF;
+	border-radius: 2px;
+}
+
+.response {
+	padding: 10px;
+	margin-bottom: 20px;
+    border-radius: 2px;
+}
+
+.error {
+    background: #fbd3d3;
+    border: #efc7c7 1px solid;
+}
+
+.success {
+    background: #cdf3e6;
+    border: #bee2d6 1px solid;
+}
+</style>
+
+
+ 
+
+		
 		</main>
 		<!-- MAIN -->
 	</section>
-
-	
 	<!-- CONTENT -->
 	
+	<?php
+$conn = mysqli_connect("localhost", "root", "", "capstone");
+if (! empty($_FILES)) {
+    // Validating SQL file type by extensions
+    if (! in_array(strtolower(pathinfo($_FILES["backup_file"]["name"], PATHINFO_EXTENSION)), array(
+        "sql"
+    ))) {
+        $response = array(
+            "type" => "error",
+            "message" => "Invalid File Type"
+        );
+    } else {
+        if (is_uploaded_file($_FILES["backup_file"]["tmp_name"])) {
+            move_uploaded_file($_FILES["backup_file"]["tmp_name"], $_FILES["backup_file"]["name"]);
+            $response = restoreMysqlDB($_FILES["backup_file"]["name"], $conn);
+        }
+    }
+}
 
+function restoreMysqlDB($filePath, $conn)
+{
+    $sql = '';
+    $error = '';
+    
+    if (file_exists($filePath)) {
+        $lines = file($filePath);
+        
+        foreach ($lines as $line) {
+            
+            // Ignoring comments from the SQL script
+            if (substr($line, 0, 2) == '--' || $line == '') {
+                continue;
+            }
+            
+            $sql .= $line;
+            
+            if (substr(trim($line), - 1, 1) == ';') {
+                $result = mysqli_query($conn, $sql);
+                if (! $result) {
+                    $error .= mysqli_error($conn) . "\n";
+                }
+                $sql = '';
+            }
+        } // end foreach
+        
+        if ($error) {
+            $response = array(
+                "type" => "error",
+                "message" => $error
+            );
+        } else {
+            $response = array(
+                "type" => "success",
+                "message" => "Database Restore Completed Successfully."
+            );
+        }
+        exec('rm ' . $filePath);
+    } // end if file exists
+    
+    return $response;
+}
+
+?>
 	<script src="script.js"></script>
 </body>
 <style>
-		.btn-f, .btn-c {
-		background-color: #00c2cb;
-		border: none;
-		border-radius: 10%;
-		margin-left: 10px;
-		padding:4px;
-	}
-
-	.btn-f:hover { background-color: #4CAF50;}
-	.btn-c:hover { background-color: red;}
-	table {
+table {
   border: 1px solid #ccc;
   border-collapse: collapse;
   margin: 0;
@@ -399,7 +481,7 @@ if (isset($_GET['id'])) {
 table caption {
   font-size: 1.5em;
   background-color: #00c2cb;
-  margin-top:20px;	
+  margin-top:50px;	
 }
 
 table tr {
@@ -468,6 +550,6 @@ table th {
   table td:last-child {
     border-bottom: 0;
   }
-}
+}</style>
 </style>
 </html>
