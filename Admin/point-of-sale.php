@@ -215,7 +215,7 @@ if (isset($_GET['id'])) {
 
 	$query = "UPDATE `client_inquiries` SET inquiries_status = '1' WHERE inquiries_id = '$users_id'";
 	mysqli_query($conn, $query);
-	header( "refresh:0; url=point-of-sale.php" );
+
 			}
 			?>
 			<?php
@@ -225,7 +225,7 @@ if (isset($_GET['eid'])) {
 
 	$query1 = "UPDATE `product` SET pro_status = '1' WHERE pro_id = '$pro_id'";
 	mysqli_query($conn, $query1);
-	header( "refresh:0; url=point-of-sale.php" );
+
 			}
 			?>
 			

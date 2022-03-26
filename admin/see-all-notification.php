@@ -281,12 +281,30 @@ if (isset($_GET['eid'])) {
 		<h5>From: <?php echo $row['inquiries_email'];?></h6>
 		<p><?php echo $row['inquiries_message'];?></p>
 		<hr>
-		<br>
-		
 		</div>
 		<?php
 			  }
 		?>
+		<?php
+			include "conn.php";
+			$sql1 ="SELECT * FROM `product` WHERE qty <=10";
+			$result1 = $conn->query($sql1);  
+  			if($result1->num_rows > 0){
+  				while($row = $result1 -> fetch_assoc()){ 
+			$qty = $row['model'];
+			$model = $row['qty'];
+		?>
+		<div id="notif-body">
+		<h4>Product : </h5>
+		<h5>Model: <?php echo $row['model'];?></h6>
+		<h5>Quantity: <?php echo $row['qty'];?></h5>
+		<hr>
+		<br>
+			</div>
+			<?php
+			  }}
+		?>
+		
 		</main>
 		<!-- MAIN -->
 	</section>
