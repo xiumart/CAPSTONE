@@ -280,7 +280,7 @@ $finalcode='RS-'.createRandomPassword();
 					<table>
 						<thead>
 							<tr>
-							<th></th>
+							<th>Features</th>
 							<th>Action</th>
 							</tr>
 						</thead>
@@ -324,8 +324,10 @@ button[type=button]:hover {
         
             <input type="submit" name="restore" value="Restore" style="cursor: pointer; border-radius: 10px;" class="btn-action" onclick="return confirm('Are you sure you want to restore database?')"/>
         </div>
-    </form></td>
-							</tr>
+    </form>
+</td></tr><tr><td>Products Recycle Bin</td>
+<td><a href="product_archive.php"><button type="button" class="btn-action" style="cursor: pointer; border-radius: 10px;" onclick="return confirm('Are you sure you want to go in Recycle Bin?')">Go to Bin</button></a></td>			</td>
+</td>	</tr>
 						</tbody>
 
 					</div>

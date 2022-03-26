@@ -1,9 +1,5 @@
 <?php
-error_reporting(0);
-include("../conn.php");
 include("session.php");
-include "logs_conn.php";
-date_default_timezone_set('Asia/Manila');
 function createRandomPassword() {
 	$chars = "003232303232023232023456789";
 	srand((double)microtime()*1000000);
@@ -23,14 +19,6 @@ function createRandomPassword() {
 	return $pass;
 }
 $finalcode='RS-'.createRandomPassword();
-if (isset($_GET['id'])) {
-	$pro_id1=$_GET['id'];
-	$query = "DELETE FROM `product` WHERE pro_id='$pro_id1'";
-	users_logs($_SESSION['users_username'], "Remove Product", date("Y-m-d h:i:sa"), $_SESSION['users_roles']);
-			mysqli_query($conn, $query);
-			echo "<script>alert('You have successfully remove the record.');</script>";
-			echo "<script>document.location='product.php';</script>";
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -46,39 +34,46 @@ if (isset($_GET['id'])) {
 	<title>RNL Vision Care | Admin</title>
 </head>
 <style>
-	button {
+	.btn-t {
 		background-color: #00c2cb;
-		padding: 12px;
-		border: none;
-		margin: 3px;
-		border-radius: 10%;
-		cursor: pointer;
+		border-radius: 5px;
+		border:none;
+		padding: 10px;
 	}
 
-	.btn-upd:hover { background-color: #4CAF50;}
-	.btn-rem:hover { background-color: red;}
-	.btn-print:hover { background-color:#00b2b3;}
-	.btn-addp:hover { background-color: #00b2b3;}
-
-	.btn-print {
-		margin-top: 20px;
-		float: right;
-		width: 10%;
+	.btn-t:hover {
+		background-color: #4CAF50;
 	}
-	.page{
+	.btn-p {
 		background-color: #00c2cb;
-		padding: 12px;
-		border: none;
-		border-radius: 10%;
-		color:white;
-	}
-	.page:hover { background-color:#00b2b3;}
-
-	.brandd{
-		margin-top: 8%;
+		border-radius: 5px;
+		border:none;
+		padding: 10px;
+		width: 100%;
 	}
 
-	.namee{margin-top: 20%;}
+	.btn-p:hover {
+		background-color: #4CAF50;
+		color: black;
+	}
+
+
+	.cust{
+		width: 320px;
+		padding:5px;
+		font-size:20px;
+	}
+
+	.sel {
+		width: 400px;
+		padding:5px;
+		font-size:20px;
+	}
+	.num {
+		width:100px;
+		padding:5px;
+		font-size:20px;
+	}
 	.btn-apph {
 		background-color: #00c2cb;
 		padding: 15px;
@@ -117,7 +112,7 @@ if (isset($_GET['id'])) {
 
 	<!-- SIDEBAR -->
 	<section id="sidebar">
-		<a href="product.php" class="brand">
+		<a href="point-of-sale.php" class="brand">
 			<img src="images\logo.png" alt="" width="60px;">
 			<span class="text" style="text-shadow:0.5px 0px #000; color: black;">RNL Vision Care</span>
 		</a>
@@ -146,7 +141,7 @@ if (isset($_GET['id'])) {
 					<span class="text">Sales Report</span>
 				</a>
 			</li>
-			<li class="active">
+			<li>
 				<a href="product.php">
 					<i class='bx bxs-shopping-bag-alt' ></i>
 					<span class="text">Product Inventory</span>
@@ -170,7 +165,7 @@ if (isset($_GET['id'])) {
 					<span class="text">Audit Logs</span>
 				</a>
 			</li>
-			<li>
+			<li class = "active">
 				<a href="archive.php">
 					<i class='bx bxs-download' ></i>
 					<span class="text">Back-up and Restore</span>
@@ -210,7 +205,7 @@ if (isset($_GET['id'])) {
 			$users_id=$_GET['id'];
 			$query = "UPDATE `client_inquiries` SET inquiries_status = '1'  WHERE inquiries_id = '$users_id'";
 			mysqli_query($conn, $query);
-			header( "refresh:0; url=product.php" );
+			header( "refresh:0; url=archive.php" );
 			}
 			?>
 			
@@ -264,25 +259,28 @@ if (isset($_GET['id'])) {
 		<main>
 			<div class="head-title">
 				<div class="left">
-					<h1>Product Inventory</h1>
+					<h1>Back-up and Restore</h1>
 					<ul class="breadcrumb">
 						<li>
-							<a href="product.php">Product</a>
+							<a href="archive.php">Archive</a>
 						</li>
 						<li><i class='bx bx-chevron-right' ></i></li>
 						<li>
-							<a class="active" href="product.php">Home</a>
+							<a  href="archive.php">Home</a>
+						</li>
+                        <li>
+							<a class="active" href="archive.php">Products Recycle Bin</a>
 						</li>
 					</ul>
 				</div>
 			
 			</div>
-
-			<a href="product-add.php"><button class="btn-addp" style="float:right; margin-bottom:10px;">+ Add Product </button></a>
-			<form method="post">
-						<input type="text" name="txtsearch" id="txtsearch" placeholder="Search by Model/Category.." autocomplete="off" style="padding: 12px;border: 1px solid #ccc;border-radius: 4px;font-family: var(poppins); width: 50%;">
-						<button  id="btnsearch" name="btnsearch" class="page" style="cursor: pointer;"><i class='bx bx-search' ></i></button>
-			</form>
+		
+			
+			<div>
+				
+				<div>
+                
 <div id="printing">
 					<table>
 <caption>List of Product</caption>
@@ -301,18 +299,18 @@ if (isset($_GET['id'])) {
      <tbody>
      	<?php
      	$limit=25;
-        $cat=$_POST['all'];
+     
         $page=isset($_GET['page']) ? $_GET['page']:1;
         $start=($page-1)*$limit;
-        $search=$_POST['txtsearch'];
+        
      	
      	if (isset($_POST['btnsearch'])) {
-        $sql1 = "SELECT * FROM `product` WHERE `category` LIKE '%$search%' OR `model` LIKE '%$search%' LIMIT $start, $limit";
+        $sql1 = "SELECT * FROM `archive_products` WHERE `category` LIKE '%$search%' OR `model` LIKE '%$search%' LIMIT $start, $limit";
         $sql2 =$conn->query("SELECT count(pro_id) AS id,`category`,`model` FROM `product` WHERE `category` LIKE '%$search%' OR `model` LIKE '%$search%'");
 
         	}
         else{
-        		$sql1 = "SELECT * FROM `product` LIMIT $start, $limit ";
+        		$sql1 = "SELECT * FROM `archive_products` LIMIT $start, $limit ";
         		$sql2 =$conn->query("SELECT count(pro_id) AS id FROM `product`");
         	}
         $result2 = $sql2->fetch_all(MYSQLI_ASSOC);
@@ -354,7 +352,7 @@ if (isset($_GET['id'])) {
 			  ?>
 			  	
 			  </td>
-			  	<td data-label="Action" id="butones"><a href="product-update.php?id=<?php echo $row['pro_id'];?>"><button class="btn-upd">Update</button></a><form  method = "post" action ="archive_products.php?id=<?php echo $row['pro_id'];?>"><button class="btn-rem" name="btnrem" id="btnrem" onclick="return confirm('Are you sure you want to remove this product?')">Remove</button></form	></td>
+			  	<td data-label="Action" id="butones"><a href="product-update.php?id=<?php echo $row['pro_id'];?>"><button class="btn-upd">Update</button></a><a href="?id=<?php echo $row['pro_id'];?>"><button class="btn-rem" name="btnremove" onclick="return confirm('Are you sure you want to remove this product?')">Remove</button></a></td>
      	  </tr>
     
      	 <?php
@@ -368,63 +366,157 @@ if (isset($_GET['id'])) {
 
    </table>
 </div>
-   <!--page-->
-  	<br>
-   <a class="page" id="pre" href="product.php?page=<?=$prev; ?>">< Prev</a>
-    	  <?php  for($i=1; $i <=$pages ; $i++): ?>
-    <a class="page" href="product.php?page=<?=$i; ?>"><?=$i; ?></a>
-                      <?php endfor; ?>
-    <a class="page" id="pnext" href="product.php?page=<?=$next; ?>">Next ></a>
-	
-	<a href="javascript:Clickheretoprint()">
-   	<button class="btn-print"><i class='bx bxs-printer' ></i> Print </button></a>
-<!--print-->
-<link href="css/bootstrap-responsive.css" rel="stylesheet">
-<link href="../style.css" media="screen" rel="stylesheet" type="text/css" />
-<link rel="stylesheet" type="text/css" href="tcal.css" />
-<script type="text/javascript" src="tcal.js"></script>
-<script language="javascript">
-function Clickheretoprint()
-{ 
-	
-  var disp_setting="toolbar=yes,location=no,directories=yes,menubar=yes,"; 
-      disp_setting+="scrollbars=yes,width=1000, height=1000, left=100, top=25"; 
-  var content_vlue = document.getElementById("printing").innerHTML; 
-  
-  var docprint=window.open("","",disp_setting); 
-   docprint.document.open(); 
-   docprint.document.write('</head><body onLoad="self.print()" style="width: 700px; font-size:11px; font-family:arial; font-weight:normal;">');          
-   docprint.document.write(content_vlue); 
-   docprint.document.close(); 
-   docprint.focus(); 
-   
+<style>
+input[type=submit], restore {
+	background-color: blue;
 }
-</script>
-					
+input[type=submit]:hover {
+background-color: green;
+}
+button[type=button] {
+	background-color: blue;
+}
+button[type=button]:hover {
+	background-color: green;
+}
+	</style>
+    
+						</tbody>
 
-				</div>
-
-				
+					</div>
+					</div>
+				</table>
+				<div><br><br>
 				
 			</div>
+
+		
+		</main>
+		<main>
 			
-			<div class="table-data">
-	
+		
+			
+			<!-- <div class="table-data">
+				
+				<div class="order">
+				<title>MySQL database restore using PHP</title> -->
+<style>
 
-				
-				
-			</div>
+
+
+
+.form-row {
+	margin-bottom: 20px;
+}
+
+.input-file {
+
+	padding: 10px;
+	margin-top: 5px;
+	border-radius: 2px;
+}
+
+.btn-action {
+	background: #333;
+	border: 0;
+	padding: 10px 40px;
+	color: #FFF;
+	border-radius: 2px;
+}
+
+.response {
+	padding: 10px;
+	margin-bottom: 20px;
+    border-radius: 2px;
+}
+
+.error {
+    background: #fbd3d3;
+    border: #efc7c7 1px solid;
+}
+
+.success {
+    background: #cdf3e6;
+    border: #bee2d6 1px solid;
+}
+</style>
+
+
+ 
+
+		
 		</main>
 		<!-- MAIN -->
 	</section>
 	<!-- CONTENT -->
 	
+	<?php
+$conn = mysqli_connect("localhost", "root", "", "capstone");
+if (! empty($_FILES)) {
+    // Validating SQL file type by extensions
+    if (! in_array(strtolower(pathinfo($_FILES["backup_file"]["name"], PATHINFO_EXTENSION)), array(
+        "sql"
+    ))) {
+        $response = array(
+            "type" => "error",
+            "message" => "Invalid File Type"
+        );
+    } else {
+        if (is_uploaded_file($_FILES["backup_file"]["tmp_name"])) {
+            move_uploaded_file($_FILES["backup_file"]["tmp_name"], $_FILES["backup_file"]["name"]);
+            $response = restoreMysqlDB($_FILES["backup_file"]["name"], $conn);
+        }
+    }
+}
 
+function restoreMysqlDB($filePath, $conn)
+{
+    $sql = '';
+    $error = '';
+    
+    if (file_exists($filePath)) {
+        $lines = file($filePath);
+        
+        foreach ($lines as $line) {
+            
+            // Ignoring comments from the SQL script
+            if (substr($line, 0, 2) == '--' || $line == '') {
+                continue;
+            }
+            
+            $sql .= $line;
+            
+            if (substr(trim($line), - 1, 1) == ';') {
+                $result = mysqli_query($conn, $sql);
+                if (! $result) {
+                    $error .= mysqli_error($conn) . "\n";
+                }
+                $sql = '';
+            }
+        } // end foreach
+        
+        if ($error) {
+            $response = array(
+                "type" => "error",
+                "message" => $error
+            );
+        } else {
+            $response = array(
+                "type" => "success",
+                "message" => "Database Restore Completed Successfully."
+            );
+        }
+        exec('rm ' . $filePath);
+    } // end if file exists
+    
+    return $response;
+}
+
+?>
 	<script src="script.js"></script>
-
-	
 </body>
-<style>table {
+<style>
+table {
   border: 1px solid #ccc;
   border-collapse: collapse;
   margin: 0;
@@ -436,7 +528,7 @@ function Clickheretoprint()
 table caption {
   font-size: 1.5em;
   background-color: #00c2cb;
-  margin-top:20px;	
+  margin-top:50px;	
 }
 
 table tr {
@@ -506,4 +598,5 @@ table th {
     border-bottom: 0;
   }
 }</style>
+</style>
 </html>
