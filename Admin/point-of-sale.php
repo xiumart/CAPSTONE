@@ -308,6 +308,7 @@ if (isset($_GET['id'])) {
 						<?php 
 						include("connect.php");
 						$cat=$_GET['cat'];
+						
 						if (isset($cat)) {
 						$result=$db->prepare("SELECT * FROM product WHERE category='$cat'");
 						}
@@ -349,6 +350,7 @@ if (isset($_GET['id'])) {
 							$result12->bindParam(':userid', $id);
 							$result12->execute();
 							for($i=1; $row = $result12->fetch(); $i++){
+								
 							?>
 							<tr class="record">
 								<input type="text" value="<?php echo $row['product']; ?>" hidden>
