@@ -350,7 +350,7 @@ function Clickheretoprint()
     ?>
      </tbody>
    </table>
-   <a href=""><button class="btn-print" style="cursor: pointer;"><i class='bx bxs-printer' ></i> Print </button></a>
+   
 				</div>
 
 				

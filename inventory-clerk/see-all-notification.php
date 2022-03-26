@@ -125,11 +125,55 @@
 			<div class="dropdown2">
 			<a href="#" class="notification">
 				<i class='bx bxs-bell' ></i>
-				<span class="num">8</span>
+				<span class="num">
+				<?php 
+				$query = mysqli_query($conn, "SELECT COUNT(*) as total from product  WHERE qty <=10 AND pro_status ='2'");
+					while($result=mysqli_fetch_array($query)){
+					echo $result['total']; 
+				}			
+				?>
+						  </span>			  
 			</a>
+			<?php
+
+if (isset($_GET['eid'])) {
+	$pro_id=$_GET['eid'];
+
+	$query1 = "UPDATE `product` SET pro_status = '1' WHERE pro_id = '$pro_id'";
+	mysqli_query($conn, $query1);
+	header( "refresh:0; url=see-all-notification.php" );
+			}
+			?>
+			
 				<div class="dropdown-content2">
 					<h4 id="textnotif">Notification</h4><br><hr>
-					<a href="#" id="" style="color:black;"><h6>Inquiry:</h6> How can i set an appointment?</a><hr color="wheat">
+					
+			<table>
+			  
+			  <?php
+			$sql1 = "SELECT * FROM `product` WHERE pro_status='2'  LIMIT 6";
+			$result1 = $conn->query($sql1);  
+  			if($result1->num_rows > 0){
+  				while($row = $result1 -> fetch_assoc()){ 
+					$qty = $row['qty'];
+					$model = $row['model'];
+			  ?>
+			  <tr>
+					<th><h4>Product:</h4></th>
+			  <td><p><?php 
+					if ($qty<=10) {
+						echo $row['model'] ."&nbsp";		
+						echo $row['qty'];
+							}
+			  ?>
+				</p></td><td><a href="?eid=<?php echo $row['pro_id'];?>"><button class="btn-remove" name="btnremove" style="cursor: pointer;">Clear</button></a></td>
+							</tr>
+							<?php
+				  }}
+			  ?>
+			  </table>
+			  
+					
 					<a href="see-all-notification.php" id="colnotif">See all notification..</a>
 				</div>
 			</div>

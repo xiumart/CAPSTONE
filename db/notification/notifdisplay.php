@@ -6,5 +6,5 @@ if(!$conn){
 }
 
 //query for feedback display
-$query = mysqli_query($conn,"SELECT * FROM `client_inquiries` WHERE inquiries_backdate <= now() AND inquiries_status='2' ORDER BY inquiries_backdate DESC");
+$query = mysqli_query($conn,"SELECT * FROM `client_inquiries` WHERE inquiries_backdate <= now() AND inquiries_status='2' ORDER BY inquiries_backdate DESC  LIMIT 6");
 ?>
