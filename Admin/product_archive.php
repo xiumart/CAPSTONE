@@ -91,20 +91,27 @@ $finalcode='RS-'.createRandomPassword();
 		margin-left: 10px;
 		padding:4px;
 	}
-	.btn-remove {
+	.btn-upd {
 		background-color: #00c2cb;
 		border: none;
 		border-radius: 10%;
-		margin-left: 60%;
 		padding:8px;
 	}
-	.btn-f:hover { background-color: #4CAF50;}
+	.btn-upd:hover { background-color: #4CAF50;}
 	.btn-c:hover { background-color: red;}
 	.btn-apph:hover { background-color: #00a2a3;}
 	.btn-remove:hover { background-color: red;}
 	.namee{
 		margin-top: 4.5%;
 	}
+	.page{
+		background-color: #00c2cb;
+		padding: 12px;
+		border: none;
+		border-radius: 10%;
+		color:white;
+	}
+	.page:hover { background-color:#00b2b3;}
 
 </style>
 <body>
@@ -257,25 +264,28 @@ $finalcode='RS-'.createRandomPassword();
 
 		<!-- MAIN -->
 		<main>
+			
 			<div class="head-title">
 				<div class="left">
-					<h1>Back-up and Restore</h1>
+					<h1>Product's Archive</h1>
 					<ul class="breadcrumb">
 						<li>
-							<a href="archive.php">Archive</a>
+							<a class="active" href="archive.php">Back</a>
 						</li>
 						<li><i class='bx bx-chevron-right' ></i></li>
 						<li>
-							<a  href="archive.php">Home</a>
+							<a  href="archive.php">Product's Archive</a>
 						</li>
                         <li>
-							<a class="active" href="archive.php">Products Recycle Bin</a>
 						</li>
 					</ul>
 				</div>
 			
-			</div>
-		
+			</div><br>
+			<form method="post">
+						<input type="text" name="txtsearch" id="txtsearch" placeholder="Search..." autocomplete="off" style="padding: 12px;border: 1px solid #ccc;border-radius: 4px;font-family: var(poppins); width: 50%;">
+						<button  id="btnsearch" name="" class="page" style="cursor: pointer;"><i class='bx bx-search' ></i></button>
+			</form>
 			
 			<div>
 				
@@ -293,7 +303,7 @@ $finalcode='RS-'.createRandomPassword();
 		 <th>Selling Price</th>
 		 <th>Exp. Date</th>
 		 <th>Qty.</th>
-		 <th>Action</th>
+		 <th>Action.</th>
      	</tr>
      </thead>
      <tbody>
@@ -336,7 +346,7 @@ $finalcode='RS-'.createRandomPassword();
 			  	<td data-label="Selling"><?php echo $row['sellingprice'];?></td>
 			  	<td data-label="Expire"><?php echo $row['expdate'];?></td>
 			  	<td data-label="Qty" id="qq"><?php echo $row['qty'];
-
+		
 							if ($qty<=10) {
 								
 						echo "<br><b><p style='color:red;'>CRITICAL</p></b>";
@@ -350,10 +360,8 @@ $finalcode='RS-'.createRandomPassword();
 
 
 			  ?>
-			  	
-			  </td>
-			  	<td data-label="Action" id="butones"><a href="product-update.php?id=<?php echo $row['pro_id'];?>"><button class="btn-upd">Update</button></a><a href="?id=<?php echo $row['pro_id'];?>"><button class="btn-rem" name="btnremove" onclick="return confirm('Are you sure you want to remove this product?')">Remove</button></a></td>
-     	  </tr>
+			  <td data-label="Action"><button class="btn-upd" style="cursor: pointer;" onclick="return confirm('Are you sure you want to retrieve this data?')">Retrieve</button</td>
+ </tr>
     
      	 <?php
      }}

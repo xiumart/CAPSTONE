@@ -367,6 +367,8 @@ if (isset($_REQUEST['btnsubmit'])) {
             $eid= $_GET['id'];
             $sql=mysqli_query($conn, "SELECT * from users_account WHERE users_id='$eid'");
             while($row=mysqli_fetch_array($sql)){
+              $roles = $row['users_roles'];
+              $pass = md5($row['users_password']);
           ?>
                 <div class="row">
                         <div class="row">
@@ -408,7 +410,7 @@ if (isset($_REQUEST['btnsubmit'])) {
                         </div>
                         <div class="col-75">
                         
-                            <input type="password" name="cpass" placeholder="Enter new password" minlenght="6" id="password" value= "<?php echo md5($row['users_password']);?>">
+                            <input type="password" name="cpass" placeholder="Enter new password" minlenght="6" id="password" value= "<?php echo $pass;?>">
                             <i class="bi bi-eye-slash" id="togglePassword"></i>
                           </div>
                         </div>
@@ -435,10 +437,26 @@ if (isset($_REQUEST['btnsubmit'])) {
                         </div>
                         <div class="col-75">
                             <select id="position" name="position">
-                            <option value="Admin">Admin</option>
-                            <option value="Doctor">Doctor</option>
-                            <option value="Sales Staff">Sales Staff</option>
-                            <option value="Inventory Clerk">Inventory Clerk</option>
+                            <option value="Admin" <?php
+							                if ($roles=="Admin") {
+								                echo "selected";
+							                }
+							                ?>>Admin</option>
+                            <option value="Doctor" <?php
+							                if ($roles=="Doctor") {
+								                echo "selected";
+							                }
+							                ?>>Doctor</option>
+                            <option value="Sales Staff" <?php
+							                if ($roles=="Sales Staff") {
+								                echo "selected";
+							                }
+							                ?>>Sales Staff</option>
+                            <option value="Inventory Clerk" <?php
+							                if ($roles=="Inventory Clerk") {
+							                	echo "selected";
+							                }
+							                ?>>Inventory Clerk</option>
                             </select>
                         </div>
                         </div>

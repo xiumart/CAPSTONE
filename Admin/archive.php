@@ -325,14 +325,14 @@ button[type=button]:hover {
             <input type="submit" name="restore" value="Restore" style="cursor: pointer; border-radius: 10px;" class="btn-action" onclick="return confirm('Are you sure you want to restore database?')"/>
         </div>
     </form>
-</td></tr><tr><td>Products Recycle Bin</td>
-<td><a href="product_archive.php"><button type="button" class="btn-action" style="cursor: pointer; border-radius: 10px;" onclick="return confirm('Are you sure you want to go in Recycle Bin?')">Go to Bin</button></a></td>			</td>
+</td></tr><tr><td>Product's Archive</td>
+<td><a href="product_archive.php"><button type="button" class="btn-action" style="cursor: pointer; border-radius: 10px;" onclick="return confirm('Are you sure you want to go in Product`s Archive?')">Go to Bin</button></a></td>			</td>
 </td>	</tr>
-<tr><td>Supplier Recycle Bin</td>
-<td><a href="supplier_archive.php"><button type="button" class="btn-action" style="cursor: pointer; border-radius: 10px;" onclick="return confirm('Are you sure you want to go in Recycle Bin?')">Go to Bin</button></a></td>			</td>
+<tr><td>Supplier's Archive</td>
+<td><a href="supplier_archive.php"><button type="button" class="btn-action" style="cursor: pointer; border-radius: 10px;" onclick="return confirm('Are you sure you want to go in Supplier` Archive?')">Go to Bin</button></a></td>			</td>
 </td>	</tr>
-<tr><td>Users Recycle Bin</td>
-<td><a href="manageuser_archive.php"><button type="button" class="btn-action" style="cursor: pointer; border-radius: 10px;" onclick="return confirm('Are you sure you want to go in Recycle Bin?')">Go to Bin</button></a></td>			</td>
+<tr><td>User's Archive</td>
+<td><a href="manageuser_archive.php"><button type="button" class="btn-action" style="cursor: pointer; border-radius: 10px;" onclick="return confirm('Are you sure you want to go in User`s Archive?')">Go to Bin</button></a></td>			</td>
 </td>	</tr>
 						</tbody>
 

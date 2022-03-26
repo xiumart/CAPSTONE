@@ -278,7 +278,31 @@ if (isset($_GET['id'])) {
 			
 			</div>
 
-			<a href="product-add.php"><button class="btn-addp" style="float:right; margin-bottom:10px;">+ Add Product </button></a>
+			<a href="product-add.php"><button class="btn-addp" style="float:right;">+ Add Product </button></a>
+			<a href="javascript:Clickheretoprint()">
+   	<button class="btn-addp" style="float:right; width: 100px;"><i class='bx bxs-printer' ></i> Print </button></a>
+<!--print-->
+<link href="css/bootstrap-responsive.css" rel="stylesheet">
+<link href="../style.css" media="screen" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="tcal.css" />
+<script type="text/javascript" src="tcal.js"></script>
+<script language="javascript">
+function Clickheretoprint()
+{ 
+	
+  var disp_setting="toolbar=yes,location=no,directories=yes,menubar=yes,"; 
+      disp_setting+="scrollbars=yes,width=1000, height=1000, left=100, top=25"; 
+  var content_vlue = document.getElementById("printing").innerHTML; 
+  
+  var docprint=window.open("","",disp_setting); 
+   docprint.document.open(); 
+   docprint.document.write('</head><body onLoad="self.print()" style="width: 700px; font-size:11px; font-family:arial; font-weight:normal;">');          
+   docprint.document.write(content_vlue); 
+   docprint.document.close(); 
+   docprint.focus(); 
+   
+}
+</script>
 			<form method="post">
 						<input type="text" name="txtsearch" id="txtsearch" placeholder="Search by Model/Category.." autocomplete="off" style="padding: 12px;border: 1px solid #ccc;border-radius: 4px;font-family: var(poppins); width: 50%;">
 						<button  id="btnsearch" name="btnsearch" class="page" style="cursor: pointer;"><i class='bx bx-search' ></i></button>
@@ -376,30 +400,7 @@ if (isset($_GET['id'])) {
                       <?php endfor; ?>
     <a class="page" id="pnext" href="product.php?page=<?=$next; ?>">Next ></a>
 	
-	<a href="javascript:Clickheretoprint()">
-   	<button class="btn-print"><i class='bx bxs-printer' ></i> Print </button></a>
-<!--print-->
-<link href="css/bootstrap-responsive.css" rel="stylesheet">
-<link href="../style.css" media="screen" rel="stylesheet" type="text/css" />
-<link rel="stylesheet" type="text/css" href="tcal.css" />
-<script type="text/javascript" src="tcal.js"></script>
-<script language="javascript">
-function Clickheretoprint()
-{ 
 	
-  var disp_setting="toolbar=yes,location=no,directories=yes,menubar=yes,"; 
-      disp_setting+="scrollbars=yes,width=1000, height=1000, left=100, top=25"; 
-  var content_vlue = document.getElementById("printing").innerHTML; 
-  
-  var docprint=window.open("","",disp_setting); 
-   docprint.document.open(); 
-   docprint.document.write('</head><body onLoad="self.print()" style="width: 700px; font-size:11px; font-family:arial; font-weight:normal;">');          
-   docprint.document.write(content_vlue); 
-   docprint.document.close(); 
-   docprint.focus(); 
-   
-}
-</script>
 					
 
 				</div>
