@@ -328,6 +328,9 @@ button[type=button]:hover {
 </td></tr><tr><td>Products Recycle Bin</td>
 <td><a href="product_archive.php"><button type="button" class="btn-action" style="cursor: pointer; border-radius: 10px;" onclick="return confirm('Are you sure you want to go in Recycle Bin?')">Go to Bin</button></a></td>			</td>
 </td>	</tr>
+<tr><td>Supplier Recycle Bin</td>
+<td><a href="supplier_archive.php"><button type="button" class="btn-action" style="cursor: pointer; border-radius: 10px;" onclick="return confirm('Are you sure you want to go in Recycle Bin?')">Go to Bin</button></a></td>			</td>
+</td>	</tr>
 						</tbody>
 
 					</div>

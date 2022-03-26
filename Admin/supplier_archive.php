@@ -1,9 +1,5 @@
 <?php
-error_reporting(0);
-include("../conn.php");
 include("session.php");
-include "logs_conn.php";
-date_default_timezone_set('Asia/Manila');
 function createRandomPassword() {
 	$chars = "003232303232023232023456789";
 	srand((double)microtime()*1000000);
@@ -23,14 +19,6 @@ function createRandomPassword() {
 	return $pass;
 }
 $finalcode='RS-'.createRandomPassword();
-if (isset($_GET['id'])) {
-	$supp_id=$_GET['id'];
-	$query = "DELETE FROM `supplier` WHERE supp_id='$supp_id'";
-	users_logs($_SESSION['users_username'], "Remove Supplier", date("Y-m-d h:i:sa"), $_SESSION['users_roles']);
-			mysqli_query($conn, $query);
-			echo "<script>alert('You have successfully remove the record.');</script>";
-			echo "<script>document.location='supplier.php';</script>";
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -46,40 +34,85 @@ if (isset($_GET['id'])) {
 	<title>RNL Vision Care | Admin</title>
 </head>
 <style>
-		button {
+	.btn-t {
 		background-color: #00c2cb;
-		padding: 12px;
-		border: none;
-		margin: 3px;
-		border-radius: 10%;
+		border-radius: 5px;
+		border:none;
+		padding: 10px;
 	}
 
-	.btn-upd:hover { background-color: #4CAF50;}
-	.btn-rem:hover { background-color: red;}
-	.btn-print:hover { background-color:#00a2a3;}
-	.btn-addpt:hover { background-color: #00a2a3}
-	.btn-addpt {float:right; margin-bottom: 20px;}
-	.btn-print {
-		margin-top: 20px;
+	.btn-t:hover {
+		background-color: #4CAF50;
+	}
+	.btn-p {
+		background-color: #00c2cb;
+		border-radius: 5px;
+		border:none;
+		padding: 10px;
+		width: 100%;
+	}
+
+	.btn-p:hover {
+		background-color: #4CAF50;
+		color: black;
+	}
+
+
+	.cust{
+		width: 320px;
+		padding:5px;
+		font-size:20px;
+	}
+
+	.sel {
+		width: 400px;
+		padding:5px;
+		font-size:20px;
+	}
+	.num {
+		width:100px;
+		padding:5px;
+		font-size:20px;
+	}
+	.btn-apph {
+		background-color: #00c2cb;
+		padding: 15px;
+		border: none;
+		border-radius: 10%;
 		float: right;
-		width: 10%;
+		margin-left: 10px;
+
+		
 	}
-	.page{
+	.btn-f, .btn-c {
 		background-color: #00c2cb;
-		padding: 12px;
 		border: none;
 		border-radius: 10%;
+		margin-left: 10px;
+		padding:4px;
 	}
-	.page:hover { background-color:#00b2b3;}
+	.btn-remove {
+		background-color: #00c2cb;
+		border: none;
+		border-radius: 10%;
+		margin-left: 60%;
+		padding:8px;
+	}
+	.btn-f:hover { background-color: #4CAF50;}
+	.btn-c:hover { background-color: red;}
+	.btn-apph:hover { background-color: #00a2a3;}
+	.btn-remove:hover { background-color: red;}
+	.namee{
+		margin-top: 4.5%;
+	}
 
-	.namee{margin-top: 5%;}
 </style>
 <body>
 
 
 	<!-- SIDEBAR -->
 	<section id="sidebar">
-		<a href="supplier.php" class="brand">
+		<a href="point-of-sale.php" class="brand">
 			<img src="images\logo.png" alt="" width="60px;">
 			<span class="text" style="text-shadow:0.5px 0px #000; color: black;">RNL Vision Care</span>
 		</a>
@@ -114,7 +147,7 @@ if (isset($_GET['id'])) {
 					<span class="text">Product Inventory</span>
 				</a>
 			</li>
-			<li class="active">
+			<li>
 				<a href="supplier.php">
 					<i class='bx bxs-truck' ></i>
 					<span class="text">Supplier</span>
@@ -132,12 +165,12 @@ if (isset($_GET['id'])) {
 					<span class="text">Audit Logs</span>
 				</a>
 			</li>
-			<li>
+			<li class = "active">
 				<a href="archive.php">
 					<i class='bx bxs-download' ></i>
 					<span class="text">Back-up and Restore</span>
 				</a>
-			</li>	
+			</li>
 		</ul>
 	</section>
 	<!-- SIDEBAR -->
@@ -153,9 +186,7 @@ if (isset($_GET['id'])) {
 
 			</form>
 			<div id="digital-clock"></div>
-		
 			<script src="time.js"></script>
-			
 			<div class="dropdown2">
 			<a href="#" class="notification">
 				<i class='bx bxs-bell' ></i>
@@ -174,7 +205,7 @@ if (isset($_GET['id'])) {
 			$users_id=$_GET['id'];
 			$query = "UPDATE `client_inquiries` SET inquiries_status = '1'  WHERE inquiries_id = '$users_id'";
 			mysqli_query($conn, $query);
-			header( "refresh:0; url=supplier.php" );
+			header( "refresh:0; url=archive.php" );
 			}
 			?>
 			
@@ -228,35 +259,34 @@ if (isset($_GET['id'])) {
 		<main>
 			<div class="head-title">
 				<div class="left">
-					<h1>Supplier</h1>
+					<h1>Back-up and Restore</h1>
 					<ul class="breadcrumb">
 						<li>
-							<a href="supplier.php">Supplier</a>
+							<a href="archive.php">Archive</a>
 						</li>
 						<li><i class='bx bx-chevron-right' ></i></li>
 						<li>
-							<a class="active" href="supplier.php">Home</a>
+							<a  href="archive.php">Home</a>
+						</li>
+                        <li>
+							<a class="active" href="archive.php">Supplier Recycle Bin</a>
 						</li>
 					</ul>
 				</div>
 			
 			</div>
-<style>
-	#content main .table-data .order table th {
-		text-align: center;
-	}
-	</style>
-			<a href="supplier-add.php"><button class="btn-addpt" style="cursor: pointer;"> + Add Supplier</button></a>
 		
-				<form method="post">
-						<input type="text" name="txtsearch" id="txtsearch" placeholder="Search by Company Name or Person Name" autocomplete="off" style="padding: 12px;border: 1px solid #ccc;border-radius: 4px;font-family: var(poppins);">
-						<button  id="btnsearch" name="btnsearch" class="page" style="cursor: pointer;"><i class='bx bx-search' ></i></button>
-						</form></br>
+			
+			<div>
+				
+				<div>
+                
+<div id="printing">
 					<table>
+<caption>List of Product</caption>
      <thead>
      	<tr>
-		 
-     	 <th>Company Name</th>
+         <th>Company Name</th>
 		 <th>Contact Person</th>
      	 <th>Contact No.</th>
 		 <th>Description</th>
@@ -264,19 +294,19 @@ if (isset($_GET['id'])) {
      	</tr>
      </thead>
      <tbody>
-	 
+     	
 	 <?php
      	$limit=25;
-        $cat=$_POST['all'];
+        
         $page=isset($_GET['page']) ? $_GET['page']:1;
         $start=($page-1)*$limit;
-        $search=$_POST['txtsearch'];
+              
      	$sql2 =$conn->query("SELECT count(supp_id) AS id FROM `supplier`");
      	if (isset($_POST['btnsearch'])) {
-        $sql1 = "SELECT * FROM `supplier` WHERE `supp_cname` LIKE '%$search%' OR `supp_contactperson` LIKE'%$search%'  LIMIT $start, $limit ";
+        $sql1 = "SELECT * FROM `archive_supplier` WHERE `supp_cname` LIKE '%$search%' OR `supp_contactperson` LIKE'%$search%'  LIMIT $start, $limit ";
         	}
         else{
-        		$sql1 = "SELECT * FROM `supplier` LIMIT $start, $limit ";
+        		$sql1 = "SELECT * FROM `archive_supplier` LIMIT $start, $limit ";
         	}
         $result2 = $sql2->fetch_all(MYSQLI_ASSOC);
                 $total=$result2[0]['id'];
@@ -297,7 +327,7 @@ if (isset($_GET['id'])) {
      	  	<td data-label="Contact No."><?php echo $row['supp_contact'];?></td>
 			<td data-label="Description"><?php echo $row['supp_desc'];?></td>
 			<td data-label="Action"><a href="supplier-update.php?id=<?php echo $row['supp_id'];?>"><button class="btn-f" style="cursor: pointer;">Update</button></a>
-			<form method="POST" action="archive_supplier.php?id=<?php echo $row['supp_id'];?>"><button class="btn-c" name="btnrem" id="btnrem" style="cursor: pointer;" onclick="return confirm('Are you sure you want to remove this supplier?')">Remove</button></form></td>
+			<a href="?id=<?php echo $row['supp_id'];?>"><form method="post"action="archive_supplier.php?=<?php echo $row['supp_id'];?>"><button class="btn-c" name="btnrem" style="cursor: pointer;" onclick="return confirm('Are you sure you want to remove this supplier?')">Remove</button></form></td>
      	  </tr>
     
      	 <?php
@@ -307,53 +337,141 @@ if (isset($_GET['id'])) {
 
 	
      </tbody>
-	 
-   </table>
-   <br>
-  	<?php
-  	if ($_GET['page']==1) {
-  		
-  	}
-  	elseif ($_GET['page']==1) {
-  		# code...
-  	}
-  	?>
-   <a class="page" id="pre" href="supplier.php?page=<?=$prev; ?>">< Prev</a>
-    	  <?php  for($i=1; $i <=$pages ; $i++): ?>
-    <a class="page" href="supplier.php?page=<?=$i; ?>"><?=$i; ?></a>
-                      <?php endfor; ?>
-    <a class="page" id="pnext" href="supplier.php?page=<?=$next; ?>">Next ></a>
-				</div>
-				</div>
-				</div>
-			
-			<div class="table-data">
-	
-				
+
+					</div>
+					</div>
+				</table>
+				<div><br><br>
 				
 			</div>
+
+		
+		</main>
+		<main>
+			
+		
+			
+			<!-- <div class="table-data">
+				
+				<div class="order">
+				<title>MySQL database restore using PHP</title> -->
+<style>
+
+
+
+
+.form-row {
+	margin-bottom: 20px;
+}
+
+.input-file {
+
+	padding: 10px;
+	margin-top: 5px;
+	border-radius: 2px;
+}
+
+.btn-action {
+	background: #333;
+	border: 0;
+	padding: 10px 40px;
+	color: #FFF;
+	border-radius: 2px;
+}
+
+.response {
+	padding: 10px;
+	margin-bottom: 20px;
+    border-radius: 2px;
+}
+
+.error {
+    background: #fbd3d3;
+    border: #efc7c7 1px solid;
+}
+
+.success {
+    background: #cdf3e6;
+    border: #bee2d6 1px solid;
+}
+</style>
+
+
+ 
+
+		
 		</main>
 		<!-- MAIN -->
 	</section>
-
-	
 	<!-- CONTENT -->
 	
+	<?php
+$conn = mysqli_connect("localhost", "root", "", "capstone");
+if (! empty($_FILES)) {
+    // Validating SQL file type by extensions
+    if (! in_array(strtolower(pathinfo($_FILES["backup_file"]["name"], PATHINFO_EXTENSION)), array(
+        "sql"
+    ))) {
+        $response = array(
+            "type" => "error",
+            "message" => "Invalid File Type"
+        );
+    } else {
+        if (is_uploaded_file($_FILES["backup_file"]["tmp_name"])) {
+            move_uploaded_file($_FILES["backup_file"]["tmp_name"], $_FILES["backup_file"]["name"]);
+            $response = restoreMysqlDB($_FILES["backup_file"]["name"], $conn);
+        }
+    }
+}
 
+function restoreMysqlDB($filePath, $conn)
+{
+    $sql = '';
+    $error = '';
+    
+    if (file_exists($filePath)) {
+        $lines = file($filePath);
+        
+        foreach ($lines as $line) {
+            
+            // Ignoring comments from the SQL script
+            if (substr($line, 0, 2) == '--' || $line == '') {
+                continue;
+            }
+            
+            $sql .= $line;
+            
+            if (substr(trim($line), - 1, 1) == ';') {
+                $result = mysqli_query($conn, $sql);
+                if (! $result) {
+                    $error .= mysqli_error($conn) . "\n";
+                }
+                $sql = '';
+            }
+        } // end foreach
+        
+        if ($error) {
+            $response = array(
+                "type" => "error",
+                "message" => $error
+            );
+        } else {
+            $response = array(
+                "type" => "success",
+                "message" => "Database Restore Completed Successfully."
+            );
+        }
+        exec('rm ' . $filePath);
+    } // end if file exists
+    
+    return $response;
+}
+
+?>
 	<script src="script.js"></script>
 </body>
 <style>
-		.btn-f, .btn-c {
-		background-color: #00c2cb;
-		border: none;
-		border-radius: 10%;
-		margin-left: 10px;
-		padding:4px;
-	}
-
-	.btn-f:hover { background-color: #4CAF50;}
-	.btn-c:hover { background-color: red;}
-	table {
+table {
   border: 1px solid #ccc;
   border-collapse: collapse;
   margin: 0;
@@ -365,7 +483,7 @@ if (isset($_GET['id'])) {
 table caption {
   font-size: 1.5em;
   background-color: #00c2cb;
-  margin-top:20px;	
+  margin-top:50px;	
 }
 
 table tr {
@@ -434,6 +552,6 @@ table th {
   table td:last-child {
     border-bottom: 0;
   }
-}
+}</style>
 </style>
 </html>
