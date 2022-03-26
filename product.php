@@ -149,15 +149,20 @@ error_reporting(0);
               <form id="my-form" method="post">
               <label>Sort by:</label>
               <select name='sort' id="price-sort" onchange="location = this.value;">
-                <option value='0'>Price</option>
-                <option value='?sort=DESC&prod=<?php echo $_GET['prod']; ?>'>Price Highest to Lowest</option>
-                <option value='?sort=ASC&prod=<?php echo $_GET['prod']; ?>'>Price Lowest to Highest</option>
+                <option value='0' disabled >Price</option>
+                <option value='?sort=DESC&prod=<?php echo $_GET['prod']; ?>' <?php if($_GET['sort']=='DESC'){
+                  echo "selected";
+                } ?>>Price Highest to Lowest</option>
+                <option value='?sort=ASC&prod=<?php echo $_GET['prod']; ?>' <?php if($_GET['sort']=='ASC'){
+                  echo "selected";
+                } ?>>Price Lowest to Highest</option>
               </select>
             
               </form>
-              <a href="?sort=New&prod=<?php echo $_GET['prod']; ?>" id="newest" style="color:#00c2cb;"><button>Newest</button></a>
-              <a href="?sort=Old&prod=<?php echo $_GET['prod']; ?>" id="oldest" style="color:#000"><button>Oldest</button></a>
+              <a href="?sort=New&prod=<?php echo $_GET['prod']; ?>" id="newest" ><button style="color:#00c2cb;">Newest</button></a>
               <a href="?sort=default&prod=<?php echo $_GET['prod']; ?>" id="default" style="color:#000"><button>Default</button></a>
+              <a href="?sort=Popular&prod=<?php echo $_GET['prod']; ?>" id="oldest" style="color:#000"><button>Popular</button></a>
+              
             </div>
            
               <!--prod-->
@@ -181,9 +186,9 @@ error_reporting(0);
                 $sql2 =$conn->query("SELECT count(pro_id) AS id FROM `product` WHERE `category`='$cat' ORDER BY `dateofarrival` DESC");
                     $sql1 = "SELECT * FROM `product` WHERE `category`='$cat' ORDER BY `dateofarrival` DESC LIMIT $start, $limit ";
                }
-               elseif ($_GET['sort']=='Old') {
-                $sql2 =$conn->query("SELECT count(pro_id) AS id FROM `product` WHERE `category`='$cat' ORDER BY `dateofarrival` ASC");
-                    $sql1 = "SELECT * FROM `product` WHERE `category`='$cat' ORDER BY `dateofarrival` ASC LIMIT $start, $limit ";
+               elseif ($_GET['sort']=='Popular') {
+                $sql2 =$conn->query("SELECT count(pro_id) AS id FROM `product` WHERE `category`='$cat' ORDER BY `qty` ASC");
+                    $sql1 = "SELECT * FROM `product` WHERE `category`='$cat' ORDER BY `qty` ASC LIMIT $start, $limit ";
                }
                else{
                   $sql2 =$conn->query("SELECT count(pro_id) AS id FROM `product` WHERE `category`='$cat'");
@@ -212,9 +217,9 @@ error_reporting(0);
                 $sql2 =$conn->query("SELECT count(pro_id) AS id FROM `product` WHERE `category`='$cat' ORDER BY `dateofarrival` DESC");
                     $sql1 = "SELECT * FROM `product` WHERE `category`='$cat' ORDER BY `dateofarrival` DESC LIMIT $start, $limit ";
                }
-               elseif ($_GET['sort']=='Old') {
-                $sql2 =$conn->query("SELECT count(pro_id) AS id FROM `product` WHERE `category`='$cat' ORDER BY `dateofarrival` ASC");
-                    $sql1 = "SELECT * FROM `product` WHERE `category`='$cat' ORDER BY `dateofarrival` ASC LIMIT $start, $limit ";
+               elseif ($_GET['sort']=='Popular') {
+                $sql2 =$conn->query("SELECT count(pro_id) AS id FROM `product` WHERE `category`='$cat' ORDER BY `qty` ASC");
+                    $sql1 = "SELECT * FROM `product` WHERE `category`='$cat' ORDER BY `qty` ASC LIMIT $start, $limit ";
                }
                else{
                   $sql2 =$conn->query("SELECT count(pro_id) AS id FROM `product` WHERE `category`='$cat'");
@@ -243,9 +248,9 @@ error_reporting(0);
                 $sql2 =$conn->query("SELECT count(pro_id) AS id FROM `product` WHERE `category`='$cat' ORDER BY `dateofarrival` DESC");
                     $sql1 = "SELECT * FROM `product` WHERE `category`='$cat' ORDER BY `dateofarrival` DESC LIMIT $start, $limit ";
                }
-               elseif ($_GET['sort']=='Old') {
-                $sql2 =$conn->query("SELECT count(pro_id) AS id FROM `product` WHERE `category`='$cat' ORDER BY `dateofarrival` ASC");
-                    $sql1 = "SELECT * FROM `product` WHERE `category`='$cat' ORDER BY `dateofarrival` ASC LIMIT $start, $limit ";
+               elseif ($_GET['sort']=='Popular') {
+                $sql2 =$conn->query("SELECT count(pro_id) AS id FROM `product` WHERE `category`='$cat' ORDER BY `qty` ASC");
+                    $sql1 = "SELECT * FROM `product` WHERE `category`='$cat' ORDER BY `qty` ASC LIMIT $start, $limit ";
                }
                else{
                   $sql2 =$conn->query("SELECT count(pro_id) AS id FROM `product` WHERE `category`='$cat'");
@@ -276,9 +281,9 @@ error_reporting(0);
                 $sql2 =$conn->query("SELECT count(pro_id) AS id FROM `product` WHERE `category`='$cat' ORDER BY `dateofarrival` DESC");
                     $sql1 = "SELECT * FROM `product` WHERE `category`='$cat' ORDER BY `dateofarrival` DESC LIMIT $start, $limit ";
                }
-               elseif ($_GET['sort']=='Old') {
-                $sql2 =$conn->query("SELECT count(pro_id) AS id FROM `product` WHERE `category`='$cat' ORDER BY `dateofarrival` ASC");
-                    $sql1 = "SELECT * FROM `product` WHERE `category`='$cat' ORDER BY `dateofarrival` ASC LIMIT $start, $limit ";
+               elseif ($_GET['sort']=='Popular') {
+                $sql2 =$conn->query("SELECT count(pro_id) AS id FROM `product` WHERE `category`='$cat' ORDER BY `qty` ASC");
+                    $sql1 = "SELECT * FROM `product` WHERE `category`='$cat' ORDER BY `qty` ASC LIMIT $start, $limit ";
                }
                else{
                   $sql2 =$conn->query("SELECT count(pro_id) AS id FROM `product` WHERE `category`='$cat'");
@@ -307,9 +312,9 @@ error_reporting(0);
                 $sql2 =$conn->query("SELECT count(pro_id) AS id FROM `product` WHERE `category`='$cat' ORDER BY `dateofarrival` DESC");
                     $sql1 = "SELECT * FROM `product` WHERE `category`='$cat' ORDER BY `dateofarrival` DESC LIMIT $start, $limit ";
                }
-               elseif ($_GET['sort']=='Old') {
-                $sql2 =$conn->query("SELECT count(pro_id) AS id FROM `product` WHERE `category`='$cat' ORDER BY `dateofarrival` ASC");
-                    $sql1 = "SELECT * FROM `product` WHERE `category`='$cat' ORDER BY `dateofarrival` ASC LIMIT $start, $limit ";
+               elseif ($_GET['sort']=='Popular') {
+                $sql2 =$conn->query("SELECT count(pro_id) AS id FROM `product` WHERE `category`='$cat' ORDER BY `qty` ASC");
+                    $sql1 = "SELECT * FROM `product` WHERE `category`='$cat' ORDER BY `qty` ASC LIMIT $start, $limit ";
                }
                else{
                   $sql2 =$conn->query("SELECT count(pro_id) AS id FROM `product` WHERE `category`='$cat'");
@@ -369,9 +374,9 @@ error_reporting(0);
                 $sql2 =$conn->query("SELECT count(pro_id) AS id FROM `product` ORDER BY `dateofarrival` DESC");
                     $sql1 = "SELECT * FROM `product` ORDER BY `dateofarrival` DESC LIMIT $start, $limit ";
                }
-               elseif ($_GET['sort']=='Old') {
-                $sql2 =$conn->query("SELECT count(pro_id) AS id FROM `product` ORDER BY `dateofarrival` ASC");
-                    $sql1 = "SELECT * FROM `product` ORDER BY `dateofarrival` ASC LIMIT $start, $limit ";
+               elseif ($_GET['sort']=='Popular') {
+                $sql2 =$conn->query("SELECT count(pro_id) AS id FROM `product` ORDER BY `qty` ASC");
+                    $sql1 = "SELECT * FROM `product` ORDER BY `qty` ASC LIMIT $start, $limit ";
                }
                else{
                   $sql2 =$conn->query("SELECT count(pro_id) AS id FROM `product`");
@@ -400,9 +405,9 @@ error_reporting(0);
                 $sql2 =$conn->query("SELECT count(pro_id) AS id FROM `product` WHERE `category`='$cat' ORDER BY `dateofarrival` DESC");
                     $sql1 = "SELECT * FROM `product` WHERE `category`='$cat' ORDER BY `dateofarrival` DESC LIMIT $start, $limit ";
                }
-               elseif ($_GET['sort']=='Old') {
-                $sql2 =$conn->query("SELECT count(pro_id) AS id FROM `product` WHERE `category`='$cat' ORDER BY `dateofarrival` ASC");
-                    $sql1 = "SELECT * FROM `product` WHERE `category`='$cat' ORDER BY `dateofarrival` ASC LIMIT $start, $limit ";
+               elseif ($_GET['sort']=='Popular') {
+                $sql2 =$conn->query("SELECT count(pro_id) AS id FROM `product` WHERE `category`='$cat' ORDER BY `qty` ASC");
+                    $sql1 = "SELECT * FROM `product` WHERE `category`='$cat' ORDER BY `qty` ASC LIMIT $start, $limit ";
                }
                else{
                   $sql2 =$conn->query("SELECT count(pro_id) AS id FROM `product` WHERE `category`='$cat'");
