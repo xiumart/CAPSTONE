@@ -12,6 +12,25 @@ $query = "UPDATE `patient_distancerx` SET `status`='Remove' WHERE `patient_no`='
 users_logs($_SESSION['users_username'], "Remove Patient", date("Y-m-d h:i:sa"), $_SESSION['users_roles']);
 	mysqli_query($conn, $query);
 }
+function createRandomPassword() {
+	$chars = "003232303232023232023456789";
+	srand((double)microtime()*1000000);
+	$i = 0;
+	$pass = '' ;
+	while ($i <= 7) {
+
+		$num = rand() % 33;
+
+		$tmp = substr($chars, $num, 1);
+
+		$pass = $pass . $tmp;
+
+		$i++;
+
+	}
+	return $pass;
+}
+$finalcode='RS-'.createRandomPassword();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -117,7 +136,7 @@ users_logs($_SESSION['users_username'], "Remove Patient", date("Y-m-d h:i:sa"), 
 				</a>
 			</li>
 			<li>
-				<a href="point-of-sale.php">
+				<a href="point-of-sale.php?id=cash&invoice=<?php echo $finalcode ?>">
 					<i class='bx bxs-cart' ></i>
 					<span class="text">Point of Sale</span>
 				</a>

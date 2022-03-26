@@ -4,6 +4,25 @@ include("../conn.php");
 include("session.php");
 include "logs_conn.php";
 date_default_timezone_set('Asia/Manila');
+function createRandomPassword() {
+	$chars = "003232303232023232023456789";
+	srand((double)microtime()*1000000);
+	$i = 0;
+	$pass = '' ;
+	while ($i <= 7) {
+
+		$num = rand() % 33;
+
+		$tmp = substr($chars, $num, 1);
+
+		$pass = $pass . $tmp;
+
+		$i++;
+
+	}
+	return $pass;
+}
+$finalcode='RS-'.createRandomPassword();
 if (isset($_POST['btnsubmit'])) {
 	$doctor=$_POST['doctor'];
 	$fname=$_POST['firstname'];
@@ -83,9 +102,11 @@ elseif (($_POST['med'])=="Reading") {
 	$query = "INSERT INTO `patient_distancerx`(`patient_id`, `patient_name`, `patient_bday`, `patient_contact`, `patient_email`, `patient_address`, `patient_medhx`, `patient_bp`, `D_OD_SPH`, `D_OD_CYL`, `D_OD_AXIS`, `D_OD_VA`, `D_OD_ADD`, `D_OS_SPH`, `D_OS_CYL`, `D_OS_AXIS`, `D_OS_VA`, `D_OS_ADD`, `I_SPH`, `I_CYL`, `I_AXIS`, `I_PD`, `I_ADD`, `status`, `type`,`doctor`,`add_date`,`recommendation`,`appointment`) VALUES ('$pat_id','$full','$bday','$contact','$email','$address','$medhx','$bp','$new_R_OD_SPH','$new_R_OD_CYL','$new_R_OD_AXIS','$new_R_OD_VA','$new_R_OD_ADD','$new_R_OS_SPH','$new_R_OS_CYL','$new_R_OS_AXIS','$new_R_OS_VA','$new_R_OS_ADD','$ishihara_SPH','$ishihara_CYL','$ishihara_AXIS','$ishihara_PD','$ishihara_PD_ADD','$chkwalk','$type','$doctor',now(),'$recom','$appt')";
 	
 }
+
 		users_logs($_SESSION['users_username'], "Added Patient", date("Y-m-d h:i:sa"), $_SESSION['users_roles']);
 		mysqli_query($conn, $query);	
 			header("Location:patient-record.php ");
+
 
 }
 ?>
@@ -204,7 +225,7 @@ elseif (($_POST['med'])=="Reading") {
 				</a>
 			</li>
 			<li>
-				<a href="point-of-sale.php">
+				<a href="point-of-sale.php?id=cash&invoice=<?php echo $finalcode ?>">
 					<i class='bx bxs-cart' ></i>
 					<span class="text">Point of Sale</span>
 				</a>
