@@ -17,11 +17,19 @@ exit();
 }
 if($d=='cash') {
 $f = $_POST['cash'];
-$sql = "INSERT INTO sales (order_no,date,type,amount,profit,due_date,name) VALUES (:a,:c,:d,:e,:z,:f,:g)";
-$q = $db->prepare($sql);
-$q->execute(array(':a'=>$a,':c'=>$c,':d'=>$d,':e'=>$e,':z'=>$z,':f'=>$f,':g'=>$cname));
-header("location: preview.php?invoice=$a");
-exit();
+if($f>=$_POST['amount']){
+    $sql = "INSERT INTO sales (order_no,date,type,amount,profit,due_date,name) VALUES (:a,:c,:d,:e,:z,:f,:g)";
+    $q = $db->prepare($sql);
+    $q->execute(array(':a'=>$a,':c'=>$c,':d'=>$d,':e'=>$e,':z'=>$z,':f'=>$f,':g'=>$cname));
+    header("location: preview.php?invoice=$a");
+    exit();
+}
+else{
+    echo "<script>alert('Cash is insufficient')
+        window.location.href='point-of-sale.php?id=cash&invoice=$a'
+        </script>";
+}
+
 }
 // query
 

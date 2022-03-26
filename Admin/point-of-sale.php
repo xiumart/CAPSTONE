@@ -1,5 +1,6 @@
 <?php
 include("session.php");
+include("../conn.php");
 function createRandomPassword() {
 	$chars = "003232303232023232023456789";
 	srand((double)microtime()*1000000);
@@ -20,6 +21,11 @@ function createRandomPassword() {
 }
 $finalcode='RS-'.createRandomPassword();
 error_reporting(0);
+if (isset($_GET['id'])) {
+	$idd=$_GET['id'];
+	$query1 = "DELETE FROM `sales_order` WHERE `id`='$idd'";
+	mysqli_query($conn, $query1);
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -289,16 +295,8 @@ error_reporting(0);
 								 ?>>Sunglasses</option>
 							</select>
 					</form>
-					<script>
-					function validateForm() {
-  let x = document.forms["myForm"]["product"].value;
-  if (x == "") {
-    alert("Name must be filled out");
-    return false;
-  }
-}
-					</script>
-				<form name='myForm' action="incoming.php" method="post" onsubmit="return validateForm()">
+					
+				<form name='myForm' action="incoming.php" method="post">
 					
 
 					<input type="hidden" name="pt" value="cash" />
@@ -329,6 +327,7 @@ error_reporting(0);
 					
 					<input type="submit" name="btnadd" value="+ Add" class="btn-a" style="cursor:pointer;">
 				</form>
+				
 					<br><br>
 					<table class="table" id="resultTable" data-responsive="table">
 						<thead>
@@ -372,7 +371,7 @@ error_reporting(0);
 										$profit=$row['profit'];
 										echo formatMoney($profit, true);
 									?></td>
-									<td width="90"><a href="delete.php?id=<?php echo $row['order_no']; ?>&invoice=<?php echo $_GET['invoice']; ?>&dle=<?php echo $_POST['pt']; ?>&qty=<?php echo $row['qty'];?>&code=<?php echo $row['product'];?>"><button class="btn-t"><i class="icon icon-remove"></i> Cancel </button></a></td>
+									<td width="90"><a href="?id=<?php echo $row['id']; ?>&invoice=<?php echo $_GET['invoice']; ?>&dle=<?php echo $_POST['pt']; ?>&qty=<?php echo $row['qty'];?>&code=<?php echo $row['product'];?>"><button class="btn-t"><i class="icon icon-remove"></i> Cancel </button></a></td>
 							</tr>
 								<?php
 								}

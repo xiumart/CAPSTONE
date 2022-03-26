@@ -88,7 +88,7 @@ $finalcode='RS-'.createRandomPassword();
 	
 		
 	<div class="span10">
-	<a href="sales.php?id=cash&invoice=<?php echo $finalcode ?>"><button class="btn btn-default"><i class="icon-arrow-left"></i> Back to Sales</button></a>
+	<a href="point-of-sale.php?id=cash&invoice=<?php echo $finalcode ?>"><button class="btn btn-default"><i class="icon-arrow-left"></i> Back to Sales</button></a>
 
 <div class="content" id="content">
 <div style="margin: 0 auto; padding: 20px; width: 900px; font-weight: normal;">

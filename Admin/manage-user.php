@@ -307,7 +307,7 @@ if (isset($_GET['id'])) {
         $search=$_POST['txtsearch'];
      	$sql2 =$conn->query("SELECT count(users_id) AS id FROM `users_account`");
      	if (isset($_POST['btnsearch'])) {
-        $sql1 = "SELECT * FROM `users_account` WHERE `users_lastname` LIKE '%$search%' OR `users_username` LIKE'%$search%'  LIMIT $start, $limit ";
+        $sql1 = "SELECT * FROM `users_account` WHERE `users_lastname`LIKE '%$search%' OR `users_username` LIKE'%$search%' OR `users_firstname` LIKE'%$search%' OR `users_middlename` LIKE'%$search%' OR `users_contact` LIKE'%$search%' OR `users_roles` LIKE'%$search%' LIMIT $start, $limit ";
         	}
         else{
         		$sql1 = "SELECT * FROM `users_account` LIMIT $start, $limit ";

@@ -311,9 +311,9 @@ $finalcode='RS-'.createRandomPassword();
         $search=$_POST['txtsearch'];
      	
      	if (isset($_POST['btnsearch'])) {
-     		$sql2 =$conn->query("SELECT count(patient_no) AS id,`patient_id`,`patient_name` FROM `patient_distancerx` WHERE `patient_id` LIKE '%$search%' OR `patient_name` LIKE '%$search%' AND `status`!='Remove'");
+     		$sql2 =$conn->query("SELECT count(patient_no) AS id,`patient_id`,`patient_name`,`patient_address`, `patient_contact` FROM `patient_distancerx` WHERE `patient_id` LIKE '%$search%' OR `patient_name` LIKE '%$search%' OR `patient_address` LIKE '%$search%' OR `patient_contact` LIKE '%$search%'  AND `status`!='Remove'");
 
-        $sql1 = "SELECT year(now())-year(`patient_bday`) AS age,`patient_no`,`patient_id`,`patient_name`,`patient_email`,`patient_contact`,`patient_address`  FROM `patient_distancerx` WHERE `patient_id` LIKE '%$search%' OR `patient_name` LIKE '%$search%' AND `status`!='Remove' LIMIT $start, $limit ";
+        $sql1 = "SELECT year(now())-year(`patient_bday`) AS age,`patient_no`,`patient_id`,`patient_name`,`patient_email`,`patient_contact`,`patient_address`  FROM `patient_distancerx` WHERE `patient_id` LIKE '%$search%' OR `patient_name` LIKE '%$search%' OR `patient_address` LIKE '%$search%' OR `patient_contact` LIKE '%$search%' AND `status`!='Remove' LIMIT $start, $limit ";
         if ($search=='') {
         		$sql2 =$conn->query("SELECT count(patient_no) AS id FROM `patient_distancerx`");
         $sql1 = "SELECT year(now())-year(`patient_bday`) AS age,`patient_no`,`patient_id`,`patient_name`,`patient_email`,`patient_contact`,`patient_address`  FROM `patient_distancerx` WHERE `status`!='Remove'  LIMIT $start, $limit ";

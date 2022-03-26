@@ -273,7 +273,7 @@ if (isset($_GET['id'])) {
         $search=$_POST['txtsearch'];
      	$sql2 =$conn->query("SELECT count(supp_id) AS id FROM `supplier`");
      	if (isset($_POST['btnsearch'])) {
-        $sql1 = "SELECT * FROM `supplier` WHERE `supp_cname` LIKE '%$search%' OR `supp_contactperson` LIKE'%$search%'  LIMIT $start, $limit ";
+        $sql1 = "SELECT * FROM `supplier` WHERE `supp_cname` LIKE '%$search%' OR `supp_contactperson` LIKE'%$search%' OR `supp_contact` LIKE'%$search%' OR `supp_desc` LIKE'%$search%' LIMIT $start, $limit ";
         	}
         else{
         		$sql1 = "SELECT * FROM `supplier` LIMIT $start, $limit ";
