@@ -170,25 +170,52 @@ $user=$_SESSION['login_user'];
   </section>
 
     <?php
-     $sql1 = "SELECT * FROM `client_user` WHERE `client_username`='$user'";
-     $result = $conn->query($sql1);
-     if($result->num_rows > 0){
-     while($row = $result -> fetch_assoc()){
-      
-      $client_id = $row['client_id'];
 
-     }}
+    $user = $_SESSION['login_user'];
+
+      $sql = mysqli_query($conn, "SELECT client_id from client_user where client_username = '$user'");
+
+      while ($sagot = mysqli_fetch_array($sql)) {
+
+       $id = $sagot['client_id'];
+        // code...
+   
+    }
+     
+        $result = mysqli_query($conn, "SELECT * from client_user_info where client_id = '$id'");
+
+        while ($row = mysqli_fetch_array($result)) {
+
+
+       // code...
+          $firstname =  $row['client_fname'];
+          $lastname = $row['client_lname'];
+          $middlename = $row['client_mname'];
+          $bday = $row['client_bday'];
+          $address = $row['client_address'];
+           if ($firstname == " " or $lastname == " "){
 
     
-    $alertq = "SELECT NULL FROM client_user_info WHERE `client_id`='$client_id' ";
-    $alertqqq = $conn->query($alertq);
-    
-    if (empty($alertqqq)) {
       echo "<div class='alert'>
       <span class='closebtn' onclick='this.parentElement.style.display='none';'>&times;</span> 
       <center><strong>Update your profile!</strong> Click your username and go to edit profile.
       </div>";
+
+      }elseif($address == "" or $bday == ""){
+
+        echo "<div class='alert'>
+      <span class='closebtn' onclick='this.parentElement.style.display='none';'>&times;</span> 
+      <center><strong>Update your profile!</strong> Click your username and go to edit profile.
+      </div>";
+
+
+        
+
     }
+      }
+  
+    
+   
     ?>
   
   <style>
