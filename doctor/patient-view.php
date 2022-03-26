@@ -176,7 +176,7 @@ $sql1 = "SELECT * FROM `patient_history` WHERE `patient_id`='$pat_id' AND `statu
      	  	  <td data-label="Checkid"><?php echo $chk_id;?></td>
      	  	  <td data-label="Date"><?php echo $date;?></td>
      	  	  <td data-label="Checkby"><?php echo $doctor;?></td>
-			  <td data-label="Action"><a href="patient_viewing.php?user=<?php echo $_GET['id'];?>&id=<?php echo $chk_id;?>"><button class="btn-f"  style="cursor: pointer;width:100px;">View</button></a><a href="patient-view.php?id=<?php echo $_GET['id']; ?>&rm=<?php echo $chk_id; ?>"><button class="btn-c"  style="cursor: pointer;width:100px;">Remove</button></a></td>
+			  <td data-label="Action"><a href="patient_viewing.php?user=<?php echo $_GET['id'];?>&id=<?php echo $chk_id;?>"><button class="btn-f"  style="cursor: pointer;width:100px;">View</button></a><a href="patient-view.php?id=<?php echo $_GET['id']; ?>&rm=<?php echo $chk_id; ?>"><button class="btn-c"  style="cursor: pointer;width:100px;" onclick="return confirm('Are you sure you want to remove this record?)">Remove</button></a></td>
 
      	  </tr>
      	  <?php

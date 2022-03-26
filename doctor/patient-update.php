@@ -1,6 +1,8 @@
 <?php
 include("../conn.php");
 include("../admin/session.php");
+include "logs_conn.php";
+date_default_timezone_set('Asia/Manila');
 $id=$_GET['id'];
 if (isset($_POST['btnsubmit'])) {
 	$fname=$_POST['firstname'];
@@ -114,7 +116,7 @@ else{
 }
 
 	$query1 = "INSERT INTO `patient_history`(`patient_id`, `type`, `patient_name`, `patient_bday`, `patient_contact`, `patient_email`, `patient_address`, `patient_medhx`, `patient_bp`, `D_OD_SPH`, `D_OD_CYL`, `D_OD_AXIS`, `D_OD_VA`, `D_OD_ADD`, `D_OS_SPH`, `D_OS_CYL`, `D_OS_AXIS`, `D_OS_VA`, `D_OS_ADD`, `I_SPH`, `I_CYL`, `I_AXIS`, `I_PD`, `I_ADD`, `date_up`, `status`,`doctor`,`recommendation`,`appointment`) VALUES ('$hid24','$hid8','$hid1','$hid2','$hid3','$hid4','$hid5','$hid6','$hid7','$hid9','$hid10','$hid11','$hid12','$hid13','$hid14','$hid15','$hid16','$hid17','$hid18','$hid19','$hid20','$hid21','$hid22','$hid23',now(),'History','$hid25','$hid26','$hid27')";
-
+	users_logs($_SESSION['users_username'], "Updated Patient", date("Y-m-d h:i:sa"), $_SESSION['users_roles']);
 	mysqli_query($conn, $query);
 	mysqli_query($conn, $query1);
 		header("Location:patient-view.php?id=".$_GET['id']);

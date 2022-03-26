@@ -300,7 +300,6 @@ if($picture_type=="image/jpeg" || $picture_type=="image/jpg" || $picture_type=="
 			mysqli_query($conn, $query);
 			echo "<script>alert('You have successfully add the record.');</script>";
 			echo "<script>document.location='product.php';</script>";
-			header("Location: product.php");
 			die;
 		
 }

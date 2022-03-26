@@ -2,12 +2,18 @@
 error_reporting(0);
 include("../conn.php");
 include("../admin/session.php");
+include "logs_conn.php";
+date_default_timezone_set('Asia/Manila');
 $patt=$_GET['id'];
 if (isset($_GET['id'])) {
 	// code...
 
 $query = "UPDATE `patient_distancerx` SET `status`='Remove' WHERE `patient_no`='$patt'";
+users_logs($_SESSION['users_username'], "Remove Patient", date("Y-m-d h:i:sa"), $_SESSION['users_roles']);
 	mysqli_query($conn, $query);
+	echo "<script>alert('You have successfully remove the record.');</script>";
+			echo "<script>document.location='patient-record.php';</script>";
+	die;
 }
 ?>
 <!DOCTYPE html>

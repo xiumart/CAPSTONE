@@ -1,6 +1,8 @@
 <?php
 include("../admin/session.php");
 include("../conn.php");
+include "logs_conn.php";
+date_default_timezone_set('Asia/Manila');
 $query = "SELECT `supp_cname` FROM supplier";
 $query1 = "SELECT `brand` FROM products";
 $result = $conn->query($query);
@@ -17,7 +19,7 @@ $result1 = $conn->query($query);
 	<!-- My CSS -->
 	<link rel="stylesheet" href="css\sys_style.css">
 	<link rel="shorcut icon" type="img/png" href="images\logo.png">
-	<title>RNL Vision Care | Inventory Clerk</title>
+	<title>RNL Vision Care | Admin</title>
 	<style>
 	input[type=text], select, textarea {
   		width: 100%;
@@ -78,12 +80,38 @@ $result1 = $conn->query($query);
 		margin-top: 0;
 	}
 	}
-	#sidebar .side-menu.top li.active a {
-	color: blue;
-}
-#sidebar .side-menu.top li a:hover {
-	color: blue;
-}
+	.btn-apph {
+		background-color: #00c2cb;
+		padding: 15px;
+		border: none;
+		border-radius: 10%;
+		float: right;
+		margin-left: 10px;
+
+		
+	}
+	.btn-f, .btn-c {
+		background-color: #00c2cb;
+		border: none;
+		border-radius: 10%;
+		margin-left: 10px;
+		padding:4px;
+	}
+	.btn-remove {
+		background-color: #00c2cb;
+		border: none;
+		border-radius: 10%;
+		margin-left: 60%;
+		padding:8px;
+	}
+	.btn-f:hover { background-color: #4CAF50;}
+	.btn-c:hover { background-color: red;}
+	.btn-apph:hover { background-color: #00a2a3;}
+	.btn-remove:hover { background-color: red;}
+	.namee{
+		margin-top: 4.5%;
+	}
+
 </style>
 </head>
 <body>
@@ -120,6 +148,7 @@ $result1 = $conn->query($query);
 		<nav>
 			<i class='bx bx-menu' ></i>
 			<form action="#">
+
 			</form>
 			<div id="digital-clock"></div>
 			<script src="time.js"></script>
@@ -141,6 +170,7 @@ $result1 = $conn->query($query);
 			$users_id=$_GET['id'];
 			$query = "UPDATE `client_inquiries` SET inquiries_status = '1'  WHERE inquiries_id = '$users_id'";
 			mysqli_query($conn, $query);
+			
 			}
 			?>
 			
@@ -151,7 +181,10 @@ $result1 = $conn->query($query);
               while($row = mysqli_fetch_assoc($query)){
 				  
             ?>
-					<h4>Inquiry:</h4><p><?php echo $row['inquiries_message']; ?></p><a href="?id=<?php echo $row['inquiries_id'];?>"><button class="btn-remove" name="btnremove" style="cursor: pointer;">Clear</button></a><hr color="wheat">
+			<table>
+				<tr>
+					<th><h4>Inquiry:</h4></th><p><td><?php echo $row['inquiries_message']; ?></p></td><td><a href="?id=<?php echo $row['inquiries_id'];?>"><button class="btn-remove" name="btnremove" style="cursor: pointer;">Clear</button></a></td><hr color="wheat">
+			  </table>
 					<?php
 			  }
 			  ?>
@@ -221,9 +254,10 @@ if($picture_type=="image/jpeg" || $picture_type=="image/jpg" || $picture_type=="
 			//save to database
 			//$user_id = random_num(20);
 			$query = "INSERT INTO product (brand,model,category,dateofarrival,expdate,sellingprice,origprice,profit,supplier,qty,image,remarks) values ('$brandname','$model','$category','$dateofarrival','$expirationdate','$sellingprice','$originalprice','$profit','$supplier','$qty','$pic_name','$remarks')";
+			users_logs($_SESSION['users_username'], "Added Product", date("Y-m-d h:i:sa"), $_SESSION['users_roles']);
 			mysqli_query($conn, $query);
-
-			header("Location: product.php");
+			echo "<script>alert('You have successfully add the record.');</script>";
+			echo "<script>document.location='product.php';</script>";
 			die;
 		
 }
@@ -279,7 +313,7 @@ if($picture_type=="image/jpeg" || $picture_type=="image/jpg" || $picture_type=="
 						</div>
 						<div class="col-75">
 							<select id="category" name="category">
-							<option>Select Supplier</option>
+							<option disabled="" selected="">Select your option..</option>
 							
 							<?php 
 							if($result1->num_rows > 0){ 
@@ -395,4 +429,98 @@ if($picture_type=="image/jpeg" || $picture_type=="image/jpg" || $picture_type=="
 
 	
 </body>
+<style>
+		.btn-f, .btn-c {
+		background-color: #00c2cb;
+		border: none;
+		border-radius: 10%;
+		margin-left: 10px;
+		padding:4px;
+	}
+
+	.btn-f:hover { background-color: #4CAF50;}
+	.btn-c:hover { background-color: red;}
+	table {
+  border: 1px solid #ccc;
+  border-collapse: collapse;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  table-layout: fixed;
+}
+
+table caption {
+  font-size: 1.5em;
+  background-color: #00c2cb;
+  margin-top:20px;	
+}
+
+table tr {
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+  padding: .35em;
+}
+
+table th,
+table td {
+  padding: .625em;
+  text-align: center;
+}
+
+table th {
+  font-size: .85em;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  background-color: #9dd1d4;
+}
+
+@media screen and (max-width: 600px) {
+  table {
+    border: 0;
+  }
+
+  table caption {
+    font-size: 1.3em;
+  }
+  
+  table thead {
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+  
+  table tr {
+    border-bottom: 3px solid #ddd;
+    display: block;
+    margin-bottom: .625em;
+  }
+  
+  table td {
+    border-bottom: 1px solid #ddd;
+    display: block;
+    font-size: .8em;
+    text-align: right;
+  }
+  
+  table td::before {
+    /*
+    * aria-label has no advantage, it won't be read inside a table
+    content: attr(aria-label);
+    */
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  
+  table td:last-child {
+    border-bottom: 0;
+  }
+}
+</style>
 </html>
