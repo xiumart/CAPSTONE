@@ -360,7 +360,7 @@ $finalcode='RS-'.createRandomPassword();
 
 
 			  ?>
-			  <td data-label="Action"><button class="btn-upd" style="cursor: pointer;" onclick="return confirm('Are you sure you want to retrieve this data?')">Retrieve</button></td>
+			  <td data-label="Action"><form method ="post" action="retrieve_products.php?id=<?php echo $row['pro_id'];?>"><button class="btn-upd" name="btn-ret" style="cursor: pointer;" onclick="return confirm('Are you sure you want to retrieve this data?')">Retrieve</button></form></td>
  </tr>
     
      	 <?php

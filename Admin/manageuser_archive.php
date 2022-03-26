@@ -337,7 +337,7 @@ $finalcode='RS-'.createRandomPassword();
      	  	<td data-label="Username"><?php echo $row['users_username'];?></td>
 			<td data-label="Contact Number"><?php echo $row['users_contact'];?></td>
 			<td data-label="Position"><?php echo $row['users_roles'];?></td>
-			<td data-label="Action">"><button class="btn-upd" style="cursor: pointer;" onclick="return confirm('Are you sure you want to retrieve this data?')">Retrieve</button></td>
+			<td data-label="Action"><form method="post" action="retrieve_supplier.php?id=<?php echo $row['users_id'];?>"><button class="btn-upd" name="btn-upd" style="cursor: pointer;" onclick="return confirm('Are you sure you want to retrieve this data?')">Retrieve</button></form></td>
      	  </tr>
     
      	 <?php
