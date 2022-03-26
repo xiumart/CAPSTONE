@@ -283,7 +283,7 @@ $finalcode='RS-'.createRandomPassword();
 			
 			</div><br>
 			<form method="post">
-						<input type="text" name="txtsearch" id="txtsearch" placeholder="Search..." autocomplete="off" style="padding: 12px;border: 1px solid #ccc;border-radius: 4px;font-family: var(poppins); width: 50%;">
+						<input type="text" name="txtsearch" id="txtsearch" placeholder="Search" autocomplete="off" style="padding: 12px;border: 1px solid #ccc;border-radius: 4px;font-family: var(poppins); width: 50%;">
 						<button  id="btnsearch" name="" class="page" style="cursor: pointer;"><i class='bx bx-search' ></i></button>
 			</form>
 			
@@ -312,12 +312,11 @@ $finalcode='RS-'.createRandomPassword();
      
         $page=isset($_GET['page']) ? $_GET['page']:1;
         $start=($page-1)*$limit;
-        
-     	
+        $search=$_POST['txtsearch'];
+     	$sql2 =$conn->query("SELECT count(pro_id) AS id,`category`,`model`,`brand`,`origprice`,`sellingprice`,`expdate`,`qty`FROM `product` WHERE `category` LIKE '%$search%' OR `model` LIKE '%$search%' OR `brand` LIKE '%$search%' OR `origprice` LIKE '%$search%' OR `sellingprice` LIKE '%$search%' OR `expdate` LIKE '%$search%' OR `qty` LIKE '%$search%'");
      	if (isset($_POST['btnsearch'])) {
-        $sql1 = "SELECT * FROM `archive_products` WHERE `category` LIKE '%$search%' OR `model` LIKE '%$search%' LIMIT $start, $limit";
-        $sql2 =$conn->query("SELECT count(pro_id) AS id,`category`,`model` FROM `product` WHERE `category` LIKE '%$search%' OR `model` LIKE '%$search%'");
-
+        $sql1 = "SELECT * FROM `archive_products` WHERE `category` LIKE '%$search%' OR `model` LIKE '%$search%' OR `brand` LIKE '%$search%' OR `origprice` LIKE '%$search%' OR `sellingprice` LIKE '%$search%' OR `expdate` LIKE '%$search%' OR `qty` LIKE '%$search%' LIMIT $start, $limit";
+        
         	}
         else{
         		$sql1 = "SELECT * FROM `archive_products` LIMIT $start, $limit ";
@@ -374,6 +373,15 @@ $finalcode='RS-'.createRandomPassword();
 
    </table>
 </div>
+
+<br>
+   <a class="page" id="pre" href="product.php?page=<?=$prev; ?>">< Prev</a>
+    	  <?php  for($i=1; $i <=$pages ; $i++): ?>
+    <a class="page" href="product.php?page=<?=$i; ?>"><?=$i; ?></a>
+                      <?php endfor; ?>
+    <a class="page" id="pnext" href="product.php?page=<?=$next; ?>">Next ></a>
+	
+	
 <style>
 input[type=submit], restore {
 	background-color: blue;

@@ -280,7 +280,7 @@ if (isset($_GET['id'])) {
 
 			<a href="product-add.php"><button class="btn-addp" style="float:right; margin-bottom:10px;">+ Add Product </button></a>
 			<form method="post">
-						<input type="text" name="txtsearch" id="txtsearch" placeholder="Search by Model/Category.." autocomplete="off" style="padding: 12px;border: 1px solid #ccc;border-radius: 4px;font-family: var(poppins); width: 50%;">
+						<input type="text" name="txtsearch" id="txtsearch" placeholder="Search" autocomplete="off" style="padding: 12px;border: 1px solid #ccc;border-radius: 4px;font-family: var(poppins); width: 50%;">
 						<button  id="btnsearch" name="btnsearch" class="page" style="cursor: pointer;"><i class='bx bx-search' ></i></button>
 			</form>
 <div id="printing">
@@ -315,7 +315,8 @@ if (isset($_GET['id'])) {
         		$sql1 = "SELECT * FROM `product` LIMIT $start, $limit ";
         		$sql2 =$conn->query("SELECT count(pro_id) AS id FROM `product`");
         	}
-        $result2 = $sql2->fetch_all(MYSQLI_ASSOC);
+
+        	$result2 = $sql2->fetch_all(MYSQLI_ASSOC);        	       
                 $total=$result2[0]['id'];
                 $pages=ceil($total/$limit);
                 $prev=$page-1;
@@ -358,7 +359,8 @@ if (isset($_GET['id'])) {
      	  </tr>
     
      	 <?php
-     }}
+     }
+ }
 
      	?>
      

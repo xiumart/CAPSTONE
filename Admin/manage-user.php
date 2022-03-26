@@ -282,7 +282,7 @@ if (isset($_GET['id'])) {
 			<a href="user-add.php"><button class="btn-addpt" style="cursor: pointer;"> + Add User</button></a>
 
 				<form method="post">
-						<input type="text" name="txtsearch" id="txtsearch" placeholder="Search by Lastname" autocomplete="off" style="padding: 12px;border: 1px solid #ccc;border-radius: 4px;font-family: var(poppins);">
+						<input type="text" name="txtsearch" id="txtsearch" placeholder="Search" autocomplete="off" style="padding: 12px;border: 1px solid #ccc;border-radius: 4px;font-family: var(poppins);">
 						<button  id="btnsearch" name="btnsearch" class="page" style="cursor: pointer;"><i class='bx bx-search' ></i></button>
 						</form></br>
 					<table>
