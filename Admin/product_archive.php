@@ -360,7 +360,7 @@ $finalcode='RS-'.createRandomPassword();
 
 
 			  ?>
-			  <td data-label="Action"><button class="btn-upd" style="cursor: pointer;" onclick="return confirm('Are you sure you want to retrieve this data?')">Retrieve</button</td>
+			  <td data-label="Action"><button class="btn-upd" style="cursor: pointer;" onclick="return confirm('Are you sure you want to retrieve this data?')">Retrieve</button></td>
  </tr>
     
      	 <?php

@@ -433,7 +433,8 @@ if($picture_type=="image/jpeg" || $picture_type=="image/jpg" || $picture_type=="
 							<option value="Eyewear for Adults">Eyewear for Adults</option>
 							<option value="Eyewear for Kids">Eyewear for Kids</option>
 							<option value="Seen Wear">Seen Wear</option>
-							<option value="Sunglasses">Sunglasses</option>>
+							<option value="Sunglasses">Sunglasses</option>
+							<option value="Services">Services</option>
 							</select>
 						</div>
 						</div>

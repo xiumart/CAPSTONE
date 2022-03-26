@@ -103,10 +103,11 @@ if (isset($_GET['id'])) {
 		margin-left: 60%;
 		padding:8px;
 	}
+	.btn-remove:hover { background-color: red;}
 	.btn-f:hover { background-color: #4CAF50;}
 	.btn-c:hover { background-color: red;}
 	.btn-apph:hover { background-color: #00a2a3;}
-	.btn-remove:hover { background-color: red;}
+	
 	.namee{
 		margin-top: 4.5%;
 	}
