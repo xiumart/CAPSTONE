@@ -296,8 +296,31 @@ $finalcode='RS-'.createRandomPassword();
 			
 			</ul><br>
 			<a href="sales-annual-history.php"><button class="btn-addpt" style="cursor: pointer;"> Annual Sales History</button></a>
+			<a href="javascript:Clickheretoprint()">	<button class="btn-addp" style="float:right; width: 100px; cursor: pointer;"><i class='bx bxs-printer' ></i> Print </button></a>
+<!--print-->
+<link href="css/bootstrap-responsive.css" rel="stylesheet">
+<link href="../style.css" media="screen" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="tcal.css" />
+<script type="text/javascript" src="tcal.js"></script>
+<script language="javascript">
+function Clickheretoprint()
+{ 
+	
+  var disp_setting="toolbar=yes,location=no,directories=yes,menubar=yes,"; 
+      disp_setting+="scrollbars=yes,width=1000, height=1000, left=100, top=25"; 
+  var content_vlue = document.getElementById("printing").innerHTML; 
+  
+  var docprint=window.open("","",disp_setting); 
+   docprint.document.open(); 
+   docprint.document.write('</head><body onLoad="self.print()" style="width: 700px; font-size:9px; font-family:arial; font-weight:normal;">');          
+   docprint.document.write(content_vlue); 
+   docprint.document.close(); 
+   docprint.focus(); 
+   
+}
+</script>
 			<div>
-				<div>
+				<div id="printing">
 					
 					<table>
 						<caption>Recent Transaction</caption>
@@ -339,7 +362,6 @@ $finalcode='RS-'.createRandomPassword();
     ?>
      </tbody>
    </table>
-   <a href=""><button class="btn-print" style="cursor: pointer;"><i class='bx bxs-printer' ></i> Print </button></a>
 				</div>
 
 				
