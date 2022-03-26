@@ -342,7 +342,7 @@ if (isset($_GET['id'])) {
 
 							if ($qty<=10) {
 								
-						echo "<br><b><p style='color:red;'>CRITICAL</p></b>";
+						echo "<style> #qq {color:red;}</style>";
 							}
 							else
 							{
