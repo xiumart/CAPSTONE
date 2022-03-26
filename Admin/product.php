@@ -297,7 +297,7 @@ function Clickheretoprint()
   
   var docprint=window.open("","",disp_setting); 
    docprint.document.open(); 
-   docprint.document.write('</head><body onLoad="self.print()" style="width: 700px; font-size:11px; font-family:arial; font-weight:normal;">');          
+   docprint.document.write('</head><body onLoad="self.print()" style="width: 700px; font-size:9px; font-family:arial; font-weight:normal;">');          
    docprint.document.write(content_vlue); 
    docprint.document.close(); 
    docprint.focus(); 

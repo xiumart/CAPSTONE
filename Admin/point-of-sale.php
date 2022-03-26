@@ -289,7 +289,16 @@ error_reporting(0);
 								 ?>>Sunglasses</option>
 							</select>
 					</form>
-				<form action="incoming.php" method="post">
+					<script>
+					function validateForm() {
+  let x = document.forms["myForm"]["product"].value;
+  if (x == "") {
+    alert("Name must be filled out");
+    return false;
+  }
+}
+					</script>
+				<form name='myForm' action="incoming.php" method="post" onsubmit="return validateForm()">
 					
 
 					<input type="hidden" name="pt" value="cash" />
@@ -330,7 +339,7 @@ error_reporting(0);
 							<th>Price</th>
 							<th>Qty</th>
 							<th>Amount</th>
-							<th>Profit</th>
+							<th hidden>Profit</th>
 							<th>Action</th>
 							</tr>
 						</thead>
@@ -358,7 +367,7 @@ error_reporting(0);
 										$dfdf=$row['amount'];
 										echo formatMoney($dfdf, true);
 									?></td>
-								<td data-label="Profit">
+								<td data-label="Profit" hidden>
 									<?php
 										$profit=$row['profit'];
 										echo formatMoney($profit, true);
@@ -375,7 +384,7 @@ error_reporting(0);
 									<td></td>
 									<td></td>
 									<th> Total Amount: </th>
-									<th> Total Profit: </th>
+									<th hidden> Total Profit: </th>
 									<td></td>
 							</tr>
 							<tr>
@@ -406,7 +415,7 @@ error_reporting(0);
 									}
 									?>
 								</td>
-								<td colspan="1">
+								<td colspan="1" hidden>
 								<?php 
 								$resulta = $db->prepare("SELECT sum(profit) FROM sales_order WHERE order_no= :a");
 								$resulta->bindParam(':a', $sdsd);
