@@ -206,7 +206,7 @@ $email = filter_var($email, FILTER_VALIDATE_EMAIL);
 
    $cidfirst = date("y");
    $cidsec = date("m");
-   $client_ids = "RNL-W".$cidfirst.$cidsec.$result2['total'];
+   $client_ids = "RNL-A".$cidfirst.$cidsec.$result2['total'];
    $client_confirm="RNLVISIONCARE".$cidfirst.$cidsec.($result2['total']+1);
    
            }    

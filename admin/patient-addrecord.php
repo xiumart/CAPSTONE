@@ -87,7 +87,13 @@ if (isset($_POST['btnsubmit'])) {
 		$chkwalk="Appointment";
 	}
 	else{
-		$pat_id=uniqid();
+		$query2 = mysqli_query($conn, "SELECT COUNT(*) as total from client_user_info;");
+ while($result2=mysqli_fetch_array($query2)){
+
+   $cidfirst = date("y");
+   $cidsec = date("m");
+   $pat_id = "RNL-W".$cidfirst.$cidsec.$result2['total'];
+ }
 	}
 	$type=$_POST['med'];
 if (($_POST['med'])=="Distance") {

@@ -218,7 +218,7 @@ $finalcode='RS-'.createRandomPassword();
 						$sunday = strtotime(date("Y-m-d",$monday)." +6 days");
 						$this_week_sd = date("Y-m-d",$monday);
 						$this_week_ed = date("Y-m-d",$sunday);
-							$sql="SELECT SUM(amount) as sum_score FROM sales where date BETWEEN '$this_week_sd'  AND '$this_week_ed'";
+							$sql="SELECT SUM(amount) as sum_score FROM sales where date BETWEEN '$this_week_sd'  AND '$this_week_ed' AND `type`='cash' ";
 							$result = mysqli_query($conn,$sql);
 							while ($row = mysqli_fetch_assoc($result)){ echo '₱'.$row['sum_score'];}
 							
@@ -227,7 +227,7 @@ $finalcode='RS-'.createRandomPassword();
 						  ?></p>
 						   <p>Monthly Profit: <?php 
 						  include("../conn.php");
-							$sql="SELECT MONTH(date)AS Month, SUM(amount) AS total FROM sales WHERE MONTH(date) = MONTH(CURRENT_DATE()) GROUP BY MONTH(date), YEAR(date)";
+							$sql="SELECT MONTH(date)AS Month, SUM(amount) AS total FROM sales WHERE MONTH(date) = MONTH(CURRENT_DATE())  AND `type`='cash' GROUP BY MONTH(date), YEAR(date)";
 							$result = mysqli_query($conn,$sql);
 							while ($row = mysqli_fetch_assoc($result)){ echo '₱'.$row['total'];}
 							
@@ -265,7 +265,7 @@ $finalcode='RS-'.createRandomPassword();
 						$sunday = strtotime(date("Y-m-d",$monday)." +6 days");
 						$this_week_sd = date("Y-m-d",$monday);
 						$this_week_ed = date("Y-m-d",$sunday);
-							$sql="SELECT SUM(profit) as sum_score FROM sales where date BETWEEN '$this_week_sd'  AND '$this_week_ed'";
+							$sql="SELECT SUM(profit) as sum_score FROM sales where date BETWEEN '$this_week_sd'  AND '$this_week_ed'  AND `type`='cash'";
 							$result = mysqli_query($conn,$sql);
 							while ($row = mysqli_fetch_assoc($result)){ echo '₱'.$row['sum_score'];}
 							
@@ -274,7 +274,7 @@ $finalcode='RS-'.createRandomPassword();
 						  ?></p>
 						  <p>Monthly Profit: <?php 
 						  include("../conn.php");
-							$sql="SELECT MONTH(date)AS Month, SUM(profit) AS total FROM sales WHERE MONTH(date) = MONTH(CURRENT_DATE()) GROUP BY MONTH(date), YEAR(date)";
+							$sql="SELECT MONTH(date)AS Month, SUM(profit) AS total FROM sales WHERE MONTH(date) = MONTH(CURRENT_DATE())  AND `type`='cash' GROUP BY MONTH(date), YEAR(date)";
 							$result = mysqli_query($conn,$sql);
 							while ($row = mysqli_fetch_assoc($result)){ echo '₱'.$row['total'];}
 							

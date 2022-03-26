@@ -19,7 +19,7 @@ function createRandomPassword() {
 	return $pass;
 }
 $finalcode='RS-'.createRandomPassword();
-//error_reporting(0);
+error_reporting(0);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -296,7 +296,7 @@ $finalcode='RS-'.createRandomPassword();
 					<input type="hidden" name="invoice" value="<?php echo $_GET['invoice']; ?>" />
 					<input type="number" name="discount" hidden>
 					<input type="hidden" name="date" value="<?php echo date("Y-m-d"); ?>" />
-					<select  id="" name="product" class="sel" style="cursor: pointer;" required>
+					<select name="product" class="sel" style="cursor: pointer;" required>
 						<option disabled="" selected="">Select product/services...</option>
 						<?php 
 						include("connect.php");
