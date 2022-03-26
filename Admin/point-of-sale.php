@@ -19,6 +19,7 @@ function createRandomPassword() {
 	return $pass;
 }
 $finalcode='RS-'.createRandomPassword();
+error_reporting(0);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -236,29 +237,82 @@ $finalcode='RS-'.createRandomPassword();
 				</div>
 			
 			</div>
-		
-			
+			<div>
+
 			<div class="table-data">
 				
 				<div class="order">
+					<form id="my-form" method="post">
+							<select class="sel" name='categoryy' id="price-sort" onchange="location = this.value;">
+							<option disabled="" selected="">Select your category..</option>
+							<option value="?id=<?php echo $_GET['id']; ?>&invoice=<?php echo $_GET['invoice']; ?>&cat=Services"
+								<?php
+								if ($_GET['cat']=='Services') {
+									echo "selected";
+								}
+								 ?>>Services</option>
+							<option value="?id=<?php echo $_GET['id']; ?>&invoice=<?php echo $_GET['invoice']; ?>&cat=Accessories"
+								<?php
+								if ($_GET['cat']=='Accessories') {
+									echo "selected";
+								}
+								 ?>>Accessories</option>
+							<option value="?id=<?php echo $_GET['id']; ?>&invoice=<?php echo $_GET['invoice']; ?>&cat=Contact Lenses"
+								<?php
+								if ($_GET['cat']=='Contact Lenses') {
+									echo "selected";
+								}
+								 ?>>Contact Lenses</option>
+							<option value="?id=<?php echo $_GET['id']; ?>&invoice=<?php echo $_GET['invoice']; ?>&cat=Eyewear for Adults"
+								<?php
+								if ($_GET['cat']=='Eyewear for Adults') {
+									echo "selected";
+								}
+								 ?>>Eyewear for Adults</option>
+							<option value="?id=<?php echo $_GET['id']; ?>&invoice=<?php echo $_GET['invoice']; ?>&cat=Eyewear for Kids"
+								<?php
+								if ($_GET['cat']=='Eyewear for Kids') {
+									echo "selected";
+								}
+								 ?>>Eyewear for Kids</option>
+							<option value="?id=<?php echo $_GET['id']; ?>&invoice=<?php echo $_GET['invoice']; ?>&cat=Seen Wear"
+								<?php
+								if ($_GET['cat']=='Seen Wear') {
+									echo "selected";
+								}
+								 ?>>Seen Wear</option>
+							<option value="?id=<?php echo $_GET['id']; ?>&invoice=<?php echo $_GET['invoice']; ?>&cat=Sunglasses"
+								<?php
+								if ($_GET['cat']=='Sunglasses') {
+									echo "selected";
+								}
+								 ?>>Sunglasses</option>
+							</select>
+					</form>
 				<form action="incoming.php" method="post">
+					
 
 					<input type="hidden" name="pt" value="cash" />
 					<input type="hidden" name="invoice" value="<?php echo $_GET['invoice']; ?>" />
-					<input type="text" class="cust">
 					<input type="number" name="discount" hidden>
 					<input type="hidden" name="date" value="<?php echo date("Y-m-d"); ?>" />
-					<select name="product" id="" class="sel" style="cursor: pointer;" required>
-						<option value="0">Select product...</option>
+					<select  id="" name="product" class="sel" style="cursor: pointer;" required>
+						<option disabled="" selected="">Select product/services...</option>
 						<?php 
 						include("connect.php");
-						$result=$db->prepare("SELECT * FROM product");
+						$cat=$_GET['cat'];
+						if (isset($cat)) {
+						$result=$db->prepare("SELECT * FROM product WHERE category='$cat'");
+						}
+						else{
+							$result=$db->prepare("SELECT * FROM product");
+						}
 						$result->bindParam(':userid', $res);
 						$result->execute();
 						for($i=0; $row = $result->fetch(); $i++){
 						?>
 						<option value="<?php echo $row['pro_id'];?>"><?php echo $row['model']; ?> - <?php echo $row['brand']; ?> - <?php echo $row['category']; ?> | Expires at: <?php echo $row['expdate']; ?></option>
-						<?php
+											<?php
 						} 
 						?>
 					</select>
