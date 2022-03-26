@@ -172,13 +172,13 @@ $user=$_SESSION['login_user'];
       <div class="map-content-9">
                     <form action="user-feedbackhandler.php" method="post">
                         <div class="twice">
-                             <h3>Subject</h3>
+                             <h3>Title</h3>
                             <input type="text" class="form-control" name="w3lSubject" id="w3lSubject"
                                 placeholder="Subject" required="">
                         </div>
                         <h3>Message</h3>
                         <textarea name="w3lMessage" class="form-control" id="w3lMessage" placeholder="Message"
-                            required=""></textarea>
+                        minlength="10" maxlength="100" required></textarea>
                         <div class="rate">
                           <h4>Please Rate Us! : </h4>
                           <input type="radio" id="star5" name="rate" value="5" />

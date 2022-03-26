@@ -159,10 +159,22 @@ error_reporting(0);
               </select>
             
               </form>
-              <a href="?sort=New&prod=<?php echo $_GET['prod']; ?>" id="newest" ><button style="color:#00c2cb;">Newest</button></a>
-              <a href="?sort=default&prod=<?php echo $_GET['prod']; ?>" id="default" style="color:#000"><button>Default</button></a>
-              <a href="?sort=Popular&prod=<?php echo $_GET['prod']; ?>" id="oldest" style="color:#000"><button>Popular</button></a>
-              
+              <a href="?sort=New&prod=<?php echo $_GET['prod']; ?>" id="newest" ><button id ="btn-new">Newest</button></a>
+              <a href="?sort=Popular&prod=<?php echo $_GET['prod']; ?>" id="oldest" style="color:#000"><button id="btn-popular">Popular</button></a>
+              <a href="?sort=default&prod=<?php echo $_GET['prod']; ?>" id="default" style="color:#000"><button id="btn-def">Default</button></a>
+              <style>
+                #btn-new, #btn-def, #btn-popular {
+                  background-color:transparent;
+                  margin-top: 10px;
+                }
+                #btn-new {
+                  margin-left: 30px;
+                }
+
+                #btn-new:hover,  #btn-def:hover, #btn-popular:hover {
+                  background-color: white;  
+                }
+              </style>
             </div>
            
               <!--prod-->
