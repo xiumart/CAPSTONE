@@ -206,7 +206,7 @@ $email = filter_var($email, FILTER_VALIDATE_EMAIL);
 
    $cidfirst = date("y");
    $cidsec = date("m");
-   $client_ids = "RNL-A".$cidfirst.$cidsec.$result2['total'];
+   $client_ids = "RNL-W".$cidfirst.$cidsec.$result2['total'];
    $client_confirm="RNLVISIONCARE".$cidfirst.$cidsec.($result2['total']+1);
    
            }    
@@ -235,7 +235,7 @@ exit();
 exit();
     }else {
   
-$pat_id=rand(123451,981345);
+$pat_id=uniqid();
 
   $query_signup = "INSERT INTO client_user (client_id,client_username,client_password,confirm) VALUES ('$client_ids','$username','$password','$pat_id')" ;
 

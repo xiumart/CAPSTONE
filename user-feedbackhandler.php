@@ -1,4 +1,5 @@
 <?php
+include("session.php");
 $sname= "localhost";
 $uname= "root";
 $password = "";
@@ -12,14 +13,16 @@ if ($con->connect_error) {
 	die("Connection failed: " . $con->connect_error);
 }
 
-
+            
         $fsubject =  $_REQUEST['w3lSubject'];
         $fcomment = $_REQUEST['w3lMessage'];
         $rate = $_REQUEST['rate'];
 
+
+        $client_id = $_SESSION['login_user'];
        
 
-           $sql = "INSERT INTO feedback (feed_subj, feed_comments, feed_rate) VALUES ('$fsubject','$fcomment','$rate')";
+           $sql = "INSERT INTO feedback (feed_subj, feed_comments, feed_rate, client_id) VALUES ('$fsubject','$fcomment','$rate','$client_id')";
           
         if(mysqli_query($con, $sql)){
             echo '<script language="javascript">';

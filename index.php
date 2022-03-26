@@ -230,11 +230,13 @@ error_reporting(0);
                         <div class="testimonial-content">
                             <div class="testimonial" style="height:250px;">
                                 <blockquote>
+                                   <h3><?php echo $row['feed_subj'];?></h3>
                                     <q><?php echo $row['feed_comments'];?></q>
                                 </blockquote>
                                 <div class="testi-des">
                                     <div class="peopl align-self">
-                                        <h3><?php echo $row['feed_subj'];?></h3>
+                                       
+                                        <h4><?php echo $row['client_id'];?></h4>
                                         <p class="indentity"><?php echo $row['feedbackdate'];?></p>
                                     </div>
                                 </div>
