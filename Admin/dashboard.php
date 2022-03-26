@@ -6,13 +6,35 @@ include("session.php");
 date_default_timezone_set('Asia/Manila');
 $date = date('d-m-y g:i a');
 
-if (isset($_GET['id'])) {
+if (isset($_POST['submit'])) {
 	$app_id=$_GET['id'];
 	$queryaccept = "UPDATE `appointment` SET app_remarks = 'Approve' WHERE app_id='$app_id'";
 			mysqli_query($conn, $queryaccept);
-
+			$query223 = mysqli_query($conn, "SELECT `app_contact` from appointment where app_id= '$app_id'");
+									while($result=mysqli_fetch_array($query223)){
+										$receiver = $result['app_contact'];
+										echo $receiver;
+						  										
+			include '../includes/smsAPIControl.php';
+			$message = "Hi! Your Appointment was Accepted! Date";
+			$smsAPICode = "TR-DANVE492266_VT83N";
+			$smsAPIPassword ="1u)32r9!hf";
+	
+			$send = new Trebor(); 
+			$send->itexmo($receiver, $message,$smsAPICode,$smsAPIPassword);
+	
+			if($send == false){
+				header("location: dashboard.php?error=itextmo: no responses from server");
+			}
+			elseif($send == true){
+				header("location: dashboard.php?error+none");
+			}
+			else{
+				header("location: dashboard.php?something wrong just happen");
+			}}
+		}
 		
-}
+
 if (isset($_GET['id1'])) {
 	$app_id=$_GET['id1'];
 	$DateTime = $date;
@@ -388,7 +410,7 @@ if (isset($_GET['eid'])) {
 
      	  		$query4 = mysqli_query($conn, "Select * from appointment where app_remarks = 'PENDING'");
      	  		while($row = $query4 -> fetch_assoc()){
-
+					$reciever = $row['app_contact'];
 
 
 
@@ -399,7 +421,7 @@ if (isset($_GET['eid'])) {
 			  <td data-label="Time"><?php echo $row['app_time'];?></td>
 			  <td data-label="Purpose"><?php echo $row['app_purpose'];?></td>
 			  <td data-label="Action"><a href="?id3=<?php echo $row['app_id'];?>"><button class="btn-c" style="cursor: pointer;width:100px;">Denied</button></a>
-			  <a href="?id=<?php echo $row['app_id'];?>"><button class="btn-f" style="cursor: pointer;width:100px;">Accept</button></a></td>
+			  <form method = "post" action="dashboard.php?id=<?php echo $row['app_id'];?>"><button class="btn-f" name="submit" style="cursor: pointer;width:100px;">Accept</button></form></td>
      	  </tr>
 
      	<?php  } ?>
