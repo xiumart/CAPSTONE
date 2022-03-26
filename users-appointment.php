@@ -1,4 +1,5 @@
 <?php
+include('conn.php');
 include ('session.php');
 $con = mysqli_connect("localhost","root","","capstone");
 $sql = "SELECT DISTINCT app_id, app_date, app_time, app_purpose  FROM appointment,client_user where appointment.app_user = client_user.client_username";
@@ -176,11 +177,27 @@ $user=$_SESSION['login_user'];
 
   <section class="table">
     <div class="container">
-
+           
       <h3>Appoinments</h3>
       <div class="text-right" style="float:right;margin-bottom:14px;">
-        <a href="users-appointment-set.php"><button type="submit" class="btn btn-primary btn-style mt-4" style="cursor:pointer;">Set an Appointment</button></a>
+        <?php
+      $msg ='';
+      $query = mysqli_query($conn, "SELECT COUNT(*) as total from appointment where app_remarks = 'Approve' and app_user = '$user_check'");
+                  while($result=mysqli_fetch_array($query)){
+                    if ($result['total'] >= 1  ) {
+            
+                    $msg = 'disabled';
 
+                  }
+     
+      ?>  
+        <a href="users-appointment-set.php"><button type="submit" <?php echo $msg; ?> class="btn btn-primary btn-style mt-4" style="cursor:pointer;">Set an Appointment</button>
+<?php
+
+}
+
+?>
+        </a>
       </div>
       <table>
         <thead>
@@ -212,6 +229,8 @@ if (isset($_GET['id'])) {
       }
 
     $result = mysqli_query($con,"SELECT * FROM appointment where app_user = '$user_check'");
+
+   
       
     while($row = mysqli_fetch_array($result))
       {
@@ -220,10 +239,24 @@ if (isset($_GET['id'])) {
       echo "<td>" . $row['app_time'] . "</td>";
       echo "<td>" . $row['app_purpose'] ."</td>";
       echo "<td>" . $row['app_remarks'] ."</td>";
-      echo "<td><form method='post' action='?id=".$row["app_id"]."'>"?>
-      <button class="btn-upd" style="cursor: pointer;" onclick="return confirm('Are you sure you want to cancel your appointment?')">Cancel</button></form>
+      echo "<td><form method='post' action='?id=".$row["app_id"]."'>";
+      //header("refresh:0 url=users-appointment.php");
+
+      
+     
+
+      ?>
+
+      <a href="users-appointment.php"><button class="btn-upd" name="cancel" style="cursor: pointer;" onclick="return confirm('Are you sure you want to cancel your appointment?')">Cancel</button></form></a>
       <?php "</td></tr>";
+          
       }
+
+     if (isset($_POST['cancel'])) {
+        echo "<script>window.location.href='users-appointment.php'</script>";
+        // code...
+
+     }
 
     mysqli_close($con);
     ?>
