@@ -450,7 +450,7 @@ function restoreMysqlDB($filePath, $conn)
         } else {
             $response = array(
                 "type" => "success",
-                "message" => "Database Restore Completed Successfully."
+                "message" => "<script><alert ('Database Restore Completed Successfully');</script>."
             );
         }
         exec('rm ' . $filePath);
