@@ -298,6 +298,11 @@ if (isset($_GET['eid'])) {
 				</div>
 			
 			</div>
+			<form method="post">
+						<input type="text" name="txtsearch" id="txtsearch" placeholder="Search" autocomplete="off" style="padding: 12px;border: 1px solid #ccc;border-radius: 4px;font-family: var(poppins); width: 50%;">
+						<button  id="btnsearch" name="btnsearch" class="page" style="cursor: pointer;"><i class='bx bx-search' ></i></button>
+			</form>
+			
 <style>
 	#content main .table-data .order table th {
 		text-align: center;
@@ -316,6 +321,7 @@ if (isset($_GET['eid'])) {
      <tbody>
 	 
 	 <?php
+	 error_reporting(0);
        $conn = mysqli_connect("localhost", "root", "","capstone");
        if ($conn-> connect_error) { 
         die("Connection Failed.". $conn-> connection_error);
@@ -323,14 +329,23 @@ if (isset($_GET['eid'])) {
 	$limit=10;
 	$page=isset($_GET['page']) ? $_GET['page']:1;
 	$start=($page-1)*$limit;
-	$sql2 =$conn->query("SELECT count(logs_id) AS id FROM `users_logs`");
-    $sql = "SELECT * from users_logs WHERE logs_datentime ORDER BY logs_datentime DESC LIMIT $start, $limit";
+	 $search=$_POST['txtsearch'];
+	$sql2 =$conn->query("SELECT count(logs_id) AS id, `logs_username`,`logs_activity`,`logs_datentime`,`logs_roles` FROM `users_logs`WHERE `logs_username` LIKE '%$search%' OR `logs_activity` LIKE '%$search%' OR `logs_datentime` LIKE '%$search%' OR `logs_roles` LIKE '%$search%'");
+	if (isset($_POST['btnsearch'])) {
+        $sql1 = "SELECT * FROM `users_logs` WHERE `logs_username` LIKE '%$search%' OR `logs_activity` LIKE '%$search%' OR `logs_datentime` LIKE '%$search%' OR `logs_roles` LIKE '%$search%' LIMIT $start, $limit";
+        
+        	}
+        else{
+        		$sql1 = "SELECT * FROM `users_logs` WHERE logs_datentime ORDER BY logs_datentime DESC LIMIT $start, $limit ";
+        		$sql2 =$conn->query("SELECT count(logs_id) AS id FROM `users_logs`");
+        	}
+    
 	$result2 = $sql2->fetch_all(MYSQLI_ASSOC);
             $total=$result2[0]['id'];
             $pages=ceil($total/$limit);
             $prev=$page-1;
             $next=$page+1;
-    $result = $conn-> query($sql);
+    $result = $conn-> query($sql1);
 
       if ($result-> num_rows > 0) {
         while ($row = $result-> fetch_assoc()){

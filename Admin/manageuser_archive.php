@@ -317,8 +317,8 @@ if (isset($_GET['eid'])) {
 			</div><br>
 			
 			<form method="post">
-						<input type="text" name="txtsearch" id="txtsearch" placeholder="Search..." autocomplete="off" style="padding: 12px;border: 1px solid #ccc;border-radius: 4px;font-family: var(poppins); width: 50%;">
-						<button  id="btnsearch" name="" class="page" style="cursor: pointer;"><i class='bx bx-search' ></i></button>
+						<input type="text" name="txtsearch" id="txtsearch" placeholder="Search" autocomplete="off" style="padding: 12px;border: 1px solid #ccc;border-radius: 4px;font-family: var(poppins); width: 50%;">
+						<button  id="btnsearch" name="btnsearch" class="page" style="cursor: pointer;"><i class='bx bx-search' ></i></button>
 			</form>
 			
 			<div>
@@ -343,16 +343,17 @@ if (isset($_GET['eid'])) {
 	 
 	 <?php
      	$limit=25;
-        
+        error_reporting(0);
         $page=isset($_GET['page']) ? $_GET['page']:1;
         $start=($page-1)*$limit;
-        
-     	$sql2 =$conn->query("SELECT count(users_id) AS id FROM `users_account`");
+        $search=$_POST['txtsearch'];
+     	$sql2 =$conn->query("SELECT count(users_id) AS id `users_lastname`,`users_firstname`,`users_middlename`,`users_contact`,`users_roles` FROM `users_account` WHERE `users_lastname` LIKE '%$search%' OR `users_username` LIKE'%$search%' OR `users_firstname` LIKE'%$search%' OR `users_middlename` LIKE'%$search%'  OR `users_contact` LIKE'%$search%'  OR `users_roles` LIKE'%$search%'");
      	if (isset($_POST['btnsearch'])) {
-        $sql1 = "SELECT * FROM `archive_users_account` WHERE `users_lastname` LIKE '%$search%' OR `users_username` LIKE'%$search%'  LIMIT $start, $limit ";
+        $sql1 = "SELECT * FROM `archive_users_account` WHERE `users_lastname` LIKE '%$search%' OR `users_username` LIKE'%$search%' OR `users_firstname` LIKE'%$search%' OR `users_middlename` LIKE'%$search%'  OR `users_contact` LIKE'%$search%'  OR `users_roles` LIKE'%$search%'  LIMIT $start, $limit ";
         	}
         else{
         		$sql1 = "SELECT * FROM `archive_users_account` LIMIT $start, $limit ";
+        		$sql2 =$conn->query("SELECT count(users_id) AS id FROM `archive_users_account`");
         	}
         $result2 = $sql2->fetch_all(MYSQLI_ASSOC);
                 $total=$result2[0]['id'];
