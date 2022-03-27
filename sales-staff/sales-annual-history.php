@@ -218,7 +218,7 @@ function Clickheretoprint()
 	 include("conn.php");
 
      	  
-    $result = mysqli_query($con,"SELECT Year(date)AS Year, SUM(profit) AS profit, SUM(amount) AS amount FROM sales GROUP BY YEAR(date)");
+    $result = mysqli_query($conn,"SELECT Year(date)AS Year, SUM(profit) AS profit, SUM(amount) AS amount FROM sales GROUP BY YEAR(date)");
       
     while($row = mysqli_fetch_array($result))
       {
@@ -228,7 +228,7 @@ function Clickheretoprint()
       <?php echo "</td></tr>";
       }
 
-    mysqli_close($con);
+    mysqli_close($conn);
     ?>
 
      	  

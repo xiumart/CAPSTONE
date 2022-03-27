@@ -387,63 +387,63 @@ function Clickheretoprint()
 
         }
       	if (isset($_POST['btnsearch'])&& $_POST['txtsearch']!="") {
-      		 $result = mysqli_query($con,"SELECT * FROM sales WHERE `type`='cash' AND `$column` LIKE '%$search%'  ORDER BY `date` DESC LIMIT $start, $limit" );
+      		 $result = mysqli_query($conn,"SELECT * FROM sales WHERE `type`='cash' AND `$column` LIKE '%$search%'  ORDER BY `date` DESC LIMIT $start, $limit" );
       	}
       	elseif ($_GET['btn']=='down') {
-        	 $result = mysqli_query($con,"SELECT * FROM sales WHERE `type`='cash' ORDER BY `order_no` DESC LIMIT $start, $limit" );
+        	 $result = mysqli_query($conn,"SELECT * FROM sales WHERE `type`='cash' ORDER BY `order_no` DESC LIMIT $start, $limit" );
         		
         		echo "<style>.down{ background-color:red;}</style>";
         	}
         	elseif ($_GET['btn']=='up') {
-        	 $result = mysqli_query($con,"SELECT * FROM sales WHERE `type`='cash' ORDER BY `order_no` ASC LIMIT $start, $limit" );
+        	 $result = mysqli_query($conn,"SELECT * FROM sales WHERE `type`='cash' ORDER BY `order_no` ASC LIMIT $start, $limit" );
         		
         		echo "<style>.up{ background-color:red;}</style>";
         	}
         	elseif ($_GET['btn']=='down1') {
-        	 $result = mysqli_query($con,"SELECT * FROM sales WHERE `type`='cash' ORDER BY `date` DESC LIMIT $start, $limit" );
+        	 $result = mysqli_query($conn,"SELECT * FROM sales WHERE `type`='cash' ORDER BY `date` DESC LIMIT $start, $limit" );
         		
         		echo "<style>.down{ background-color:red;}</style>";
         	}
         	elseif ($_GET['btn']=='up1') {
-        	 $result = mysqli_query($con,"SELECT * FROM sales WHERE `type`='cash' ORDER BY `date` ASC LIMIT $start, $limit" );
+        	 $result = mysqli_query($conn,"SELECT * FROM sales WHERE `type`='cash' ORDER BY `date` ASC LIMIT $start, $limit" );
         		
         		echo "<style>.up{ background-color:red;}</style>";
         	}
         	elseif ($_GET['btn']=='down2') {
-        	 $result = mysqli_query($con,"SELECT * FROM sales WHERE `type`='cash' ORDER BY `name` DESC LIMIT $start, $limit" );
+        	 $result = mysqli_query($conn,"SELECT * FROM sales WHERE `type`='cash' ORDER BY `name` DESC LIMIT $start, $limit" );
         		
         		echo "<style>.down{ background-color:red;}</style>";
         	}
         	elseif ($_GET['btn']=='up2') {
-        	 $result = mysqli_query($con,"SELECT * FROM sales WHERE `type`='cash' ORDER BY `name` ASC LIMIT $start, $limit" );
+        	 $result = mysqli_query($conn,"SELECT * FROM sales WHERE `type`='cash' ORDER BY `name` ASC LIMIT $start, $limit" );
         		
         		echo "<style>.up{ background-color:red;}</style>";
         	}
         	elseif ($_GET['btn']=='down3') {
-        	 $result = mysqli_query($con,"SELECT * FROM sales WHERE `type`='cash' ORDER BY `profit` DESC LIMIT $start, $limit" );
+        	 $result = mysqli_query($conn,"SELECT * FROM sales WHERE `type`='cash' ORDER BY `profit` DESC LIMIT $start, $limit" );
         		
         		echo "<style>.down{ background-color:red;}</style>";
         	}
         	elseif ($_GET['btn']=='up3') {
-        	 $result = mysqli_query($con,"SELECT * FROM sales WHERE `type`='cash' ORDER BY `profit` ASC LIMIT $start, $limit" );
+        	 $result = mysqli_query($conn,"SELECT * FROM sales WHERE `type`='cash' ORDER BY `profit` ASC LIMIT $start, $limit" );
         		
         		echo "<style>.up{ background-color:red;}</style>";
         	}
         	elseif ($_GET['btn']=='down4') {
-        	 $result = mysqli_query($con,"SELECT * FROM sales WHERE `type`='cash' ORDER BY `amount` DESC LIMIT $start, $limit" );
+        	 $result = mysqli_query($conn,"SELECT * FROM sales WHERE `type`='cash' ORDER BY `amount` DESC LIMIT $start, $limit" );
         		
         		echo "<style>.down{ background-color:red;}</style>";
         	}
         	elseif ($_GET['btn']=='up4') {
-        	 $result = mysqli_query($con,"SELECT * FROM sales WHERE `type`='cash' ORDER BY `amount` ASC LIMIT $start, $limit" );
+        	 $result = mysqli_query($conn,"SELECT * FROM sales WHERE `type`='cash' ORDER BY `amount` ASC LIMIT $start, $limit" );
         		
         		echo "<style>.up{ background-color:red;}</style>";
         	}
       	else{
-      		$result = mysqli_query($con,"SELECT * FROM sales WHERE `type`='cash' ORDER BY `date` DESC LIMIT $start, $limit" );
+      		$result = mysqli_query($conn,"SELECT * FROM sales WHERE `type`='cash' ORDER BY `date` DESC LIMIT $start, $limit" );
       	}
       	
-        $sql2 =$con->query("SELECT count(id) AS id FROM `sales`");
+        $sql2 =$conn->query("SELECT count(id) AS id FROM `sales`");
          $result2 = $sql2->fetch_all(MYSQLI_ASSOC);
                 $total=$result2[0]['id'];
                 $pages=ceil($total/$limit);
