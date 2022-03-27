@@ -1,4 +1,5 @@
 <?php
+error_reporting(0);
 include("session.php");
 function createRandomPassword() {
 	$chars = "003232303232023232023456789";
@@ -181,7 +182,7 @@ $finalcode='RS-'.createRandomPassword();
 				<i class='bx bxs-bell' ></i>
 				<span class="num">
 				<?php 
-				$query = mysqli_query($conn, "SELECT COUNT(*) as total from product  WHERE qty <=10 AND pro_status ='2'");
+				$query = mysqli_query($conn, "SELECT COUNT(*) as total from client_inquiries, product  WHERE inquiries_status = '2' AND qty <=10 AND pro_status ='2'");
 					while($result=mysqli_fetch_array($query)){
 					echo $result['total']; 
 				}			
@@ -195,6 +196,7 @@ if (isset($_GET['id'])) {
 
 	$query = "UPDATE `client_inquiries` SET inquiries_status = '1' WHERE inquiries_id = '$users_id'";
 	mysqli_query($conn, $query);
+	header( "refresh:0; url=audit.php" );
 			}
 			?>
 			<?php
@@ -204,6 +206,7 @@ if (isset($_GET['eid'])) {
 
 	$query1 = "UPDATE `product` SET pro_status = '1' WHERE pro_id = '$pro_id'";
 	mysqli_query($conn, $query1);
+	header( "refresh:0; url=audit.php" );
 			}
 			?>
 			
@@ -224,7 +227,7 @@ if (isset($_GET['eid'])) {
 			  ?>
 			  
 			  <?php
-			$sql1 = "SELECT * FROM `product` WHERE pro_status='2' AND qty <=10 LIMIT 6";
+			$sql1 = "SELECT * FROM `product` WHERE pro_status='2'  LIMIT 6";
 			$result1 = $conn->query($sql1);  
   			if($result1->num_rows > 0){
   				while($row = $result1 -> fetch_assoc()){ 
@@ -232,11 +235,11 @@ if (isset($_GET['eid'])) {
 					$model = $row['model'];
 			  ?>
 			  <tr>
-			  <th><h4 style="color: red;">Low Product:</h4></th>
+					<th><h4>Product:</h4></th>
 			  <td><p><?php 
 					if ($qty<=10) {
-						echo "Model: " . $row['model'] ."&nbsp<br>";		
-						echo "QTY: " . $row['qty'];
+						echo $row['model'] ."&nbsp";		
+						echo $row['qty'];
 							}
 			  ?>
 				</p></td><td><a href="?eid=<?php echo $row['pro_id'];?>"><button class="btn-remove" name="btnremove" style="cursor: pointer;">Clear</button></a></td>
@@ -296,54 +299,136 @@ if (isset($_GET['eid'])) {
 				</div>
 			
 			</div>
-			<form method="post">
-						<input type="text" name="txtsearch" id="txtsearch" placeholder="Search" autocomplete="off" style="padding: 12px;border: 1px solid #ccc;border-radius: 4px;font-family: var(poppins); width: 50%;">
-						<button  id="btnsearch" name="btnsearch" class="page" style="cursor: pointer;"><i class='bx bx-search' ></i></button>
-			</form>
-			
 <style>
 	#content main .table-data .order table th {
 		text-align: center;
 	}
 	</style>
+	<form method="post">
+					<label>Search by:</label>
+              <select name='search' id="price-sort" onchange="location = this.value;" style="padding: 12px;border: 1px solid #ccc;border-radius: 4px;font-family: var(poppins); width: 30%;">
+                <option value='0' disabled selected>Select category..</option>
+                <option value='?search=username' <?php if($_GET['search']=='username'){
+                  echo "selected";
+                } ?>>Username</option>
+                <option value='?search=activity' <?php if($_GET['search']=='activity'){
+                  echo "selected";
+                } ?>>Activity</option>
+                <option value='?search=date' <?php if($_GET['search']=='date'){
+                  echo "selected";
+                } ?>>Date & Time</option>
+                <option value='?search=roles' <?php if($_GET['search']=='roles'){
+                  echo "selected";
+                } ?>>Roles</option>
+                
+              </select>
+						<input type="text" name="txtsearch" id="txtsearch" placeholder="Type here.." autocomplete="off" style="padding: 12px;border: 1px solid #ccc;border-radius: 4px;font-family: var(poppins);width: 30%;">
+						<button  id="btnsearch" name="btnsearch" class="page" style="cursor: pointer;"><i class='bx bx-search' ></i></button>
+						</form>
 	<table>
+		<style type="text/css">
+			.up{
+				cursor: pointer;
+			}
+			.down{
+				cursor: pointer;
+			}
+		</style>
      <thead>
      	<tr>
 		 
-			<th>Username</th>
-      <th>Activity</th>
-      <th>Date & Time</th>
-      <th>Role</th>
+			<th>Username<form method=""><button class="up" value="up" name="btn" style="width: 10%; height: 5%; padding: 0; margin: 0;">▲</button>&nbsp<button class="down" value="down" name="btn" style="width: 10%; height: 5%; padding: 0; margin: 0;">▼</button></form></th>
+      <th>Activity<form method=""><button class="up" value="up" name="btn1" style="width: 10%; height: 5%; padding: 0; margin: 0;">▲</button>&nbsp<button class="down" value="down" name="btn1" style="width: 10%; height: 5%; padding: 0; margin: 0;">▼</button></form></th>
+      <th>Date & Time<form method=""><button class="up" value="up" name="btn2" style="width: 10%; height: 5%; padding: 0; margin: 0;">▲</button>&nbsp<button class="down" value="down" name="btn2" style="width: 10%; height: 5%; padding: 0; margin: 0;">▼</button></form></th>
+      <th>Role<form method=""><button class="up" value="up" name="btn3" style="width: 10%; height: 5%; padding: 0; margin: 0;">▲</button>&nbsp<button class="down" value="down" name="btn3" style="width: 10%; height: 5%; padding: 0; margin: 0;">▼</button></form></th>
      	</tr>
      </thead>
      <tbody>
 	 
 	 <?php
-	 error_reporting(0);
        $conn = mysqli_connect("localhost", "root", "","capstone");
        if ($conn-> connect_error) { 
         die("Connection Failed.". $conn-> connection_error);
        }
-	$limit=10;
+	$limit=25;
 	$page=isset($_GET['page']) ? $_GET['page']:1;
 	$start=($page-1)*$limit;
-	 $search=$_POST['txtsearch'];
-	$sql2 =$conn->query("SELECT count(logs_id) AS id, `logs_username`,`logs_activity`,`logs_datentime`,`logs_roles` FROM `users_logs`WHERE `logs_username` LIKE '%$search%' OR `logs_activity` LIKE '%$search%' OR `logs_datentime` LIKE '%$search%' OR `logs_roles` LIKE '%$search%'");
-	if (isset($_POST['btnsearch'])) {
-        $sql1 = "SELECT * FROM `users_logs` WHERE `logs_username` LIKE '%$search%' OR `logs_activity` LIKE '%$search%' OR `logs_datentime` LIKE '%$search%' OR `logs_roles` LIKE '%$search%' LIMIT $start, $limit";
-        
-        	}
+	$search=$_POST['txtsearch'];
+
+	if ($_GET['search']=='username') {
+        	$column="logs_username";
+        	 
+        }
+        elseif ($_GET['search']=='activity') {
+        	$column="logs_activity";
+
+        }
+        elseif ($_GET['search']=='date') {
+        	$column="logs_datentime";
+        	 
+        }
+        elseif ($_GET['search']=='roles') {
+        	$column="logs_roles";
+        	 
+        }
         else{
-        		$sql1 = "SELECT * FROM `users_logs` WHERE logs_datentime ORDER BY logs_datentime DESC LIMIT $start, $limit ";
-        		$sql2 =$conn->query("SELECT count(logs_id) AS id FROM `users_logs`");
+
+        }
+        if (isset($_POST['btnsearch']) && $_POST['txtsearch']!="") {
+        	 $sql = "SELECT * FROM `users_logs` WHERE `$column` LIKE '%$search%' LIMIT $start, $limit ";
+       			$sql2 =$conn->query("SELECT count(logs_id) AS id FROM `users_logs` WHERE `$column` LIKE '%$search%'");
+        	}    
+        	elseif ($_GET['btn']=='down') {
+        		$sql = "SELECT * FROM `users_logs` Order by `logs_username` DESC LIMIT $start, $limit ";
+        		$sql2 =$conn->query("SELECT count(users_id) AS id, `logs_username` FROM `users_logs` Order by `logs_username` DESC ");
+        		echo "<style>.down{ background-color:red;}</style>";
         	}
+        	elseif ($_GET['btn']=='up') {
+        		$sql = "SELECT * FROM `users_logs` Order by `logs_username` ASC LIMIT $start, $limit ";
+        		$sql2 =$conn->query("SELECT count(users_id) AS id, `logs_username` FROM `users_logs` Order by `logs_username` ASC ");
+        		echo "<style>.up{ background-color:red;}</style>";
+        	}
+        	elseif ($_GET['btn1']=='down') {
+        		$sql = "SELECT * FROM `users_logs` Order by `logs_activity` DESC LIMIT $start, $limit ";
+        		$sql2 =$conn->query("SELECT count(users_id) AS id, `logs_activity` FROM `users_logs` Order by `logs_activity` DESC ");
+        		echo "<style>.down{ background-color:red;}</style>";
+        	}
+        	elseif ($_GET['btn1']=='up') {
+        		$sql = "SELECT * FROM `users_logs` Order by `logs_activity` ASC LIMIT $start, $limit ";
+        		$sql2 =$conn->query("SELECT count(users_id) AS id, `logs_activity` FROM `users_logs` Order by `logs_activity` ASC ");
+        		echo "<style>.up{ background-color:red;}</style>";
+        	}
+        	elseif ($_GET['btn2']=='down') {
+        		$sql = "SELECT * FROM `users_logs` Order by `logs_datentime` DESC LIMIT $start, $limit ";
+        		$sql2 =$conn->query("SELECT count(users_id) AS id, `logs_datentime` FROM `users_logs` Order by `logs_datentime` DESC ");
+        		echo "<style>.down{ background-color:red;}</style>";
+        	}
+        	elseif ($_GET['btn2']=='up') {
+        		$sql = "SELECT * FROM `users_logs` Order by `logs_datentime` ASC LIMIT $start, $limit ";
+        		$sql2 =$conn->query("SELECT count(users_id) AS id, `logs_datentime` FROM `users_logs` Order by `logs_datentime` ASC ");
+        		echo "<style>.up{ background-color:red;}</style>";
+        	}
+        	elseif ($_GET['btn3']=='down') {
+        		$sql = "SELECT * FROM `users_logs` Order by `logs_roles` DESC LIMIT $start, $limit ";
+        		$sql2 =$conn->query("SELECT count(users_id) AS id, `logs_roles` FROM `users_logs` Order by `logs_roles` DESC ");
+        		echo "<style>.down{ background-color:red;}</style>";
+        	}
+        	elseif ($_GET['btn3']=='up') {
+        		$sql = "SELECT * FROM `users_logs` Order by `logs_roles` ASC LIMIT $start, $limit ";
+        		$sql2 =$conn->query("SELECT count(users_id) AS id, `logs_roles` FROM `users_logs` Order by `logs_roles` ASC ");
+        		echo "<style>.up{ background-color:red;}</style>";
+        	}
+        	else{
+        		$sql = "SELECT * from users_logs WHERE logs_datentime ORDER BY logs_datentime DESC LIMIT $start, $limit";
+        	}
+        		$sql2 =$conn->query("SELECT count(logs_id) AS id FROM `users_logs`");
     
 	$result2 = $sql2->fetch_all(MYSQLI_ASSOC);
             $total=$result2[0]['id'];
             $pages=ceil($total/$limit);
             $prev=$page-1;
             $next=$page+1;
-    $result = $conn-> query($sql1);
+    $result = $conn-> query($sql);
 
       if ($result-> num_rows > 0) {
         while ($row = $result-> fetch_assoc()){
