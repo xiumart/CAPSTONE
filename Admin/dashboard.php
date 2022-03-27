@@ -227,7 +227,7 @@ $finalcode='RS-'.createRandomPassword();
 			</form>
 			<div id="digital-clock"></div>
 			<script src="time.js"></script>
-	
+			<h4><?php echo $_SESSION['users_username']; ?></h4>
 			<div class="dropdown2">
 			<a href="#" class="notification">
 				<i class='bx bxs-bell' ></i>
@@ -316,7 +316,8 @@ if (isset($_GET['eid'])) {
 		<main>
 			<div class="head-title">
 				<div class="left">
-					<h1>Dashboard</h1>
+					
+					<h1><?php echo $_SESSION['users_roles']; ?>'s Dashboard</h1>
 					<ul class="breadcrumb">
 						<li>
 							<a href="#">Dashboard</a>
