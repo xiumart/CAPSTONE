@@ -21,7 +21,7 @@ if (isset($_POST['submit'])) {
 										echo $receiver;
 						  										
 			include '../includes/smsAPIControl.php';
-			$message = "Hello ".$name. " ! Your Appointment was Approved! Date:".$date."-Time:".$time."RNL VISION CARE";
+			$message = "Hi".$name."!,Your Appointment was Approved! Date:".$date."-Time:".$time."-Id:".$client_id." RNL VISION CARE";
 			$smsAPICode = "TR-JONAS919806_2WH5H";
 			$smsAPIPassword ="@x[5]r}5gk";
 	
