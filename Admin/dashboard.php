@@ -10,13 +10,16 @@ if (isset($_POST['submit'])) {
 	$app_id=$_GET['id'];
 	$queryaccept = "UPDATE `appointment` SET app_remarks = 'Approve' WHERE app_id='$app_id'";
 			mysqli_query($conn, $queryaccept);
-			$query223 = mysqli_query($conn, "SELECT `app_contact` from appointment where app_id= '$app_id'");
+			$query223 = mysqli_query($conn, "SELECT * from appointment where app_id= '$app_id'");
 									while($result=mysqli_fetch_array($query223)){
+										$time = $row['app_time'];
+										$date = $row['app_date'];
+										$name = $result['app_name'];
 										$receiver = $result['app_contact'];
 										echo $receiver;
 						  										
 			include '../includes/smsAPIControl.php';
-			$message = "Hi! Your Appointment was Accepted! Date";
+			$message = "Hello ".$name. " ! Your requested Appointment was Approved! Date: ".$date." and Time: ".$time." RNL VISION CARE";
 			$smsAPICode = "TR-DANVE492266_VT83N";
 			$smsAPIPassword ="1u)32r9!hf";
 	
@@ -224,7 +227,7 @@ $finalcode='RS-'.createRandomPassword();
 				<?php 
 				$query = mysqli_query($conn, "SELECT COUNT(*) as total from client_inquiries, product  WHERE inquiries_status = '2' AND qty <=10 AND pro_status ='2'");
 					while($result=mysqli_fetch_array($query)){
-					echo $result['total']; 
+					echo $result['total']; 		
 				}			
 				?>
 						  </span>			  
