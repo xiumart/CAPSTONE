@@ -321,7 +321,7 @@ if (isset($_GET['eid'])) {
 			</div><br>
 			<form method="post">
 						<input type="text" name="txtsearch" id="txtsearch" placeholder="Search" autocomplete="off" style="padding: 12px;border: 1px solid #ccc;border-radius: 4px;font-family: var(poppins); width: 50%;">
-						<button  id="btnsearch" name="" class="page" style="cursor: pointer;"><i class='bx bx-search' ></i></button>
+						<button  id="btnsearch" name="btnsearch" class="page" style="cursor: pointer;"><i class='bx bx-search' ></i></button>
 			</form>
 			
 			<div>
@@ -345,6 +345,7 @@ if (isset($_GET['eid'])) {
      </thead>
      <tbody>
      	<?php
+     	error_reporting(0);
      	$limit=25;
      
         $page=isset($_GET['page']) ? $_GET['page']:1;
@@ -364,6 +365,7 @@ if (isset($_GET['eid'])) {
                 $pages=ceil($total/$limit);
                 $prev=$page-1;
                 $next=$page+1;
+
      	  $result1 = $conn->query($sql1);  
   			if($result1->num_rows > 0){
   				while($row = $result1 -> fetch_assoc()){ 

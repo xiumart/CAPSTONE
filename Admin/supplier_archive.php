@@ -321,7 +321,7 @@ if (isset($_GET['eid'])) {
 			</div><br>
 			<form method="post">
 						<input type="text" name="txtsearch" id="txtsearch" placeholder="Search..." autocomplete="off" style="padding: 12px;border: 1px solid #ccc;border-radius: 4px;font-family: var(poppins); width: 50%;">
-						<button  id="btnsearch" name="" class="page" style="cursor: pointer;"><i class='bx bx-search' ></i></button>
+						<button  id="btnsearch" name="btnsearch" class="page" style="cursor: pointer;"><i class='bx bx-search' ></i></button>
 			</form>
 			
 			<div>
@@ -343,17 +343,19 @@ if (isset($_GET['eid'])) {
      <tbody>
      	
 	 <?php
+	 error_reporting(0);
      	$limit=25;
         
         $page=isset($_GET['page']) ? $_GET['page']:1;
         $start=($page-1)*$limit;
-              
-     	$sql2 =$conn->query("SELECT count(supp_id) AS id FROM `supplier`");
+        $search=$_POST['txtsearch'];
+     	$sql2 =$conn->query("SELECT count(supp_id) AS id, `supp_cname`,`supp_contactperson`,`supp_contact`, `supp_desc` FROM `archive_supplier` WHERE `supp_cname` LIKE '%$search%' OR `supp_contactperson` LIKE '%$search%'  OR `supp_desc` LIKE'%$search%' OR `supp_contact` LIKE'%$search%'  ");
      	if (isset($_POST['btnsearch'])) {
-        $sql1 = "SELECT * FROM `archive_supplier` WHERE `supp_cname` LIKE '%$search%' OR `supp_contactperson` LIKE'%$search%'  LIMIT $start, $limit ";
+        $sql1 = "SELECT * FROM `archive_supplier` WHERE `supp_cname` LIKE '%$search%' OR `supp_contactperson` LIKE'%$search%'  OR `supp_desc` LIKE'%$search%' OR `supp_contact` LIKE'%$search%'  LIMIT $start, $limit ";
         	}
         else{
         		$sql1 = "SELECT * FROM `archive_supplier` LIMIT $start, $limit ";
+        		$sql2 =$conn->query("SELECT count(supp_id) AS id FROM `archive_supplier`");
         	}
         $result2 = $sql2->fetch_all(MYSQLI_ASSOC);
                 $total=$result2[0]['id'];
