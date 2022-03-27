@@ -91,20 +91,27 @@ $finalcode='RS-'.createRandomPassword();
 		margin-left: 10px;
 		padding:4px;
 	}
-	.btn-remove {
+	.btn-upd {
 		background-color: #00c2cb;
 		border: none;
 		border-radius: 10%;
-		margin-left: 60%;
 		padding:8px;
 	}
-	.btn-f:hover { background-color: #4CAF50;}
+	.btn-upd:hover { background-color: #4CAF50;}
 	.btn-c:hover { background-color: red;}
 	.btn-apph:hover { background-color: #00a2a3;}
 	.btn-remove:hover { background-color: red;}
 	.namee{
 		margin-top: 4.5%;
 	}
+	.page{
+		background-color: #00c2cb;
+		padding: 12px;
+		border: none;
+		border-radius: 10%;
+		color:white;
+	}
+	.page:hover { background-color:#00b2b3;}
 
 </style>
 <body>
@@ -294,89 +301,104 @@ if (isset($_GET['eid'])) {
 		<main>
 			<div class="head-title">
 				<div class="left">
-					<h1>Back-up and Restore</h1>
+					<h1>Patients Archive</h1>
 					<ul class="breadcrumb">
 						<li>
-							<a href="archive.php">Archive</a>
+							<a class="active" href="archive.php">Archive</a>
 						</li>
 						<li><i class='bx bx-chevron-right' ></i></li>
-						<li>
-							<a class="active" href="archive.php">Home</a>
+                        <li>
+							<a  href="archive.php">Patients Archive</a>
 						</li>
 					</ul>
 				</div>
 			
-			</div>
-		
+			</div><br>
+			
+			<form method="post">
+						<input type="text" name="txtsearch" id="txtsearch" placeholder="Search" autocomplete="off" style="padding: 12px;border: 1px solid #ccc;border-radius: 4px;font-family: var(poppins); width: 50%;">
+						<button  id="btnsearch" name="btnsearch" class="page" style="cursor: pointer;"><i class='bx bx-search' ></i></button>
+			</form>
 			
 			<div>
 				
 				<div>
-					<table>
+                
+<div id="printing">
+<table>
+						<caption>LIST OF PATIENT</caption>
 						<thead>
-							<tr>
-							<th>Features</th>
-							<th>Action</th>
-							</tr>
+						<tr>						
+							<th scope="col">Patient ID</th>
+							<th scope="col">Name</th>
+							<th scope="col">Contact No.</th>
+							<th scope="col">Address</th>
+							<th scope="col">Age</th>
+							<th scope="col">Action</th>
+						</tr>
+				
 						</thead>
 						<tbody>
 							<tr>
-								<td>Export database</td>
-								<td><a href="dlsql.php"><button type="button" class="btn-action" style="cursor: pointer; border-radius: 10px;" onclick="return confirm('Are you sure you want to download dabatase?')">Download Database</button></a></td>					
+							<?php
+          	error_reporting(0);
+     	$limit=25;
+        //$cat=$_POST['all'];
+        $page=isset($_GET['page']) ? $_GET['page']:1;
+        $start=($page-1)*$limit;
+
+        $search=$_POST['txtsearch'];
+     	if (isset($_POST['btnsearch'])) {
+     		$sql2 =$conn->query("SELECT count(patient_no) AS id,`patient_id`,`patient_name`,`patient_address`, `patient_contact` FROM `archive_patients` WHERE `patient_id` LIKE '%$search%' OR `patient_name` LIKE '%$search%' OR `patient_address` LIKE '%$search%' OR `patient_contact` LIKE '%$search%' AND `status`!='Remove'");
+
+        $sql1 = "SELECT year(now())-year(`patient_bday`) AS age,`patient_no`,`patient_id`,`patient_name`,`patient_email`,`patient_contact`,`patient_address`  FROM `archive_patients` WHERE `patient_id` LIKE '%$search%' OR `patient_name` LIKE '%$search%' OR `patient_address` LIKE '%$search%' OR `patient_contact` LIKE '%$search%' AND `status`!='Remove' LIMIT $start, $limit ";
+        if ($search=='') {
+        		$sql2 =$conn->query("SELECT count(patient_no) AS id FROM `archive_patients`");
+        $sql1 = "SELECT year(now())-year(`patient_bday`) AS age,`patient_no`,`patient_id`,`patient_name`,`patient_email`,`patient_contact`,`patient_address`  FROM `archive_patients` WHERE `status`!='Remove'  LIMIT $start, $limit ";
+        }
+     	}
+     	else{ 
+     	$sql2 =$conn->query("SELECT count(patient_no) AS id FROM `archive_patients`");
+        $sql1 = "SELECT year(now())-year(`patient_bday`) AS age,`patient_no`,`patient_id`,`patient_name`,`patient_email`,`patient_contact`,`patient_address`  FROM `archive_patients` WHERE `status`!='Remove'  LIMIT $start, $limit ";	
+     	}
+
+        $result2 = $sql2->fetch_all(MYSQLI_ASSOC);
+                $total=$result2[0]['id'];
+                $pages=ceil($total/$limit);
+                $prev=$page-1;
+                $next=$page+1;
+     	  $result1 = $conn->query($sql1);  
+  			if($result1->num_rows > 0){
+  				while($row = $result1 -> fetch_assoc()){
+
+
+     	?>
+							<td data-label="Patient ID"><?php echo $row['patient_id'];?></td>
+							<td data-label="Name"><?php echo $row['patient_name'];?></td>
+							<td data-label="Contact No."><?php echo $row['patient_contact'];?></td>
+							<td data-label="Address"><?php echo $row['patient_address'];?></td>
+							<td data-label="Age"><?php echo $row['age'];?></td>
+							<td data-label="Action"><form method="post" action="retrieve_patient.php?id=<?php echo $row['patient_no'];?>"><button class="btn-c" name="btnrem" style="cursor: pointer;width:100px;pad" onclick="return confirm('Are you sure you want to retrieve this patient?')">Retrieve</button></form>
+			  				</td>
 							</tr>
-							<tr>
-							<td>Import database</td>
-							<td><?php
-if (! empty($response)) {
-    ?>
-<div class="response <?php echo $response["type"]; ?>">
-<?php echo nl2br($response["message"]); ?>
-</div>
-<?php
-}
-?>
-<style>
-input[type=submit], restore {
-	background-color: blue;
-}
-input[type=submit]:hover {
-background-color: green;
-}
-button[type=button] {
-	background-color: blue;
-}
-button[type=button]:hover {
-	background-color: green;
-}
-	</style>
-    <form method="post" action="" enctype="multipart/form-data"
-        id="frm-restore">
-        <div class="form-row">
+							<?php
+     	}}
+     	$id=$_GET['id'];
+$sql2 = "SELECT * FROM `archive_patients` WHERE `patient_no`='$id'";
+ $result2 = $conn->query($sql2);  
+  			if($result2->num_rows > 0){
+  				while($row = $result2 -> fetch_assoc()){
+  					$name=$row['patient_name'];
+  					$pat_id=$row['patient_id'];
+  				}}
 
-            
-                <input type="file" name="backup_file" class="input-file" />
-            
-        
-            <input type="submit" name="restore" value="Restore" style="cursor: pointer; border-radius: 10px;" class="btn-action" onclick="return confirm('Are you sure you want to restore database?')"/>
-        </div>
+     	?>
+     	<form method="post">
+     	<input type="text" name="idd" value="<?php echo $pat_id;?>" hidden>
     </form>
-</td></tr><tr><td>Product's Archive</td>
-<td><a href="product_archive.php"><button type="button" class="btn-action" style="cursor: pointer; border-radius: 10px;" onclick="return confirm('Are you sure you want to go in Product`s Archive?')">Go to Bin</button></a></td>			</td>
-</td>	</tr>
-<tr><td>Supplier's Archive</td>
-<td><a href="supplier_archive.php"><button type="button" class="btn-action" style="cursor: pointer; border-radius: 10px;" onclick="return confirm('Are you sure you want to go in Supplier` Archive?')">Go to Bin</button></a></td>			</td>
-</td>	</tr>
-<tr><td>User's Archive</td>
-<td><a href="manageuser_archive.php"><button type="button" class="btn-action" style="cursor: pointer; border-radius: 10px;" onclick="return confirm('Are you sure you want to go in User`s Archive?')">Go to Bin</button></a></td>			</td>
-</td>	</tr>
-<tr><td>Patients Archive</td>
-<td><a href="patients_archive.php"><button type="button" class="btn-action" style="cursor: pointer; border-radius: 10px;" onclick="return confirm('Are you sure you want to go in User`s Archive?')">Go to Bin</button></a></td>			</td>
-</td>	</tr>
 						</tbody>
+					</table>
 
-					</div>
-					</div>
-				</table>
 				<div><br><br>
 				
 			</div>
@@ -494,7 +516,7 @@ function restoreMysqlDB($filePath, $conn)
         } else {
             $response = array(
                 "type" => "success",
-                "message" => "<script><alert ('Database Restore Completed Successfully');</script>."
+                "message" => "Database Restore Completed Successfully."
             );
         }
         exec('rm ' . $filePath);
