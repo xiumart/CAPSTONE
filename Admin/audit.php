@@ -338,9 +338,9 @@ if (isset($_GET['eid'])) {
      	<tr>
 		 
 			<th>Username<form method=""><button class="up" value="up" name="btn" style="width: 10%; height: 5%; padding: 0; margin: 0;">▲</button>&nbsp<button class="down" value="down" name="btn" style="width: 10%; height: 5%; padding: 0; margin: 0;">▼</button></form></th>
-      <th>Activity<form method=""><button class="up" value="up" name="btn1" style="width: 10%; height: 5%; padding: 0; margin: 0;">▲</button>&nbsp<button class="down" value="down" name="btn1" style="width: 10%; height: 5%; padding: 0; margin: 0;">▼</button></form></th>
-      <th>Date & Time<form method=""><button class="up" value="up" name="btn2" style="width: 10%; height: 5%; padding: 0; margin: 0;">▲</button>&nbsp<button class="down" value="down" name="btn2" style="width: 10%; height: 5%; padding: 0; margin: 0;">▼</button></form></th>
-      <th>Role<form method=""><button class="up" value="up" name="btn3" style="width: 10%; height: 5%; padding: 0; margin: 0;">▲</button>&nbsp<button class="down" value="down" name="btn3" style="width: 10%; height: 5%; padding: 0; margin: 0;">▼</button></form></th>
+      <th>Activity<form method=""><button class="up" value="up1" name="btn" style="width: 10%; height: 5%; padding: 0; margin: 0;">▲</button>&nbsp<button class="down" value="down1" name="btn" style="width: 10%; height: 5%; padding: 0; margin: 0;">▼</button></form></th>
+      <th>Date & Time<form method=""><button class="up" value="up2" name="btn" style="width: 10%; height: 5%; padding: 0; margin: 0;">▲</button>&nbsp<button class="down" value="down2" name="btn" style="width: 10%; height: 5%; padding: 0; margin: 0;">▼</button></form></th>
+      <th>Role<form method=""><button class="up" value="up3" name="btn" style="width: 10%; height: 5%; padding: 0; margin: 0;">▲</button>&nbsp<button class="down" value="down3" name="btn" style="width: 10%; height: 5%; padding: 0; margin: 0;">▼</button></form></th>
      	</tr>
      </thead>
      <tbody>
@@ -388,32 +388,32 @@ if (isset($_GET['eid'])) {
         		$sql2 =$conn->query("SELECT count(users_id) AS id, `logs_username` FROM `users_logs` Order by `logs_username` ASC ");
         		echo "<style>.up{ background-color:red;}</style>";
         	}
-        	elseif ($_GET['btn1']=='down') {
+        	elseif ($_GET['btn']=='down1') {
         		$sql = "SELECT * FROM `users_logs` Order by `logs_activity` DESC LIMIT $start, $limit ";
         		$sql2 =$conn->query("SELECT count(users_id) AS id, `logs_activity` FROM `users_logs` Order by `logs_activity` DESC ");
         		echo "<style>.down{ background-color:red;}</style>";
         	}
-        	elseif ($_GET['btn1']=='up') {
+        	elseif ($_GET['btn']=='up1') {
         		$sql = "SELECT * FROM `users_logs` Order by `logs_activity` ASC LIMIT $start, $limit ";
         		$sql2 =$conn->query("SELECT count(users_id) AS id, `logs_activity` FROM `users_logs` Order by `logs_activity` ASC ");
         		echo "<style>.up{ background-color:red;}</style>";
         	}
-        	elseif ($_GET['btn2']=='down') {
+        	elseif ($_GET['btn']=='down2') {
         		$sql = "SELECT * FROM `users_logs` Order by `logs_datentime` DESC LIMIT $start, $limit ";
         		$sql2 =$conn->query("SELECT count(users_id) AS id, `logs_datentime` FROM `users_logs` Order by `logs_datentime` DESC ");
         		echo "<style>.down{ background-color:red;}</style>";
         	}
-        	elseif ($_GET['btn2']=='up') {
+        	elseif ($_GET['btn']=='up2') {
         		$sql = "SELECT * FROM `users_logs` Order by `logs_datentime` ASC LIMIT $start, $limit ";
         		$sql2 =$conn->query("SELECT count(users_id) AS id, `logs_datentime` FROM `users_logs` Order by `logs_datentime` ASC ");
         		echo "<style>.up{ background-color:red;}</style>";
         	}
-        	elseif ($_GET['btn3']=='down') {
+        	elseif ($_GET['btn']=='down3') {
         		$sql = "SELECT * FROM `users_logs` Order by `logs_roles` DESC LIMIT $start, $limit ";
         		$sql2 =$conn->query("SELECT count(users_id) AS id, `logs_roles` FROM `users_logs` Order by `logs_roles` DESC ");
         		echo "<style>.down{ background-color:red;}</style>";
         	}
-        	elseif ($_GET['btn3']=='up') {
+        	elseif ($_GET['btn']=='up3') {
         		$sql = "SELECT * FROM `users_logs` Order by `logs_roles` ASC LIMIT $start, $limit ";
         		$sql2 =$conn->query("SELECT count(users_id) AS id, `logs_roles` FROM `users_logs` Order by `logs_roles` ASC ");
         		echo "<style>.up{ background-color:red;}</style>";
@@ -452,11 +452,11 @@ if (isset($_GET['eid'])) {
 
    <!--page-->
   	<br>
-   <a class="page" id="pre" href="audit.php?page=<?=$prev; ?>">< Prev</a>
+   <a class="page" id="pre" href="audit.php?page=<?=$prev; ?>&btn=<?php echo $_GET['btn'] ?>">< Prev</a>
     	  <?php  for($i=1; $i <=$pages ; $i++): ?>
-    <a class="page" href="audit.php?page=<?=$i; ?>"><?=$i; ?></a>
+    <a class="page" href="audit.php?page=<?=$i; ?>&btn=<?php echo $_GET['btn'] ?>"><?=$i; ?></a>
                       <?php endfor; ?>
-    <a class="page" id="pnext" href="audit.php?page=<?=$next; ?>">Next ></a>	
+    <a class="page" id="pnext" href="audit.php?page=<?=$next; ?>&btn=<?php echo $_GET['btn'] ?>">Next ></a>	
 			</div>
 		  </div>
 			

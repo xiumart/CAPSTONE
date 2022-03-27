@@ -331,14 +331,21 @@ function Clickheretoprint()
      	<tr>
 		 
      	 <th>Company Name<form method=""><button class="up" value="up" name="btn" style="width: 10%; height: 5%; padding: 0; margin: 0;">▲</button>&nbsp<button class="down" value="down" name="btn" style="width: 10%; height: 5%; padding: 0; margin: 0;">▼</button></form></th>
-		 <th>Contact Person<form method=""><button class="up" value="up" name="btn1" style="width: 10%; height: 5%; padding: 0; margin: 0;">▲</button>&nbsp<button class="down" value="down" name="btn1" style="width: 10%; height: 5%; padding: 0; margin: 0;">▼</button></form></th>
-     	 <th>Contact No.<form method=""><button class="up" value="up" name="btn2" style="width: 10%; height: 5%; padding: 0; margin: 0;">▲</button>&nbsp<button class="down" value="down" name="btn2" style="width: 10%; height: 5%; padding: 0; margin: 0;">▼</button></form></th>
+		 <th>Contact Person<form method=""><button class="up" value="up1" name="btn" style="width: 10%; height: 5%; padding: 0; margin: 0;">▲</button>&nbsp<button class="down" value="down1" name="btn" style="width: 10%; height: 5%; padding: 0; margin: 0;">▼</button></form></th>
+     	 <th>Contact No.<form method=""><button class="up" value="up2" name="btn" style="width: 10%; height: 5%; padding: 0; margin: 0;">▲</button>&nbsp<button class="down" value="down2" name="btn" style="width: 10%; height: 5%; padding: 0; margin: 0;">▼</button></form></th>
 		 <th>Description</th>
 		 <th>Action</th>
      	</tr>
      </thead>
      <tbody>
-	 
+	 <style type="text/css">
+	 	.up{
+	 		cursor: pointer;
+	 	}
+	 	.down{
+	 		cursor: pointer;
+	 	}
+	 </style>
 	 <?php
      	$limit=25;
         $cat=$_POST['all'];
@@ -375,22 +382,22 @@ function Clickheretoprint()
         		
         		echo "<style>.up{ background-color:red;}</style>";
         	}
-        	elseif ($_GET['btn1']=='down') {
+        	elseif ($_GET['btn']=='down1') {
         		$sql1 = "SELECT * FROM `supplier` Order by `supp_contactperson` DESC LIMIT $start, $limit ";
         	
         		echo "<style>.down{ background-color:red;}</style>";
         	}
-        	elseif ($_GET['btn1']=='up') {
+        	elseif ($_GET['btn']=='up1') {
         		$sql1 = "SELECT * FROM `supplier` Order by `supp_contactperson` ASC LIMIT $start, $limit ";
         		
         		echo "<style>.up{ background-color:red;}</style>";
         	}
-        	elseif ($_GET['btn2']=='down') {
+        	elseif ($_GET['btn']=='down2') {
         		$sql1 = "SELECT * FROM `supplier` Order by `supp_contact` DESC LIMIT $start, $limit ";
         		
         		echo "<style>.down{ background-color:red;}</style>";
         	}
-        	elseif ($_GET['btn2']=='up') {
+        	elseif ($_GET['btn']=='up2') {
         		$sql1 = "SELECT * FROM `supplier` Order by `supp_contact` ASC LIMIT $start, $limit ";
         		
         		echo "<style>.up{ background-color:red;}</style>";
@@ -434,19 +441,12 @@ function Clickheretoprint()
    </table>
  </div>
    <br>
-  	<?php
-  	if ($_GET['page']==1) {
-  		
-  	}
-  	elseif ($_GET['page']==1) {
-  		# code...
-  	}
-  	?>
-   <a class="page" id="pre" href="supplier.php?page=<?=$prev; ?>">< Prev</a>
+  	
+   <a class="page" id="pre" href="supplier.php?page=<?=$prev; ?>&btn=<?php echo $_GET['btn'] ?>">< Prev</a>
     	  <?php  for($i=1; $i <=$pages ; $i++): ?>
-    <a class="page" href="supplier.php?page=<?=$i; ?>"><?=$i; ?></a>
+    <a class="page" href="supplier.php?page=<?=$i; ?>&btn=<?php echo $_GET['btn'] ?>"><?=$i; ?></a>
                       <?php endfor; ?>
-    <a class="page" id="pnext" href="supplier.php?page=<?=$next; ?>">Next ></a>
+    <a class="page" id="pnext" href="supplier.php?page=<?=$next; ?>&btn=<?php echo $_GET['btn'] ?>">Next ></a>
 				</div>
 				</div>
 				</div>
