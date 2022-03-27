@@ -1,10 +1,6 @@
 <?php 
 
-$connection_link = new mysqli("localhost", "root", "","capstone"); 
-  
-if ($connection_link === false) { 
-    die("ERROR: Not connected. ".$connection_link->connect_error); 
-} 
+include("conn.php");
 
 if (isset($_POST['btn-ret'])) {
 //sql query to perform copying data from one table to another

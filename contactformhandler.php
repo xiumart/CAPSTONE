@@ -1,6 +1,6 @@
 <?php
 
-$db = mysqli_connect("localhost", "root","", "capstone");
+include("conn.php")
 
 	// initialize variables
 	$name = "";

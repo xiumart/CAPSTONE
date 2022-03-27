@@ -329,7 +329,7 @@ if (isset($_GET['eid'])) {
      <tbody>
 	 
 	 <?php
-       $conn = mysqli_connect("localhost", "root", "","capstone");
+     include('conn.php');
        if ($conn-> connect_error) { 
         die("Connection Failed.". $conn-> connection_error);
        }

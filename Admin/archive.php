@@ -427,7 +427,7 @@ button[type=button]:hover {
 	<!-- CONTENT -->
 	
 	<?php
-$conn = mysqli_connect("localhost", "root", "", "capstone");
+include("conn.php");
 if (! empty($_FILES)) {
     // Validating SQL file type by extensions
     if (! in_array(strtolower(pathinfo($_FILES["backup_file"]["name"], PATHINFO_EXTENSION)), array(

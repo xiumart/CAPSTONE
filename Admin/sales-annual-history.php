@@ -315,15 +315,11 @@ function Clickheretoprint()
      </thead>
      <tbody>
      		 <?php
-	 $con=mysqli_connect("localhost","root","","capstone");
-    // Check connection
-    if (mysqli_connect_errno())
-      {
-      echo "Failed to connect to MySQL: " . mysqli_connect_error();
-      }
+	 include("conn.php");
+
 
      	  
-    $result = mysqli_query($con,"SELECT Year(date)AS Year, SUM(profit) AS profit, SUM(amount) AS amount FROM sales WHERE type='cash' GROUP BY YEAR(date)");
+    $result = mysqli_query($conn,"SELECT Year(date)AS Year, SUM(profit) AS profit, SUM(amount) AS amount FROM sales WHERE type='cash' GROUP BY YEAR(date)");
       
     while($row = mysqli_fetch_array($result))
       {
@@ -333,7 +329,7 @@ function Clickheretoprint()
       <?php echo "</td></tr>";
       }
 
-    mysqli_close($con);
+    mysqli_close($conn);
     ?>
 
      	  

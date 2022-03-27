@@ -356,12 +356,7 @@ function Clickheretoprint()
      </thead>
      <tbody>
      	   <?php
-	 $con=mysqli_connect("localhost","root","","capstone");
-    // Check connection
-    if (mysqli_connect_errno())
-      {
-      echo "Failed to connect to MySQL: " . mysqli_connect_error();
-      }
+	 include("conn.php");
       $limit=25;
         $cat=$_POST['all'];
         $page=isset($_GET['page']) ? $_GET['page']:1;

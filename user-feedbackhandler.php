@@ -1,17 +1,6 @@
 <?php
 include("session.php");
-$sname= "localhost";
-$uname= "root";
-$password = "";
-
-$db_name = "capstone";
-
-$con = mysqli_connect($sname, $uname, $password, $db_name);
-
-if ($con->connect_error) {
-	# Display an error mesage if the connection fails
-	die("Connection failed: " . $con->connect_error);
-}
+include("conn.php");
 
             
         $fsubject =  $_REQUEST['w3lSubject'];
