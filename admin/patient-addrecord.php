@@ -87,7 +87,7 @@ if (isset($_POST['btnsubmit'])) {
 		$chkwalk="Appointment";
 	}
 	else{
-		$query2 = mysqli_query($conn, "SELECT COUNT(*) as total from client_user_info;");
+		$query2 = mysqli_query($conn, "SELECT COUNT(*) as total from patient_distancerx;");
  while($result2=mysqli_fetch_array($query2)){
 
    $cidfirst = date("y");
