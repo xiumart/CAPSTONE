@@ -269,7 +269,7 @@ $output.='<p>-------------------------------------------------------------</p>';
 $output.='<p>Thanks,</p>';
 $output.='<p>RNL Care Team</p>';
 $body = $output; 
-$subject = "Password Confirmation - RNL Vision Care";
+$subject = "Email Confirmation - RNL Vision Care";
  
 $email_to = $email;
 
