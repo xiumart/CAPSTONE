@@ -162,7 +162,7 @@ $finalcode='RS-'.createRandomPassword();
 	  <li>
         <a href="archive.php">
           <i class='bx bxs-download' ></i>
-          <span class="text">Back-Up and Restore</span>
+          <span class="text">Back-up and Restore</span>
         </a>
       </li>
 		</ul>
