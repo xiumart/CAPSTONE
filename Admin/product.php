@@ -198,7 +198,7 @@ if (isset($_GET['id'])) {
 				<i class='bx bxs-bell' ></i>
 				<span class="num">
 				<?php 
-				$query = mysqli_query($conn, "SELECT COUNT(*) as total from product  WHERE qty <=10 AND pro_status ='2'");
+				$query = mysqli_query($conn, "SELECT COUNT(*) as total from client_inquiries WHERE inquiries_status = '2'");
 					while($result=mysqli_fetch_array($query)){
 					echo $result['total']; 
 				}			
@@ -207,63 +207,28 @@ if (isset($_GET['id'])) {
 			</a>
 			<?php
 
-if (isset($_GET['id'])) {
-	$users_id=$_GET['id'];
-
-	$query = "UPDATE `client_inquiries` SET inquiries_status = '1' WHERE inquiries_id = '$users_id'";
-	mysqli_query($conn, $query);
-			}
-			?>
-			<?php
-
-if (isset($_GET['eid'])) {
-	$pro_id=$_GET['eid'];
-
-	$query1 = "UPDATE `product` SET pro_status = '1' WHERE pro_id = '$pro_id'";
-	mysqli_query($conn, $query1);
+			if (isset($_GET['id'])) {
+			$users_id=$_GET['id'];
+			$query = "UPDATE `client_inquiries` SET inquiries_status = '1'  WHERE inquiries_id = '$users_id'";
+			mysqli_query($conn, $query);
+			header( "refresh:0; url=product.php" );
 			}
 			?>
 			
 				<div class="dropdown-content2">
 					<h4 id="textnotif">Notification</h4><br><hr>
-					
-			<table>
-			<?php   
+					<?php   
 			   require_once("../db/notification/notifdisplay.php");
               while($row = mysqli_fetch_assoc($query)){
 				  
             ?>
+			<table>
 				<tr>
 					<th><h4>Inquiry:</h4></th><p><td><?php echo $row['inquiries_message']; ?></p></td><td><a href="?id=<?php echo $row['inquiries_id'];?>"><button class="btn-remove" name="btnremove" style="cursor: pointer;">Clear</button></a></td><hr color="wheat">
-			  </tr>
-			  <?php
+			  </table>
+					<?php
 			  }
 			  ?>
-			  
-			  <?php
-			$sql1 = "SELECT * FROM `product` WHERE pro_status='2' AND qty <=10 LIMIT 6";
-			$result1 = $conn->query($sql1);  
-  			if($result1->num_rows > 0){
-  				while($row = $result1 -> fetch_assoc()){ 
-					$qty = $row['qty'];
-					$model = $row['model'];
-			  ?>
-			  <tr>
-			  <th><h4 style="color: red;">Low Product:</h4></th>
-			  <td><p><?php 
-					if ($qty<=10) {
-						echo "Model: " . $row['model'] ."&nbsp<br>";		
-						echo "QTY: " . $row['qty'];
-							}
-			  ?>
-				</p></td><td><a href="?eid=<?php echo $row['pro_id'];?>"><button class="btn-remove" name="btnremove" style="cursor: pointer;">Clear</button></a></td>
-							</tr>
-							<?php
-				  }}
-			  ?>
-			  </table>
-			  
-					
 					<a href="see-all-notification.php" id="colnotif">See all notification..</a>
 				</div>
 			</div>
@@ -340,6 +305,31 @@ function Clickheretoprint()
 }
 </script>
 			<form method="post">
+				<label>Search by:</label>
+              <select name='search' id="price-sort" onchange="location = this.value;" style="padding: 12px;border: 1px solid #ccc;border-radius: 4px;font-family: var(poppins); width: 30%;">
+                <option value='0' disabled selected>Select category..</option>
+                <option value='?search=product_model' <?php if($_GET['search']=='product_model'){
+                  echo "selected";
+                } ?>>Model</option>
+                <option value='?search=product_brand' <?php if($_GET['search']=='product_brand'){
+                  echo "selected";
+                } ?>>Brand</option>
+                <option value='?search=product_category' <?php if($_GET['search']=='product_category'){
+                  echo "selected";
+                } ?>>Category</option>
+                <option value='?search=product_origprice' <?php if($_GET['search']=='product_origprice'){
+                  echo "selected";
+                } ?>>Orig. Price</option>
+                <option value='?search=product_sellingprice' <?php if($_GET['search']=='product_sellingprice'){
+                  echo "selected";
+                } ?>>Selling Price</option>
+                <option value='?search=product_expdate' <?php if($_GET['search']=='product_expdate'){
+                  echo "selected";
+                } ?>>Expired Date</option>
+                <option value='?search=product_quantity' <?php if($_GET['search']=='product_quantity'){
+                  echo "selected";
+                } ?>>Quantity</option>
+              </select>
 						<input type="text" name="txtsearch" id="txtsearch" placeholder="Search " autocomplete="off" style="padding: 12px;border: 1px solid #ccc;border-radius: 4px;font-family: var(poppins); width: 50%;">
 						<button  id="btnsearch" name="btnsearch" class="page" style="cursor: pointer;"><i class='bx bx-search' ></i></button>
 			</form>
@@ -365,11 +355,41 @@ function Clickheretoprint()
         $page=isset($_GET['page']) ? $_GET['page']:1;
         $start=($page-1)*$limit;
         $search=$_POST['txtsearch'];
-     	
-     	if (isset($_POST['btnsearch'])) {
-        $sql1 = "SELECT * FROM `product` WHERE `category` LIKE '%$search%' OR `model` LIKE '%$search%' OR `brand` LIKE '%$search%' OR `origprice` LIKE '%$search%' OR `sellingprice` LIKE '%$search%' OR `qty` LIKE '%$search%' LIMIT $start, $limit";
-        $sql2 =$conn->query("SELECT count(pro_id) AS id,`category`,`model`,`brand`,`origprice`,`sellingprice`,`qty` FROM `product` WHERE `category` LIKE '%$search%' OR `model` LIKE '%$search%' OR `brand` LIKE '%$search%' OR `origprice` LIKE '%$search%' OR `sellingprice` LIKE '%$search%' OR `qty` LIKE '%$search%'");
 
+     	$sql2 =$conn->query("SELECT count(pro_id) AS id FROM `product`");
+		
+        if ($_GET['search']=='product_model') {
+        	$column="model";
+
+        }
+        elseif ($_GET['search']=='product_brand') {
+        	$column="brand";
+        	 
+        }
+        elseif ($_GET['search']=='product_category') {
+        	$column="category";
+        	 
+        }
+        elseif ($_GET['search']=='product_origprice') {
+        	$column="origprice";
+        	 
+        }
+        elseif ($_GET['search']=='product_sellingprice') {
+        	$column="sellingprice";
+        	 
+        }
+        elseif ($_GET['search']=='product_expdate') {
+        	$column="expdate";
+        	 
+        }
+
+        elseif ($_GET['search']=='product_quantity') {
+        	$column="qty";
+        	 
+        }
+     	if (isset($_POST['btnsearch'])) {
+        $sql1 = "SELECT * FROM `product` WHERE `$column` LIKE '%$search%' LIMIT $start, $limit";
+        
         	}
         else{
         		$sql1 = "SELECT * FROM `product` LIMIT $start, $limit ";
