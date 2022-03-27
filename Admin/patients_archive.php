@@ -1,4 +1,5 @@
 <?php
+error_reporting(0);
 include("session.php");
 function createRandomPassword() {
 	$chars = "003232303232023232023456789";
@@ -172,6 +173,12 @@ $finalcode='RS-'.createRandomPassword();
 					<span class="text">Audit Logs</span>
 				</a>
 			</li>
+			<li>
+				<a href="audit.php">
+					<i class='bx bxs-phone' ></i>
+					<span class="text">Client Inquiries</span>
+				</a>
+			</li>
 			<li class = "active">
 				<a href="archive.php">
 					<i class='bx bxs-download' ></i>
@@ -209,15 +216,6 @@ $finalcode='RS-'.createRandomPassword();
 			</a>
 			<?php
 
-if (isset($_GET['id'])) {
-	$users_id=$_GET['id'];
-
-	$query = "UPDATE `client_inquiries` SET inquiries_status = '1' WHERE inquiries_id = '$users_id'";
-	mysqli_query($conn, $query);
-			}
-			?>
-			<?php
-
 if (isset($_GET['eid'])) {
 	$pro_id=$_GET['eid'];
 
@@ -230,17 +228,6 @@ if (isset($_GET['eid'])) {
 					<h4 id="textnotif">Notification</h4><br><hr>
 					
 			<table>
-			<?php   
-			   require_once("../db/notification/notifdisplay.php");
-              while($row = mysqli_fetch_assoc($query)){
-				  
-            ?>
-				<tr>
-					<th><h4>Inquiry:</h4></th><p><td><?php echo $row['inquiries_message']; ?></p></td><td><a href="?id=<?php echo $row['inquiries_id'];?>"><button class="btn-remove" name="btnremove" style="cursor: pointer;">Clear</button></a></td><hr color="wheat">
-			  </tr>
-			  <?php
-			  }
-			  ?>
 			  
 			  <?php
 			$sql1 = "SELECT * FROM `product` WHERE pro_status='2' AND qty <=10 LIMIT 6";
@@ -315,6 +302,23 @@ if (isset($_GET['eid'])) {
 			</div><br>
 			
 			<form method="post">
+				<label>Search by:</label>
+              <select name='search' id="price-sort" onchange="location = this.value;" style="padding: 12px;border: 1px solid #ccc;border-radius: 4px;font-family: var(poppins); width: 30%;">
+                <option value='0' disabled selected>Select category..</option>
+                <option value='?search=patientid' <?php if($_GET['search']=='patientid'){
+                  echo "selected";
+                } ?>>Patient ID</option>
+                <option value='?search=name' <?php if($_GET['search']=='name'){
+                  echo "selected";
+                } ?>>Name</option>
+                <option value='?search=contact' <?php if($_GET['search']=='contact'){
+                  echo "selected";
+                } ?>>Contact</option>
+                <option value='?search=address' <?php if($_GET['search']=='address'){
+                  echo "selected";
+                } ?>>Address</option>
+                
+              </select>
 						<input type="text" name="txtsearch" id="txtsearch" placeholder="Search" autocomplete="off" style="padding: 12px;border: 1px solid #ccc;border-radius: 4px;font-family: var(poppins); width: 50%;">
 						<button  id="btnsearch" name="btnsearch" class="page" style="cursor: pointer;"><i class='bx bx-search' ></i></button>
 			</form>
@@ -338,40 +342,54 @@ if (isset($_GET['eid'])) {
 				
 						</thead>
 						<tbody>
+						<?php
+	 
+	 $limit=25;
+	
+	$page=isset($_GET['page']) ? $_GET['page']:1;
+	$start=($page-1)*$limit;
+	$search=$_POST['txtsearch'];
+	 $sql2 =$conn->query("SELECT count(patient_id) AS id, `patient_id`,`patient_name`,`patient_contact`, `patient_address` FROM `archive_patients` WHERE `patient_id` LIKE '%$search%' OR `patient_name` LIKE '%$search%'  OR `patient_contact` LIKE'%$search%' OR `patient_address` LIKE'%$search%'  ");
+	 
+
+	if ($_GET['search']=='patientid') {
+		$column="patient_id";
+
+	}
+	elseif ($_GET['search']=='name') {
+		$column="patient_name";
+		 
+	}
+	elseif ($_GET['search']=='contact') {
+		$column="patient_contact";
+		 
+	}
+	elseif ($_GET['search']=='address') {
+		$column="patient_address";
+		 
+	}
+	
+	
+
+	 if (isset($_POST['btnsearch'])) {
+	$sql1 = "SELECT year(now())-year(`patient_bday`) AS age,`patient_no`,`patient_id`,`patient_name`,`patient_email`,`patient_contact`,`patient_address` FROM `archive_patients` WHERE `patient_id` LIKE '%$search%' OR `patient_name` LIKE'%$search%'  OR `patient_contact` LIKE'%$search%' OR `patient_address` LIKE'%$search%'  LIMIT $start, $limit ";
+		}
+	else{
+			$sql1 = "SELECT  year(now())-year(`patient_bday`) AS age,`patient_no`,`patient_id`,`patient_name`,`patient_email`,`patient_contact`,`patient_address`  FROM `archive_patients` LIMIT $start, $limit ";
+			$sql2 =$conn->query("SELECT count(patient_no) AS id FROM `archive_patients`");
+		}
+	$result2 = $sql2->fetch_all(MYSQLI_ASSOC);
+			$total=$result2[0]['id'];
+			$pages=ceil($total/$limit);
+			$prev=$page-1;
+			$next=$page+1;
+	   $result1 = $conn->query($sql1);  
+		  if($result1->num_rows > 0){
+			  while($row = $result1 -> fetch_assoc()){ 
+
+	 ?>
 							<tr>
-							<?php
-          	error_reporting(0);
-     	$limit=25;
-        //$cat=$_POST['all'];
-        $page=isset($_GET['page']) ? $_GET['page']:1;
-        $start=($page-1)*$limit;
-
-        $search=$_POST['txtsearch'];
-     	if (isset($_POST['btnsearch'])) {
-     		$sql2 =$conn->query("SELECT count(patient_no) AS id,`patient_id`,`patient_name`,`patient_address`, `patient_contact` FROM `archive_patients` WHERE `patient_id` LIKE '%$search%' OR `patient_name` LIKE '%$search%' OR `patient_address` LIKE '%$search%' OR `patient_contact` LIKE '%$search%' AND `status`!='Remove'");
-
-        $sql1 = "SELECT year(now())-year(`patient_bday`) AS age,`patient_no`,`patient_id`,`patient_name`,`patient_email`,`patient_contact`,`patient_address`  FROM `archive_patients` WHERE `patient_id` LIKE '%$search%' OR `patient_name` LIKE '%$search%' OR `patient_address` LIKE '%$search%' OR `patient_contact` LIKE '%$search%' AND `status`!='Remove' LIMIT $start, $limit ";
-        if ($search=='') {
-        		$sql2 =$conn->query("SELECT count(patient_no) AS id FROM `archive_patients`");
-        $sql1 = "SELECT year(now())-year(`patient_bday`) AS age,`patient_no`,`patient_id`,`patient_name`,`patient_email`,`patient_contact`,`patient_address`  FROM `archive_patients` WHERE `status`!='Remove'  LIMIT $start, $limit ";
-        }
-     	}
-     	else{ 
-     	$sql2 =$conn->query("SELECT count(patient_no) AS id FROM `archive_patients`");
-        $sql1 = "SELECT year(now())-year(`patient_bday`) AS age,`patient_no`,`patient_id`,`patient_name`,`patient_email`,`patient_contact`,`patient_address`  FROM `archive_patients` WHERE `status`!='Remove'  LIMIT $start, $limit ";	
-     	}
-
-        $result2 = $sql2->fetch_all(MYSQLI_ASSOC);
-                $total=$result2[0]['id'];
-                $pages=ceil($total/$limit);
-                $prev=$page-1;
-                $next=$page+1;
-     	  $result1 = $conn->query($sql1);  
-  			if($result1->num_rows > 0){
-  				while($row = $result1 -> fetch_assoc()){
-
-
-     	?>
+							
 							<td data-label="Patient ID"><?php echo $row['patient_id'];?></td>
 							<td data-label="Name"><?php echo $row['patient_name'];?></td>
 							<td data-label="Contact No."><?php echo $row['patient_contact'];?></td>
@@ -383,8 +401,8 @@ if (isset($_GET['eid'])) {
 							<?php
      	}}
      	$id=$_GET['id'];
-$sql2 = "SELECT * FROM `archive_patients` WHERE `patient_no`='$id'";
- $result2 = $conn->query($sql2);  
+		$sql2 = "SELECT * FROM `archive_patients` WHERE `patient_no`='$id'";
+ 		$result2 = $conn->query($sql2);  
   			if($result2->num_rows > 0){
   				while($row = $result2 -> fetch_assoc()){
   					$name=$row['patient_name'];

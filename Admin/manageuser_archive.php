@@ -1,4 +1,5 @@
 <?php
+error_reporting(0);
 include("session.php");
 function createRandomPassword() {
 	$chars = "003232303232023232023456789";
@@ -300,16 +301,35 @@ if (isset($_GET['eid'])) {
 			
 			</div><br>
 			
-			<form method="post">
-						<input type="text" name="txtsearch" id="txtsearch" placeholder="Search" autocomplete="off" style="padding: 12px;border: 1px solid #ccc;border-radius: 4px;font-family: var(poppins); width: 50%;">
-						<button  id="btnsearch" name="btnsearch" class="page" style="cursor: pointer;"><i class='bx bx-search' ></i></button>
-			</form>
 			
 			<div>
 				
 				<div>
                 
 <div id="printing">
+<form method="post">
+					<label>Search by:</label>
+              <select name='search' id="price-sort" onchange="location = this.value;" style="padding: 12px;border: 1px solid #ccc;border-radius: 4px;font-family: var(poppins); width: 30%;">
+                <option value='0' disabled selected>Select category..</option>
+                <option value='?search=lastname' <?php if($_GET['search']=='lastname'){
+                  echo "selected";
+                } ?>>Lastname</option>
+                <option value='?search=firstname' <?php if($_GET['search']=='firstname'){
+                  echo "selected";
+                } ?>>Firstname</option>
+                <option value='?search=username' <?php if($_GET['search']=='username'){
+                  echo "selected";
+                } ?>>Username</option>
+                <option value='?search=contact' <?php if($_GET['search']=='contact'){
+                  echo "selected";
+                } ?>>Contact</option>
+                <option value='?search=position' <?php if($_GET['search']=='position'){
+                  echo "selected";
+                } ?>>Position</option>
+              </select>
+						<input type="text" name="txtsearch" id="txtsearch" placeholder="Type here.." autocomplete="off" style="padding: 12px;border: 1px solid #ccc;border-radius: 4px;font-family: var(poppins);width: 30%;">
+						<button  id="btnsearch" name="btnsearch" class="page" style="cursor: pointer;"><i class='bx bx-search' ></i></button>
+						</form></br>
 <table>
 <caption>List of Users</caption>
      <thead>
@@ -327,28 +347,52 @@ if (isset($_GET['eid'])) {
 	 
 	 <?php
      	$limit=25;
-        error_reporting(0);
+        $cat=$_POST['all'];
         $page=isset($_GET['page']) ? $_GET['page']:1;
         $start=($page-1)*$limit;
-        $search=$_POST['txtsearch'];
-     	$sql2 =$conn->query("SELECT count(users_id) AS id `users_lastname`,`users_firstname`,`users_middlename`,`users_contact`,`users_roles` FROM `users_account` WHERE `users_lastname` LIKE '%$search%' OR `users_username` LIKE'%$search%' OR `users_firstname` LIKE'%$search%' OR `users_middlename` LIKE'%$search%'  OR `users_contact` LIKE'%$search%'  OR `users_roles` LIKE'%$search%'");
-     	if (isset($_POST['btnsearch'])) {
-        $sql1 = "SELECT * FROM `archive_users_account` WHERE `users_lastname` LIKE '%$search%' OR `users_username` LIKE'%$search%' OR `users_firstname` LIKE'%$search%' OR `users_middlename` LIKE'%$search%'  OR `users_contact` LIKE'%$search%'  OR `users_roles` LIKE'%$search%'  LIMIT $start, $limit ";
-        	}
-        else{
-        		$sql1 = "SELECT * FROM `archive_users_account` LIMIT $start, $limit ";
-        		$sql2 =$conn->query("SELECT count(users_id) AS id FROM `archive_users_account`");
-        	}
-        $result2 = $sql2->fetch_all(MYSQLI_ASSOC);
-                $total=$result2[0]['id'];
-                $pages=ceil($total/$limit);
-                $prev=$page-1;
-                $next=$page+1;
-     	  $result1 = $conn->query($sql1);  
-  			if($result1->num_rows > 0){
-  				while($row = $result1 -> fetch_assoc()){ 
+       $search=$_POST['txtsearch'];
+        	
+        	$sql2 =$conn->query("SELECT count(users_id) AS id FROM `archive_users_account`");
+ 			 if ($_GET['search']=='lastname') {
+        	$column="users_lastname";
+        	 
+        }
+        elseif ($_GET['search']=='firstname') {
+        	$column="users_firstname";
 
-     	?>
+        }
+        elseif ($_GET['search']=='username') {
+        	$column="users_username";
+        	 
+        }
+        elseif ($_GET['search']=='contact') {
+        	$column="users_contact";
+        	 
+        }
+        elseif ($_GET['search']=='position') {
+        	$column="users_roles";
+        	 
+        }
+        else{
+
+        }
+		if (isset($_POST['btnsearch'])) {
+			$sql1 = "SELECT * FROM `archive_users_account` WHERE `$column` LIKE '%$search%' Order by `users_id` DESC LIMIT $start, $limit ";
+				}
+			else{
+					$sql1 = "SELECT * FROM `archive_users_account` LIMIT $start, $limit ";
+					$sql2 =$conn->query("SELECT count(users_id) AS id FROM `archive_users_account`");
+				}
+			$result2 = $sql2->fetch_all(MYSQLI_ASSOC);
+					$total=$result2[0]['id'];
+					$pages=ceil($total/$limit);
+					$prev=$page-1;
+					$next=$page+1;
+			   $result1 = $conn->query($sql1);  
+				  if($result1->num_rows > 0){
+					  while($row = $result1 -> fetch_assoc()){ 
+		
+			 ?>
      	
 
      	  <tr>
@@ -370,11 +414,11 @@ if (isset($_GET['eid'])) {
    </table>
 				<div><br><br>
 						
-   <a class="page" id="pre" href="supplier.php?page=<?=$prev; ?>&btn=<?php echo $_GET['btn'] ?>">< Prev</a>
+   <a class="page" id="pre" href="manageuser_archive.php?page=<?=$prev; ?>&btn=<?php echo $_GET['btn'] ?>">< Prev</a>
     	  <?php  for($i=1; $i <=$pages ; $i++): ?>
-    <a class="page" href="supplier.php?page=<?=$i; ?>&btn=<?php echo $_GET['btn'] ?>"><?=$i; ?></a>
+    <a class="page" href="manageuser_archive.php?page=<?=$i; ?>&btn=<?php echo $_GET['btn'] ?>"><?=$i; ?></a>
                       <?php endfor; ?>
-    <a class="page" id="pnext" href="supplier.php?page=<?=$next; ?>&btn=<?php echo $_GET['btn'] ?>">Next ></a>
+    <a class="page" id="pnext" href="manageuser_archive.php?page=<?=$next; ?>&btn=<?php echo $_GET['btn'] ?>">Next ></a>
 	
 			</div>
 
