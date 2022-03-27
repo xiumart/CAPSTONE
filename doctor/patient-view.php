@@ -96,7 +96,7 @@ $finalcode='RS-'.createRandomPassword();
 			</form>
 			<div id="digital-clock"></div>
 			<script src="time.js"></script>
-			
+			<h4><?php echo $_SESSION['users_username']; ?></h4>
 			<!-- DROP DOWN NG EDIT PROFILE AND CHANGE PASS OK-->
 			<div class="dropdown1">
 			<img src="img\user.png" alt="" width="40px" class="userlogo">

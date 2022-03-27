@@ -247,59 +247,10 @@ elseif (($_POST['med'])=="Reading") {
 			</form>
 			<div id="digital-clock"></div>
 			<script src="time.js"></script>
-			<h4><?php echo $_SESSION['users_username']; ?></h4>
-			<div class="dropdown2">
-			<a href="#" class="notification">
-				<i class='bx bxs-bell' ></i>
-				<span class="num">
-				<?php 
-				$query = mysqli_query($conn, "SELECT COUNT(*) as total from product  WHERE qty <=10 AND pro_status ='2'");
-					while($result=mysqli_fetch_array($query)){
-					echo $result['total']; 
-				}			
-				?>
-						  </span>			  
-			</a>
-			<?php
 
-if (isset($_GET['eid'])) {
-	$pro_id=$_GET['eid'];
-
-	$query1 = "UPDATE `product` SET pro_status = '1' WHERE pro_id = '$pro_id'";
-	mysqli_query($conn, $query1);
-			}
-			?>
 			
-				<div class="dropdown-content2">
-					<h4 id="textnotif">Notification</h4><br><hr>
-					
-			<table>
-			  
-			  <?php
-			$sql1 = "SELECT * FROM `product` WHERE pro_status='2' AND qty <=10 LIMIT 6";
-			$result1 = $conn->query($sql1);  
-  			if($result1->num_rows > 0){
-  				while($row = $result1 -> fetch_assoc()){ 
-					$qty = $row['qty'];
-					$model = $row['model'];
-			  ?>
-			  <tr>
-			  <th><h4 style="color: red;">Low Product:</h4></th>
-			  <td><p><?php 
-					if ($qty<=10) {
-						echo "Model: " . $row['model'] ."&nbsp<br>";		
-						echo "QTY: " . $row['qty'];
-							}
-			  ?>
-				</p></td><td><a href="?eid=<?php echo $row['pro_id'];?>"><button class="btn-remove" name="btnremove" style="cursor: pointer;">Clear</button></a></td>
-							</tr>
-							<?php
-				  }}
-			  ?>
-			  </table>
+			<h4><?php echo $_SESSION['users_username']; ?></h4>
 
-				</div>
-			</div>
 			<!-- DROP DOWN NG EDIT PROFILE AND CHANGE PASS OK-->
 			<div class="dropdown1">
 			<img src="img\user.png" alt="" width="40px" class="userlogo">
@@ -520,21 +471,22 @@ if (isset($_GET['eid'])) {
 							<label for="firstname">Doctor</label>
 						</div>
 						<div class="col-75">
-							<select name="doctor" id="doctor">
+							
 								<?php
-								$sql1 = "SELECT * FROM `users_account` WHERE `users_roles` = 'Doctor'";
+								$uu=$_SESSION['users_username'];
+								$sql1 = "SELECT * FROM `users_account` WHERE `users_username` = '$uu'";
  						$result1 = $conn->query($sql1);  
 						if($result1->num_rows > 0){
   						while($row = $result1 -> fetch_assoc()){
   							$firstn=$row['users_firstname'];
   							$lastn=$row['users_lastname'];
 								?>
-								<option value="Dr. <?php echo $firstn.$lastn; ?>">Dr. <?php echo $firstn.$lastn; ?>
-								</option>
+												<input type="text" name="doctor" value="<?php echo 'Dr. '.$row['users_firstname'].' '.$lastn=$row['users_lastname'];?>" readonly>		
+						
 								<?php
 						}}
 						?>
-							</select>
+
 
 						</div>
 						</div>

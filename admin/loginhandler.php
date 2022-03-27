@@ -41,6 +41,8 @@ if (isset($_POST['users_username']) && isset($_POST['users_password'])) {
                 $_SESSION['users_username'] = $row['users_username'];
                 $_SESSION['users_roles'] = $row['users_roles'];
             	$_SESSION['users_id'] = $row['users_id'];
+            	$_SESSION['users_lastname'] = $row['users_lastname'];
+            	$_SESSION['users_firstname'] = $row['users_firstname'];
                 users_logs($_SESSION['users_username'], "Login", date("Y-m-d h:i:sa"), $_SESSION['users_roles']);
             	header("Location: ../doctor/dashboard.php");
                 exit();
