@@ -12,16 +12,18 @@ if (isset($_POST['submit'])) {
 			mysqli_query($conn, $queryaccept);
 			$query223 = mysqli_query($conn, "SELECT * from appointment where app_id= '$app_id'");
 									while($result=mysqli_fetch_array($query223)){
-										$time = $row['app_time'];
-										$date = $row['app_date'];
+										$time = $result['app_time'];
+										$date = $result['app_date'];
 										$name = $result['app_name'];
 										$receiver = $result['app_contact'];
+										$client_id = $result['client_id'];
+										
 										echo $receiver;
 						  										
 			include '../includes/smsAPIControl.php';
-			$message = "Hello ".$name. " ! Your requested Appointment was Approved! Date: ".$date." and Time: ".$time." RNL VISION CARE";
-			$smsAPICode = "TR-DANVE492266_VT83N";
-			$smsAPIPassword ="1u)32r9!hf";
+			$message = "Hello ".$name. " ! Your Appointment was Approved! Date:".$date."-Time:".$time."RNL VISION CARE";
+			$smsAPICode = "TR-JONAS919806_2WH5H";
+			$smsAPIPassword ="@x[5]r}5gk";
 	
 			$send = new Trebor(); 
 			$send->itexmo($receiver, $message,$smsAPICode,$smsAPIPassword);
