@@ -231,54 +231,7 @@ elseif (($_POST['med'])=="Reading") {
 					<span class="text">Patient Record</span>
 				</a>
 			</li>
-			<li>
-				<a href="point-of-sale.php?id=cash&invoice=<?php echo $finalcode ?>">
-					<i class='bx bxs-cart' ></i>
-					<span class="text">Point of Sale</span>
-				</a>
-			</li>
-			<li>
-				<a href="sales-report.php">
-					<i class='bx bxs-chart' ></i>
-					<span class="text">Sales Report</span>
-				</a>
-			</li>
-			<li>
-				<a href="product.php">
-					<i class='bx bxs-shopping-bag-alt' ></i>
-					<span class="text">Product Inventory</span>
-				</a>
-			</li>
-			<li>
-				<a href="supplier.php">
-					<i class='bx bxs-truck' ></i>
-					<span class="text">Supplier</span>
-				</a>
-			</li>
-			<li>
-				<a href="manage-user.php">
-					<i class='bx bxs-group' ></i>
-					<span class="text">Manage User</span>
-				</a>
-			</li>
-			<li>
-				<a href="audit.php">
-					<i class='bx bxs-book' ></i>
-					<span class="text">Audit Logs</span>
-				</a>
-			</li>
-			<li>
-        <a href="inquiries.php">
-          <i class='bx bxs-phone' ></i>
-          <span class="text">Client Inquiries</span>
-        </a>
-      </li>
-			<li>
-				<a href="archive.php">
-					<i class='bx bxs-download' ></i>
-					<span class="text">Back-up and Restore</span>
-				</a>
-			</li>
+			
 		</ul>
 	</section>
 	<!-- SIDEBAR -->
