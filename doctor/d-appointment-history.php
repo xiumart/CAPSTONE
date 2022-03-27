@@ -1,6 +1,6 @@
 
 <?php
-
+	 error_reporting(0);
 include("../conn.php");
 include("session.php");
 ?>
@@ -143,8 +143,38 @@ include("session.php");
 				</div>
 			
 			</div>
-
+			<style>
+	#content main .table-data .order table th {
+		text-align: center;
+	}
+	</style>
 			
+				<form method="post">
+					<label>Search by:</label>
+              <select name='search' id="price-sort" onchange="location = this.value;" style="padding: 12px;border: 1px solid #ccc;border-radius: 4px;font-family: var(poppins); width: 30%;">
+                <option value='0' disabled selected>Select category..</option>
+                <option value='?search=name' <?php if($_GET['search']=='name'){
+                  echo "selected";
+                } ?>>Name</option>
+                <option value='?search=contact' <?php if($_GET['search']=='contact'){
+                  echo "selected";
+                } ?>>Contact</option>
+                <option value='?search=date' <?php if($_GET['search']=='date'){
+                  echo "selected";
+                } ?>>Date</option>
+                <option value='?search=time' <?php if($_GET['search']=='time'){
+                  echo "selected";
+                } ?>>Time</option>
+                <option value='?search=purpose' <?php if($_GET['search']=='purpose'){
+                  echo "selected";
+                } ?>>Purpose</option>
+				<option value='?search=remarks' <?php if($_GET['search']=='remarks'){
+                  echo "selected";
+                } ?>>Remarks</option>
+              </select>
+						<input type="text" name="txtsearch" id="txtsearch" placeholder="Type here.." autocomplete="off" style="padding: 12px;border: 1px solid #ccc;border-radius: 4px;font-family: var(poppins);width: 30%;">
+						<button id="btnsearch" name="btnsearch" class="page" style="cursor: pointer;"><i class='bx bx-search' ></i></button>
+						</form></br>
 			<div>
 			
 					<table>
@@ -161,13 +191,62 @@ include("session.php");
      	</tr>
      </thead>
      <tbody>
+	 <?php
+
+     	$limit=10;
+        
+        $page=isset($_GET['page']) ? $_GET['page']:1;
+        $start=($page-1)*$limit;
+       $search=$_POST['txtsearch'];
+        	
+        	$sql2 =$conn->query("SELECT count(app_id) AS id FROM `appointment_history`");
+ 			 if ($_GET['search']=='name') {
+        	$column="app_name";
+        	 
+        }
+        elseif ($_GET['search']=='contact') {
+        	$column="app_contact";
+
+        }
+        elseif ($_GET['search']=='date') {
+        	$column="app_date";
+        	 
+        }
+        elseif ($_GET['search']=='time') {
+        	$column="app_time";
+        	 
+        }
+        elseif ($_GET['search']=='purpose') {
+        	$column="app_purpose";
+        	 
+        }
+		elseif ($_GET['search']=='remarks') {
+        	$column="app_remarks";
+        	 
+        }
+     	if (isset($_POST['btnsearch'])) {
+     		      
+        $sql1 = "SELECT * FROM `appointment_history` WHERE `$column` LIKE '%$search%' LIMIT $start, $limit ";
+        
+        	}
+        else{
+        		$sql1 = "SELECT * FROM `appointment_history` LIMIT $start, $limit ";
+        		$sql2 =$conn->query("SELECT count(app_id) AS id FROM `appointment_history`");
+        	}
+
+
+        $result2 = $sql2->fetch_all(MYSQLI_ASSOC);
+                $total=$result2[0]['id'];
+                $pages=ceil($total/$limit);
+                $prev=$page-1;
+                $next=$page+1;
+     	  $result1 = $conn->query($sql1);  
+  			if($result1->num_rows > 0){
+  				while($row = $result1 -> fetch_assoc()){ 
+
+     	?>
      	  <tr>
 
-     	  		<?php 
-
-     	  		$query4 = mysqli_query($conn, "Select * from appointment_history WHERE app_DateTime <= now() ORDER BY app_DateTime DESC");
-     	  		while($row = $query4 -> fetch_assoc()){
-?>
      	  	  <td data-label="Name"><?php echo $row['app_name'];?></td>
      	  	  <td data-label="Contact"><?php echo $row['app_contact'];?></td>
      	  	  <td data-label="Date"><?php echo $row['app_date'];?></td>
@@ -177,14 +256,31 @@ include("session.php");
 			  <td data-label="DateTime"><?php echo $row['app_DateTime'];?></td>
      	  </tr>
 
-     	  <?php  } ?>
+     	  <?php
+     	}}
+
+     	?>
 
      	 
      </tbody>
    </table>
+   <br>
+   <?php
+  	if ($_GET['page']==1) {
+  		
+  	}
+  	elseif ($_GET['page']==1) {
+  		# code...
+  	}
+  	?>
+   <a class="page" id="pre" href="d-appointment-history.php?page=<?=$prev; ?>">< Prev</a>
+    	  <?php  for($i=1; $i <=$pages ; $i++): ?>
+    <a class="page" href="d-appointment-history.php?page=<?=$i; ?>"><?=$i; ?></a>
+                      <?php endfor; ?>
+    <a class="page" id="pnext" href="d-appointment-history.php?page=<?=$next; ?>">Next ></a>
 				</div>
 
-				
+		  </div>
 				
 			</div>
 			

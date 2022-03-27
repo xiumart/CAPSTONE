@@ -1,6 +1,6 @@
 
 <?php
-
+ error_reporting(0);
 include("../conn.php");
 include("session.php");
 function createRandomPassword() {
@@ -277,7 +277,7 @@ if (isset($_GET['eid'])) {
 					</ul>
 				</div>
 			
-			</div>
+			</div><br>
 			<style>
 	#content main .table-data .order table th {
 		text-align: center;
@@ -308,7 +308,7 @@ if (isset($_GET['eid'])) {
                 } ?>>Remarks</option>
               </select>
 						<input type="text" name="txtsearch" id="txtsearch" placeholder="Type here.." autocomplete="off" style="padding: 12px;border: 1px solid #ccc;border-radius: 4px;font-family: var(poppins);width: 30%;">
-						<button  id="btnsearch" name="btnsearch" class="page" style="cursor: pointer;"><i class='bx bx-search' ></i></button>
+						<button id="btnsearch" name="btnsearch" class="page" style="cursor: pointer;"><i class='bx bx-search' ></i></button>
 						</form></br>
 			<div>
 			
@@ -327,7 +327,8 @@ if (isset($_GET['eid'])) {
      </thead>
      <tbody>
 	 <?php
-     	$limit=25;
+	 error_reporting(0);
+     	$limit=10;
         
         $page=isset($_GET['page']) ? $_GET['page']:1;
         $start=($page-1)*$limit;
@@ -407,11 +408,11 @@ if (isset($_GET['eid'])) {
   		# code...
   	}
   	?>
-   <a class="page" id="pre" href="appointment_history.php?page=<?=$prev; ?>">< Prev</a>
+   <a class="page" id="pre" href="d-appointment-history.php?page=<?=$prev; ?>">< Prev</a>
     	  <?php  for($i=1; $i <=$pages ; $i++): ?>
-    <a class="page" href="appointment_history.php?page=<?=$i; ?>"><?=$i; ?></a>
+    <a class="page" href="d-appointment-history.php?page=<?=$i; ?>"><?=$i; ?></a>
                       <?php endfor; ?>
-    <a class="page" id="pnext" href="appointment_history.php?page=<?=$next; ?>">Next ></a>
+    <a class="page" id="pnext" href="d-appointment-history.php?page=<?=$next; ?>">Next ></a>
 				</div>
 
 		  </div>
