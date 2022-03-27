@@ -16,7 +16,7 @@ $sql_query1 = "DELETE from product where `pro_id` = $pro_id1";
     $connection_link->query($sql_query1);
     echo '<script language="javascript">';
 	        echo 'alert("Products Move to Recycle Bin");';
-	        echo 'window.location="archive.php";';
+	        echo 'window.location="product.php";';
 	        echo '</script>'; 
 } 
 else

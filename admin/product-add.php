@@ -22,10 +22,7 @@ function createRandomPassword() {
 	return $pass;
 }
 $finalcode='RS-'.createRandomPassword();
-$query = "SELECT `supp_cname` FROM supplier";
-$query1 = "SELECT `brand` FROM products";
-$result = $conn->query($query);
-$result1 = $conn->query($query);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -268,9 +265,7 @@ if (isset($_GET['eid'])) {
 				  }}
 			  ?>
 			  </table>
-			  
-					
-					<a href="see-all-notification.php" id="colnotif">See all notification..</a>
+
 				</div>
 			</div>
 			<!-- DROP DOWN NG EDIT PROFILE AND CHANGE PASS OK-->
@@ -398,6 +393,10 @@ if($picture_type=="image/jpeg" || $picture_type=="image/jpg" || $picture_type=="
 							<option disabled="" selected="">Select your option..</option>
 							
 							<?php 
+							$query = "SELECT `supp_cname` FROM supplier";
+							$query1 = "SELECT `brand` FROM products";
+							$result = $conn->query($query);
+							$result1 = $conn->query($query);
 							if($result1->num_rows > 0){ 
 								while($row = $result1->fetch_assoc()){  
 									echo '<option value="'.$row['supp_cname'].'">'.$row['supp_cname'].'</option>'; 

@@ -320,7 +320,7 @@ function Clickheretoprint()
 							<td data-label="Contact No."><?php echo $row['patient_contact'];?></td>
 							<td data-label="Address"><?php echo $row['patient_address'];?></td>
 							<td data-label="Age"><?php echo $row['age'];?></td>
-							<td data-label="Action"><form method="post"action="archive_patientsrec.php?id=<?php echo $row['patient_no'];?>"><button class="btn-c" name="btnrem"style="cursor: pointer;width:100px;pad" onclick="return confirm('Are you sure you want to remove this patient?')">REMOVE</button></form>
+							<td data-label="Action"><form method="post"action="?id=<?php echo $row['patient_no'];?>"><button class="btn-c" name="btnrem"style="cursor: pointer;width:100px;pad" onclick="return confirm('Are you sure you want to remove this patient?')">REMOVE</button></form>
 			  				<a href="patient-view.php?id=<?php echo $row['patient_no'];?>"><button class="btn-f" style="cursor: pointer;width:100px;">VIEW</button></td>
 							</tr>
 							<?php

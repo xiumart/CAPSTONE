@@ -16,7 +16,7 @@ $sql_query1 = "DELETE from patient_distancerx where `patient_no` = $pro_id1";
     $connection_link->query($sql_query1);
     echo '<script language="javascript">';
 	        echo 'alert("Patient Record Moved to Recycle Bin");';
-	        echo 'window.location="archive.php";';
+	        echo 'window.location="patient-record.php";';
 	        echo '</script>'; 
 } 
 else

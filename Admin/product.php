@@ -248,9 +248,7 @@ if (isset($_GET['eid'])) {
 				  }}
 			  ?>
 			  </table>
-			  
-					
-					<a href="see-all-notification.php" id="colnotif">See all notification..</a>
+
 				</div>
 			</div>
 			<!-- DROP DOWN NG EDIT PROFILE AND CHANGE PASS OK-->
@@ -531,7 +529,7 @@ function Clickheretoprint()
 			  ?>
 			  	
 			  </td>
-			  	<td data-label="Action" id="butones"><a href="product-update.php?id=<?php echo $row['pro_id'];?>"><button class="btn-upd">Update</button></a><form  method = "post" action ="archive_products.php?id=<?php echo $row['pro_id'];?>"><button class="btn-rem" name="btnrem" id="btnrem" onclick="return confirm('Are you sure you want to remove this product?')">Remove</button></form	></td>
+			  	<td data-label="Action" id="butones"><a href="product-update.php?id=<?php echo $row['pro_id'];?>"><button class="btn-upd">Update</button></a><form  method = "post" action ="product.php?id=<?php echo $row['pro_id'];?>"><button class="btn-rem" name="btnrem" id="btnrem" onclick="return confirm('Are you sure you want to remove this product?')">Remove</button></form	></td>
      	  </tr>
     
      	 <?php

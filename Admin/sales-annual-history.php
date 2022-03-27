@@ -125,7 +125,7 @@ $finalcode='RS-'.createRandomPassword();
 			</li>
 			<li class="active">
 				<a href="sales-report.php">
-					<i class='bx bxs-download' ></i>
+					<i class='bx bxs-chart' ></i>
 					<span class="text">Sales Report</span>
 				</a>
 			</li>
@@ -230,9 +230,7 @@ if (isset($_GET['eid'])) {
 				  }}
 			  ?>
 			  </table>
-			  
-					
-					<a href="see-all-notification.php" id="colnotif">See all notification..</a>
+
 				</div>
 			</div>
 			<!-- DROP DOWN NG EDIT PROFILE AND CHANGE PASS OK-->

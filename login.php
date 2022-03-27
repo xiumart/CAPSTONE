@@ -88,7 +88,7 @@ function getIpAddr(){
     ></script>
     <link rel="stylesheet" href="assets/css/style.css" />
      <style type="text/css">
-      #result{color:red;}
+      #result{color:orange;}
      </style>
     <title>RNL Vision Care
     </title>
@@ -102,7 +102,7 @@ function getIpAddr(){
             <h2 class="title">LOGIN HERE !</h2>
             
 
-
+          <div id="result"><?php echo $msg; ?></div>
             <div class="input-field">
               <i class="fas fa-user"></i>
               <input type="text" placeholder="Username" name="username" required="required" autocomplete="off"/>
@@ -115,7 +115,7 @@ function getIpAddr(){
             <button class="btn btn-primary" name='login' <?php echo $msg1; ?>>Login</button>
             <a href="forgotpassword.php" style="color:white;">Forgot Password? </a>
             
-           <div id="result"><?php echo $msg; ?></div>
+        
 
           </form>
 

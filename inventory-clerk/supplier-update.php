@@ -177,9 +177,7 @@ if (isset($_GET['eid'])) {
 				  }}
 			  ?>
 			  </table>
-			  
-					
-					<a href="see-all-notification.php" id="colnotif">See all notification..</a>
+
 				</div>
 			</div>
 			<!-- DROP DOWN NG EDIT PROFILE AND CHANGE PASS OK-->

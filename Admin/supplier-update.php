@@ -225,9 +225,7 @@ if (isset($_GET['eid'])) {
 				  }}
 			  ?>
 			  </table>
-			  
-					
-					<a href="see-all-notification.php" id="colnotif">See all notification..</a>
+
 				</div>
 			</div>
 			<!-- DROP DOWN NG EDIT PROFILE AND CHANGE PASS OK-->
@@ -381,10 +379,10 @@ if (isset($_GET['eid'])) {
 						</div>
 						<div class="row">
 						<div class="col-25">
-							<label for="contact">Contact Number</label>
+							<label for="contact">Contact Number (Ex. 09xxxxxxxxx)</label>
 						</div>
 						<div class="col-75">
-							<input type="tel" id="contact" name="contact" pattern="[0-9]{4}[0-9]{3}[0-9]{4}" placeholder="Enter contact number" required="" value= "<?php echo $row['supp_contact'];?>">
+							<input type="tel" id="contact" name="contact" maxlenght="11" minlenght="11" pattern="[0-9]{4}[0-9]{3}[0-9]{4}" placeholder="Enter contact number" required="" value= "<?php echo $row['supp_contact'];?>">
 						</div>
 						</div>
 						<div class="row">
