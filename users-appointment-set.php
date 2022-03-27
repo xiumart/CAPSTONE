@@ -75,8 +75,8 @@ $call = $_SESSION["login_user"];
 }
 
 .dropdown-content a:hover {
-	background-color: #00c2cb;
-	
+  background-color: #00c2cb;
+  
 }
 
 .dropdown:hover .dropdown-content {
@@ -167,10 +167,10 @@ $user=$_SESSION['login_user'];
   
   </section>
   <?php 
-			  		$clientid= $_SESSION['client_id'];
-			  		$query=mysqli_query($conn, "SELECT * from client_user_info WHERE client_id='$clientid'");
-			  		while($row=mysqli_fetch_array($query)){
-			  	?>
+            $clientid= $_SESSION['client_id'];
+            $query=mysqli_query($conn, "SELECT * from client_user_info WHERE client_id='$clientid'");
+            while($row=mysqli_fetch_array($query)){
+          ?>
   <section class="table">
     <div class="container">
 
@@ -178,6 +178,7 @@ $user=$_SESSION['login_user'];
       <div class="map-content-9">
                     <form action="appointmenthandler.php" method="post">
                         <div class="twice">
+                          <input type="text" name="idd" value="<?php echo $row['client_id']; ?>" hidden>
                              <h3 style="text-transform:uppercase;">Appointment User : <input type="text" name="AppUser" value="<?php echo $call;?>" id="w3lSubject" style="border:none;width:500px;font-weight:bold;"></h3><br>
                              <h3>Name</h3>
                             <input type="text " class="form-control" name="Name" id="w3lSubject"

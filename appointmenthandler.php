@@ -11,7 +11,8 @@ $db = mysqli_connect("localhost", "root","", "capstone");
 	$time ="";
 	$date ="";
 	$status = "";
-
+	$idd = "";
+		$idd = $_POST['idd'];	
 		$appuser = $_POST['AppUser'];
 		$name = $_POST['Name'];
 		$email = $_POST['Email'];
@@ -23,7 +24,7 @@ $db = mysqli_connect("localhost", "root","", "capstone");
 		$result = $db->query("SELECT * FROM appointment where app_time like '$time' and app_date like '$date'");
 		if ($result->num_rows == 0){
 
-		$sql = "INSERT INTO `appointment`(`app_user`, `app_name`, `app_email`, `app_contact`, `app_date`, `app_time`, `app_purpose`, `app_remarks`) VALUES ('$appuser','$name','$email','$contact','$date','$time', '$purpose', '$status')";
+		$sql = "INSERT INTO `appointment`(`app_user`, `app_name`, `app_email`, `app_contact`, `app_date`, `app_time`, `app_purpose`, `app_remarks`,`client_id`) VALUES ('$appuser','$name','$email','$contact','$date','$time', '$purpose', '$status','$idd')";
 		if(mysqli_query($db, $sql)){
     echo '<script language="javascript">';
 	echo 'alert("Appointment Added");';
