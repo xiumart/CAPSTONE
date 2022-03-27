@@ -293,7 +293,7 @@ if (isset($_GET['eid'])) {
 				<li>
 					
 					<span class="text">
-						<p>Daily Profit: <?php 
+						<p>Daily Sales: <?php 
 							$sql="SELECT SUM(amount) as sum_score FROM sales where date = CURRENT_DATE;";
 							$result = mysqli_query($conn,$sql);
 							while ($row = mysqli_fetch_assoc($result)){ echo '₱'.$row['sum_score'];}
@@ -301,7 +301,7 @@ if (isset($_GET['eid'])) {
 							mysqli_close($conn);
 						  										
 						  ?></p>
-						   <p>Weekly Profit: <?php 
+						   <p>Weekly Sales: <?php 
 						  include("../conn.php");
 
 						  $monday = strtotime("last monday");
@@ -316,7 +316,7 @@ if (isset($_GET['eid'])) {
 							mysqli_close($conn);
 						  										
 						  ?></p>
-						   <p>Monthly Profit: <?php 
+						   <p>Monthly Sales: <?php 
 						  include("../conn.php");
 							$sql="SELECT MONTH(date)AS Month, SUM(amount) AS total FROM sales WHERE MONTH(date) = MONTH(CURRENT_DATE())  AND `type`='cash' GROUP BY MONTH(date), YEAR(date)";
 							$result = mysqli_query($conn,$sql);
@@ -327,9 +327,9 @@ if (isset($_GET['eid'])) {
 						  ?></p>
 						<h3>Sales Revenue: <?php 
 							include("../conn.php");
-							$sql="SELECT SUM(amount) as sum_score FROM sales;";
+							$sql="SELECT Year(date)AS year, SUM(amount) AS total FROM sales WHERE Year(date) = Year(CURRENT_DATE())  AND `type`='cash' GROUP BY Year(date)";
 							$result = mysqli_query($conn,$sql);
-							while ($row = mysqli_fetch_assoc($result)){ echo '₱'.$row['sum_score'];}
+							while ($row = mysqli_fetch_assoc($result)){ echo '₱'.$row['total'];}
 							
 							mysqli_close($conn);
 						  										
@@ -374,9 +374,9 @@ if (isset($_GET['eid'])) {
 						  ?></p>
 						  <h3>Total Profit: <?php 
 							include("../conn.php");
-							$sql="SELECT SUM(profit) as sum_score FROM sales;";
+							$sql="SELECT Year(date)AS year, SUM(profit) AS total FROM sales WHERE Year(date) = Year(CURRENT_DATE())  AND `type`='cash' GROUP BY Year(date)";
 							$result = mysqli_query($conn,$sql);
-							while ($row = mysqli_fetch_assoc($result)){ echo '₱'.$row['sum_score'];}
+							while ($row = mysqli_fetch_assoc($result)){ echo '₱'.$row['total'];}
 							
 							mysqli_close($conn);
 						  										

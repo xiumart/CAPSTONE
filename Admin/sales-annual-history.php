@@ -324,7 +324,7 @@ function Clickheretoprint()
       }
 
      	  
-    $result = mysqli_query($con,"SELECT Year(date)AS Year, SUM(profit) AS profit, SUM(amount) AS amount FROM sales GROUP BY YEAR(date)");
+    $result = mysqli_query($con,"SELECT Year(date)AS Year, SUM(profit) AS profit, SUM(amount) AS amount FROM sales WHERE type='cash' GROUP BY YEAR(date)");
       
     while($row = mysqli_fetch_array($result))
       {
