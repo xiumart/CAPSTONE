@@ -391,6 +391,7 @@ function Clickheretoprint()
      </thead>
      <tbody>
      	<?php
+     		error_reporting(0);
      	$limit=25;
         $cat=$_POST['all'];
         $page=isset($_GET['page']) ? $_GET['page']:1;

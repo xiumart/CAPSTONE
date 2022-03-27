@@ -1,5 +1,6 @@
 <?php
 include("session.php");
+error_reporting(0);
 function createRandomPassword() {
 	$chars = "003232303232023232023456789";
 	srand((double)microtime()*1000000);
@@ -304,6 +305,31 @@ if (isset($_GET['eid'])) {
 			
 			</div><br>
 			<form method="post">
+				<label>Search by:</label>
+              <select name='search' id="price-sort" onchange="location = this.value;" style="padding: 12px;border: 1px solid #ccc;border-radius: 4px;font-family: var(poppins); width: 30%;">
+                <option value='0' disabled selected>Select category..</option>
+                <option value='?search=product_model' <?php if($_GET['search']=='product_model'){
+                  echo "selected";
+                } ?>>Model</option>
+                <option value='?search=product_brand' <?php if($_GET['search']=='product_brand'){
+                  echo "selected";
+                } ?>>Brand</option>
+                <option value='?search=product_category' <?php if($_GET['search']=='product_category'){
+                  echo "selected";
+                } ?>>Category</option>
+                <option value='?search=product_origprice' <?php if($_GET['search']=='product_origprice'){
+                  echo "selected";
+                } ?>>Orig. Price</option>
+                <option value='?search=product_sellingprice' <?php if($_GET['search']=='product_sellingprice'){
+                  echo "selected";
+                } ?>>Selling Price</option>
+                <option value='?search=product_expdate' <?php if($_GET['search']=='product_expdate'){
+                  echo "selected";
+                } ?>>Expired Date</option>
+                <option value='?search=product_quantity' <?php if($_GET['search']=='product_quantity'){
+                  echo "selected";
+                } ?>>Quantity</option>
+              </select>
 						<input type="text" name="txtsearch" id="txtsearch" placeholder="Search" autocomplete="off" style="padding: 12px;border: 1px solid #ccc;border-radius: 4px;font-family: var(poppins); width: 50%;">
 						<button  id="btnsearch" name="btnsearch" class="page" style="cursor: pointer;"><i class='bx bx-search' ></i></button>
 			</form>
@@ -329,15 +355,47 @@ if (isset($_GET['eid'])) {
      </thead>
      <tbody>
      	<?php
-     	error_reporting(0);
+     	
      	$limit=25;
      
         $page=isset($_GET['page']) ? $_GET['page']:1;
         $start=($page-1)*$limit;
         $search=$_POST['txtsearch'];
-     	$sql2 =$conn->query("SELECT count(pro_id) AS id,`category`,`model`,`brand`,`origprice`,`sellingprice`,`expdate`,`qty`FROM `product` WHERE `category` LIKE '%$search%' OR `model` LIKE '%$search%' OR `brand` LIKE '%$search%' OR `origprice` LIKE '%$search%' OR `sellingprice` LIKE '%$search%' OR `expdate` LIKE '%$search%' OR `qty` LIKE '%$search%'");
+     	$sql2 =$conn->query("SELECT count(pro_id) AS id FROM `archive_products`");
+     	
+
+        if ($_GET['search']=='product_model') {
+        	$column="model";
+
+        }
+        elseif ($_GET['search']=='product_brand') {
+        	$column="brand";
+        	 
+        }
+        elseif ($_GET['search']=='product_category') {
+        	$column="category";
+        	 
+        }
+        elseif ($_GET['search']=='product_origprice') {
+        	$column="origprice";
+        	 
+        }
+        elseif ($_GET['search']=='product_sellingprice') {
+        	$column="sellingprice";
+        	 
+        }
+        elseif ($_GET['search']=='product_expdate') {
+        	$column="expdate";
+        	 
+        }
+
+        elseif ($_GET['search']=='product_quantity') {
+        	$column="qty";
+        	 
+        }
+
      	if (isset($_POST['btnsearch'])) {
-        $sql1 = "SELECT * FROM `archive_products` WHERE `category` LIKE '%$search%' OR `model` LIKE '%$search%' OR `brand` LIKE '%$search%' OR `origprice` LIKE '%$search%' OR `sellingprice` LIKE '%$search%' OR `expdate` LIKE '%$search%' OR `qty` LIKE '%$search%' LIMIT $start, $limit";
+        $sql1 = "SELECT * FROM `archive_products` WHERE `$column` LIKE '%$search%' LIMIT $start, $limit";
         
         	}
         else{
