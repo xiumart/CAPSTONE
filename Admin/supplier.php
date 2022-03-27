@@ -161,7 +161,7 @@ if (isset($_GET['id'])) {
 				<i class='bx bxs-bell' ></i>
 				<span class="num">
 				<?php 
-				$query = mysqli_query($conn, "SELECT COUNT(*) as total from product  WHERE qty <=10 AND pro_status ='2'");
+				$query = mysqli_query($conn, "SELECT COUNT(*) as total from client_inquiries, product  WHERE inquiries_status = '2' AND qty <=10 AND pro_status ='2'");
 					while($result=mysqli_fetch_array($query)){
 					echo $result['total']; 
 				}			
@@ -175,6 +175,7 @@ if (isset($_GET['id'])) {
 
 	$query = "UPDATE `client_inquiries` SET inquiries_status = '1' WHERE inquiries_id = '$users_id'";
 	mysqli_query($conn, $query);
+	header( "refresh:0; url=supplier.php" );
 			}
 			?>
 			<?php
@@ -184,6 +185,7 @@ if (isset($_GET['eid'])) {
 
 	$query1 = "UPDATE `product` SET pro_status = '1' WHERE pro_id = '$pro_id'";
 	mysqli_query($conn, $query1);
+	header( "refresh:0; url=supplier.php" );
 			}
 			?>
 			
@@ -204,7 +206,7 @@ if (isset($_GET['eid'])) {
 			  ?>
 			  
 			  <?php
-			$sql1 = "SELECT * FROM `product` WHERE pro_status='2' AND qty <=10 LIMIT 6";
+			$sql1 = "SELECT * FROM `product` WHERE pro_status='2' LIMIT 6";
 			$result1 = $conn->query($sql1);  
   			if($result1->num_rows > 0){
   				while($row = $result1 -> fetch_assoc()){ 
@@ -212,11 +214,11 @@ if (isset($_GET['eid'])) {
 					$model = $row['model'];
 			  ?>
 			  <tr>
-			  <th><h4 style="color: red;">Low Product:</h4></th>
+					<th><h4>Product:</h4></th>
 			  <td><p><?php 
 					if ($qty<=10) {
-						echo "Model: " . $row['model'] ."&nbsp<br>";		
-						echo "QTY: " . $row['qty'];
+						echo $row['model'] ."&nbsp";		
+						echo $row['qty'];
 							}
 			  ?>
 				</p></td><td><a href="?eid=<?php echo $row['pro_id'];?>"><button class="btn-remove" name="btnremove" style="cursor: pointer;">Clear</button></a></td>
@@ -307,7 +309,20 @@ function Clickheretoprint()
 </script>
 		
 				<form method="post">
-						<input type="text" name="txtsearch" id="txtsearch" placeholder="Search" autocomplete="off" style="padding: 12px;border: 1px solid #ccc;border-radius: 4px;font-family: var(poppins);">
+					<label>Search by:</label>
+              <select name='search' id="price-sort" onchange="location = this.value;" style="padding: 12px;border: 1px solid #ccc;border-radius: 4px;font-family: var(poppins); width: 30%;">
+                <option value='0' disabled selected>Select category..</option>
+                <option value='?search=company' <?php if($_GET['search']=='company'){
+                  echo "selected";
+                } ?>>Company name</option>
+                <option value='?search=person' <?php if($_GET['search']=='person'){
+                  echo "selected";
+                } ?>>Contact person</option>
+                <option value='?search=contact' <?php if($_GET['search']=='contact'){
+                  echo "selected";
+                } ?>>Contact no.</option>
+              </select>
+						<input type="text" name="txtsearch" id="txtsearch" placeholder="Search" autocomplete="off" style="padding: 12px;border: 1px solid #ccc;border-radius: 4px;font-family: var(poppins);width: 30%;">
 						<button  id="btnsearch" name="btnsearch" class="page" style="cursor: pointer;"><i class='bx bx-search' ></i></button>
 						</form></br>
 						<div id='printing'>
@@ -315,9 +330,9 @@ function Clickheretoprint()
      <thead>
      	<tr>
 		 
-     	 <th>Company Name</th>
-		 <th>Contact Person</th>
-     	 <th>Contact No.</th>
+     	 <th>Company Name<form method=""><button class="up" value="up" name="btn" style="width: 10%; height: 5%; padding: 0; margin: 0;">▲</button>&nbsp<button class="down" value="down" name="btn" style="width: 10%; height: 5%; padding: 0; margin: 0;">▼</button></form></th>
+		 <th>Contact Person<form method=""><button class="up" value="up" name="btn1" style="width: 10%; height: 5%; padding: 0; margin: 0;">▲</button>&nbsp<button class="down" value="down" name="btn1" style="width: 10%; height: 5%; padding: 0; margin: 0;">▼</button></form></th>
+     	 <th>Contact No.<form method=""><button class="up" value="up" name="btn2" style="width: 10%; height: 5%; padding: 0; margin: 0;">▲</button>&nbsp<button class="down" value="down" name="btn2" style="width: 10%; height: 5%; padding: 0; margin: 0;">▼</button></form></th>
 		 <th>Description</th>
 		 <th>Action</th>
      	</tr>
@@ -330,13 +345,62 @@ function Clickheretoprint()
         $page=isset($_GET['page']) ? $_GET['page']:1;
         $start=($page-1)*$limit;
         $search=$_POST['txtsearch'];
-     	$sql2 =$conn->query("SELECT count(supp_id) AS id FROM `supplier`");
-     	if (isset($_POST['btnsearch'])) {
-        $sql1 = "SELECT * FROM `supplier` WHERE `supp_cname` LIKE '%$search%' OR `supp_contactperson` LIKE'%$search%' OR `supp_contact` LIKE'%$search%' OR `supp_desc` LIKE'%$search%' LIMIT $start, $limit ";
+        if ($_GET['search']=='company') {
+        	$column="supp_cname";
+        	 
+        }
+        elseif ($_GET['search']=='person') {
+        	$column="supp_contactperson";
+
+        }
+        elseif ($_GET['search']=='contact') {
+        	$column="supp_contact";
+        	 
+        }
+        else{
+
+        }
+     	
+     	if (isset($_POST['btnsearch'])&& $_POST['txtsearch']!="") {
+        $sql1 = "SELECT * FROM `supplier` WHERE `$column` LIKE '%$search%' LIMIT $start, $limit ";
+        $sql2 =$conn->query("SELECT count(supp_id) AS id FROM `supplier`");
         	}
+        	elseif ($_GET['btn']=='down') {
+        		$sql1 = "SELECT * FROM `supplier` Order by `supp_cname` DESC LIMIT $start, $limit ";
+        		
+        		echo "<style>.down{ background-color:red;}</style>";
+        	}
+        	elseif ($_GET['btn']=='up') {
+        		$sql1 = "SELECT * FROM `supplier` Order by `supp_cname` ASC LIMIT $start, $limit ";
+        		
+        		echo "<style>.up{ background-color:red;}</style>";
+        	}
+        	elseif ($_GET['btn1']=='down') {
+        		$sql1 = "SELECT * FROM `supplier` Order by `supp_contactperson` DESC LIMIT $start, $limit ";
+        	
+        		echo "<style>.down{ background-color:red;}</style>";
+        	}
+        	elseif ($_GET['btn1']=='up') {
+        		$sql1 = "SELECT * FROM `supplier` Order by `supp_contactperson` ASC LIMIT $start, $limit ";
+        		
+        		echo "<style>.up{ background-color:red;}</style>";
+        	}
+        	elseif ($_GET['btn2']=='down') {
+        		$sql1 = "SELECT * FROM `supplier` Order by `supp_contact` DESC LIMIT $start, $limit ";
+        		
+        		echo "<style>.down{ background-color:red;}</style>";
+        	}
+        	elseif ($_GET['btn2']=='up') {
+        		$sql1 = "SELECT * FROM `supplier` Order by `supp_contact` ASC LIMIT $start, $limit ";
+        		
+        		echo "<style>.up{ background-color:red;}</style>";
+        	}
+
         else{
         		$sql1 = "SELECT * FROM `supplier` LIMIT $start, $limit ";
+        		$sql2 =$conn->query("SELECT count(supp_id) AS id FROM `supplier`");
         	}
+        	$sql2 =$conn->query("SELECT count(supp_id) AS id FROM `supplier`");
         $result2 = $sql2->fetch_all(MYSQLI_ASSOC);
                 $total=$result2[0]['id'];
                 $pages=ceil($total/$limit);
