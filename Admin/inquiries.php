@@ -1,9 +1,6 @@
 <?php
-error_reporting(0);
-include("../conn.php");
 include("session.php");
-include "logs_conn.php";
-date_default_timezone_set('Asia/Manila');
+include("../conn.php");
 function createRandomPassword() {
 	$chars = "003232303232023232023456789";
 	srand((double)microtime()*1000000);
@@ -23,14 +20,10 @@ function createRandomPassword() {
 	return $pass;
 }
 $finalcode='RS-'.createRandomPassword();
-if (isset($_GET['id'])) {
-	$pro_id1=$_GET['id'];
-	$query = "DELETE FROM `product` WHERE pro_id='$pro_id1'";
-	users_logs($_SESSION['users_username'], "Remove Product", date("Y-m-d h:i:sa"), $_SESSION['users_roles']);
-			mysqli_query($conn, $query);
-			echo "<script>alert('You have successfully remove the record.');</script>";
-			echo "<script>document.location='product.php';</script>";
-}
+ if (isset($_GET['id'])) {
+			$users_id=$_GET['id'];
+			$query123 = mysqli_query($conn, "UPDATE `sales` SET type = 'Remove'  WHERE id = '$users_id'");
+			}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -52,14 +45,13 @@ if (isset($_GET['id'])) {
 		border: none;
 		margin: 3px;
 		border-radius: 10%;
-		cursor: pointer;
 	}
 
 	.btn-upd:hover { background-color: #4CAF50;}
 	.btn-rem:hover { background-color: red;}
-	.btn-print:hover { background-color:#00b2b3;}
-	.btn-addp:hover { background-color: #00b2b3;}
-
+	.btn-print:hover { background-color:#00a2a3;}
+	.btn-addpt:hover { background-color: #00a2a3}
+	.btn-addpt {float:right; margin-bottom: 20px;}
 	.btn-print {
 		margin-top: 20px;
 		float: right;
@@ -70,15 +62,10 @@ if (isset($_GET['id'])) {
 		padding: 12px;
 		border: none;
 		border-radius: 10%;
-		color:white;
 	}
 	.page:hover { background-color:#00b2b3;}
 
-	.brandd{
-		margin-top: 8%;
-	}
-
-	.namee{margin-top: 20%;}
+	.namee{margin-top: 5%;}
 	.btn-apph {
 		background-color: #00c2cb;
 		padding: 15px;
@@ -107,7 +94,7 @@ if (isset($_GET['id'])) {
 	.btn-f:hover { background-color: #4CAF50;}
 	.btn-c:hover { background-color: red;}
 	.btn-apph:hover { background-color: #00a2a3;}
-	
+
 	.namee{
 		margin-top: 4.5%;
 	}
@@ -118,7 +105,7 @@ if (isset($_GET['id'])) {
 
 	<!-- SIDEBAR -->
 	<section id="sidebar">
-		<a href="product.php" class="brand">
+		<a href="sales-report.php" class="brand">
 			<img src="images\logo.png" alt="" width="60px;">
 			<span class="text" style="text-shadow:0.5px 0px #000; color: black;">RNL Vision Care</span>
 		</a>
@@ -141,13 +128,13 @@ if (isset($_GET['id'])) {
 					<span class="text">Point of Sale</span>
 				</a>
 			</li>
-			<li>
+			<li class="active">
 				<a href="sales-report.php">
 					<i class='bx bxs-chart' ></i>
 					<span class="text">Sales Report</span>
 				</a>
 			</li>
-			<li class="active">
+			<li>
 				<a href="product.php">
 					<i class='bx bxs-shopping-bag-alt' ></i>
 					<span class="text">Product Inventory</span>
@@ -193,12 +180,13 @@ if (isset($_GET['id'])) {
 			</form>
 			<div id="digital-clock"></div>
 			<script src="time.js"></script>
+			
 			<div class="dropdown2">
 			<a href="#" class="notification">
 				<i class='bx bxs-bell' ></i>
 				<span class="num">
 				<?php 
-				$query = mysqli_query($conn, "SELECT COUNT(*) as total from client_inquiries WHERE inquiries_status = '2'");
+				$query = mysqli_query($conn, "SELECT COUNT(*) as total from product  WHERE qty <=10 AND pro_status ='2'");
 					while($result=mysqli_fetch_array($query)){
 					echo $result['total']; 
 				}			
@@ -207,28 +195,63 @@ if (isset($_GET['id'])) {
 			</a>
 			<?php
 
-			if (isset($_GET['id'])) {
-			$users_id=$_GET['id'];
-			$query = "UPDATE `client_inquiries` SET inquiries_status = '1'  WHERE inquiries_id = '$users_id'";
-			mysqli_query($conn, $query);
-			header( "refresh:0; url=product.php" );
+if (isset($_GET['id'])) {
+	$users_id=$_GET['id'];
+
+	$query = "UPDATE `client_inquiries` SET inquiries_status = '1' WHERE inquiries_id = '$users_id'";
+	mysqli_query($conn, $query);
+			}
+			?>
+			<?php
+
+if (isset($_GET['eid'])) {
+	$pro_id=$_GET['eid'];
+
+	$query1 = "UPDATE `product` SET pro_status = '1' WHERE pro_id = '$pro_id'";
+	mysqli_query($conn, $query1);
 			}
 			?>
 			
 				<div class="dropdown-content2">
 					<h4 id="textnotif">Notification</h4><br><hr>
-					<?php   
+					
+			<table>
+			<?php   
 			   require_once("../db/notification/notifdisplay.php");
               while($row = mysqli_fetch_assoc($query)){
 				  
             ?>
-			<table>
 				<tr>
 					<th><h4>Inquiry:</h4></th><p><td><?php echo $row['inquiries_message']; ?></p></td><td><a href="?id=<?php echo $row['inquiries_id'];?>"><button class="btn-remove" name="btnremove" style="cursor: pointer;">Clear</button></a></td><hr color="wheat">
-			  </table>
-					<?php
+			  </tr>
+			  <?php
 			  }
 			  ?>
+			  
+			  <?php
+			$sql1 = "SELECT * FROM `product` WHERE pro_status='2' AND qty <=10 LIMIT 6";
+			$result1 = $conn->query($sql1);  
+  			if($result1->num_rows > 0){
+  				while($row = $result1 -> fetch_assoc()){ 
+					$qty = $row['qty'];
+					$model = $row['model'];
+			  ?>
+			  <tr>
+			  <th><h4 style="color: red;">Low Product:</h4></th>
+			  <td><p><?php 
+					if ($qty<=10) {
+						echo "Model: " . $row['model'] ."&nbsp<br>";		
+						echo "QTY: " . $row['qty'];
+							}
+			  ?>
+				</p></td><td><a href="?eid=<?php echo $row['pro_id'];?>"><button class="btn-remove" name="btnremove" style="cursor: pointer;">Clear</button></a></td>
+							</tr>
+							<?php
+				  }}
+			  ?>
+			  </table>
+			  
+					
 					<a href="see-all-notification.php" id="colnotif">See all notification..</a>
 				</div>
 			</div>
@@ -265,23 +288,23 @@ if (isset($_GET['id'])) {
 		<main>
 			<div class="head-title">
 				<div class="left">
-					<h1>Product Inventory</h1>
+					<h1>Inquiries</h1>
 					<ul class="breadcrumb">
 						<li>
-							<a href="product.php">Product</a>
+							<a href="sales-report.php">Inquiries</a>
 						</li>
 						<li><i class='bx bx-chevron-right' ></i></li>
 						<li>
-							<a class="active" href="product.php">Home</a>
+							<a class="active" href="dashboard.php">Home</a>
 						</li>
 					</ul>
 				</div>
+				
 			
 			</div>
 
-			<a href="product-add.php"><button class="btn-addp" style="float:right;">+ Add Product </button></a>
-			<a href="javascript:Clickheretoprint()">
-   	<button class="btn-addp" style="float:right; width: 100px;"><i class='bx bxs-printer' ></i> Print </button></a>
+			<a href="sales-annual-history.php"><button class="btn-addpt" style="cursor: pointer;"> Annual Sales History</button></a>
+			<a href="javascript:Clickheretoprint()">	<button class="btn-addp" style="float:right; width: 100px; cursor: pointer;"><i class='bx bxs-printer' ></i> Print </button></a>
 <!--print-->
 <link href="css/bootstrap-responsive.css" rel="stylesheet">
 <link href="../style.css" media="screen" rel="stylesheet" type="text/css" />
@@ -304,164 +327,29 @@ function Clickheretoprint()
    
 }
 </script>
-			<form method="post">
-				<label>Search by:</label>
-              <select name='search' id="price-sort" onchange="location = this.value;" style="padding: 12px;border: 1px solid #ccc;border-radius: 4px;font-family: var(poppins); width: 30%;">
-                <option value='0' disabled selected>Select category..</option>
-                <option value='?search=product_model' <?php if($_GET['search']=='product_model'){
-                  echo "selected";
-                } ?>>Model</option>
-                <option value='?search=product_brand' <?php if($_GET['search']=='product_brand'){
-                  echo "selected";
-                } ?>>Brand</option>
-                <option value='?search=product_category' <?php if($_GET['search']=='product_category'){
-                  echo "selected";
-                } ?>>Category</option>
-                <option value='?search=product_origprice' <?php if($_GET['search']=='product_origprice'){
-                  echo "selected";
-                } ?>>Orig. Price</option>
-                <option value='?search=product_sellingprice' <?php if($_GET['search']=='product_sellingprice'){
-                  echo "selected";
-                } ?>>Selling Price</option>
-                <option value='?search=product_expdate' <?php if($_GET['search']=='product_expdate'){
-                  echo "selected";
-                } ?>>Expired Date</option>
-                <option value='?search=product_quantity' <?php if($_GET['search']=='product_quantity'){
-                  echo "selected";
-                } ?>>Quantity</option>
-              </select>
-						<input type="text" name="txtsearch" id="txtsearch" placeholder="Search " autocomplete="off" style="padding: 12px;border: 1px solid #ccc;border-radius: 4px;font-family: var(poppins); width: 50%;">
-						<button  id="btnsearch" name="btnsearch" class="page" style="cursor: pointer;"><i class='bx bx-search' ></i></button>
-			</form>
-<div id="printing">
+			<div>
+				<div id="printing">
+					
 					<table>
-<caption>List of Product</caption>
+						<caption>All inquiries</caption>
      <thead>
      	<tr>
-     		<th>Model</th>
-     	 <th>Brand</th>
-     	 <th>Category</th>
-     	 <th>Orig. Price</th>
-		 <th>Selling Price</th>
-		 <th>Exp. Date</th>
-		 <th>Qty.</th>
+     	 <th>Date</th>
+		 <th>Email</th>
+		 <th>Concern</th>
 		 <th>Action</th>
      	</tr>
      </thead>
      <tbody>
-     	<?php
-     	$limit=25;
-        $cat=$_POST['all'];
-        $page=isset($_GET['page']) ? $_GET['page']:1;
-        $start=($page-1)*$limit;
-        $search=$_POST['txtsearch'];
-
-     	$sql2 =$conn->query("SELECT count(pro_id) AS id FROM `product`");
-		
-        if ($_GET['search']=='product_model') {
-        	$column="model";
-
-        }
-        elseif ($_GET['search']=='product_brand') {
-        	$column="brand";
-        	 
-        }
-        elseif ($_GET['search']=='product_category') {
-        	$column="category";
-        	 
-        }
-        elseif ($_GET['search']=='product_origprice') {
-        	$column="origprice";
-        	 
-        }
-        elseif ($_GET['search']=='product_sellingprice') {
-        	$column="sellingprice";
-        	 
-        }
-        elseif ($_GET['search']=='product_expdate') {
-        	$column="expdate";
-        	 
-        }
-
-        elseif ($_GET['search']=='product_quantity') {
-        	$column="qty";
-        	 
-        }
-     	if (isset($_POST['btnsearch'])) {
-        $sql1 = "SELECT * FROM `product` WHERE `$column` LIKE '%$search%' LIMIT $start, $limit";
-        
-        	}
-        else{
-        		$sql1 = "SELECT * FROM `product` LIMIT $start, $limit ";
-        		$sql2 =$conn->query("SELECT count(pro_id) AS id FROM `product`");
-        	}
-
-        	$result2 = $sql2->fetch_all(MYSQLI_ASSOC);
-        	$sql = "SELECT * from product WHERE brand ORDER BY brand ASC LIMIT $start, $limit";        
-                $total=$result2[0]['id'];
-                $pages=ceil($total/$limit);
-                $prev=$page-1;
-                $next=$page+1;
-     	  $result1 = $conn->query($sql1);  
-  			if($result1->num_rows > 0){
-  				while($row = $result1 -> fetch_assoc()){ 
-  					$qty=$row['qty'];
-
-     	?>
-     		
-     	
-
-
-     	  <tr>
-     	  	<td data-label="Model"><?php echo $row['model'];?></td>
-     	  	<td data-label="Brand"><?php echo $row['brand'];?></td>
-     	  	<td data-label="Category"><?php echo $row['category'];?></td>
-     	  	<td data-label="Orig."><?php echo $row['origprice'];?></td>
-			  	<td data-label="Selling"><?php echo $row['sellingprice'];?></td>
-			  	<td data-label="Expire"><?php echo $row['expdate'];?></td>
-			  	<td data-label="Qty" id="qq"><?php echo $row['qty'];
-
-							if ($qty<=10) {
-								
-						echo "<br><b><p style='color:red;font-size:10px;'>Critical Level</p></b>";
-							}
-							else
-							{
-								echo "";}
-
-							 
-
-
-
-			  ?>
-			  	
-			  </td>
-			  	<td data-label="Action" id="butones"><a href="product-update.php?id=<?php echo $row['pro_id'];?>"><button class="btn-upd">Update</button></a><form  method = "post" action ="archive_products.php?id=<?php echo $row['pro_id'];?>"><button class="btn-rem" name="btnrem" id="btnrem" onclick="return confirm('Are you sure you want to remove this product?')">Remove</button></form	></td>
-     	  </tr>
-    
-     	 <?php
-     }
- }
-
-     	?>
-     
-
-
+    	<tr>
+		<td data-label='Date'></td>
+		<td data-label='Email'></td>
+		<td data-label='Concern'></td>
+		<td data-label='Action'>
+      <button class="btn-upd" style="cursor: pointer;" onclick="return confirm('Are you sure you want to remove this transacetion?')">Remove</button></form>
+	  </td> </tr>
      </tbody>
-
    </table>
-</div>
-   <!--page-->
-  	<br>
-   <a class="page" id="pre" href="product.php?page=<?=$prev; ?>">< Prev</a>
-    	  <?php  for($i=1; $i <=$pages ; $i++): ?>
-    <a class="page" href="product.php?page=<?=$i; ?>"><?=$i; ?></a>
-                      <?php endfor; ?>
-    <a class="page" id="pnext" href="product.php?page=<?=$next; ?>">Next ></a>
-	
-	
-					
-
 				</div>
 
 				
@@ -481,8 +369,6 @@ function Clickheretoprint()
 	
 
 	<script src="script.js"></script>
-
-	
 </body>
 <style>table {
   border: 1px solid #ccc;
@@ -496,7 +382,7 @@ function Clickheretoprint()
 table caption {
   font-size: 1.5em;
   background-color: #00c2cb;
-  margin-top:20px;	
+  margin-top:50px;	
 }
 
 table tr {
