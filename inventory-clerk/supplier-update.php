@@ -127,7 +127,7 @@ if (isset($_REQUEST['btnsubmit'])) {
 			</form>
 			<div id="digital-clock"></div>
 			<script src="time.js"></script>
-	
+			<h4><?php echo $_SESSION['users_username']; ?></h4>
 			<div class="dropdown2">
 			<a href="#" class="notification">
 				<i class='bx bxs-bell' ></i>

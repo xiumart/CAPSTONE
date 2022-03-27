@@ -143,30 +143,8 @@ $result1 = $conn->query($query);
 			<span class="text" style="text-shadow:0.5px 0px #000; color: black;">RNL Vision Care</span>
 		</a>
 		<ul class="side-menu top">
-			<li>
-				<a href="dashboard.php">
-					<i class='bx bxs-dashboard' ></i>
-					<span class="text">Dashboard</span>
-				</a>
-			</li>
-			<li>
-				<a href="patient-record.php">
-					<i class='bx bxs-user' ></i>
-					<span class="text">Patient Record</span>
-				</a>
-			</li>
-			<li>
-				<a href="point-of-sale.php?id=cash&invoice=<?php echo $finalcode ?>">
-					<i class='bx bxs-cart' ></i>
-					<span class="text">Point of Sale</span>
-				</a>
-			</li>
-			<li>
-				<a href="sales-report.php">
-					<i class='bx bxs-chart' ></i>
-					<span class="text">Sales Report</span>
-				</a>
-			</li>
+			
+			<
 			<li class="active">
 				<a href="product.php">
 					<i class='bx bxs-shopping-bag-alt' ></i>
@@ -179,30 +157,7 @@ $result1 = $conn->query($query);
 					<span class="text">Supplier</span>
 				</a>
 			</li>
-			<li>
-				<a href="manage-user.php">
-					<i class='bx bxs-group' ></i>
-					<span class="text">Manage User</span>
-				</a>
-			</li>
-			<li>
-				<a href="audit.php">
-					<i class='bx bxs-book' ></i>
-					<span class="text">Audit Logs</span>
-				</a>
-			</li>
-			<li>
-        <a href="inquiries.php">
-          <i class='bx bxs-phone' ></i>
-          <span class="text">Client Inquiries</span>
-        </a>
-      </li>
-			<li>
-				<a href="archive.php">
-					<i class='bx bxs-download' ></i>
-					<span class="text">Back-up and Restore</span>
-				</a>
-			</li>
+			
 		</ul>
 	</section>
 	<!-- SIDEBAR -->
@@ -219,6 +174,7 @@ $result1 = $conn->query($query);
 			</form>
 			<div id="digital-clock"></div>
 			<script src="time.js"></script>
+			<h4><?php echo $_SESSION['users_username']; ?></h4>
 			<div class="dropdown2">
 			<a href="#" class="notification">
 				<i class='bx bxs-bell' ></i>
