@@ -319,7 +319,26 @@ if (isset($_GET['eid'])) {
 			<a href="user-add.php"><button class="btn-addpt" style="cursor: pointer;"> + Add User</button></a>
 
 				<form method="post">
-						<input type="text" name="txtsearch" id="txtsearch" placeholder="Search" autocomplete="off" style="padding: 12px;border: 1px solid #ccc;border-radius: 4px;font-family: var(poppins);">
+					<label>Search by:</label>
+              <select name='search' id="price-sort" onchange="location = this.value;" style="padding: 12px;border: 1px solid #ccc;border-radius: 4px;font-family: var(poppins); width: 30%;">
+                <option value='0' disabled selected>Select category..</option>
+                <option value='?search=lastname' <?php if($_GET['search']=='lastname'){
+                  echo "selected";
+                } ?>>Lastname</option>
+                <option value='?search=firstname' <?php if($_GET['search']=='firstname'){
+                  echo "selected";
+                } ?>>Firstname</option>
+                <option value='?search=username' <?php if($_GET['search']=='username'){
+                  echo "selected";
+                } ?>>Username</option>
+                <option value='?search=contact' <?php if($_GET['search']=='contact'){
+                  echo "selected";
+                } ?>>Contact</option>
+                <option value='?search=position' <?php if($_GET['search']=='position'){
+                  echo "selected";
+                } ?>>Position</option>
+              </select>
+						<input type="text" name="txtsearch" id="txtsearch" placeholder="Type here.." autocomplete="off" style="padding: 12px;border: 1px solid #ccc;border-radius: 4px;font-family: var(poppins);width: 30%;">
 						<button  id="btnsearch" name="btnsearch" class="page" style="cursor: pointer;"><i class='bx bx-search' ></i></button>
 						</form></br>
 					<table>
@@ -341,14 +360,40 @@ if (isset($_GET['eid'])) {
         $cat=$_POST['all'];
         $page=isset($_GET['page']) ? $_GET['page']:1;
         $start=($page-1)*$limit;
-        $search=$_POST['txtsearch'];
-     	$sql2 =$conn->query("SELECT count(users_id) AS id FROM `users_account`");
+       $search=$_POST['txtsearch'];
+        	
+        	$sql2 =$conn->query("SELECT count(users_id) AS id FROM `users_account`");
+ 			 if ($_GET['search']=='lastname') {
+        	$column="users_lastname";
+        	 
+        }
+        elseif ($_GET['search']=='firstname') {
+        	$column="users_firstname";
+
+        }
+        elseif ($_GET['search']=='username') {
+        	$column="users_username";
+        	 
+        }
+        elseif ($_GET['search']=='contact') {
+        	$column="users_contact";
+        	 
+        }
+        elseif ($_GET['search']=='position') {
+        	$column="users_roles";
+        	 
+        }
      	if (isset($_POST['btnsearch'])) {
-        $sql1 = "SELECT * FROM `users_account` WHERE `users_lastname`LIKE '%$search%' OR `users_username` LIKE'%$search%' OR `users_firstname` LIKE'%$search%' OR `users_middlename` LIKE'%$search%' OR `users_contact` LIKE'%$search%' OR `users_roles` LIKE'%$search%' LIMIT $start, $limit ";
+     		      
+        $sql1 = "SELECT * FROM `users_account` WHERE `$column` LIKE '%$search%' LIMIT $start, $limit ";
+        
         	}
         else{
         		$sql1 = "SELECT * FROM `users_account` LIMIT $start, $limit ";
+        		$sql2 =$conn->query("SELECT count(users_id) AS id FROM `users_account`");
         	}
+
+
         $result2 = $sql2->fetch_all(MYSQLI_ASSOC);
                 $total=$result2[0]['id'];
                 $pages=ceil($total/$limit);
