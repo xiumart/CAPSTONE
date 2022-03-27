@@ -373,7 +373,7 @@ if (isset($_GET['eid'])) {
 
         }
      			if (isset($_POST['btnsearch']) && $_POST['txtsearch']!="") {
-       		 $sql1 = "SELECT * FROM `users_account` WHERE `$column` LIKE '%$search%' LIMIT $start, $limit ";
+       		 $sql1 = "SELECT * FROM `users_account` WHERE `$column` LIKE '%$search%' Order by `users_id` DESC LIMIT $start, $limit ";
         	}        	
         	elseif ($_GET['btn']=='down') {
         		$sql1 = "SELECT * FROM `users_account` Order by `users_lastname` DESC LIMIT $start, $limit ";
@@ -426,7 +426,7 @@ if (isset($_GET['eid'])) {
         		echo "<style>.up{ background-color:red;}</style>";
         	}
         	 else{
-        		$sql1 = "SELECT * FROM `users_account` LIMIT $start, $limit ";
+        		$sql1 = "SELECT * FROM `users_account` Order by `users_id` DESC LIMIT $start, $limit ";
         		$sql2 =$conn->query("SELECT count(users_id) AS id FROM `users_account`");
         	}
        

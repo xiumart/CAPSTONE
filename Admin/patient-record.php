@@ -398,10 +398,10 @@ function Clickheretoprint()
      		
         		$sql2 =$conn->query("SELECT count(patient_no) AS id FROM `patient_distancerx`");
      		
-        $sql1 = "SELECT $column, year(now())-year(`patient_bday`) AS age,`patient_no`,`patient_id`,`patient_name`,`patient_email`,`patient_contact`,`patient_address`  FROM `patient_distancerx` WHERE `patient_id` LIKE '%$search%' OR `patient_name` LIKE '%$search%' OR `patient_address` LIKE '%$search%' OR `patient_contact` LIKE '%$search%' AND `status`!='Remove' LIMIT $start, $limit ";
+        $sql1 = "SELECT $column, year(now())-year(`patient_bday`) AS age,`patient_no`,`patient_id`,`patient_name`,`patient_email`,`patient_contact`,`patient_address`  FROM `patient_distancerx` WHERE `patient_id` LIKE '%$search%' OR `patient_name` LIKE '%$search%' OR `patient_address` LIKE '%$search%' OR `patient_contact` LIKE '%$search%' AND `status`!='Remove' Order by `add_date` DESC LIMIT $start, $limit ";
         if ($search=='') {
         		$sql2 =$conn->query("SELECT count(patient_no) AS id FROM `patient_distancerx`");
-        $sql1 = "SELECT year(now())-year(`patient_bday`) AS age,`patient_no`,`patient_id`,`patient_name`,`patient_email`,`patient_contact`,`patient_address`  FROM `patient_distancerx` WHERE `status`!='Remove'  LIMIT $start, $limit ";
+        $sql1 = "SELECT year(now())-year(`patient_bday`) AS age,`patient_no`,`patient_id`,`patient_name`,`patient_email`,`patient_contact`,`patient_address`  FROM `patient_distancerx` WHERE `status`!='Remove' Order by `add_date` DESC  LIMIT $start, $limit ";
         }
      	}
     	 	elseif ($_GET['btn']=='down') {
@@ -458,7 +458,7 @@ function Clickheretoprint()
 
      	else{ 
      	$sql2 =$conn->query("SELECT count(patient_no) AS id FROM `patient_distancerx`");
-        $sql1 = "SELECT year(now())-year(`patient_bday`) AS age,`patient_no`,`patient_id`,`patient_name`,`patient_email`,`patient_contact`,`patient_address`  FROM `patient_distancerx` WHERE `status`!='Remove'  LIMIT $start, $limit ";	
+        $sql1 = "SELECT year(now())-year(`patient_bday`) AS age,`patient_no`,`patient_id`,`patient_name`,`patient_email`,`patient_contact`,`patient_address`,`add_date`  FROM `patient_distancerx` WHERE `status`!='Remove' Order by `add_date` DESC LIMIT $start, $limit ";	
      	}
 
         $result2 = $sql2->fetch_all(MYSQLI_ASSOC);

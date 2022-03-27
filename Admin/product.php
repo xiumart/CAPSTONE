@@ -410,7 +410,7 @@ function Clickheretoprint()
         	 
         }
      	if (isset($_POST['btnsearch']) && $_POST['txtsearch']!="") {
-        $sql1 = "SELECT * FROM `product` WHERE `$column` LIKE '%$search%' LIMIT $start, $limit";
+        $sql1 = "SELECT * FROM `product` WHERE `$column` LIKE '%$search%' Order by `pro_id` DESC LIMIT $start, $limit";
         $sql2 =$conn->query("SELECT count(pro_id) AS id FROM `product` WHERE `$column` LIKE '%$search%'");
         
         	}
@@ -487,7 +487,7 @@ function Clickheretoprint()
         	
 
         else{
-        		$sql1 = "SELECT * FROM `product` LIMIT $start, $limit ";
+        		$sql1 = "SELECT * FROM `product` Order by `pro_id` DESC LIMIT $start, $limit ";
         		$sql2 =$conn->query("SELECT count(pro_id) AS id FROM `product`");
         	}
 

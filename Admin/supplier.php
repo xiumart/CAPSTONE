@@ -353,7 +353,7 @@ function Clickheretoprint()
         }
      	
      	if (isset($_POST['btnsearch'])&& $_POST['txtsearch']!="") {
-        $sql1 = "SELECT * FROM `supplier` WHERE `$column` LIKE '%$search%' LIMIT $start, $limit ";
+        $sql1 = "SELECT * FROM `supplier` WHERE `$column` LIKE '%$search%' Order by `supp_id` DESC LIMIT $start, $limit ";
         $sql2 =$conn->query("SELECT count(supp_id) AS id FROM `supplier`");
         	}
         	elseif ($_GET['btn']=='down') {
@@ -388,7 +388,7 @@ function Clickheretoprint()
         	}
 
         else{
-        		$sql1 = "SELECT * FROM `supplier` LIMIT $start, $limit ";
+        		$sql1 = "SELECT * FROM `supplier` Order by `supp_id` DESC LIMIT $start, $limit ";
         		$sql2 =$conn->query("SELECT count(supp_id) AS id FROM `supplier`");
         	}
         	$sql2 =$conn->query("SELECT count(supp_id) AS id FROM `supplier`");
