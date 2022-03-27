@@ -144,13 +144,13 @@ Author URL: http://w3layouts.com
                     <form action="contactformhandler.php" method="post">
                         <div class="twice-two">
                             <input type="text" class="form-control" name="Name" id="Name" placeholder="Name"
-                                required="">
+                                required="" autocomplete="off">
                             <input type="email" class="form-control" name="Email" id="Email" placeholder="Email"
-                                required="">
+                                required="" autocomplete="off">
                         </div>
                         <div class="twice">
                             <input type="text" class="form-control" name="Subject" id="Subject"
-                                placeholder="Subject" required="">
+                                placeholder="Subject" required="" autocomplete="off">
                         </div>
                         <textarea name="Message" class="form-control" name ="Message" id="Message" placeholder="Message"
                             required=""></textarea>
