@@ -371,7 +371,7 @@ function Clickheretoprint()
                   echo "selected";
                 } ?>>Quantity</option>
               </select>
-						<input type="text" name="txtsearch" id="txtsearch" placeholder="Search " autocomplete="off" style="padding: 12px;border: 1px solid #ccc;border-radius: 4px;font-family: var(poppins); width: 50%;">
+						<input type="text" name="txtsearch" id="txtsearch" placeholder="Search " autocomplete="off" style="padding: 12px;border: 1px solid #ccc;border-radius: 4px;font-family: var(poppins); width: 30%;">
 						<button  id="btnsearch" name="btnsearch" class="page" style="cursor: pointer;"><i class='bx bx-search' ></i></button>
 			</form>
 <div id="printing">
@@ -379,13 +379,13 @@ function Clickheretoprint()
 <caption>List of Product</caption>
      <thead>
      	<tr>
-     		<th>Model</th>
-     	 <th>Brand</th>
-     	 <th>Category</th>
-     	 <th>Orig. Price</th>
-		 <th>Selling Price</th>
-		 <th>Exp. Date</th>
-		 <th>Qty.</th>
+     		<th>Model<form method=""><button class="up" value="up" name="btn" style="width: 12%; height: 5%; padding: 0; margin: 0;">▲</button>&nbsp<button class="down" value="down" name="btn" style="width: 12%; height: 5%; padding: 0; margin: 0;">▼</button></form></th>
+     	 <th>Brand<form method=""><button class="up" value="up1" name="btn" style="width: 12%; height: 5%; padding: 0; margin: 0;">▲</button>&nbsp<button class="down" value="down1" name="btn" style="width: 12%; height: 5%; padding: 0; margin: 0;">▼</button></form></th>
+     	 <th>Category<form method=""><button class="up" value="up2" name="btn" style="width: 12%; height: 5%; padding: 0; margin: 0;">▲</button>&nbsp<button class="down" value="down2" name="btn" style="width: 12%; height: 5%; padding: 0; margin: 0;">▼</button></form></th>
+     	 <th>Orig. Price<form method=""><button class="up" value="up3" name="btn" style="width: 12%; height: 5%; padding: 0; margin: 0;">▲</button>&nbsp<button class="down" value="down3" name="btn" style="width: 12%; height: 5%; padding: 0; margin: 0;">▼</button></form></th>
+		 <th>Selling Price<form method=""><button class="up" value="up4" name="btn" style="width: 12%; height: 5%; padding: 0; margin: 0;">▲</button>&nbsp<button class="down" value="down4" name="btn" style="width: 12%; height: 5%; padding: 0; margin: 0;">▼</button></form></th>
+		 <th>Exp. Date<form method=""><button class="up" value="up5" name="btn" style="width: 12%; height: 5%; padding: 0; margin: 0;">▲</button>&nbsp<button class="down" value="down5" name="btn" style="width: 12%; height: 5%; padding: 0; margin: 0;">▼</button></form></th>
+		 <th>Qty.<form method=""><button class="up" value="up6" name="btn" style="width: 12%; height: 5%; padding: 0; margin: 0;">▲</button>&nbsp<button class="down" value="down6" name="btn" style="width: 12%; height: 5%; padding: 0; margin: 0;">▼</button></form></th>
 		 <th>Action</th>
      	</tr>
      </thead>
@@ -429,17 +429,90 @@ function Clickheretoprint()
         	$column="qty";
         	 
         }
-     	if (isset($_POST['btnsearch'])) {
+     	if (isset($_POST['btnsearch']) && $_POST['txtsearch']!="") {
         $sql1 = "SELECT * FROM `product` WHERE `$column` LIKE '%$search%' LIMIT $start, $limit";
+        $sql2 =$conn->query("SELECT count(pro_id) AS id FROM `product` WHERE `$column` LIKE '%$search%'");
         
         	}
+        	elseif ($_GET['btn']=='down') {
+        		$sql1 = "SELECT * FROM `product` Order by `model` DESC LIMIT $start, $limit ";
+        		$sql2 =$conn->query("SELECT count(pro_id) AS id, `model` FROM `product` Order by `model` DESC ");
+        		echo "<style>.down{ background-color:red;}</style>";
+        	}
+        	elseif ($_GET['btn']=='up') {
+        		$sql1 = "SELECT * FROM `product` Order by `model` ASC LIMIT $start, $limit ";
+        		$sql2 =$conn->query("SELECT count(pro_id) AS id, `model` FROM `product` Order by `model` ASC ");
+        		echo "<style>.up{ background-color:red;}</style>";
+        	}
+        	elseif ($_GET['btn']=='down1') {
+        		$sql1 = "SELECT * FROM `product` Order by `brand` DESC LIMIT $start, $limit ";
+        		$sql2 =$conn->query("SELECT count(pro_id) AS id, `brand` FROM `product` Order by `brand` DESC ");
+        		echo "<style>.down{ background-color:red;}</style>";
+        	}
+        	elseif ($_GET['btn']=='up1') {
+        		$sql1 = "SELECT * FROM `product` Order by `brand` ASC LIMIT $start, $limit ";
+        		$sql2 =$conn->query("SELECT count(pro_id) AS id, `brand` FROM `product` Order by `brand` ASC ");
+        		echo "<style>.up{ background-color:red;}</style>";
+        	}
+        	elseif ($_GET['btn']=='down2') {
+        		$sql1 = "SELECT * FROM `product` Order by `category` DESC LIMIT $start, $limit ";
+        		$sql2 =$conn->query("SELECT count(pro_id) AS id, `category` FROM `product` Order by `category` DESC ");
+        		echo "<style>.down{ background-color:red;}</style>";
+        	}
+        	elseif ($_GET['btn']=='up2') {
+        		$sql1 = "SELECT * FROM `product` Order by `category` ASC LIMIT $start, $limit ";
+        		$sql2 =$conn->query("SELECT count(pro_id) AS id, `category` FROM `product` Order by `category` ASC ");
+        		echo "<style>.up{ background-color:red;}</style>";
+        	}
+        	elseif ($_GET['btn']=='down3') {
+        		$sql1 = "SELECT * FROM `product` Order by `origprice` DESC LIMIT $start, $limit ";
+        		$sql2 =$conn->query("SELECT count(pro_id) AS id, `origprice` FROM `product` Order by `origprice` DESC ");
+        		echo "<style>.down{ background-color:red;}</style>";
+        	}
+        	elseif ($_GET['btn']=='up3') {
+        		$sql1 = "SELECT * FROM `product` Order by `origprice` ASC LIMIT $start, $limit ";
+        		$sql2 =$conn->query("SELECT count(pro_id) AS id, `origprice` FROM `product` Order by `origprice` ASC ");
+        		echo "<style>.up{ background-color:red;}</style>";
+        	}
+        	elseif ($_GET['btn']=='down4') {
+        		$sql1 = "SELECT * FROM `product` Order by `sellingprice` DESC LIMIT $start, $limit ";
+        		$sql2 =$conn->query("SELECT count(pro_id) AS id, `sellingprice` FROM `product` Order by `sellingprice` DESC ");
+        		echo "<style>.down{ background-color:red;}</style>";
+        	}
+        	elseif ($_GET['btn']=='up4') {
+        		$sql1 = "SELECT * FROM `product` Order by `sellingprice` ASC LIMIT $start, $limit ";
+        		$sql2 =$conn->query("SELECT count(pro_id) AS id, `sellingprice` FROM `product` Order by `sellingprice` ASC ");
+        		echo "<style>.up{ background-color:red;}</style>";
+        	}
+        	elseif ($_GET['btn']=='down5') {
+        		$sql1 = "SELECT * FROM `product` Order by `expdate` DESC LIMIT $start, $limit ";
+        		$sql2 =$conn->query("SELECT count(pro_id) AS id, `expdate` FROM `product` Order by `expdate` DESC ");
+        		echo "<style>.down{ background-color:red;}</style>";
+        	}
+        	elseif ($_GET['btn']=='up5') {
+        		$sql1 = "SELECT * FROM `product` Order by `expdate` ASC LIMIT $start, $limit ";
+        		$sql2 =$conn->query("SELECT count(pro_id) AS id, `expdate` FROM `product` Order by `expdate` ASC ");
+        		echo "<style>.up{ background-color:red;}</style>";
+        	}
+        	elseif ($_GET['btn']=='down6') {
+        		$sql1 = "SELECT * FROM `product` Order by `qty` DESC LIMIT $start, $limit ";
+        		$sql2 =$conn->query("SELECT count(pro_id) AS id, `qty` FROM `product` Order by `qty` DESC ");
+        		echo "<style>.down{ background-color:red;}</style>";
+        	}
+        	elseif ($_GET['btn']=='up6') {
+        		$sql1 = "SELECT * FROM `product` Order by `qty` ASC LIMIT $start, $limit ";
+        		$sql2 =$conn->query("SELECT count(pro_id) AS id, `qty` FROM `product` Order by `qty` ASC ");
+        		echo "<style>.up{ background-color:red;}</style>";
+        	}
+        	
+
         else{
         		$sql1 = "SELECT * FROM `product` LIMIT $start, $limit ";
         		$sql2 =$conn->query("SELECT count(pro_id) AS id FROM `product`");
         	}
 
         	$result2 = $sql2->fetch_all(MYSQLI_ASSOC);
-        	$sql = "SELECT * from product WHERE brand ORDER BY brand ASC LIMIT $start, $limit";        
+               
                 $total=$result2[0]['id'];
                 $pages=ceil($total/$limit);
                 $prev=$page-1;
@@ -495,11 +568,11 @@ function Clickheretoprint()
 </div>
    <!--page-->
   	<br>
-   <a class="page" id="pre" href="product.php?page=<?=$prev; ?>">< Prev</a>
+   <a class="page" id="pre" href="product.php?page=<?=$prev; ?>&btn=<?php echo $_GET['btn'] ?>">< Prev</a>
     	  <?php  for($i=1; $i <=$pages ; $i++): ?>
-    <a class="page" href="product.php?page=<?=$i; ?>"><?=$i; ?></a>
+    <a class="page" href="product.php?page=<?=$i; ?>&btn=<?php echo $_GET['btn'] ?>"><?=$i; ?></a>
                       <?php endfor; ?>
-    <a class="page" id="pnext" href="product.php?page=<?=$next; ?>">Next ></a>
+    <a class="page" id="pnext" href="product.php?page=<?=$next; ?>&btn=<?php echo $_GET['btn'] ?>">Next ></a>
 	
 	
 					
