@@ -123,6 +123,7 @@ if (isset($_GET['id'])) {
 			<img src="images\logo.png" alt="" width="60px;">
 			<span class="text" style="text-shadow:0.5px 0px #000; color: black;">RNL Vision Care</span>
 		</a>
+
 		<ul class="side-menu top">
 			<li class="active">
 				<a href="point-of-sale.php?id=cash&invoice=<?php echo $finalcode ?>">
@@ -137,22 +138,23 @@ if (isset($_GET['id'])) {
 				</a>
 			</li>
 			</ul>
-	</section>
-	<!-- SIDEBAR -->
 
+	</section>
+
+	<!-- SIDEBAR -->
 
 
 	<!-- CONTENT -->
 	<section id="content">
 		<!-- NAVBAR -->
 		<nav>
-			<i class='bx bx-menu' ></i>
+			<i class='bx bx-menu' ></i><h1><?php echo $_SESSION['users_roles']; ?></h1>
 			<form action="#">
 
 			</form>
 			<div id="digital-clock"></div>
 			<script src="time.js"></script>
-			
+			<h4><?php echo $_SESSION['users_username']; ?></h4>
 			<!-- DROP DOWN NG EDIT PROFILE AND CHANGE PASS OK-->
 			<div class="dropdown1">
 			<img src="img\user.png" alt="" width="40px" class="userlogo">
