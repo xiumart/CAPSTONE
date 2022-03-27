@@ -40,6 +40,7 @@ if (isset($_POST['btnupdate'])) {
 		$supplier = $_POST['supplier'];
 		$qty = $_POST['qty'];
 		$remarks=$_POST['remarks'];
+		$status = '2';
 		//picture coding
 		$picture_name=$_FILES['picture']['name'];
 		$picture_type=$_FILES['picture']['type'];
@@ -58,7 +59,7 @@ if($picture_type=="image/jpeg" || $picture_type=="image/jpg" || $picture_type=="
 	
 			//save to database
 			//$user_id = random_num(20);
-			$query = "UPDATE `product` SET `brand`='$brandname',`model`='$model',`category`='$category',`dateofarrival`='$dateofarrival',`expdate`='$expirationdate',`sellingprice`='$sellingprice',`origprice`='$originalprice',`profit`='$profit',`supplier`='$supplier',`qty`='$qty',`image`='$pic_name',`remarks`='$remarks'WHERE `pro_id`='$pro_id1'";
+			$query = "UPDATE `product` SET `brand`='$brandname',`model`='$model',`category`='$category',`dateofarrival`='$dateofarrival',`expdate`='$expirationdate',`sellingprice`='$sellingprice',`origprice`='$originalprice',`profit`='$profit',`supplier`='$supplier',`qty`='$qty',`image`='$pic_name',`remarks`='$remarks', pro_status = '$status'WHERE `pro_id`='$pro_id1'";
 			users_logs($_SESSION['users_username'], "Updated Product", date("Y-m-d h:i:sa"), $_SESSION['users_roles']);
 			mysqli_query($conn, $query);
 			echo "<script>alert('You have successfully updated the record.');</script>";
@@ -68,7 +69,7 @@ if($picture_type=="image/jpeg" || $picture_type=="image/jpg" || $picture_type=="
 }}
 else{
 	$pic_name=$_POST['hidpic'];
-	$query = "UPDATE `product` SET `brand`='$brandname',`model`='$model',`category`='$category',`dateofarrival`='$dateofarrival',`expdate`='$expirationdate',`sellingprice`='$sellingprice',`origprice`='$originalprice',`profit`='$profit',`supplier`='$supplier',`qty`='$qty',`image`='$pic_name',`remarks`='$remarks'WHERE `pro_id`='$pro_id1'";
+	$query = "UPDATE `product` SET `brand`='$brandname',`model`='$model',`category`='$category',`dateofarrival`='$dateofarrival',`expdate`='$expirationdate',`sellingprice`='$sellingprice',`origprice`='$originalprice',`profit`='$profit',`supplier`='$supplier',`qty`='$qty',`image`='$pic_name',`remarks`='$remarks', pro_status = '$status'WHERE `pro_id`='$pro_id1'";
 			users_logs($_SESSION['users_username'], "Updated Product", date("Y-m-d h:i:sa"), $_SESSION['users_roles']);
 			mysqli_query($conn, $query);
 			echo "<script>alert('You have successfully updated the record.');</script>";
@@ -268,7 +269,7 @@ if (isset($_GET['eid'])) {
 			<table>
 			  
 			  <?php
-			$sql1 = "SELECT * FROM `product` WHERE pro_status='2'  LIMIT 6";
+			$sql1 = "SELECT * FROM `product` WHERE pro_status='2' AND qty <=10 LIMIT 6";
 			$result1 = $conn->query($sql1);  
   			if($result1->num_rows > 0){
   				while($row = $result1 -> fetch_assoc()){ 
@@ -276,11 +277,11 @@ if (isset($_GET['eid'])) {
 					$model = $row['model'];
 			  ?>
 			  <tr>
-					<th><h4>Product:</h4></th>
+			  <th><h4 style="color: red;">Low Product:</h4></th>
 			  <td><p><?php 
 					if ($qty<=10) {
-						echo $row['model'] ."&nbsp";		
-						echo $row['qty'];
+						echo "Model: " . $row['model'] ."&nbsp<br>";		
+						echo "QTY: " . $row['qty'];
 							}
 			  ?>
 				</p></td><td><a href="?eid=<?php echo $row['pro_id'];?>"><button class="btn-remove" name="btnremove" style="cursor: pointer;">Clear</button></a></td>

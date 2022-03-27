@@ -198,7 +198,7 @@ if (isset($_GET['id'])) {
 				<i class='bx bxs-bell' ></i>
 				<span class="num">
 				<?php 
-				$query = mysqli_query($conn, "SELECT COUNT(*) as total from client_inquiries WHERE inquiries_status = '2'");
+				$query = mysqli_query($conn, "SELECT COUNT(*) as total from product  WHERE qty <=10 AND pro_status ='2'");
 					while($result=mysqli_fetch_array($query)){
 					echo $result['total']; 
 				}			
@@ -207,28 +207,63 @@ if (isset($_GET['id'])) {
 			</a>
 			<?php
 
-			if (isset($_GET['id'])) {
-			$users_id=$_GET['id'];
-			$query = "UPDATE `client_inquiries` SET inquiries_status = '1'  WHERE inquiries_id = '$users_id'";
-			mysqli_query($conn, $query);
-			header( "refresh:0; url=product.php" );
+if (isset($_GET['id'])) {
+	$users_id=$_GET['id'];
+
+	$query = "UPDATE `client_inquiries` SET inquiries_status = '1' WHERE inquiries_id = '$users_id'";
+	mysqli_query($conn, $query);
+			}
+			?>
+			<?php
+
+if (isset($_GET['eid'])) {
+	$pro_id=$_GET['eid'];
+
+	$query1 = "UPDATE `product` SET pro_status = '1' WHERE pro_id = '$pro_id'";
+	mysqli_query($conn, $query1);
 			}
 			?>
 			
 				<div class="dropdown-content2">
 					<h4 id="textnotif">Notification</h4><br><hr>
-					<?php   
+					
+			<table>
+			<?php   
 			   require_once("../db/notification/notifdisplay.php");
               while($row = mysqli_fetch_assoc($query)){
 				  
             ?>
-			<table>
 				<tr>
 					<th><h4>Inquiry:</h4></th><p><td><?php echo $row['inquiries_message']; ?></p></td><td><a href="?id=<?php echo $row['inquiries_id'];?>"><button class="btn-remove" name="btnremove" style="cursor: pointer;">Clear</button></a></td><hr color="wheat">
-			  </table>
-					<?php
+			  </tr>
+			  <?php
 			  }
 			  ?>
+			  
+			  <?php
+			$sql1 = "SELECT * FROM `product` WHERE pro_status='2' AND qty <=10 LIMIT 6";
+			$result1 = $conn->query($sql1);  
+  			if($result1->num_rows > 0){
+  				while($row = $result1 -> fetch_assoc()){ 
+					$qty = $row['qty'];
+					$model = $row['model'];
+			  ?>
+			  <tr>
+			  <th><h4 style="color: red;">Low Product:</h4></th>
+			  <td><p><?php 
+					if ($qty<=10) {
+						echo "Model: " . $row['model'] ."&nbsp<br>";		
+						echo "QTY: " . $row['qty'];
+							}
+			  ?>
+				</p></td><td><a href="?eid=<?php echo $row['pro_id'];?>"><button class="btn-remove" name="btnremove" style="cursor: pointer;">Clear</button></a></td>
+							</tr>
+							<?php
+				  }}
+			  ?>
+			  </table>
+			  
+					
 					<a href="see-all-notification.php" id="colnotif">See all notification..</a>
 				</div>
 			</div>

@@ -126,6 +126,12 @@ include ("conn.php");
 					<span class="text">Audit Logs</span>
 				</a>
 			</li>
+			<li>
+				<a href="archive.php">
+					<i class='bx bxs-download' ></i>
+					<span class="text">Back-up and Restore</span>
+				</a>
+			</li>
 		</ul>
 	</section>
 	<!-- SIDEBAR -->
@@ -147,7 +153,8 @@ include ("conn.php");
 				<i class='bx bxs-bell' ></i>
 				<span class="num">
 				<?php 
-				$query = mysqli_query($conn, "SELECT COUNT(*) as total from client_inquiries, product  WHERE inquiries_status = '2' AND qty <=10 AND pro_status ='2'");
+				error_reporting(0);
+				$query = mysqli_query($conn, "SELECT COUNT(product.'pro_status') + COUNT(product.'qty') + COUNT(client_inquiries.'inquiries_status') as total from product, client_inquiries WHERE product.'pro_status' ='2' AND product.'qty' <=10 AND client_inquiries.'inquiries_status'='2'");
 					while($result=mysqli_fetch_array($query)){
 					echo $result['total']; 
 				}			
@@ -192,7 +199,7 @@ if (isset($_GET['eid'])) {
 			  ?>
 			  
 			  <?php
-			$sql1 = "SELECT * FROM `product` WHERE pro_status='2' LIMIT 6";
+			$sql1 = "SELECT * FROM `product` WHERE pro_status='2' AND qty <=10 LIMIT 6";
 			$result1 = $conn->query($sql1);  
   			if($result1->num_rows > 0){
   				while($row = $result1 -> fetch_assoc()){ 
@@ -200,11 +207,11 @@ if (isset($_GET['eid'])) {
 					$model = $row['model'];
 			  ?>
 			  <tr>
-					<th><h4>Product:</h4></th>
+			  <th><h4 style="color: red;">Low Product:</h4></th>
 			  <td><p><?php 
 					if ($qty<=10) {
-						echo $row['model'] ."&nbsp";		
-						echo $row['qty'];
+						echo "Model: " . $row['model'] ."&nbsp<br>";		
+						echo "QTY: " . $row['qty'];
 							}
 			  ?>
 				</p></td><td><a href="?eid=<?php echo $row['pro_id'];?>"><button class="btn-remove" name="btnremove" style="cursor: pointer;">Clear</button></a></td>
@@ -262,12 +269,21 @@ if (isset($_GET['eid'])) {
 				</div>
 			
 			</div>
+			<?php
+
+	if (isset($_POST['btnremove'])) {
+	$app_id=$_GET['id'];
+	$queryaccept = "UPDATE `product` SET inquiries_status = '1' WHERE inquiries_id ='$app_id'";
+			mysqli_query($conn, $queryaccept);
+			}
+			?>
 			<div class="table-data">
 				<div class="order">
 					<div class="head">
 						<h3></h3>
-						<i class='bx bx-search' ></i>
-						<i class='bx bx-filter' ></i>
+						<form method="post" action="?id=<?php echo $row['inquiries_id'];?>"><button class="btn-remove" name="btnremove" style="float: right; cursor: pointer; width: 100px; border-radius: 8px;">CLEAR ALL</button></a>
+		</form><!-- <i class='bx bx-search' ></i>
+						<i class='bx bx-filter' ></i> -->
 						
 					</div>
 				
@@ -287,7 +303,7 @@ if (isset($_GET['eid'])) {
 		?>
 		<?php
 			include "conn.php";
-			$sql1 ="SELECT * FROM `product` WHERE qty <=10";
+			$sql1 ="SELECT * FROM `product` WHERE qty <=10 AND pro_status='2'";
 			$result1 = $conn->query($sql1);  
   			if($result1->num_rows > 0){
   				while($row = $result1 -> fetch_assoc()){ 

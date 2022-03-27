@@ -6,5 +6,5 @@ if(!$conn){
 }
 
 //query for feedback display
-$query = mysqli_query($conn,"SELECT * FROM `client_inquiries`");
+$query = mysqli_query($conn,"SELECT * FROM `client_inquiries` WHERE inquiries_status = '2' LIMIT 4");
 ?>

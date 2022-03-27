@@ -1,3 +1,7 @@
+<?php
+session_start();
+include ("../conn.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,12 +35,38 @@
 		float: right;
 		width: 10%;
 	}
-	#sidebar .side-menu.top li.active a {
-	color: blue;
-}
-#sidebar .side-menu.top li a:hover {
-	color: blue;
-}
+	.btn-apph {
+		background-color: #00c2cb;
+		padding: 15px;
+		border: none;
+		border-radius: 10%;
+		float: right;
+		margin-left: 10px;
+
+		
+	}
+	.btn-f, .btn-c {
+		background-color: #00c2cb;
+		border: none;
+		border-radius: 10%;
+		margin-left: 10px;
+		padding:4px;
+	}
+	.btn-remove {
+		background-color: #00c2cb;
+		border: none;
+		border-radius: 10%;
+		margin-left: 60%;
+		padding:8px;
+	}
+	.btn-f:hover { background-color: #4CAF50;}
+	.btn-c:hover { background-color: red;}
+	.btn-apph:hover { background-color: #00a2a3;}
+	.btn-remove:hover { background-color: red;}
+	.namee{
+		margin-top: 4.5%;
+	}
+
 </style>
 <body>
 
@@ -49,30 +79,6 @@
 		</a>
 		<ul class="side-menu top">
 			<li>
-				<a href="dashboard.php">
-					<i class='bx bxs-dashboard' ></i>
-					<span class="text">Dashboard</span>
-				</a>
-			</li>
-			<li>
-				<a href="patient-record.php">
-					<i class='bx bxs-user' ></i>
-					<span class="text">Patient Record</span>
-				</a>
-			</li>
-			<li>
-				<a href="point-of-sale.php">
-					<i class='bx bxs-cart' ></i>
-					<span class="text">Point of Sale</span>
-				</a>
-			</li>
-			<li class="active">
-				<a href="sales-report.php">
-					<i class='bx bxs-download' ></i>
-					<span class="text">Sales Report</span>
-				</a>
-			</li>
-			<li>
 				<a href="product.php">
 					<i class='bx bxs-shopping-bag-alt' ></i>
 					<span class="text">Product Inventory</span>
@@ -82,26 +88,6 @@
 				<a href="supplier.php">
 					<i class='bx bxs-truck' ></i>
 					<span class="text">Supplier</span>
-				</a>
-			</li>
-			<li>
-				<a href="manage-user.php">
-					<i class='bx bxs-group' ></i>
-					<span class="text">Manage User</span>
-				</a>
-			</li>
-			<li>
-				<a href="audit.php">
-					<i class='bx bxs-book' ></i>
-					<span class="text">Audit Logs</span>
-				</a>
-			</li>
-		</ul>
-		<ul class="side-menu">
-			<li>
-				<a href="logout.php" class="logout">
-					<i class='bx bxs-log-out-circle' ></i>
-					<span class="text">Logout</span>
 				</a>
 			</li>
 		</ul>
@@ -120,20 +106,28 @@
 			</form>
 			<div id="digital-clock"></div>
 			<script src="time.js"></script>
-			<input type="checkbox" id="switch-mode" hidden>
-			<label for="switch-mode" class="switch-mode"></label>
 			<div class="dropdown2">
 			<a href="#" class="notification">
 				<i class='bx bxs-bell' ></i>
 				<span class="num">
 				<?php 
-				$query = mysqli_query($conn, "SELECT COUNT(*) as total from product  WHERE qty <=10 AND pro_status ='2'");
+				$query = mysqli_query($conn, "SELECT COUNT(*) as total from product WHERE pro_status ='2' AND qty <=10");
 					while($result=mysqli_fetch_array($query)){
 					echo $result['total']; 
 				}			
 				?>
 						  </span>			  
 			</a>
+			<?php
+
+if (isset($_GET['id'])) {
+	$users_id=$_GET['id'];
+
+	$query = "UPDATE `client_inquiries` SET inquiries_status = '1' WHERE inquiries_id = '$users_id'";
+	mysqli_query($conn, $query);
+	header( "refresh:0; url=see-all-notification.php" );
+			}
+			?>
 			<?php
 
 if (isset($_GET['eid'])) {
@@ -149,9 +143,20 @@ if (isset($_GET['eid'])) {
 					<h4 id="textnotif">Notification</h4><br><hr>
 					
 			<table>
+			<?php   
+			   require_once("../db/notification/notifdisplay.php");
+              while($row = mysqli_fetch_assoc($query)){
+				  
+            ?>
+				<tr>
+					<th><h4>Inquiry:</h4></th><p><td><?php echo $row['inquiries_message']; ?></p></td><td><a href="?id=<?php echo $row['inquiries_id'];?>"><button class="btn-remove" name="btnremove" style="cursor: pointer;">Clear</button></a></td><hr color="wheat">
+			  </tr>
+			  <?php
+			  }
+			  ?>
 			  
 			  <?php
-			$sql1 = "SELECT * FROM `product` WHERE pro_status='2'  LIMIT 6";
+			$sql1 = "SELECT * FROM `product` WHERE pro_status='2' AND qty <=10 LIMIT 6";
 			$result1 = $conn->query($sql1);  
   			if($result1->num_rows > 0){
   				while($row = $result1 -> fetch_assoc()){ 
@@ -159,11 +164,11 @@ if (isset($_GET['eid'])) {
 					$model = $row['model'];
 			  ?>
 			  <tr>
-					<th><h4>Product:</h4></th>
+			  <th><h4 style="color: red;">Low Product:</h4></th>
 			  <td><p><?php 
 					if ($qty<=10) {
-						echo $row['model'] ."&nbsp";		
-						echo $row['qty'];
+						echo "Model: " . $row['model'] ."&nbsp<br>";		
+						echo "QTY: " . $row['qty'];
 							}
 			  ?>
 				</p></td><td><a href="?eid=<?php echo $row['pro_id'];?>"><button class="btn-remove" name="btnremove" style="cursor: pointer;">Clear</button></a></td>
@@ -225,24 +230,31 @@ if (isset($_GET['eid'])) {
 				<div class="order">
 					<div class="head">
 						<h3></h3>
-						<i class='bx bx-search' ></i>
-						<i class='bx bx-filter' ></i>
+						<!-- <i class='bx bx-search' ></i>
+						<i class='bx bx-filter' ></i> -->
 						
 					</div>
 				
-
+		<?php
+			include "../conn.php";
+			$sql1 ="SELECT * FROM `product` WHERE qty <=10 AND pro_status='2'";
+			$result1 = $conn->query($sql1);  
+  			if($result1->num_rows > 0){
+  				while($row = $result1 -> fetch_assoc()){ 
+			$qty = $row['model'];
+			$model = $row['qty'];
+		?>
 		<div id="notif-body">
-		<h4>Inquiry : </h5>
-		<h5>From: marliardoumbao2@gmail.com</h6>
-		<p>How can I set an appoinment?</p>
+		<h4>Product : </h5>
+		<h5>Model: <?php echo $row['model'];?></h6>
+		<h5>Quantity: <?php echo $row['qty'];?></h5>
 		<hr>
 		<br>
-		<h4>Product : </h5>
-		<h5>From: System</h6>
-		<p>RNL Eyeglass is out of stock</p>
-		<hr>
-		</div>
-
+			</div>
+			<?php
+			  }}
+		?>
+		
 		</main>
 		<!-- MAIN -->
 	</section>
@@ -251,4 +263,98 @@ if (isset($_GET['eid'])) {
 
 	<script src="script.js"></script>
 </body>
+<style>
+		.btn-f, .btn-c {
+		background-color: #00c2cb;
+		border: none;
+		border-radius: 10%;
+		margin-left: 10px;
+		padding:4px;
+	}
+
+	.btn-f:hover { background-color: #4CAF50;}
+	.btn-c:hover { background-color: red;}
+	table {
+  border: 1px solid #ccc;
+  border-collapse: collapse;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  table-layout: fixed;
+}
+
+table caption {
+  font-size: 1.5em;
+  background-color: #00c2cb;
+  margin-top:20px;	
+}
+
+table tr {
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+  padding: .35em;
+}
+
+table th,
+table td {
+  padding: .625em;
+  text-align: center;
+}
+
+table th {
+  font-size: .85em;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  background-color: #9dd1d4;
+}
+
+@media screen and (max-width: 600px) {
+  table {
+    border: 0;
+  }
+
+  table caption {
+    font-size: 1.3em;
+  }
+  
+  table thead {
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+  
+  table tr {
+    border-bottom: 3px solid #ddd;
+    display: block;
+    margin-bottom: .625em;
+  }
+  
+  table td {
+    border-bottom: 1px solid #ddd;
+    display: block;
+    font-size: .8em;
+    text-align: right;
+  }
+  
+  table td::before {
+    /*
+    * aria-label has no advantage, it won't be read inside a table
+    content: attr(aria-label);
+    */
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  
+  table td:last-child {
+    border-bottom: 0;
+  }
+}
+</style>
 </html>

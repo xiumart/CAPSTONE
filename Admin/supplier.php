@@ -161,7 +161,7 @@ if (isset($_GET['id'])) {
 				<i class='bx bxs-bell' ></i>
 				<span class="num">
 				<?php 
-				$query = mysqli_query($conn, "SELECT COUNT(*) as total from client_inquiries, product  WHERE inquiries_status = '2' AND qty <=10 AND pro_status ='2'");
+				$query = mysqli_query($conn, "SELECT COUNT(*) as total from product  WHERE qty <=10 AND pro_status ='2'");
 					while($result=mysqli_fetch_array($query)){
 					echo $result['total']; 
 				}			
@@ -175,7 +175,6 @@ if (isset($_GET['id'])) {
 
 	$query = "UPDATE `client_inquiries` SET inquiries_status = '1' WHERE inquiries_id = '$users_id'";
 	mysqli_query($conn, $query);
-	header( "refresh:0; url=supplier.php" );
 			}
 			?>
 			<?php
@@ -185,7 +184,6 @@ if (isset($_GET['eid'])) {
 
 	$query1 = "UPDATE `product` SET pro_status = '1' WHERE pro_id = '$pro_id'";
 	mysqli_query($conn, $query1);
-	header( "refresh:0; url=supplier.php" );
 			}
 			?>
 			
@@ -206,7 +204,7 @@ if (isset($_GET['eid'])) {
 			  ?>
 			  
 			  <?php
-			$sql1 = "SELECT * FROM `product` WHERE pro_status='2' LIMIT 6";
+			$sql1 = "SELECT * FROM `product` WHERE pro_status='2' AND qty <=10 LIMIT 6";
 			$result1 = $conn->query($sql1);  
   			if($result1->num_rows > 0){
   				while($row = $result1 -> fetch_assoc()){ 
@@ -214,11 +212,11 @@ if (isset($_GET['eid'])) {
 					$model = $row['model'];
 			  ?>
 			  <tr>
-					<th><h4>Product:</h4></th>
+			  <th><h4 style="color: red;">Low Product:</h4></th>
 			  <td><p><?php 
 					if ($qty<=10) {
-						echo $row['model'] ."&nbsp";		
-						echo $row['qty'];
+						echo "Model: " . $row['model'] ."&nbsp<br>";		
+						echo "QTY: " . $row['qty'];
 							}
 			  ?>
 				</p></td><td><a href="?eid=<?php echo $row['pro_id'];?>"><button class="btn-remove" name="btnremove" style="cursor: pointer;">Clear</button></a></td>
