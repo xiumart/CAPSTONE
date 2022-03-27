@@ -343,7 +343,7 @@ function Clickheretoprint()
                   echo "selected";
                 } ?>>Address</option>
               </select>
-						<input type="text" name="txtsearch" id="txtsearch" placeholder="Search" autocomplete="off" style="padding: 12px;border: 1px solid #ccc;border-radius: 4px;font-family: var(poppins);width: 50%;">
+						<input type="text" name="txtsearch" id="txtsearch" placeholder="Search" autocomplete="off" style="padding: 12px;border: 1px solid #ccc;border-radius: 4px;font-family: var(poppins);width: 30%;">
 						<button  id="btnsearch" name="btnsearch" class="page"><i class='bx bx-search' ></i></button>
 						</form>
 						<div id="printing">
@@ -351,11 +351,15 @@ function Clickheretoprint()
 						<caption>LIST OF PATIENT</caption>
 						<thead>
 						<tr>						
-							<th scope="col">Patient ID</th>
-							<th scope="col">Name</th>
-							<th scope="col">Contact No.</th>
-							<th scope="col">Address</th>
-							<th scope="col">Age</th>
+							<th scope="col">Patient ID<form method=""><button class="up" value="up" name="btn" style="width: 10%; height: 5%; padding: 0; margin: 0;">▲</button>&nbsp<button class="down" value="down" name="btn" style="width: 10%; height: 5%; padding: 0; margin: 0;">▼</button></form></th>
+
+							<th scope="col">Name<form method=""><button class="up" value="up1" name="btn" style="width: 10%; height: 5%; padding: 0; margin: 0;">▲</button>&nbsp<button class="down" value="down1" name="btn" style="width: 10%; height: 5%; padding: 0; margin: 0;">▼</button></form></th>
+
+							<th scope="col">Contact No.<form method=""><button class="up" value="up2" name="btn" style="width: 10%; height: 5%; padding: 0; margin: 0;">▲</button>&nbsp<button class="down" value="down2" name="btn" style="width: 10%; height: 5%; padding: 0; margin: 0;">▼</button></form></th>
+
+							<th scope="col">Address<form method=""><button class="up" value="up3" name="btn" style="width: 10%; height: 5%; padding: 0; margin: 0;">▲</button>&nbsp<button class="down" value="down3" name="btn" style="width: 10%; height: 5%; padding: 0; margin: 0;">▼</button></form></th>
+
+							<th scope="col">Age<form method=""><button class="up" value="up4" name="btn" style="width: 10%; height: 5%; padding: 0; margin: 0;">▲</button>&nbsp<button class="down" value="down4" name="btn" style="width: 10%; height: 5%; padding: 0; margin: 0;">▼</button></form></th>
 							<th scope="col">Action</th>
 						</tr>
 				
@@ -400,6 +404,58 @@ function Clickheretoprint()
         $sql1 = "SELECT year(now())-year(`patient_bday`) AS age,`patient_no`,`patient_id`,`patient_name`,`patient_email`,`patient_contact`,`patient_address`  FROM `patient_distancerx` WHERE `status`!='Remove'  LIMIT $start, $limit ";
         }
      	}
+    	 	elseif ($_GET['btn']=='down') {
+        		$sql1 = "SELECT year(now())-year(`patient_bday`) AS age ,`patient_no`,`patient_id`,`patient_name`,`patient_email`,`patient_contact`,`patient_address` FROM `patient_distancerx` WHERE `status`!='Remove' Order by `patient_id` DESC LIMIT $start, $limit ";
+        		$sql2 =$conn->query("SELECT count(patient_no) AS id FROM `patient_distancerx` WHERE `status`!='Remove' Order by `patient_id` DESC ");
+        		echo "<style>.down{ background-color:red;}</style>";
+        	}
+        	elseif ($_GET['btn']=='up') {
+        		$sql1 = "SELECT year(now())-year(`patient_bday`) AS age ,`patient_no`,`patient_id`,`patient_name`,`patient_email`,`patient_contact`,`patient_address` FROM `patient_distancerx` WHERE `status`!='Remove' Order by `patient_id` ASC LIMIT $start, $limit ";
+        		$sql2 =$conn->query("SELECT count(patient_no) AS id FROM `patient_distancerx` WHERE `status`!='Remove' Order by `patient_id` ASC ");
+        		echo "<style>.up{ background-color:red;}</style>";
+        	}
+        	elseif ($_GET['btn']=='down1') {
+        		$sql1 = "SELECT year(now())-year(`patient_bday`) AS age ,`patient_no`,`patient_id`,`patient_name`,`patient_email`,`patient_contact`,`patient_address` FROM `patient_distancerx` WHERE `status`!='Remove' Order by `patient_name` DESC LIMIT $start, $limit ";
+        		$sql2 =$conn->query("SELECT count(patient_no) AS id FROM `patient_distancerx` WHERE `status`!='Remove' Order by `patient_name` DESC ");
+        		echo "<style>.down{ background-color:red;}</style>";
+        	}
+        	elseif ($_GET['btn']=='up1') {
+        		$sql1 = "SELECT year(now())-year(`patient_bday`) AS age ,`patient_no`,`patient_id`,`patient_name`,`patient_email`,`patient_contact`,`patient_address` FROM `patient_distancerx` WHERE `status`!='Remove' Order by `patient_name` ASC LIMIT $start, $limit ";
+        		$sql2 =$conn->query("SELECT count(patient_no) AS id FROM `patient_distancerx` WHERE `status`!='Remove' Order by `patient_name` ASC ");
+        		echo "<style>.up{ background-color:red;}</style>";
+        	}
+        	elseif ($_GET['btn']=='down2') {
+        		$sql1 = "SELECT year(now())-year(`patient_bday`) AS age ,`patient_no`,`patient_id`,`patient_name`,`patient_email`,`patient_contact`,`patient_address` FROM `patient_distancerx` WHERE `status`!='Remove' Order by `patient_contact` DESC LIMIT $start, $limit ";
+        		$sql2 =$conn->query("SELECT count(patient_no) AS id FROM `patient_distancerx` WHERE `status`!='Remove' Order by `patient_contact` DESC ");
+        		echo "<style>.down{ background-color:red;}</style>";
+        	}
+        	elseif ($_GET['btn']=='up2') {
+        		$sql1 = "SELECT year(now())-year(`patient_bday`) AS age ,`patient_no`,`patient_id`,`patient_name`,`patient_email`,`patient_contact`,`patient_address` FROM `patient_distancerx` WHERE `status`!='Remove' Order by `patient_contact` ASC LIMIT $start, $limit ";
+        		$sql2 =$conn->query("SELECT count(patient_no) AS id FROM `patient_distancerx` WHERE `status`!='Remove' Order by `patient_contact` ASC ");
+        		echo "<style>.up{ background-color:red;}</style>";
+        	}
+        	elseif ($_GET['btn']=='down3') {
+        		$sql1 = "SELECT year(now())-year(`patient_bday`) AS age ,`patient_no`,`patient_id`,`patient_name`,`patient_email`,`patient_contact`,`patient_address` FROM `patient_distancerx` WHERE `status`!='Remove' Order by `patient_address` DESC LIMIT $start, $limit ";
+        		$sql2 =$conn->query("SELECT count(patient_no) AS id FROM `patient_distancerx` WHERE `status`!='Remove' Order by `patient_address` DESC ");
+        		echo "<style>.down{ background-color:red;}</style>";
+        	}
+        	elseif ($_GET['btn']=='up3') {
+        		$sql1 = "SELECT year(now())-year(`patient_bday`) AS age ,`patient_no`,`patient_id`,`patient_name`,`patient_email`,`patient_contact`,`patient_address` FROM `patient_distancerx` WHERE `status`!='Remove' Order by `patient_address` ASC LIMIT $start, $limit ";
+        		$sql2 =$conn->query("SELECT count(patient_no) AS id FROM `patient_distancerx` WHERE `status`!='Remove' Order by `patient_address` ASC ");
+        		echo "<style>.up{ background-color:red;}</style>";
+        	}
+        	elseif ($_GET['btn']=='down4') {
+        		$sql1 = "SELECT year(now())-year(`patient_bday`) AS age ,`patient_no`,`patient_id`,`patient_name`,`patient_email`,`patient_contact`,`patient_address` FROM `patient_distancerx` WHERE `status`!='Remove' Order by `age` DESC LIMIT $start, $limit ";
+        		$sql2 =$conn->query("SELECT count(patient_no) AS id,year(now())-year(`patient_bday`) AS age FROM `patient_distancerx` WHERE `status`!='Remove' Order by `age` DESC ");
+        		echo "<style>.down{ background-color:red;}</style>";
+        	}
+        	elseif ($_GET['btn']=='up4') {
+        		$sql1 = "SELECT year(now())-year(`patient_bday`) AS age ,`patient_no`,`patient_id`,`patient_name`,`patient_email`,`patient_contact`,`patient_address` FROM `patient_distancerx` WHERE `status`!='Remove' Order by `age` ASC LIMIT $start, $limit ";
+        		$sql2 =$conn->query("SELECT count(patient_no) AS id,year(now())-year(`patient_bday`) AS age FROM `patient_distancerx` WHERE `status`!='Remove' Order by `age` ASC ");
+        		echo "<style>.up{ background-color:red;}</style>";
+        	}
+
+
      	else{ 
      	$sql2 =$conn->query("SELECT count(patient_no) AS id FROM `patient_distancerx`");
         $sql1 = "SELECT year(now())-year(`patient_bday`) AS age,`patient_no`,`patient_id`,`patient_name`,`patient_email`,`patient_contact`,`patient_address`  FROM `patient_distancerx` WHERE `status`!='Remove'  LIMIT $start, $limit ";	
@@ -442,11 +498,11 @@ $sql2 = "SELECT * FROM `patient_distancerx` WHERE `patient_no`='$id'";
 						</tbody>
 					</table>
 			</div><br>
-			<a class="page" id="pre" href="patient-record.php?page=<?=$prev; ?>">< Prev</a>
+			<a class="page" id="pre" href="patient-record.php?page=<?=$prev; ?>&btn=<?php echo $_GET['btn'] ?>">< Prev</a>
     	  <?php  for($i=1; $i <=$pages ; $i++): ?>
-    <a class="page" href="patient-record.php?page=<?=$i; ?>"><?=$i; ?></a>
+    <a class="page" href="patient-record.php?page=<?=$i; ?>&btn=<?php echo $_GET['btn'] ?>"><?=$i; ?></a>
                       <?php endfor; ?>
-    <a class="page" id="pnext" href="patient-record.php?page=<?=$next; ?>">Next ></a>
+    <a class="page" id="pnext" href="patient-record.php?page=<?=$next; ?>&btn=<?php echo $_GET['btn'] ?>">Next ></a>
 		</main>
 		<!-- MAIN -->
 	</section>
