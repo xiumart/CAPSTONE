@@ -155,7 +155,7 @@ Author URL: http://w3layouts.com
                         <textarea name="Message" class="form-control" name ="Message" id="Message" placeholder="Message"
                             required=""></textarea>
                         <div class="text-right">
-                            <button type="submit" class="btn btn-primary btn-style mt-4">Send Message</button>
+                            <button type="submit" class="btn btn-primary btn-style mt-4" onclick="return confirm('We will email you about your concern. Do you want to continue?')">Send Message</button>
                         </div>
                     </form>
                 </div>

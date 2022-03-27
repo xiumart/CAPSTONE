@@ -22,8 +22,8 @@ if (isset($_POST['submit'])) {
 						  										
 			include '../includes/smsAPIControl.php';
 			$message = "Hi".$name."!,Your Appointment was Approved! Date:".$date."-Time:".$time."-Id:".$client_id." RNL VISION CARE";
-			$smsAPICode = "TR-JONAS919806_2WH5H";
-			$smsAPIPassword ="@x[5]r}5gk";
+			$smsAPICode = "TR-DANEM929352_EIJK1";
+            $smsAPIPassword ="4(j($@xf@i";
 	
 			$send = new Trebor(); 
 			$send->itexmo($receiver, $message,$smsAPICode,$smsAPIPassword);
@@ -409,7 +409,7 @@ if (isset($_GET['eid'])) {
 			  <td data-label="Time"><?php echo $row['app_time'];?></td>
 			  <td data-label="Purpose"><?php echo $row['app_purpose'];?></td>
 			  <td data-label="Action"><a href="?id3=<?php echo $row['app_id'];?>"><button class="btn-c" style="cursor: pointer;width:100px;">Denied</button></a>
-			  <form method = "post" action="dashboard.php?id=<?php echo $row['app_id'];?>"><button class="btn-f" name="submit" style="cursor: pointer;width:100px;"onclick="return confirm('Are you sure you want to download dabatase?')">Accept</button></form></td>
+			  <form method = "post" action="dashboard.php?id=<?php echo $row['app_id'];?>"><button class="btn-f" name="submit" style="cursor: pointer;width:100px;"onclick="return confirm('SMS has been sent')">Accept</button></form></td>
      	  </tr>
 
      	<?php  } ?>
