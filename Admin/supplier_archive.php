@@ -1,5 +1,6 @@
 <?php
 include("session.php");
+error_reporting(0);
 function createRandomPassword() {
 	$chars = "003232303232023232023456789";
 	srand((double)microtime()*1000000);
@@ -304,6 +305,23 @@ if (isset($_GET['eid'])) {
 			
 			</div><br>
 			<form method="post">
+				<label>Search by:</label>
+              <select name='search' id="price-sort" onchange="location = this.value;" style="padding: 12px;border: 1px solid #ccc;border-radius: 4px;font-family: var(poppins); width: 30%;">
+                <option value='0' disabled selected>Select category..</option>
+                <option value='?search=company' <?php if($_GET['search']=='company'){
+                  echo "selected";
+                } ?>>Company Name</option>
+                <option value='?search=name' <?php if($_GET['search']=='name'){
+                  echo "selected";
+                } ?>>Contact Person</option>
+                <option value='?search=contact' <?php if($_GET['search']=='contact'){
+                  echo "selected";
+                } ?>>Contact No</option>
+                <option value='?search=description' <?php if($_GET['search']=='description'){
+                  echo "selected";
+                } ?>>Description</option>
+                
+              </select>
 						<input type="text" name="txtsearch" id="txtsearch" placeholder="Search..." autocomplete="off" style="padding: 12px;border: 1px solid #ccc;border-radius: 4px;font-family: var(poppins); width: 50%;">
 						<button  id="btnsearch" name="btnsearch" class="page" style="cursor: pointer;"><i class='bx bx-search' ></i></button>
 			</form>
@@ -327,13 +345,32 @@ if (isset($_GET['eid'])) {
      <tbody>
      	
 	 <?php
-	 error_reporting(0);
+	 
      	$limit=25;
         
         $page=isset($_GET['page']) ? $_GET['page']:1;
         $start=($page-1)*$limit;
         $search=$_POST['txtsearch'];
      	$sql2 =$conn->query("SELECT count(supp_id) AS id, `supp_cname`,`supp_contactperson`,`supp_contact`, `supp_desc` FROM `archive_supplier` WHERE `supp_cname` LIKE '%$search%' OR `supp_contactperson` LIKE '%$search%'  OR `supp_desc` LIKE'%$search%' OR `supp_contact` LIKE'%$search%'  ");
+     	
+
+        if ($_GET['search']=='company') {
+        	$column="supp_cname";
+
+        }
+        elseif ($_GET['search']=='name') {
+        	$column="supp_contactperson";
+        	 
+        }
+        elseif ($_GET['search']=='contact') {
+        	$column="supp_contact";
+        	 
+        }
+        elseif ($_GET['search']=='description') {
+        	$column="supp_desc";
+        	 
+        }
+
      	if (isset($_POST['btnsearch'])) {
         $sql1 = "SELECT * FROM `archive_supplier` WHERE `supp_cname` LIKE '%$search%' OR `supp_contactperson` LIKE'%$search%'  OR `supp_desc` LIKE'%$search%' OR `supp_contact` LIKE'%$search%'  LIMIT $start, $limit ";
         	}
@@ -375,6 +412,13 @@ if (isset($_GET['eid'])) {
 				</table>
 				<div><br><br>
 				
+				
+   <a class="page" id="pre" href="supplier.php?page=<?=$prev; ?>&btn=<?php echo $_GET['btn'] ?>">< Prev</a>
+    	  <?php  for($i=1; $i <=$pages ; $i++): ?>
+    <a class="page" href="supplier.php?page=<?=$i; ?>&btn=<?php echo $_GET['btn'] ?>"><?=$i; ?></a>
+                      <?php endfor; ?>
+    <a class="page" id="pnext" href="supplier.php?page=<?=$next; ?>&btn=<?php echo $_GET['btn'] ?>">Next ></a>
+	
 			</div>
 
 		
@@ -502,6 +546,7 @@ function restoreMysqlDB($filePath, $conn)
 ?>
 	<script src="script.js"></script>
 </body>
+
 <style>
 table {
   border: 1px solid #ccc;
