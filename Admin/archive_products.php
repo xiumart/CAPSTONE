@@ -7,7 +7,6 @@ if ($connection_link === false) {
 } 
 
 if (isset($_POST['btnrem'])) {
-//sql query to perform copying data from one table to another
 $pro_id1 = $_GET['id'];
 $sql_query  =  "INSERT INTO archive_products select * from product where `pro_id` = $pro_id1 "; 
 $sql_query1 = "DELETE from product where `pro_id` = $pro_id1";
