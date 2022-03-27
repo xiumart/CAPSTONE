@@ -597,7 +597,7 @@ if (isset($_GET['eid'])) {
 						</div>
 						<div class="row">
 						<div class="col-25">
-							<label for="middlename">Middle Name</label>
+							<label for="middlename">Middle Name (optional)</label>
 						</div>
 						<div class="col-75">
 							<input type="text" id="middlename" name="middlename" placeholder="Enter middle name.." autocomplete="off" value="<?php echo $mname;?>">
@@ -645,7 +645,7 @@ if (isset($_GET['eid'])) {
 						</div>
 						<div class="row">
 						<div class="col-25">
-							<label for="address">Medical Hx</label>
+							<label for="address">Medical Hx (optional)</label>
 						</div>
 						<div class="col-75">
 							<textarea name="medhx" placeholder="Enter medical history" id="pat"></textarea>

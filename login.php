@@ -101,7 +101,6 @@ function getIpAddr(){
           <form method="POST" action="" class="sign-in-form">
             <h2 class="title">LOGIN HERE !</h2>
             
-
           <div id="result"><?php echo $msg; ?></div>
             <div class="input-field">
               <i class="fas fa-user"></i>

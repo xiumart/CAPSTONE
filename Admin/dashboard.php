@@ -1,7 +1,7 @@
 <?php 
 include("../conn.php");
 include("session.php");
-
+error_reporting(0);
 // Set the new timezone
 date_default_timezone_set('Asia/Manila');
 $date = date('d-m-y g:i a');
@@ -163,54 +163,7 @@ $finalcode='RS-'.createRandomPassword();
 					<span class="text">Patient Record</span>
 				</a>
 			</li>
-			<li>
-				<a href="point-of-sale.php?id=cash&invoice=<?php echo $finalcode ?>">
-					<i class='bx bxs-cart' ></i>
-					<span class="text">Point of Sale</span>
-				</a>
-			</li>
-			<li>
-				<a href="sales-report.php">
-					<i class='bx bxs-chart' ></i>
-					<span class="text">Sales Report</span>
-				</a>
-			</li>
-			<li>
-				<a href="product.php">
-					<i class='bx bxs-shopping-bag-alt' ></i>
-					<span class="text">Product Inventory</span>
-				</a>
-			</li>
-			<li>
-				<a href="supplier.php">
-					<i class='bx bxs-truck' ></i>
-					<span class="text">Supplier</span>
-				</a>
-			</li>
-			<li>
-				<a href="manage-user.php">
-					<i class='bx bxs-group' ></i>
-					<span class="text">Manage User</span>
-				</a>
-			</li>
-			<li>
-				<a href="audit.php">
-					<i class='bx bxs-book' ></i>
-					<span class="text">Audit Logs</span>
-				</a>
-			</li>
-			<li>
-        <a href="inquiries.php">
-          <i class='bx bxs-phone' ></i>
-          <span class="text">Client Inquiries</span>
-        </a>
-      </li>
-			<li>
-				<a href="archive.php">
-					<i class='bx bxs-download' ></i>
-					<span class="text">Back-up and Restore</span>
-				</a>
-			</li>
+		
 		</ul>
 	</section>
 	<!-- SIDEBAR -->
@@ -319,7 +272,7 @@ if (isset($_GET['eid'])) {
 					<h1>Dashboard</h1>
 					<ul class="breadcrumb">
 						<li>
-							<a href="#">Dashboard</a>
+						><a href="#">Dashboard</a></marquee>
 						</li>
 						<li><i class='bx bx-chevron-right' ></i></li>
 						<li>
@@ -408,7 +361,7 @@ if (isset($_GET['eid'])) {
 			  <td data-label="Time"><?php echo $row['app_time'];?></td>
 			  <td data-label="Purpose"><?php echo $row['app_purpose'];?></td>
 			  <td data-label="Action"><a href="?id3=<?php echo $row['app_id'];?>"><button class="btn-c" style="cursor: pointer;width:100px;">Denied</button></a>
-			  <form method = "post" action="dashboard.php?id=<?php echo $row['app_id'];?>"><button class="btn-f" name="submit" style="cursor: pointer;width:100px;">Accept</button></form></td>
+			  <form method = "post" action="dashboard.php?id=<?php echo $row['app_id'];?>"><button class="btn-f" name="submit" style="cursor: pointer;width:100px;"onclick="return confirm('SMS has been sent')">Accept</button></form></td>
      	  </tr>
 
      	<?php  } ?>

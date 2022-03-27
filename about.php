@@ -171,7 +171,12 @@
                 <h3>Finished Appointments</h3>
             </div>
             <div class="col-md-3 col-6 stats_info counter_grid mt-md-0 mt-4">
-                <p class="counter">1310</p>
+            <?php 
+							$query4 = mysqli_query($conn, "SELECT SUM(qty) as total from sales_order;");
+									while($result4=mysqli_fetch_array($query4)){
+											
+						  ?>
+                <p class="counter"><?php echo $result4['total'];}?></p>
              
                 <h3>Total of Product Sales</h3>
             </div>

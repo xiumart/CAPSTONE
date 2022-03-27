@@ -1,7 +1,7 @@
 <?php
 error_reporting(0);
 include("../conn.php");
-include("../admin/session.php");
+include("session.php");
 include "logs_conn.php";
 date_default_timezone_set('Asia/Manila');
 function createRandomPassword() {
@@ -87,7 +87,7 @@ if (isset($_POST['btnsubmit'])) {
 		$chkwalk="Appointment";
 	}
 	else{
-		$query2 = mysqli_query($conn, "SELECT COUNT(*) as total from client_user_info;");
+		$query2 = mysqli_query($conn, "SELECT COUNT(*) as total from patient_distancerx;");
  while($result2=mysqli_fetch_array($query2)){
 
    $cidfirst = date("y");
@@ -111,7 +111,7 @@ elseif (($_POST['med'])=="Reading") {
 
 		users_logs($_SESSION['users_username'], "Added Patient", date("Y-m-d h:i:sa"), $_SESSION['users_roles']);
 		mysqli_query($conn, $query);	
-		echo "<script>alert('You have successfully remove the record.');</script>";
+		echo "<script>alert('You have successfully add the record.');</script>";
 			echo "<script>document.location='patient-record.php';</script>";
 
 
@@ -231,6 +231,54 @@ elseif (($_POST['med'])=="Reading") {
 					<span class="text">Patient Record</span>
 				</a>
 			</li>
+			<li>
+				<a href="point-of-sale.php?id=cash&invoice=<?php echo $finalcode ?>">
+					<i class='bx bxs-cart' ></i>
+					<span class="text">Point of Sale</span>
+				</a>
+			</li>
+			<li>
+				<a href="sales-report.php">
+					<i class='bx bxs-chart' ></i>
+					<span class="text">Sales Report</span>
+				</a>
+			</li>
+			<li>
+				<a href="product.php">
+					<i class='bx bxs-shopping-bag-alt' ></i>
+					<span class="text">Product Inventory</span>
+				</a>
+			</li>
+			<li>
+				<a href="supplier.php">
+					<i class='bx bxs-truck' ></i>
+					<span class="text">Supplier</span>
+				</a>
+			</li>
+			<li>
+				<a href="manage-user.php">
+					<i class='bx bxs-group' ></i>
+					<span class="text">Manage User</span>
+				</a>
+			</li>
+			<li>
+				<a href="audit.php">
+					<i class='bx bxs-book' ></i>
+					<span class="text">Audit Logs</span>
+				</a>
+			</li>
+			<li>
+        <a href="inquiries.php">
+          <i class='bx bxs-phone' ></i>
+          <span class="text">Client Inquiries</span>
+        </a>
+      </li>
+			<li>
+				<a href="archive.php">
+					<i class='bx bxs-download' ></i>
+					<span class="text">Back-up and Restore</span>
+				</a>
+			</li>
 		</ul>
 	</section>
 	<!-- SIDEBAR -->
@@ -246,7 +294,58 @@ elseif (($_POST['med'])=="Reading") {
 			</form>
 			<div id="digital-clock"></div>
 			<script src="time.js"></script>
+			<div class="dropdown2">
+			<a href="#" class="notification">
+				<i class='bx bxs-bell' ></i>
+				<span class="num">
+				<?php 
+				$query = mysqli_query($conn, "SELECT COUNT(*) as total from product  WHERE qty <=10 AND pro_status ='2'");
+					while($result=mysqli_fetch_array($query)){
+					echo $result['total']; 
+				}			
+				?>
+						  </span>			  
+			</a>
+			<?php
+
+if (isset($_GET['eid'])) {
+	$pro_id=$_GET['eid'];
+
+	$query1 = "UPDATE `product` SET pro_status = '1' WHERE pro_id = '$pro_id'";
+	mysqli_query($conn, $query1);
+			}
+			?>
 			
+				<div class="dropdown-content2">
+					<h4 id="textnotif">Notification</h4><br><hr>
+					
+			<table>
+			  
+			  <?php
+			$sql1 = "SELECT * FROM `product` WHERE pro_status='2' AND qty <=10 LIMIT 6";
+			$result1 = $conn->query($sql1);  
+  			if($result1->num_rows > 0){
+  				while($row = $result1 -> fetch_assoc()){ 
+					$qty = $row['qty'];
+					$model = $row['model'];
+			  ?>
+			  <tr>
+			  <th><h4 style="color: red;">Low Product:</h4></th>
+			  <td><p><?php 
+					if ($qty<=10) {
+						echo "Model: " . $row['model'] ."&nbsp<br>";		
+						echo "QTY: " . $row['qty'];
+							}
+			  ?>
+				</p></td><td><a href="?eid=<?php echo $row['pro_id'];?>"><button class="btn-remove" name="btnremove" style="cursor: pointer;">Clear</button></a></td>
+							</tr>
+							<?php
+				  }}
+			  ?>
+			  </table>
+
+				</div>
+			</div>
 			<!-- DROP DOWN NG EDIT PROFILE AND CHANGE PASS OK-->
 			<div class="dropdown1">
 			<img src="img\user.png" alt="" width="40px" class="userlogo">
@@ -498,7 +597,7 @@ elseif (($_POST['med'])=="Reading") {
 						</div>
 						<div class="row">
 						<div class="col-25">
-							<label for="middlename">Middle Name</label>
+							<label for="middlename">Middle Name (optional)</label>
 						</div>
 						<div class="col-75">
 							<input type="text" id="middlename" name="middlename" placeholder="Enter middle name.." autocomplete="off" value="<?php echo $mname;?>">
@@ -522,10 +621,10 @@ elseif (($_POST['med'])=="Reading") {
 						</div>
 						<div class="row">
 						<div class="col-25">
-							<label for="contact">Contact No.</label>
+							<label for="contact">Contact No. (Ex. 09xxxxxxxxx)</label>
 						</div>
 						<div class="col-75">
-							<input type="tel" id="contact" name="contact" maxlength="11" pattern="[0-9]{4}[0-9]{3}[0-9]{4}" placeholder="Enter contact no.." autocomplete="off" value="<?php echo $contact;?>" required>
+							<input type="tel" id="contact" name="contact" maxlenght="11" minlenght="11" pattern="[0-9]{4}[0-9]{3}[0-9]{4}" placeholder="Enter contact no.." autocomplete="off" value="<?php echo $contact;?>" required>
 						</div>
 						</div>
 						<div class="row">
@@ -546,7 +645,7 @@ elseif (($_POST['med'])=="Reading") {
 						</div>
 						<div class="row">
 						<div class="col-25">
-							<label for="address">Medical Hx</label>
+							<label for="address">Medical Hx (optional)</label>
 						</div>
 						<div class="col-75">
 							<textarea name="medhx" placeholder="Enter medical history" id="pat"></textarea>
@@ -560,7 +659,29 @@ elseif (($_POST['med'])=="Reading") {
 							<input type="text" name="bp" placeholder="Enter blood pressure.." id="bp">
 						</div>
 						</div>
-						
+						<p id="lblError"></p>
+					<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>		
+<script type="text/javascript">
+    $(function () {
+        $("#bp").keypress(function (e) {
+            var keyCode = e.keyCode || e.which;
+ 
+            $("#lblError").html("");
+ 
+            //Regex for Valid Characters i.e. Alphabets.
+            var regex = /^[0-9/]+$/;
+ 
+            //Validate TextBox value against the Regex.
+            var isValid = regex.test(String.fromCharCode(keyCode));
+            if (!isValid) {
+                
+            }
+ 
+            return isValid;
+        });
+    });
+</script>
+
 						<div class="row">
 						<div class="col-25">
 						</div>
@@ -592,21 +713,23 @@ elseif (($_POST['med'])=="Reading") {
 									<th rowspan="2"></th>
 									<td rowspan="2">DISTANCE RX</td>
 									<td>OD</td>
-									<td><input type="text" name="new_D_OD_SPH" placeholder="Sphere"></td>
-              						<td><input type="text" name="new_D_OD_CYL" placeholder="Cylinder"></td>
-             						<td><input type="text" name="new_D_OD_AXIS" placeholder="Axis"></td>
-              						<td><input type="text" name="new_D_OD_VA" placeholder="VA"></td>
-              						<td><input type="text"name="new_D_OD_ADD" placeholder="ADD"></td>
+									<td><input type="text" name="new_D_OD_SPH" id="nn" placeholder="Sphere"></td>
+              						<td><input type="text" name="new_D_OD_CYL" id="nn1" placeholder="Cylinder"></td>
+             						<td><input type="text" name="new_D_OD_AXIS" id="nn2" placeholder="Axis"></td>
+              						<td><input type="text" name="new_D_OD_VA" id="nn3" placeholder="VA"></td>
+              						<td><input type="text"name="new_D_OD_ADD" id="nn4" placeholder="ADD"></td>
 								</tr>
+								
 								<tr>
 									<td>OS</td>
-									<td><input type="text" name="new_D_OS_SPH" placeholder="Sphere"></td>
-             						 <td><input type="text" name="new_D_OS_CYL" placeholder="Cylinder"></td>
-             						 <td><input type="text" name="new_D_OS_AXIS" placeholder="Axis"></td>
-             						 <td><input type="text" name="new_D_OS_VA" placeholder="VA"></td>
-             						 <td><input type="text" name="new_D_OS_ADD" placeholder="ADD"></td>
+									<td><input type="text" name="new_D_OS_SPH" id="nn5" placeholder="Sphere"></td>
+             						 <td><input type="text" name="new_D_OS_CYL" id="nn6" placeholder="Cylinder"></td>
+             						 <td><input type="text" name="new_D_OS_AXIS" id="nn7" placeholder="Axis"></td>
+             						 <td><input type="text" name="new_D_OS_VA" id="nn8" placeholder="VA"></td>
+             						 <td><input type="text" name="new_D_OS_ADD" id="nn9" placeholder="ADD"></td>
 								</tr>
 							</thead>
+
 							</table>
 						</div>
 						</div>
@@ -687,22 +810,23 @@ elseif (($_POST['med'])=="Reading") {
 									<th rowspan="2"></th>
 									<td rowspan="2">CONTACT LENS RX</td>
 									<td>OD</td>
-									<td><input type="text" name="new_CL_OD_SPH" placeholder="Sphere"></td>
-              						<td><input type="text" name="new_CL_OD_CYL" placeholder="Cylinder"></td>
-              						<td><input type="text" name="new_CL_OD_AXIS" placeholder="Axis"></td>
-             						<td><input type="text" name="new_CL_MONO"placeholder="MONO"></td>
-            						<td><input type="text" name="new_CL_MONO_OD" placeholder="ADD"></td>
+									<td><input type="text" name="new_CL_OD_SPH" id="nn11" placeholder="Sphere"></td>
+              						<td><input type="text" name="new_CL_OD_CYL" id="nn12" placeholder="Cylinder"></td>
+              						<td><input type="text" name="new_CL_OD_AXIS" id="nn13" placeholder="Axis"></td>
+             						<td><input type="text" name="new_CL_MONO" placeholder="MONO"></td>
+            						<td><input type="text" name="new_CL_MONO_OD" id="nn15" placeholder="ADD"></td>
 								</tr>
 								<tr>
 									<td>OS</td>
-									<td><input type="text"  name="new_CL_OS_SPH" placeholder="Sphere"></td>
-              						<td><input type="text"  name="new_CL_OS_CYL" placeholder="Cylinder"></td>
-              						<td><input type="text"  name="new_CL_OS_AXIS" placeholder="Axis"></td>
-              						<td><input type="text" name="new_CL_PD" placeholder="PD" readonly></td>
- 						            <td><input type="text" name="new_CL_PD_OS"  placeholder="ADD"></td>
+									<td><input type="text"  name="new_CL_OS_SPH" id="nn16" placeholder="Sphere"></td>
+              						<td><input type="text"  name="new_CL_OS_CYL" id="nn17" placeholder="Cylinder"></td>
+              						<td><input type="text"  name="new_CL_OS_AXIS" id="nn18" placeholder="Axis"></td>
+              						<td><input type="text" name="new_CL_PD"  placeholder="PD" readonly></td>
+ 						            <td><input type="text" name="new_CL_PD_OS"  id="nn10" placeholder="ADD"></td>
 								</tr>
 							</thead>
 							</table>
+
 						</div>
 						</div>
 						</div>
@@ -727,19 +851,19 @@ elseif (($_POST['med'])=="Reading") {
 									<th rowspan="2"></th>
 									<td rowspan="2">READING RX</td>
 									<td>OD</td>
-									<td><input type="text" name="new_R_OD_SPH" placeholder="Sphere"></td>
-             						<td><input type="text" name="new_R_OD_CYL" placeholder="Cylinder"></td>
-              						<td><input type="text" name="new_R_OD_AXIS" placeholder="Axis"></td>
-              						<td><input type="text" name="new_R_SEGHT" placeholder="SEG HT"></td>
-              						<td><input type="text" name="new_R_SEGHT_OD" placeholder="ADD"></td>
+									<td><input type="text" name="new_R_OD_SPH" id="n1" placeholder="Sphere"></td>
+             						<td><input type="text" name="new_R_OD_CYL" id="n2" placeholder="Cylinder"></td>
+              						<td><input type="text" name="new_R_OD_AXIS" id="n3" placeholder="Axis"></td>
+              						<td><input type="text" name="new_R_SEGHT"placeholder="SEG HT"></td>
+              						<td><input type="text" name="new_R_SEGHT_OD" id="n5" placeholder="ADD"></td>
 								</tr>
 								<tr>
 									<td>OS</td>
-									<td><input type="text" name="new_R_OS_SPH" placeholder="Sphere"></td>
-              						<td><input type="text" name="new_R_OS_CYL" placeholder="Cylinder"></td>
-              						<td><input type="text" name="new_R_OS_AXIS" placeholder="Axis"></td>
+									<td><input type="text" name="new_R_OS_SPH" id="n6" placeholder="Sphere"></td>
+              						<td><input type="text" name="new_R_OS_CYL" id="n7" placeholder="Cylinder"></td>
+              						<td><input type="text" name="new_R_OS_AXIS" id="n8" placeholder="Axis"></td>
              						<td><input type="text" name="new_R_VERHT" placeholder="VER HT"></td>
-              						<td><input type="text" name="new_R_VERHT_OS" placeholder="ADD"></td>
+              						<td><input type="text" name="new_R_VERHT_OS" id="n0" placeholder="ADD"></td>
 								</tr>
 							</thead>
 							</table>
@@ -763,11 +887,11 @@ elseif (($_POST['med'])=="Reading") {
               						<th>ADD</th>
 								</tr>
 								<tr>
-									<td ><input type="text" name="ishihara_SPH" placeholder="Sphere"></td>
-									<td ><input type="text" name="ishihara_CYL" placeholder="Cylinder"></td>
-            						<td ><input type="text" name="ishihara_AXIS" placeholder="Axis"></td>
+									<td ><input type="text" name="ishihara_SPH" id="p1" placeholder="Sphere"></td>
+									<td ><input type="text" name="ishihara_CYL" id="p2" placeholder="Cylinder"></td>
+            						<td ><input type="text" name="ishihara_AXIS" id="p3" placeholder="Axis"></td>
             						<td><input type="text" name="ishihara_PD" placeholder="P.D."></td>
-            						<td><input type="text" name="ishihara_PD_ADD" placeholder="ADD"></td>
+            						<td><input type="text" name="ishihara_PD_ADD" id="p4" placeholder="ADD"></td>
 								</tr>
 							</thead>
 							</table>
@@ -925,3 +1049,552 @@ table th {
 }
 </style>
 </html>
+							<script type="text/javascript">
+    $(function () {
+        $("#nn").keypress(function (e) {
+            var keyCode = e.keyCode || e.which;
+ 
+            $("#lblError").html("");
+ 
+            //Regex for Valid Characters i.e. Alphabets.
+            var regex = /^[0-9/+.-]+$/;
+ 
+            //Validate TextBox value against the Regex.
+            var isValid = regex.test(String.fromCharCode(keyCode));
+            if (!isValid) {
+                
+            }
+ 
+            return isValid;
+        });
+        $("#nn1").keypress(function (e) {
+            var keyCode = e.keyCode || e.which;
+ 
+            $("#lblError").html("");
+ 
+            //Regex for Valid Characters i.e. Alphabets.
+            var regex = /^[0-9/+.-]+$/;
+ 
+            //Validate TextBox value against the Regex.
+            var isValid = regex.test(String.fromCharCode(keyCode));
+            if (!isValid) {
+                
+            }
+ 
+            return isValid;
+        });
+
+    $("#nn2").keypress(function (e) {
+            var keyCode = e.keyCode || e.which;
+ 
+            $("#lblError").html("");
+ 
+            //Regex for Valid Characters i.e. Alphabets.
+            var regex = /^[0-9/+.-]+$/;
+ 
+            //Validate TextBox value against the Regex.
+            var isValid = regex.test(String.fromCharCode(keyCode));
+            if (!isValid) {
+                
+            }
+ 
+            return isValid;
+        });
+    $("#nn3").keypress(function (e) {
+            var keyCode = e.keyCode || e.which;
+ 
+            $("#lblError").html("");
+ 
+            //Regex for Valid Characters i.e. Alphabets.
+            var regex = /^[0-9/+.-]+$/;
+ 
+            //Validate TextBox value against the Regex.
+            var isValid = regex.test(String.fromCharCode(keyCode));
+            if (!isValid) {
+                
+            }
+ 
+            return isValid;
+        });
+    $("#nn4").keypress(function (e) {
+            var keyCode = e.keyCode || e.which;
+ 
+            $("#lblError").html("");
+ 
+            //Regex for Valid Characters i.e. Alphabets.
+            var regex = /^[0-9/+.-]+$/;
+ 
+            //Validate TextBox value against the Regex.
+            var isValid = regex.test(String.fromCharCode(keyCode));
+            if (!isValid) {
+                
+            }
+ 
+            return isValid;
+        });
+    $("#nn5").keypress(function (e) {
+            var keyCode = e.keyCode || e.which;
+ 
+            $("#lblError").html("");
+ 
+            //Regex for Valid Characters i.e. Alphabets.
+            var regex = /^[0-9/+.-]+$/;
+ 
+            //Validate TextBox value against the Regex.
+            var isValid = regex.test(String.fromCharCode(keyCode));
+            if (!isValid) {
+                
+            }
+ 
+            return isValid;
+        });
+    $("#nn6").keypress(function (e) {
+            var keyCode = e.keyCode || e.which;
+ 
+            $("#lblError").html("");
+ 
+            //Regex for Valid Characters i.e. Alphabets.
+            var regex = /^[0-9/+.-]+$/;
+ 
+            //Validate TextBox value against the Regex.
+            var isValid = regex.test(String.fromCharCode(keyCode));
+            if (!isValid) {
+                
+            }
+ 
+            return isValid;
+        });
+    $("#nn7").keypress(function (e) {
+            var keyCode = e.keyCode || e.which;
+ 
+            $("#lblError").html("");
+ 
+            //Regex for Valid Characters i.e. Alphabets.
+            var regex = /^[0-9/+.-]+$/;
+ 
+            //Validate TextBox value against the Regex.
+            var isValid = regex.test(String.fromCharCode(keyCode));
+            if (!isValid) {
+                
+            }
+ 
+            return isValid;
+        });
+    $("#nn8").keypress(function (e) {
+            var keyCode = e.keyCode || e.which;
+ 
+            $("#lblError").html("");
+ 
+            //Regex for Valid Characters i.e. Alphabets.
+            var regex = /^[0-9/+.-]+$/;
+ 
+            //Validate TextBox value against the Regex.
+            var isValid = regex.test(String.fromCharCode(keyCode));
+            if (!isValid) {
+                
+            }
+ 
+            return isValid;
+        });
+    $("#nn9").keypress(function (e) {
+            var keyCode = e.keyCode || e.which;
+ 
+            $("#lblError").html("");
+ 
+            //Regex for Valid Characters i.e. Alphabets.
+            var regex = /^[0-9/+.-]+$/;
+ 
+            //Validate TextBox value against the Regex.
+            var isValid = regex.test(String.fromCharCode(keyCode));
+            if (!isValid) {
+                
+            }
+ 
+            return isValid;
+        });
+     $("#nn10").keypress(function (e) {
+            var keyCode = e.keyCode || e.which;
+ 
+            $("#lblError").html("");
+ 
+            //Regex for Valid Characters i.e. Alphabets.
+            var regex = /^[0-9/+.-]+$/;
+ 
+            //Validate TextBox value against the Regex.
+            var isValid = regex.test(String.fromCharCode(keyCode));
+            if (!isValid) {
+                
+            }
+ 
+            return isValid;
+        });
+      $("#nn11").keypress(function (e) {
+            var keyCode = e.keyCode || e.which;
+ 
+            $("#lblError").html("");
+ 
+            //Regex for Valid Characters i.e. Alphabets.
+            var regex = /^[0-9/+.-]+$/;
+ 
+            //Validate TextBox value against the Regex.
+            var isValid = regex.test(String.fromCharCode(keyCode));
+            if (!isValid) {
+                
+            }
+ 
+            return isValid;
+        });
+       $("#nn12").keypress(function (e) {
+            var keyCode = e.keyCode || e.which;
+ 
+            $("#lblError").html("");
+ 
+            //Regex for Valid Characters i.e. Alphabets.
+            var regex = /^[0-9/+.-]+$/;
+ 
+            //Validate TextBox value against the Regex.
+            var isValid = regex.test(String.fromCharCode(keyCode));
+            if (!isValid) {
+                
+            }
+ 
+            return isValid;
+        });
+        $("#nn13").keypress(function (e) {
+            var keyCode = e.keyCode || e.which;
+ 
+            $("#lblError").html("");
+ 
+            //Regex for Valid Characters i.e. Alphabets.
+            var regex = /^[0-9/+.-]+$/;
+ 
+            //Validate TextBox value against the Regex.
+            var isValid = regex.test(String.fromCharCode(keyCode));
+            if (!isValid) {
+                
+            }
+ 
+            return isValid;
+        });
+         $("#nn14").keypress(function (e) {
+            var keyCode = e.keyCode || e.which;
+ 
+            $("#lblError").html("");
+ 
+            //Regex for Valid Characters i.e. Alphabets.
+            var regex = /^[0-9/+.-]+$/;
+ 
+            //Validate TextBox value against the Regex.
+            var isValid = regex.test(String.fromCharCode(keyCode));
+            if (!isValid) {
+                
+            }
+ 
+            return isValid;
+        });
+          $("#nn15").keypress(function (e) {
+            var keyCode = e.keyCode || e.which;
+ 
+            $("#lblError").html("");
+ 
+            //Regex for Valid Characters i.e. Alphabets.
+            var regex = /^[0-9/+.-]+$/;
+ 
+            //Validate TextBox value against the Regex.
+            var isValid = regex.test(String.fromCharCode(keyCode));
+            if (!isValid) {
+                
+            }
+ 
+            return isValid;
+        });
+           $("#nn16").keypress(function (e) {
+            var keyCode = e.keyCode || e.which;
+ 
+            $("#lblError").html("");
+ 
+            //Regex for Valid Characters i.e. Alphabets.
+            var regex = /^[0-9/+.-]+$/;
+ 
+            //Validate TextBox value against the Regex.
+            var isValid = regex.test(String.fromCharCode(keyCode));
+            if (!isValid) {
+                
+            }
+ 
+            return isValid;
+        });
+            $("#nn17").keypress(function (e) {
+            var keyCode = e.keyCode || e.which;
+ 
+            $("#lblError").html("");
+ 
+            //Regex for Valid Characters i.e. Alphabets.
+            var regex = /^[0-9/+.-]+$/;
+ 
+            //Validate TextBox value against the Regex.
+            var isValid = regex.test(String.fromCharCode(keyCode));
+            if (!isValid) {
+                
+            }
+ 
+            return isValid;
+        });
+             $("#nn18").keypress(function (e) {
+            var keyCode = e.keyCode || e.which;
+ 
+            $("#lblError").html("");
+ 
+            //Regex for Valid Characters i.e. Alphabets.
+            var regex = /^[0-9/+.-]+$/;
+ 
+            //Validate TextBox value against the Regex.
+            var isValid = regex.test(String.fromCharCode(keyCode));
+            if (!isValid) {
+                
+            }
+ 
+            return isValid;
+        });
+              $("#nn19").keypress(function (e) {
+            var keyCode = e.keyCode || e.which;
+ 
+            $("#lblError").html("");
+ 
+            //Regex for Valid Characters i.e. Alphabets.
+            var regex = /^[0-9/+.-]+$/;
+ 
+            //Validate TextBox value against the Regex.
+            var isValid = regex.test(String.fromCharCode(keyCode));
+            if (!isValid) {
+                
+            }
+ 
+            return isValid;
+        });
+               $("#n0").keypress(function (e) {
+            var keyCode = e.keyCode || e.which;
+ 
+            $("#lblError").html("");
+ 
+            //Regex for Valid Characters i.e. Alphabets.
+            var regex = /^[0-9/+.-]+$/;
+ 
+            //Validate TextBox value against the Regex.
+            var isValid = regex.test(String.fromCharCode(keyCode));
+            if (!isValid) {
+                
+            }
+ 
+            return isValid;
+        });
+                $("#n1").keypress(function (e) {
+            var keyCode = e.keyCode || e.which;
+ 
+            $("#lblError").html("");
+ 
+            //Regex for Valid Characters i.e. Alphabets.
+            var regex = /^[0-9/+.-]+$/;
+ 
+            //Validate TextBox value against the Regex.
+            var isValid = regex.test(String.fromCharCode(keyCode));
+            if (!isValid) {
+                
+            }
+ 
+            return isValid;
+        });
+                 $("#n2").keypress(function (e) {
+            var keyCode = e.keyCode || e.which;
+ 
+            $("#lblError").html("");
+ 
+            //Regex for Valid Characters i.e. Alphabets.
+            var regex = /^[0-9/+.-]+$/;
+ 
+            //Validate TextBox value against the Regex.
+            var isValid = regex.test(String.fromCharCode(keyCode));
+            if (!isValid) {
+                
+            }
+ 
+            return isValid;
+        });
+                  $("#n3").keypress(function (e) {
+            var keyCode = e.keyCode || e.which;
+ 
+            $("#lblError").html("");
+ 
+            //Regex for Valid Characters i.e. Alphabets.
+            var regex = /^[0-9/+.-]+$/;
+ 
+            //Validate TextBox value against the Regex.
+            var isValid = regex.test(String.fromCharCode(keyCode));
+            if (!isValid) {
+                
+            }
+ 
+            return isValid;
+        });
+                   $("#n4").keypress(function (e) {
+            var keyCode = e.keyCode || e.which;
+ 
+            $("#lblError").html("");
+ 
+            //Regex for Valid Characters i.e. Alphabets.
+            var regex = /^[0-9/+.-]+$/;
+ 
+            //Validate TextBox value against the Regex.
+            var isValid = regex.test(String.fromCharCode(keyCode));
+            if (!isValid) {
+                
+            }
+ 
+            return isValid;
+        });
+                    $("#n5").keypress(function (e) {
+            var keyCode = e.keyCode || e.which;
+ 
+            $("#lblError").html("");
+ 
+            //Regex for Valid Characters i.e. Alphabets.
+            var regex = /^[0-9/+.-]+$/;
+ 
+            //Validate TextBox value against the Regex.
+            var isValid = regex.test(String.fromCharCode(keyCode));
+            if (!isValid) {
+                
+            }
+ 
+            return isValid;
+        });
+                     $("#n6").keypress(function (e) {
+            var keyCode = e.keyCode || e.which;
+ 
+            $("#lblError").html("");
+ 
+            //Regex for Valid Characters i.e. Alphabets.
+            var regex = /^[0-9/+.-]+$/;
+ 
+            //Validate TextBox value against the Regex.
+            var isValid = regex.test(String.fromCharCode(keyCode));
+            if (!isValid) {
+                
+            }
+ 
+            return isValid;
+        });
+                      $("#n7").keypress(function (e) {
+            var keyCode = e.keyCode || e.which;
+ 
+            $("#lblError").html("");
+ 
+            //Regex for Valid Characters i.e. Alphabets.
+            var regex = /^[0-9/+.-]+$/;
+ 
+            //Validate TextBox value against the Regex.
+            var isValid = regex.test(String.fromCharCode(keyCode));
+            if (!isValid) {
+                
+            }
+ 
+            return isValid;
+        });
+                       $("#n8").keypress(function (e) {
+            var keyCode = e.keyCode || e.which;
+ 
+            $("#lblError").html("");
+ 
+            //Regex for Valid Characters i.e. Alphabets.
+            var regex = /^[0-9/+.-]+$/;
+ 
+            //Validate TextBox value against the Regex.
+            var isValid = regex.test(String.fromCharCode(keyCode));
+            if (!isValid) {
+                
+            }
+ 
+            return isValid;
+        });
+                        $("#n9").keypress(function (e) {
+            var keyCode = e.keyCode || e.which;
+ 
+            $("#lblError").html("");
+ 
+            //Regex for Valid Characters i.e. Alphabets.
+            var regex = /^[0-9/+.-]+$/;
+ 
+            //Validate TextBox value against the Regex.
+            var isValid = regex.test(String.fromCharCode(keyCode));
+            if (!isValid) {
+                
+            }
+ 
+            return isValid;
+        });
+                        $("#p1").keypress(function (e) {
+            var keyCode = e.keyCode || e.which;
+ 
+            $("#lblError").html("");
+ 
+            //Regex for Valid Characters i.e. Alphabets.
+            var regex = /^[0-9/+.-]+$/;
+ 
+            //Validate TextBox value against the Regex.
+            var isValid = regex.test(String.fromCharCode(keyCode));
+            if (!isValid) {
+                
+            }
+ 
+            return isValid;
+        });
+                        $("#p2").keypress(function (e) {
+            var keyCode = e.keyCode || e.which;
+ 
+            $("#lblError").html("");
+ 
+            //Regex for Valid Characters i.e. Alphabets.
+            var regex = /^[0-9/+.-]+$/;
+ 
+            //Validate TextBox value against the Regex.
+            var isValid = regex.test(String.fromCharCode(keyCode));
+            if (!isValid) {
+                
+            }
+ 
+            return isValid;
+        });
+                        $("#p3").keypress(function (e) {
+            var keyCode = e.keyCode || e.which;
+ 
+            $("#lblError").html("");
+ 
+            //Regex for Valid Characters i.e. Alphabets.
+            var regex = /^[0-9/+.-]+$/;
+ 
+            //Validate TextBox value against the Regex.
+            var isValid = regex.test(String.fromCharCode(keyCode));
+            if (!isValid) {
+                
+            }
+ 
+            return isValid;
+        });
+                        $("#p4").keypress(function (e) {
+            var keyCode = e.keyCode || e.which;
+ 
+            $("#lblError").html("");
+ 
+            //Regex for Valid Characters i.e. Alphabets.
+            var regex = /^[0-9/+.-]+$/;
+ 
+            //Validate TextBox value against the Regex.
+            var isValid = regex.test(String.fromCharCode(keyCode));
+            if (!isValid) {
+                
+            }
+ 
+            return isValid;
+        });
+        });
+</script>

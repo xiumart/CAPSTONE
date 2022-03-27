@@ -375,7 +375,7 @@ if (isset($_GET['eid'])) {
 						$result->execute();
 						for($i=0; $row = $result->fetch(); $i++){
 						?>
-						<option value="<?php echo $row['pro_id'];?>"><?php echo $row['model']; ?> - <?php echo $row['brand']; ?> - <?php echo $row['category']; ?> | Expires at: <?php echo $row['expdate']; ?></option>
+						<option value="<?php echo $row['pro_id'];?>"><?php echo $row['model']; ?> - <?php echo $row['brand']; ?> - <?php echo $row['category']; ?></option>
 											<?php
 						} 
 						?>

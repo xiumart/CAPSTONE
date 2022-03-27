@@ -1,5 +1,5 @@
 <?php
-//error_reporting(0);
+error_reporting(0);
 include("../conn.php");
 include("session.php");
 include "logs_conn.php";
@@ -484,6 +484,14 @@ if (isset($_GET['eid'])) {
 							}
 							?>	
 							>Sunglasses</option>
+							
+							<option value="Services"
+							<?php
+							if ($category=="Services") {
+								echo "selected";
+							}
+							?>	
+							>Services</option>
 							</select>
 							
 						</div>
