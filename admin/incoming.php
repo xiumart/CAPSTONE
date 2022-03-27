@@ -18,12 +18,14 @@ $code=$row['model'];
 $gen=$row['brand'];
 $name=$row['category'];
 $p=$row['profit'];
+$qq=$row['qty'];
 }
 
 //edit qty
 $sql = "UPDATE product 
         SET qty=qty-?
-		WHERE pro_id=?";
+        WHERE pro_id=?";
+
 $q = $db->prepare($sql);
 $q->execute(array($c,$b));
 $fffffff=$asasa-$discount;
@@ -34,6 +36,10 @@ if (empty($b)) {
     echo "<script>alert('Please select product')
     window.location.href='point-of-sale.php?id=$w&invoice=$a'</script>";
     
+}
+elseif ($c>$qq) {
+   echo "<script>alert('Quantity insufficient')
+    window.location.href='point-of-sale.php?id=$w&invoice=$a'</script>";
 }
 else{
 $sql = "INSERT INTO sales_order (order_no,product,qty,amount,price,profit,model,brand,category,date) VALUES (:a,:b,:c,:d,:f,:h,:i,:j,:e,:k)";
