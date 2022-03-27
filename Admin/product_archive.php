@@ -400,7 +400,7 @@ if (isset($_GET['eid'])) {
         	}
         else{
         		$sql1 = "SELECT * FROM `archive_products` LIMIT $start, $limit ";
-        		$sql2 =$conn->query("SELECT count(pro_id) AS id FROM `product`");
+        		$sql2 =$conn->query("SELECT count(pro_id) AS id FROM `archive_products`");
         	}
         $result2 = $sql2->fetch_all(MYSQLI_ASSOC);
                 $total=$result2[0]['id'];
@@ -456,11 +456,11 @@ if (isset($_GET['eid'])) {
 </div>
 
 <br>
-   <a class="page" id="pre" href="product.php?page=<?=$prev; ?>">< Prev</a>
+   <a class="page" id="pre" href="product_archive.php?page=<?=$prev; ?>">< Prev</a>
     	  <?php  for($i=1; $i <=$pages ; $i++): ?>
-    <a class="page" href="product.php?page=<?=$i; ?>"><?=$i; ?></a>
+    <a class="page" href="product_archive.php?page=<?=$i; ?>"><?=$i; ?></a>
                       <?php endfor; ?>
-    <a class="page" id="pnext" href="product.php?page=<?=$next; ?>">Next ></a>
+    <a class="page" id="pnext" href="product_archive.php?page=<?=$next; ?>">Next ></a>
 	
 	
 <style>

@@ -6,13 +6,38 @@ include("../admin/session.php");
 date_default_timezone_set('Asia/Manila');
 $date = date('d-m-y g:i a');
 
-if (isset($_GET['id'])) {
+if (isset($_POST['submit'])) {
 	$app_id=$_GET['id'];
 	$queryaccept = "UPDATE `appointment` SET app_remarks = 'Approve' WHERE app_id='$app_id'";
 			mysqli_query($conn, $queryaccept);
-
+			$query223 = mysqli_query($conn, "SELECT * from appointment where app_id= '$app_id'");
+									while($result=mysqli_fetch_array($query223)){
+										$time = $row['app_time'];
+										$date = $row['app_date'];
+										$name = $result['app_name'];
+										$receiver = $result['app_contact'];
+										echo $receiver;
+						  										
+			include '../includes/smsAPIControl.php';
+			$message = "Hello ".$name. " ! Your requested Appointment was Approved! Date: ".$date." and Time: ".$time." RNL VISION CARE";
+			$smsAPICode = "TR-DANVE492266_VT83N";
+			$smsAPIPassword ="1u)32r9!hf";
+	
+			$send = new Trebor(); 
+			$send->itexmo($receiver, $message,$smsAPICode,$smsAPIPassword);
+	
+			if($send == false){
+				header("location: dashboard.php?error=itextmo: no responses from server");
+			}
+			elseif($send == true){
+				header("location: dashboard.php?error+none");
+			}
+			else{
+				header("location: dashboard.php?something wrong just happen");
+			}}
+		}
 		
-}
+
 if (isset($_GET['id1'])) {
 	$app_id=$_GET['id1'];
 	$DateTime = $date;
@@ -204,6 +229,7 @@ $finalcode='RS-'.createRandomPassword();
 			</div>
 
 			<ul class="box-info">
+			
 				<li>
 					<i class='bx bxs-calendar' ></i>
 					<span class="text">

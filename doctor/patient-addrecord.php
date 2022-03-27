@@ -111,7 +111,7 @@ elseif (($_POST['med'])=="Reading") {
 
 		users_logs($_SESSION['users_username'], "Added Patient", date("Y-m-d h:i:sa"), $_SESSION['users_roles']);
 		mysqli_query($conn, $query);	
-		echo "<script>alert('You have successfully added the record.');</script>";
+		echo "<script>alert('You have successfully remove the record.');</script>";
 			echo "<script>document.location='patient-record.php';</script>";
 
 

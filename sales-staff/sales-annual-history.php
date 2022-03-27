@@ -1,5 +1,5 @@
 <?php
-include("session.php");
+include("../admin/session.php");
 function createRandomPassword() {
 	$chars = "003232303232023232023456789";
 	srand((double)microtime()*1000000);
@@ -45,6 +45,7 @@ $finalcode='RS-'.createRandomPassword();
 	.btn-upd:hover { background-color: #4CAF50;}
 	.btn-rem:hover { background-color: red;}
 	.btn-print:hover { background-color:#00a2a3;}
+	.btn-addp:hover { background-color: #00a2a3}
 	.btn-addpt:hover { background-color: #00a2a3}
 	.btn-addpt {float:right; margin-bottom: 20px;}
 	.btn-print {
@@ -113,16 +114,14 @@ $finalcode='RS-'.createRandomPassword();
 			</li>
 			<li class="active">
 				<a href="sales-report.php">
-					<i class='bx bxs-download' ></i>
+					<i class='bx bxs-chart' ></i>
 					<span class="text">Sales Report</span>
 				</a>
 			</li>
-			<li>
 		</ul>
 	</section>
 	<!-- SIDEBAR -->
-
-
+	
 
 	<!-- CONTENT -->
 	<section id="content">
@@ -134,7 +133,7 @@ $finalcode='RS-'.createRandomPassword();
 			</form>
 			<div id="digital-clock"></div>
 			<script src="time.js"></script>
-
+			
 			<!-- DROP DOWN NG EDIT PROFILE AND CHANGE PASS OK-->
 			<div class="dropdown1">
 			<img src="img\user.png" alt="" width="40px" class="userlogo">
@@ -179,20 +178,34 @@ $finalcode='RS-'.createRandomPassword();
 						</li>
 					</ul>
 				</div>
-				
+				<a href="javascript:Clickheretoprint()">	<button class="btn-addp" style="float:right; width: 100px; cursor: pointer;"><i class='bx bxs-printer' ></i> Print </button></a>
+<!--print-->
+<link href="css/bootstrap-responsive.css" rel="stylesheet">
+<link href="../style.css" media="screen" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="tcal.css" />
+<script type="text/javascript" src="tcal.js"></script>
+<script language="javascript">
+function Clickheretoprint()
+{ 
+	
+  var disp_setting="toolbar=yes,location=no,directories=yes,menubar=yes,"; 
+      disp_setting+="scrollbars=yes,width=1000, height=1000, left=100, top=25"; 
+  var content_vlue = document.getElementById("printing").innerHTML; 
+  
+  var docprint=window.open("","",disp_setting); 
+   docprint.document.open(); 
+   docprint.document.write('</head><body onLoad="self.print()" style="width: 700px; font-size:21px; font-family:arial; font-weight:normal;">');          
+   docprint.document.write(content_vlue); 
+   docprint.document.close(); 
+   docprint.focus(); 
+   
+}
+</script>
+
 			
 			</div>
-			
-		
-			<div class="table-data">
-				<div class="order">
-					<div class="head">
-						<h3></h3>
-						<i class='bx bx-search' ></i>
-						<i class='bx bx-filter' ></i>
-						
-					</div>
-					<table class="table">
+			<div id="printing">
+					<table>
      <thead>
      	<tr>
      	 <th>Year</th>
@@ -226,7 +239,7 @@ $finalcode='RS-'.createRandomPassword();
      	  
      </tbody>
    </table>
-   <a href=""><button class="btn-print" style="cursor: pointer;"><i class='bx bxs-printer' ></i> Print </button></a>
+	</div>
 				</div>
 
 				
@@ -247,4 +260,86 @@ $finalcode='RS-'.createRandomPassword();
 
 	<script src="script.js"></script>
 </body>
+<style>table {
+  border: 1px solid #ccc;
+  border-collapse: collapse;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  table-layout: fixed;
+}
+
+table caption {
+  font-size: 1.5em;
+  background-color: #00c2cb;
+  margin-top:50px;	
+}
+
+table tr {
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+  padding: .35em;
+}
+
+table th,
+table td {
+  padding: .625em;
+  text-align: center;
+}
+
+table th {
+  font-size: .85em;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  background-color: #9dd1d4;
+}
+
+@media screen and (max-width: 600px) {
+  table {
+    border: 0;
+  }
+
+  table caption {
+    font-size: 1.3em;
+  }
+  
+  table thead {
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+  
+  table tr {
+    border-bottom: 3px solid #ddd;
+    display: block;
+    margin-bottom: .625em;
+  }
+  
+  table td {
+    border-bottom: 1px solid #ddd;
+    display: block;
+    font-size: .8em;
+    text-align: right;
+  }
+  
+  table td::before {
+    /*
+    * aria-label has no advantage, it won't be read inside a table
+    content: attr(aria-label);
+    */
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  
+  table td:last-child {
+    border-bottom: 0;
+  }
+}</style>
 </html>

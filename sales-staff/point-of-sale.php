@@ -152,7 +152,7 @@ if (isset($_GET['id'])) {
 			</form>
 			<div id="digital-clock"></div>
 			<script src="time.js"></script>
-
+			
 			<!-- DROP DOWN NG EDIT PROFILE AND CHANGE PASS OK-->
 			<div class="dropdown1">
 			<img src="img\user.png" alt="" width="40px" class="userlogo">
@@ -201,11 +201,11 @@ if (isset($_GET['id'])) {
 			</div>
 			<div>
 
-			<div class="table-data">
+			<div>
 				
 				<div class="order">
 					<form id="my-form" method="post">
-							<select class="sel" name='categoryy' id="price-sort" onchange="location = this.value;">
+							<br><select class="sel" name='categoryy' id="price-sort" style="width:250px;cursor:pointer;font-size:17px;" onchange="location = this.value;">
 							<option disabled="" selected="">Select your category..</option>
 							<option value="?id=<?php echo $_GET['id']; ?>&invoice=<?php echo $_GET['invoice']; ?>&cat=Services"
 								<?php
@@ -259,7 +259,7 @@ if (isset($_GET['id'])) {
 					<input type="hidden" name="invoice" value="<?php echo $_GET['invoice']; ?>" />
 					<input type="number" name="discount" hidden>
 					<input type="hidden" name="date" value="<?php echo date("Y-m-d"); ?>" />
-					<select name="product" class="sel" style="cursor: pointer;" required>
+					<select name="product" class="sel" style="cursor: pointer;font-size:17px;" required>
 						<option disabled="" selected="">Select product/services...</option>
 						<?php 
 						include("connect.php");
@@ -280,7 +280,7 @@ if (isset($_GET['id'])) {
 						} 
 						?>
 					</select>
-					<input type="number" class="num" name="qty" value="1" min="1" autocomplete="off" required>
+					<input type="number" class="num" name="qty" value="1" min="1" autocomplete="off" required style="font-size:17px;">
 					
 					<input type="submit" name="btnadd" value="+ Add" class="btn-a" style="cursor:pointer;">
 				</form>
@@ -329,7 +329,7 @@ if (isset($_GET['id'])) {
 										$profit=$row['profit'];
 										echo formatMoney($profit, true);
 									?></td>
-									<td width="90"><a href="?id=<?php echo $row['id']; ?>&invoice=<?php echo $_GET['invoice']; ?>&dle=<?php echo $_POST['pt']; ?>&qty=<?php echo $row['qty'];?>&code=<?php echo $row['product'];?>"><button class="btn-t"><i class="icon icon-remove"></i> Cancel </button></a></td>
+									<td width="90"><a href="?id=<?php echo $row['id']; ?>&invoice=<?php echo $_GET['invoice']; ?>&dle=<?php echo $_POST['pt']; ?>&qty=<?php echo $row['qty'];?>&code=<?php echo $row['product'];?>"><button class="btn-t" onclick="return confirm('Are you sure you want to cancel this item?')"><i class="icon icon-remove"></i> Cancel </button></a></td>
 							</tr>
 								<?php
 								}
@@ -340,6 +340,7 @@ if (isset($_GET['id'])) {
 									<td></td>
 									<td></td>
 									<td></td>
+									
 									<th> Total Amount: </th>
 									<th hidden> Total Profit: </th>
 									<td></td>
@@ -392,7 +393,7 @@ if (isset($_GET['id'])) {
 					</div>
 				</table>
 				<div><br><br>
-					<a rel="facebox" href="checkout.php?pt=<?php echo $_GET['id']?>&invoice=<?php echo $_GET['invoice']?>&total=<?php echo $fgfg ?>&totalprof=<?php echo $asd ?>"><button class="btn-p"><i class="icon icon-save icon-large"></i> PAY</button></a>
+					<a rel="facebox" href="checkout.php?pt=<?php echo $_GET['id']?>&invoice=<?php echo $_GET['invoice']?>&total=<?php echo $fgfg ?>&totalprof=<?php echo $asd ?>"><button class="btn-p" style="cursor: pointer;"><i class="icon icon-save icon-large"></i> PAY</button></a>
 					<div class="clearfix"></div>
 			</div>
 

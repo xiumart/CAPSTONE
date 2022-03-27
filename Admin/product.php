@@ -213,15 +213,6 @@ if (isset($_GET['id'])) {
 			</a>
 			<?php
 
-if (isset($_GET['id'])) {
-	$users_id=$_GET['id'];
-
-	$query = "UPDATE `client_inquiries` SET inquiries_status = '1' WHERE inquiries_id = '$users_id'";
-	mysqli_query($conn, $query);
-			}
-			?>
-			<?php
-
 if (isset($_GET['eid'])) {
 	$pro_id=$_GET['eid'];
 
@@ -234,17 +225,6 @@ if (isset($_GET['eid'])) {
 					<h4 id="textnotif">Notification</h4><br><hr>
 					
 			<table>
-			<?php   
-			   require_once("../db/notification/notifdisplay.php");
-              while($row = mysqli_fetch_assoc($query)){
-				  
-            ?>
-				<tr>
-					<th><h4>Inquiry:</h4></th><p><td><?php echo $row['inquiries_message']; ?></p></td><td><a href="?id=<?php echo $row['inquiries_id'];?>"><button class="btn-remove" name="btnremove" style="cursor: pointer;">Clear</button></a></td><hr color="wheat">
-			  </tr>
-			  <?php
-			  }
-			  ?>
 			  
 			  <?php
 			$sql1 = "SELECT * FROM `product` WHERE pro_status='2' AND qty <=10 LIMIT 6";

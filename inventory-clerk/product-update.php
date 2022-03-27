@@ -1,5 +1,5 @@
 <?php
-error_reporting(0);
+//error_reporting(0);
 include("../conn.php");
 include("../admin/session.php");
 include "logs_conn.php";
@@ -59,7 +59,7 @@ if($picture_type=="image/jpeg" || $picture_type=="image/jpg" || $picture_type=="
 	
 			//save to database
 			//$user_id = random_num(20);
-			$query = "UPDATE `product` SET `brand`='$brandname',`model`='$model',`category`='$category',`dateofarrival`='$dateofarrival',`expdate`='$expirationdate',`sellingprice`='$sellingprice',`origprice`='$originalprice',`profit`='$profit',`supplier`='$supplier',`qty`='$qty',`image`='$pic_name',`remarks`='$remarks', pro_status = '$status'WHERE `pro_id`='$pro_id1'";
+			$query = "UPDATE `product` SET `brand`='$brandname',`model`='$model',`category`='$category',`dateofarrival`='$dateofarrival',`expdate`='$expirationdate',`sellingprice`='$sellingprice',`origprice`='$originalprice',`profit`='$profit',`supplier`='$supplier',`qty`='$qty',`image`='$pic_name',`remarks`='$remarks', pro_status = '$status' WHERE `pro_id`='$pro_id1'";
 			users_logs($_SESSION['users_username'], "Updated Product", date("Y-m-d h:i:sa"), $_SESSION['users_roles']);
 			mysqli_query($conn, $query);
 			echo "<script>alert('You have successfully updated the record.');</script>";
@@ -69,7 +69,7 @@ if($picture_type=="image/jpeg" || $picture_type=="image/jpg" || $picture_type=="
 }}
 else{
 	$pic_name=$_POST['hidpic'];
-	$query = "UPDATE `product` SET `brand`='$brandname',`model`='$model',`category`='$category',`dateofarrival`='$dateofarrival',`expdate`='$expirationdate',`sellingprice`='$sellingprice',`origprice`='$originalprice',`profit`='$profit',`supplier`='$supplier',`qty`='$qty',`image`='$pic_name',`remarks`='$remarks', pro_status = '$status'WHERE `pro_id`='$pro_id1'";
+	$query = "UPDATE `product` SET `brand`='$brandname',`model`='$model',`category`='$category',`dateofarrival`='$dateofarrival',`expdate`='$expirationdate',`sellingprice`='$sellingprice',`origprice`='$originalprice',`profit`='$profit',`supplier`='$supplier',`qty`='$qty',`image`='$pic_name',`remarks`='$remarks', pro_status = '$status' WHERE `pro_id`='$pro_id1'";
 			users_logs($_SESSION['users_username'], "Updated Product", date("Y-m-d h:i:sa"), $_SESSION['users_roles']);
 			mysqli_query($conn, $query);
 			echo "<script>alert('You have successfully updated the record.');</script>";
@@ -259,7 +259,6 @@ if (isset($_GET['eid'])) {
 
 	$query1 = "UPDATE `product` SET pro_status = '1' WHERE pro_id = '$pro_id'";
 	mysqli_query($conn, $query1);
-
 			}
 			?>
 			

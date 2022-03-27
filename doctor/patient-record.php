@@ -11,8 +11,6 @@ if (isset($_GET['id'])) {
 $query = "UPDATE `patient_distancerx` SET `status`='Remove' WHERE `patient_no`='$patt'";
 users_logs($_SESSION['users_username'], "Remove Patient", date("Y-m-d h:i:sa"), $_SESSION['users_roles']);
 	mysqli_query($conn, $query);
-	echo "<script>alert('You have successfully remove the record.');</script>";
-			echo "<script>document.location='patient-record.php';</script>";
 }
 function createRandomPassword() {
 	$chars = "003232303232023232023456789";
@@ -60,7 +58,7 @@ $finalcode='RS-'.createRandomPassword();
 	.btn-view:hover { background-color: #4CAF50;}
 	.btn-rem:hover { background-color: red;}
 	.btn-print:hover { background-color:blue;}
-	.btn-addp:hover { background-color: #00b2b3}
+	.btn-addp:hover { background-color: #00b2b3;}
 	.btn-addpt:hover { background-color: #00b2b3;}
 
 	.btn-addpt {float:right; margin-bottom: 20px;}
@@ -202,7 +200,7 @@ $finalcode='RS-'.createRandomPassword();
 			</div>
 
 			<a href="patient-addrecord.php"><button class="btn-addpt" style="cursor: pointer;"> + Add Patient</button></a>
-			<a href="javascript:Clickheretoprint()">	<button class="btn-addp" style="float:right; width: 100px; cursor: pointer;"><i class='bx bxs-printer' ></i> Print </button></a>
+<a href="javascript:Clickheretoprint()">	<button class="btn-addp" style="float:right; width: 100px; cursor: pointer;"><i class='bx bxs-printer' ></i> Print </button></a>
 <!--print-->
 <link href="css/bootstrap-responsive.css" rel="stylesheet">
 <link href="../style.css" media="screen" rel="stylesheet" type="text/css" />
@@ -225,12 +223,26 @@ function Clickheretoprint()
    
 }
 </script>
-
 			<!-- TABLE ONGOING -->
-			<div>
-				
+			
 				<form method="post">
-						<input type="text" name="txtsearch" id="txtsearch" placeholder="Search by Patients ID/Name" autocomplete="off" style="padding: 12px;border: 1px solid #ccc;border-radius: 4px;font-family: var(poppins);width: 50%;">
+					<label>Search by:</label>
+              <select name='search' id="price-sort" onchange="location = this.value;" style="padding: 12px;border: 1px solid #ccc;border-radius: 4px;font-family: var(poppins); width: 30%;">
+                <option value='0' disabled selected>Select category..</option>
+                <option value='?search=id' <?php if($_GET['search']=='id'){
+                  echo "selected";
+                } ?>>Patient ID</option>
+                <option value='?search=name' <?php if($_GET['search']=='name'){
+                  echo "selected";
+                } ?>>Name</option>
+                <option value='?search=contactNo' <?php if($_GET['search']=='contactNo'){
+                  echo "selected";
+                } ?>>Contact No</option>
+                <option value='?search=address' <?php if($_GET['search']=='address'){
+                  echo "selected";
+                } ?>>Address</option>
+              </select>
+						<input type="text" name="txtsearch" id="txtsearch" placeholder="Search" autocomplete="off" style="padding: 12px;border: 1px solid #ccc;border-radius: 4px;font-family: var(poppins);width: 20%;">
 						<button  id="btnsearch" name="btnsearch" class="page"><i class='bx bx-search' ></i></button>
 						</form>
 						<div id="printing">
@@ -250,27 +262,48 @@ function Clickheretoprint()
 						<tbody>
 							<tr>
 							<?php
-          	error_reporting(0);
+          	
      	$limit=25;
         //$cat=$_POST['all'];
         $page=isset($_GET['page']) ? $_GET['page']:1;
         $start=($page-1)*$limit;
-        $search=$_POST['txtsearch'];
-     	
-     	if (isset($_POST['btnsearch'])) {
-     		$sql2 =$conn->query("SELECT count(patient_no) AS id,`patient_id`,`patient_name`,`patient_address`, `patient_contact` FROM `patient_distancerx` WHERE `patient_id` LIKE '%$search%' OR `patient_name` LIKE '%$search%' OR `patient_address` LIKE '%$search%' OR `patient_contact` LIKE '%$search%'  AND `status`!='Remove'");
 
-        $sql1 = "SELECT year(now())-year(`patient_bday`) AS age,`patient_no`,`patient_id`,`patient_name`,`patient_email`,`patient_contact`,`patient_address`  FROM `patient_distancerx` WHERE `patient_id` LIKE '%$search%' OR `patient_name` LIKE '%$search%' OR `patient_address` LIKE '%$search%' OR `patient_contact` LIKE '%$search%' AND `status`!='Remove' LIMIT $start, $limit ";
+        $search=$_POST['txtsearch'];
+        $sql2 =$conn->query("SELECT count(patient_no) AS id FROM `patient_distancerx` AND `status`!='Remove' LIMIT $start, $limit");
+     	
+         if ($_GET['search']=='id') {
+        	$column="patient_id";
+
+        }
+        elseif ($_GET['search']=='name') {
+        	$column="patient_name";
+        	 
+        }
+        elseif ($_GET['search']=='contactNo') {
+        	$column="patient_contact";
+        	 
+        }
+        elseif ($_GET['search']=='address') {
+        	$column="patient_address";
+        	 
+        }
+        
+        
+     	if (isset($_POST['btnsearch'])) {
+     		
+        		$sql2 =$conn->query("SELECT count(patient_no) AS id FROM `patient_distancerx`");
+     		
+        $sql1 = "SELECT $column, year(now())-year(`patient_bday`) AS age,`patient_no`,`patient_id`,`patient_name`,`patient_email`,`patient_contact`,`patient_address`  FROM `patient_distancerx` WHERE `patient_id` LIKE '%$search%' OR `patient_name` LIKE '%$search%' OR `patient_address` LIKE '%$search%' OR `patient_contact` LIKE '%$search%' AND `status`!='Remove' LIMIT $start, $limit ";
         if ($search=='') {
         		$sql2 =$conn->query("SELECT count(patient_no) AS id FROM `patient_distancerx`");
         $sql1 = "SELECT year(now())-year(`patient_bday`) AS age,`patient_no`,`patient_id`,`patient_name`,`patient_email`,`patient_contact`,`patient_address`  FROM `patient_distancerx` WHERE `status`!='Remove'  LIMIT $start, $limit ";
         }
      	}
-     	else{
+     	else{ 
      	$sql2 =$conn->query("SELECT count(patient_no) AS id FROM `patient_distancerx`");
         $sql1 = "SELECT year(now())-year(`patient_bday`) AS age,`patient_no`,`patient_id`,`patient_name`,`patient_email`,`patient_contact`,`patient_address`  FROM `patient_distancerx` WHERE `status`!='Remove'  LIMIT $start, $limit ";	
      	}
-     	
+
         $result2 = $sql2->fetch_all(MYSQLI_ASSOC);
                 $total=$result2[0]['id'];
                 $pages=ceil($total/$limit);
@@ -287,7 +320,7 @@ function Clickheretoprint()
 							<td data-label="Contact No."><?php echo $row['patient_contact'];?></td>
 							<td data-label="Address"><?php echo $row['patient_address'];?></td>
 							<td data-label="Age"><?php echo $row['age'];?></td>
-							<td data-label="Action"><a href="?id=<?php echo $row['patient_no'];?>"><button class="btn-c" style="cursor: pointer;width:100px;pad" onclick="return confirm('Are you sure you want to remove this patient?')">REMOVE</button>
+							<td data-label="Action"><form method="post"action="archive_patientsrec.php?id=<?php echo $row['patient_no'];?>"><button class="btn-c" name="btnrem"style="cursor: pointer;width:100px;pad" onclick="return confirm('Are you sure you want to remove this patient?')">REMOVE</button></form>
 			  				<a href="patient-view.php?id=<?php echo $row['patient_no'];?>"><button class="btn-f" style="cursor: pointer;width:100px;">VIEW</button></td>
 							</tr>
 							<?php

@@ -147,7 +147,6 @@ if (isset($_GET['eid'])) {
 
 	$query1 = "UPDATE `product` SET pro_status = '1' WHERE pro_id = '$pro_id'";
 	mysqli_query($conn, $query1);
-
 			}
 			?>
 			

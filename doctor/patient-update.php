@@ -138,7 +138,7 @@ else{
 	users_logs($_SESSION['users_username'], "Updated Patient", date("Y-m-d h:i:sa"), $_SESSION['users_roles']);
 	mysqli_query($conn, $query);
 	mysqli_query($conn, $query1);
-	echo "<script>alert('You have successfully updated the record.');</script>";
+	
 		header("Location:patient-view.php?id=".$_GET['id']);
 }
 ?>
@@ -155,16 +155,6 @@ else{
 	<link rel="shorcut icon" type="img/png" href="images\logo.png">
 	<title>RNL Vision Care | Admin</title>
 	<style>
-		button {
-		background-color: #00c2cb;
-		padding: 12px;
-		border: none;
-		margin: 3px;
-		border-radius: 10%;
-		cursor: pointer;
-	}
-
-	.btn-addp:hover { background-color: #00b2b3}
 	input[type=text], input[type=date], input[type=tel], input[type=email], select, textarea {
   		width: 100%;
   		padding: 12px;
@@ -331,7 +321,8 @@ else{
 				</div>
 			
 			</div>
-			<a href="javascript:Clickheretoprint()">	<a href="javascript:Clickheretoprint()">	<button class="btn-addp" style="float:right; width: 100px; cursor: pointer;"><i class='bx bxs-printer' ></i> Print </button></a>		<!--print-->
+			<a href="javascript:Clickheretoprint()">	<button class="btn-addp" style="float:right; width: 100px; cursor: pointer;"><i class='bx bxs-printer' ></i> Print </button></a>
+<!--print-->
 <link href="css/bootstrap-responsive.css" rel="stylesheet">
 <link href="../style.css" media="screen" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" type="text/css" href="tcal.css" />
@@ -339,6 +330,7 @@ else{
 <script language="javascript">
 function Clickheretoprint()
 { 
+	
   var disp_setting="toolbar=yes,location=no,directories=yes,menubar=yes,"; 
       disp_setting+="scrollbars=yes,width=1000, height=1000, left=100, top=25"; 
   var content_vlue = document.getElementById("order").innerHTML; 
@@ -349,9 +341,9 @@ function Clickheretoprint()
    docprint.document.write(content_vlue); 
    docprint.document.close(); 
    docprint.focus(); 
+   
 }
 </script>
-			
 		<div class="table-data">
 			<div class="order" id="order">
 			

@@ -7,4 +7,4 @@ users_logs($_SESSION['users_username'], "Logout", date("Y-m-d h:i:sa"), $_SESSIO
 session_unset();
 session_destroy();
 
-header("Location: index.php");
+header("Location: ../admin/index.php");

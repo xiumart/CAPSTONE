@@ -1,8 +1,27 @@
 
 <?php
-	 error_reporting(0);
+ error_reporting(0);
 include("../conn.php");
-include("session.php");
+include("../admin/session.php");
+function createRandomPassword() {
+	$chars = "003232303232023232023456789";
+	srand((double)microtime()*1000000);
+	$i = 0;
+	$pass = '' ;
+	while ($i <= 7) {
+
+		$num = rand() % 33;
+
+		$tmp = substr($chars, $num, 1);
+
+		$pass = $pass . $tmp;
+
+		$i++;
+
+	}
+	return $pass;
+}
+$finalcode='RS-'.createRandomPassword();
 ?>
 
 <!DOCTYPE html>
@@ -55,7 +74,14 @@ include("session.php");
 	.namee{
 		margin-top: 4.5%;
 	}
-
+	.page{
+		background-color: #00c2cb;
+		padding: 12px;
+		border: none;
+		border-radius: 10%;
+		color:white;
+	}
+	.page:hover { background-color:#00b2b3;}
 	</style>
 
 <body>
@@ -96,7 +122,7 @@ include("session.php");
 			</form>
 			<div id="digital-clock"></div>
 			<script src="time.js"></script>
-
+			
 			<!-- DROP DOWN NG EDIT PROFILE AND CHANGE PASS OK-->
 			<div class="dropdown1">
 			<img src="img\user.png" alt="" width="40px" class="userlogo">
@@ -142,7 +168,7 @@ include("session.php");
 					</ul>
 				</div>
 			
-			</div>
+			</div><br>
 			<style>
 	#content main .table-data .order table th {
 		text-align: center;
@@ -172,7 +198,7 @@ include("session.php");
                   echo "selected";
                 } ?>>Remarks</option>
               </select>
-						<input type="text" name="txtsearch" id="txtsearch" placeholder="Type here.." autocomplete="off" style="padding: 12px;border: 1px solid #ccc;border-radius: 4px;font-family: var(poppins);width: 30%;">
+						<input type="text" name="txtsearch" id="txtsearch" placeholder="Type here.." autocomplete="off" style="padding: 12px;border: 1px solid #ccc;border-radius: 4px;font-family: var(poppins);width: 20%;">
 						<button id="btnsearch" name="btnsearch" class="page" style="cursor: pointer;"><i class='bx bx-search' ></i></button>
 						</form></br>
 			<div>
@@ -192,7 +218,7 @@ include("session.php");
      </thead>
      <tbody>
 	 <?php
-
+	 error_reporting(0);
      	$limit=10;
         
         $page=isset($_GET['page']) ? $_GET['page']:1;

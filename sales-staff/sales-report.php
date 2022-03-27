@@ -1,5 +1,6 @@
 <?php
-include("session.php");
+error_reporting(0);
+include("../admin/session.php");
 include("../conn.php");
 function createRandomPassword() {
 	$chars = "003232303232023232023456789";
@@ -50,6 +51,7 @@ $finalcode='RS-'.createRandomPassword();
 	.btn-upd:hover { background-color: #4CAF50;}
 	.btn-rem:hover { background-color: red;}
 	.btn-print:hover { background-color:#00a2a3;}
+	.btn-addp:hover { background-color: #00a2a3}
 	.btn-addpt:hover { background-color: #00a2a3}
 	.btn-addpt {float:right; margin-bottom: 20px;}
 	.btn-print {
@@ -307,18 +309,48 @@ function Clickheretoprint()
    
 }
 </script>
+<form method="post">
+				<label>Search by:</label>
+              <select name='search' id="price-sort" onchange="location = this.value;" style="padding: 12px;border: 1px solid #ccc;border-radius: 4px;font-family: var(poppins); width: 30%;">
+                <option value='0' disabled selected>Select category..</option>
+                <option value='?search=id' <?php if($_GET['search']=='id'){
+                  echo "selected";
+                } ?>>Transaction ID</option>
+                <option value='?search=date' <?php if($_GET['search']=='date'){
+                  echo "selected";
+                } ?>>Date</option>
+                <option value='?search=name' <?php if($_GET['search']=='name'){
+                  echo "selected";
+                } ?>>Name</option>
+                 <option value='?search=profit' <?php if($_GET['search']=='profit'){
+                  echo "selected";
+                } ?>>Profit</option>
+                 <option value='?search=amount' <?php if($_GET['search']=='amount'){
+                  echo "selected";
+                } ?>>Amount</option>
+              </select>
+						<input type="text" name="txtsearch" id="txtsearch" placeholder="Search " autocomplete="off" style="padding: 12px;border: 1px solid #ccc;border-radius: 4px;font-family: var(poppins); width: 20%;">
+						<button  id="btnsearch" name="btnsearch" class="page" style="cursor: pointer;"><i class='bx bx-search' ></i></button>
+			</form>
 			<div>
-				<div>
 				<div id="printing">
+					<style type="text/css">
+						.up{
+							cursor: pointer;
+						}
+						.down{
+							cursor: pointer;
+						}
+					</style>
 					<table>
 						<caption>Recent Transaction</caption>
      <thead>
      	<tr>
-     	 <th>Transac. ID</th>
-     	 <th>Date</th>
-     	 <th>Customer Name</th>
-		 <th>Profit</th>
-		 <th>Total Amount</th>
+     	 <th>Transac. ID<form method=""><button class="up" value="up" name="btn" style="width: 10%; height: 5%; padding: 0; margin: 0;">▲</button>&nbsp<button class="down" value="down" name="btn" style="width: 10%; height: 5%; padding: 0; margin: 0;">▼</button></form></th>
+     	 <th>Date<form method=""><button class="up" value="up1" name="btn" style="width: 10%; height: 5%; padding: 0; margin: 0;">▲</button>&nbsp<button class="down" value="down1" name="btn" style="width: 10%; height: 5%; padding: 0; margin: 0;">▼</button></form></th>
+     	 <th>Customer Name<form method=""><button class="up" value="up2" name="btn" style="width: 10%; height: 5%; padding: 0; margin: 0;">▲</button>&nbsp<button class="down" value="down2" name="btn" style="width: 10%; height: 5%; padding: 0; margin: 0;">▼</button></form></th>
+		 <th>Profit<form method=""><button class="up" value="up3" name="btn" style="width: 10%; height: 5%; padding: 0; margin: 0;">▲</button>&nbsp<button class="down" value="down3" name="btn" style="width: 10%; height: 5%; padding: 0; margin: 0;">▼</button></form></th>
+		 <th>Total Amount<form method=""><button class="up" value="up4" name="btn" style="width: 10%; height: 5%; padding: 0; margin: 0;">▲</button>&nbsp<button class="down" value="down4" name="btn" style="width: 10%; height: 5%; padding: 0; margin: 0;">▼</button></form></th>
 		 <th>Action</th>
      	</tr>
      </thead>
@@ -330,8 +362,99 @@ function Clickheretoprint()
       {
       echo "Failed to connect to MySQL: " . mysqli_connect_error();
       }
+      $limit=25;
+        $cat=$_POST['all'];
+        $page=isset($_GET['page']) ? $_GET['page']:1;
+        $start=($page-1)*$limit;
+      	
+              $search=$_POST['txtsearch'];
+        if ($_GET['search']=='id') {
+        	$column="order_no";
+        	 
+        }
+        elseif ($_GET['search']=='date') {
+        	$column="date";
 
-    $result = mysqli_query($con,"SELECT * FROM sales WHERE `type`='cash' ORDER BY `date` DESC" );
+        }
+        elseif ($_GET['search']=='name') {
+        	$column="name";
+        	 
+        }
+        elseif ($_GET['search']=='profit') {
+        	$column="profit";
+        	 
+        }
+        elseif ($_GET['search']=='amount') {
+        	$column="amount";
+        	 
+        }
+        else{
+
+        }
+      	if (isset($_POST['btnsearch'])&& $_POST['txtsearch']!="") {
+      		 $result = mysqli_query($con,"SELECT * FROM sales WHERE `type`='cash' AND `$column` LIKE '%$search%'  ORDER BY `date` DESC LIMIT $start, $limit" );
+      	}
+      	elseif ($_GET['btn']=='down') {
+        	 $result = mysqli_query($con,"SELECT * FROM sales WHERE `type`='cash' ORDER BY `order_no` DESC LIMIT $start, $limit" );
+        		
+        		echo "<style>.down{ background-color:red;}</style>";
+        	}
+        	elseif ($_GET['btn']=='up') {
+        	 $result = mysqli_query($con,"SELECT * FROM sales WHERE `type`='cash' ORDER BY `order_no` ASC LIMIT $start, $limit" );
+        		
+        		echo "<style>.up{ background-color:red;}</style>";
+        	}
+        	elseif ($_GET['btn']=='down1') {
+        	 $result = mysqli_query($con,"SELECT * FROM sales WHERE `type`='cash' ORDER BY `date` DESC LIMIT $start, $limit" );
+        		
+        		echo "<style>.down{ background-color:red;}</style>";
+        	}
+        	elseif ($_GET['btn']=='up1') {
+        	 $result = mysqli_query($con,"SELECT * FROM sales WHERE `type`='cash' ORDER BY `date` ASC LIMIT $start, $limit" );
+        		
+        		echo "<style>.up{ background-color:red;}</style>";
+        	}
+        	elseif ($_GET['btn']=='down2') {
+        	 $result = mysqli_query($con,"SELECT * FROM sales WHERE `type`='cash' ORDER BY `name` DESC LIMIT $start, $limit" );
+        		
+        		echo "<style>.down{ background-color:red;}</style>";
+        	}
+        	elseif ($_GET['btn']=='up2') {
+        	 $result = mysqli_query($con,"SELECT * FROM sales WHERE `type`='cash' ORDER BY `name` ASC LIMIT $start, $limit" );
+        		
+        		echo "<style>.up{ background-color:red;}</style>";
+        	}
+        	elseif ($_GET['btn']=='down3') {
+        	 $result = mysqli_query($con,"SELECT * FROM sales WHERE `type`='cash' ORDER BY `profit` DESC LIMIT $start, $limit" );
+        		
+        		echo "<style>.down{ background-color:red;}</style>";
+        	}
+        	elseif ($_GET['btn']=='up3') {
+        	 $result = mysqli_query($con,"SELECT * FROM sales WHERE `type`='cash' ORDER BY `profit` ASC LIMIT $start, $limit" );
+        		
+        		echo "<style>.up{ background-color:red;}</style>";
+        	}
+        	elseif ($_GET['btn']=='down4') {
+        	 $result = mysqli_query($con,"SELECT * FROM sales WHERE `type`='cash' ORDER BY `amount` DESC LIMIT $start, $limit" );
+        		
+        		echo "<style>.down{ background-color:red;}</style>";
+        	}
+        	elseif ($_GET['btn']=='up4') {
+        	 $result = mysqli_query($con,"SELECT * FROM sales WHERE `type`='cash' ORDER BY `amount` ASC LIMIT $start, $limit" );
+        		
+        		echo "<style>.up{ background-color:red;}</style>";
+        	}
+      	else{
+      		$result = mysqli_query($con,"SELECT * FROM sales WHERE `type`='cash' ORDER BY `date` DESC LIMIT $start, $limit" );
+      	}
+      	
+        $sql2 =$con->query("SELECT count(id) AS id FROM `sales`");
+         $result2 = $sql2->fetch_all(MYSQLI_ASSOC);
+                $total=$result2[0]['id'];
+                $pages=ceil($total/$limit);
+                $prev=$page-1;
+                $next=$page+1;
+   
       
     while($row = mysqli_fetch_array($result))
       {
@@ -350,12 +473,17 @@ function Clickheretoprint()
     ?>
      </tbody>
    </table>
-   
 				</div>
 
 				
 				
 			</div>
+			<br>
+			<a class="page" id="pre" href="sales-report.php?page=<?=$prev; ?>&btn=<?php echo $_GET['btn'] ?>">< Prev</a>
+    	  <?php  for($i=1; $i <=$pages ; $i++): ?>
+    <a class="page" href="sales-report.php?page=<?=$i; ?>&btn=<?php echo $_GET['btn'] ?>"><?=$i; ?></a>
+                      <?php endfor; ?>
+    <a class="page" id="pnext" href="sales-report.php?page=<?=$next; ?>&btn=<?php echo $_GET['btn'] ?>">Next ></a>
 			
 			<div class="table-data">
 	
