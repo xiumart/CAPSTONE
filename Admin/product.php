@@ -103,10 +103,11 @@ if (isset($_GET['id'])) {
 		margin-left: 60%;
 		padding:8px;
 	}
+	.btn-remove:hover { background-color: red;}
 	.btn-f:hover { background-color: #4CAF50;}
 	.btn-c:hover { background-color: red;}
 	.btn-apph:hover { background-color: #00a2a3;}
-	.btn-remove:hover { background-color: red;}
+	
 	.namee{
 		margin-top: 4.5%;
 	}
@@ -197,7 +198,7 @@ if (isset($_GET['id'])) {
 				<i class='bx bxs-bell' ></i>
 				<span class="num">
 				<?php 
-				$query = mysqli_query($conn, "SELECT COUNT(*) as total from client_inquiries, product  WHERE inquiries_status = '2' AND qty <=10 AND pro_status ='2'");
+				$query = mysqli_query($conn, "SELECT COUNT(*) as total from client_inquiries WHERE inquiries_status = '2'");
 					while($result=mysqli_fetch_array($query)){
 					echo $result['total']; 
 				}			
@@ -206,64 +207,28 @@ if (isset($_GET['id'])) {
 			</a>
 			<?php
 
-if (isset($_GET['id'])) {
-	$users_id=$_GET['id'];
-
-	$query = "UPDATE `client_inquiries` SET inquiries_status = '1' WHERE inquiries_id = '$users_id'";
-	mysqli_query($conn, $query);
-	header( "refresh:0; url=product.php" );
-			}
-			?>
-			<?php
-
-if (isset($_GET['eid'])) {
-	$pro_id=$_GET['eid'];
-
-	$query1 = "UPDATE `product` SET pro_status = '1' WHERE pro_id = '$pro_id'";
-	mysqli_query($conn, $query1);
-	header( "refresh:0; url=product.php" );
+			if (isset($_GET['id'])) {
+			$users_id=$_GET['id'];
+			$query = "UPDATE `client_inquiries` SET inquiries_status = '1'  WHERE inquiries_id = '$users_id'";
+			mysqli_query($conn, $query);
+			header( "refresh:0; url=product.php" );
 			}
 			?>
 			
 				<div class="dropdown-content2">
 					<h4 id="textnotif">Notification</h4><br><hr>
-					
-			<table>
-			<?php   
+					<?php   
 			   require_once("../db/notification/notifdisplay.php");
               while($row = mysqli_fetch_assoc($query)){
 				  
             ?>
+			<table>
 				<tr>
 					<th><h4>Inquiry:</h4></th><p><td><?php echo $row['inquiries_message']; ?></p></td><td><a href="?id=<?php echo $row['inquiries_id'];?>"><button class="btn-remove" name="btnremove" style="cursor: pointer;">Clear</button></a></td><hr color="wheat">
-			  </tr>
-			  <?php
+			  </table>
+					<?php
 			  }
 			  ?>
-			  
-			  <?php
-			$sql1 = "SELECT * FROM `product` WHERE pro_status='2' LIMIT 6";
-			$result1 = $conn->query($sql1);  
-  			if($result1->num_rows > 0){
-  				while($row = $result1 -> fetch_assoc()){ 
-  
-			  ?>
-			  <tr>
-					<th><h4>Product:</h4></th>
-			  <td><p><?php 
-					if ($qty<=10) {
-						echo $row['model'] ."&nbsp";		
-						echo $row['qty'];
-							}
-			  ?>
-				</p></td><td><a href="?eid=<?php echo $row['pro_id'];?>"><button class="btn-remove" name="btnremove" style="cursor: pointer;">Clear</button></a></td>
-							</tr>
-							<?php
-				  }}
-			  ?>
-			  </table>
-			  
-					
 					<a href="see-all-notification.php" id="colnotif">See all notification..</a>
 				</div>
 			</div>
@@ -314,9 +279,33 @@ if (isset($_GET['eid'])) {
 			
 			</div>
 
-			<a href="product-add.php"><button class="btn-addp" style="float:right; margin-bottom:10px;">+ Add Product </button></a>
+			<a href="product-add.php"><button class="btn-addp" style="float:right;">+ Add Product </button></a>
+			<a href="javascript:Clickheretoprint()">
+   	<button class="btn-addp" style="float:right; width: 100px;"><i class='bx bxs-printer' ></i> Print </button></a>
+<!--print-->
+<link href="css/bootstrap-responsive.css" rel="stylesheet">
+<link href="../style.css" media="screen" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="tcal.css" />
+<script type="text/javascript" src="tcal.js"></script>
+<script language="javascript">
+function Clickheretoprint()
+{ 
+	
+  var disp_setting="toolbar=yes,location=no,directories=yes,menubar=yes,"; 
+      disp_setting+="scrollbars=yes,width=1000, height=1000, left=100, top=25"; 
+  var content_vlue = document.getElementById("printing").innerHTML; 
+  
+  var docprint=window.open("","",disp_setting); 
+   docprint.document.open(); 
+   docprint.document.write('</head><body onLoad="self.print()" style="width: 700px; font-size:9px; font-family:arial; font-weight:normal;">');          
+   docprint.document.write(content_vlue); 
+   docprint.document.close(); 
+   docprint.focus(); 
+   
+}
+</script>
 			<form method="post">
-						<input type="text" name="txtsearch" id="txtsearch" placeholder="Search" autocomplete="off" style="padding: 12px;border: 1px solid #ccc;border-radius: 4px;font-family: var(poppins); width: 50%;">
+						<input type="text" name="txtsearch" id="txtsearch" placeholder="Search " autocomplete="off" style="padding: 12px;border: 1px solid #ccc;border-radius: 4px;font-family: var(poppins); width: 50%;">
 						<button  id="btnsearch" name="btnsearch" class="page" style="cursor: pointer;"><i class='bx bx-search' ></i></button>
 			</form>
 <div id="printing">
@@ -343,8 +332,8 @@ if (isset($_GET['eid'])) {
         $search=$_POST['txtsearch'];
      	
      	if (isset($_POST['btnsearch'])) {
-        $sql1 = "SELECT * FROM `product` WHERE `category` LIKE '%$search%' OR `model` LIKE '%$search%' LIMIT $start, $limit";
-        $sql2 =$conn->query("SELECT count(pro_id) AS id,`category`,`model` FROM `product` WHERE `category` LIKE '%$search%' OR `model` LIKE '%$search%'");
+        $sql1 = "SELECT * FROM `product` WHERE `category` LIKE '%$search%' OR `model` LIKE '%$search%' OR `brand` LIKE '%$search%' OR `origprice` LIKE '%$search%' OR `sellingprice` LIKE '%$search%' OR `qty` LIKE '%$search%' LIMIT $start, $limit";
+        $sql2 =$conn->query("SELECT count(pro_id) AS id,`category`,`model`,`brand`,`origprice`,`sellingprice`,`qty` FROM `product` WHERE `category` LIKE '%$search%' OR `model` LIKE '%$search%' OR `brand` LIKE '%$search%' OR `origprice` LIKE '%$search%' OR `sellingprice` LIKE '%$search%' OR `qty` LIKE '%$search%'");
 
         	}
         else{
@@ -352,7 +341,8 @@ if (isset($_GET['eid'])) {
         		$sql2 =$conn->query("SELECT count(pro_id) AS id FROM `product`");
         	}
 
-        	$result2 = $sql2->fetch_all(MYSQLI_ASSOC);        	       
+        	$result2 = $sql2->fetch_all(MYSQLI_ASSOC);
+        	$sql = "SELECT * from product WHERE brand ORDER BY brand ASC LIMIT $start, $limit";        
                 $total=$result2[0]['id'];
                 $pages=ceil($total/$limit);
                 $prev=$page-1;
@@ -378,7 +368,7 @@ if (isset($_GET['eid'])) {
 
 							if ($qty<=10) {
 								
-						echo "<style> #qq {color:red;}</style>";
+						echo "<br><b><p style='color:red;'>CRITICAL</p></b>";
 							}
 							else
 							{
@@ -414,30 +404,7 @@ if (isset($_GET['eid'])) {
                       <?php endfor; ?>
     <a class="page" id="pnext" href="product.php?page=<?=$next; ?>">Next ></a>
 	
-	<a href="javascript:Clickheretoprint()">
-   	<button class="btn-print"><i class='bx bxs-printer' ></i> Print </button></a>
-<!--print-->
-<link href="css/bootstrap-responsive.css" rel="stylesheet">
-<link href="../style.css" media="screen" rel="stylesheet" type="text/css" />
-<link rel="stylesheet" type="text/css" href="tcal.css" />
-<script type="text/javascript" src="tcal.js"></script>
-<script language="javascript">
-function Clickheretoprint()
-{ 
 	
-  var disp_setting="toolbar=yes,location=no,directories=yes,menubar=yes,"; 
-      disp_setting+="scrollbars=yes,width=1000, height=1000, left=100, top=25"; 
-  var content_vlue = document.getElementById("printing").innerHTML; 
-  
-  var docprint=window.open("","",disp_setting); 
-   docprint.document.open(); 
-   docprint.document.write('</head><body onLoad="self.print()" style="width: 700px; font-size:11px; font-family:arial; font-weight:normal;">');          
-   docprint.document.write(content_vlue); 
-   docprint.document.close(); 
-   docprint.focus(); 
-   
-}
-</script>
 					
 
 				</div>
