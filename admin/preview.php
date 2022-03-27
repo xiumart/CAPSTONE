@@ -94,9 +94,9 @@ $finalcode='RS-'.createRandomPassword();
 <div style="margin: 0 auto; padding: 20px; width: 900px; font-weight: normal;">
 	<div style="width: 100%; height: 190px;" >
 	<div style="width: 900px; float: left;">
-	<center><div style="font:bold 25px 'Aleo';">Sales Receipt</div>
-	RNL EYE CENTER	<br>
-	San Andres Bukid	<br>	<br>
+	<center><img src="logo.png" alt="" style="width:100px;"><div style="font:bold 20px 'Aleo';">RNL VISION CARE CENTER</div>
+	<p style="margin:1px;font-size:15px;">Stall #13 2nd floor Inno Block Mall Zabarte Road Cor Camarin-Susano <br><p style="padding-top:-10px;">(+63)998 218 1412</p><p>	<br><br>
+
 	</center>
 	<div>
 	</div>
