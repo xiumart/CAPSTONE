@@ -52,8 +52,10 @@ if (isset($_GET['id'])) {
 		border: none;
 		margin: 3px;
 		border-radius: 10%;
+		cursor: pointer;
 	}
-
+	.down:hover { background-color:#00a2a3;}
+	.up:hover { background-color:#00a2a3;}
 	.btn-upd:hover { background-color: #4CAF50;}
 	.btn-rem:hover { background-color: red;}
 	.btn-print:hover { background-color:#00a2a3;}
@@ -194,7 +196,7 @@ if (isset($_GET['id'])) {
 				<i class='bx bxs-bell' ></i>
 				<span class="num">
 				<?php 
-				$query = mysqli_query($conn, "SELECT COUNT(*) as total from product  WHERE qty <=10 AND pro_status ='2'");
+				$query = mysqli_query($conn, "SELECT COUNT(*) as total from client_inquiries, product  WHERE inquiries_status = '2' AND qty <=10 AND pro_status ='2'");
 					while($result=mysqli_fetch_array($query)){
 					echo $result['total']; 
 				}			
@@ -208,6 +210,7 @@ if (isset($_GET['id'])) {
 
 	$query = "UPDATE `client_inquiries` SET inquiries_status = '1' WHERE inquiries_id = '$users_id'";
 	mysqli_query($conn, $query);
+	header( "refresh:0; url=manage-user.php" );
 			}
 			?>
 			<?php
@@ -217,6 +220,7 @@ if (isset($_GET['eid'])) {
 
 	$query1 = "UPDATE `product` SET pro_status = '1' WHERE pro_id = '$pro_id'";
 	mysqli_query($conn, $query1);
+	header( "refresh:0; url=manage-user.php" );
 			}
 			?>
 			
@@ -237,7 +241,7 @@ if (isset($_GET['eid'])) {
 			  ?>
 			  
 			  <?php
-			$sql1 = "SELECT * FROM `product` WHERE pro_status='2' AND qty <=10 LIMIT 6";
+			$sql1 = "SELECT * FROM `product` WHERE pro_status='2'  LIMIT 6";
 			$result1 = $conn->query($sql1);  
   			if($result1->num_rows > 0){
   				while($row = $result1 -> fetch_assoc()){ 
@@ -245,11 +249,11 @@ if (isset($_GET['eid'])) {
 					$model = $row['model'];
 			  ?>
 			  <tr>
-			  <th><h4 style="color: red;">Low Product:</h4></th>
+					<th><h4>Product:</h4></th>
 			  <td><p><?php 
 					if ($qty<=10) {
-						echo "Model: " . $row['model'] ."&nbsp<br>";		
-						echo "QTY: " . $row['qty'];
+						echo $row['model'] ."&nbsp";		
+						echo $row['qty'];
 							}
 			  ?>
 				</p></td><td><a href="?eid=<?php echo $row['pro_id'];?>"><button class="btn-remove" name="btnremove" style="cursor: pointer;">Clear</button></a></td>
@@ -343,11 +347,11 @@ if (isset($_GET['eid'])) {
      <thead>
      	<tr>
 		 
-		 <th>Lastname</th>
-      <th>Firstname</th>
-      <th>Username</th>
-      <th>Contact Number</th>
-      <th>Position</th>
+		 <th>Lastname<form method=""><button class="up" value="up" name="btn" style="width: 10%; height: 5%; padding: 0; margin: 0;">▲</button>&nbsp<button class="down" value="down" name="btn" style="width: 10%; height: 5%; padding: 0; margin: 0;">▼</button></form></th>
+      <th>Firstname<form method=""><button class="up" value="up" name="btn1" style="width: 10%; height: 5%; padding: 0; margin: 0;">▲</button>&nbsp<button class="down" value="down" name="btn1" style="width: 10%; height: 5%; padding: 0; margin: 0;">▼</button></form></th>
+      <th>Username<form method=""><button class="up" value="up" name="btn2" style="width: 10%; height: 5%; padding: 0; margin: 0;">▲</button>&nbsp<button class="down" value="down" name="btn2" style="width: 10%; height: 5%; padding: 0; margin: 0;">▼</button></form></th>
+      <th>Contact Number<form method=""><button class="up" value="up" name="btn3" style="width: 10%; height: 5%; padding: 0; margin: 0;">▲</button>&nbsp<button class="down" value="down" name="btn3" style="width: 10%; height: 5%; padding: 0; margin: 0;">▼</button></form></th>
+      <th>Position<form method=""><button class="up" value="up" name="btn4" style="width: 10%; height: 5%; padding: 0; margin: 0;">▲</button>&nbsp<button class="down" value="down" name="btn4" style="width: 10%; height: 5%; padding: 0; margin: 0;">▼</button></form></th>
       <th>Action</th>
      	</tr>
      </thead>
@@ -381,15 +385,67 @@ if (isset($_GET['eid'])) {
         	$column="users_roles";
         	 
         }
-     	if (isset($_POST['btnsearch'])) {
-     		      
-        $sql1 = "SELECT * FROM `users_account` WHERE `$column` LIKE '%$search%' LIMIT $start, $limit ";
-        
-        	}
         else{
+
+        }
+     			if (isset($_POST['btnsearch']) && $_POST['txtsearch']!="") {
+       		 $sql1 = "SELECT * FROM `users_account` WHERE `$column` LIKE '%$search%' LIMIT $start, $limit ";
+        	}        	
+        	elseif ($_GET['btn']=='down') {
+        		$sql1 = "SELECT * FROM `users_account` Order by `users_lastname` DESC LIMIT $start, $limit ";
+        		$sql2 =$conn->query("SELECT count(users_id) AS id, `users_lastname` FROM `users_account` Order by `users_lastname` DESC ");
+        		echo "<style>.down{ background-color:red;}</style>";
+        	}
+        	elseif ($_GET['btn']=='up') {
+        		$sql1 = "SELECT * FROM `users_account` Order by `users_lastname` ASC LIMIT $start, $limit ";
+        		$sql2 =$conn->query("SELECT count(users_id) AS id, `users_lastname` FROM `users_account` Order by `users_lastname` ASC ");
+        		echo "<style>.up{ background-color:red;}</style>";
+        	}
+        	elseif ($_GET['btn1']=='down') {
+        		$sql1 = "SELECT * FROM `users_account` Order by `users_firstname` DESC LIMIT $start, $limit ";
+        		$sql2 =$conn->query("SELECT count(users_id) AS id, `users_firstname` FROM `users_account` Order by `users_firstname` DESC ");
+        		echo "<style>.down{ background-color:red;}</style>";
+        	}
+        	elseif ($_GET['btn1']=='up') {
+        		$sql1 = "SELECT * FROM `users_account` Order by `users_firstname` ASC LIMIT $start, $limit ";
+        		$sql2 =$conn->query("SELECT count(users_id) AS id, `users_firstname` FROM `users_account` Order by `users_firstname` ASC ");
+        		echo "<style>.up{ background-color:red;}</style>";
+        	}
+        		elseif ($_GET['btn2']=='down') {
+        		$sql1 = "SELECT * FROM `users_account` Order by `users_username` DESC LIMIT $start, $limit ";
+        		$sql2 =$conn->query("SELECT count(users_id) AS id, `users_username` FROM `users_account` Order by `users_username` DESC ");
+        		echo "<style>.down{ background-color:red;}</style>";
+        	}
+        	elseif ($_GET['btn2']=='up') {
+        		$sql1 = "SELECT * FROM `users_account` Order by `users_username` ASC LIMIT $start, $limit ";
+        		$sql2 =$conn->query("SELECT count(users_id) AS id, `users_username` FROM `users_account` Order by `users_firstname` ASC ");
+        		echo "<style>.up{ background-color:red;}</style>";
+        	}
+        		elseif ($_GET['btn3']=='down') {
+        		$sql1 = "SELECT * FROM `users_account` Order by `users_contact` DESC LIMIT $start, $limit ";
+        		$sql2 =$conn->query("SELECT count(users_id) AS id, `users_contact` FROM `users_account` Order by `users_contact` DESC ");
+        		echo "<style>.down{ background-color:red;}</style>";
+        	}
+        	elseif ($_GET['btn3']=='up') {
+        		$sql1 = "SELECT * FROM `users_account` Order by `users_contact` ASC LIMIT $start, $limit ";
+        		$sql2 =$conn->query("SELECT count(users_id) AS id, `users_contact` FROM `users_account` Order by `users_contact` ASC ");
+        		echo "<style>.up{ background-color:red;}</style>";
+        	}
+        	elseif ($_GET['btn4']=='down') {
+        		$sql1 = "SELECT * FROM `users_account` Order by `users_roles` DESC LIMIT $start, $limit ";
+        		$sql2 =$conn->query("SELECT count(users_id) AS id, `users_roles` FROM `users_account` Order by `users_roles` DESC ");
+        		echo "<style>.down{ background-color:red;}</style>";
+        	}
+        	elseif ($_GET['btn4']=='up') {
+        		$sql1 = "SELECT * FROM `users_account` Order by `users_roles` ASC LIMIT $start, $limit ";
+        		$sql2 =$conn->query("SELECT count(users_id) AS id, `users_roles` FROM `users_account` Order by `users_roles` ASC ");
+        		echo "<style>.up{ background-color:red;}</style>";
+        	}
+        	 else{
         		$sql1 = "SELECT * FROM `users_account` LIMIT $start, $limit ";
         		$sql2 =$conn->query("SELECT count(users_id) AS id FROM `users_account`");
         	}
+       
 
 
         $result2 = $sql2->fetch_all(MYSQLI_ASSOC);
