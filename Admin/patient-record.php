@@ -384,7 +384,7 @@ function Clickheretoprint()
         	$column="patient_contact";
         	 
         }
-        elseif ($_GET['search']=='Address') {
+        elseif ($_GET['search']=='address') {
         	$column="patient_address";
         	 
         }
