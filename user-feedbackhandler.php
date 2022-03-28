@@ -13,16 +13,16 @@ include("conn.php");
 
            $sql = "INSERT INTO feedback (feed_subj, feed_comments, feed_rate, client_id) VALUES ('$fsubject','$fcomment','$rate','$client_id')";
           
-        if(mysqli_query($con, $sql)){
+        if(mysqli_query($conn, $sql)){
             echo '<script language="javascript">';
 	        echo 'alert("Thank you for your feedback!");';
 	        echo 'window.location="users.php";';
 	        echo '</script>';
         } else{
             echo "ERROR: Hush! Sorry $sql. " 
-                . mysqli_error($con);
+                . mysqli_error($conn);
         }
           
         // Close connection
-        mysqli_close($con);
+        mysqli_close($conn);
         ?>

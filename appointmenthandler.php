@@ -1,6 +1,6 @@
 <?php
 
-include("conn.php");
+$db = mysqli_connect("localhost", "root","", "capstone");
 
 	// initialize variables
 	$appuser = "";

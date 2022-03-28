@@ -1,6 +1,6 @@
 <?php
 
-include("conn.php")
+$db = mysqli_connect("localhost", "root","", "capstone");
 
 	// initialize variables
 	$name = "";
@@ -25,7 +25,7 @@ include("conn.php")
 } else {
 	echo '<script language="javascript">';
 	echo 'alert("Please Try Again");';
-	echo 'window.location="Contact.php";';
+	echo 'window.location="contact.php";';
 	echo '</script>';
 }
 ?> 	
