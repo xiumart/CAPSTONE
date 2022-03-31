@@ -355,7 +355,7 @@ if (isset($_GET['eid'])) {
 						  							}			
 						  ?>
 						  </h3>
-						<p>Total Ongoing Appointment</p>
+						<p>Total Scheduled Appointment</p>
 					</span>
 				</li>
 				<li>
@@ -422,10 +422,10 @@ if (isset($_GET['eid'])) {
 				
 			</div>
 			
-			<!-- TABLE ONGOING -->
+			<!-- TABLE Scheduled -->
 			<div>
 				<table>
-						<caption>Ongoing Appointment</caption>
+						<caption>Scheduled Appointment</caption>
 						<thead>
 						<tr>						
 							<th scope="col">Name</th>

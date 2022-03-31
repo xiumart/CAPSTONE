@@ -298,7 +298,7 @@ if (isset($_GET['eid'])) {
 			<div>
 			
 					<table>
-					<caption>Finish Appointment</caption>
+					<caption>Finished Appointment</caption>
      <thead>
      	<tr>
      	 <th>Name</th>
