@@ -132,7 +132,31 @@ $user=$_SESSION['login_user'];
                 </a>
               </li>
               <li>
-                <a href="users-feedback.php">
+                <?php
+
+                 $user = $_SESSION['login_user'];
+
+                  $sql1 = mysqli_query($conn, "SELECT app_id from appointment where app_user = '$user'");
+                  
+                  while($sagot = mysqli_fetch_array($sql1)){
+
+                  $aydi = $sagot['app_id'];
+                }
+
+                  $sql2 = mysqli_query($conn, "SELECT COUNT(*) as total from appointment_history where app_id = '$aydi' AND app_remarks = 'FINISH'");
+
+                  while ($risulta = mysqli_fetch_array($sql2)) {
+
+                    if($risulta['total']<=0){
+                        $mensahe = "";
+                    }
+                    else{
+                      $mensahe = "users-feedback.php";
+                    }
+                  }
+
+                 ?>
+                <a href="<?php echo $mensahe;?>">
                   <i class="fa fa-bullhorn" aria-hidden="true"></i>
                   <h5> Feedback Us</h5>
             
