@@ -133,42 +133,41 @@ $user=$_SESSION['login_user'];
               </li>
               <li>
                 <?php
-
+                 $mensahe = "";
                  $user = $_SESSION['login_user'];
 
-                  $sql1 = mysqli_query($conn, "SELECT app_id from appointment where app_user = '$user'");
+                  $sql1 = mysqli_query($conn, "SELECT app_contact from appointment where app_user = '$user'");
                   
-                  while($sagot = mysqli_fetch_array($sql1)){
+                  while($sagot = mysqli_fetch_assoc($sql1))
 
-                  $aydi = $sagot['app_id'];
+                  $kontak = $sagot['app_contact'];
+
                 
+                    
+                  $sql2 = mysqli_query($conn, "SELECT COUNT(*) as total from appointment_history where app_contact = '$kontak' AND app_remarks = 'FINISH'");
 
-                  $sql2 = mysqli_query($conn, "SELECT COUNT(*) as total from appointment_history where app_id = '$aydi' AND app_remarks = 'FINISH'");
-
-                  while ($risulta = mysqli_fetch_array($sql2)) {
-
-                    if($risulta['total']<=0){
-                        $mensahe = "";
-                         echo "<div class='alert'>
+                    while ($risulta = mysqli_fetch_array($sql2))
+                      if($risulta['total']>=1){
+                         $mensahe = "users-feedback.php";
+                       }else{
+                        echo "<div class='alert'>
       <span class='closebtn' onclick='this.parentElement.style.display='none';'>&times;</span> 
       <center>You can only leave a feedback after finishing an appointment.
       </div>";
-                    }
-                    else{
-                      $mensahe = "users-feedback.php";
-                    }
-                  }
-                }
-
+    } 
+                         
                  ?>
-                <a href="<?php echo $mensahe;?>">
+                  <a href="<?php echo $mensahe ?>">
                   <i class="fa fa-bullhorn" aria-hidden="true"></i>
                   <h5> Feedback Us</h5>
+                  
                 </a>
               </li>
 
             </ul>
           </nav>
+
+        
           <label class="fa fa-bars" onclick="menutoggle()" style="margin-left:11%; top: 16%;background-color: transparent;color:white;border:none;"></label>
         </div>
       </div>
