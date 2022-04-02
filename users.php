@@ -141,7 +141,7 @@ $user=$_SESSION['login_user'];
                   while($sagot = mysqli_fetch_array($sql1)){
 
                   $aydi = $sagot['app_id'];
-                }
+                
 
                   $sql2 = mysqli_query($conn, "SELECT COUNT(*) as total from appointment_history where app_id = '$aydi' AND app_remarks = 'FINISH'");
 
@@ -158,6 +158,7 @@ $user=$_SESSION['login_user'];
                       $mensahe = "users-feedback.php";
                     }
                   }
+                }
 
                  ?>
                 <a href="<?php echo $mensahe;?>">
@@ -207,7 +208,7 @@ $user=$_SESSION['login_user'];
        $id = $sagot['client_id'];
         // code...
    
-    }
+    
      
         $result = mysqli_query($conn, "SELECT * from client_user_info where client_id = '$id'");
 
@@ -240,6 +241,7 @@ $user=$_SESSION['login_user'];
 
     }
       }
+    }
   
     
    
