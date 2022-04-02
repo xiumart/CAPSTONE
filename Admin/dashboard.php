@@ -67,7 +67,7 @@ if (isset($_GET['id3'])) {
 		$queryaccept .= "UPDATE appointment_history set app_DateTime = '$date' where app_id = '$app_id';";
 		$queryaccept .= "DELETE from appointment where app_id = '$app_id'";
 			mysqli_multi_query($conn, $queryaccept);	
-			header( "refresh:0; url=dashboard.php" );		
+			header( "refresh:0; url=notifysms.php" );		
 
 }
 function createRandomPassword() {

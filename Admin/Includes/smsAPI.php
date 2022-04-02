@@ -11,13 +11,13 @@
         $send->itexmo($reciever, $message,$smsAPICode,$smsAPIPassword);
 
         if($send == false){
-            header("location: ../index.php?error=itextmo: no responses from server");
+            header("location: ../dashboard.php?error=itextmo: no responses from server");
         }
         elseif($send == true){
-            header("location: ../index.php?error+none");
+            header("location: ../dashboard.php?error+none");
         }
         else{
-            header("location: ../index.php?something wrong just happen");
+            header("location: ../dashboard.php?something wrong just happen");
         }
     }
 
