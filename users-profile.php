@@ -132,14 +132,19 @@ $user=$_SESSION['login_user'];
               </li>
               <li>
                 <?php
+                 <?php
                  $mensahe = "";
                  $user = $_SESSION['login_user'];
 
-                  $sql1 = mysqli_query($conn, "SELECT app_contact from appointment where app_user = '$user'");
+                  $sql0 = mysqli_query($conn, "SELECT client_id from client_user where client_username = '$user'");
+                  while($rick = mysqli_fetch_assoc($sql0))
+                    $aydi = $rick['client_id'];
+
+                  $sql1 = mysqli_query($conn, "SELECT client_contact from client_user_info where client_id = '$aydi'");
                   
                   while($sagot = mysqli_fetch_assoc($sql1))
 
-                  $kontak = $sagot['app_contact'];
+                  $kontak = $sagot['client_contact'];
 
                 
                     
