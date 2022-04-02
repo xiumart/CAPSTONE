@@ -132,6 +132,7 @@ $user=$_SESSION['login_user'];
               </li>
               <li>
                 <?php
+                ?>
                  <?php
                  $mensahe = "";
                  $user = $_SESSION['login_user'];
