@@ -181,8 +181,8 @@ $user=$_SESSION['login_user'];
                           <input type="text" name="idd" value="<?php echo $row['client_id']; ?>" hidden>
                              <h3 style="text-transform:uppercase;">Appointment User : <input type="text" name="AppUser" value="<?php echo $call;?>" id="w3lSubject" style="border:none;width:500px;font-weight:bold;"></h3><br>
                              <h3>Name</h3>
-                            <input type="text " class="form-control" name="Name" id="w3lSubject"
-                                 required="">
+                            <input type="text " class="form-control" pattern="[A-Za-z]+" minlength="3" name="Name" id="w3lSubject"
+                                 required="" autocomplete="off">
                              <h3>Contact No.</h3>
                             <input type="tel" class="form-control" maxlength="11" pattern="[0-9]{4}[0-9]{3}[0-9]{4}" name="Contact" id="w3lSubject"
                                  autocomplete="off" required="" value= "<?php echo $row['client_contact'];?>" >

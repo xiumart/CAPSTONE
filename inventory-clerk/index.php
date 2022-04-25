@@ -48,7 +48,7 @@ if (isset($_POST['users_username']) && isset($_POST['users_password'])) {
                 $_SESSION['users_roles'] = $row['users_roles'];
             	$_SESSION['users_id'] = $row['users_id'];
                 users_logs($_SESSION['users_username'], "Login", date("Y-m-d h:i:sa"), $_SESSION['users_roles']);
-            	header("Location: dashboard.php");
+            	header("Location: ../admin/dashboard.php");
 		        exit();
             }else if ($row['users_username'] === $uname && $row['users_password'] === $pass && $row['users_roles'] === "Doctor") {
                 $_SESSION['users_username'] = $row['users_username'];
@@ -69,7 +69,7 @@ if (isset($_POST['users_username']) && isset($_POST['users_password'])) {
                 $_SESSION['users_roles'] = $row['users_roles'];
             	$_SESSION['users_id'] = $row['users_id'];
                 users_logs($_SESSION['users_username'], "Login", date("Y-m-d h:i:sa"), $_SESSION['users_roles']);
-            	header("Location: ../inventory-clerk/product.php");
+            	header("Location: product.php");
                 exit();
             }
 		}else{
@@ -137,7 +137,7 @@ function getIpAddr(){
 			<form action="" method="post">
 				<ul>
 					<li>
-						<input type="text" class="text" name="users_username" value="" autocomplete="off" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Username';}" ><a class=" icon user"></a>
+						<input type="text" class="text" name="users_username" value="" autocomplete="off" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email Address';}" ><a class=" icon user"></a>
 					</li>
 					 <li>
 						<input type="password" name="users_password" value="" autocomplete="off" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}"><a class=" icon lock"></a>

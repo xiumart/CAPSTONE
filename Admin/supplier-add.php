@@ -334,7 +334,7 @@ if (isset($_GET['eid'])) {
 							<label for="conperson">Contact Person</label>
 						</div>
 						<div class="col-75">
-							<input type="text" id="lname" name="lname" placeholder="Enter contact person" required="" autocomplete="off">
+							<input type="text" id="lname" name="lname" pattern="[A-Za-z]+" minlength="2" placeholder="Enter contact person" required="" autocomplete="off">
 						</div>
 						</div>
 						<div class="row">

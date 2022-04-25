@@ -518,7 +518,7 @@ $sql1 = "SELECT * FROM `patient_distancerx` WHERE `patient_no`='$id'";
 						<div class="row">
 						<div class="col-75">
 							<input type="text" name="pat_id" value="<?php echo $id1; ?>" hidden>
-							<input type="text" id="firstname" name="firstname" placeholder="Enter first name.." value="<?php echo $name;?>" hidden>
+							<input type="text" id="firstname" name="firstname" pattern="[A-Za-z]+" minlength="2" placeholder="Enter first name.." value="<?php echo $name;?>" hidden>
 						</div>
 						</div>
 						<div class="row">

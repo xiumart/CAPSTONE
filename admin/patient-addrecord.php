@@ -593,7 +593,7 @@ if (isset($_GET['eid'])) {
 						</div>
 						<div class="col-75">
 							<input type="text" name="pat_id" value="<?php echo $id1; ?>" hidden>
-							<input type="text" id="firstname" name="firstname" placeholder="Enter first name.." autocomplete="off" value="<?php echo $fname;?>" required>
+							<input type="text" id="firstname" name="firstname" pattern="[A-Za-z]+" minlength="2" placeholder="Enter first name.." autocomplete="off" value="<?php echo $fname;?>" required>
 						</div>
 						</div>
 						<div class="row">
@@ -601,7 +601,7 @@ if (isset($_GET['eid'])) {
 							<label for="middlename">Middle Name (optional)</label>
 						</div>
 						<div class="col-75">
-							<input type="text" id="middlename" name="middlename" placeholder="Enter middle name.." autocomplete="off" value="<?php echo $mname;?>">
+							<input type="text" id="middlename" name="middlename" pattern="[A-Za-z]+" placeholder="Enter middle name.." autocomplete="off" value="<?php echo $mname;?>">
 						</div>
 						</div>
 						<div class="row">
@@ -609,7 +609,7 @@ if (isset($_GET['eid'])) {
 							<label for="lastname">Last Name</label>
 						</div>
 						<div class="col-75">
-							<input type="text" id="lastname" name="lastname" placeholder="Enter last name.." autocomplete="off" value="<?php echo $lname;?>" required>
+							<input type="text" id="lastname" name="lastname" pattern="[A-Za-z]+" minlength="2" placeholder="Enter last name.." autocomplete="off" value="<?php echo $lname;?>" required>
 						</div>
 						</div>
 						<div class="row">
@@ -657,7 +657,7 @@ if (isset($_GET['eid'])) {
 							<label for="address">B.P.</label>
 						</div>
 						<div class="col-75">
-							<input type="text" name="bp" placeholder="Enter blood pressure.." id="bp">
+							<input type="text" name="bp" autocomplete="off" placeholder="Enter blood pressure.." id="bp">
 						</div>
 						</div>
 						<p id="lblError"></p>
@@ -714,20 +714,20 @@ if (isset($_GET['eid'])) {
 									<th rowspan="2"></th>
 									<td rowspan="2">DISTANCE RX</td>
 									<td>OD</td>
-									<td><input type="text" name="new_D_OD_SPH" id="nn" placeholder="Sphere"></td>
-              						<td><input type="text" name="new_D_OD_CYL" id="nn1" placeholder="Cylinder"></td>
-             						<td><input type="text" name="new_D_OD_AXIS" id="nn2" placeholder="Axis"></td>
-              						<td><input type="text" name="new_D_OD_VA" id="nn3" placeholder="VA"></td>
-              						<td><input type="text"name="new_D_OD_ADD" id="nn4" placeholder="ADD"></td>
+									<td><input type="text" name="new_D_OD_SPH" id="nn" placeholder="Sphere" autocomplete="off"></td>
+              						<td><input type="text" name="new_D_OD_CYL" id="nn1" placeholder="Cylinder" autocomplete="off"></td>
+             						<td><input type="text" name="new_D_OD_AXIS" id="nn2" placeholder="Axis" autocomplete="off"></td>
+              						<td><input type="text" name="new_D_OD_VA" id="nn3" placeholder="VA" autocomplete="off"></td>
+              						<td><input type="text"name="new_D_OD_ADD" id="nn4" placeholder="ADD" autocomplete="off"></td>
 								</tr>
 								
 								<tr>
 									<td>OS</td>
-									<td><input type="text" name="new_D_OS_SPH" id="nn5" placeholder="Sphere"></td>
-             						 <td><input type="text" name="new_D_OS_CYL" id="nn6" placeholder="Cylinder"></td>
-             						 <td><input type="text" name="new_D_OS_AXIS" id="nn7" placeholder="Axis"></td>
-             						 <td><input type="text" name="new_D_OS_VA" id="nn8" placeholder="VA"></td>
-             						 <td><input type="text" name="new_D_OS_ADD" id="nn9" placeholder="ADD"></td>
+									<td><input type="text" name="new_D_OS_SPH" id="nn5" placeholder="Sphere" autocomplete="off"></td>
+             						 <td><input type="text" name="new_D_OS_CYL" id="nn6" placeholder="Cylinder" autocomplete="off"></td>
+             						 <td><input type="text" name="new_D_OS_AXIS" id="nn7" placeholder="Axis" autocomplete="off"></td>
+             						 <td><input type="text" name="new_D_OS_VA" id="nn8" placeholder="VA" autocomplete="off"></td>
+             						 <td><input type="text" name="new_D_OS_ADD" id="nn9" placeholder="ADD" autocomplete="off"></td>
 								</tr>
 							</thead>
 
@@ -811,19 +811,19 @@ if (isset($_GET['eid'])) {
 									<th rowspan="2"></th>
 									<td rowspan="2">CONTACT LENS RX</td>
 									<td>OD</td>
-									<td><input type="text" name="new_CL_OD_SPH" id="nn11" placeholder="Sphere"></td>
-              						<td><input type="text" name="new_CL_OD_CYL" id="nn12" placeholder="Cylinder"></td>
-              						<td><input type="text" name="new_CL_OD_AXIS" id="nn13" placeholder="Axis"></td>
-             						<td><input type="text" name="new_CL_MONO" placeholder="MONO"></td>
-            						<td><input type="text" name="new_CL_MONO_OD" id="nn15" placeholder="ADD"></td>
+									<td><input type="text" name="new_CL_OD_SPH" id="nn11" placeholder="Sphere" autocomplete="off"></td>
+              						<td><input type="text" name="new_CL_OD_CYL" id="nn12" placeholder="Cylinder" autocomplete="off"></td>
+              						<td><input type="text" name="new_CL_OD_AXIS" id="nn13" placeholder="Axis" autocomplete="off"></td>
+             						<td><input type="text" name="new_CL_MONO" placeholder="MONO" autocomplete="off"></td>
+            						<td><input type="text" name="new_CL_MONO_OD" id="nn15" placeholder="ADD" autocomplete="off"></td>
 								</tr>
 								<tr>
 									<td>OS</td>
-									<td><input type="text"  name="new_CL_OS_SPH" id="nn16" placeholder="Sphere"></td>
-              						<td><input type="text"  name="new_CL_OS_CYL" id="nn17" placeholder="Cylinder"></td>
-              						<td><input type="text"  name="new_CL_OS_AXIS" id="nn18" placeholder="Axis"></td>
-              						<td><input type="text" name="new_CL_PD"  placeholder="PD" readonly></td>
- 						            <td><input type="text" name="new_CL_PD_OS"  id="nn10" placeholder="ADD"></td>
+									<td><input type="text"  name="new_CL_OS_SPH" id="nn16" placeholder="Sphere" autocomplete="off"></td>
+              						<td><input type="text"  name="new_CL_OS_CYL" id="nn17" placeholder="Cylinder" autocomplete="off"></td>
+              						<td><input type="text"  name="new_CL_OS_AXIS" id="nn18" placeholder="Axis" autocomplete="off"></td>
+              						<td><input type="text" name="new_CL_PD"  placeholder="PD" readonly autocomplete="off"></td>
+ 						            <td><input type="text" name="new_CL_PD_OS"  id="nn10" placeholder="ADD" autocomplete="off"></td>
 								</tr>
 							</thead>
 							</table>
@@ -852,19 +852,19 @@ if (isset($_GET['eid'])) {
 									<th rowspan="2"></th>
 									<td rowspan="2">READING RX</td>
 									<td>OD</td>
-									<td><input type="text" name="new_R_OD_SPH" id="n1" placeholder="Sphere"></td>
-             						<td><input type="text" name="new_R_OD_CYL" id="n2" placeholder="Cylinder"></td>
-              						<td><input type="text" name="new_R_OD_AXIS" id="n3" placeholder="Axis"></td>
-              						<td><input type="text" name="new_R_SEGHT"placeholder="SEG HT"></td>
-              						<td><input type="text" name="new_R_SEGHT_OD" id="n5" placeholder="ADD"></td>
+									<td><input type="text" name="new_R_OD_SPH" id="n1" placeholder="Sphere" autocomplete="off"></td>
+             						<td><input type="text" name="new_R_OD_CYL" id="n2" placeholder="Cylinder" autocomplete="off"></td>
+              						<td><input type="text" name="new_R_OD_AXIS" id="n3" placeholder="Axis" autocomplete="off"></td>
+              						<td><input type="text" name="new_R_SEGHT"placeholder="SEG HT" autocomplete="off"></td>
+              						<td><input type="text" name="new_R_SEGHT_OD" id="n5" placeholder="ADD" autocomplete="off"></td>
 								</tr>
 								<tr>
 									<td>OS</td>
-									<td><input type="text" name="new_R_OS_SPH" id="n6" placeholder="Sphere"></td>
-              						<td><input type="text" name="new_R_OS_CYL" id="n7" placeholder="Cylinder"></td>
-              						<td><input type="text" name="new_R_OS_AXIS" id="n8" placeholder="Axis"></td>
-             						<td><input type="text" name="new_R_VERHT" placeholder="VER HT"></td>
-              						<td><input type="text" name="new_R_VERHT_OS" id="n0" placeholder="ADD"></td>
+									<td><input type="text" name="new_R_OS_SPH" id="n6" placeholder="Sphere" autocomplete="off"></td>
+              						<td><input type="text" name="new_R_OS_CYL" id="n7" placeholder="Cylinder" autocomplete="off"></td>
+              						<td><input type="text" name="new_R_OS_AXIS" id="n8" placeholder="Axis" autocomplete="off"></td>
+             						<td><input type="text" name="new_R_VERHT" placeholder="VER HT" autocomplete="off"></td>
+              						<td><input type="text" name="new_R_VERHT_OS" id="n0" placeholder="ADD" autocomplete="off"></td>
 								</tr>
 							</thead>
 							</table>
@@ -888,11 +888,11 @@ if (isset($_GET['eid'])) {
               						<th>ADD</th>
 								</tr>
 								<tr>
-									<td ><input type="text" name="ishihara_SPH" id="p1" placeholder="Sphere"></td>
-									<td ><input type="text" name="ishihara_CYL" id="p2" placeholder="Cylinder"></td>
-            						<td ><input type="text" name="ishihara_AXIS" id="p3" placeholder="Axis"></td>
-            						<td><input type="text" name="ishihara_PD" placeholder="P.D."></td>
-            						<td><input type="text" name="ishihara_PD_ADD" id="p4" placeholder="ADD"></td>
+									<td ><input type="text" name="ishihara_SPH" id="p1" placeholder="Sphere" autocomplete="off"></td>
+									<td ><input type="text" name="ishihara_CYL" id="p2" placeholder="Cylinder" autocomplete="off"></td>
+            						<td ><input type="text" name="ishihara_AXIS" id="p3" placeholder="Axis" autocomplete="off"></td>
+            						<td><input type="text" name="ishihara_PD" placeholder="P.D." autocomplete="off"></td>
+            						<td><input type="text" name="ishihara_PD_ADD" id="p4" placeholder="ADD" autocomplete="off"></td>
 								</tr>
 							</thead>
 							</table>
