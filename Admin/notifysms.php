@@ -110,7 +110,7 @@ $finalcode='RS-'.createRandomPassword();
 			<span class="text" style="text-shadow:0.5px 0px #000; color: black;">RNL Vision Care</span>
 		</a>
 		<ul class="side-menu top">
-			<li>
+			<li class="active">
 				<a href="dashboard.php">
 					<i class='bx bxs-dashboard' ></i>
 					<span class="text">Dashboard</span>
@@ -158,7 +158,7 @@ $finalcode='RS-'.createRandomPassword();
 					<span class="text">Audit Logs</span>
 				</a>
 			</li>
-			<li class="active">
+			<li>
         <a href="inquiries.php">
           <i class='bx bxs-phone' ></i>
           <span class="text">Client Inquiries</span>

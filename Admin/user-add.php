@@ -373,7 +373,7 @@ if (isset($_GET['eid'])) {
 							<label for="fname">First Name</label>
 						</div>
 						<div class="col-75">
-							<input type="text" id="fname" name="fname" pattern="[A-Za-z]+" placeholder="Enter first name" required="" autocomplete="off">
+							<input type="text" id="fname" name="fname" pattern="[A-Za-z- ]+" placeholder="Enter first name" required="" autocomplete="off">
 						</div>
 						</div>
 						<div class="row">
@@ -381,7 +381,7 @@ if (isset($_GET['eid'])) {
 							<label for="mname">Middle Name</label>
 						</div>
 						<div class="col-75">
-							<input type="text" id="mname" name="mname" pattern="[A-Za-z]+" placeholder="Enter middle name"  autocomplete="off">
+							<input type="text" id="mname" name="mname" pattern="[A-Za-z- ]+" placeholder="Enter middle name"  autocomplete="off">
 						</div>
 						</div>
 						<div class="row">

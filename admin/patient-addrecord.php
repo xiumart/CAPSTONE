@@ -593,7 +593,7 @@ if (isset($_GET['eid'])) {
 						</div>
 						<div class="col-75">
 							<input type="text" name="pat_id" value="<?php echo $id1; ?>" hidden>
-							<input type="text" id="firstname" name="firstname" pattern="[A-Za-z]+" minlength="2" placeholder="Enter first name.." autocomplete="off" value="<?php echo $fname;?>" required>
+							<input type="text" id="firstname" name="firstname" pattern="[A-Za-z- ]+" minlength="2" placeholder="Enter first name.." autocomplete="off" value="<?php echo $fname;?>" required>
 						</div>
 						</div>
 						<div class="row">
@@ -601,7 +601,7 @@ if (isset($_GET['eid'])) {
 							<label for="middlename">Middle Name (optional)</label>
 						</div>
 						<div class="col-75">
-							<input type="text" id="middlename" name="middlename" pattern="[A-Za-z]+" placeholder="Enter middle name.." autocomplete="off" value="<?php echo $mname;?>">
+							<input type="text" id="middlename" name="middlename" pattern="[A-Za-z- ]+" placeholder="Enter middle name.." autocomplete="off" value="<?php echo $mname;?>">
 						</div>
 						</div>
 						<div class="row">
@@ -609,7 +609,7 @@ if (isset($_GET['eid'])) {
 							<label for="lastname">Last Name</label>
 						</div>
 						<div class="col-75">
-							<input type="text" id="lastname" name="lastname" pattern="[A-Za-z]+" minlength="2" placeholder="Enter last name.." autocomplete="off" value="<?php echo $lname;?>" required>
+							<input type="text" id="lastname" name="lastname" pattern="[A-Za-z- ]+" minlength="2" placeholder="Enter last name.." autocomplete="off" value="<?php echo $lname;?>" required>
 						</div>
 						</div>
 						<div class="row">

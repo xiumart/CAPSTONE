@@ -387,7 +387,7 @@ if (isset($_GET['eid'])) {
                             <label for="lname">Last Name</label>
                         </div>
                         <div class="col-75">
-              <input type="text" id="lname" name="id" pattern="[A-Za-z]+" placeholder="Enter last name" required="" value= "<?php echo $row['users_id'];?>"hidden>
+              <input type="text" id="lname" name="id" pattern="[A-Za-z- ]+" placeholder="Enter last name" required="" value= "<?php echo $row['users_id'];?>"hidden>
                             <input type="text" id="lname" name="lname" placeholder="Enter last name" required="" value= "<?php echo $row['users_lastname'];?>" >
                         </div>
                         </div>
@@ -396,7 +396,7 @@ if (isset($_GET['eid'])) {
                             <label for="fname">First Name</label>
                         </div>
                         <div class="col-75">
-                            <input type="text" id="fname" name="fname" pattern="[A-Za-z]+" placeholder="Enter first name" required="" value= "<?php echo $row['users_firstname'];?>">
+                            <input type="text" id="fname" name="fname" pattern="[A-Za-z- ]+" placeholder="Enter first name" required="" value= "<?php echo $row['users_firstname'];?>">
                         </div>
                         </div>
                         <div class="row">
@@ -404,7 +404,7 @@ if (isset($_GET['eid'])) {
                             <label for="mname">Middle Name (optional)</label>
                         </div>
                         <div class="col-75">
-                            <input type="text" id="mname" name="mname" pattern="[A-Za-z]+" placeholder="Enter middle name" value= "<?php echo $row['users_middlename'];?>">
+                            <input type="text" id="mname" name="mname" pattern="[A-Za-z- ]+" placeholder="Enter middle name" value= "<?php echo $row['users_middlename'];?>">
                         </div>
                         </div>
                         <div class="row">
@@ -415,16 +415,16 @@ if (isset($_GET['eid'])) {
                             <input type="text" id="uname" name="uname" placeholder="Enter middle name" minlenght="6" required="" value= "<?php echo $row['users_username'];?>">
                         </div>
                         </div>
-                        <div class="row">
+                        <!-- <div class="row">
                         <div class="col-25">
                             <label for="cpass">Change Password</label>
                         </div>
                         <div class="col-75">
                         
-                            <input type="password" name="cpass" placeholder="Enter new password" minlenght="6" id="password" value= "<?php echo $pass;?>">
+                            <input type="password" name="cpass" placeholder="Enter new password" minlenght="6" id="password" value= "">
                             <i class="bi bi-eye-slash" id="togglePassword"></i>
                           </div>
-                        </div>
+                        </div> -->
                         
                         <div class="row">
                         <div class="col-25">

@@ -374,7 +374,7 @@ if (isset($_GET['eid'])) {
 							<label for="conperson">Contact Person</label>
 						</div>
 						<div class="col-75">
-							<input type="text" id="conperson" name="conperson" pattern="[A-Za-z]+" minglength="3" placeholder="Enter contact person" required="" value= "<?php echo $row['supp_contactperson'];?>">
+							<input type="text" id="conperson" name="conperson" pattern="[A-Za-z- ]+" minglength="3" placeholder="Enter contact person" required="" value= "<?php echo $row['supp_contactperson'];?>">
 						</div>
 						</div>
 						<div class="row">
@@ -395,10 +395,10 @@ if (isset($_GET['eid'])) {
 						</div>
 						<div class="row">
 						<div class="col-25">
-							<label for="description">Description</label>
+							<label for="description">Description (Optional)</label>
 						</div>
 						<div class="col-75">
-							<input type="text" id="description" name="description" placeholder="Enter description" required="" value= "<?php echo $row['supp_desc'];?>">
+							<input type="text" id="description" name="description" placeholder="Enter description" value= "<?php echo $row['supp_desc'];?>">
 						</div>
 						</div>
 						<center>
