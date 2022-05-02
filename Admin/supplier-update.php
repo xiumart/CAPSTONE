@@ -395,7 +395,7 @@ if (isset($_GET['eid'])) {
 						</div>
 						<div class="row">
 						<div class="col-25">
-							<label for="description">Description (Optional)</label>
+							<label for="description">Description</label>
 						</div>
 						<div class="col-75">
 							<input type="text" id="description" name="description" placeholder="Enter description" required="" value= "<?php echo $row['supp_desc'];?>">
