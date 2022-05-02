@@ -4,8 +4,8 @@
         include '../includes/smsAPIControl.php';
         $reciever = $_POST['reciever'];
         $message = $_POST['message'];
-        $smsAPICode = "TR-DANVE298152_XXTHC";
-        $smsAPIPassword ="az}kc1b1!%";
+        $smsAPICode = "TR-RNLCA647938_SDDB7";
+        $smsAPIPassword ="njw)!&!mxb";
 
         $send = new Trebor(); 
         $send->itexmo($reciever, $message,$smsAPICode,$smsAPIPassword);

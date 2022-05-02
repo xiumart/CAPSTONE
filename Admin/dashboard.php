@@ -22,8 +22,8 @@ if (isset($_POST['submit'])) {
 						  										
 			include '../includes/smsAPIControl.php';
 			$message = "Hi".$name."!,Your Appointment was Approved! Date:".$date."-Time:".$time."-Id:".$client_id." RNL VISION CARE";
-			$smsAPICode = "TR-DANVE298152_XXTHC";
-        	$smsAPIPassword ="az}kc1b1!%";
+			$smsAPICode = "TR-RNLCA647938_SDDB7";
+			$smsAPIPassword ="njw)!&!mxb";
 	
 			$send = new Trebor(); 
 			$send->itexmo($receiver, $message,$smsAPICode,$smsAPIPassword);
