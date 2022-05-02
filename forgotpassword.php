@@ -82,7 +82,7 @@ $mail->Port = 587;
 $mail->IsHTML(true);
 $mail->Subject = $subject;
 $mail->Body = $body;
-$mail->From='rnlvisioncare@gmaiil.com';
+$mail->From='rnlvisioncare@gmail.com';
 $mail->FromName='RNL Vision Care Team';
 
 
