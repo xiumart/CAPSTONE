@@ -33,7 +33,7 @@ if (isset($_REQUEST['btnsubmit'])) {
     $email = $_REQUEST['email'];
     $contact = $_REQUEST['contact'];
     $username = $_REQUEST['uname'];
-    $password = md5($_REQUEST['cpass']);
+    // $password = md5($_REQUEST['cpass']);
 
     
       $sql = mysqli_query($conn,"UPDATE users_account SET 
@@ -43,7 +43,7 @@ if (isset($_REQUEST['btnsubmit'])) {
         `users_email`='$email ',  
         `users_username`='$username' , 
         `users_contact`='$contact' , 
-        `users_password`='$password',  
+        -- `users_password`='$password',  
         `users_roles`='$role'
         WHERE `users_id` = '$eid'");
         
@@ -379,7 +379,7 @@ if (isset($_GET['eid'])) {
             $sql=mysqli_query($conn, "SELECT * from users_account WHERE users_id='$eid'");
             while($row=mysqli_fetch_array($sql)){
               $roles = $row['users_roles'];
-              $pass = md5($row['users_password']);
+              // $pass = md5($row['users_password']);
           ?>
                 <div class="row">
                         <div class="row">
@@ -495,7 +495,7 @@ if (isset($_GET['eid'])) {
 
   <script src="script.js"></script>
   <!-- show password -->
-  <script>
+  <!-- <script>
         const togglePassword = document.querySelector("#togglePassword");
         const password = document.querySelector("#password");
 
@@ -513,7 +513,7 @@ if (isset($_GET['eid'])) {
         form.addEventListener('signup', function (e) {
             e.preventDefault();
         });
-    </script>
+    </script> -->
 </body>
 <style>
   .btn-apph {

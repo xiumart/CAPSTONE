@@ -11,7 +11,7 @@ $sql_query1 = "DELETE from users_account where `users_id` = $users_id1";
 { 
     $conn->query($sql_query1);
     echo '<script language="javascript">';
-	        echo 'alert("Products Move to Recycle Bin");';
+	        echo 'alert("User Move to Recycle Bin");';
 	        echo 'window.location="archive.php";';
 	        echo '</script>'; 
 } 

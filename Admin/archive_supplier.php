@@ -15,7 +15,7 @@ $sql_query1 = "DELETE from supplier where `supp_id` = $supp_id1";
 { 
     $connection_link->query($sql_query1);
     echo '<script language="javascript">';
-	        echo 'alert("Products Move to Recycle Bin");';
+	        echo 'alert("Supplier Move to Recycle Bin");';
 	        echo 'window.location="archive.php";';
 	        echo '</script>'; 
 } 
