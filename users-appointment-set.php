@@ -130,9 +130,37 @@ $user=$_SESSION['login_user'];
                 </a>
               </li>
               <li>
-                <a href="users-feedback.php">
+              <?php
+                 $mensahe = "";
+                 $user = $_SESSION['login_user'];
+
+                  $sql0 = mysqli_query($conn, "SELECT client_id from client_user where client_username = '$user'");
+                  while($rick = mysqli_fetch_assoc($sql0))
+                    $aydi = $rick['client_id'];
+
+                  $sql1 = mysqli_query($conn, "SELECT client_contact from client_user_info where client_id = '$aydi'");
+                  
+                  while($sagot = mysqli_fetch_assoc($sql1))
+
+                  $kontak = $sagot['client_contact'];
+
+                
+                    
+                  $sql2 = mysqli_query($conn, "SELECT COUNT(*) as total from appointment_history where app_contact = '$kontak' AND app_remarks = 'FINISH'");
+
+                    while ($risulta = mysqli_fetch_array($sql2))
+                      if($risulta['total']>=1){
+                         $mensahe = "users-feedback.php";
+                       }
+                         
+                 ?>
+                  <a href="<?php echo $mensahe ?>">
                   <i class="fa fa-bullhorn" aria-hidden="true"></i>
                   <h5> Feedback Us</h5>
+
+                  <?php
+
+                  ?>
             
                 </a>
               </li>

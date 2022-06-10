@@ -132,7 +132,7 @@ $user=$_SESSION['login_user'];
                 </a>
               </li>
               <li>
-                <?php
+              <?php
                  $mensahe = "";
                  $user = $_SESSION['login_user'];
 
@@ -159,12 +159,15 @@ $user=$_SESSION['login_user'];
       <center>You can only leave a feedback after finishing an appointment.
       </div>";
     } 
-
                          
                  ?>
                   <a href="<?php echo $mensahe ?>">
                   <i class="fa fa-bullhorn" aria-hidden="true"></i>
                   <h5> Feedback Us</h5>
+
+                  <?php
+
+                  ?>
                   
                 </a>
               </li>

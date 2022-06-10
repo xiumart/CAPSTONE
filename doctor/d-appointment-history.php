@@ -256,7 +256,7 @@ $finalcode='RS-'.createRandomPassword();
         
         	}
         else{
-        		$sql1 = "SELECT * FROM `appointment_history` LIMIT $start, $limit ";
+        		$sql1 = "SELECT * FROM `appointment_history` WHERE app_DateTime <= now() ORDER BY app_DateTime DESC LIMIT $start, $limit ";
         		$sql2 =$conn->query("SELECT count(app_id) AS id FROM `appointment_history`");
         	}
 
